@@ -2,7 +2,7 @@
 
 /* ============================================================
    慧灯禅院 · 设计系统
-   配色：檀木棕 · 藏红 · 金 · 米白 · 墨 · 月光蓝
+   配色：晴空 · 青檀绿 · 朱砂 · 鎏金
    ============================================================ */
 @theme {
   /* ============================================================
@@ -74,13 +74,14 @@
   /* 卡片表面色（随主题） */
   --color-surface: var(--site-surface);
 
-  /* 字体 */
+  /* 字体：霞鹜文楷（古意正文）＋ 马善政/龙藏（书法标题） */
   --font-serif:
-    'Noto Serif SC', 'Source Han Serif SC', 'Source Han Serif CN', 'Songti SC',
-    STSong, SimSun, 'Times New Roman', serif;
+    'LXGW WenKai', 'Kaiti SC', 'STKaiti', 'KaiTi', 'Noto Serif SC', 'Songti SC',
+    SimSun, serif;
   --font-sans:
-    'Noto Sans SC', 'Source Han Sans SC', 'Source Han Sans CN', 'PingFang SC',
-    'Hiragino Sans GB', 'Microsoft YaHei', system-ui, sans-serif;
+    'LXGW WenKai', 'Noto Sans SC', 'PingFang SC', 'Hiragino Sans GB',
+    'Microsoft YaHei', system-ui, sans-serif;
+  --font-brush: 'Ma Shan Zheng', 'Long Cang', 'LXGW WenKai', 'KaiTi', cursive;
 
   /* 动画 */
   --animate-smoke-rise: smoke-rise 7s ease-in-out infinite;

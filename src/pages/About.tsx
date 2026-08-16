@@ -17,7 +17,7 @@ export function About() {
         </div>
         <div className="relative">
           <p className="font-serif text-sm tracking-[0.5em] text-gold-300">山 门</p>
-          <h1 className="mt-3 font-serif text-3xl font-bold sm:text-4xl">{t('about.title')}</h1>
+          <h1 className="mt-3 font-brush text-4xl sm:text-5xl">{t('about.title')}</h1>
           <p className="mt-3 font-serif text-sm text-paper/85">{t('about.subtitle')}</p>
         </div>
       </header>

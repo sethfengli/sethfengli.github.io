@@ -216,10 +216,17 @@ export function ArticleReader() {
                     <button
                       type="button"
                       onClick={() => scrollToHeading(item.id)}
-                      className={`block w-full cursor-pointer py-1 pr-2 text-left text-ink-700 transition hover:text-tibetan-600 ${
-                        item.level === 2 ? 'pl-3' : item.level === 3 ? 'pl-6 text-ink-500' : 'pl-9 text-ink-500'
+                      className={`block w-full cursor-pointer py-1 pr-2 text-left transition hover:text-tibetan-600 ${
+                        item.level === 2
+                          ? 'pl-3 font-semibold text-ink-900'
+                          : item.level === 3
+                            ? 'pl-6 font-medium text-ink-700'
+                            : 'pl-9 text-ink-500'
                       } ${activeToc === item.id ? 'toc-active' : ''}`}
                     >
+                      <span className={`mr-1 ${item.level === 2 ? 'text-tibetan-600' : 'text-sandalwood-400'}`}>
+                        {item.num}
+                      </span>
                       {item.text}
                     </button>
                   </li>
@@ -238,7 +245,7 @@ export function ArticleReader() {
             {/* 题头 */}
             <header className="mt-8 text-center">
               <p className="font-serif text-xs tracking-[0.4em] text-sandalwood-500">{SCHOOL_LABEL_ZH[doc.school]}</p>
-              <h1 className="mt-3 font-serif text-3xl font-bold leading-snug text-sandalwood-900 sm:text-4xl">
+              <h1 className="mt-3 font-brush text-4xl leading-snug text-sandalwood-900 sm:text-5xl">
                 《{doc.title}》
               </h1>
               <div className="mt-4 flex flex-wrap items-center justify-center gap-x-5 gap-y-1 text-sm text-sandalwood-500">
@@ -366,9 +373,16 @@ export function ArticleReader() {
                     type="button"
                     onClick={() => scrollToHeading(item.id)}
                     className={`block w-full cursor-pointer rounded-lg px-3 py-2 text-left transition hover:bg-sandalwood-100 ${
-                      item.level === 2 ? 'font-medium text-ink-900' : item.level === 3 ? 'pl-7 text-ink-700' : 'pl-10 text-ink-500'
+                      item.level === 2
+                        ? 'font-semibold text-ink-900'
+                        : item.level === 3
+                          ? 'pl-7 font-medium text-ink-700'
+                          : 'pl-10 text-ink-500'
                     } ${activeToc === item.id ? 'bg-sandalwood-100 text-tibetan-700' : ''}`}
                   >
+                    <span className={`mr-1 ${item.level === 2 ? 'text-tibetan-600' : 'text-sandalwood-400'}`}>
+                      {item.num}
+                    </span>
                     {item.text}
                   </button>
                 </li>

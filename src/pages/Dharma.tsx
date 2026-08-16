@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useI18n } from '../i18n'
 import { TempleBell } from '../components/zen/TempleBell'
+import { Bell3D } from '../components/zen3d/Bell3D'
 import { ChantPlayer } from '../components/zen/ChantPlayer'
 import { CoverImage } from '../components/zen/CoverImage'
 import { CHANTS } from '../data/chants'
@@ -30,7 +31,7 @@ export function Dharma() {
         </div>
         <div className="relative">
           <p className="font-serif text-sm tracking-[0.5em] text-gold-300">梵 呗</p>
-          <h1 className="mt-3 font-serif text-3xl font-bold sm:text-4xl">{t('dharma.title')}</h1>
+          <h1 className="mt-3 font-brush text-4xl sm:text-5xl">{t('dharma.title')}</h1>
           <p className="mt-3 font-serif text-sm text-paper/80">{t('dharma.subtitle')}</p>
         </div>
       </header>
@@ -47,7 +48,7 @@ export function Dharma() {
             </blockquote>
           </div>
           <div className="flex justify-center">
-            <TempleBell />
+            <Bell3D fallback={<TempleBell />} />
           </div>
         </section>
 

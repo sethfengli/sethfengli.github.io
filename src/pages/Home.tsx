@@ -49,7 +49,7 @@ export function Home() {
             {t('home.heroKicker')}
           </p>
           <h1
-            className="mt-5 animate-fade-up font-serif text-5xl font-bold tracking-[0.12em] text-paper drop-shadow-lg sm:text-6xl"
+            className="mt-5 animate-fade-up font-brush text-6xl tracking-[0.06em] text-paper drop-shadow-lg sm:text-7xl"
             style={{ animationDelay: '0.1s' }}
           >
             {t('home.heroTitle')}
@@ -84,7 +84,7 @@ export function Home() {
             style={{ animationDelay: '0.5s' }}
           >
             <p className="font-serif text-sm tracking-widest text-gold-300">{t('home.dailyVerseTitle')}</p>
-            <p className="mt-3 font-serif text-lg leading-relaxed text-paper/95">「{verse.text}」</p>
+            <p className="mt-3 font-brush text-xl leading-relaxed text-paper/95">「{verse.text}」</p>
             <footer className="mt-2 text-right font-serif text-xs text-paper/60">—— {verse.source}</footer>
           </blockquote>
         </div>
@@ -92,7 +92,7 @@ export function Home() {
 
       {/* ---------- 禅院导览 ---------- */}
       <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
-        <h2 className="text-center font-serif text-2xl font-bold text-sandalwood-800 sm:text-3xl">
+        <h2 className="text-center font-brush text-3xl text-sandalwood-800 sm:text-4xl">
           {t('home.quickTitle')}
         </h2>
         <div className="zen-divider mt-4">
@@ -109,7 +109,7 @@ export function Home() {
       {/* ---------- 精选经论 ---------- */}
       <section className="bg-rice-100/70 py-16">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <h2 className="text-center font-serif text-2xl font-bold text-sandalwood-800 sm:text-3xl">
+          <h2 className="text-center font-brush text-3xl text-sandalwood-800 sm:text-4xl">
             {t('home.featuredTitle')}
           </h2>
           <p className="mt-2 text-center font-serif text-sm text-sandalwood-500">{t('home.featuredSubtitle')}</p>
@@ -131,7 +131,7 @@ export function Home() {
 
       {/* ---------- 三大修学门径 ---------- */}
       <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
-        <h2 className="text-center font-serif text-2xl font-bold text-sandalwood-800 sm:text-3xl">
+        <h2 className="text-center font-brush text-3xl text-sandalwood-800 sm:text-4xl">
           {t('home.schoolsTitle')}
         </h2>
         <p className="mt-2 text-center font-serif text-sm text-sandalwood-500">{t('home.schoolsSubtitle')}</p>

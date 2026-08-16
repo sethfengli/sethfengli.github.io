@@ -36,7 +36,7 @@ export function Articles() {
       {/* 页头 */}
       <header className="text-center">
         <p className="font-serif text-sm tracking-[0.4em] text-gold-600">法 藏</p>
-        <h1 className="mt-2 font-serif text-3xl font-bold text-sandalwood-800 sm:text-4xl">{t('articles.title')}</h1>
+        <h1 className="mt-2 font-brush text-4xl text-sandalwood-800 sm:text-5xl">{t('articles.title')}</h1>
         <p className="mt-3 font-serif text-sm text-sandalwood-500">{t('articles.subtitle')}</p>
         <div className="zen-divider mt-5">
           <span className="text-gold-500">❖</span>

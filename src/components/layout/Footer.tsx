@@ -22,7 +22,7 @@ export function Footer() {
           <div className="flex items-center gap-2.5">
             <PhotoLogo className="h-10 w-10" />
             <div className="leading-tight">
-              <p className="font-serif text-xl font-bold tracking-wider text-gold-300">{t('appName')}</p>
+              <p className="font-brush text-2xl tracking-wider text-gold-300">{t('appName')}</p>
               <p className="text-[11px] tracking-[0.25em] text-paper/60 uppercase">{t('appNameEn')}</p>
             </div>
           </div>

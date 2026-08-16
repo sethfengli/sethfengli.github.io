@@ -12,6 +12,7 @@ import {
 } from '../data/lots'
 import { GuanyinFigure } from '../components/zen/GuanyinFigure'
 import { LotCylinder } from '../components/zen/LotCylinder'
+import { LotCylinder3D } from '../components/zen3d/LotCylinder3D'
 import { IncenseBurner } from '../components/zen/IncenseBurner'
 import { CoverImage } from '../components/zen/CoverImage'
 
@@ -74,7 +75,7 @@ export function Lots() {
         <div className="absolute inset-0 bg-gradient-to-b from-sandalwood-950/50 via-sandalwood-950/30 to-sandalwood-950/80" />
         <div className="relative">
           <p className="font-serif text-sm tracking-[0.5em] text-gold-300">观 音 法 门</p>
-          <h1 className="mt-3 font-serif text-3xl font-bold sm:text-4xl">{t('lots.title')}</h1>
+          <h1 className="mt-3 font-brush text-4xl sm:text-5xl">{t('lots.title')}</h1>
           <p className="mt-3 font-serif text-sm text-paper/85">{t('lots.subtitle')}</p>
         </div>
       </header>
@@ -95,7 +96,7 @@ export function Lots() {
 
             {/* 签筒 */}
             <div className="flex flex-col items-center">
-              <LotCylinder shaking={phase === 'shaking'} revealed={phase === 'revealed'} />
+              <LotCylinder3D shaking={phase === 'shaking'} revealed={phase === 'revealed'} onShake={shake} fallback={<LotCylinder shaking={phase === 'shaking'} revealed={phase === 'revealed'} />} />
             </div>
 
             {/* 香炉 */}
@@ -224,14 +225,14 @@ function LotContent({ lot, saved, onSave }: { lot: GuanyinLot; saved: boolean; o
     <div className="text-center">
       <div className="flex flex-wrap items-center justify-center gap-2">
         <span className={`rounded-full px-3 py-1 text-xs font-bold ${levelClass(lot.level)}`}>{lot.level}</span>
-        <h3 className="font-serif text-2xl font-bold text-sandalwood-900">{lot.title}</h3>
+        <h3 className="font-brush text-3xl text-sandalwood-900">{lot.title}</h3>
         <span className="text-sm text-sandalwood-400">{t('lots.lotNumber', { n: lot.id })}</span>
       </div>
 
       {/* 签诗 */}
       <div className="mt-6 rounded-2xl border border-gold-400/50 bg-gradient-to-b from-rice-100 to-rice-50 px-6 py-6">
         <p className="font-serif text-xs tracking-[0.4em] text-gold-600">{t('lots.poemLabel')}</p>
-        <p className="mt-4 space-y-2 font-serif text-lg leading-relaxed text-ink-900 sm:text-xl">
+        <p className="mt-4 space-y-2 font-brush text-xl leading-relaxed text-ink-900 sm:text-2xl">
           {lot.poem.map((line, i) => (
             <span key={i} className="block">
               {line}

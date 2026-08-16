@@ -2,6 +2,9 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App'
 import { initSiteTheme } from './lib/siteTheme'
+import '@fontsource/ma-shan-zheng'
+import '@fontsource/long-cang'
+import 'lxgw-wenkai-webfont/style.css'
 import './index.css'
 
 // 在首次渲染前应用配色主题，避免闪烁

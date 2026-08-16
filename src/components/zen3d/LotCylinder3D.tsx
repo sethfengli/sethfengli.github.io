@@ -1,0 +1,283 @@
+import { useEffect, useRef, useState, type ReactNode } from 'react'
+import type * as THREE from 'three'
+import { createStage, type Stage } from './stage'
+
+/**
+ * 3D 朱漆描金签筒：回纹金带、卍字与莲徽、廿四签支。
+ * 拖拽旋转 / 滚轮缩放；点击签筒摇签（抖动 + 签支跳动 + 一签飞升）。
+ * WebGL 不可用时回退到 2D 签筒（fallback）。
+ */
+
+interface CylinderRig {
+  group: THREE.Group
+  sticks: THREE.Group
+  stickBases: number[]
+  flyStick: THREE.Group | null
+  flyT: number
+  shaker: { shaking: boolean; revealed: boolean }
+}
+
+interface Props {
+  shaking: boolean
+  revealed: boolean
+  onShake: () => void
+  fallback?: ReactNode
+}
+
+function drawCylinderTexture(): HTMLCanvasElement {
+  const w = 1024
+  const h = 512
+  const cv = document.createElement('canvas')
+  cv.width = w
+  cv.height = h
+  const ctx = cv.getContext('2d')!
+  // 朱漆底
+  const g = ctx.createLinearGradient(0, 0, w, 0)
+  g.addColorStop(0, '#8f2e28')
+  g.addColorStop(0.16, '#c24538')
+  g.addColorStop(0.5, '#d95a48')
+  g.addColorStop(0.84, '#c24538')
+  g.addColorStop(1, '#8f2e28')
+  ctx.fillStyle = g
+  ctx.fillRect(0, 0, w, h)
+
+  // 金带 + 回纹
+  const band = (y: number) => {
+    ctx.fillStyle = '#d4a92c'
+    ctx.fillRect(0, y, w, 60)
+    ctx.strokeStyle = '#8c6619'
+    ctx.lineWidth = 6
+    ctx.strokeRect(0, y, w, 60)
+    ctx.beginPath()
+    for (let x = 30; x < w; x += 62) {
+      ctx.moveTo(x, y + 12)
+      ctx.lineTo(x + 26, y + 12)
+      ctx.lineTo(x + 26, y + 24)
+      ctx.lineTo(x, y + 24)
+      ctx.closePath()
+      ctx.moveTo(x + 8, y + 36)
+      ctx.lineTo(x + 34, y + 36)
+      ctx.lineTo(x + 34, y + 48)
+      ctx.lineTo(x + 8, y + 48)
+      ctx.closePath()
+    }
+    ctx.stroke()
+  }
+  band(66)
+  band(392)
+
+  // 卍字与莲徽
+  ctx.strokeStyle = '#f6e69b'
+  ctx.lineWidth = 12
+  ctx.lineCap = 'round'
+  const swastika = (cx: number, cy: number) => {
+    ctx.beginPath()
+    ctx.moveTo(cx, cy - 30)
+    ctx.lineTo(cx, cy + 30)
+    ctx.moveTo(cx - 22, cy - 20)
+    ctx.lineTo(cx + 22, cy - 20)
+    ctx.moveTo(cx - 22, cy + 20)
+    ctx.lineTo(cx + 22, cy + 20)
+    ctx.moveTo(cx - 30, cy)
+    ctx.lineTo(cx + 8, cy)
+    ctx.stroke()
+  }
+  swastika(240, 250)
+  swastika(784, 250)
+
+  const lotus = (cx: number, cy: number) => {
+    ctx.lineWidth = 8
+    ctx.beginPath()
+    ctx.moveTo(cx, cy - 44)
+    ctx.quadraticCurveTo(cx - 30, cy - 34, cx - 30, cy - 10)
+    ctx.moveTo(cx, cy - 44)
+    ctx.quadraticCurveTo(cx + 30, cy - 34, cx + 30, cy - 10)
+    ctx.moveTo(cx - 42, cy - 8)
+    ctx.quadraticCurveTo(cx - 20, cy + 6, cx, cy + 2)
+    ctx.quadraticCurveTo(cx + 20, cy + 6, cx + 42, cy - 8)
+    ctx.moveTo(cx, cy + 2)
+    ctx.lineTo(cx, cy + 30)
+    ctx.stroke()
+  }
+  lotus(512, 250)
+
+  // 云纹
+  ctx.strokeStyle = '#f1d25f'
+  ctx.lineWidth = 8
+  ctx.beginPath()
+  for (let x = 60; x < w - 40; x += 140) {
+    ctx.moveTo(x, 330)
+    ctx.quadraticCurveTo(x + 35, 310, x + 70, 330)
+    ctx.quadraticCurveTo(x + 105, 350, x + 140, 330)
+  }
+  ctx.stroke()
+  return cv
+}
+
+export function LotCylinder3D({ shaking, revealed, onShake, fallback }: Props) {
+  const canvasRef = useRef<HTMLCanvasElement>(null)
+  const rigRef = useRef<CylinderRig | null>(null)
+  const [failed, setFailed] = useState(false)
+
+  useEffect(() => {
+    const canvas = canvasRef.current
+    if (!canvas) return
+    let disposed = false
+    let stage: Stage | null = null
+
+    void import('three').then((THREE) => {
+      if (disposed || !canvas.isConnected) return
+      try {
+        stage = createStage(THREE, canvas, { distance: 13, autoRotate: 0.16, phi: 1.05 })
+      } catch {
+        setFailed(true)
+        return
+      }
+      const S = stage.scene
+
+      /* ---------- 筒身 ---------- */
+      const tex = new THREE.CanvasTexture(drawCylinderTexture())
+      tex.colorSpace = THREE.SRGBColorSpace
+      tex.anisotropy = 8
+      const group = new THREE.Group()
+      const body = new THREE.Mesh(
+        new THREE.CylinderGeometry(2.6, 2.6, 6, 64),
+        new THREE.MeshStandardMaterial({ map: tex, roughness: 0.4, metalness: 0.15 }),
+      )
+      group.add(body)
+      // 筒口
+      const rim = new THREE.Mesh(
+        new THREE.TorusGeometry(2.6, 0.18, 16, 64),
+        new THREE.MeshStandardMaterial({ color: 0xd4a92c, roughness: 0.3, metalness: 0.7 }),
+      )
+      rim.rotation.x = Math.PI / 2
+      rim.position.y = 3
+      group.add(rim)
+      const cap = new THREE.Mesh(
+        new THREE.CircleGeometry(2.42, 64),
+        new THREE.MeshStandardMaterial({ color: 0x461713, roughness: 0.9 }),
+      )
+      cap.rotation.x = -Math.PI / 2
+      cap.position.y = 3.02
+      group.add(cap)
+      // 底座
+      const base1 = new THREE.Mesh(
+        new THREE.CylinderGeometry(2.95, 3.2, 0.55, 64),
+        new THREE.MeshStandardMaterial({ color: 0xb38620, roughness: 0.35, metalness: 0.6 }),
+      )
+      base1.position.y = -3.25
+      group.add(base1)
+      const base2 = new THREE.Mesh(
+        new THREE.CylinderGeometry(3.35, 3.55, 0.4, 64),
+        new THREE.MeshStandardMaterial({ color: 0x8c6619, roughness: 0.35, metalness: 0.6 }),
+      )
+      base2.position.y = -3.7
+      group.add(base2)
+      S.add(group)
+
+      /* ---------- 廿四签支 ---------- */
+      const sticks = new THREE.Group()
+      const stickMat = new THREE.MeshStandardMaterial({ color: 0xf0e3c8, roughness: 0.8 })
+      const tipMat = new THREE.MeshStandardMaterial({ color: 0xc24538, roughness: 0.5 })
+      const stickBases: number[] = []
+      for (let i = 0; i < 24; i++) {
+        const st = new THREE.Group()
+        const a = (i / 24) * Math.PI * 2
+        const r = 0.9 + ((i * 37) % 10) * 0.1
+        const stick = new THREE.Mesh(new THREE.CylinderGeometry(0.055, 0.055, 2.3, 8), stickMat)
+        stick.position.y = 1.15
+        const tip = new THREE.Mesh(new THREE.SphereGeometry(0.1, 8, 8), tipMat)
+        tip.position.y = 2.35
+        st.add(stick, tip)
+        st.position.set(Math.cos(a) * r, 3.05, Math.sin(a) * r)
+        st.rotation.z = Math.cos(a) * 0.14
+        st.rotation.x = -Math.sin(a) * 0.14
+        sticks.add(st)
+        stickBases.push(3.05)
+      }
+      group.add(sticks)
+
+      const rig: CylinderRig = {
+        group,
+        sticks,
+        stickBases,
+        flyStick: null,
+        flyT: -1,
+        shaker: { shaking: false, revealed: false },
+      }
+      rigRef.current = rig
+
+      stage.setPick(
+        () => [group],
+        () => onShake(),
+      )
+
+      /* ---------- 帧动画 ---------- */
+      stage.onFrame((dt, t) => {
+        const sh = rig.shaker
+        if (sh.shaking) {
+          group.position.x = Math.sin(t * 34) * 0.14
+          group.position.z = Math.cos(t * 28) * 0.1
+          group.rotation.z = Math.sin(t * 30) * 0.06
+          for (let i = 0; i < rig.sticks.children.length; i++) {
+            const st = rig.sticks.children[i]
+            st.position.y = rig.stickBases[i] + Math.abs(Math.sin(t * 38 + i * 1.7)) * 0.3
+          }
+        } else {
+          group.position.x += (0 - group.position.x) * Math.min(1, dt * 8)
+          group.position.z += (0 - group.position.z) * Math.min(1, dt * 8)
+          group.rotation.z += (0 - group.rotation.z) * Math.min(1, dt * 8)
+          for (let i = 0; i < rig.sticks.children.length; i++) {
+            const st = rig.sticks.children[i]
+            st.position.y += (rig.stickBases[i] - st.position.y) * Math.min(1, dt * 8)
+          }
+        }
+        if (sh.revealed) {
+          if (!rig.flyStick) {
+            rig.flyStick = rig.sticks.children[0] as THREE.Group
+            rig.flyT = 0
+          }
+          rig.flyT += dt
+          const k = Math.min(1, rig.flyT / 1.15)
+          const st = rig.flyStick
+          st.position.y = 3.05 + 9 * k * k
+          st.rotation.x -= dt * 5
+          if (k >= 1) st.visible = false
+        }
+      })
+    })
+
+    return () => {
+      disposed = true
+      stage?.dispose()
+      rigRef.current = null
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  // 父级相位同步
+  useEffect(() => {
+    const rig = rigRef.current
+    if (!rig) return
+    rig.shaker.shaking = shaking
+    rig.shaker.revealed = revealed
+    if (!shaking && !revealed && rig.flyStick) {
+      rig.flyStick.visible = true
+      rig.flyStick.rotation.x = 0
+      rig.flyStick.position.y = 3.05
+      rig.flyStick = null
+      rig.flyT = -1
+    }
+  }, [shaking, revealed])
+
+  if (failed) return <>{fallback}</>
+
+  return (
+    <div className="relative h-[340px] w-full max-w-[420px] sm:h-[400px]">
+      <canvas ref={canvasRef} className="h-full w-full" aria-label="3D 签筒" />
+      <p className="pointer-events-none absolute bottom-1 left-1/2 -translate-x-1/2 rounded-full bg-sandalwood-950/60 px-3 py-1 text-[11px] text-paper/80 backdrop-blur-sm">
+        拖拽旋转 · 滚轮缩放 · 点击签筒摇签
+      </p>
+    </div>
+  )
+}

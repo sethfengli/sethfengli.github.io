@@ -1,9 +1,9 @@
-import { Fragment } from 'react'
+import { Fragment, useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import type { ArticleDoc, Block, Inline } from '../../lib/content'
-import { headingId } from '../../lib/content'
+import { headingAnchorMap, headingId } from '../../lib/content'
 
-/** 行内片段渲染：支持站内文章链接（#/articles/<slug>） */
+/** 行内片段渲染：支持站内文章链接（/articles/<slug>） */
 function InlineSegs({ segs }: { segs: Inline[] }) {
   return (
     <>
@@ -20,7 +20,21 @@ function InlineSegs({ segs }: { segs: Inline[] }) {
   )
 }
 
-function BlockView({ doc, block, index }: { doc: ArticleDoc; block: Block; index: number }) {
+function scrollToHeading(id: string) {
+  document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+}
+
+function BlockView({
+  doc,
+  block,
+  index,
+  anchorMap,
+}: {
+  doc: ArticleDoc
+  block: Block
+  index: number
+  anchorMap: Map<string, string>
+}) {
   switch (block.t) {
     case 'h2':
     case 'h3':
@@ -55,11 +69,28 @@ function BlockView({ doc, block, index }: { doc: ArticleDoc; block: Block; index
             <tbody>
               {block.rows.map((row, ri) => (
                 <tr key={ri}>
-                  {row.map((cell, ci) => (
-                    <td key={ci}>
-                      <InlineSegs segs={cell} />
-                    </td>
-                  ))}
+                  {row.map((cell, ci) => {
+                    const joined = cell.map((s) => s.s).join('')
+                    const anchor = anchorMap.get(joined)
+                    return (
+                      <td key={ci}>
+                        {anchor ? (
+                          <a
+                            href={`#${anchor}`}
+                            onClick={(e) => {
+                              e.preventDefault()
+                              scrollToHeading(anchor)
+                            }}
+                            title={`跳转到「${joined}」`}
+                          >
+                            <InlineSegs segs={cell} />
+                          </a>
+                        ) : (
+                          <InlineSegs segs={cell} />
+                        )}
+                      </td>
+                    )
+                  })}
                 </tr>
               ))}
             </tbody>
@@ -72,10 +103,11 @@ function BlockView({ doc, block, index }: { doc: ArticleDoc; block: Block; index
 }
 
 export function ArticleBody({ doc }: { doc: ArticleDoc }) {
+  const anchorMap = useMemo(() => headingAnchorMap(doc), [doc])
   return (
     <article className="article-body">
       {doc.blocks.map((b, i) => (
-        <BlockView key={i} doc={doc} block={b} index={i} />
+        <BlockView key={i} doc={doc} block={b} index={i} anchorMap={anchorMap} />
       ))}
     </article>
   )

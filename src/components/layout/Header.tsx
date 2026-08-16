@@ -23,7 +23,7 @@ export function Header() {
         <Link to="/" className="flex items-center gap-2.5" onClick={() => setOpen(false)}>
           <PhotoLogo className="h-9 w-9" />
           <span className="flex flex-col leading-none">
-            <span className="font-serif text-lg font-bold tracking-wider text-sandalwood-800">
+            <span className="font-brush text-xl tracking-wider text-sandalwood-800">
               {t('appName')}
             </span>
             <span className="mt-0.5 text-[10px] tracking-[0.22em] text-sandalwood-400 uppercase">

@@ -3,6 +3,7 @@ import { useI18n, type I18nCtx } from '../i18n'
 import { createWishRepository, type Wish } from '../lib/wishes'
 import { downloadFile, getDeviceId } from '../lib/storage'
 import { WishTree } from '../components/zen/WishTree'
+import { Tree3D } from '../components/zen3d/Tree3D'
 import { CoverImage } from '../components/zen/CoverImage'
 
 const MAX_WISH = 120
@@ -123,7 +124,7 @@ export function PrayerWall() {
         </div>
         <div className="relative">
           <p className="font-serif text-sm tracking-[0.5em] text-gold-300">供 灯</p>
-          <h1 className="mt-3 font-serif text-3xl font-bold sm:text-4xl">{t('prayer.title')}</h1>
+          <h1 className="mt-3 font-brush text-4xl sm:text-5xl">{t('prayer.title')}</h1>
           <p className="mt-3 font-serif text-sm text-paper/85">{t('prayer.subtitle')}</p>
         </div>
       </header>
@@ -229,7 +230,11 @@ export function PrayerWall() {
               </div>
             ) : (
               <div className="mt-6 rounded-3xl border border-sandalwood-200/70 bg-gradient-to-b from-moon-50 to-rice-100/60 p-3 shadow-inner sm:p-5">
-                <WishTree wishes={onTree} onRibbonClick={setSelected} />
+                <Tree3D
+                  wishes={onTree}
+                  onRibbonClick={setSelected}
+                  fallback={<WishTree wishes={onTree} onRibbonClick={setSelected} />}
+                />
               </div>
             )}
 
