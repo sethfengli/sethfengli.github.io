@@ -13,10 +13,18 @@ interface Props {
   scale?: number
   /** 场景高度（配合版面） */
   heightClass?: string
+  /** 相机距离（越小越近） */
+  distance?: number
   fallback?: ReactNode
 }
 
-export function Incense3D({ variant = 'sticks', scale = 1, heightClass = 'h-[300px]', fallback }: Props) {
+export function Incense3D({
+  variant = 'sticks',
+  scale = 1,
+  heightClass = 'h-[300px]',
+  distance = 7,
+  fallback,
+}: Props) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const [failed, setFailed] = useState(false)
   const variantRef = useRef(variant)
@@ -30,7 +38,7 @@ export function Incense3D({ variant = 'sticks', scale = 1, heightClass = 'h-[300
     void import('three').then((THREE) => {
       if (disposed || !canvas.isConnected) return
       try {
-        stage = createStage(THREE, canvas, { distance: 8.5, autoRotate: 0, phi: 1.02, minDistance: 4.5, maxDistance: 18 })
+        stage = createStage(THREE, canvas, { distance, autoRotate: 0, phi: 1.0, minDistance: 4, maxDistance: 16 })
       } catch {
         setFailed(true)
         return

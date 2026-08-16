@@ -202,13 +202,13 @@ export function Tree3D({ wishes, onRibbonClick, fallback }: Props) {
         const a = trunkPts[i]
         const b = trunkPts[i + 1]
         const mid = a.clone().add(b).multiplyScalar(0.5)
-        const len = a.distanceTo(b)
+        // 加长 1.22 倍 → 相邻段相互嵌入，消除“被砍断”的接缝
+        const len = a.distanceTo(b) * 1.22
         const rTop = radii[i + 1]
         const rBot = radii[i]
-        const seg = new THREE.Mesh(new THREE.CylinderGeometry(rTop, rBot, len, 18), i % 2 ? bark : bark2)
+        const seg = new THREE.Mesh(new THREE.CylinderGeometry(rTop, rBot, len, 20), i % 2 ? bark : bark2)
         seg.position.copy(mid)
         seg.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), b.clone().sub(a).normalize())
-        seg.rotation.z += Math.sin(i * 2.7) * 0.06
         S.add(seg)
       }
 
@@ -272,7 +272,7 @@ export function Tree3D({ wishes, onRibbonClick, fallback }: Props) {
               depthWrite: false,
             }),
           )
-          const s = 1.05 + Math.random() * 1.25
+          const s = 1.5 + Math.random() * 1.6
           spr.scale.set(s, s * (0.85 + Math.random() * 0.25), 1)
           spr.position.set(cx + Math.cos(a) * r, cy + (Math.random() - 0.5) * 0.65, cz + Math.sin(a) * r)
           spr.userData.baseScale = s
@@ -283,18 +283,20 @@ export function Tree3D({ wishes, onRibbonClick, fallback }: Props) {
         for (let i = 0; i < 3; i++) {
           const a = Math.random() * Math.PI * 2
           const r = cr * (0.5 + Math.random() * 0.5)
-          const len = 0.7 + Math.random() * 0.9
-          const strand = new THREE.Mesh(new THREE.CylinderGeometry(0.03, 0.05, len, 6), strandMat)
-          strand.position.set(cx + Math.cos(a) * r, cy - 0.45 - len / 2, cz + Math.sin(a) * r)
+          const len = 1.0 + Math.random() * 1.2
+          const strand = new THREE.Mesh(new THREE.CylinderGeometry(0.05, 0.08, len, 6), strandMat)
+          strand.position.set(cx + Math.cos(a) * r, cy - 0.55 - len / 2, cz + Math.sin(a) * r)
           canopy.add(strand)
           const tip = new THREE.Sprite(
             new THREE.SpriteMaterial({ map: Math.random() > 0.5 ? tuft1 : tuft2, transparent: true, depthWrite: false }),
           )
-          tip.scale.set(0.55, 0.55, 1)
-          tip.position.set(cx + Math.cos(a) * r, cy - 0.45 - len, cz + Math.sin(a) * r)
+          tip.scale.set(0.8, 0.8, 1)
+          tip.position.set(cx + Math.cos(a) * r, cy - 0.55 - len, cz + Math.sin(a) * r)
           canopy.add(tip)
         }
       }
+      // 树冠放大（约三倍视觉体积）
+      canopy.scale.setScalar(2.1)
       S.add(canopy)
 
       /* ---------- 香炉（树下，盘香禅修） ---------- */

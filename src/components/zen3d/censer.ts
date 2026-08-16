@@ -120,6 +120,7 @@ export function createCenser(
   /* ---------- 鼎身 ---------- */
   const tex = new THREE.CanvasTexture(drawBellyTexture(inscription))
   tex.colorSpace = THREE.SRGBColorSpace
+  tex.flipY = false
   tex.anisotropy = 8
   const belly = new THREE.Mesh(
     new THREE.LatheGeometry(
@@ -167,19 +168,28 @@ export function createCenser(
     foot.position.set(Math.cos(a) * 1.3, -2.05, Math.sin(a) * 1.3)
     group.add(foot)
   }
-  // 炉内香灰
-  const ash = new THREE.Mesh(
-    new THREE.CylinderGeometry(1.28, 1.34, 0.35, 48),
+  // 炉内香灰（自然起伏：灰床 + 多堆不规则的灰丘）
+  const ashBase = new THREE.Mesh(
+    new THREE.CylinderGeometry(1.22, 1.3, 0.3, 48),
     new THREE.MeshStandardMaterial({ color: 0x9aa3a3, roughness: 1 }),
   )
-  ash.position.y = 1.95
-  group.add(ash)
-  const mound = new THREE.Mesh(
-    new THREE.ConeGeometry(1.1, 0.22, 48),
-    new THREE.MeshStandardMaterial({ color: 0xaeb6b6, roughness: 1 }),
-  )
-  mound.position.y = 2.22
-  group.add(mound)
+  ashBase.position.y = 2.0
+  group.add(ashBase)
+  for (let i = 0; i < 8; i++) {
+    const a = Math.random() * Math.PI * 2
+    const r = Math.sqrt(Math.random()) * 0.95
+    const hgt = 0.12 + Math.random() * 0.3
+    const rdx = 0.2 + Math.random() * 0.5
+    const tone = [0x9aa3a3, 0xaeb6b6, 0xc3c8c8, 0x8f9999][i % 4]
+    const bump = new THREE.Mesh(
+      new THREE.ConeGeometry(rdx, hgt, 10),
+      new THREE.MeshStandardMaterial({ color: tone, roughness: 1 }),
+    )
+    bump.position.set(Math.cos(a) * r, 2.2 + hgt / 2, Math.sin(a) * r)
+    bump.rotation.z = Math.random() * Math.PI
+    bump.scale.x = 0.7 + Math.random() * 0.6
+    group.add(bump)
+  }
 
   const embers: CenserRig['embers'] = []
   const ashCaps: THREE.Mesh[] = []
@@ -278,7 +288,11 @@ export function createCenser(
     const mat = new THREE.SpriteMaterial({ map: smokeTex, transparent: true, depthWrite: false, opacity: 0 })
     const s = new THREE.Sprite(mat)
     group.add(s)
-    sprites.push({ s, mat, life: Math.random() * 6, phase: Math.random() * Math.PI * 2, tip: Math.floor(Math.random() * tips.length) })
+    // 初始即置于香头上方、处于烟程中段 → 一打开就能看到青烟
+    const tip = tips[Math.floor(Math.random() * tips.length)]
+    s.position.set(tip.x + (Math.random() - 0.5) * 0.06, tip.y + Math.random() * 2.2, tip.z + (Math.random() - 0.5) * 0.06)
+    s.scale.setScalar(0.3 + Math.random() * 0.5)
+    sprites.push({ s, mat, life: 1 + Math.random() * 6, phase: Math.random() * Math.PI * 2, tip: Math.floor(Math.random() * tips.length) })
   }
 
   const rig: CenserRig = { group, embers, ashCaps, smoke: null, smokeSprites: sprites, tips, lit: true, update: () => undefined }

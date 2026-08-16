@@ -41,7 +41,7 @@ export function Bell3D({ fallback }: { fallback?: ReactNode }) {
     void import('three').then((THREE) => {
       if (disposed || !canvas.isConnected) return
       try {
-        stage = createStage(THREE, canvas, { distance: 21, autoRotate: 0, minDistance: 8, maxDistance: 55 })
+        stage = createStage(THREE, canvas, { distance: 21, autoRotate: 0, phi: 1.15, minPhi: 0.5, maxPhi: 1.5, minDistance: 8, maxDistance: 55 })
         stageRef.current = stage
       } catch {
         setFailed(true)
@@ -170,6 +170,20 @@ export function Bell3D({ fallback }: { fallback?: ReactNode }) {
       const bell = new THREE.Group()
       bell.position.set(0, 5.2, 0)
       bell.add(bellMesh)
+      // 冠钮：明确封闭的钟顶（避免误读为“开口向上”）
+      const crownPlate = new THREE.Mesh(new THREE.CylinderGeometry(1.35, 1.15, 0.3, 24), bronze)
+      crownPlate.position.y = 0.35
+      bell.add(crownPlate)
+      const crownNeck = new THREE.Mesh(new THREE.CylinderGeometry(0.6, 0.7, 0.7, 16), bronze)
+      crownNeck.position.y = 0.85
+      bell.add(crownNeck)
+      const crownKnob = new THREE.Mesh(new THREE.SphereGeometry(0.55, 20, 20), bronze)
+      crownKnob.position.y = 1.35
+      bell.add(crownKnob)
+      const crownRing = new THREE.Mesh(new THREE.TorusGeometry(0.42, 0.14, 12, 32), gold)
+      crownRing.rotation.x = Math.PI / 2
+      crownRing.position.y = 1.35
+      bell.add(crownRing)
       const band = new THREE.Mesh(new THREE.TorusGeometry(4.5, 0.2, 16, 96), gold)
       band.position.y = -1.4
       band.rotation.x = Math.PI / 2

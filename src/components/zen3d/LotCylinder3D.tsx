@@ -97,7 +97,7 @@ export function LotCylinder3D({ shaking, revealed, onShake, fallback }: Props) {
     void import('three').then((THREE) => {
       if (disposed || !canvas.isConnected) return
       try {
-        stage = createStage(THREE, canvas, { distance: 11, autoRotate: 0.16, phi: 1.05 })
+        stage = createStage(THREE, canvas, { distance: 8.5, autoRotate: 0, phi: 1.05 })
       } catch {
         setFailed(true)
         return

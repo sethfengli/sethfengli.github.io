@@ -102,7 +102,7 @@ export function Lots() {
                   src="/photos/guanyin.jpg"
                   alt="南无观世音菩萨"
                   loading="lazy"
-                  className="h-52 w-44 object-cover sm:h-64 sm:w-52"
+                  className="h-72 w-48 object-cover sm:h-96 sm:w-60"
                 />
               </div>
               <p className="font-serif text-xs tracking-[0.3em] text-sandalwood-400">南无观世音菩萨</p>
@@ -119,9 +119,9 @@ export function Lots() {
             </div>
           </div>
 
-          {/* 3D 鼎式香炉 */}
-          <div className="mx-auto mt-6 max-w-xs">
-            <Incense3D variant="cone" scale={0.82} heightClass="h-[250px]" fallback={<IncenseBurner bare />} />
+          {/* 3D 塔香香炉 */}
+          <div className="mx-auto mt-2 max-w-sm">
+            <Incense3D variant="cone" scale={0.9} distance={6.2} heightClass="h-[300px]" fallback={<IncenseBurner bare />} />
           </div>
 
           {/* 抽签按钮 */}
