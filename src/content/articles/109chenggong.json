@@ -1,0 +1,69 @@
+{
+ "slug": "109chenggong",
+ "title": "你究竟有多想成功（视频）",
+ "author": "就像溺水的人",
+ "school": "xiuxue",
+ "illustration": "sutra",
+ "excerpt": "我不睡觉因为我现在有了一个实现梦醒的机会",
+ "chars": 117,
+ "blocks": [
+  {
+   "t": "h2",
+   "text": "你究竟有多想成功？"
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "只想呼吸一口新鲜空气"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "我不睡觉"
+    },
+    {
+     "s": "因为我现在有了一个"
+    },
+    {
+     "s": "实现梦醒的机会"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "如果你没有狠狠地逼自己一把"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "你就不是成功的"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "ONLY THE STRONG SURVIVE"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Your browser does not support the video tag."
+    }
+   ]
+  }
+ ]
+}

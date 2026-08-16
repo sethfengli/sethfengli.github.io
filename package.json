@@ -1,0 +1,29 @@
+{
+  "name": "huideng-chanlin",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "慧灯禅院 · Huideng Zen Temple — a modern digital Buddhist temple rebuilt from the legacy 如说修行网上佛学院 static archive",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "migrate": "node scripts/migrate.mjs",
+    "migrate:md": "node scripts/migrate.mjs --md"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.30.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.1.4",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
+    "@vitejs/plugin-react": "^4.3.4",
+    "cheerio": "^1.0.0",
+    "tailwindcss": "^4.1.4",
+    "typescript": "^5.7.3",
+    "vite": "^6.2.0"
+  }
+}

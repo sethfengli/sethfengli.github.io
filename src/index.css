@@ -1,0 +1,469 @@
+@import 'tailwindcss';
+
+/* ============================================================
+   慧灯禅院 · 设计系统
+   配色：檀木棕 · 藏红 · 金 · 米白 · 墨 · 月光蓝
+   ============================================================ */
+@theme {
+  /* 檀木棕 sandalwood — 主色调 */
+  --color-sandalwood-50: #f9f3ea;
+  --color-sandalwood-100: #f0e4d2;
+  --color-sandalwood-200: #e1c9a8;
+  --color-sandalwood-300: #cfa97d;
+  --color-sandalwood-400: #b98a57;
+  --color-sandalwood-500: #a06f40;
+  --color-sandalwood-600: #8a5a31;
+  --color-sandalwood-700: #6b4425;
+  --color-sandalwood-800: #543620;
+  --color-sandalwood-900: #3e2818;
+  --color-sandalwood-950: #2b1a10;
+
+  /* 藏红 tibetan — 强调色 */
+  --color-tibetan-50: #faf0ef;
+  --color-tibetan-100: #f3dcda;
+  --color-tibetan-200: #e6b9b5;
+  --color-tibetan-300: #d48d88;
+  --color-tibetan-400: #bd5f5a;
+  --color-tibetan-500: #a33f3b;
+  --color-tibetan-600: #8c2f39;
+  --color-tibetan-700: #72242e;
+  --color-tibetan-800: #5b1c26;
+  --color-tibetan-900: #45151d;
+  --color-tibetan-950: #2e0c12;
+
+  /* 金 gold — 点缀色 */
+  --color-gold-50: #fbf7e8;
+  --color-gold-100: #f5edcc;
+  --color-gold-200: #ecdc9f;
+  --color-gold-300: #e0c76c;
+  --color-gold-400: #d4b24a;
+  --color-gold-500: #c9a227;
+  --color-gold-600: #a8871f;
+  --color-gold-700: #866a17;
+  --color-gold-800: #6a5312;
+  --color-gold-900: #4f3d0e;
+
+  /* 米白 rice — 底色 */
+  --color-rice-50: #fbf8f0;
+  --color-rice-100: #f6f0e2;
+  --color-rice-200: #efe6d0;
+  --color-rice-300: #e3d5b8;
+
+  /* 墨 ink — 文字 */
+  --color-ink-900: #2b2620;
+  --color-ink-700: #4a443c;
+  --color-ink-500: #6b645a;
+  --color-ink-300: #a39c90;
+  --color-ink-100: #d6d1c7;
+
+  /* 月光蓝 moon — 夜间阅读 */
+  --color-moon-50: #f2f6fb;
+  --color-moon-100: #e4ecf5;
+  --color-moon-200: #c9d9ea;
+  --color-moon-300: #a3bfdc;
+  --color-moon-500: #5f87b5;
+  --color-moon-700: #3a5a82;
+  --color-moon-900: #1c2836;
+
+  /* 字体 */
+  --font-serif:
+    'Noto Serif SC', 'Source Han Serif SC', 'Source Han Serif CN', 'Songti SC',
+    STSong, SimSun, 'Times New Roman', serif;
+  --font-sans:
+    'Noto Sans SC', 'Source Han Sans SC', 'Source Han Sans CN', 'PingFang SC',
+    'Hiragino Sans GB', 'Microsoft YaHei', system-ui, sans-serif;
+
+  /* 动画 */
+  --animate-smoke-rise: smoke-rise 7s ease-in-out infinite;
+  --animate-smoke-rise-slow: smoke-rise 11s ease-in-out infinite;
+  --animate-glow: glow 3s ease-in-out infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-float-slow: float 9s ease-in-out infinite;
+  --animate-bloom: bloom 5s ease-in-out infinite;
+  --animate-swing: swing 4s ease-in-out infinite;
+  --animate-ripple: ripple 3.2s ease-out infinite;
+  --animate-fade-up: fade-up 0.7s ease-out both;
+  --animate-shimmer: shimmer 3.5s linear infinite;
+  --animate-spin-slow: spin 14s linear infinite;
+  --animate-candle: candle 2.6s ease-in-out infinite;
+  --animate-ray: ray 8s ease-in-out infinite;
+
+  @keyframes smoke-rise {
+    0% {
+      transform: translateY(8px) translateX(0) scale(0.7);
+      opacity: 0;
+    }
+    25% {
+      opacity: 0.55;
+    }
+    60% {
+      opacity: 0.35;
+    }
+    100% {
+      transform: translateY(-56px) translateX(10px) scale(1.6);
+      opacity: 0;
+    }
+  }
+  @keyframes glow {
+    0%,
+    100% {
+      opacity: 0.55;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-12px);
+    }
+  }
+  @keyframes bloom {
+    0%,
+    100% {
+      transform: scale(1);
+      opacity: 0.9;
+    }
+    50% {
+      transform: scale(1.05);
+      opacity: 1;
+    }
+  }
+  @keyframes swing {
+    0%,
+    100% {
+      transform: rotate(-4deg);
+    }
+    50% {
+      transform: rotate(4deg);
+    }
+  }
+  @keyframes ripple {
+    0% {
+      transform: scale(0.6);
+      opacity: 0.7;
+    }
+    100% {
+      transform: scale(2.4);
+      opacity: 0;
+    }
+  }
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes shimmer {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
+  @keyframes candle {
+    0%,
+    100% {
+      transform: scaleY(1) translateY(0);
+      opacity: 0.9;
+    }
+    50% {
+      transform: scaleY(1.12) translateY(-1px);
+      opacity: 1;
+    }
+  }
+  @keyframes ray {
+    0%,
+    100% {
+      opacity: 0.25;
+      transform: rotate(0deg) scale(1);
+    }
+    50% {
+      opacity: 0.5;
+      transform: rotate(3deg) scale(1.04);
+    }
+  }
+}
+
+/* ---------- 基础 ---------- */
+html {
+  scroll-behavior: smooth;
+}
+body {
+  @apply bg-rice-50 font-sans text-ink-900 antialiased;
+}
+::selection {
+  background: var(--color-gold-200);
+  color: var(--color-ink-900);
+}
+
+/* 细滚动条 */
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+*::-webkit-scrollbar-thumb {
+  background: var(--color-sandalwood-300);
+  border-radius: 8px;
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* ---------- 组件样式 ---------- */
+@layer components {
+  .btn-primary {
+    @apply inline-flex cursor-pointer items-center justify-center gap-2 rounded-full bg-tibetan-600 px-6 py-2.5 font-sans text-sm font-medium text-rice-50 shadow-md shadow-tibetan-900/20 transition hover:bg-tibetan-700 hover:shadow-lg focus-visible:ring-2 focus-visible:ring-gold-400 focus-visible:outline-none active:scale-[0.98];
+  }
+  .btn-secondary {
+    @apply inline-flex cursor-pointer items-center justify-center gap-2 rounded-full border border-sandalwood-400/60 bg-transparent px-6 py-2.5 font-sans text-sm font-medium text-sandalwood-700 transition hover:border-sandalwood-600 hover:bg-sandalwood-50 focus-visible:ring-2 focus-visible:ring-gold-400 focus-visible:outline-none active:scale-[0.98];
+  }
+  .btn-gold {
+    @apply inline-flex cursor-pointer items-center justify-center gap-2 rounded-full bg-gold-500 px-6 py-2.5 font-sans text-sm font-semibold text-ink-900 shadow-md shadow-gold-600/30 transition hover:bg-gold-400 focus-visible:ring-2 focus-visible:ring-gold-600 focus-visible:outline-none active:scale-[0.98];
+  }
+  .card {
+    @apply rounded-2xl border border-sandalwood-200/70 bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md;
+  }
+  .chip {
+    @apply inline-flex items-center gap-1 rounded-full border border-sandalwood-300/70 bg-sandalwood-50 px-3 py-1 text-xs text-sandalwood-700;
+  }
+  .zen-divider {
+    @apply mx-auto flex items-center gap-3 text-gold-500;
+  }
+  .zen-divider::before,
+  .zen-divider::after {
+    content: '';
+    @apply h-px w-16 bg-gradient-to-r from-transparent via-sandalwood-300 to-transparent;
+  }
+}
+
+/* ============================================================
+   阅读器排版（article-body）与五种阅读主题
+   ============================================================ */
+.article-body {
+  font-family: var(--font-serif);
+  font-size: var(--reader-font-size, 18px);
+  line-height: var(--reader-line-height, 1.9);
+  letter-spacing: 0.02em;
+  color: var(--reader-ink);
+  overflow-wrap: break-word;
+}
+.article-body p {
+  margin: 0 0 1.1em;
+  text-indent: 2em;
+}
+.article-body p.no-indent {
+  text-indent: 0;
+}
+.article-body h2 {
+  font-family: var(--font-serif);
+  font-size: 1.45em;
+  font-weight: 700;
+  margin: 1.6em 0 0.8em;
+  padding-bottom: 0.35em;
+  border-bottom: 1px solid var(--reader-rule);
+  color: var(--reader-heading);
+  scroll-margin-top: 5.5rem;
+}
+.article-body h3 {
+  font-family: var(--font-serif);
+  font-size: 1.2em;
+  font-weight: 700;
+  margin: 1.4em 0 0.6em;
+  color: var(--reader-heading);
+  scroll-margin-top: 5.5rem;
+}
+.article-body blockquote {
+  margin: 1.2em 0;
+  padding: 0.9em 1.2em;
+  border-left: 3px solid var(--reader-accent);
+  background: var(--reader-quote-bg);
+  border-radius: 0 0.75rem 0.75rem 0;
+  color: var(--reader-quote-ink);
+  font-style: normal;
+}
+.article-body blockquote p {
+  text-indent: 0;
+  margin: 0.4em 0;
+}
+.article-body a {
+  color: var(--reader-link);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.article-body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.2em 0;
+  font-size: 0.92em;
+}
+.article-body th,
+.article-body td {
+  border: 1px solid var(--reader-rule);
+  padding: 0.5em 0.7em;
+  text-align: left;
+  vertical-align: top;
+}
+.article-body th {
+  background: var(--reader-quote-bg);
+  font-weight: 700;
+}
+.article-body ul,
+.article-body ol {
+  margin: 0.8em 0 1.1em;
+  padding-left: 1.6em;
+}
+.article-body li {
+  margin: 0.35em 0;
+}
+.article-body hr {
+  border: none;
+  margin: 2em auto;
+  text-align: center;
+}
+.article-body hr::after {
+  content: '❖';
+  color: var(--reader-accent);
+  font-size: 1em;
+}
+
+/* —— 主题一：明亮（默认） —— */
+.reader-theme-light {
+  --reader-bg: #ffffff;
+  --reader-ink: #2b2620;
+  --reader-heading: #6b4425;
+  --reader-accent: #a06f40;
+  --reader-link: #8c2f39;
+  --reader-rule: #e3d5b8;
+  --reader-quote-bg: #f6f0e2;
+  --reader-quote-ink: #4a443c;
+}
+
+/* —— 主题二：暗色 —— */
+.reader-theme-dark {
+  --reader-bg: #211d18;
+  --reader-ink: #d9d2c4;
+  --reader-heading: #e0c76c;
+  --reader-accent: #c9a227;
+  --reader-link: #d48d88;
+  --reader-rule: #3a332a;
+  --reader-quote-bg: #2c2721;
+  --reader-quote-ink: #cfc7b8;
+}
+
+/* —— 主题三：护眼米黄 —— */
+.reader-theme-sepia {
+  --reader-bg: #f5ecd7;
+  --reader-ink: #453820;
+  --reader-heading: #7a5a25;
+  --reader-accent: #a06f40;
+  --reader-link: #8c2f39;
+  --reader-rule: #dcc9a2;
+  --reader-quote-bg: #ecdfc0;
+  --reader-quote-ink: #5a4b2e;
+}
+
+/* —— 主题四：羊皮纸 —— */
+.reader-theme-parchment {
+  --reader-bg: #f4ecd8;
+  --reader-ink: #4a3b26;
+  --reader-heading: #6b4425;
+  --reader-accent: #a8871f;
+  --reader-link: #7d272c;
+  --reader-rule: #d9c9a4;
+  --reader-quote-bg: #ead9b4;
+  --reader-quote-ink: #57462c;
+  background-image: radial-gradient(
+      ellipse at 20% 10%,
+      rgba(160, 111, 64, 0.05),
+      transparent 55%
+    ),
+    radial-gradient(ellipse at 80% 90%, rgba(160, 111, 64, 0.06), transparent 50%);
+}
+
+/* —— 主题五：月光蓝 —— */
+.reader-theme-moon {
+  --reader-bg: #e9f0f8;
+  --reader-ink: #2b3a4e;
+  --reader-heading: #3a5a82;
+  --reader-accent: #5f87b5;
+  --reader-link: #72242e;
+  --reader-rule: #c3d4e6;
+  --reader-quote-bg: #dde8f3;
+  --reader-quote-ink: #3d4f66;
+}
+
+/* 阅读进度条 */
+.reader-progress {
+  @apply fixed top-0 left-0 z-50 h-[3px] rounded-r-full bg-gradient-to-r from-gold-400 via-gold-500 to-tibetan-500;
+  box-shadow: 0 0 8px rgba(201, 162, 39, 0.55);
+}
+
+/* 目录当前项 */
+.toc-active {
+  @apply border-l-2 border-tibetan-600 pl-3 font-semibold text-tibetan-700;
+}
+
+/* 签筒摇动 */
+.lot-shaking {
+  animation: lot-shake 0.9s cubic-bezier(0.36, 0.07, 0.19, 0.97) infinite;
+}
+@keyframes lot-shake {
+  0%,
+  100% {
+    transform: rotate(0deg) translateX(0);
+  }
+  15% {
+    transform: rotate(-9deg) translateX(-6px);
+  }
+  30% {
+    transform: rotate(7deg) translateX(5px);
+  }
+  45% {
+    transform: rotate(-5deg) translateX(-4px);
+  }
+  60% {
+    transform: rotate(4deg) translateX(3px);
+  }
+  75% {
+    transform: rotate(-2deg) translateX(-2px);
+  }
+}
+
+/* 抽签翻牌 */
+.flip-card {
+  perspective: 1200px;
+}
+.flip-card-inner {
+  transition: transform 0.9s cubic-bezier(0.22, 0.9, 0.3, 1);
+  transform-style: preserve-3d;
+}
+.flip-card.flipped .flip-card-inner {
+  transform: rotateY(180deg);
+}
+.flip-face {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.flip-back {
+  transform: rotateY(180deg);
+}
+
+/* Google 翻译工具条美化 */
+.goog-te-banner-frame,
+.goog-logo-link {
+  display: none !important;
+}
+.goog-te-gadget {
+  font-family: var(--font-sans) !important;
+  color: inherit !important;
+}
