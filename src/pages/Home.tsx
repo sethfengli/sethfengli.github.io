@@ -2,10 +2,10 @@ import { Link } from 'react-router-dom'
 import { useI18n } from '../i18n'
 import { CATALOG, photoForSlug } from '../lib/content'
 import { verseOfTheMoment } from '../data/verses'
-import { ZenIllustration, type IllustrationVariant } from '../components/zen/ZenIllustration'
+import type { IllustrationVariant } from '../components/zen/ZenIllustration'
 import { CoverImage } from '../components/zen/CoverImage'
 import { IncenseBurner } from '../components/zen/IncenseBurner'
-import { LotusMark } from '../components/zen/LotusMark'
+import { PhotoLogo } from '../components/zen/PhotoLogo'
 
 const FEATURED_SLUGS = ['301jgj', '302xinj', '303liuzutanjing', '102lfsx', '001jznf', '001zyxuefo', '402nianfolun', '202bada']
 
@@ -13,10 +13,11 @@ const SCHOOLS: Array<{
   key: 'schoolJing' | 'schoolChan' | 'schoolXiuxue'
   to: string
   variant: IllustrationVariant
+  photo: string
 }> = [
-  { key: 'schoolJing', to: '/articles?school=jing', variant: 'lotus' },
-  { key: 'schoolChan', to: '/articles?school=chan', variant: 'enso' },
-  { key: 'schoolXiuxue', to: '/articles?school=xiuxue', variant: 'mountains' },
+  { key: 'schoolJing', to: '/articles?school=jing', variant: 'lotus', photo: '/photos/hero.jpg' },
+  { key: 'schoolChan', to: '/articles?school=chan', variant: 'enso', photo: '/photos/garden.jpg' },
+  { key: 'schoolXiuxue', to: '/articles?school=xiuxue', variant: 'mountains', photo: '/photos/blossom.jpg' },
 ]
 
 export function Home() {
@@ -31,16 +32,16 @@ export function Home() {
     <div>
       {/* ---------- Hero ---------- */}
       <section className="relative overflow-hidden bg-sandalwood-950 text-paper">
-        <div className="absolute inset-0 opacity-25">
-          <ZenIllustration variant="mountains" animated={false} className="h-full w-full" />
+        <div className="absolute inset-0">
+          <CoverImage src="/photos/hero.jpg" alt="" fallbackVariant="mountains" animated={false} className="h-full w-full" />
         </div>
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-sandalwood-950/30 via-transparent to-sandalwood-950/80" />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-sandalwood-950/50 via-sandalwood-950/15 to-sandalwood-950/80" />
         {/* 飘浮莲花 */}
         <div className="pointer-events-none absolute top-24 right-[8%] hidden animate-float md:block">
-          <LotusMark className="h-20 w-20 opacity-70" />
+          <PhotoLogo className="h-20 w-20 opacity-90" />
         </div>
         <div className="pointer-events-none absolute bottom-32 left-[6%] hidden animate-float-slow md:block">
-          <LotusMark className="h-14 w-14 opacity-40" />
+          <PhotoLogo className="h-14 w-14 opacity-60" />
         </div>
 
         <div className="relative mx-auto flex max-w-4xl flex-col items-center px-4 pt-20 pb-14 text-center sm:px-6">
@@ -98,10 +99,10 @@ export function Home() {
           <span className="text-gold-500">❖</span>
         </div>
         <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          <QuickCard to="/articles" variant="sutra" title={t('nav.articles')} desc={t('home.quickArticlesDesc')} />
-          <QuickCard to="/dharma" variant="bell" title={t('nav.dharma')} desc={t('home.quickDharmaDesc')} />
-          <QuickCard to="/prayer" variant="incense" title={t('nav.prayer')} desc={t('home.quickPrayerDesc')} />
-          <QuickCard to="/lots" variant="koi" title={t('nav.lots')} desc={t('home.quickLotsDesc')} />
+          <QuickCard to="/articles" variant="sutra" photo="/photos/gate.jpg" title={t('nav.articles')} desc={t('home.quickArticlesDesc')} />
+          <QuickCard to="/dharma" variant="bell" photo="/photos/bell.jpg" title={t('nav.dharma')} desc={t('home.quickDharmaDesc')} />
+          <QuickCard to="/prayer" variant="incense" photo="/photos/lantern.jpg" title={t('nav.prayer')} desc={t('home.quickPrayerDesc')} />
+          <QuickCard to="/lots" variant="koi" photo="/photos/guanyin.jpg" title={t('nav.lots')} desc={t('home.quickLotsDesc')} />
         </div>
       </section>
 
@@ -140,7 +141,7 @@ export function Home() {
         <div className="mt-10 grid gap-6 md:grid-cols-3">
           {SCHOOLS.map((s) => (
             <div key={s.key} className="card overflow-hidden">
-              <ZenIllustration variant={s.variant} className="h-36" />
+              <CoverImage src={s.photo} alt={t(`home.${s.key}`)} fallbackVariant={s.variant} className="h-36 w-full" />
               <div className="p-6">
                 <h3 className="font-serif text-xl font-bold text-sandalwood-800">{t(`home.${s.key}`)}</h3>
                 <p className="mt-3 font-serif text-sm leading-relaxed text-ink-700">{t(`home.${s.key}Desc`)}</p>
@@ -167,18 +168,25 @@ export function Home() {
 function QuickCard({
   to,
   variant,
+  photo,
   title,
   desc,
 }: {
   to: string
   variant: IllustrationVariant
+  photo: string
   title: string
   desc: string
 }) {
   return (
     <Link to={to} className="card group overflow-hidden">
       <div className="overflow-hidden">
-        <ZenIllustration variant={variant} className="h-32 transition-transform duration-500 group-hover:scale-105" />
+        <CoverImage
+          src={photo}
+          alt={title}
+          fallbackVariant={variant}
+          className="h-32 w-full transition-transform duration-500 group-hover:scale-105"
+        />
       </div>
       <div className="p-5">
         <h3 className="font-serif text-lg font-bold text-sandalwood-800">{title}</h3>

@@ -99,6 +99,7 @@ export const zh = {
     subtitle: '晨钟暮鼓 · 圣号梵音 · 闻声得度',
     bellTitle: '闻钟 · 晨钟暮鼓',
     bellDesc: '轻触铜钟，聆听本寺钟声。闻钟声，烦恼轻；智慧长，菩提生。',
+    ringing: '钟声回荡中…',
     ringBell: '撞 钟',
     ringAgain: '再 撞',
     bellVerse: '闻钟声，烦恼轻；智慧长，菩提生；离地狱，出火坑；愿成佛，度众生。',

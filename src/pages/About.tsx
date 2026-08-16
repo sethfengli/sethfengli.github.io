@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useI18n } from '../i18n'
-import { ZenIllustration } from '../components/zen/ZenIllustration'
+import { CoverImage } from '../components/zen/CoverImage'
 
 export function About() {
   const { t, arr } = useI18n()
@@ -12,8 +12,8 @@ export function About() {
     <div>
       {/* 页头 */}
       <header className="relative overflow-hidden bg-gradient-to-b from-sandalwood-900 to-sandalwood-800 py-16 text-center text-paper">
-        <div className="pointer-events-none absolute inset-0 opacity-20">
-          <ZenIllustration variant="bamboo" animated={false} className="h-full w-full" />
+        <div className="absolute inset-0">
+          <CoverImage src="/photos/garden.jpg" alt="" fallbackVariant="bamboo" className="h-full w-full opacity-40" />
         </div>
         <div className="relative">
           <p className="font-serif text-sm tracking-[0.5em] text-gold-300">山 门</p>
@@ -45,7 +45,12 @@ export function About() {
           <div className="mt-6 grid gap-4 sm:grid-cols-3">
             {heritage.map((h, i) => (
               <div key={i} className="card p-6 text-center">
-                <ZenIllustration variant={(['lotus', 'enso', 'meditation'] as const)[i]} className="mx-auto h-20 w-24 rounded-xl" />
+                <CoverImage
+                  src={['/photos/lotus.jpg', '/photos/garden.jpg', '/photos/blossom.jpg'][i]}
+                  alt={h.title}
+                  fallbackVariant={(['lotus', 'enso', 'meditation'] as const)[i]}
+                  className="mx-auto h-20 w-24 rounded-xl"
+                />
                 <h3 className="mt-4 font-serif text-lg font-bold text-sandalwood-800">{h.title}</h3>
                 <p className="mt-2 font-serif text-sm leading-relaxed text-ink-700">{h.desc}</p>
               </div>

@@ -104,6 +104,7 @@ export const en: Dict = {
     bellTitle: 'Hearing the Bell',
     bellDesc:
       'Touch the bronze bell and listen. Hearing the bell, afflictions lighten; wisdom grows, bodhi sprouts.',
+    ringing: 'Bell resounding…',
     ringBell: 'Ring the Bell',
     ringAgain: 'Ring Again',
     bellVerse:

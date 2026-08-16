@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useI18n } from '../../i18n'
-import { LotusMark } from '../zen/LotusMark'
+import { PhotoLogo } from '../zen/PhotoLogo'
 
 const NAV = [
   { to: '/', key: 'home' },
@@ -20,7 +20,7 @@ export function Footer() {
       <div className="mx-auto grid max-w-6xl gap-10 px-4 py-12 sm:px-6 md:grid-cols-[1.4fr_1fr_1fr]">
         <div>
           <div className="flex items-center gap-2.5">
-            <LotusMark className="h-10 w-10" />
+            <PhotoLogo className="h-10 w-10" />
             <div className="leading-tight">
               <p className="font-serif text-xl font-bold tracking-wider text-gold-300">{t('appName')}</p>
               <p className="text-[11px] tracking-[0.25em] text-paper/60 uppercase">{t('appNameEn')}</p>

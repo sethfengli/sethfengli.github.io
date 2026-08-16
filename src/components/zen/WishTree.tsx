@@ -41,9 +41,47 @@ const ANCHORS: RibbonAnchor[] = [
 ]
 
 const RIBBON_BG = [
-  'linear-gradient(180deg,#b03e45,#8c2f39)',
-  'linear-gradient(180deg,#c0564f,#963238)',
-  'linear-gradient(180deg,#a33f3b,#7d272c)',
+  'linear-gradient(180deg,#d95a48,#c24538)',
+  'linear-gradient(180deg,#e67a6a,#d63a35)',
+  'linear-gradient(180deg,#c24538,#a13a30)',
+]
+
+/** 新绿树冠团簇 */
+const FOLIAGE = [
+  { x: 186, y: 176, r: 34 },
+  { x: 290, y: 202, r: 30 },
+  { x: 726, y: 190, r: 34 },
+  { x: 622, y: 208, r: 30 },
+  { x: 444, y: 130, r: 26 },
+  { x: 528, y: 138, r: 24 },
+  { x: 360, y: 238, r: 26 },
+  { x: 540, y: 238, r: 26 },
+  { x: 126, y: 182, r: 24 },
+  { x: 790, y: 196, r: 24 },
+  { x: 450, y: 116, r: 18 },
+  { x: 386, y: 128, r: 16 },
+]
+
+/** 樱花点缀 */
+const BLOSSOMS = [
+  { x: 170, y: 150 },
+  { x: 205, y: 192 },
+  { x: 275, y: 176 },
+  { x: 310, y: 214 },
+  { x: 620, y: 182 },
+  { x: 655, y: 210 },
+  { x: 740, y: 168 },
+  { x: 770, y: 208 },
+  { x: 436, y: 108 },
+  { x: 470, y: 140 },
+  { x: 520, y: 116 },
+  { x: 345, y: 216 },
+  { x: 555, y: 214 },
+  { x: 105, y: 168 },
+  { x: 805, y: 182 },
+  { x: 240, y: 160 },
+  { x: 660, y: 164 },
+  { x: 400, y: 152 },
 ]
 
 interface Props {
@@ -78,17 +116,34 @@ export function WishTree({ wishes, onRibbonClick }: Props) {
           <path d="M360 240c-30-30-64-50-100-58" strokeWidth={4} opacity={0.7} />
           <path d="M540 240c32-28 66-46 102-54" strokeWidth={4} opacity={0.7} />
         </g>
+        {/* 新绿树冠（轻快春意） */}
+        <g>
+          {FOLIAGE.map((c, i) => (
+            <g key={i} fill="#64b393" opacity={0.9}>
+              <circle cx={c.x} cy={c.y} r={c.r} />
+              <circle cx={c.x + c.r * 0.75} cy={c.y - c.r * 0.35} r={c.r * 0.66} />
+              <circle cx={c.x - c.r * 0.7} cy={c.y - c.r * 0.28} r={c.r * 0.58} />
+              <circle cx={c.x + c.r * 0.15} cy={c.y + c.r * 0.4} r={c.r * 0.5} fill="#479a7c" />
+            </g>
+          ))}
+          {BLOSSOMS.map((b, i) => (
+            <g key={i} fill="#f6c6be" opacity={0.95}>
+              <circle cx={b.x} cy={b.y} r={3.2} />
+              <circle cx={b.x + 2} cy={b.y + 1.4} r={2} fill="#fbe3df" />
+            </g>
+          ))}
+        </g>
         {/* 树干 */}
         <path
           d="M450 640c-6-70-8-150-4-226 2-40 8-72 16-100 4-14 8-24 12-32-2 10-4 22-4 34-2 96 2 198 10 324z"
-          fill="#543620"
+          fill="#6a5947"
         />
         <path
           d="M450 640c6-70 8-150 4-226-2-40-8-72-16-100-4-14-8-24-12-32 2 10 4 22 4 34 2 96-2 198-10 324z"
-          fill="#4a3524"
+          fill="#5d4d38"
         />
-        <path d="M430 640c-20-110-40-220-72-330-12-42-28-76-48-102" stroke="#543620" strokeWidth={26} fill="none" strokeLinecap="round" />
-        <path d="M470 640c20-110 40-220 72-330 12-42 28-76 48-102" stroke="#4a3524" strokeWidth={26} fill="none" strokeLinecap="round" />
+        <path d="M430 640c-20-110-40-220-72-330-12-42-28-76-48-102" stroke="#6a5947" strokeWidth={26} fill="none" strokeLinecap="round" />
+        <path d="M470 640c20-110 40-220 72-330 12-42 28-76 48-102" stroke="#5d4d38" strokeWidth={26} fill="none" strokeLinecap="round" />
         {/* 树皮纹理 */}
         <g stroke="#3e2818" strokeWidth={2} opacity={0.45} fill="none" strokeLinecap="round">
           <path d="M436 560c-8-16 6-22 14-10" />

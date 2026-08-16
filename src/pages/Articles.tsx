@@ -43,6 +43,11 @@ export function Articles() {
         </div>
       </header>
 
+      {/* 头图横幅（真实照片） */}
+      <div className="mx-auto mt-8 h-40 max-w-3xl overflow-hidden rounded-3xl shadow-md">
+        <CoverImage src="/photos/gate.jpg" alt="" fallbackVariant="clouds" className="h-full w-full" />
+      </div>
+
       {/* 筛选与搜索 */}
       <div className="mt-10 flex flex-col items-center gap-4">
         <div className="flex flex-wrap justify-center gap-2">

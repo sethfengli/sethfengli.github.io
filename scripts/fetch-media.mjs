@@ -16,13 +16,12 @@ const MANIFEST = path.join(ROOT, 'src', 'data', 'photos.json')
 const JOB_CACHE = path.join(__dirname, '.media-jobs.json')
 
 const UA = { 'User-Agent': 'HuidengChanlin/1.0 (site curation; contact via repo issues)' }
-const MAX_PHOTOS = 48
+const MAX_PHOTOS = 110
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms))
 
 const CATEGORIES = [
   'Statues of Guanyin',
   'Temple bells',
-  'Incense in Buddhism',
   'Buddhist temples in China',
   'Buddhist temples in Taiwan',
   'Buddha statues in China',
@@ -32,6 +31,19 @@ const CATEGORIES = [
   'Buddhist art of China',
   'Temples in Hong Kong',
   'Buddhist temples in Japan',
+  'Nelumbo nucifera',
+  'Zen gardens',
+  'Cherry blossoms',
+  'Paifang',
+  'Paper lanterns',
+  'Buddhist temples in Thailand',
+  'Buddhist temples in Vietnam',
+  'Buddhist temples in South Korea',
+  'Stupas',
+  'Tibetan Buddhist monasteries',
+  'Mountains of China',
+  'Landscapes of China',
+  'Chinese architecture',
 ]
 
 const AUDIO_TRACKS = [
@@ -175,7 +187,31 @@ for (const job of jobs) {
 
 /* ---------- 输出清单与署名 ---------- */
 const photoJobs = jobs.filter((j) => j.kind === 'photo')
+
+// 专用图：命名复制并排除出文章封面池，避免同一张图在 UI 与封面上重复
+const specials = {
+  lotus: 'Nelumbo nucifera',
+  hero: 'Buddhist temples in Thailand',
+  lantern: 'Paper lanterns',
+  gate: 'Paifang',
+  garden: 'Zen gardens',
+  blossom: 'Cherry blossoms',
+  guanyin: 'Statues of Guanyin',
+  bell: 'Temple bells',
+}
+const specialSources = new Set()
+for (const [key, catName] of Object.entries(specials)) {
+  const j = photoJobs.find((x) => x.cat === catName && !specialSources.has(x.out))
+  if (j && fs.existsSync(path.join(PHOTOS_DIR, j.out))) {
+    fs.copyFileSync(path.join(PHOTOS_DIR, j.out), path.join(PHOTOS_DIR, `${key}.jpg`))
+    specialSources.add(j.out)
+    console.log(`✔ 专用图 ${key}.jpg（源自 ${j.out}，已移出封面池）`)
+  }
+}
+
+// 文章封面池：排除专用图源文件
 const photos = photoJobs
+  .filter((j) => !specialSources.has(j.out))
   .filter((j) => fs.existsSync(path.join(PHOTOS_DIR, j.out)))
   .map((j) => j.out)
   .slice(0, MAX_PHOTOS)
@@ -197,15 +233,6 @@ for (const j of jobs.filter((x) => x.kind === 'audio')) {
   }
 }
 fs.writeFileSync(path.join(AUDIO_DIR, 'CREDITS.md'), audioCredits.join('\n'), 'utf8')
-
-// 专用图
-const specials = { guanyin: 'Statues of Guanyin', bell: 'Temple bells', incense: 'Incense in Buddhism' }
-for (const [key, catName] of Object.entries(specials)) {
-  const j = photoJobs.find((x) => x.cat === catName)
-  if (j && fs.existsSync(path.join(PHOTOS_DIR, j.out))) {
-    fs.copyFileSync(path.join(PHOTOS_DIR, j.out), path.join(PHOTOS_DIR, `${key}.jpg`))
-  }
-}
 
 console.log(`\n✔ 照片 ${photos.length} 张 → public/photos/`)
 console.log(`✔ 音频 ${jobs.filter((x) => x.kind === 'audio').filter((j) => fs.existsSync(path.join(AUDIO_DIR, j.out))).length} 段 → public/audio/`)

@@ -3,6 +3,7 @@ import { useI18n, type I18nCtx } from '../i18n'
 import { createWishRepository, type Wish } from '../lib/wishes'
 import { downloadFile, getDeviceId } from '../lib/storage'
 import { WishTree } from '../components/zen/WishTree'
+import { CoverImage } from '../components/zen/CoverImage'
 
 const MAX_WISH = 120
 const TREE_CAPACITY = 24
@@ -104,6 +105,7 @@ export function PrayerWall() {
       {/* 页头 */}
       <header className="relative overflow-hidden bg-gradient-to-b from-tibetan-800 to-tibetan-900 py-16 text-center text-paper">
         <div className="pointer-events-none absolute inset-0">
+          <CoverImage src="/photos/lantern.jpg" alt="" fallbackVariant="incense" className="h-full w-full opacity-50" />
           {Array.from({ length: 18 }).map((_, i) => (
             <span
               key={i}

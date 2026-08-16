@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { NavLink, Link } from 'react-router-dom'
 import { useI18n } from '../../i18n'
-import { LotusMark } from '../zen/LotusMark'
+import { PhotoLogo } from '../zen/PhotoLogo'
 import { ThemeSwitcher } from './ThemeSwitcher'
 
 const NAV = [
@@ -21,7 +21,7 @@ export function Header() {
     <header className="sticky top-0 z-40 border-b border-sandalwood-200/70 bg-rice-50/90 backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4 sm:px-6">
         <Link to="/" className="flex items-center gap-2.5" onClick={() => setOpen(false)}>
-          <LotusMark className="h-9 w-9" />
+          <PhotoLogo className="h-9 w-9" />
           <span className="flex flex-col leading-none">
             <span className="font-serif text-lg font-bold tracking-wider text-sandalwood-800">
               {t('appName')}

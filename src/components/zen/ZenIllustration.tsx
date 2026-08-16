@@ -26,20 +26,19 @@ interface Props {
 }
 
 const PALETTES: Record<IllustrationVariant, { bg: string; ink: string; accent: string; soft: string }> = {
-  lotus: { bg: '#f6f0e2', ink: '#543620', accent: '#8c2f39', soft: '#e8d9b8' },
-  incense: { bg: '#efe6d0', ink: '#4a443c', accent: '#c9a227', soft: '#f0e0a8' },
-  bell: { bg: '#e4ecf5', ink: '#3a5a82', accent: '#a8871f', soft: '#c9d9ea' },
-  bamboo: { bg: '#eef2e4', ink: '#3e2818', accent: '#6b4425', soft: '#dfe8cf' },
-  mountains: { bg: '#e9f0f8', ink: '#4a443c', accent: '#5f87b5', soft: '#dde8f3' },
-  moon: { bg: '#1c2836', ink: '#d6d1c7', accent: '#e0c76c', soft: '#2c3a4e' },
-  enso: { bg: '#fbf8f0', ink: '#2b2620', accent: '#8c2f39', soft: '#f0e4d2' },
-  bodhi: { bg: '#f3f6ee', ink: '#3e4a2e', accent: '#8a5a31', soft: '#e3ead4' },
-  sutra: { bg: '#f6f0e2', ink: '#543620', accent: '#a33f3b', soft: '#efe6d0' },
-  koi: { bg: '#e4ecf5', ink: '#2b3a4e', accent: '#8c2f39', soft: '#c9d9ea' },
-  meditation: { bg: '#f2f6fb', ink: '#3a5a82', accent: '#c9a227', soft: '#e4ecf5' },
-  clouds: { bg: '#e9f0f8', ink: '#4a443c', accent: '#a3bfdc', soft: '#f2f6fb' },
+  lotus: { bg: '#eef7f1', ink: '#255144', accent: '#c24538', soft: '#d9f0e6' },
+  incense: { bg: '#fdf6ec', ink: '#4a3f33', accent: '#d4a92c', soft: '#f6e69b' },
+  bell: { bg: '#e2f1f8', ink: '#3a6e8c', accent: '#b38620', soft: '#c5e3f0' },
+  bamboo: { bg: '#eef7ef', ink: '#2d6553', accent: '#479a7c', soft: '#d9f0e2' },
+  mountains: { bg: '#e6f2f8', ink: '#3d4f58', accent: '#5b9fc0', soft: '#ddeef6' },
+  moon: { bg: '#1f3a4c', ink: '#d3dee3', accent: '#e7c23e', soft: '#2c4a5e' },
+  enso: { bg: '#ffffff', ink: '#20333c', accent: '#c24538', soft: '#e6f2f6' },
+  bodhi: { bg: '#f0f7f1', ink: '#2d6553', accent: '#b38620', soft: '#dfefe5' },
+  sutra: { bg: '#fdf6ec', ink: '#4a3f33', accent: '#d95a48', soft: '#f6edd9' },
+  koi: { bg: '#e2f1f8', ink: '#20333c', accent: '#c24538', soft: '#c5e3f0' },
+  meditation: { bg: '#f1f8fc', ink: '#3a6e8c', accent: '#d4a92c', soft: '#e2f1f8' },
+  clouds: { bg: '#e6f2f8', ink: '#3d4f58', accent: '#9ccee3', soft: '#f1f8fc' },
 }
-
 export function ZenIllustration({ variant, className, animated = true }: Props) {
   const p = PALETTES[variant]
   return (

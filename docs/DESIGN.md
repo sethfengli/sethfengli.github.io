@@ -77,7 +77,7 @@
 
 ## 6. 全站配色主题（佛教配色）
 
-站点底色支持 **4 套主题**，Header 调色按钮一键切换并记忆（`hdc.siteTheme`）：
+站点底色支持 **4 套主题**（2026 修订：整体告别土黄，改为轻快、积极的正能量色系），Header 调色按钮一键切换并记忆（`hdc.siteTheme`）：
 
 | 主题 | 意象 | 底色/主色 |
 | --- | --- | --- |
@@ -96,7 +96,7 @@
 - 文章封面/灵签页头图等使用 **Wikimedia Commons 免版权真实照片**（CC0/公有领域/CC BY*），
   本地托管 `public/photos/`（约 48 张，按目录序稳定分配、相邻文章不重复），
   抓取脚本 `scripts/fetch-photos2.mjs`，署名清单 `public/photos/CREDITS.md`；
-  加载失败自动回退到禅意 SVG 插画（`CoverImage`）。
+  加载失败自动回退到禅意 SVG 插画（`CoverImage`）。`n- **站标与页面背景全部改用真实照片**：logo 为莲花照片（圆形描金裁切，`PhotoLogo`），`n  首页 Hero/文库横幅/关于/祈福页头均使用专用照片（lotus/hero/gate/lantern/garden/blossom/guanyin/bell），`n  且专用图会从文章封面池中排除，保证 UI 与封面不重复用图。
 - 法音页梵呗与梵钟音档同样取自 Commons 并本地托管（`public/audio/`，
   `scripts/fetch-audio.mjs`，署名 `public/audio/CREDITS.md`）；撞钟默认播放真实梵钟录音，
   未就绪时回退 Web Audio 多泛音合成。

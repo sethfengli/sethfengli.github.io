@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
+import { useI18n } from '../../i18n'
 import { BELL_TRACK } from '../../data/chants'
 
 /**
@@ -10,6 +11,7 @@ import { BELL_TRACK } from '../../data/chants'
  */
 
 export function TempleBell() {
+  const { t } = useI18n()
   const [ringing, setRinging] = useState(false)
   const [count, setCount] = useState(0)
   const [omId, setOmId] = useState(0)
@@ -99,23 +101,39 @@ export function TempleBell() {
   }, [])
 
   const ring = useCallback(() => {
+    if (ringing) return
     setRinging(true)
     setCount((c) => c + 1)
     setOmId((v) => v + 1)
-    window.setTimeout(() => setRinging(false), 2600)
+
+    const finish = (ms: number) => {
+      window.setTimeout(() => setRinging(false), ms)
+    }
 
     const a = audioRef.current
     if (a && audioReadyRef.current && !a.error) {
       try {
         a.currentTime = 0
-        void a.play().catch(() => synthRing())
+        const onEnded = () => {
+          a.removeEventListener('ended', onEnded)
+          setRinging(false)
+        }
+        a.addEventListener('ended', onEnded)
+        void a.play().catch(() => {
+          synthRing()
+          finish(7000)
+        })
+        // 兜底：录音异常长/事件缺失时最迟 30s 解锁
+        finish(30000)
       } catch {
         synthRing()
+        finish(7000)
       }
     } else {
       synthRing()
+      finish(7000)
     }
-  }, [synthRing])
+  }, [ringing, synthRing])
 
   useEffect(() => {
     return () => {
@@ -139,9 +157,12 @@ export function TempleBell() {
       <button
         type="button"
         onClick={ring}
+        disabled={ringing}
         aria-label="撞钟"
         title="撞钟"
-        className="group relative block cursor-pointer rounded-full focus-visible:ring-2 focus-visible:ring-gold-400 focus-visible:outline-none"
+        className={`group relative block cursor-pointer rounded-full focus-visible:ring-2 focus-visible:ring-gold-400 focus-visible:outline-none ${
+          ringing ? 'cursor-wait opacity-90' : ''
+        }`}
       >
         <svg viewBox="0 0 420 340" className="h-72 w-[420px] max-w-full drop-shadow-xl sm:h-80">
           {/* 木架 */}
@@ -149,21 +170,21 @@ export function TempleBell() {
           <path d="M96 60h228" stroke="#5a3d22" strokeWidth="18" strokeLinecap="round" />
           <path d="M96 60v10M324 60v10" stroke="#3e2818" strokeWidth="18" strokeLinecap="round" />
           <path d="M120 130h180" stroke="#5a3d22" strokeWidth="10" strokeLinecap="round" opacity="0.9" />
-          <circle cx={96} cy={60} r={10} fill="#c9a227" />
-          <circle cx={324} cy={60} r={10} fill="#c9a227" />
+          <circle cx={96} cy={60} r={10} fill="#d4a92c" />
+          <circle cx={324} cy={60} r={10} fill="#d4a92c" />
 
           {/* 铜钟 */}
           <g className={ringing ? 'origin-top animate-swing' : ''} style={{ transformOrigin: '210px 70px' }}>
-            <path d="M150 84h120l-10 168a38 38 0 0 1-76 0z" fill="#8a5a31" />
-            <path d="M150 84h120l-4 52H154z" fill="#c9a227" opacity="0.35" />
-            <path d="M146 84h128l6 34H140z" fill="#6b4425" />
+            <path d="M150 84h120l-10 168a38 38 0 0 1-76 0z" fill="#a5713f" />
+            <path d="M150 84h120l-4 52H154z" fill="#d4a92c" opacity="0.35" />
+            <path d="M146 84h128l6 34H140z" fill="#8a5c3a" />
             <ellipse cx={210} cy={256} rx={34} ry={8} fill="#3e2818" opacity="0.6" />
             {/* 撞座 */}
-            <circle cx={210} cy={168} r={17} fill="none" stroke="#c9a227" strokeWidth={3} opacity="0.8" />
-            <circle cx={210} cy={168} r={7} fill="#c9a227" opacity="0.7" />
+            <circle cx={210} cy={168} r={17} fill="none" stroke="#d4a92c" strokeWidth={3} opacity="0.8" />
+            <circle cx={210} cy={168} r={7} fill="#d4a92c" opacity="0.7" />
             {/* 钟面纹饰 */}
-            <path d="M168 100c6 10 10 22 12 36M252 100c-6 10-10 22-12 36" stroke="#c9a227" strokeWidth={2.5} fill="none" opacity="0.55" />
-            <path d="M162 232h96" stroke="#c9a227" strokeWidth={2.5} opacity="0.4" />
+            <path d="M168 100c6 10 10 22 12 36M252 100c-6 10-10 22-12 36" stroke="#d4a92c" strokeWidth={2.5} fill="none" opacity="0.55" />
+            <path d="M162 232h96" stroke="#d4a92c" strokeWidth={2.5} opacity="0.4" />
           </g>
 
           {/* 声波 */}
@@ -173,7 +194,7 @@ export function TempleBell() {
                 key={i}
                 d={`M${300 + i * 26} 120a${40 + i * 18} 44 0 0 1 0 88`}
                 fill="none"
-                stroke="#c9a227"
+                stroke="#d4a92c"
                 strokeWidth="3.5"
                 strokeLinecap="round"
                 className="animate-ripple"
@@ -186,15 +207,15 @@ export function TempleBell() {
             <line x1={330} y1={60} x2={304} y2={120} stroke="#4a3b26" strokeWidth={3} opacity="0.7" />
             <line x1={330} y1={60} x2={356} y2={120} stroke="#4a3b26" strokeWidth={3} opacity="0.7" />
             <rect x={300} y={108} width={92} height={26} rx={13} fill="#6b4a2f" />
-            <rect x={300} y={112} width={92} height={6} rx={3} fill="#8a5a31" opacity="0.8" />
+            <rect x={300} y={112} width={92} height={6} rx={3} fill="#a5713f" opacity="0.8" />
             <rect x={368} y={100} width={26} height={42} rx={13} fill="#543620" />
-            <circle cx={381} cy={121} r={6} fill="#c9a227" opacity="0.9" />
+            <circle cx={381} cy={121} r={6} fill="#d4a92c" opacity="0.9" />
           </g>
         </svg>
       </button>
 
       <div className="text-center font-serif text-sm text-sandalwood-500">
-        {count > 0 ? `第 ${count} 声` : '\u00a0'}
+        {ringing ? t('dharma.ringing') : count > 0 ? `第 ${count} 声` : '\u00a0'}
         <p className="mt-1 text-[11px] text-sandalwood-400">
           {BELL_TRACK.author} · {BELL_TRACK.license} · Wikimedia Commons
         </p>
