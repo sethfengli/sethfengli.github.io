@@ -1,124 +1,203 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
+import { BELL_TRACK } from '../../data/chants'
 
 /**
- * 撞钟组件：铜钟 SVG + Web Audio 实时合成钟声。
- * 无音频文件依赖，完全离线可用；多段泛音 + 指数衰减模拟铜钟余韵。
+ * 撞钟组件（重制版）
+ * - 造型：木架 + 青铜大钟 + 撞木（横置木槌），点击撞木荡起击钟；
+ * - 音色：默认播放真实梵钟实录（長命寺梵鐘，CC BY 2.1 JP，本地托管）；
+ *   录音未就绪时回退 Web Audio 多泛音合成（基频 + 2.0/2.42/3.19/4.17 倍泛音 + 击槌噪声瞬态）；
+ * - 声场：声波涟漪 + “嗡”字余韵浮现。
  */
 
-interface Props {
-  onRingStart?: () => void
-}
-
-export function TempleBell({ onRingStart }: Props) {
+export function TempleBell() {
   const [ringing, setRinging] = useState(false)
   const [count, setCount] = useState(0)
-  const audioRef = useRef<AudioContext | null>(null)
-  const swingRef = useRef<HTMLDivElement>(null)
+  const [omId, setOmId] = useState(0)
+  const audioRef = useRef<HTMLAudioElement | null>(null)
+  const audioReadyRef = useRef(false)
+  const ctxRef = useRef<AudioContext | null>(null)
 
-  const ring = useCallback(() => {
-    setRinging(true)
-    setCount((c) => c + 1)
-    onRingStart?.()
-    window.setTimeout(() => setRinging(false), 3200)
+  /* 预载真实梵钟录音 */
+  useEffect(() => {
+    const a = new Audio(BELL_TRACK.file)
+    a.preload = 'auto'
+    a.addEventListener(
+      'canplaythrough',
+      () => {
+        audioReadyRef.current = true
+      },
+      { once: true },
+    )
+    a.addEventListener(
+      'error',
+      () => {
+        audioReadyRef.current = false
+      },
+      { once: true },
+    )
+    audioRef.current = a
+    return () => {
+      a.pause()
+      audioRef.current = null
+    }
+  }, [])
 
+  const synthRing = useCallback(() => {
     try {
       const AC: typeof AudioContext =
         window.AudioContext ??
         (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext
-      if (!audioRef.current) audioRef.current = new AC()
-      const ctx = audioRef.current
+      if (!ctxRef.current) ctxRef.current = new AC()
+      const ctx = ctxRef.current
       if (ctx.state === 'suspended') void ctx.resume()
-
       const now = ctx.currentTime
       const master = ctx.createGain()
       master.gain.setValueAtTime(0.0001, now)
-      master.gain.exponentialRampToValueAtTime(0.5, now + 0.02)
-      master.gain.exponentialRampToValueAtTime(0.0001, now + 3.0)
+      master.gain.exponentialRampToValueAtTime(0.9, now + 0.015)
+      master.gain.exponentialRampToValueAtTime(0.0001, now + 6.5)
       master.connect(ctx.destination)
 
-      // 铜钟频谱：基频 + 近似泛音（2.0 / 2.42 / 3.18 倍）
+      // 铜钟频谱（近似）：基频 130.8Hz + 非谐泛音
       const partials = [
-        { f: 220, g: 1 },
-        { f: 440, g: 0.5 },
-        { f: 532, g: 0.35 },
-        { f: 700, g: 0.22 },
-        { f: 1100, g: 0.1 },
+        { f: 130.8, g: 1 },
+        { f: 262.9, g: 0.55 },
+        { f: 316.5, g: 0.4 },
+        { f: 417.3, g: 0.28 },
+        { f: 545.5, g: 0.18 },
+        { f: 700, g: 0.1 },
       ]
       for (const { f, g } of partials) {
         const osc = ctx.createOscillator()
         osc.type = 'sine'
         osc.frequency.setValueAtTime(f, now)
-        osc.frequency.exponentialRampToValueAtTime(f * 0.998, now + 3)
+        osc.frequency.exponentialRampToValueAtTime(f * 0.996, now + 6)
         const gNode = ctx.createGain()
         gNode.gain.setValueAtTime(0.0001, now)
-        gNode.gain.exponentialRampToValueAtTime(g * 0.3, now + 0.015)
-        gNode.gain.exponentialRampToValueAtTime(0.0001, now + 2.8)
+        gNode.gain.exponentialRampToValueAtTime(g * 0.32, now + 0.02)
+        gNode.gain.exponentialRampToValueAtTime(0.0001, now + 6.2)
         osc.connect(gNode).connect(master)
         osc.start(now)
-        osc.stop(now + 3.1)
+        osc.stop(now + 6.4)
       }
+      // 击槌噪声瞬态
+      const len = Math.floor(ctx.sampleRate * 0.12)
+      const buf = ctx.createBuffer(1, len, ctx.sampleRate)
+      const data = buf.getChannelData(0)
+      for (let i = 0; i < len; i++) data[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / len, 2.2)
+      const noise = ctx.createBufferSource()
+      noise.buffer = buf
+      const lp = ctx.createBiquadFilter()
+      lp.type = 'lowpass'
+      lp.frequency.value = 900
+      const ng = ctx.createGain()
+      ng.gain.value = 0.35
+      noise.connect(lp).connect(ng).connect(master)
+      noise.start(now)
     } catch {
       /* 无音频环境时静默 */
     }
-  }, [onRingStart])
+  }, [])
+
+  const ring = useCallback(() => {
+    setRinging(true)
+    setCount((c) => c + 1)
+    setOmId((v) => v + 1)
+    window.setTimeout(() => setRinging(false), 2600)
+
+    const a = audioRef.current
+    if (a && audioReadyRef.current && !a.error) {
+      try {
+        a.currentTime = 0
+        void a.play().catch(() => synthRing())
+      } catch {
+        synthRing()
+      }
+    } else {
+      synthRing()
+    }
+  }, [synthRing])
 
   useEffect(() => {
     return () => {
-      audioRef.current?.close().catch(() => undefined)
+      ctxRef.current?.close().catch(() => undefined)
     }
   }, [])
 
   return (
-    <div className="flex flex-col items-center gap-4">
-      <div
-        ref={swingRef}
-        className={ringing ? 'origin-top animate-swing' : 'origin-top transition-transform'}
-        role="button"
-        tabIndex={0}
-        aria-label="撞钟"
+    <div className="relative flex flex-col items-center gap-4">
+      {/* “嗡”余韵 */}
+      {ringing && (
+        <span
+          key={omId}
+          className="om-float pointer-events-none absolute top-10 left-1/2 z-10 -translate-x-1/2 font-serif text-4xl font-bold text-gold-400"
+          aria-hidden
+        >
+          嗡
+        </span>
+      )}
+
+      <button
+        type="button"
         onClick={ring}
-        onKeyDown={(e) => {
-          if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault()
-            ring()
-          }
-        }}
+        aria-label="撞钟"
+        title="撞钟"
+        className="group relative block cursor-pointer rounded-full focus-visible:ring-2 focus-visible:ring-gold-400 focus-visible:outline-none"
       >
-        <svg viewBox="0 0 220 240" className="h-56 w-56 cursor-pointer drop-shadow-lg sm:h-64 sm:w-64">
-          {/* 钟架 */}
-          <path d="M70 40v130M150 40v130" stroke="#543620" strokeWidth="8" strokeLinecap="round" opacity="0.85" />
-          <path d="M44 40h132" stroke="#543620" strokeWidth="11" strokeLinecap="round" opacity="0.85" />
-          <circle cx={44} cy={40} r={7} fill="#c9a227" />
-          <circle cx={176} cy={40} r={7} fill="#c9a227" />
+        <svg viewBox="0 0 420 340" className="h-72 w-[420px] max-w-full drop-shadow-xl sm:h-80">
+          {/* 木架 */}
+          <path d="M120 60v190M300 60v190" stroke="#5a3d22" strokeWidth="14" strokeLinecap="round" />
+          <path d="M96 60h228" stroke="#5a3d22" strokeWidth="18" strokeLinecap="round" />
+          <path d="M96 60v10M324 60v10" stroke="#3e2818" strokeWidth="18" strokeLinecap="round" />
+          <path d="M120 130h180" stroke="#5a3d22" strokeWidth="10" strokeLinecap="round" opacity="0.9" />
+          <circle cx={96} cy={60} r={10} fill="#c9a227" />
+          <circle cx={324} cy={60} r={10} fill="#c9a227" />
+
           {/* 铜钟 */}
-          <g>
-            <path d="M88 44h44l-6 128a26 26 0 0 1-52 0z" fill={ringing ? '#a8871f' : '#8a5a31'} />
-            <path d="M88 44h44l-3 34H91z" fill="#e8d9b8" opacity="0.5" />
-            <path d="M95 78h30" stroke="#c9a227" strokeWidth="2.5" opacity="0.8" />
-            <path d="M99 96h22" stroke="#c9a227" strokeWidth="2.5" opacity="0.7" />
-            <path d="M103 114h14" stroke="#c9a227" strokeWidth="2.5" opacity="0.6" />
-            <ellipse cx={110} cy={176} rx={24} ry={5} fill="#2b1a10" opacity="0.55" />
-            <line x1={110} y1={180} x2={110} y2={196} stroke="#543620" strokeWidth="4" />
-            <circle cx={110} cy={201} r={5.5} fill="#8c2f39" />
+          <g className={ringing ? 'origin-top animate-swing' : ''} style={{ transformOrigin: '210px 70px' }}>
+            <path d="M150 84h120l-10 168a38 38 0 0 1-76 0z" fill="#8a5a31" />
+            <path d="M150 84h120l-4 52H154z" fill="#c9a227" opacity="0.35" />
+            <path d="M146 84h128l6 34H140z" fill="#6b4425" />
+            <ellipse cx={210} cy={256} rx={34} ry={8} fill="#3e2818" opacity="0.6" />
+            {/* 撞座 */}
+            <circle cx={210} cy={168} r={17} fill="none" stroke="#c9a227" strokeWidth={3} opacity="0.8" />
+            <circle cx={210} cy={168} r={7} fill="#c9a227" opacity="0.7" />
+            {/* 钟面纹饰 */}
+            <path d="M168 100c6 10 10 22 12 36M252 100c-6 10-10 22-12 36" stroke="#c9a227" strokeWidth={2.5} fill="none" opacity="0.55" />
+            <path d="M162 232h96" stroke="#c9a227" strokeWidth={2.5} opacity="0.4" />
           </g>
+
           {/* 声波 */}
           {ringing &&
             [0, 1, 2].map((i) => (
               <path
                 key={i}
-                d={`M${140 + i * 20} 84a${30 + i * 14} 34 0 0 1 0 68`}
+                d={`M${300 + i * 26} 120a${40 + i * 18} 44 0 0 1 0 88`}
                 fill="none"
                 stroke="#c9a227"
-                strokeWidth="3"
+                strokeWidth="3.5"
                 strokeLinecap="round"
                 className="animate-ripple"
-                style={{ animationDelay: `${i * 0.5}s` }}
+                style={{ animationDelay: `${i * 0.55}s`, transformOrigin: `${300 + i * 26}px 164px` }}
               />
             ))}
+
+          {/* 撞木（横置木槌，自右荡起击钟） */}
+          <g className={ringing ? 'bell-striker' : ''}>
+            <line x1={330} y1={60} x2={304} y2={120} stroke="#4a3b26" strokeWidth={3} opacity="0.7" />
+            <line x1={330} y1={60} x2={356} y2={120} stroke="#4a3b26" strokeWidth={3} opacity="0.7" />
+            <rect x={300} y={108} width={92} height={26} rx={13} fill="#6b4a2f" />
+            <rect x={300} y={112} width={92} height={6} rx={3} fill="#8a5a31" opacity="0.8" />
+            <rect x={368} y={100} width={26} height={42} rx={13} fill="#543620" />
+            <circle cx={381} cy={121} r={6} fill="#c9a227" opacity="0.9" />
+          </g>
         </svg>
-      </div>
+      </button>
+
       <div className="text-center font-serif text-sm text-sandalwood-500">
         {count > 0 ? `第 ${count} 声` : '\u00a0'}
+        <p className="mt-1 text-[11px] text-sandalwood-400">
+          {BELL_TRACK.author} · {BELL_TRACK.license} · Wikimedia Commons
+        </p>
       </div>
     </div>
   )

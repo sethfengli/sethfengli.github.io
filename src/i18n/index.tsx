@@ -23,8 +23,8 @@ export interface I18nCtx {
   toggleLang: () => void
   /** 用 {{key}} 占位符插值的翻译函数 */
   t: (key: PathsOf<Dict>, vars?: Record<string, string | number>) => string
-  /** 圣号梵音名称（数组型词典项） */
-  chantNames: string[]
+  /** 返回数组/对象型词典节点（如 about.faq、about.heritage） */
+  arr: (key: PathsOf<Dict>) => unknown
 }
 
 const Ctx = createContext<I18nCtx | null>(null)
@@ -78,15 +78,20 @@ export function I18nProvider({ children }: { children: ReactNode }) {
     [lang],
   )
 
+  const arr = useCallback(
+    (path: string) => resolve(dicts[lang], path),
+    [lang],
+  )
+
   const value = useMemo<I18nCtx>(
     () => ({
       lang,
       setLang,
       toggleLang,
       t: t as I18nCtx['t'],
-      chantNames: [...dicts[lang].dharma.chantNames],
+      arr: arr as I18nCtx['arr'],
     }),
-    [lang, setLang, toggleLang, t],
+    [lang, setLang, toggleLang, t, arr],
   )
 
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>

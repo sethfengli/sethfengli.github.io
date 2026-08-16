@@ -2,8 +2,10 @@ import { useCallback, useEffect, useRef, useState, type FormEvent } from 'react'
 import { useI18n, type I18nCtx } from '../i18n'
 import { createWishRepository, type Wish } from '../lib/wishes'
 import { downloadFile, getDeviceId } from '../lib/storage'
+import { WishTree } from '../components/zen/WishTree'
 
 const MAX_WISH = 120
+const TREE_CAPACITY = 24
 
 export function PrayerWall() {
   const { t } = useI18n()
@@ -14,7 +16,7 @@ export function PrayerWall() {
   const [mineOnly, setMineOnly] = useState(false)
   const [error, setError] = useState('')
   const [toast, setToast] = useState('')
-  const [justLit, setJustLit] = useState<string | null>(null)
+  const [selected, setSelected] = useState<Wish | null>(null)
   const fileRef = useRef<HTMLInputElement>(null)
   const toastTimer = useRef<number>(0)
 
@@ -51,8 +53,6 @@ export function PrayerWall() {
     setError('')
     const wish = await repoRef.current.create({ name: name.trim(), text: text.trim() })
     setWishes((prev) => [wish, ...prev])
-    setJustLit(wish.id)
-    window.setTimeout(() => setJustLit(null), 2600)
     setName('')
     setText('')
     showToast(t('prayer.lampLit'))
@@ -62,6 +62,7 @@ export function PrayerWall() {
     if (!window.confirm(t('prayer.deleteConfirm'))) return
     if (await repoRef.current.remove(id)) {
       setWishes((prev) => prev.filter((w) => w.id !== id))
+      setSelected(null)
     }
   }
 
@@ -95,13 +96,14 @@ export function PrayerWall() {
   }
 
   const shown = mineOnly ? wishes.filter((w) => w.owner === deviceId) : wishes
+  const onTree = shown.slice(0, TREE_CAPACITY)
+  const rest = shown.slice(TREE_CAPACITY)
 
   return (
     <div>
       {/* 页头 */}
-      <header className="relative overflow-hidden bg-gradient-to-b from-tibetan-800 to-tibetan-900 py-16 text-center text-rice-50">
+      <header className="relative overflow-hidden bg-gradient-to-b from-tibetan-800 to-tibetan-900 py-16 text-center text-paper">
         <div className="pointer-events-none absolute inset-0">
-          {/* 星点灯光背景 */}
           {Array.from({ length: 18 }).map((_, i) => (
             <span
               key={i}
@@ -120,7 +122,7 @@ export function PrayerWall() {
         <div className="relative">
           <p className="font-serif text-sm tracking-[0.5em] text-gold-300">供 灯</p>
           <h1 className="mt-3 font-serif text-3xl font-bold sm:text-4xl">{t('prayer.title')}</h1>
-          <p className="mt-3 font-serif text-sm text-rice-100/85">{t('prayer.subtitle')}</p>
+          <p className="mt-3 font-serif text-sm text-paper/85">{t('prayer.subtitle')}</p>
         </div>
       </header>
 
@@ -128,7 +130,7 @@ export function PrayerWall() {
         <div className="grid gap-10 lg:grid-cols-[380px_minmax(0,1fr)]">
           {/* ---------- 供灯表单 ---------- */}
           <aside className="lg:sticky lg:top-24 lg:self-start">
-            <div className="rounded-3xl border border-sandalwood-200/70 bg-white p-6 shadow-md">
+            <div className="rounded-3xl border border-sandalwood-200/70 bg-surface p-6 shadow-md">
               <h2 className="flex items-center gap-2 font-serif text-lg font-bold text-sandalwood-800">
                 <span aria-hidden>🪔</span>
                 {t('prayer.formTitle')}
@@ -176,7 +178,7 @@ export function PrayerWall() {
             </div>
 
             {/* 备份工具 */}
-            <div className="mt-5 flex flex-wrap items-center gap-2 rounded-2xl border border-sandalwood-200/70 bg-white p-4">
+            <div className="mt-5 flex flex-wrap items-center gap-2 rounded-2xl border border-sandalwood-200/70 bg-surface p-4">
               <button type="button" onClick={exportJson} className="btn-secondary !px-4 !py-1.5 text-xs">
                 ⤓ {t('prayer.export')}
               </button>
@@ -202,7 +204,7 @@ export function PrayerWall() {
             </div>
           </aside>
 
-          {/* ---------- 愿望灯海 ---------- */}
+          {/* ---------- 许愿树 ---------- */}
           <section>
             <div className="flex flex-wrap items-center justify-between gap-3">
               <h2 className="font-serif text-xl font-bold text-sandalwood-800">{t('prayer.wallTitle')}</h2>
@@ -216,32 +218,31 @@ export function PrayerWall() {
                 {t('prayer.mineOnly')}
               </label>
             </div>
+            <p className="mt-2 font-serif text-xs leading-relaxed text-sandalwood-500">{t('prayer.treeHint')}</p>
 
             {shown.length === 0 ? (
-              <div className="mt-10 rounded-3xl border-2 border-dashed border-sandalwood-200 bg-rice-100/50 p-14 text-center">
+              <div className="mt-6 rounded-3xl border-2 border-dashed border-sandalwood-200 bg-rice-100/50 p-14 text-center">
                 <div className="mx-auto h-16 w-16 animate-glow rounded-full bg-gold-200/70 text-3xl leading-[4rem]">🪔</div>
                 <p className="mt-5 font-serif text-sandalwood-600">{t('prayer.wallEmpty')}</p>
               </div>
             ) : (
-              <div className="mt-6 grid gap-4 sm:grid-cols-2">
-                {shown.map((w, idx) => (
-                  <article
-                    key={w.id}
-                    className={`relative rounded-2xl border border-gold-300/50 bg-gradient-to-br from-rice-50 to-rice-100/80 p-5 shadow-sm transition hover:shadow-md ${
-                      justLit === w.id ? 'ring-2 ring-gold-400 animate-fade-up' : ''
-                    }`}
-                    style={{ animationDelay: `${Math.min(idx, 8) * 0.06}s` }}
-                  >
-                    {/* 灯焰 */}
-                    <div className="absolute -top-3 left-5 flex flex-col items-center">
-                      <span className="h-5 w-3.5 animate-candle rounded-t-full bg-gradient-to-t from-gold-500 via-gold-300 to-rice-100 shadow-[0_0_12px_2px_rgba(201,162,39,0.55)]" />
-                      <span className="h-2.5 w-5 rounded-b-md bg-gold-600/80" />
-                    </div>
-                    <p className="mt-3 font-serif text-[15px] leading-relaxed text-ink-900">{w.text}</p>
-                    <div className="mt-4 flex items-center justify-between border-t border-sandalwood-200/60 pt-3 text-xs text-sandalwood-500">
-                      <span className="font-serif">{w.name}</span>
-                      <span className="flex items-center gap-3">
-                        <time dateTime={new Date(w.createdAt).toISOString()}>{formatAgo(w.createdAt, t)}</time>
+              <div className="mt-6 rounded-3xl border border-sandalwood-200/70 bg-gradient-to-b from-moon-50 to-rice-100/60 p-3 shadow-inner sm:p-5">
+                <WishTree wishes={onTree} onRibbonClick={setSelected} />
+              </div>
+            )}
+
+            {/* 其余心愿 */}
+            {rest.length > 0 && (
+              <div className="mt-8">
+                <h3 className="font-serif text-sm font-bold text-sandalwood-700">
+                  {t('prayer.moreWishes')}（{rest.length}）
+                </h3>
+                <ul className="mt-4 space-y-3">
+                  {rest.map((w) => (
+                    <li key={w.id} className="rounded-2xl border border-sandalwood-200/60 bg-surface p-4">
+                      <p className="font-serif text-sm leading-relaxed text-ink-900">{w.text}</p>
+                      <div className="mt-2 flex items-center justify-between text-xs text-sandalwood-500">
+                        <span className="font-serif">{w.name} · {formatAgo(w.createdAt, t)}</span>
                         {w.owner === deviceId && (
                           <button
                             type="button"
@@ -251,15 +252,41 @@ export function PrayerWall() {
                             {t('prayer.delete')}
                           </button>
                         )}
-                      </span>
-                    </div>
-                  </article>
-                ))}
+                      </div>
+                    </li>
+                  ))}
+                </ul>
               </div>
             )}
           </section>
         </div>
       </div>
+
+      {/* 飘带详情 */}
+      {selected && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4" role="dialog" aria-modal="true">
+          <div className="absolute inset-0 bg-sandalwood-950/60 backdrop-blur-sm" onClick={() => setSelected(null)} />
+          <div className="relative w-full max-w-md animate-fade-up rounded-3xl border border-gold-400/40 bg-surface p-7 shadow-2xl">
+            <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-b from-gold-300 to-gold-500 text-2xl shadow-md">
+              🪔
+            </div>
+            <p className="mt-5 text-center font-serif text-lg leading-relaxed text-ink-900">{selected.text}</p>
+            <p className="mt-4 text-center font-serif text-sm text-sandalwood-600">
+              —— {selected.name} · {formatAgo(selected.createdAt, t)}
+            </p>
+            <div className="mt-6 flex items-center justify-center gap-3">
+              <button type="button" onClick={() => setSelected(null)} className="btn-secondary !px-5 !py-2 text-sm">
+                {t('nav.closeMenu')}
+              </button>
+              {selected.owner === deviceId && (
+                <button type="button" onClick={() => void remove(selected.id)} className="btn-primary !px-5 !py-2 text-sm">
+                  {t('prayer.delete')}
+                </button>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* 轻提示 */}
       {toast && (

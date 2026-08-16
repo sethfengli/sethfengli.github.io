@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { NavLink, Link } from 'react-router-dom'
 import { useI18n } from '../../i18n'
 import { LotusMark } from '../zen/LotusMark'
+import { ThemeSwitcher } from './ThemeSwitcher'
 
 const NAV = [
   { to: '/', key: 'home' },
@@ -51,6 +52,7 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-2">
+          <ThemeSwitcher />
           <button
             type="button"
             onClick={toggleLang}

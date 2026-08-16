@@ -4,3 +4,5 @@ dist
 *.local
 *.log
 _decoded
+
+.media-jobs.json

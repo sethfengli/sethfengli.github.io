@@ -32,8 +32,20 @@ export interface ArticleDoc extends ArticleMeta {
 
 /* ---------------- 目录 ---------------- */
 import catalogJson from '../content/catalog.json'
+import photosJson from '../data/photos.json'
 
 export const CATALOG: ArticleMeta[] = catalogJson as ArticleMeta[]
+
+/** 免版权真实照片（Wikimedia Commons，本地托管 public/photos/） */
+export const PHOTO_NAMES: string[] = (photosJson as { photos?: string[] }).photos ?? []
+
+/** 按目录序稳定分配封面照片（相邻文章配图不重复） */
+export function photoForSlug(slug: string): string {
+  if (PHOTO_NAMES.length === 0) return ''
+  const idx = CATALOG.findIndex((a) => a.slug === slug)
+  if (idx < 0) return `/photos/${PHOTO_NAMES[0]}`
+  return `/photos/${PHOTO_NAMES[idx % PHOTO_NAMES.length]}`
+}
 
 export const SCHOOL_LABEL_ZH: Record<School, string> = {
   jing: '净修院',

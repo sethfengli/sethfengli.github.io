@@ -1,8 +1,9 @@
 import { useMemo, useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import { useI18n } from '../i18n'
-import { CATALOG, readingMinutes, type School } from '../lib/content'
+import { CATALOG, photoForSlug, readingMinutes, type School } from '../lib/content'
 import { ZenIllustration } from '../components/zen/ZenIllustration'
+import { CoverImage } from '../components/zen/CoverImage'
 
 const PAGE_SIZE = 24
 
@@ -78,7 +79,7 @@ export function Articles() {
               setVisible(PAGE_SIZE)
             }}
             placeholder={t('articles.searchPlaceholder')}
-            className="w-full rounded-full border border-sandalwood-300/70 bg-white py-2.5 pr-4 pl-11 font-sans text-sm text-ink-900 placeholder:text-ink-300 focus:border-gold-500 focus:ring-2 focus:ring-gold-300 focus:outline-none"
+            className="w-full rounded-full border border-sandalwood-300/70 bg-surface py-2.5 pr-4 pl-11 font-sans text-sm text-ink-900 placeholder:text-ink-300 focus:border-gold-500 focus:ring-2 focus:ring-gold-300 focus:outline-none"
           />
         </div>
         <p className="text-xs text-sandalwood-400">
@@ -97,8 +98,13 @@ export function Articles() {
           {shown.map((a) => (
             <Link key={a.slug} to={`/articles/${a.slug}`} className="card group flex flex-col overflow-hidden">
               <div className="relative overflow-hidden">
-                <ZenIllustration variant={a.illustration} className="h-32 transition-transform duration-500 group-hover:scale-105" />
-                <span className="absolute top-3 left-3 rounded-full bg-sandalwood-950/70 px-2.5 py-1 text-[10px] tracking-wider text-gold-200">
+                <CoverImage
+                  src={photoForSlug(a.slug)}
+                  alt={`${a.title} · 配图`}
+                  fallbackVariant={a.illustration}
+                  className="h-32 w-full transition-transform duration-500 group-hover:scale-105"
+                />
+                <span className="absolute top-3 left-3 rounded-full bg-sandalwood-950/70 px-2.5 py-1 text-[10px] tracking-wider text-gold-200 backdrop-blur-sm">
                   {schoolName(a.school)}
                 </span>
               </div>
@@ -155,8 +161,8 @@ function FilterChip({
       onClick={onClick}
       className={`cursor-pointer rounded-full px-4 py-1.5 text-sm transition ${
         active
-          ? 'bg-tibetan-600 font-medium text-rice-50 shadow-md shadow-tibetan-900/20'
-          : 'border border-sandalwood-300/70 bg-white text-ink-700 hover:border-tibetan-400 hover:text-tibetan-600'
+          ? 'bg-tibetan-600 font-medium text-paper shadow-md shadow-tibetan-900/20'
+          : 'border border-sandalwood-300/70 bg-surface text-ink-700 hover:border-tibetan-400 hover:text-tibetan-600'
       }`}
     >
       {children}

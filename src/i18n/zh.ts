@@ -16,6 +16,14 @@ export const zh = {
     closeMenu: '关闭菜单',
   },
 
+  theme: {
+    label: '配色主题',
+    rice: '素白 · 清净',
+    vermilion: '藏红 · 庄严',
+    celadon: '青瓷 · 琉璃',
+    night: '黛青 · 禅夜',
+  },
+
   home: {
     heroKicker: '千年钟声 · 一念心灯',
     heroTitle: '慧灯禅院',
@@ -95,10 +103,11 @@ export const zh = {
     ringAgain: '再 撞',
     bellVerse: '闻钟声，烦恼轻；智慧长，菩提生；离地狱，出火坑；愿成佛，度众生。',
     chantTitle: '圣号梵音',
-    chantDesc:
-      '以下圣号可自行轻声持诵。在线音档功能规划中，届时可于本页播放梵呗唱诵。',
-    chantNames: ['南无阿弥陀佛', '南无观世音菩萨', '南无本师释迦牟尼佛', '南无地藏王菩萨'],
-    chantHint: '点击开始持诵计数',
+    chantDesc: '点击播放，随喜持诵计数。音档选自 Wikimedia Commons 免版权素材并本地托管，署名与许可见各曲目下方。',
+    chantHint: '点击计数：随喜持诵一声',
+    play: '播放',
+    pause: '暂停',
+    audioCredit: '音档来源',
     count: '已持诵 {{n}} 声',
     resetCount: '归零',
     talksTitle: '讲经开示',
@@ -120,8 +129,10 @@ export const zh = {
     submit: '点亮心灯',
     submitting: '点亮中…',
     privacyNote: '心愿仅保存在您本机的浏览器中（localStorage），不上传任何服务器；删除或清除浏览器数据后即不可恢复。',
-    wallTitle: '愿望灯海',
-    wallEmpty: '灯海尚空，愿您燃起第一盏心灯',
+    wallTitle: '许愿树 · 飘带心愿',
+    treeHint: '心愿化作红绸飘带，系于古树枝头；点击飘带可查看或熄灭自己的心灯。',
+    moreWishes: '其余心愿',
+    wallEmpty: '古树尚无一缕红绸，愿您系上第一个心愿',
     mineOnly: '只看我的心愿',
     allWishes: '全部心愿',
     myWishes: '我的心愿',
@@ -202,6 +213,8 @@ export const zh = {
     ],
     copyrightTitle: '版权与声明',
     copyright: '本站教材源自“如说修行”网上佛学院公开内容，欢迎转载流通。页面代码按 MIT 协议开放。',
+    creditsTitle: '图片与音频素材',
+    creditsDesc: '站点照片与梵呗音档选自 Wikimedia Commons 免版权素材（CC0 / 公有领域 / CC BY），本地托管；完整署名清单：',
     techTitle: '本站技术',
     techDesc:
       'React 18 + TypeScript + Vite + Tailwind CSS，纯静态托管于 GitHub Pages。无后端、无追踪、无 Cookie；阅读偏好、心愿与签文均保存在您的浏览器中。',

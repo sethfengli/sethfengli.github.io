@@ -17,15 +17,16 @@ async function check(path, tests) {
 
 await check('/', [
   ['has root div', (t) => t.includes('id="root"')],
-  ['loads js bundle', (t) => /src="\.\/assets\/[^"]+\.js"/.test(t)],
-  ['loads css', (t) => /href="\.\/assets\/[^"]+\.css"/.test(t)],
+  ['loads js bundle', (t) => /src="\/assets\/[^"]+\.js"/.test(t)],
+  ['loads css', (t) => /href="\/assets\/[^"]+\.css"/.test(t)],
 ])
 await check('/favicon.svg', [['svg lotus', (t) => t.startsWith('<svg')]])
+await check('/404.html', [['404 fallback boots SPA', (t) => t.includes('id="root"')]])
 
 // 找到一个文章 chunk 并验证其可访问
 const res = await fetch(base + '/')
 const index = await res.text()
-const m = index.match(/src="(\.\/assets\/[^"]+\.js)"/)
+const m = index.match(/src="(\/assets\/[^"]+\.js)"/)
 if (m) {
   const url = new URL(m[1], base + '/').href
   const r2 = await fetch(url)

@@ -18,6 +18,14 @@ export const en: Dict = {
     closeMenu: 'Close menu',
   },
 
+  theme: {
+    label: 'Color theme',
+    rice: 'Rice White · Purity',
+    vermilion: 'Tibetan Red · Splendor',
+    celadon: 'Celadon · Lapis',
+    night: 'Ink Night · Zen',
+  },
+
   home: {
     heroKicker: 'Ancient bell · one mindful lamp',
     heroTitle: 'Huideng Zen Temple',
@@ -102,9 +110,11 @@ export const en: Dict = {
       'On hearing the bell, afflictions lighten; wisdom grows, bodhi sprouts; leave the hells, escape the fire-pit; may we attain Buddhahood and deliver all beings.',
     chantTitle: 'Sacred Chanting',
     chantDesc:
-      'Chant these holy names softly to yourself. Streaming audio of liturgies is planned for this page.',
-    chantNames: ['Namo Amitabha', 'Namo Guanshiyin Bodhisattva', 'Namo Shakyamuni Buddha', 'Namo Ksitigarbha Bodhisattva'],
-    chantHint: 'Tap to count your recitations',
+      'Tap to play and count your recitations. Audio is royalty-free from Wikimedia Commons, hosted locally; attribution and license are shown under each track.',
+    chantHint: 'Tap to count one recitation',
+    play: 'Play',
+    pause: 'Pause',
+    audioCredit: 'Audio source',
     count: 'Recited {{n}} times',
     resetCount: 'Reset',
     talksTitle: 'Dharma Talks',
@@ -127,8 +137,10 @@ export const en: Dict = {
     submitting: 'Lighting…',
     privacyNote:
       'Wishes are stored only in your own browser (localStorage) and never uploaded. Clearing browser data removes them permanently.',
-    wallTitle: 'Sea of Lamps',
-    wallEmpty: 'The sea is still dark — light the very first lamp',
+    wallTitle: 'Wishing Tree · Ribbon Wishes',
+    treeHint: 'Wishes become red silk ribbons tied to the old tree; tap a ribbon to view it or extinguish your own lamp.',
+    moreWishes: 'More wishes',
+    wallEmpty: 'Not a single ribbon on the old tree yet — tie your first wish',
     mineOnly: 'My wishes only',
     allWishes: 'All wishes',
     myWishes: 'My wishes',
@@ -211,6 +223,9 @@ export const en: Dict = {
     copyrightTitle: 'Copyright & Notice',
     copyright:
       'Texts originate from the public teachings of the legacy online academy and may be freely shared. The site code is open under the MIT license.',
+    creditsTitle: 'Photos & Audio',
+    creditsDesc:
+      'Photos and chanting audio are royalty-free from Wikimedia Commons (CC0 / Public domain / CC BY), hosted locally. Full attribution list:',
     techTitle: 'Technology',
     techDesc:
       'React 18 + TypeScript + Vite + Tailwind CSS, hosted statically on GitHub Pages. No backend, no tracking, no cookies; reading preferences, wishes and lots stay in your browser.',

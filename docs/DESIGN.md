@@ -74,3 +74,29 @@
 - 语义标签（header/main/nav/footer/article/blockquote）、按钮 aria-label、进度条 `role="progressbar"`；
 - 深色页脚对比度 ≥ 4.5:1；焦点可见（focus-visible ring 金色）；
 - 所有用户数据（语言、阅读偏好、心愿、签文）键名 `hdc.*`，可用浏览器开发者工具随时清除。
+
+## 6. 全站配色主题（佛教配色）
+
+站点底色支持 **4 套主题**，Header 调色按钮一键切换并记忆（`hdc.siteTheme`）：
+
+| 主题 | 意象 | 底色/主色 |
+| --- | --- | --- |
+| 素白 · 清净（默认） | 米白宣纸 | 米白 `#fbf8f0` + 檀木棕 + 藏红 |
+| 藏红 · 庄严 | 袈裟赤金 | 暖杏 `#fbf5ee` + 深赭 + 藏红 |
+| 青瓷 · 琉璃 | 佛寺琉璃瓦 | 青白 `#f3f7f4` + 松石绿 + 藏红印章 |
+| 黛青 · 禅夜 | 深夜禅堂 | 黛青 `#22252d` 暗底 + 金 + 浅檀 |
+
+实现：`@theme` 中所有色板令牌指向 `--site-*` 运行时变量，`:root[data-site-theme=…]`
+整体换肤（`src/index.css` + `src/lib/siteTheme.ts`）；深色主题按“用途映射”色阶以保证对比度；
+深底区块的浅色文字使用恒定 `--color-paper`，金色按钮文字使用恒定 `--color-ink-950`。
+阅读器 5 种正文背景独立于站点主题，互不干扰。
+
+## 7. 真实照片与音档策略
+
+- 文章封面/灵签页头图等使用 **Wikimedia Commons 免版权真实照片**（CC0/公有领域/CC BY*），
+  本地托管 `public/photos/`（约 48 张，按目录序稳定分配、相邻文章不重复），
+  抓取脚本 `scripts/fetch-photos2.mjs`，署名清单 `public/photos/CREDITS.md`；
+  加载失败自动回退到禅意 SVG 插画（`CoverImage`）。
+- 法音页梵呗与梵钟音档同样取自 Commons 并本地托管（`public/audio/`，
+  `scripts/fetch-audio.mjs`，署名 `public/audio/CREDITS.md`）；撞钟默认播放真实梵钟录音，
+  未就绪时回退 Web Audio 多泛音合成。

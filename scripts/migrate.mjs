@@ -156,7 +156,7 @@ function inlineOf($, el) {
           if (!text) continue
           const m = href.match(/([^/]+)\.html?$/i)
           const target = m ? m[1].toLowerCase() : null
-          if (target && slugSet.has(target)) segs.push({ s: text, href: `#/articles/${target}` })
+          if (target && slugSet.has(target)) segs.push({ s: text, href: `/articles/${target}` })
           else segs.push({ s: text })
         } else if (['font', 'span', 'b', 'strong', 'i', 'em', 'u', 'sub', 'sup'].includes(child.name)) {
           walk(child)
@@ -304,6 +304,26 @@ function extract(file) {
 }
 
 /* ---------- 5. 主流程 ---------- */
+/** 标题归一化：用于识别“同一篇文章的多个版本” */
+function normalizeTitle(t) {
+  return t
+    .replace(/^《/, '')
+    .replace(/》$/, '')
+    .replace(/[（(][^（）()]*[)）]/g, '')
+    .replace(/[-—–]\s*.*$/, '')
+    .replace(/[\s·、，。,:：]/g, '')
+}
+
+/** 分卷/系列/变体保护：卷X、数字分卷、“集”编号、白话/原文/文句/校会本等不同文本，不去重 */
+function isSeriesTitle(t) {
+  return (
+    /[（(][一二三四五六七八九十百\d]+[)）]$/.test(t) ||
+    /[一二三四五六七八九十\d]集$/.test(t) ||
+    /卷[一二三四五六七八九十\d]+/.test(t) ||
+    /白话|原文|文句|校会|会集|疏钞/.test(t)
+  )
+}
+
 function main() {
   slugSet = new Set(allFiles.map(slugOf))
   const catalog = []
@@ -345,14 +365,49 @@ function main() {
     }
   }
 
-  catalog.sort((a, b) => a.slug.localeCompare(b.slug, 'zh-CN'))
-  fs.writeFileSync(OUT_CATALOG, JSON.stringify(catalog, null, 1), 'utf8')
+  /* ---------- 5.1 文章去重 ----------
+     同一标题（去括号/后缀归一化后）的多个版本，仅保留字数最多者；
+     分卷系列（（一）（二）…）整体保留。被合并版本的文件一并删除。 */
+  const groups = new Map()
+  for (const c of catalog) {
+    const key = normalizeTitle(c.title)
+    if (!groups.has(key)) groups.set(key, [])
+    groups.get(key).push(c)
+  }
+  const kept = new Set()
+  const removedList = []
+  for (const [, members] of groups) {
+    if (members.length === 1) {
+      kept.add(members[0].slug)
+      continue
+    }
+    if (members.some((m) => isSeriesTitle(m.title))) {
+      for (const m of members) kept.add(m.slug)
+      continue
+    }
+    members.sort((a, b) => b.chars - a.chars)
+    kept.add(members[0].slug)
+    for (const m of members.slice(1)) {
+      removedList.push(`${m.slug}（${m.title}，${m.chars} 字）→ 并入 ${members[0].slug}`)
+    }
+  }
+  const dedupedCatalog = catalog.filter((c) => kept.has(c.slug))
+  for (const c of catalog) {
+    if (!kept.has(c.slug)) fs.rmSync(path.join(OUT_ARTICLES, `${c.slug}.json`), { force: true })
+  }
+
+  dedupedCatalog.sort((a, b) => a.slug.localeCompare(b.slug, 'zh-CN'))
+  fs.writeFileSync(OUT_CATALOG, JSON.stringify(dedupedCatalog, null, 1), 'utf8')
 
   console.log(`✔ 成功迁移 ${ok} 篇 → src/content/articles/*.json`)
-  console.log(`✔ 目录清单 ${catalog.length} 条 → src/content/catalog.json`)
+  console.log(`✔ 目录清单 ${dedupedCatalog.length} 条 → src/content/catalog.json`)
   const bySchool = { jing: 0, chan: 0, xiuxue: 0 }
-  for (const c of catalog) bySchool[c.school]++
+  for (const c of dedupedCatalog) bySchool[c.school]++
   console.log(`  净修院 ${bySchool.jing} · 禅修院 ${bySchool.chan} · 修学园地 ${bySchool.xiuxue}`)
+  if (removedList.length) {
+    console.log(`\n✔ 去重合并 ${removedList.length} 篇（保留每篇最全版本）：`)
+    for (const line of removedList) console.log('  -', line)
+  }
   if (emitMd) console.log(`✔ Markdown 归档 → docs/markdown/*.md`)
   if (failed.length) {
     console.log(`\n⚠ 跳过 ${failed.length} 篇：`)

@@ -12,11 +12,11 @@
    "inline": [
     {
      "s": "返回学院",
-     "href": "#/articles/index"
+     "href": "/articles/index"
     },
     {
      "s": "返回园地",
-     "href": "#/articles/index"
+     "href": "/articles/index"
     }
    ]
   },
@@ -558,7 +558,7 @@
     },
     {
      "s": "http://cfolu.com/001jznf.html",
-     "href": "#/articles/001jznf"
+     "href": "/articles/001jznf"
     },
     {
      "s": "。"

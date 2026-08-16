@@ -2,6 +2,7 @@ import { useCallback, useEffect, useMemo, useRef, useState, type CSSProperties }
 import { Link, useParams } from 'react-router-dom'
 import { useI18n } from '../i18n'
 import {
+  photoForSlug,
   loadArticle,
   neighborsOf,
   readingMinutes,
@@ -23,6 +24,7 @@ import {
 import { ArticleBody } from '../components/reader/ArticleBody'
 import { TranslateWidget } from '../components/reader/TranslateWidget'
 import { ZenIllustration } from '../components/zen/ZenIllustration'
+import { CoverImage } from '../components/zen/CoverImage'
 
 const THEMES: Array<{
   id: ReaderTheme
@@ -230,7 +232,7 @@ export function ArticleReader() {
           <div ref={articleRef} className="min-w-0">
             {/* 封面插画 */}
             <div className="overflow-hidden rounded-3xl shadow-md shadow-sandalwood-900/10">
-              <ZenIllustration variant={doc.illustration} className="h-44 w-full sm:h-56" />
+              <CoverImage src={photoForSlug(doc.slug)} alt={`${doc.title} · 封面`} fallbackVariant={doc.illustration} className="h-44 w-full sm:h-56" />
             </div>
 
             {/* 题头 */}

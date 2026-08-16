@@ -33,22 +33,23 @@ git push -u origin main
 - 构建（Node 22 → `npm ci` → `npm run build`）→ 上传 Pages 工件 → `actions/deploy-pages@v4` 发布；
 - 完成后访问 https://sethfengli.github.io/ 验证。
 
-## 5. 刷新不 404 的保证
+## 5. 干净 URL 与刷新不 404 的保证
 
-- 路由使用 **HashRouter**：所有页面地址形如 `https://sethfengli.github.io/#/articles/301jgj`，
-  `#` 之后不参与服务器请求，刷新/收藏/分享永不 404；
-- `vite.config.ts` 设 `base: './'`，产物用相对路径，无论部署在根域名还是子路径（如项目页
-  `user.github.io/repo/`）都可直接工作；
-- `public/404.html` 兜底把任何误入路径重定向回首页。
+- 路由使用 **BrowserRouter**：地址形如 `https://sethfengli.github.io/articles/301jgj`，无 `#`；
+- `vite.config.ts` 设 `base: '/'`；构建后自动把 `dist/index.html` 复制为 `dist/404.html`
+  （`spa-404-fallback` 插件）。GitHub Pages 对未知路径会回退渲染 `404.html`，
+  SPA 随即按 `location.pathname` 恢复路由——刷新/直达深链不 404；
+- 若要部署到项目子路径（`user.github.io/repo/`），需把 `base` 改为 `'/<repo>/'`
+  并给路由加对应 `basename`。
 
 ## 6. 验证清单
 
 - [ ] 首页 Hero、四张导览卡、精选经论正常显示，香炉可点燃
 - [ ] 打开一篇文章：目录跳转、字号/行距/5 种背景切换并刷新后仍记忆
-- [ ] 撞钟出声（Web Audio），圣号计数可持久化
-- [ ] 祈福：提交 → 灯海出现；删除自己的；导出 JSON → 清空 → 导入恢复
-- [ ] 灵签：摇签动画 → 翻牌 → 收藏 → 历史可查
-- [ ] 右上角 EN 切换全站 UI；阅读器“翻译本文”按钮可加载 Google 翻译
+- [ ] 撞钟出声（真实梵钟录音 + Web Audio 合成兜底），圣号梵音可播放、计数可持久化
+- [ ] 祈福：提交 → 心愿化作红绸飘带挂上古树；点击飘带可查看/删除；导出 JSON → 清空 → 导入恢复
+- [ ] 灵签：观音像与朱漆签筒 → 摇签 → 翻牌 → 收藏 → 历史可查
+- [ ] 右上角 EN 切换全站 UI；头部调色按钮可切换 4 套佛教配色主题；阅读器“翻译本文”可加载 Google 翻译
 - [ ] 手机宽度下导航折叠、目录抽屉、表格横向滚动正常
 
 ## 7. 常见问题

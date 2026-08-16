@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom'
 import { useI18n } from '../i18n'
-import { CATALOG } from '../lib/content'
+import { CATALOG, photoForSlug } from '../lib/content'
 import { verseOfTheMoment } from '../data/verses'
 import { ZenIllustration, type IllustrationVariant } from '../components/zen/ZenIllustration'
+import { CoverImage } from '../components/zen/CoverImage'
 import { IncenseBurner } from '../components/zen/IncenseBurner'
 import { LotusMark } from '../components/zen/LotusMark'
 
@@ -29,7 +30,7 @@ export function Home() {
   return (
     <div>
       {/* ---------- Hero ---------- */}
-      <section className="relative overflow-hidden bg-sandalwood-950 text-rice-50">
+      <section className="relative overflow-hidden bg-sandalwood-950 text-paper">
         <div className="absolute inset-0 opacity-25">
           <ZenIllustration variant="mountains" animated={false} className="h-full w-full" />
         </div>
@@ -47,7 +48,7 @@ export function Home() {
             {t('home.heroKicker')}
           </p>
           <h1
-            className="mt-5 animate-fade-up font-serif text-5xl font-bold tracking-[0.12em] text-rice-50 drop-shadow-lg sm:text-6xl"
+            className="mt-5 animate-fade-up font-serif text-5xl font-bold tracking-[0.12em] text-paper drop-shadow-lg sm:text-6xl"
             style={{ animationDelay: '0.1s' }}
           >
             {t('home.heroTitle')}
@@ -62,7 +63,7 @@ export function Home() {
             <span className="text-lg">✦</span>
           </div>
           <p
-            className="mt-6 max-w-2xl animate-fade-up font-serif text-base leading-loose text-rice-100/90 sm:text-lg"
+            className="mt-6 max-w-2xl animate-fade-up font-serif text-base leading-loose text-paper/90 sm:text-lg"
             style={{ animationDelay: '0.3s' }}
           >
             {t('home.heroSubtitle')}
@@ -71,7 +72,7 @@ export function Home() {
             <Link to="/articles" className="btn-gold">
               {t('home.ctaArticles')}
             </Link>
-            <Link to="/lots" className="btn-secondary border-rice-100/40 text-rice-100 hover:border-gold-300 hover:bg-rice-50/10 hover:text-gold-200">
+            <Link to="/lots" className="btn-secondary border-paper/40 text-paper hover:border-gold-300 hover:bg-paper/10 hover:text-gold-200">
               {t('home.ctaLots')}
             </Link>
           </div>
@@ -82,8 +83,8 @@ export function Home() {
             style={{ animationDelay: '0.5s' }}
           >
             <p className="font-serif text-sm tracking-widest text-gold-300">{t('home.dailyVerseTitle')}</p>
-            <p className="mt-3 font-serif text-lg leading-relaxed text-rice-100/95">「{verse.text}」</p>
-            <footer className="mt-2 text-right font-serif text-xs text-rice-100/60">—— {verse.source}</footer>
+            <p className="mt-3 font-serif text-lg leading-relaxed text-paper/95">「{verse.text}」</p>
+            <footer className="mt-2 text-right font-serif text-xs text-paper/60">—— {verse.source}</footer>
           </blockquote>
         </div>
       </section>
@@ -203,7 +204,7 @@ function ArticleCard({
   return (
     <Link to={`/articles/${slug}`} className="card group flex flex-col overflow-hidden">
       <div className="relative overflow-hidden">
-        <ZenIllustration variant={illustration} className="h-36 transition-transform duration-500 group-hover:scale-105" />
+        <CoverImage src={photoForSlug(slug)} alt={`${title} · 配图`} fallbackVariant={illustration} className="h-36 w-full transition-transform duration-500 group-hover:scale-105" />
         <span className="absolute right-3 bottom-3 rounded-full bg-sandalwood-950/70 px-2.5 py-1 text-[10px] tracking-wider text-gold-200">
           慧灯 · 法藏
         </span>

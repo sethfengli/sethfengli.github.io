@@ -1,4 +1,4 @@
-import { HashRouter, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { I18nProvider } from './i18n'
 import { Layout } from './components/layout/Layout'
 import { Home } from './pages/Home'
@@ -13,8 +13,8 @@ import { NotFound } from './pages/NotFound'
 export default function App() {
   return (
     <I18nProvider>
-      {/* HashRouter：GitHub Pages 纯静态托管下刷新/直达不 404 */}
-      <HashRouter>
+      {/* BrowserRouter：URL 干净无 #。GitHub Pages 上由 404.html=index.html 兜底刷新 */}
+      <BrowserRouter>
         <Routes>
           <Route element={<Layout />}>
             <Route path="/" element={<Home />} />
@@ -27,7 +27,7 @@ export default function App() {
             <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>
-      </HashRouter>
+      </BrowserRouter>
     </I18nProvider>
   )
 }

@@ -1,47 +1,37 @@
 import { useState } from 'react'
 import { useI18n } from '../i18n'
 import { TempleBell } from '../components/zen/TempleBell'
-import { ZenIllustration } from '../components/zen/ZenIllustration'
+import { ChantPlayer } from '../components/zen/ChantPlayer'
+import { CoverImage } from '../components/zen/CoverImage'
+import { CHANTS } from '../data/chants'
 import { storageGet, storageSet } from '../lib/storage'
 
 const CHANT_KEY = 'hdc.chantCount'
 
-const CHANT_ICONS = ['lotus', 'meditation', 'enso', 'incense'] as const
-
 export function Dharma() {
-  const { t, chantNames } = useI18n()
+  const { t } = useI18n()
   const [counts, setCounts] = useState<Record<number, number>>(() =>
     storageGet<Record<number, number>>(CHANT_KEY, {}),
   )
 
-  const addCount = (idx: number) => {
-    setCounts((prev) => {
-      const next = { ...prev, [idx]: (prev[idx] ?? 0) + 1 }
-      storageSet(CHANT_KEY, next)
-      return next
-    })
-  }
-
   const resetCounts = () => {
     setCounts({})
-    try {
-      localStorage.removeItem(CHANT_KEY)
-    } catch {
-      /* ignore */
-    }
+    storageSet(CHANT_KEY, {})
   }
+
+  const total = Object.values(counts).reduce((a, b) => a + b, 0)
 
   return (
     <div>
       {/* 页头 */}
-      <header className="relative overflow-hidden bg-gradient-to-b from-sandalwood-900 to-sandalwood-800 py-16 text-center text-rice-50">
-        <div className="pointer-events-none absolute inset-0 opacity-20">
-          <ZenIllustration variant="clouds" animated={false} className="h-full w-full" />
+      <header className="relative overflow-hidden bg-gradient-to-b from-sandalwood-900 to-sandalwood-800 py-16 text-center text-paper">
+        <div className="pointer-events-none absolute inset-0 opacity-15">
+          <CoverImage src="/photos/bell.jpg" alt="" fallbackVariant="clouds" className="h-full w-full" />
         </div>
         <div className="relative">
           <p className="font-serif text-sm tracking-[0.5em] text-gold-300">梵 呗</p>
           <h1 className="mt-3 font-serif text-3xl font-bold sm:text-4xl">{t('dharma.title')}</h1>
-          <p className="mt-3 font-serif text-sm text-rice-100/80">{t('dharma.subtitle')}</p>
+          <p className="mt-3 font-serif text-sm text-paper/80">{t('dharma.subtitle')}</p>
         </div>
       </header>
 
@@ -65,37 +55,29 @@ export function Dharma() {
           <span>❖</span>
         </div>
 
-        {/* 圣号持诵 */}
+        {/* 圣号梵音 */}
         <section className="mt-12">
           <h2 className="text-center font-serif text-2xl font-bold text-sandalwood-800">{t('dharma.chantTitle')}</h2>
           <p className="mx-auto mt-3 max-w-2xl text-center font-serif text-sm leading-relaxed text-ink-700">
             {t('dharma.chantDesc')}
           </p>
-          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {chantNames.map((name, i) => (
-              <button
-                key={i}
-                type="button"
-                onClick={() => addCount(i)}
-                className="card group cursor-pointer p-6 text-center"
-                title={t('dharma.chantHint')}
-              >
-                <ZenIllustration
-                  variant={CHANT_ICONS[i % CHANT_ICONS.length]}
-                  className="mx-auto h-20 w-24 rounded-xl transition-transform duration-500 group-hover:scale-105"
-                />
-                <p className="mt-4 font-serif text-lg font-bold text-sandalwood-800">{name}</p>
-                <p className="mt-2 text-xs text-sandalwood-500">
-                  {t('dharma.count', { n: counts[i] ?? 0 })}
-                </p>
-              </button>
+          <div className="mt-10 grid gap-5 sm:grid-cols-2">
+            {CHANTS.map((track, i) => (
+              <ChantPlayer key={track.id} track={track} index={i} />
             ))}
           </div>
-          <div className="mt-6 text-center">
-            <button type="button" onClick={resetCounts} className="text-xs text-sandalwood-500 underline underline-offset-4 transition hover:text-tibetan-600">
-              {t('dharma.resetCount')}
-            </button>
-          </div>
+          {total > 0 && (
+            <div className="mt-6 text-center">
+              <span className="chip">📿 {t('dharma.count', { n: total })}</span>
+              <button
+                type="button"
+                onClick={resetCounts}
+                className="ml-3 cursor-pointer text-xs text-sandalwood-500 underline underline-offset-4 transition hover:text-tibetan-600"
+              >
+                {t('dharma.resetCount')}
+              </button>
+            </div>
+          )}
         </section>
 
         <div className="zen-divider mt-14">

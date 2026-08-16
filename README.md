@@ -8,12 +8,12 @@
 
 | 模块 | 说明 |
 | --- | --- |
-| 🏠 首页 | 禅意 Hero、每日法语、禅院导览、精选经论、三大修学门径、互动香炉 |
-| 📚 佛学文库 | 309 篇经论注疏/修学开示，院系筛选 + 搜索 + 分页 |
+| 🏠 首页 | 禅意 Hero、每日法语、禅院导览、精选经论、三大修学门径、互动香炉、4 套佛教配色主题 |
+| 📚 佛学文库 | 299 篇经论注疏/修学开示（已去重），院系筛选 + 搜索 + 分页，真实照片封面 |
 | 📖 阅读器 | 目录（滚动高亮）、阅读进度条、字号/行距调节、**5 种阅读背景**（明亮/暗色/护眼米黄/羊皮纸/月光蓝），偏好与进度本地记忆 |
-| 🔔 法音宣流 | Web Audio 实时合成撞钟（闻钟偈）、圣号持诵计数、讲经音档预留位 |
-| 🪔 在线祈福 | 心愿灯海：localStorage 存储、删除自己的心愿、JSON 导出/导入备份 |
-| ✨ 观音灵签 | 32 签（签诗+解签+禅语祝福）、摇签/翻牌动画、收藏历史 |
+| 🔔 法音宣流 | 撞木击钟（真实梵钟录音 + 合成兜底，闻钟偈）、圣号梵音播放与持诵计数（免版权音档本地托管） |
+| 🪔 在线祈福 | 许愿树 + 红绸飘带心愿 + 燃香香炉：localStorage 存储、删除自己的心愿、JSON 导出/导入备份 |
+| ✨ 观音灵签 | 32 签（签诗+解签+禅语祝福）、观音像 + 朱漆描金签筒、摇签/飞签/翻牌动画、收藏历史 |
 | 🌐 中英双语 | 全站 UI 中/EN 切换 + Google 翻译小组件（“翻译本文”，零密钥、零后端） |
 
 ## 快速开始
@@ -23,7 +23,7 @@ npm install
 npm run dev        # 本地开发（http://localhost:5173）
 npm run build      # 构建到 dist/
 npm run preview    # 本地预览构建产物
-npm run migrate    # 重新执行旧站 HTML → JSON/Markdown 迁移
+npm run migrate    # 重新执行旧站 HTML → JSON/Markdown 迁移（含自动去重）`nnode scripts/fetch-photos2.mjs  # 抓取免版权真实照片（public/photos/）`nnode scripts/fetch-audio.mjs   # 抓取免版权梵呗音档（public/audio/）
 ```
 
 > 旧站原文位于仓库外的 `../My Web Sites/`，迁移脚本默认从该目录读取；如需换源，改 `scripts/migrate.mjs` 顶部的 `OLD` 路径。
@@ -63,11 +63,11 @@ npm run migrate    # 重新执行旧站 HTML → JSON/Markdown 迁移
 
 ## 技术要点
 
-- **HashRouter**：`#/articles/<slug>` 路由，GitHub Pages 刷新直达不 404。
+- **BrowserRouter**：`/articles/<slug>` 干净 URL（无 `#`）；构建时把 index.html 复制为 404.html，GitHub Pages 刷新直达不 404。
 - **内容即数据**：旧文转成结构化 JSON（标题/作者/院系/正文块/表格/站内链接），经 Vite `import.meta.glob` 按需分包——只有点开的文章才产生网络请求。
 - **无后端**：心愿、签文、阅读偏好全部 localStorage；数据层采用 Repository 接口，为未来 GitHub Issues 共享预留切换点。
-- **插画全部本地 SVG**：12 种水墨风场景（莲花/香炉/铜钟/竹林/远山/明月/禅圆/菩提叶/经卷/锦鲤/禅坐/云海），配 CSS 动画，无外部图库依赖。
-- **钟声实时合成**：Web Audio 多段泛音 + 指数衰减，无音频文件。
+- **封面用真实照片**：约 48 张 Wikimedia Commons 免版权寺庙/佛像/风景照片本地托管（`public/photos/` + CREDITS 署名），12 种水墨风 SVG 插画作回退与装饰。
+- **钟声**：真实梵钟录音（長命寺，CC BY 2.1 JP）本地托管，未就绪时回退 Web Audio 多泛音合成。
 
 ## 许可
 

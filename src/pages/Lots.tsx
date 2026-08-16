@@ -10,7 +10,10 @@ import {
   type GuanyinLot,
   type SavedLot,
 } from '../data/lots'
-import { ZenIllustration } from '../components/zen/ZenIllustration'
+import { GuanyinFigure } from '../components/zen/GuanyinFigure'
+import { LotCylinder } from '../components/zen/LotCylinder'
+import { IncenseBurner } from '../components/zen/IncenseBurner'
+import { CoverImage } from '../components/zen/CoverImage'
 
 type Phase = 'idle' | 'shaking' | 'revealed'
 
@@ -63,15 +66,16 @@ export function Lots() {
 
   return (
     <div>
-      {/* 页头 */}
-      <header className="relative overflow-hidden bg-gradient-to-b from-sandalwood-900 via-tibetan-800 to-tibetan-900 py-16 text-center text-rice-50">
-        <div className="pointer-events-none absolute inset-0 opacity-20">
-          <ZenIllustration variant="meditation" animated={false} className="h-full w-full" />
+      {/* 页头：观音像 */}
+      <header className="relative overflow-hidden bg-sandalwood-950 py-16 text-center text-paper">
+        <div className="absolute inset-0">
+          <CoverImage src="/photos/guanyin.jpg" alt="" fallbackVariant="meditation" className="h-full w-full opacity-60" />
         </div>
+        <div className="absolute inset-0 bg-gradient-to-b from-sandalwood-950/50 via-sandalwood-950/30 to-sandalwood-950/80" />
         <div className="relative">
           <p className="font-serif text-sm tracking-[0.5em] text-gold-300">观 音 法 门</p>
           <h1 className="mt-3 font-serif text-3xl font-bold sm:text-4xl">{t('lots.title')}</h1>
-          <p className="mt-3 font-serif text-sm text-rice-100/85">{t('lots.subtitle')}</p>
+          <p className="mt-3 font-serif text-sm text-paper/85">{t('lots.subtitle')}</p>
         </div>
       </header>
 
@@ -81,42 +85,33 @@ export function Lots() {
         </p>
 
         {/* ---------- 抽签区 ---------- */}
-        <section className="mt-10 flex flex-col items-center">
-          {/* 签筒 */}
-          <div className={`relative ${phase === 'shaking' ? 'lot-shaking' : ''}`}>
-            <svg viewBox="0 0 160 220" className="h-56 w-40 drop-shadow-lg">
-              {/* 签筒 */}
-              <path d="M40 30h80l8 150a20 20 0 0 1-20 20H52a20 20 0 0 1-20-20z" fill="#8a5a31" />
-              <ellipse cx={80} cy={30} rx={40} ry={10} fill="#a06f40" />
-              <ellipse cx={80} cy={28} rx={32} ry={7} fill="#3e2818" />
-              <path d="M46 60h68" stroke="#c9a227" strokeWidth={2} opacity={0.7} />
-              <path d="M44 110h72" stroke="#c9a227" strokeWidth={2} opacity={0.5} />
-              {/* 签条 */}
-              {[0, 1, 2, 3, 4, 5].map((i) => (
-                <g key={i} className={phase === 'shaking' ? 'animate-float' : ''} style={{ animationDelay: `${i * 0.12}s` }}>
-                  <rect
-                    x={62 + i * 7 - (i % 2) * 4}
-                    y={16 - (i % 3) * 5}
-                    width={5}
-                    height={46}
-                    rx={2.5}
-                    fill="#f0e3c8"
-                    stroke="#c9a227"
-                    strokeWidth={0.8}
-                    transform={`rotate(${(i - 2.5) * 6} ${62 + i * 7} 24)`}
-                  />
-                </g>
-              ))}
-              <path d="M52 200h56" stroke="#2b1a10" strokeWidth={3} opacity={0.4} />
-            </svg>
-            {phase === 'shaking' && (
-              <span className="absolute -right-6 top-2 animate-ping text-2xl" aria-hidden>✦</span>
-            )}
+        <section className="mt-10">
+          <div className="mx-auto flex max-w-3xl flex-col items-center gap-8 rounded-3xl border border-sandalwood-200/70 bg-gradient-to-b from-rice-100/80 to-rice-50 p-6 shadow-inner sm:flex-row sm:justify-center sm:gap-14 sm:p-10">
+            {/* 观音像 */}
+            <div className="flex flex-col items-center gap-2">
+              <GuanyinFigure className="h-52 w-40 text-sandalwood-700" />
+              <p className="font-serif text-xs tracking-[0.3em] text-sandalwood-400">南无观世音菩萨</p>
+            </div>
+
+            {/* 签筒 */}
+            <div className="flex flex-col items-center">
+              <LotCylinder shaking={phase === 'shaking'} revealed={phase === 'revealed'} />
+            </div>
+
+            {/* 香炉 */}
+            <div className="hidden shrink-0 lg:block">
+              <IncenseBurner bare />
+            </div>
           </div>
 
           {/* 抽签按钮 */}
           <div className="mt-8 flex flex-col items-center gap-3">
-            <button type="button" onClick={shake} disabled={phase === 'shaking'} className="btn-primary !px-10 !py-3 text-base disabled:cursor-wait disabled:opacity-70">
+            <button
+              type="button"
+              onClick={shake}
+              disabled={phase === 'shaking'}
+              className="btn-primary !px-10 !py-3 text-base disabled:cursor-wait disabled:opacity-70"
+            >
               {phase === 'shaking' ? t('lots.drawing') : phase === 'revealed' ? t('lots.again') : t('lots.draw')}
             </button>
             {phase !== 'shaking' && <p className="font-serif text-xs text-sandalwood-400">{t('lots.shakeHint')}</p>}
@@ -126,11 +121,15 @@ export function Lots() {
           {lot && (
             <div className={`flip-card mt-10 w-full max-w-2xl ${phase === 'revealed' ? 'flipped' : ''}`}>
               <div className="flip-card-inner relative min-h-[560px] w-full sm:min-h-[500px]">
-                {/* 正面：签筒背面 */}
-                <div className="flip-face absolute inset-0 flex flex-col items-center justify-center rounded-3xl border-2 border-gold-500/60 bg-gradient-to-b from-sandalwood-900 to-tibetan-900 p-10 text-center text-rice-50 shadow-xl">
-                  <ZenIllustration variant="enso" className="h-28 w-36 rounded-2xl opacity-90" animated={false} />
+                {/* 正面：朱漆签牌 */}
+                <div className="flip-face absolute inset-0 flex flex-col items-center justify-center rounded-3xl border-2 border-gold-500/70 bg-gradient-to-b from-tibetan-700 via-tibetan-800 to-tibetan-900 p-10 text-center text-paper shadow-xl">
+                  <div className="flex h-20 w-20 items-center justify-center rounded-full border-2 border-gold-400/80 font-serif text-3xl text-gold-300">
+                    卍
+                  </div>
                   <p className="mt-6 font-serif text-2xl tracking-[0.5em] text-gold-300">观音灵签</p>
-                  <p className="mt-3 font-serif text-sm text-rice-100/70">第 {lot.id} 签</p>
+                  <p className="mt-3 font-serif text-sm text-paper/70">第 {lot.id} 签</p>
+                  <div className="mt-8 h-px w-40 bg-gradient-to-r from-transparent via-gold-400/70 to-transparent" />
+                  <p className="mt-4 font-serif text-xs tracking-widest text-paper/50">如 意 翻 牌 · 观 照 自 心</p>
                 </div>
                 {/* 背面：签文 */}
                 <div className="flip-back flip-face absolute inset-0 rounded-3xl border border-sandalwood-200 bg-rice-50 p-7 shadow-xl sm:p-10">
@@ -250,7 +249,7 @@ function LotContent({ lot, saved, onSave }: { lot: GuanyinLot; saved: boolean; o
       {/* 禅语祝福 */}
       <div className="mt-6 rounded-2xl bg-tibetan-50 px-6 py-5">
         <p className="font-serif text-sm font-bold tracking-widest text-tibetan-600">{t('lots.blessingLabel')}</p>
-        <p className="mt-2 font-serif text-base leading-relaxed text-tibetan-800">{lot.blessing}</p>
+        <p className="mt-2 font-serif text-base leading-relaxed text-tibetan-600">{lot.blessing}</p>
       </div>
 
       <button type="button" onClick={onSave} disabled={saved} className={`mt-6 ${saved ? 'btn-secondary !cursor-default opacity-60' : 'btn-gold'}`}>

@@ -5,65 +5,74 @@
    配色：檀木棕 · 藏红 · 金 · 米白 · 墨 · 月光蓝
    ============================================================ */
 @theme {
-  /* 檀木棕 sandalwood — 主色调 */
-  --color-sandalwood-50: #f9f3ea;
-  --color-sandalwood-100: #f0e4d2;
-  --color-sandalwood-200: #e1c9a8;
-  --color-sandalwood-300: #cfa97d;
-  --color-sandalwood-400: #b98a57;
-  --color-sandalwood-500: #a06f40;
-  --color-sandalwood-600: #8a5a31;
-  --color-sandalwood-700: #6b4425;
-  --color-sandalwood-800: #543620;
-  --color-sandalwood-900: #3e2818;
-  --color-sandalwood-950: #2b1a10;
+  /* ============================================================
+     色板令牌：全部指向 --site-* 运行时变量，
+     由 :root[data-site-theme=...] 切换整套佛教配色主题。
+     ============================================================ */
+  --color-rice-50: var(--site-rice-50);
+  --color-rice-100: var(--site-rice-100);
+  --color-rice-200: var(--site-rice-200);
+  --color-rice-300: var(--site-rice-300);
 
-  /* 藏红 tibetan — 强调色 */
-  --color-tibetan-50: #faf0ef;
-  --color-tibetan-100: #f3dcda;
-  --color-tibetan-200: #e6b9b5;
-  --color-tibetan-300: #d48d88;
-  --color-tibetan-400: #bd5f5a;
-  --color-tibetan-500: #a33f3b;
-  --color-tibetan-600: #8c2f39;
-  --color-tibetan-700: #72242e;
-  --color-tibetan-800: #5b1c26;
-  --color-tibetan-900: #45151d;
-  --color-tibetan-950: #2e0c12;
+  --color-sandalwood-50: var(--site-sandalwood-50);
+  --color-sandalwood-100: var(--site-sandalwood-100);
+  --color-sandalwood-200: var(--site-sandalwood-200);
+  --color-sandalwood-300: var(--site-sandalwood-300);
+  --color-sandalwood-400: var(--site-sandalwood-400);
+  --color-sandalwood-500: var(--site-sandalwood-500);
+  --color-sandalwood-600: var(--site-sandalwood-600);
+  --color-sandalwood-700: var(--site-sandalwood-700);
+  --color-sandalwood-800: var(--site-sandalwood-800);
+  --color-sandalwood-900: var(--site-sandalwood-900);
+  --color-sandalwood-950: var(--site-sandalwood-950);
 
-  /* 金 gold — 点缀色 */
-  --color-gold-50: #fbf7e8;
-  --color-gold-100: #f5edcc;
-  --color-gold-200: #ecdc9f;
-  --color-gold-300: #e0c76c;
-  --color-gold-400: #d4b24a;
-  --color-gold-500: #c9a227;
-  --color-gold-600: #a8871f;
-  --color-gold-700: #866a17;
-  --color-gold-800: #6a5312;
-  --color-gold-900: #4f3d0e;
+  --color-tibetan-50: var(--site-tibetan-50);
+  --color-tibetan-100: var(--site-tibetan-100);
+  --color-tibetan-200: var(--site-tibetan-200);
+  --color-tibetan-300: var(--site-tibetan-300);
+  --color-tibetan-400: var(--site-tibetan-400);
+  --color-tibetan-500: var(--site-tibetan-500);
+  --color-tibetan-600: var(--site-tibetan-600);
+  --color-tibetan-700: var(--site-tibetan-700);
+  --color-tibetan-800: var(--site-tibetan-800);
+  --color-tibetan-900: var(--site-tibetan-900);
+  --color-tibetan-950: var(--site-tibetan-950);
 
-  /* 米白 rice — 底色 */
-  --color-rice-50: #fbf8f0;
-  --color-rice-100: #f6f0e2;
-  --color-rice-200: #efe6d0;
-  --color-rice-300: #e3d5b8;
+  --color-gold-50: var(--site-gold-50);
+  --color-gold-100: var(--site-gold-100);
+  --color-gold-200: var(--site-gold-200);
+  --color-gold-300: var(--site-gold-300);
+  --color-gold-400: var(--site-gold-400);
+  --color-gold-500: var(--site-gold-500);
+  --color-gold-600: var(--site-gold-600);
+  --color-gold-700: var(--site-gold-700);
+  --color-gold-800: var(--site-gold-800);
+  --color-gold-900: var(--site-gold-900);
 
-  /* 墨 ink — 文字 */
-  --color-ink-900: #2b2620;
-  --color-ink-700: #4a443c;
-  --color-ink-500: #6b645a;
-  --color-ink-300: #a39c90;
-  --color-ink-100: #d6d1c7;
+  --color-moon-50: var(--site-moon-50);
+  --color-moon-100: var(--site-moon-100);
+  --color-moon-200: var(--site-moon-200);
+  --color-moon-300: var(--site-moon-300);
+  --color-moon-500: var(--site-moon-500);
+  --color-moon-700: var(--site-moon-700);
+  --color-moon-900: var(--site-moon-900);
 
-  /* 月光蓝 moon — 夜间阅读 */
-  --color-moon-50: #f2f6fb;
-  --color-moon-100: #e4ecf5;
-  --color-moon-200: #c9d9ea;
-  --color-moon-300: #a3bfdc;
-  --color-moon-500: #5f87b5;
-  --color-moon-700: #3a5a82;
-  --color-moon-900: #1c2836;
+  --color-ink-900: var(--site-ink-900);
+  --color-ink-700: var(--site-ink-700);
+  --color-ink-500: var(--site-ink-500);
+  --color-ink-300: var(--site-ink-300);
+  --color-ink-100: var(--site-ink-100);
+  /* 恒定深墨：金色按钮文字等需全主题可读 */
+  --color-ink-950: #171512;
+
+  /* 恒定“纸色”：深色区块（页脚/主按钮/横幅）上的浅色文字 */
+  --color-paper: #fbf8f0;
+
+  /* 强调底色上的文字（暗色主题下反转为深字） */
+  --color-on-accent: var(--site-on-accent);
+
+  /* 卡片表面色（随主题） */
+  --color-surface: var(--site-surface);
 
   /* 字体 */
   --font-serif:
@@ -194,6 +203,226 @@
   }
 }
 
+/* ============================================================
+   佛教配色主题（4 套，由 Header 切换并记忆）
+   素白·清净（默认） / 藏红·庄严 / 青瓷·琉璃 / 黛青·禅夜
+   ============================================================ */
+:root,
+:root[data-site-theme='rice'] {
+  --site-rice-50: #fbf8f0;
+  --site-rice-100: #f6f0e2;
+  --site-rice-200: #efe6d0;
+  --site-rice-300: #e3d5b8;
+  --site-sandalwood-50: #f9f3ea;
+  --site-sandalwood-100: #f0e4d2;
+  --site-sandalwood-200: #e1c9a8;
+  --site-sandalwood-300: #cfa97d;
+  --site-sandalwood-400: #b98a57;
+  --site-sandalwood-500: #a06f40;
+  --site-sandalwood-600: #8a5a31;
+  --site-sandalwood-700: #6b4425;
+  --site-sandalwood-800: #543620;
+  --site-sandalwood-900: #3e2818;
+  --site-sandalwood-950: #2b1a10;
+  --site-tibetan-50: #faf0ef;
+  --site-tibetan-100: #f3dcda;
+  --site-tibetan-200: #e6b9b5;
+  --site-tibetan-300: #d48d88;
+  --site-tibetan-400: #bd5f5a;
+  --site-tibetan-500: #a33f3b;
+  --site-tibetan-600: #8c2f39;
+  --site-tibetan-700: #72242e;
+  --site-tibetan-800: #5b1c26;
+  --site-tibetan-900: #45151d;
+  --site-tibetan-950: #2e0c12;
+  --site-gold-50: #fbf7e8;
+  --site-gold-100: #f5edcc;
+  --site-gold-200: #ecdc9f;
+  --site-gold-300: #e0c76c;
+  --site-gold-400: #d4b24a;
+  --site-gold-500: #c9a227;
+  --site-gold-600: #a8871f;
+  --site-gold-700: #866a17;
+  --site-gold-800: #6a5312;
+  --site-gold-900: #4f3d0e;
+  --site-moon-50: #f2f6fb;
+  --site-moon-100: #e4ecf5;
+  --site-moon-200: #c9d9ea;
+  --site-moon-300: #a3bfdc;
+  --site-moon-500: #5f87b5;
+  --site-moon-700: #3a5a82;
+  --site-moon-900: #1c2836;
+  --site-ink-900: #2b2620;
+  --site-ink-700: #4a443c;
+  --site-ink-500: #6b645a;
+  --site-ink-300: #a39c90;
+  --site-ink-100: #d6d1c7;
+  --site-surface: #ffffff;
+  --site-on-accent: #fbf8f0;
+}
+
+/* —— 藏红 · 庄严（袈裟赤金） —— */
+:root[data-site-theme='vermilion'] {
+  --site-rice-50: #fbf5ee;
+  --site-rice-100: #f5e9d8;
+  --site-rice-200: #ecdcc0;
+  --site-rice-300: #e2ccab;
+  --site-sandalwood-50: #f8f1e7;
+  --site-sandalwood-100: #efdfc9;
+  --site-sandalwood-200: #e2c6a3;
+  --site-sandalwood-300: #d0a67a;
+  --site-sandalwood-400: #ba8656;
+  --site-sandalwood-500: #a06a3d;
+  --site-sandalwood-600: #85502b;
+  --site-sandalwood-700: #6a3d21;
+  --site-sandalwood-800: #522e19;
+  --site-sandalwood-900: #3d2212;
+  --site-sandalwood-950: #2a170c;
+  --site-tibetan-50: #faf1ef;
+  --site-tibetan-100: #f4ded9;
+  --site-tibetan-200: #e9bcb3;
+  --site-tibetan-300: #d99489;
+  --site-tibetan-400: #c36a60;
+  --site-tibetan-500: #ab4a41;
+  --site-tibetan-600: #93363a;
+  --site-tibetan-700: #782a30;
+  --site-tibetan-800: #5f2127;
+  --site-tibetan-900: #48191e;
+  --site-tibetan-950: #301014;
+  --site-gold-50: #fbf6e4;
+  --site-gold-100: #f6ecc6;
+  --site-gold-200: #eeda92;
+  --site-gold-300: #e3c55e;
+  --site-gold-400: #d8b03c;
+  --site-gold-500: #c9a227;
+  --site-gold-600: #a8871f;
+  --site-gold-700: #866a17;
+  --site-gold-800: #6a5312;
+  --site-gold-900: #4f3d0e;
+  --site-moon-50: #f4f1f6;
+  --site-moon-100: #e9e2ed;
+  --site-moon-200: #d3c6dc;
+  --site-moon-300: #b09cc0;
+  --site-moon-500: #7d6490;
+  --site-moon-700: #5a4570;
+  --site-moon-900: #32243f;
+  --site-ink-900: #33271f;
+  --site-ink-700: #53443a;
+  --site-ink-500: #75645a;
+  --site-ink-300: #ac9d91;
+  --site-ink-100: #dcd3c8;
+  --site-surface: #fffdfa;
+  --site-on-accent: #fdf8ef;
+}
+
+/* —— 青瓷 · 琉璃（佛寺琉璃瓦） —— */
+:root[data-site-theme='celadon'] {
+  --site-rice-50: #f3f7f4;
+  --site-rice-100: #e6efea;
+  --site-rice-200: #d4e3db;
+  --site-rice-300: #bcd2c6;
+  --site-sandalwood-50: #eef4f1;
+  --site-sandalwood-100: #ddeae3;
+  --site-sandalwood-200: #c2d8cc;
+  --site-sandalwood-300: #9ec0ae;
+  --site-sandalwood-400: #79a790;
+  --site-sandalwood-500: #5c8a74;
+  --site-sandalwood-600: #47705d;
+  --site-sandalwood-700: #3a5b4b;
+  --site-sandalwood-800: #2d473b;
+  --site-sandalwood-900: #22362d;
+  --site-sandalwood-950: #182620;
+  --site-tibetan-50: #faf0ef;
+  --site-tibetan-100: #f3dcda;
+  --site-tibetan-200: #e6b9b5;
+  --site-tibetan-300: #d48d88;
+  --site-tibetan-400: #bd5f5a;
+  --site-tibetan-500: #a33f3b;
+  --site-tibetan-600: #8c2f39;
+  --site-tibetan-700: #72242e;
+  --site-tibetan-800: #5b1c26;
+  --site-tibetan-900: #45151d;
+  --site-tibetan-950: #2e0c12;
+  --site-gold-50: #faf8ea;
+  --site-gold-100: #f3efcf;
+  --site-gold-200: #e8dfa3;
+  --site-gold-300: #d9c972;
+  --site-gold-400: #cbb34c;
+  --site-gold-500: #c9a227;
+  --site-gold-600: #a8871f;
+  --site-gold-700: #866a17;
+  --site-gold-800: #6a5312;
+  --site-gold-900: #4f3d0e;
+  --site-moon-50: #f1f6f8;
+  --site-moon-100: #e2edf2;
+  --site-moon-200: #c5dce6;
+  --site-moon-300: #9cc0d2;
+  --site-moon-500: #5b8ba6;
+  --site-moon-700: #3c6078;
+  --site-moon-900: #213a4b;
+  --site-ink-900: #25312b;
+  --site-ink-700: #3f4c45;
+  --site-ink-500: #64706a;
+  --site-ink-300: #9faaa4;
+  --site-ink-100: #d3dad6;
+  --site-surface: #ffffff;
+  --site-on-accent: #fbf8f0;
+}
+
+/* —— 黛青 · 禅夜（暗色，按用途映射以保证对比度） —— */
+:root[data-site-theme='night'] {
+  --site-rice-50: #22252d;
+  --site-rice-100: #2a2e38;
+  --site-rice-200: #353a46;
+  --site-rice-300: #464d5c;
+  --site-sandalwood-50: #292521;
+  --site-sandalwood-100: #322e28;
+  --site-sandalwood-200: #423c33;
+  --site-sandalwood-300: #5c5345;
+  --site-sandalwood-400: #7c705c;
+  --site-sandalwood-500: #a08f74;
+  --site-sandalwood-600: #c0ac8d;
+  --site-sandalwood-700: #d9c5a4;
+  --site-sandalwood-800: #ecd9b8;
+  --site-sandalwood-900: #3e2818;
+  --site-sandalwood-950: #2b1a10;
+  --site-tibetan-50: #3a2324;
+  --site-tibetan-100: #4a2c2e;
+  --site-tibetan-200: #5f3a3d;
+  --site-tibetan-300: #7b4a4e;
+  --site-tibetan-400: #9d5d62;
+  --site-tibetan-500: #bd6f74;
+  --site-tibetan-600: #d48d88;
+  --site-tibetan-700: #e6b9b5;
+  --site-tibetan-800: #5b1c26;
+  --site-tibetan-900: #45151d;
+  --site-tibetan-950: #2e0c12;
+  --site-gold-50: #3a3425;
+  --site-gold-100: #463e29;
+  --site-gold-200: #ecdc9f;
+  --site-gold-300: #e0c76c;
+  --site-gold-400: #d4b24a;
+  --site-gold-500: #c9a227;
+  --site-gold-600: #d4b24a;
+  --site-gold-700: #e0c76c;
+  --site-gold-800: #ecdc9f;
+  --site-gold-900: #f5edcc;
+  --site-moon-50: #2c3547;
+  --site-moon-100: #33405a;
+  --site-moon-200: #43557a;
+  --site-moon-300: #5f7ca8;
+  --site-moon-500: #8aa8d4;
+  --site-moon-700: #a3bfdc;
+  --site-moon-900: #1c2836;
+  --site-ink-900: #e9e6dd;
+  --site-ink-700: #c9c4b6;
+  --site-ink-500: #9a9587;
+  --site-ink-300: #6d685b;
+  --site-ink-100: #474338;
+  --site-surface: #1e2128;
+  --site-on-accent: #171512;
+}
+
 /* ---------- 基础 ---------- */
 html {
   scroll-behavior: smooth;
@@ -222,16 +451,16 @@ body {
 /* ---------- 组件样式 ---------- */
 @layer components {
   .btn-primary {
-    @apply inline-flex cursor-pointer items-center justify-center gap-2 rounded-full bg-tibetan-600 px-6 py-2.5 font-sans text-sm font-medium text-rice-50 shadow-md shadow-tibetan-900/20 transition hover:bg-tibetan-700 hover:shadow-lg focus-visible:ring-2 focus-visible:ring-gold-400 focus-visible:outline-none active:scale-[0.98];
+    @apply inline-flex cursor-pointer items-center justify-center gap-2 rounded-full bg-tibetan-600 px-6 py-2.5 font-sans text-sm font-medium text-on-accent shadow-md shadow-tibetan-900/20 transition hover:bg-tibetan-700 hover:shadow-lg focus-visible:ring-2 focus-visible:ring-gold-400 focus-visible:outline-none active:scale-[0.98];
   }
   .btn-secondary {
     @apply inline-flex cursor-pointer items-center justify-center gap-2 rounded-full border border-sandalwood-400/60 bg-transparent px-6 py-2.5 font-sans text-sm font-medium text-sandalwood-700 transition hover:border-sandalwood-600 hover:bg-sandalwood-50 focus-visible:ring-2 focus-visible:ring-gold-400 focus-visible:outline-none active:scale-[0.98];
   }
   .btn-gold {
-    @apply inline-flex cursor-pointer items-center justify-center gap-2 rounded-full bg-gold-500 px-6 py-2.5 font-sans text-sm font-semibold text-ink-900 shadow-md shadow-gold-600/30 transition hover:bg-gold-400 focus-visible:ring-2 focus-visible:ring-gold-600 focus-visible:outline-none active:scale-[0.98];
+    @apply inline-flex cursor-pointer items-center justify-center gap-2 rounded-full bg-gold-500 px-6 py-2.5 font-sans text-sm font-semibold text-ink-950 shadow-md shadow-gold-600/30 transition hover:bg-gold-400 focus-visible:ring-2 focus-visible:ring-gold-600 focus-visible:outline-none active:scale-[0.98];
   }
   .card {
-    @apply rounded-2xl border border-sandalwood-200/70 bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md;
+    @apply rounded-2xl border border-sandalwood-200/70 bg-surface shadow-sm transition hover:-translate-y-0.5 hover:shadow-md;
   }
   .chip {
     @apply inline-flex items-center gap-1 rounded-full border border-sandalwood-300/70 bg-sandalwood-50 px-3 py-1 text-xs text-sandalwood-700;
@@ -458,6 +687,62 @@ body {
   transform: rotateY(180deg);
 }
 
+/* 撞木击钟 */
+.bell-striker {
+  animation: striker-hit 1.15s cubic-bezier(0.45, 0.05, 0.55, 0.95) 1 both;
+  transform-origin: 330px 60px;
+}
+@keyframes striker-hit {
+  0% { transform: rotate(0deg); }
+  26% { transform: rotate(-15deg); }
+  46% { transform: rotate(11deg); }
+  66% { transform: rotate(-8deg); }
+  86% { transform: rotate(5deg); }
+  100% { transform: rotate(0deg); }
+}
+
+/* “嗡”字余韵 *//* 签支飞升出筒 */
+.stick-fly {
+  animation: stick-fly 1.15s cubic-bezier(0.3, 0.7, 0.4, 1) both;
+}
+@keyframes stick-fly {
+  0% { transform: translate(0, 0) rotate(0deg); opacity: 1; }
+  100% { transform: translate(-46px, -190px) rotate(16deg); opacity: 0; }
+}
+/* 许愿树红绸飘带 */
+.wish-ribbon {
+  transform-origin: top center;
+  animation: ribbon-sway 5.5s ease-in-out infinite;
+}
+.wish-ribbon:nth-child(odd) {
+  animation-delay: -2.6s;
+}
+@keyframes ribbon-sway {
+  0%, 100% { transform: rotate(var(--rot)) translateX(0); }
+  50% { transform: rotate(calc(var(--rot) + 2.6deg)) translateX(2px); }
+}
+.ribbon-strip {
+  writing-mode: vertical-rl;
+  letter-spacing: 0.12em;
+  max-height: 96px;
+  overflow: hidden;
+  border: 1px solid rgba(201, 162, 39, 0.55);
+}
+.ribbon-tail {
+  width: 14px;
+  height: 12px;
+  margin-left: -4px;
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+}
+
+.om-float {
+  animation: om-float 2.4s ease-out both;
+}
+@keyframes om-float {
+  0% { opacity: 0; transform: translate(-50%, 8px) scale(0.7); }
+  18% { opacity: 1; }
+  100% { opacity: 0; transform: translate(-50%, -110px) scale(1.35); }
+}
 /* Google 翻译工具条美化 */
 .goog-te-banner-frame,
 .goog-logo-link {

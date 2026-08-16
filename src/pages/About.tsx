@@ -3,22 +3,22 @@ import { useI18n } from '../i18n'
 import { ZenIllustration } from '../components/zen/ZenIllustration'
 
 export function About() {
-  const { t } = useI18n()
+  const { t, arr } = useI18n()
   const [openFaq, setOpenFaq] = useState<number | null>(0)
-  const faqs = t('about.faq') as unknown as Array<{ q: string; a: string }>
-  const heritage = t('about.heritage') as unknown as Array<{ title: string; desc: string }>
+  const faqs = arr('about.faq') as Array<{ q: string; a: string }>
+  const heritage = arr('about.heritage') as Array<{ title: string; desc: string }>
 
   return (
     <div>
       {/* 页头 */}
-      <header className="relative overflow-hidden bg-gradient-to-b from-sandalwood-900 to-sandalwood-800 py-16 text-center text-rice-50">
+      <header className="relative overflow-hidden bg-gradient-to-b from-sandalwood-900 to-sandalwood-800 py-16 text-center text-paper">
         <div className="pointer-events-none absolute inset-0 opacity-20">
           <ZenIllustration variant="bamboo" animated={false} className="h-full w-full" />
         </div>
         <div className="relative">
           <p className="font-serif text-sm tracking-[0.5em] text-gold-300">山 门</p>
           <h1 className="mt-3 font-serif text-3xl font-bold sm:text-4xl">{t('about.title')}</h1>
-          <p className="mt-3 font-serif text-sm text-rice-100/85">{t('about.subtitle')}</p>
+          <p className="mt-3 font-serif text-sm text-paper/85">{t('about.subtitle')}</p>
         </div>
       </header>
 
@@ -82,7 +82,7 @@ export function About() {
           </h2>
           <div className="mt-6 space-y-3">
             {faqs.map((f, i) => (
-              <div key={i} className="overflow-hidden rounded-2xl border border-sandalwood-200/70 bg-white">
+              <div key={i} className="overflow-hidden rounded-2xl border border-sandalwood-200/70 bg-surface">
                 <button
                   type="button"
                   onClick={() => setOpenFaq(openFaq === i ? null : i)}
@@ -111,6 +111,19 @@ export function About() {
           <div className="rounded-2xl border border-sandalwood-200/70 bg-rice-100/60 p-6">
             <h3 className="font-serif font-bold text-sandalwood-800">🛠 {t('about.techTitle')}</h3>
             <p className="mt-3 font-serif text-sm leading-relaxed text-ink-700">{t('about.techDesc')}</p>
+          </div>
+          <div className="rounded-2xl border border-sandalwood-200/70 bg-rice-100/60 p-6 sm:col-span-2">
+            <h3 className="font-serif font-bold text-sandalwood-800">🖼 {t('about.creditsTitle')}</h3>
+            <p className="mt-3 font-serif text-sm leading-relaxed text-ink-700">{t('about.creditsDesc')}</p>
+            <p className="mt-2 font-sans text-sm">
+              <a href="/photos/CREDITS.md" target="_blank" rel="noreferrer" className="text-tibetan-600 underline underline-offset-4 hover:text-tibetan-500">
+                📷 public/photos/CREDITS.md
+              </a>
+              <span className="mx-3 text-sandalwood-300">·</span>
+              <a href="/audio/CREDITS.md" target="_blank" rel="noreferrer" className="text-tibetan-600 underline underline-offset-4 hover:text-tibetan-500">
+                🎵 public/audio/CREDITS.md
+              </a>
+            </p>
           </div>
         </section>
 

@@ -1,14 +1,5 @@
 [
  {
-  "slug": "000jxdg",
-  "title": "教学大纲",
-  "author": "",
-  "school": "jing",
-  "illustration": "moon",
-  "excerpt": "学佛就是修行，而且是如佛所说地修行。",
-  "chars": 7176
- },
- {
   "slug": "000jxdg-chan",
   "title": "教学大纲",
   "author": "",
@@ -27,24 +18,6 @@
   "chars": 86707
  },
  {
-  "slug": "001juezhichan-jjb",
-  "title": "觉知禅（精简版）",
-  "author": "湛然",
-  "school": "jing",
-  "illustration": "enso",
-  "excerpt": "其修也，有从入之阶；其证也，有自得之实。",
-  "chars": 70322
- },
- {
-  "slug": "001juezhichan-jjb-2018jan",
-  "title": "觉知禅（精简版）",
-  "author": "湛然",
-  "school": "jing",
-  "illustration": "enso",
-  "excerpt": "其修也，有从入之阶；其证也，有自得之实。",
-  "chars": 65863
- },
- {
   "slug": "001jznf",
   "title": "觉知念佛",
   "author": "湛然",
@@ -52,15 +25,6 @@
   "illustration": "moon",
   "excerpt": "其修也，有从入之阶；其证也，有自得之实。",
   "chars": 95548
- },
- {
-  "slug": "001jznf-jjb",
-  "title": "觉知念佛（精简版）",
-  "author": "湛然",
-  "school": "jing",
-  "illustration": "meditation",
-  "excerpt": "其修也，有从入之阶；其证也，有自得之实。",
-  "chars": 43308
  },
  {
   "slug": "001zyxuefo",
@@ -558,24 +522,6 @@
   "chars": 27530
  },
  {
-  "slug": "056chengzanjtfsj",
-  "title": "称赞净土佛摄受经",
-  "author": "",
-  "school": "xiuxue",
-  "illustration": "sutra",
-  "excerpt": "如是我闻：一时，薄伽梵在室罗筏，住誓多林给孤独园，与大苾刍（比丘）众，千二百五十人俱。一切皆是尊宿声闻，众望所识，大阿罗汉。其名曰：尊者舍利子、摩诃目揵连、摩诃迦葉、阿泥律陀。如是",
-  "chars": 4888
- },
- {
-  "slug": "056chengzanjtfsj-langdu",
-  "title": "称赞净土佛摄受经（朗读）",
-  "author": "",
-  "school": "xiuxue",
-  "illustration": "mountains",
-  "excerpt": "如是我闻：一时，薄伽梵在室罗筏，住誓多林给孤独园，与大苾刍众，千二百五十人俱。一切皆是尊宿声闻，众望所识，大阿罗汉。其名曰：尊者舍利子、摩诃目揵连、摩诃迦葉、阿泥律陀。如是等诸大声",
-  "chars": 4879
- },
- {
   "slug": "057yunhefan",
   "title": "云何梵",
   "author": "",
@@ -1026,15 +972,6 @@
   "chars": 1464
  },
  {
-  "slug": "107jiayanlu",
-  "title": "王凤仪嘉言录",
-  "author": "",
-  "school": "xiuxue",
-  "illustration": "incense",
-  "excerpt": "编者按：如果读者读到这里感到困难，建议先阅读《心、自性、如来藏》一文，再来阅读本篇，即当事半功倍。",
-  "chars": 49
- },
- {
   "slug": "108lettinggo",
   "title": "圣多纳情绪释放法（视频）",
   "author": "",
@@ -1312,15 +1249,6 @@
   "illustration": "lotus",
   "excerpt": "彼佛及其人民，寿命无量无边阿僧祇劫。",
   "chars": 74
- },
- {
-  "slug": "143lazhunanti",
-  "title": "蜡烛难题",
-  "author": "明德",
-  "school": "xiuxue",
-  "illustration": "bell",
-  "excerpt": "你利用了所有的条件条件吗？",
-  "chars": 158
  },
  {
   "slug": "143lazhunanti-1",
@@ -1665,15 +1593,6 @@
   "chars": 2286
  },
  {
-  "slug": "183canjiunianfo-dayi-old",
-  "title": "参究念佛答疑",
-  "author": "湛然",
-  "school": "xiuxue",
-  "illustration": "lotus",
-  "excerpt": "答：念佛时不夹杂妄念——念佛之念相续成片。印光大师云：“念佛不能纯一，必须制心不令外驰，久久自会纯一。成片者，纯一无杂之谓也。”（《印光法师文钞·复马契西居士书四》）憨山大师云：“",
-  "chars": 2277
- },
- {
   "slug": "184danbanhange",
   "title": "担板汉歌（注释）",
   "author": "",
@@ -1978,15 +1897,6 @@
   "illustration": "enso",
   "excerpt": "南无本师释迦牟尼佛（三称）",
   "chars": 6306
- },
- {
-  "slug": "212jingangjing-dusong-frame",
-  "title": "金刚经（读诵）",
-  "author": "",
-  "school": "xiuxue",
-  "illustration": "sutra",
-  "excerpt": "Your browser does not support inline frames or is currently configured not to display inli",
-  "chars": 100
  },
  {
   "slug": "213jinggangjing-jingwen",
