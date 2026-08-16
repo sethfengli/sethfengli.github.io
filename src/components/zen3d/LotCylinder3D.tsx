@@ -97,7 +97,7 @@ export function LotCylinder3D({ shaking, revealed, onShake, fallback }: Props) {
     void import('three').then((THREE) => {
       if (disposed || !canvas.isConnected) return
       try {
-        stage = createStage(THREE, canvas, { distance: 13, autoRotate: 0.16, phi: 1.05 })
+        stage = createStage(THREE, canvas, { distance: 11, autoRotate: 0.16, phi: 1.05 })
       } catch {
         setFailed(true)
         return
@@ -109,60 +109,63 @@ export function LotCylinder3D({ shaking, revealed, onShake, fallback }: Props) {
       tex.colorSpace = THREE.SRGBColorSpace
       tex.anisotropy = 8
       const group = new THREE.Group()
+      group.scale.setScalar(0.86)
       const body = new THREE.Mesh(
-        new THREE.CylinderGeometry(2.6, 2.6, 6, 64),
+        new THREE.CylinderGeometry(2.15, 2.15, 5.4, 64),
         new THREE.MeshStandardMaterial({ map: tex, roughness: 0.4, metalness: 0.15 }),
       )
       group.add(body)
       // 筒口
       const rim = new THREE.Mesh(
-        new THREE.TorusGeometry(2.6, 0.18, 16, 64),
+        new THREE.TorusGeometry(2.15, 0.16, 16, 64),
         new THREE.MeshStandardMaterial({ color: 0xd4a92c, roughness: 0.3, metalness: 0.7 }),
       )
       rim.rotation.x = Math.PI / 2
-      rim.position.y = 3
+      rim.position.y = 2.7
       group.add(rim)
       const cap = new THREE.Mesh(
-        new THREE.CircleGeometry(2.42, 64),
+        new THREE.CircleGeometry(2.0, 64),
         new THREE.MeshStandardMaterial({ color: 0x461713, roughness: 0.9 }),
       )
       cap.rotation.x = -Math.PI / 2
-      cap.position.y = 3.02
+      cap.position.y = 2.72
       group.add(cap)
       // 底座
       const base1 = new THREE.Mesh(
-        new THREE.CylinderGeometry(2.95, 3.2, 0.55, 64),
+        new THREE.CylinderGeometry(2.45, 2.65, 0.5, 64),
         new THREE.MeshStandardMaterial({ color: 0xb38620, roughness: 0.35, metalness: 0.6 }),
       )
-      base1.position.y = -3.25
+      base1.position.y = -2.9
       group.add(base1)
       const base2 = new THREE.Mesh(
-        new THREE.CylinderGeometry(3.35, 3.55, 0.4, 64),
+        new THREE.CylinderGeometry(2.75, 2.9, 0.36, 64),
         new THREE.MeshStandardMaterial({ color: 0x8c6619, roughness: 0.35, metalness: 0.6 }),
       )
-      base2.position.y = -3.7
+      base2.position.y = -3.3
       group.add(base2)
       S.add(group)
 
-      /* ---------- 廿四签支 ---------- */
+      /* ---------- 廿四签支（扁平签条，竹色 + 红签头） ---------- */
       const sticks = new THREE.Group()
-      const stickMat = new THREE.MeshStandardMaterial({ color: 0xf0e3c8, roughness: 0.8 })
+      const stickMat = new THREE.MeshStandardMaterial({ color: 0xf0e3c8, roughness: 0.75 })
       const tipMat = new THREE.MeshStandardMaterial({ color: 0xc24538, roughness: 0.5 })
       const stickBases: number[] = []
       for (let i = 0; i < 24; i++) {
         const st = new THREE.Group()
         const a = (i / 24) * Math.PI * 2
-        const r = 0.9 + ((i * 37) % 10) * 0.1
-        const stick = new THREE.Mesh(new THREE.CylinderGeometry(0.055, 0.055, 2.3, 8), stickMat)
-        stick.position.y = 1.15
-        const tip = new THREE.Mesh(new THREE.SphereGeometry(0.1, 8, 8), tipMat)
-        tip.position.y = 2.35
+        const r = 0.75 + ((i * 37) % 10) * 0.08
+        // 签身：扁平竹条（宽 0.19、厚 0.035、长 2.1），顶头圆角由签头红漆段过渡
+        const stick = new THREE.Mesh(new THREE.BoxGeometry(0.19, 2.1, 0.035), stickMat)
+        stick.position.y = 1.05
+        const tip = new THREE.Mesh(new THREE.BoxGeometry(0.19, 0.14, 0.037), tipMat)
+        tip.position.y = 2.14
         st.add(stick, tip)
-        st.position.set(Math.cos(a) * r, 3.05, Math.sin(a) * r)
-        st.rotation.z = Math.cos(a) * 0.14
-        st.rotation.x = -Math.sin(a) * 0.14
+        st.position.set(Math.cos(a) * r, 2.78, Math.sin(a) * r)
+        st.rotation.y = -a
+        st.rotation.x = Math.sin(a) * 0.1
+        st.rotation.z = Math.cos(a) * 0.1
         sticks.add(st)
-        stickBases.push(3.05)
+        stickBases.push(2.78)
       }
       group.add(sticks)
 
@@ -233,7 +236,7 @@ export function LotCylinder3D({ shaking, revealed, onShake, fallback }: Props) {
     if (!shaking && !revealed && rig.flyStick) {
       rig.flyStick.visible = true
       rig.flyStick.rotation.x = 0
-      rig.flyStick.position.y = 3.05
+      rig.flyStick.position.y = 2.78
       rig.flyStick = null
       rig.flyT = -1
     }
@@ -242,7 +245,7 @@ export function LotCylinder3D({ shaking, revealed, onShake, fallback }: Props) {
   if (failed) return <>{fallback}</>
 
   return (
-    <div className="relative h-[340px] w-full max-w-[420px] sm:h-[400px]">
+    <div className="relative h-[300px] w-full max-w-[400px] sm:h-[340px]">
       <canvas ref={canvasRef} className="h-full w-full" aria-label="3D 签筒" />
       <p className="pointer-events-none absolute bottom-1 left-1/2 -translate-x-1/2 rounded-full bg-sandalwood-950/60 px-3 py-1 text-[11px] text-paper/80 backdrop-blur-sm">
         拖拽旋转 · 滚轮缩放 · 点击签筒摇签

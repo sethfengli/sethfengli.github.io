@@ -32,9 +32,9 @@ export function Dharma() {
         </div>
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-sandalwood-900/45 via-sandalwood-900/0 to-sandalwood-900/75" />
         <div className="relative">
-          <p className="font-serif text-sm tracking-[0.5em] text-gold-300">梵 呗</p>
-          <h1 className="mt-3 font-brush text-4xl sm:text-5xl">{t('dharma.title')}</h1>
-          <p className="mt-3 font-serif text-sm text-paper/80">{t('dharma.subtitle')}</p>
+          <p className="banner-text font-serif text-sm tracking-[0.5em] text-gold-300">梵 呗</p>
+          <h1 className="mt-3 banner-text font-brush text-4xl sm:text-5xl">{t('dharma.title')}</h1>
+          <p className="mt-3 banner-text font-serif text-sm text-paper">{t('dharma.subtitle')}</p>
         </div>
       </header>
 

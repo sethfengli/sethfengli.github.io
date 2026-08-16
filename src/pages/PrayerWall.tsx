@@ -124,16 +124,16 @@ export function PrayerWall() {
           ))}
         </div>
         <div className="relative">
-          <p className="font-serif text-sm tracking-[0.5em] text-gold-300">供 灯</p>
-          <h1 className="mt-3 font-brush text-4xl sm:text-5xl">{t('prayer.title')}</h1>
-          <p className="mt-3 font-serif text-sm text-paper/85">{t('prayer.subtitle')}</p>
+          <p className="banner-text font-serif text-sm tracking-[0.5em] text-gold-300">供 灯</p>
+          <h1 className="mt-3 banner-text font-brush text-4xl sm:text-5xl">{t('prayer.title')}</h1>
+          <p className="mt-3 banner-text font-serif text-sm text-paper">{t('prayer.subtitle')}</p>
         </div>
       </header>
 
       <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
-        <div className="grid gap-10 lg:grid-cols-[380px_minmax(0,1fr)]">
-          {/* ---------- 供灯表单 ---------- */}
-          <aside className="lg:sticky lg:top-24 lg:self-start">
+        <div className="space-y-10">
+          {/* ---------- 供灯表单（居中，树在上方通栏展示） ---------- */}
+          <aside className="mx-auto w-full max-w-2xl">
             <div className="rounded-3xl border border-sandalwood-200/70 bg-surface p-6 shadow-md">
               <h2 className="flex items-center gap-2 font-serif text-lg font-bold text-sandalwood-800">
                 <span aria-hidden>🪔</span>

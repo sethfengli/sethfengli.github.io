@@ -144,22 +144,22 @@ export function Bell3D({ fallback }: { fallback?: ReactNode }) {
       bctx.stroke()
       const bellTex = new THREE.CanvasTexture(bellTexCv)
       bellTex.colorSpace = THREE.SRGBColorSpace
+      bellTex.flipY = false
       bellTex.anisotropy = 8
 
+      // 梵钟形制：冠钮 → 收肩 → 肩部鼓起 → 腰部收窄 → 口沿外张（裙部）
       const bellPts: Array<[number, number]> = [
-        [0, 0.15],
-        [1.3, 0],
-        [2.7, -0.8],
-        [3.9, -2.5],
-        [4.5, -4.8],
-        [4.68, -7.2],
-        [4.55, -9.4],
-        [3.95, -10.9],
-        [2.9, -11.55],
-        [1.5, -11.85],
-        [3.0, -11.9],
-        [3.7, -12.0],
-        [0, -12.0],
+        [0, 0.2],
+        [1.1, 0],
+        [2.6, -0.7],
+        [4.3, -2.2],
+        [4.95, -4.6],
+        [4.8, -7.0],
+        [4.1, -9.2],
+        [3.6, -10.8],
+        [4.4, -11.8],
+        [4.9, -12.2],
+        [0, -12.2],
       ]
       const bellGeo = new THREE.LatheGeometry(
         bellPts.map(([x, y]) => new THREE.Vector2(x, y)),
@@ -170,12 +170,12 @@ export function Bell3D({ fallback }: { fallback?: ReactNode }) {
       const bell = new THREE.Group()
       bell.position.set(0, 5.2, 0)
       bell.add(bellMesh)
-      const band = new THREE.Mesh(new THREE.TorusGeometry(4.1, 0.2, 16, 96), gold)
-      band.position.y = -1.7
+      const band = new THREE.Mesh(new THREE.TorusGeometry(4.5, 0.2, 16, 96), gold)
+      band.position.y = -1.4
       band.rotation.x = Math.PI / 2
       bell.add(band)
       const boss = new THREE.Mesh(new THREE.CylinderGeometry(0.66, 0.66, 0.28, 28), gold)
-      boss.position.set(0, -4.7, 4.52)
+      boss.position.set(0, -4.7, 4.9)
       boss.rotation.x = Math.PI / 2
       bell.add(boss)
       S.add(bell)

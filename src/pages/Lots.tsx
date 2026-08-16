@@ -81,9 +81,9 @@ export function Lots() {
         </div>
         <div className="absolute inset-0 bg-gradient-to-b from-sandalwood-950/30 via-sandalwood-950/0 to-sandalwood-950/70" />
         <div className="relative">
-          <p className="font-serif text-sm tracking-[0.5em] text-gold-300">观 音 法 门</p>
-          <h1 className="mt-3 font-brush text-4xl sm:text-5xl">{t('lots.title')}</h1>
-          <p className="mt-3 font-serif text-sm text-paper/85">{t('lots.subtitle')}</p>
+          <p className="banner-text font-serif text-sm tracking-[0.5em] text-gold-300">观 音 法 门</p>
+          <h1 className="mt-3 banner-text font-brush text-4xl sm:text-5xl">{t('lots.title')}</h1>
+          <p className="mt-3 banner-text font-serif text-sm text-paper">{t('lots.subtitle')}</p>
         </div>
       </header>
 
@@ -121,7 +121,7 @@ export function Lots() {
 
           {/* 3D 鼎式香炉 */}
           <div className="mx-auto mt-6 max-w-xs">
-            <Incense3D fallback={<IncenseBurner bare />} />
+            <Incense3D variant="cone" scale={0.82} heightClass="h-[250px]" fallback={<IncenseBurner bare />} />
           </div>
 
           {/* 抽签按钮 */}

@@ -2,6 +2,7 @@ import { useEffect, useRef, useState, type ReactNode } from 'react'
 import type * as THREE from 'three'
 import type { Wish } from '../../lib/wishes'
 import { createStage, makeRibbonTexture, type Stage } from './stage'
+import { createCenser } from './censer'
 
 /**
  * 3D 千年松柏许愿树
@@ -23,11 +24,7 @@ interface RibbonRig {
 interface TreeRig {
   ribbons: RibbonRig[]
   canopy: THREE.Group
-  incense: THREE.Group
-  embers: Array<{ mesh: THREE.Mesh; mat: THREE.MeshBasicMaterial }>
-  smoke: THREE.Points | null
-  smokeParts: Array<{ x: number; y: number; z: number; vx: number; vy: number; life: number }>
-  lit: boolean
+  censer: import('./censer').CenserRig
 }
 
 interface Props {
@@ -64,16 +61,17 @@ const RIBBON_SPOTS: Array<{ x: number; y: number; z: number; rot: number }> = [
 ]
 
 /** 松针簇贴图（径向针叶） */
-function makePineTuft(THREE: typeof import('three'), shade: 0 | 1): THREE.CanvasTexture {
+function makePineTuft(THREE: typeof import('three'), shade: 0 | 1 | 2): THREE.CanvasTexture {
   const cv = document.createElement('canvas')
   cv.width = 256
   cv.height = 256
   const ctx = cv.getContext('2d')!
-  const c = shade === 0 ? '46,121,92' : '37,94,74'
+  const colors = ['46,121,92', '37,94,74', '58,135,104']
+  const c = colors[shade]
   ctx.strokeStyle = `rgba(${c},0.9)`
   ctx.lineWidth = 3
   ctx.lineCap = 'round'
-  for (let i = 0; i < 150; i++) {
+  for (let i = 0; i < 160; i++) {
     const a = Math.random() * Math.PI * 2
     const r0 = 18 + Math.random() * 30
     const r1 = 90 + Math.random() * 40
@@ -82,13 +80,46 @@ function makePineTuft(THREE: typeof import('three'), shade: 0 | 1): THREE.Canvas
     ctx.lineTo(128 + Math.cos(a) * r1, 128 + Math.sin(a) * r1)
     ctx.stroke()
   }
-  // 深色簇心
   ctx.fillStyle = `rgba(${c},0.85)`
   ctx.beginPath()
   ctx.arc(128, 128, 26, 0, Math.PI * 2)
   ctx.fill()
   const tex = new THREE.CanvasTexture(cv)
   tex.colorSpace = THREE.SRGBColorSpace
+  return tex
+}
+
+/** 树皮纹理（纵向皴纹 + 节疤） */
+function makeBarkTexture(THREE: typeof import('three')): THREE.CanvasTexture {
+  const cv = document.createElement('canvas')
+  cv.width = 512
+  cv.height = 512
+  const ctx = cv.getContext('2d')!
+  ctx.fillStyle = '#6a5947'
+  ctx.fillRect(0, 0, 512, 512)
+  for (let i = 0; i < 150; i++) {
+    const x = Math.random() * 512
+    ctx.strokeStyle = `rgba(61,47,32,${0.15 + Math.random() * 0.35})`
+    ctx.lineWidth = 1 + Math.random() * 3
+    ctx.beginPath()
+    ctx.moveTo(x, 0)
+    for (let y = 0; y <= 512; y += 32) {
+      ctx.lineTo(x + Math.sin(y * 0.02 + i) * 6, y)
+    }
+    ctx.stroke()
+  }
+  for (let i = 0; i < 7; i++) {
+    const x = Math.random() * 512
+    const y = Math.random() * 512
+    ctx.strokeStyle = '#3b2f20'
+    ctx.lineWidth = 3
+    ctx.beginPath()
+    ctx.ellipse(x, y, 10 + Math.random() * 18, 6 + Math.random() * 10, Math.random() * 3, 0, Math.PI * 2)
+    ctx.stroke()
+  }
+  const tex = new THREE.CanvasTexture(cv)
+  tex.colorSpace = THREE.SRGBColorSpace
+  tex.wrapS = THREE.RepeatWrapping
   return tex
 }
 
@@ -150,20 +181,23 @@ export function Tree3D({ wishes, onRibbonClick, fallback }: Props) {
       }
 
       /* ---------- 虬曲老干 ---------- */
-      const bark = new THREE.MeshStandardMaterial({ color: 0x5d4d38, roughness: 0.92 })
-      const bark2 = new THREE.MeshStandardMaterial({ color: 0x6a5947, roughness: 0.9 })
+      const barkTex = makeBarkTexture(THREE)
+      const bark = new THREE.MeshStandardMaterial({ map: barkTex, roughness: 0.92 })
+      const bark2 = new THREE.MeshStandardMaterial({ map: barkTex, color: 0xb08d63, roughness: 0.9 })
       const trunkPts = [
         [0, -4.4, 0],
-        [0.4, -3.1, 0.5],
-        [0.9, -1.9, -0.4],
-        [1.3, -0.5, 0.9],
-        [0.8, 0.9, -0.5],
-        [0.2, 2.2, 0.4],
-        [-0.6, 3.4, -0.3],
-        [-0.2, 4.6, 0.3],
-        [0.2, 5.8, 0],
+        [0.35, -3.3, 0.4],
+        [0.75, -2.3, -0.35],
+        [1.05, -1.4, 0.6],
+        [1.25, -0.4, -0.5],
+        [1.05, 0.7, 0.3],
+        [0.55, 1.8, -0.35],
+        [0.05, 2.9, 0.3],
+        [-0.35, 3.9, -0.25],
+        [-0.15, 4.9, 0.25],
+        [0.1, 5.8, -0.05],
       ].map(([x, y, z]) => new THREE.Vector3(x, y, z))
-      const radii = [1.7, 1.5, 1.3, 1.1, 0.95, 0.8, 0.66, 0.55, 0.45]
+      const radii = [1.7, 1.55, 1.4, 1.25, 1.12, 1.0, 0.88, 0.76, 0.64, 0.52, 0.42]
       for (let i = 0; i < trunkPts.length - 1; i++) {
         const a = trunkPts[i]
         const b = trunkPts[i + 1]
@@ -171,9 +205,10 @@ export function Tree3D({ wishes, onRibbonClick, fallback }: Props) {
         const len = a.distanceTo(b)
         const rTop = radii[i + 1]
         const rBot = radii[i]
-        const seg = new THREE.Mesh(new THREE.CylinderGeometry(rTop, rBot, len, 16), i % 2 ? bark : bark2)
+        const seg = new THREE.Mesh(new THREE.CylinderGeometry(rTop, rBot, len, 18), i % 2 ? bark : bark2)
         seg.position.copy(mid)
         seg.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), b.clone().sub(a).normalize())
+        seg.rotation.z += Math.sin(i * 2.7) * 0.06
         S.add(seg)
       }
 
@@ -206,6 +241,7 @@ export function Tree3D({ wishes, onRibbonClick, fallback }: Props) {
       /* ---------- 松针云片冠层 ---------- */
       const tuft0 = makePineTuft(THREE, 0)
       const tuft1 = makePineTuft(THREE, 1)
+      const tuft2 = makePineTuft(THREE, 2)
       const canopy = new THREE.Group()
       const clusters: Array<[number, number, number, number]> = [
         [-3.6, 6.6, 1.4, 2.4],
@@ -220,91 +256,65 @@ export function Tree3D({ wishes, onRibbonClick, fallback }: Props) {
         [-3.2, 4.8, -2.4, 1.5],
         [3.3, 4.9, 2.2, 1.5],
         [-0.4, 5.4, 3.4, 1.4],
+        [-0.6, 8.9, 1.9, 1.3],
+        [1.9, 8.7, -2.0, 1.3],
       ]
       for (const [cx, cy, cz, cr] of clusters) {
-        const n = 20
+        const n = 26
         for (let i = 0; i < n; i++) {
           const a = Math.random() * Math.PI * 2
           const r = Math.sqrt(Math.random()) * cr
+          const rnd = Math.random()
           const spr = new THREE.Sprite(
-            new THREE.SpriteMaterial({ map: Math.random() > 0.4 ? tuft0 : tuft1, transparent: true, depthWrite: false }),
+            new THREE.SpriteMaterial({
+              map: rnd > 0.55 ? tuft0 : rnd > 0.25 ? tuft1 : tuft2,
+              transparent: true,
+              depthWrite: false,
+            }),
           )
-          const s = 1.1 + Math.random() * 1.3
+          const s = 1.05 + Math.random() * 1.25
           spr.scale.set(s, s * (0.85 + Math.random() * 0.25), 1)
-          spr.position.set(cx + Math.cos(a) * r, cy + (Math.random() - 0.5) * 0.7, cz + Math.sin(a) * r)
+          spr.position.set(cx + Math.cos(a) * r, cy + (Math.random() - 0.5) * 0.65, cz + Math.sin(a) * r)
           spr.userData.baseScale = s
           canopy.add(spr)
+        }
+        // 垂枝（松柏下垂小枝 + 末端针簇）
+        const strandMat = new THREE.MeshStandardMaterial({ map: barkTex, roughness: 0.9 })
+        for (let i = 0; i < 3; i++) {
+          const a = Math.random() * Math.PI * 2
+          const r = cr * (0.5 + Math.random() * 0.5)
+          const len = 0.7 + Math.random() * 0.9
+          const strand = new THREE.Mesh(new THREE.CylinderGeometry(0.03, 0.05, len, 6), strandMat)
+          strand.position.set(cx + Math.cos(a) * r, cy - 0.45 - len / 2, cz + Math.sin(a) * r)
+          canopy.add(strand)
+          const tip = new THREE.Sprite(
+            new THREE.SpriteMaterial({ map: Math.random() > 0.5 ? tuft1 : tuft2, transparent: true, depthWrite: false }),
+          )
+          tip.scale.set(0.55, 0.55, 1)
+          tip.position.set(cx + Math.cos(a) * r, cy - 0.45 - len, cz + Math.sin(a) * r)
+          canopy.add(tip)
         }
       }
       S.add(canopy)
 
-      /* ---------- 香炉（树下） ---------- */
-      const incense = new THREE.Group()
-      incense.position.set(5.4, -4.4, 3.8)
-      const base = new THREE.Mesh(new THREE.CylinderGeometry(0.9, 1.05, 0.4, 24), new THREE.MeshStandardMaterial({ color: 0x8a5c3a, roughness: 0.7 }))
-      base.position.y = 0.2
-      incense.add(base)
-      const bowl = new THREE.Mesh(new THREE.CylinderGeometry(0.75, 0.55, 0.45, 24), new THREE.MeshStandardMaterial({ color: 0xa5713f, roughness: 0.55, metalness: 0.4 }))
-      bowl.position.y = 0.58
-      incense.add(bowl)
-      const sticks = new THREE.Group()
-      const stickMat = new THREE.MeshStandardMaterial({ color: 0x8c2f39, roughness: 0.9 })
-      const embers: TreeRig['embers'] = []
-      ;([[-0.16, 0.08, 0.1], [0.04, -0.14, -0.06], [0.18, 0.09, 0.12]] as Array<[number, number, number]>).forEach(
-        ([dx, dz, tilt]) => {
-          const st = new THREE.Mesh(new THREE.CylinderGeometry(0.03, 0.03, 1.2, 8), stickMat)
-          st.position.set(dx, 1.4, dz)
-          st.rotation.x = tilt
-          st.rotation.z = -tilt
-          sticks.add(st)
-          const emberMat = new THREE.MeshBasicMaterial({ color: 0xf1d25f })
-          const ember = new THREE.Mesh(new THREE.SphereGeometry(0.06, 10, 10), emberMat)
-          ember.position.set(dx, 2.05, dz)
-          sticks.add(ember)
-          embers.push({ mesh: ember, mat: emberMat })
-        },
-      )
-      incense.add(sticks)
-      S.add(incense)
+      /* ---------- 香炉（树下，盘香禅修） ---------- */
+      const { group: censerGroup, rig: censerRig } = createCenser(THREE, 'coil', 0.72)
+      censerGroup.position.set(5.6, -4.4, 3.9)
+      S.add(censerGroup)
 
       const rig: TreeRig = {
         ribbons: [],
         canopy,
-        incense,
-        embers,
-        smoke: null,
-        smokeParts: [],
-        lit: false,
+        censer: censerRig,
       }
       rigRef.current = rig
-
-      /* ---------- 烟粒子 ---------- */
-      const smokeGeo = new THREE.BufferGeometry()
-      const N = 120
-      const pos = new Float32Array(N * 3)
-      smokeGeo.setAttribute('position', new THREE.BufferAttribute(pos, 3))
-      const smokeMat = new THREE.PointsMaterial({ color: 0xb9c6c2, size: 0.2, transparent: true, opacity: 0, depthWrite: false })
-      const smoke = new THREE.Points(smokeGeo, smokeMat)
-      smoke.position.copy(incense.position)
-      S.add(smoke)
-      rig.smoke = smoke
-      for (let i = 0; i < N; i++) {
-        rig.smokeParts.push({
-          x: (Math.random() - 0.5) * 0.3,
-          y: 0.9 + Math.random() * 0.3,
-          z: (Math.random() - 0.5) * 0.3,
-          vx: (Math.random() - 0.5) * 0.12,
-          vy: 0.4 + Math.random() * 0.6,
-          life: Math.random() * 3,
-        })
-      }
 
       /* ---------- 拾取 ---------- */
       stage.setPick(
         () => [
           ...rig.ribbons.flatMap((r) => [r.group]),
-          incense,
-          ...rig.embers.map((e) => e.mesh),
+          censerGroup,
+          ...rig.censer.embers.map((e) => e.mesh),
         ],
         (obj) => {
           if (!obj) return
@@ -313,7 +323,7 @@ export function Tree3D({ wishes, onRibbonClick, fallback }: Props) {
             onRibbonClick(w)
             return
           }
-          rig.lit = true
+          rig.censer.lit = true
         },
       )
 
@@ -333,36 +343,8 @@ export function Tree3D({ wishes, onRibbonClick, fallback }: Props) {
         // 冠层微摆
         canopy.rotation.y = Math.sin(t * 0.25) * 0.015
         canopy.rotation.x = Math.sin(t * 0.2) * 0.008
-        // 炭火 + 烟
-        for (const e of rig.embers) {
-          const glow = rig.lit ? 0.85 + Math.sin(t * 6 + e.mesh.position.x * 10) * 0.15 : 0
-          e.mat.color.setScalar(glow)
-        }
-        const sm = rig.smoke
-        if (sm) {
-          const attr = sm.geometry.getAttribute('position') as THREE.BufferAttribute
-          ;(sm.material as THREE.PointsMaterial).opacity = rig.lit ? 0.5 : 0
-          for (let i = 0; i < rig.smokeParts.length; i++) {
-            const p = rig.smokeParts[i]
-            if (!rig.lit) {
-              attr.setXYZ(i, p.x, p.y, p.z)
-              continue
-            }
-            p.life -= dt
-            if (p.life <= 0) {
-              p.x = (Math.random() - 0.5) * 0.3
-              p.y = 0.9
-              p.z = (Math.random() - 0.5) * 0.3
-              p.vx = (Math.random() - 0.5) * 0.12
-              p.vy = 0.4 + Math.random() * 0.6
-              p.life = 3
-            }
-            p.y += p.vy * dt
-            p.x += p.vx * dt + Math.sin(t * 2 + i) * 0.002
-            attr.setXYZ(i, p.x, p.y, p.z)
-          }
-          attr.needsUpdate = true
-        }
+        // 香炉（盘香 + 青烟）
+        rig.censer.update(dt, t)
       })
 
       setReady(true)
@@ -439,7 +421,7 @@ export function Tree3D({ wishes, onRibbonClick, fallback }: Props) {
   if (failed) return <>{fallback}</>
 
   return (
-    <div className="relative h-[440px] w-full sm:h-[540px]">
+    <div className="relative h-[520px] w-full sm:h-[640px]">
       <canvas ref={canvasRef} className="h-full w-full" aria-label="3D 千年松柏许愿树" />
       <p className="pointer-events-none absolute bottom-2 left-1/2 -translate-x-1/2 rounded-full bg-sandalwood-950/60 px-3 py-1 text-[11px] text-paper/80 backdrop-blur-sm">
         拖拽旋转 · 滚轮缩放看细节 · 点击飘带查看心愿 · 点击香炉供香

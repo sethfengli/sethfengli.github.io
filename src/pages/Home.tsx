@@ -4,7 +4,7 @@ import { CATALOG, photoForSlug } from '../lib/content'
 import { verseOfTheMoment } from '../data/verses'
 import type { IllustrationVariant } from '../components/zen/ZenIllustration'
 import { CoverImage } from '../components/zen/CoverImage'
-import { IncenseBurner } from '../components/zen/IncenseBurner'
+import { Incense3D } from '../components/zen3d/Incense3D'
 import { PhotoLogo } from '../components/zen/PhotoLogo'
 
 const FEATURED_SLUGS = ['301jgj', '302xinj', '303liuzutanjing', '102lfsx', '001jznf', '001zyxuefo', '402nianfolun', '202bada']
@@ -45,17 +45,17 @@ export function Home() {
         </div>
 
         <div className="relative mx-auto flex max-w-4xl flex-col items-center px-4 pt-20 pb-14 text-center sm:px-6">
-          <p className="animate-fade-up font-serif text-sm tracking-[0.5em] text-gold-300">
+          <p className="animate-fade-up banner-text font-serif text-sm tracking-[0.5em] text-gold-300">
             {t('home.heroKicker')}
           </p>
           <h1
-            className="mt-5 animate-fade-up font-brush text-6xl tracking-[0.06em] text-paper drop-shadow-lg sm:text-7xl"
+            className="mt-5 animate-fade-up banner-text font-brush text-6xl tracking-[0.06em] text-paper sm:text-7xl"
             style={{ animationDelay: '0.1s' }}
           >
             {t('home.heroTitle')}
           </h1>
           <p
-            className="mt-3 animate-fade-up text-xs tracking-[0.4em] text-gold-200/90 uppercase"
+            className="mt-3 banner-text animate-fade-up text-xs tracking-[0.4em] text-gold-200/90 uppercase"
             style={{ animationDelay: '0.2s' }}
           >
             {t('appNameEn')}
@@ -64,7 +64,7 @@ export function Home() {
             <span className="text-lg">✦</span>
           </div>
           <p
-            className="mt-6 max-w-2xl animate-fade-up font-serif text-base leading-loose text-paper/90 sm:text-lg"
+            className="mt-6 max-w-2xl banner-text animate-fade-up font-serif text-base leading-loose text-paper sm:text-lg"
             style={{ animationDelay: '0.3s' }}
           >
             {t('home.heroSubtitle')}
@@ -158,7 +158,7 @@ export function Home() {
       {/* ---------- 互动香炉 ---------- */}
       <section className="bg-gradient-to-b from-transparent to-rice-100/60 pb-20">
         <div className="mx-auto flex max-w-3xl flex-col items-center gap-6 px-4 text-center sm:px-6">
-          <IncenseBurner />
+          <Incense3D variant="sticks" heightClass="h-[320px] w-[420px] max-w-full" />
         </div>
       </section>
     </div>

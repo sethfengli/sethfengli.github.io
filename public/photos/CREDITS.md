@@ -148,3 +148,5 @@
 | photo-144.jpg | [Dharma Field-exterior-winter.jpg](https://commons.wikimedia.org/wiki/File:Dharma_Field-exterior-winter.jpg) | SusanLesch | CC0 |
 | photo-145.jpg | [D-BW-Kressbronn aB - Schloesslepark.JPG](https://commons.wikimedia.org/wiki/File:D-BW-Kressbronn_aB_-_Schloesslepark.JPG) | ANKAWÜ | CC BY-SA 3.0 || blossom.jpg | [University Park MMB 41](https://commons.wikimedia.org/wiki/File:University_Park_MMB_41.jpg) | Commons ?? | CC BY |
 
+
+| guanyin.jpg | [Avalokiteshvara gilded bronze](https://commons.wikimedia.org/wiki/File:Avalokiteshvara_(Guanyin),_China,_c._1220-1300_AD,_gilded_bronze_-_%C3%96stasiatiska_museet,_Stockholm_-_DSC09614.JPG) | Daderot | CC0 |
