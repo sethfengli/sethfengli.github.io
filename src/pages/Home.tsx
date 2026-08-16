@@ -158,7 +158,7 @@ export function Home() {
       {/* ---------- 互动香炉 ---------- */}
       <section className="bg-gradient-to-b from-transparent to-rice-100/60 pb-20">
         <div className="mx-auto flex max-w-3xl flex-col items-center gap-6 px-4 text-center sm:px-6">
-          <Incense3D variant="sticks" distance={6.2} heightClass="h-[440px] w-[440px] max-w-full" />
+          <Incense3D variant="sticks" distance={16} heightClass="h-[440px] w-[440px] max-w-full" />
         </div>
       </section>
     </div>

@@ -121,7 +121,7 @@ export function Lots() {
 
           {/* 3D 塔香香炉 */}
           <div className="mx-auto mt-2 max-w-sm">
-            <Incense3D variant="cone" scale={0.9} distance={6.2} heightClass="h-[300px]" fallback={<IncenseBurner bare />} />
+            <Incense3D variant="cone" scale={0.9} distance={16} heightClass="h-[300px]" fallback={<IncenseBurner bare />} />
           </div>
 
           {/* 抽签按钮 */}
