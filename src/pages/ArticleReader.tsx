@@ -224,9 +224,11 @@ export function ArticleReader() {
                             : 'pl-9 text-ink-500'
                       } ${activeToc === item.id ? 'toc-active' : ''}`}
                     >
-                      <span className={`mr-1 ${item.level === 2 ? 'text-tibetan-600' : 'text-sandalwood-400'}`}>
-                        {item.num}
-                      </span>
+                      {item.num && (
+                        <span className={`mr-1 ${item.level === 2 ? 'text-tibetan-600' : 'text-sandalwood-400'}`}>
+                          {item.num}
+                        </span>
+                      )}
                       {item.text}
                     </button>
                   </li>
@@ -380,9 +382,11 @@ export function ArticleReader() {
                           : 'pl-10 text-ink-500'
                     } ${activeToc === item.id ? 'bg-sandalwood-100 text-tibetan-700' : ''}`}
                   >
-                    <span className={`mr-1 ${item.level === 2 ? 'text-tibetan-600' : 'text-sandalwood-400'}`}>
-                      {item.num}
-                    </span>
+                    {item.num && (
+                      <span className={`mr-1 ${item.level === 2 ? 'text-tibetan-600' : 'text-sandalwood-400'}`}>
+                        {item.num}
+                      </span>
+                    )}
                     {item.text}
                   </button>
                 </li>

@@ -118,10 +118,14 @@ export const en: Dict = {
     audioCredit: 'Audio source',
     count: 'Recited {{n}} times',
     resetCount: 'Reset',
-    talksTitle: 'Dharma Talks',
-    talksDesc:
-      'This section is reserved for audio/video talks. On a static site, files under public/audio and public/video can be played directly with <audio>/<video> tags — no backend needed.',
-    talksPlaceholder: 'Recordings in preparation',
+    talksTitle: 'Dharma Talks · Monastery Links',
+    talksDesc: 'Official online Dharma platforms of major Buddhist organizations (external links, open in new tab):',
+    talkLinks: [
+      { name: 'Fo Guang Shan · iBuddha', desc: 'Dharma talks and courses by Master Hsing Yun (video)', url: 'https://www.fgs.video/' },
+      { name: 'Dharma Drum Mountain', desc: 'Teachings and Chan courses by Master Sheng Yen', url: 'https://www.ddm.org.tw/' },
+      { name: 'Tzu Chi · Da Ai TV', desc: 'Teachings by Master Cheng Yen and cultural programs', url: 'https://www.daai.tv/' },
+      { name: 'Ling Jiou Mountain', desc: 'Teachings and online practice by Master Hsin Tao', url: 'https://www.093.org.tw/' },
+    ],
     mantraTitle: 'Bell Gatha',
   },
 

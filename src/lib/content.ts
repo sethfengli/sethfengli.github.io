@@ -106,6 +106,11 @@ function toCnNum(n: number): string {
   return String(n)
 }
 
+/** 标题自带编号（一、/1./（一）开头）时，目录不再前置标号，避免“一 一、培养目标”式重复 */
+function hasOwnNumber(text: string): boolean {
+  return /^[一二三四五六七八九十百]+[、.．，,]/.test(text) || /^\d+[、.．]/.test(text) || /^[（(][一二三四五六七八九十\d]+[)）]/.test(text)
+}
+
 export function tocOf(doc: ArticleDoc): TocItem[] {
   const out: TocItem[] = []
   let h2c = 0
@@ -116,14 +121,14 @@ export function tocOf(doc: ArticleDoc): TocItem[] {
       h2c++
       h3c = 0
       h4c = 0
-      out.push({ id: `s-${h2c}`, level: 2, text: b.text, num: toCnNum(h2c) })
+      out.push({ id: `s-${h2c}`, level: 2, text: b.text, num: hasOwnNumber(b.text) ? '' : toCnNum(h2c) })
     } else if (b.t === 'h3') {
       h3c++
       h4c = 0
-      out.push({ id: `s-${h2c}-${h3c}`, level: 3, text: b.text, num: String(h3c) })
+      out.push({ id: `s-${h2c}-${h3c}`, level: 3, text: b.text, num: hasOwnNumber(b.text) ? '' : String(h3c) })
     } else if (b.t === 'h4') {
       h4c++
-      out.push({ id: `s-${h2c}-${h3c}-${h4c}`, level: 4, text: b.text, num: `（${h4c}）` })
+      out.push({ id: `s-${h2c}-${h3c}-${h4c}`, level: 4, text: b.text, num: hasOwnNumber(b.text) ? '' : `（${h4c}）` })
     }
   }
   return out

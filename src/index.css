@@ -744,6 +744,34 @@ body {
   18% { opacity: 1; }
   100% { opacity: 0; transform: translate(-50%, -110px) scale(1.35); }
 }
+/* 签文浮动弹窗 */
+.lot-modal-in {
+  animation: lot-modal-in 0.55s cubic-bezier(0.2, 0.9, 0.3, 1.15) both;
+}
+@keyframes lot-modal-in {
+  0% { opacity: 0; transform: scale(0.72) rotate(-3deg) translateY(24px); }
+  100% { opacity: 1; transform: scale(1) rotate(0deg) translateY(0); }
+}
+.lot-rays {
+  background: conic-gradient(
+    from 0deg,
+    rgba(239, 212, 100, 0.16) 0deg, rgba(239, 212, 100, 0.02) 30deg,
+    rgba(239, 212, 100, 0.14) 60deg, rgba(239, 212, 100, 0.02) 90deg,
+    rgba(239, 212, 100, 0.16) 120deg, rgba(239, 212, 100, 0.02) 150deg,
+    rgba(239, 212, 100, 0.14) 180deg, rgba(239, 212, 100, 0.02) 210deg,
+    rgba(239, 212, 100, 0.16) 240deg, rgba(239, 212, 100, 0.02) 270deg,
+    rgba(239, 212, 100, 0.14) 300deg, rgba(239, 212, 100, 0.02) 330deg,
+    rgba(239, 212, 100, 0.16) 360deg
+  );
+  animation: lot-rays 14s linear infinite;
+  filter: blur(8px);
+}
+@keyframes lot-rays {
+  to { transform: rotate(360deg); }
+}
+.lot-fade-in {
+  animation: fade-up 0.45s ease-out both;
+}
 /* Google 翻译工具条美化 */
 .goog-te-banner-frame,
 .goog-logo-link {

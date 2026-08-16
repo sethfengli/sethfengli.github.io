@@ -280,7 +280,22 @@ function extract(file) {
   const headingTexts = new Set(
     blocks.filter((b) => b.t === 'h2' || b.t === 'h3' || b.t === 'h4').map((b) => b.text),
   )
-  const cleaned = blocks.filter((b) => {
+  const cleaned = blocks.filter((b, idx) => {
+    // 正文开头的“目录式表格”（前 8 个块内、单元格半数以上是章节标题）→ 删除
+    if (b.t === 'table' && idx < 8) {
+      let cells = 0
+      let hits = 0
+      for (const row of b.rows) {
+        for (const cell of row) {
+          const text = cell.map((s) => s.s).join('')
+          if (!text) continue
+          cells++
+          if (headingTexts.has(text)) hits++
+        }
+      }
+      if (cells > 0 && hits / cells >= 0.5) return false
+      return true
+    }
     if (b.t !== 'p') return true
     const text = b.inline.map((s) => s.s).join('')
     if (headingTexts.has(text)) return false

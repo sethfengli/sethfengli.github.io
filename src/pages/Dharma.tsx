@@ -10,10 +10,11 @@ import { storageGet, storageSet } from '../lib/storage'
 const CHANT_KEY = 'hdc.chantCount'
 
 export function Dharma() {
-  const { t } = useI18n()
+  const { t, arr } = useI18n()
   const [counts, setCounts] = useState<Record<number, number>>(() =>
     storageGet<Record<number, number>>(CHANT_KEY, {}),
   )
+  const talks = arr('dharma.talkLinks') as Array<{ name: string; desc: string; url: string }>
 
   const resetCounts = () => {
     setCounts({})
@@ -26,9 +27,10 @@ export function Dharma() {
     <div>
       {/* 页头 */}
       <header className="relative overflow-hidden bg-gradient-to-b from-sandalwood-900 to-sandalwood-800 py-16 text-center text-paper">
-        <div className="pointer-events-none absolute inset-0 opacity-15">
+        <div className="absolute inset-0">
           <CoverImage src="/photos/bell.jpg" alt="" fallbackVariant="clouds" className="h-full w-full" />
         </div>
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-sandalwood-900/45 via-sandalwood-900/0 to-sandalwood-900/75" />
         <div className="relative">
           <p className="font-serif text-sm tracking-[0.5em] text-gold-300">梵 呗</p>
           <h1 className="mt-3 font-brush text-4xl sm:text-5xl">{t('dharma.title')}</h1>
@@ -85,23 +87,33 @@ export function Dharma() {
           <span>❖</span>
         </div>
 
-        {/* 讲经开示（预留位） */}
+        {/* 讲经开示 · 道场外链 */}
         <section className="mt-12">
           <h2 className="text-center font-serif text-2xl font-bold text-sandalwood-800">{t('dharma.talksTitle')}</h2>
           <p className="mx-auto mt-3 max-w-2xl text-center font-serif text-sm leading-relaxed text-ink-700">
             {t('dharma.talksDesc')}
           </p>
-          <div className="mt-8 grid gap-5 sm:grid-cols-3">
-            {[0, 1, 2].map((i) => (
-              <div key={i} className="card flex flex-col items-center p-8 text-center">
-                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-sandalwood-100 text-2xl text-sandalwood-400">
-                  <svg viewBox="0 0 24 24" className="h-8 w-8" fill="currentColor">
-                    <path d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3h-6z" />
-                  </svg>
+          <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {talks.map((link, i) => (
+              <a
+                key={i}
+                href={link.url}
+                target="_blank"
+                rel="noreferrer"
+                className="card group flex flex-col p-6 text-center transition hover:-translate-y-1 hover:border-gold-400"
+              >
+                <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-tibetan-50 text-2xl transition group-hover:scale-110">
+                  {['📿', '🪷', '🕯', '⛰'][i]}
                 </div>
-                <p className="mt-4 font-serif text-sm text-sandalwood-700">{t('dharma.talksPlaceholder')}</p>
-                <p className="mt-2 text-xs text-sandalwood-400">public/audio · public/video</p>
-              </div>
+                <p className="mt-4 font-serif font-bold text-sandalwood-800">{link.name}</p>
+                <p className="mt-2 flex-1 font-serif text-sm leading-relaxed text-ink-700">{link.desc}</p>
+                <span className="mt-4 inline-flex items-center justify-center gap-1 text-xs font-medium text-tibetan-600">
+                  前往听经
+                  <svg viewBox="0 0 24 24" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round">
+                    <path d="M7 17L17 7M9 7h8v8" />
+                  </svg>
+                </span>
+              </a>
             ))}
           </div>
         </section>

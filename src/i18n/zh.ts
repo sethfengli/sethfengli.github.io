@@ -111,10 +111,14 @@ export const zh = {
     audioCredit: '音档来源',
     count: '已持诵 {{n}} 声',
     resetCount: '归零',
-    talksTitle: '讲经开示',
-    talksDesc:
-      '本栏目预留讲经音视频位。静态站点可通过 <audio> / <video> 标签直接挂载 public/audio 与 public/video 目录中的音档，无需后端。',
-    talksPlaceholder: '音档筹备中，敬请期待',
+    talksTitle: '讲经开示 · 道场外链',
+    talksDesc: '以下为各大佛教道场的官方在线听经平台（外链，新窗口打开），随喜闻法：',
+    talkLinks: [
+      { name: '佛光山 · iBuddha 人間佛學', desc: '星云大师讲经与佛学课程视频', url: 'https://www.fgs.video/' },
+      { name: '法鼓山 · 心靈環保', desc: '圣严法师开示与禅修课程', url: 'https://www.ddm.org.tw/' },
+      { name: '慈济 · 大爱电视', desc: '证严法师开示与人文节目', url: 'https://www.daai.tv/' },
+      { name: '灵鹫山 · 全球网络', desc: '心道法师开示与线上共修', url: 'https://www.093.org.tw/' },
+    ],
     mantraTitle: '闻钟偈',
   },
 

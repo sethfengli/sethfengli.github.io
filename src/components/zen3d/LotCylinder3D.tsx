@@ -66,50 +66,19 @@ function drawCylinderTexture(): HTMLCanvasElement {
   band(66)
   band(392)
 
-  // 卍字与莲徽
-  ctx.strokeStyle = '#f6e69b'
-  ctx.lineWidth = 12
-  ctx.lineCap = 'round'
-  const swastika = (cx: number, cy: number) => {
-    ctx.beginPath()
-    ctx.moveTo(cx, cy - 30)
-    ctx.lineTo(cx, cy + 30)
-    ctx.moveTo(cx - 22, cy - 20)
-    ctx.lineTo(cx + 22, cy - 20)
-    ctx.moveTo(cx - 22, cy + 20)
-    ctx.lineTo(cx + 22, cy + 20)
-    ctx.moveTo(cx - 30, cy)
-    ctx.lineTo(cx + 8, cy)
-    ctx.stroke()
+  // 竖排金字（仿真实签筒：觀音靈籤 + 吉语），居中标字、两侧吉语
+  ctx.fillStyle = '#f6e69b'
+  ctx.textAlign = 'center'
+  ctx.textBaseline = 'middle'
+  const vtext = (text: string, cx: number, y0: number, fs: number) => {
+    ctx.font = `bold ${fs}px "LXGW WenKai","KaiTi","SimSun",serif`
+    for (let i = 0; i < text.length; i++) {
+      ctx.fillText(text[i], cx, y0 + i * (fs + 10))
+    }
   }
-  swastika(240, 250)
-  swastika(784, 250)
-
-  const lotus = (cx: number, cy: number) => {
-    ctx.lineWidth = 8
-    ctx.beginPath()
-    ctx.moveTo(cx, cy - 44)
-    ctx.quadraticCurveTo(cx - 30, cy - 34, cx - 30, cy - 10)
-    ctx.moveTo(cx, cy - 44)
-    ctx.quadraticCurveTo(cx + 30, cy - 34, cx + 30, cy - 10)
-    ctx.moveTo(cx - 42, cy - 8)
-    ctx.quadraticCurveTo(cx - 20, cy + 6, cx, cy + 2)
-    ctx.quadraticCurveTo(cx + 20, cy + 6, cx + 42, cy - 8)
-    ctx.moveTo(cx, cy + 2)
-    ctx.lineTo(cx, cy + 30)
-    ctx.stroke()
-  }
-  lotus(512, 250)
-
-  // 云纹
-  ctx.strokeStyle = '#f1d25f'
-  ctx.lineWidth = 8
-  ctx.beginPath()
-  for (let x = 60; x < w - 40; x += 140) {
-    ctx.moveTo(x, 330)
-    ctx.quadraticCurveTo(x + 35, 310, x + 70, 330)
-    ctx.quadraticCurveTo(x + 105, 350, x + 140, 330)
-  }
+  vtext('觀音靈籤', 512, 134, 40)
+  vtext('有求必應', 152, 172, 34)
+  vtext('慈航普渡', 872, 172, 34)
   ctx.stroke()
   return cv
 }

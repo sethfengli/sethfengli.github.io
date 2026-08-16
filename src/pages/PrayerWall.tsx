@@ -106,7 +106,8 @@ export function PrayerWall() {
       {/* 页头 */}
       <header className="relative overflow-hidden bg-gradient-to-b from-tibetan-800 to-tibetan-900 py-16 text-center text-paper">
         <div className="pointer-events-none absolute inset-0">
-          <CoverImage src="/photos/lantern.jpg" alt="" fallbackVariant="incense" className="h-full w-full opacity-50" />
+          <CoverImage src="/photos/lantern.jpg" alt="" fallbackVariant="incense" className="h-full w-full" />
+          <div className="absolute inset-0 bg-gradient-to-b from-tibetan-900/50 via-tibetan-900/5 to-tibetan-900/75" />
           {Array.from({ length: 18 }).map((_, i) => (
             <span
               key={i}

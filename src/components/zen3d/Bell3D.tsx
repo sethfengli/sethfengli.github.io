@@ -41,7 +41,7 @@ export function Bell3D({ fallback }: { fallback?: ReactNode }) {
     void import('three').then((THREE) => {
       if (disposed || !canvas.isConnected) return
       try {
-        stage = createStage(THREE, canvas, { distance: 17, autoRotate: 0.1 })
+        stage = createStage(THREE, canvas, { distance: 21, autoRotate: 0, minDistance: 8, maxDistance: 55 })
         stageRef.current = stage
       } catch {
         setFailed(true)
@@ -51,80 +51,161 @@ export function Bell3D({ fallback }: { fallback?: ReactNode }) {
 
       /* ---------- 木架 ---------- */
       const wood = new THREE.MeshStandardMaterial({ color: 0x6a5947, roughness: 0.75, metalness: 0.05 })
-      const postL = new THREE.Mesh(new THREE.BoxGeometry(0.6, 9.4, 0.6), wood)
-      postL.position.set(-4.4, 0, 0)
+      const postL = new THREE.Mesh(new THREE.BoxGeometry(0.85, 13.6, 0.85), wood)
+      postL.position.set(-6.3, 0, 0)
       const postR = postL.clone()
-      postR.position.x = 4.4
-      const beam = new THREE.Mesh(new THREE.BoxGeometry(10.2, 0.7, 0.7), wood)
-      beam.position.set(0, 4.7, 0)
-      const cross = new THREE.Mesh(new THREE.BoxGeometry(10.2, 0.5, 0.5), wood)
-      cross.position.set(0, 3.9, 0)
+      postR.position.x = 6.3
+      const beam = new THREE.Mesh(new THREE.BoxGeometry(14.6, 1.0, 1.0), wood)
+      beam.position.set(0, 6.8, 0)
+      const cross = new THREE.Mesh(new THREE.BoxGeometry(14.6, 0.7, 0.7), wood)
+      cross.position.set(0, 5.6, 0)
       const gold = new THREE.MeshStandardMaterial({ color: 0xd4a92c, roughness: 0.3, metalness: 0.7 })
       S.add(postL, postR, beam, cross)
-      for (const x of [-5, 5]) {
-        const cap = new THREE.Mesh(new THREE.SphereGeometry(0.42, 20, 20), gold)
-        cap.position.set(x, 4.7, 0)
+      for (const x of [-7.2, 7.2]) {
+        const cap = new THREE.Mesh(new THREE.SphereGeometry(0.6, 20, 20), gold)
+        cap.position.set(x, 6.8, 0)
         S.add(cap)
       }
 
-      /* ---------- 铜钟 ---------- */
+      /* ---------- 匾额（铭文随机轮换） ---------- */
+      const INSCS = ['聞鐘聲 煩惱輕', '智慧長 菩提生', '風調雨順 國泰民安', '佛日增輝 法輪常轉']
+      const plaqueText = INSCS[Math.floor(Math.random() * INSCS.length)]
+      const makePlaque = (text: string, w: number, h: number, fs: number): THREE.Mesh => {
+        const cv = document.createElement('canvas')
+        cv.width = 1024
+        cv.height = 256
+        const ctx = cv.getContext('2d')!
+        ctx.fillStyle = '#3e2f1f'
+        ctx.fillRect(0, 0, 1024, 256)
+        ctx.strokeStyle = '#d4a92c'
+        ctx.lineWidth = 10
+        ctx.strokeRect(12, 12, 1000, 232)
+        ctx.fillStyle = '#f6e69b'
+        ctx.font = `${fs}px "Ma Shan Zheng","LXGW WenKai","KaiTi",cursive`
+        ctx.textAlign = 'center'
+        ctx.textBaseline = 'middle'
+        ctx.fillText(text, 512, 132)
+        const tex = new THREE.CanvasTexture(cv)
+        tex.colorSpace = THREE.SRGBColorSpace
+        const mesh = new THREE.Mesh(
+          new THREE.PlaneGeometry(w, h),
+          new THREE.MeshStandardMaterial({ map: tex, roughness: 0.6 }),
+        )
+        return mesh
+      }
+      const plaque = makePlaque('慧燈禪院', 4.6, 1.15, 150)
+      plaque.position.set(0, 6.8, 0.52)
+      S.add(plaque)
+      const plaque2 = makePlaque(plaqueText, 3.2, 0.8, 100)
+      plaque2.position.set(0, 5.6, 0.37)
+      S.add(plaque2)
+
+      /* ---------- 铜钟（梵钟形制：收肩、鼓腹、撇口、撞座） ---------- */
+      const INSC_POOL = ['南無阿彌陀佛', '風調雨順', '國泰民安', '佛日增輝', '法輪常轉', '聞鐘聲煩惱輕', '智慧長菩提生', '慧燈常照']
+      const picked = [...INSC_POOL].sort(() => Math.random() - 0.5).slice(0, 5)
+      const bellTexCv = document.createElement('canvas')
+      bellTexCv.width = 2048
+      bellTexCv.height = 1024
+      const bctx = bellTexCv.getContext('2d')!
+      const bg = bctx.createLinearGradient(0, 0, 2048, 0)
+      bg.addColorStop(0, '#7a5230')
+      bg.addColorStop(0.2, '#b98a57')
+      bg.addColorStop(0.5, '#c99a63')
+      bg.addColorStop(0.8, '#b98a57')
+      bg.addColorStop(1, '#7a5230')
+      bctx.fillStyle = bg
+      bctx.fillRect(0, 0, 2048, 1024)
+      // 铜绿包浆斑
+      for (let i = 0; i < 60; i++) {
+        bctx.fillStyle = `rgba(90,130,120,${0.04 + Math.random() * 0.08})`
+        bctx.beginPath()
+        bctx.ellipse(Math.random() * 2048, Math.random() * 1024, 30 + Math.random() * 90, 20 + Math.random() * 60, Math.random() * 3, 0, Math.PI * 2)
+        bctx.fill()
+      }
+      // 竖排铭文（五列，绕钟身）
+      bctx.fillStyle = '#f1d25f'
+      bctx.textAlign = 'center'
+      bctx.textBaseline = 'middle'
+      const cols = [205, 614, 1024, 1434, 1843]
+      picked.forEach((text, ci) => {
+        bctx.font = 'bold 92px "LXGW WenKai","KaiTi","SimSun",serif'
+        for (let i = 0; i < text.length; i++) {
+          bctx.fillText(text[i], cols[ci], 520 + i * 116)
+        }
+      })
+      // 上下弦纹
+      bctx.strokeStyle = 'rgba(241,210,95,0.8)'
+      bctx.lineWidth = 10
+      bctx.beginPath()
+      bctx.moveTo(0, 470)
+      bctx.lineTo(2048, 470)
+      bctx.moveTo(0, 940)
+      bctx.lineTo(2048, 940)
+      bctx.stroke()
+      const bellTex = new THREE.CanvasTexture(bellTexCv)
+      bellTex.colorSpace = THREE.SRGBColorSpace
+      bellTex.anisotropy = 8
+
       const bellPts: Array<[number, number]> = [
-        [0, 0.1],
-        [0.9, 0],
-        [1.9, -0.5],
-        [2.5, -1.6],
-        [2.9, -3.0],
-        [3.05, -4.4],
-        [2.95, -5.6],
-        [2.45, -6.35],
-        [1.35, -6.6],
-        [0, -6.6],
+        [0, 0.15],
+        [1.3, 0],
+        [2.7, -0.8],
+        [3.9, -2.5],
+        [4.5, -4.8],
+        [4.68, -7.2],
+        [4.55, -9.4],
+        [3.95, -10.9],
+        [2.9, -11.55],
+        [1.5, -11.85],
+        [3.0, -11.9],
+        [3.7, -12.0],
+        [0, -12.0],
       ]
       const bellGeo = new THREE.LatheGeometry(
         bellPts.map(([x, y]) => new THREE.Vector2(x, y)),
-        56,
+        72,
       )
-      const bronze = new THREE.MeshStandardMaterial({ color: 0xa5713f, roughness: 0.32, metalness: 0.85 })
+      const bronze = new THREE.MeshStandardMaterial({ map: bellTex, roughness: 0.34, metalness: 0.8 })
       const bellMesh = new THREE.Mesh(bellGeo, bronze)
       const bell = new THREE.Group()
-      bell.position.set(0, 3.6, 0)
+      bell.position.set(0, 5.2, 0)
       bell.add(bellMesh)
-      const band = new THREE.Mesh(new THREE.TorusGeometry(2.62, 0.14, 16, 64), gold)
-      band.position.y = -1.1
+      const band = new THREE.Mesh(new THREE.TorusGeometry(4.1, 0.2, 16, 96), gold)
+      band.position.y = -1.7
       band.rotation.x = Math.PI / 2
       bell.add(band)
-      const boss = new THREE.Mesh(new THREE.CylinderGeometry(0.42, 0.42, 0.18, 24), gold)
-      boss.position.set(0, -3.1, 2.86)
+      const boss = new THREE.Mesh(new THREE.CylinderGeometry(0.66, 0.66, 0.28, 28), gold)
+      boss.position.set(0, -4.7, 4.52)
       boss.rotation.x = Math.PI / 2
       bell.add(boss)
       S.add(bell)
 
       /* ---------- 撞木 ---------- */
       const striker = new THREE.Group()
-      striker.position.set(6.6, 4.4, 0)
+      striker.position.set(9.6, 6.4, 0)
       const ropeMat = new THREE.MeshStandardMaterial({ color: 0x3b3329, roughness: 0.9 })
-      for (const z of [-1.9, 1.9]) {
-        const rope = new THREE.Mesh(new THREE.CylinderGeometry(0.05, 0.05, 7.6, 8), ropeMat)
-        rope.position.set(0, -3.4, z)
+      for (const z of [-2.7, 2.7]) {
+        const rope = new THREE.Mesh(new THREE.CylinderGeometry(0.07, 0.07, 11, 8), ropeMat)
+        rope.position.set(0, -4.9, z)
         striker.add(rope)
       }
-      const strikerBeam = new THREE.Mesh(new THREE.CylinderGeometry(0.55, 0.55, 4.6, 20), wood)
+      const strikerBeam = new THREE.Mesh(new THREE.CylinderGeometry(0.8, 0.8, 6.6, 20), wood)
       strikerBeam.rotation.z = Math.PI / 2
-      strikerBeam.position.set(0, -3.6, 0)
+      strikerBeam.position.set(0, -5.2, 0)
       striker.add(strikerBeam)
-      const strikerHead = new THREE.Mesh(new THREE.CylinderGeometry(0.85, 0.85, 0.7, 20), wood)
+      const strikerHead = new THREE.Mesh(new THREE.CylinderGeometry(1.2, 1.2, 1.0, 20), wood)
       strikerHead.rotation.z = Math.PI / 2
-      strikerHead.position.set(2.7, -3.6, 0)
+      strikerHead.position.set(3.9, -5.2, 0)
       striker.add(strikerHead)
-      const strikerKnob = new THREE.Mesh(new THREE.SphereGeometry(0.28, 16, 16), gold)
-      strikerKnob.position.set(3.2, -3.6, 0)
+      const strikerKnob = new THREE.Mesh(new THREE.SphereGeometry(0.4, 16, 16), gold)
+      strikerKnob.position.set(4.6, -5.2, 0)
       striker.add(strikerKnob)
       S.add(striker)
 
       /* ---------- 声波金环 / 嗡字 / 光闪 ---------- */
-      const ringGeo = new THREE.TorusGeometry(3.0, 0.06, 12, 72)
-      const flash = new THREE.PointLight(0xffd9a0, 0, 30, 2)
-      flash.position.set(0, 0.5, 4)
+      const ringGeo = new THREE.TorusGeometry(4.4, 0.09, 12, 80)
+      const flash = new THREE.PointLight(0xffd9a0, 0, 46, 2)
+      flash.position.set(0, 0.8, 5.8)
       S.add(flash)
 
       const rig: BellRig = { bell, striker, strikeRequested: false, strikeT: -1, rings: [], oms: [], flash }
@@ -137,7 +218,7 @@ export function Bell3D({ fallback }: { fallback?: ReactNode }) {
           const mat = new THREE.MeshBasicMaterial({ color: 0xf1d25f, transparent: true, opacity: 0.9, depthWrite: false })
           const ringMesh = new THREE.Mesh(ringGeo, mat)
           ringMesh.rotation.x = Math.PI / 2
-          ringMesh.position.set(0, -3.2, 0)
+          ringMesh.position.set(0, -4.6, 0)
           S.add(ringMesh)
           rig.rings.push({ mesh: ringMesh, born: t0 + i * 0.28 })
         }
@@ -145,8 +226,8 @@ export function Bell3D({ fallback }: { fallback?: ReactNode }) {
         tex.colorSpace = THREE.SRGBColorSpace
         const omMat = new THREE.SpriteMaterial({ map: tex, transparent: true, depthWrite: false })
         const sprite = new THREE.Sprite(omMat)
-        sprite.scale.set(2.2, 2.2, 1)
-        sprite.position.set(0, 1.6, 0)
+        sprite.scale.set(3.4, 3.4, 1)
+        sprite.position.set(0, 6.2, 0)
         S.add(sprite)
         rig.oms.push({ sprite, born: t0 })
       }
@@ -196,8 +277,8 @@ export function Bell3D({ fallback }: { fallback?: ReactNode }) {
             rig.oms.splice(i, 1)
             continue
           }
-          o.sprite.position.y = 1.6 + k * 3.4
-          const sc = 2.2 * (1 + k * 0.5)
+          o.sprite.position.y = 6.2 + k * 5.0
+          const sc = 3.4 * (1 + k * 0.5)
           o.sprite.scale.set(sc, sc, 1)
           ;(o.sprite.material as THREE.SpriteMaterial).opacity = k < 0.15 ? k / 0.15 : 1 - (k - 0.15) / 0.85
         }

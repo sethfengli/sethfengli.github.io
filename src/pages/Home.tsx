@@ -35,7 +35,7 @@ export function Home() {
         <div className="absolute inset-0">
           <CoverImage src="/photos/hero.jpg" alt="" fallbackVariant="mountains" animated={false} className="h-full w-full" />
         </div>
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-sandalwood-950/50 via-sandalwood-950/15 to-sandalwood-950/80" />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-sandalwood-950/35 via-sandalwood-950/0 to-sandalwood-950/70" />
         {/* 飘浮莲花 */}
         <div className="pointer-events-none absolute top-24 right-[8%] hidden animate-float md:block">
           <PhotoLogo className="h-20 w-20 opacity-90" />
