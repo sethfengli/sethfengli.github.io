@@ -3,6 +3,7 @@ import type * as THREE from 'three'
 import type { Wish } from '../../lib/wishes'
 import { createStage, makeRibbonTexture, type Stage } from './stage'
 import { createCenser } from './censer'
+import { useI18n } from '../../i18n'
 
 /**
  * 3D 千年松柏许愿树
@@ -124,6 +125,7 @@ function makeBarkTexture(THREE: typeof import('three')): THREE.CanvasTexture {
 }
 
 export function Tree3D({ wishes, onRibbonClick, fallback }: Props) {
+  const { t } = useI18n()
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const stageRef = useRef<Stage | null>(null)
   const rigRef = useRef<TreeRig | null>(null)
@@ -162,6 +164,7 @@ export function Tree3D({ wishes, onRibbonClick, fallback }: Props) {
       )
       ground.rotation.x = -Math.PI / 2
       ground.position.y = -4.4
+      ground.receiveShadow = true
       S.add(ground)
       const ring = new THREE.Mesh(
         new THREE.RingGeometry(3.6, 3.8, 72),
@@ -170,6 +173,8 @@ export function Tree3D({ wishes, onRibbonClick, fallback }: Props) {
       ring.rotation.x = -Math.PI / 2
       ring.position.y = -4.34
       S.add(ring)
+      // 树底接地软阴影（树冠遮挡形成的暗区）
+      stage.addCatchShadow({ radius: 4.6, y: -4.32, opacity: 0.42 })
       // 草地小花
       const flowerMat = new THREE.MeshStandardMaterial({ color: 0xf6c6be, roughness: 0.8 })
       for (let i = 0; i < 26; i++) {
@@ -311,23 +316,45 @@ export function Tree3D({ wishes, onRibbonClick, fallback }: Props) {
       }
       rigRef.current = rig
 
+      /* ---------- 飘落松针/花瓣（气氛粒子） ---------- */
+      const petalTex = makePineTuft(THREE, 2)
+      const petals: Array<{ s: THREE.Sprite; speed: number; phase: number; sway: number }> = []
+      for (let i = 0; i < 22; i++) {
+        const mat = new THREE.SpriteMaterial({ map: petalTex, transparent: true, depthWrite: false, opacity: 0.5 })
+        const s = new THREE.Sprite(mat)
+        s.scale.setScalar(0.5 + Math.random() * 0.5)
+        S.add(s)
+        petals.push({
+          s,
+          speed: 0.35 + Math.random() * 0.45,
+          phase: Math.random() * Math.PI * 2,
+          sway: 4 + Math.random() * 4,
+        })
+      }
+
       /* ---------- 拾取 ---------- */
-      stage.setPick(
-        () => [
-          ...rig.ribbons.flatMap((r) => [r.group]),
-          censerGroup,
-          ...rig.censer.embers.map((e) => e.mesh),
-        ],
-        (obj) => {
-          if (!obj) return
-          const w = obj.userData?.wish as Wish | undefined
+      const pickObjects = (): THREE.Object3D[] => [
+        ...rig.ribbons.flatMap((r) => [r.group]),
+        censerGroup,
+        ...rig.censer.embers.map((e) => e.mesh),
+      ]
+      stage.setPick(pickObjects, (obj) => {
+        if (!obj) return
+        // 飘带可点：从命中对象沿父链上溯找带 wish 的组
+        let cur: THREE.Object3D | null = obj
+        while (cur) {
+          const w = cur.userData?.wish as Wish | undefined
           if (w) {
             onRibbonClick(w)
             return
           }
+          cur = cur.parent
+        }
+        // 其下仍视为点香炉：供香
+        if (obj === censerGroup || obj.parent === censerGroup || rig.censer.embers.some((e) => e.mesh === obj)) {
           rig.censer.lit = true
-        },
-      )
+        }
+      })
 
       /* ---------- 帧动画 ---------- */
       const wind = () => Math.sin(performance.now() * 0.0005) * 0.5 + Math.sin(performance.now() * 0.00013) * 0.5
@@ -347,6 +374,18 @@ export function Tree3D({ wishes, onRibbonClick, fallback }: Props) {
         canopy.rotation.x = Math.sin(t * 0.2) * 0.008
         // 香炉（盘香 + 青烟）
         rig.censer.update(dt, t)
+        // 飘落针叶：从树冠高度盘旋落下，落在地面后重生
+        for (const p of petals) {
+          p.s.position.y -= p.speed * dt
+          p.s.position.x += Math.sin(t * 1.3 + p.phase + p.s.position.y * 0.8) * dt * p.sway * 0.12
+          p.s.position.z += Math.cos(t * 1.1 + p.phase * 1.4 + p.s.position.y * 0.7) * dt * p.sway * 0.1
+          ;(p.s.material as THREE.SpriteMaterial).opacity = 0.45 * Math.min(1, (p.s.position.y + 6) / 3)
+          if (p.s.position.y < -4.3) {
+            const a = Math.random() * Math.PI * 2
+            const r = 1.5 + Math.random() * 4.5
+            p.s.position.set(Math.cos(a) * r, 8 + Math.random() * 2, Math.sin(a) * r)
+          }
+        }
       })
 
       setReady(true)
@@ -426,7 +465,7 @@ export function Tree3D({ wishes, onRibbonClick, fallback }: Props) {
     <div className="relative h-[520px] w-full sm:h-[640px]">
       <canvas ref={canvasRef} className="h-full w-full" aria-label="3D 千年松柏许愿树" />
       <p className="pointer-events-none absolute bottom-2 left-1/2 -translate-x-1/2 rounded-full bg-sandalwood-950/60 px-3 py-1 text-[11px] text-paper/80 backdrop-blur-sm">
-        拖拽旋转 · 滚轮缩放看细节 · 点击飘带查看心愿 · 点击香炉供香
+        {t('common.treeHint')}
       </p>
     </div>
   )

@@ -17,6 +17,8 @@ export function Footer() {
 
   return (
     <footer className="border-t border-sandalwood-200/70 bg-sandalwood-900 text-paper">
+      {/* 顶部金色细线 */}
+      <div className="h-px bg-gradient-to-r from-transparent via-gold-500/40 to-transparent" />
       <div className="mx-auto grid max-w-6xl gap-10 px-4 py-12 sm:px-6 md:grid-cols-[1.4fr_1fr_1fr]">
         <div>
           <div className="flex items-center gap-2.5">
@@ -35,7 +37,8 @@ export function Footer() {
           <ul className="space-y-2 text-sm text-paper/75">
             {NAV.map((item) => (
               <li key={item.to}>
-                <Link to={item.to} className="transition hover:text-gold-300">
+                <Link to={item.to} viewTransition className="group inline-flex items-center gap-1.5 transition-colors duration-200 hover:text-gold-300">
+                  <span className="h-px w-0 bg-gold-400/70 transition-all duration-300 group-hover:w-3" aria-hidden />
                   {t(`nav.${item.key}`)}
                 </Link>
               </li>
@@ -51,7 +54,7 @@ export function Footer() {
                 href="https://github.com/sethfengli/sethfengli.github.io"
                 target="_blank"
                 rel="noreferrer"
-                className="transition hover:text-gold-300"
+                className="transition-colors duration-200 hover:text-gold-300"
               >
                 GitHub Repository
               </a>
@@ -61,13 +64,13 @@ export function Footer() {
                 href="https://github.com/sethfengli/sethfengli.github.io/issues/new"
                 target="_blank"
                 rel="noreferrer"
-                className="transition hover:text-gold-300"
+                className="transition-colors duration-200 hover:text-gold-300"
               >
                 {t('about.contactEmail')}
               </a>
             </li>
             <li>
-              <Link to="/about" className="transition hover:text-gold-300">
+              <Link to="/about" viewTransition className="transition-colors duration-200 hover:text-gold-300">
                 {t('about.contactTitle')}
               </Link>
             </li>

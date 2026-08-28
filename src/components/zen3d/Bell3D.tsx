@@ -12,6 +12,7 @@ import { createStage, makeTextCanvas, type Stage } from './stage'
 
 interface BellRig {
   bell: THREE.Group
+  bellPivot: THREE.Group
   striker: THREE.Group
   strikeRequested: boolean
   strikeT: number
@@ -66,6 +67,12 @@ export function Bell3D({ fallback }: { fallback?: ReactNode }) {
         cap.position.set(x, 6.8, 0)
         S.add(cap)
       }
+      // 阴影投射（局部小块即可，代价低）
+      const shadowCasters: THREE.Mesh[] = [postL, postR, beam, cross]
+      // 接地软阴影：木架脚下
+      stage.addCatchShadow({ radius: 8.6, y: -0.42, opacity: 0.5 })
+      stage.addCatchShadow({ radius: 2.6, y: -0.36, opacity: 0.32, follow: () => new THREE.Vector3(-6.3, 0, 0) })
+      stage.addCatchShadow({ radius: 2.6, y: -0.36, opacity: 0.32, follow: () => new THREE.Vector3(6.3, 0, 0) })
 
       /* ---------- 匾额（铭文随机轮换） ---------- */
       const INSCS = ['聞鐘聲 煩惱輕', '智慧長 菩提生', '風調雨順 國泰民安', '佛日增輝 法輪常轉']
@@ -167,6 +174,7 @@ export function Bell3D({ fallback }: { fallback?: ReactNode }) {
       )
       const bronze = new THREE.MeshStandardMaterial({ map: bellTex, roughness: 0.34, metalness: 0.8 })
       const bellMesh = new THREE.Mesh(bellGeo, bronze)
+      bellMesh.castShadow = true
       const bell = new THREE.Group()
       bell.position.set(0, 5.2, 0)
       bell.add(bellMesh)
@@ -192,7 +200,13 @@ export function Bell3D({ fallback }: { fallback?: ReactNode }) {
       boss.position.set(0, -4.7, 4.9)
       boss.rotation.x = Math.PI / 2
       bell.add(boss)
-      S.add(bell)
+      shadowCasters.push(bellMesh, crownPlate, crownNeck, crownKnob, band)
+      // 摆动轴心在冠钮（绳环）处 → 撞钟时绕顶部自然晃荡
+      const bellPivot = new THREE.Group()
+      bellPivot.position.set(0, 5.2 + 1.35, 0)
+      bell.position.y = -1.35
+      bellPivot.add(bell)
+      S.add(bellPivot)
 
       /* ---------- 撞木 ---------- */
       const striker = new THREE.Group()
@@ -214,7 +228,9 @@ export function Bell3D({ fallback }: { fallback?: ReactNode }) {
       const strikerKnob = new THREE.Mesh(new THREE.SphereGeometry(0.4, 16, 16), gold)
       strikerKnob.position.set(4.6, -5.2, 0)
       striker.add(strikerKnob)
+      shadowCasters.push(strikerBeam, strikerHead)
       S.add(striker)
+      shadowCasters.forEach((m) => (m.castShadow = true))
 
       /* ---------- 声波金环 / 嗡字 / 光闪 ---------- */
       const ringGeo = new THREE.TorusGeometry(4.4, 0.09, 12, 80)
@@ -222,7 +238,7 @@ export function Bell3D({ fallback }: { fallback?: ReactNode }) {
       flash.position.set(0, 0.8, 5.8)
       S.add(flash)
 
-      const rig: BellRig = { bell, striker, strikeRequested: false, strikeT: -1, rings: [], oms: [], flash }
+      const rig: BellRig = { bell, bellPivot, striker, strikeRequested: false, strikeT: -1, rings: [], oms: [], flash }
       rigRef.current = rig
 
       const spawnFx = (t0: number) => {
@@ -253,19 +269,24 @@ export function Bell3D({ fallback }: { fallback?: ReactNode }) {
       )
 
       /* ---------- 帧动画 ---------- */
+      const stageRefLocal = stage
       stage.onFrame((dt, t) => {
         if (rig.strikeRequested) {
           rig.strikeRequested = false
           spawnFx(t)
         }
-        // 空闲微摆
-        bell.rotation.x = Math.sin(t * 0.8) * 0.01
-        // 击钟动画
+        // 空闲微摆（静止时在风里轻轻摇晃）
+        const idleSway = stageRefLocal.reducedMotion ? 0.004 : 0.012
+        bellPivot.rotation.x = Math.sin(t * 0.8) * idleSway
+        // 击钟动画：撞木荡起 → 钟以冠钮为轴晃荡（衰减摆）
         if (rig.strikeT >= 0) {
           const k = t - rig.strikeT
           striker.rotation.z = -0.34 * Math.sin(9.4 * k) * Math.exp(-1.7 * k)
-          if (k > 0.08) bell.rotation.x = 0.11 * Math.sin(6.4 * (k - 0.08)) * Math.exp(-1.3 * (k - 0.08))
-          if (k > 2.6) rig.strikeT = -1
+          if (k > 0.08) {
+            const kk = k - 0.08
+            bellPivot.rotation.x = 0.12 * Math.sin(3.1 * kk) * Math.exp(-0.55 * kk) + idleSway * Math.sin(t * 0.8)
+          }
+          if (k > 4.2) rig.strikeT = -1
         }
         // 金环扩散
         for (let i = rig.rings.length - 1; i >= 0; i--) {
@@ -351,9 +372,9 @@ export function Bell3D({ fallback }: { fallback?: ReactNode }) {
       >
         🔔 {ringing ? t('dharma.ringing') : count > 0 ? t('dharma.ringAgain') : t('dharma.ringBell')}
       </button>
-      <div className="text-center font-serif text-sm text-sandalwood-500">
+      <div className="text-center font-serif text-sm text-sandalwood-500" aria-live="polite">
         {count > 0 ? `第 ${count} 声` : '\u00a0'}
-        <p className="mt-1 text-[11px] text-sandalwood-400">拖拽旋转 · 滚轮缩放 · 点击铜钟撞钟</p>
+        <p className="mt-1 text-[11px] text-sandalwood-400">{t('common.bellHint')}</p>
       </div>
     </div>
   )

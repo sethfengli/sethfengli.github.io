@@ -280,12 +280,19 @@ export function createCenser(
     tips.push({ x: 0, y: 4.05, z: 0 })
   }
 
-  /* ---------- 青烟粒子 ---------- */
+  /* ---------- 青烟粒子（加色混合，逆光更明亮） ---------- */
   const smokeTex = makeSmokeTexture(THREE)
   const N = 70
   const sprites: CenserRig['smokeSprites'] = []
   for (let i = 0; i < N; i++) {
-    const mat = new THREE.SpriteMaterial({ map: smokeTex, transparent: true, depthWrite: false, opacity: 0 })
+    const mat = new THREE.SpriteMaterial({
+      map: smokeTex,
+      transparent: true,
+      depthWrite: false,
+      opacity: 0,
+      blending: THREE.AdditiveBlending,
+      color: 0xf2f5f6,
+    })
     const s = new THREE.Sprite(mat)
     group.add(s)
     // 初始即置于香头上方、处于烟程中段 → 一打开就能看到青烟
@@ -295,15 +302,24 @@ export function createCenser(
     sprites.push({ s, mat, life: 1 + Math.random() * 6, phase: Math.random() * Math.PI * 2, tip: Math.floor(Math.random() * tips.length) })
   }
 
+  // 香头炭火点光源（微闪，随 lit 状态开启）
+  const emberLight = new THREE.PointLight(0xff8844, 0.6, 3.2, 2)
+  const firstTip = tips[0] ?? { x: 0, y: 3, z: 0 }
+  emberLight.position.set(firstTip.x, firstTip.y, firstTip.z)
+  group.add(emberLight)
+
   const rig: CenserRig = { group, embers, ashCaps, smoke: null, smokeSprites: sprites, tips, lit: true, update: () => undefined }
 
   const update = (dt: number, t: number) => {
     for (const e of rig.embers) {
-      const glow = rig.lit ? 0.75 + Math.sin(t * 7 + e.mesh.position.x * 12) * 0.25 : 0
+      // 炭火脉动：相位随机 + 呼吸闪烁
+      const flick = Math.sin(t * 7 + e.mesh.position.x * 12) * 0.5 + Math.sin(t * 13 + e.mesh.position.z * 9) * 0.5
+      const glow = rig.lit ? 0.72 + flick * 0.22 : 0
       e.mat.color.setRGB(glow, glow * 0.38, glow * 0.12)
     }
+    emberLight.intensity = rig.lit ? 0.35 + Math.sin(t * 9.5) * 0.14 + Math.sin(t * 17.3) * 0.08 : 0
     if (variant === 'sticks') {
-      const ashLen = 0.34 + Math.sin(t * 0.4) * 0.03
+      const ashLen = (0.34 + Math.sin(t * 0.4) * 0.03) * (rig.lit ? 1 : 0.6)
       for (const c of rig.ashCaps) c.scale.y = ashLen / 0.34
     }
     for (let i = 0; i < sprites.length; i++) {
@@ -323,7 +339,7 @@ export function createCenser(
         p.s.position.z = p.s.position.z + Math.cos(t * 1.3 + p.phase * 1.3 + y * 1.1) * dt * 0.18
         const sc = 0.12 + k * 0.85
         p.s.scale.setScalar(sc)
-        p.mat.opacity = rig.lit ? (k < 0.15 ? (k / 0.15) * 0.5 : 0.5 * (1 - (k - 0.15) / 0.85)) : 0
+        p.mat.opacity = rig.lit ? (k < 0.15 ? (k / 0.15) * 0.42 : 0.42 * (1 - (k - 0.15) / 0.85)) : 0
       }
     }
   }

@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, type ReactNode } from 'react'
 import { createStage, type Stage } from './stage'
 import { createCenser, type CenserVariant } from './censer'
+import { useI18n } from '../../i18n'
 
 /**
  * 3D 鼎式香炉（独立场景）：三足双耳铜鼎、香灰、真实燃香细节、袅袅青烟。
@@ -25,6 +26,7 @@ export function Incense3D({
   distance = 7,
   fallback,
 }: Props) {
+  const { t } = useI18n()
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const [failed, setFailed] = useState(false)
   const variantRef = useRef(variant)
@@ -67,7 +69,7 @@ export function Incense3D({
     <div className={`relative w-full ${heightClass}`}>
       <canvas ref={canvasRef} className="h-full w-full" aria-label="3D 鼎式香炉" />
       <p className="pointer-events-none absolute bottom-1 left-1/2 -translate-x-1/2 rounded-full bg-sandalwood-950/60 px-3 py-1 text-[11px] text-paper/80 backdrop-blur-sm">
-        拖拽旋转 · 滚轮缩放 · 心香常燃
+        {t('common.dragRotate')} · {t('common.scrollZoom')} · {t('common.censerHint')}
       </p>
     </div>
   )

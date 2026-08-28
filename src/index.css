@@ -74,6 +74,13 @@
   /* 卡片表面色（随主题） */
   --color-surface: var(--site-surface);
 
+  /* 阴影与圆角令牌 */
+  --shadow-card: 0 1px 2px var(--site-shadow-base, rgb(20 44 37 / 0.06)),
+    0 6px 20px -6px var(--site-shadow-soft, rgb(20 44 37 / 0.12));
+  --shadow-card-hover: 0 2px 4px var(--site-shadow-base, rgb(20 44 37 / 0.08)),
+    0 14px 32px -8px var(--site-shadow-soft, rgb(20 44 37 / 0.18));
+  --radius-card: 1rem;
+
   /* 字体：霞鹜文楷（古意正文）＋ 马善政/龙藏（书法标题） */
   --font-serif:
     'LXGW WenKai', 'Kaiti SC', 'STKaiti', 'KaiTi', 'Noto Serif SC', 'Songti SC',
@@ -427,13 +434,24 @@
 /* ---------- 基础 ---------- */
 html {
   scroll-behavior: smooth;
+  /* 粘性页头下的锚点定位留白 */
+  scroll-padding-top: 5rem;
 }
 body {
   @apply bg-rice-50 font-sans text-ink-900 antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-wrap: break-word;
 }
 ::selection {
   background: var(--color-gold-200);
   color: var(--color-ink-900);
+}
+
+/* 键盘可达性：全局焦点环 */
+:focus-visible {
+  outline: 2px solid var(--color-gold-500);
+  outline-offset: 2px;
+  border-radius: 0.25rem;
 }
 
 /* 细滚动条 */
@@ -445,6 +463,9 @@ body {
   background: var(--color-sandalwood-300);
   border-radius: 8px;
 }
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--color-sandalwood-400);
+}
 *::-webkit-scrollbar-track {
   background: transparent;
 }
@@ -452,16 +473,27 @@ body {
 /* ---------- 组件样式 ---------- */
 @layer components {
   .btn-primary {
-    @apply inline-flex cursor-pointer items-center justify-center gap-2 rounded-full bg-tibetan-600 px-6 py-2.5 font-sans text-sm font-medium text-on-accent shadow-md shadow-tibetan-900/20 transition hover:bg-tibetan-700 hover:shadow-lg focus-visible:ring-2 focus-visible:ring-gold-400 focus-visible:outline-none active:scale-[0.98];
+    @apply inline-flex cursor-pointer items-center justify-center gap-2 rounded-full bg-tibetan-600 px-6 py-2.5 font-sans text-sm font-medium text-on-accent transition duration-200 hover:bg-tibetan-700 hover:shadow-lg focus-visible:ring-2 focus-visible:ring-gold-400 focus-visible:outline-none active:scale-[0.97];
   }
   .btn-secondary {
-    @apply inline-flex cursor-pointer items-center justify-center gap-2 rounded-full border border-sandalwood-400/60 bg-transparent px-6 py-2.5 font-sans text-sm font-medium text-sandalwood-700 transition hover:border-sandalwood-600 hover:bg-sandalwood-50 focus-visible:ring-2 focus-visible:ring-gold-400 focus-visible:outline-none active:scale-[0.98];
+    @apply inline-flex cursor-pointer items-center justify-center gap-2 rounded-full border border-sandalwood-400/60 bg-transparent px-6 py-2.5 font-sans text-sm font-medium text-sandalwood-700 transition duration-200 hover:border-sandalwood-600 hover:bg-sandalwood-50 focus-visible:ring-2 focus-visible:ring-gold-400 focus-visible:outline-none active:scale-[0.97];
   }
   .btn-gold {
-    @apply inline-flex cursor-pointer items-center justify-center gap-2 rounded-full bg-gold-500 px-6 py-2.5 font-sans text-sm font-semibold text-ink-950 shadow-md shadow-gold-600/30 transition hover:bg-gold-400 focus-visible:ring-2 focus-visible:ring-gold-600 focus-visible:outline-none active:scale-[0.98];
+    @apply inline-flex cursor-pointer items-center justify-center gap-2 rounded-full bg-gold-500 px-6 py-2.5 font-sans text-sm font-semibold text-ink-950 shadow-md shadow-gold-600/25 transition duration-200 hover:bg-gold-400 hover:shadow-lg hover:shadow-gold-600/30 focus-visible:ring-2 focus-visible:ring-gold-600 focus-visible:outline-none active:scale-[0.97];
   }
   .card {
-    @apply rounded-2xl border border-sandalwood-200/70 bg-surface shadow-sm transition hover:-translate-y-0.5 hover:shadow-md;
+    @apply rounded-2xl border border-sandalwood-200/70 bg-surface transition duration-300;
+    box-shadow: var(--shadow-card);
+  }
+  .card:hover {
+    box-shadow: var(--shadow-card-hover);
+  }
+  .card-link {
+    @apply cursor-pointer overflow-hidden rounded-2xl border border-sandalwood-200/70 bg-surface transition duration-300 hover:-translate-y-1 hover:border-gold-400/70;
+    box-shadow: var(--shadow-card);
+  }
+  .card-link:hover {
+    box-shadow: var(--shadow-card-hover);
   }
   .chip {
     @apply inline-flex items-center gap-1 rounded-full border border-sandalwood-300/70 bg-sandalwood-50 px-3 py-1 text-xs text-sandalwood-700;
@@ -473,6 +505,45 @@ body {
   .zen-divider::after {
     content: '';
     @apply h-px w-16 bg-gradient-to-r from-transparent via-sandalwood-300 to-transparent;
+  }
+  .section-title {
+    @apply font-brush text-3xl text-sandalwood-800 sm:text-4xl;
+    text-wrap: balance;
+  }
+  .section-sub {
+    @apply font-serif text-sm text-sandalwood-500;
+  }
+}
+
+/* 阅读/浏览淡入（滚动呈现，见 Reveal 组件） */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.65s cubic-bezier(0.22, 0.61, 0.36, 1),
+    transform 0.65s cubic-bezier(0.22, 0.61, 0.36, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* 尊重减少动效 */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
   }
 }
 
@@ -531,10 +602,13 @@ body {
   text-underline-offset: 3px;
 }
 .article-body table {
+  display: block;
   width: 100%;
   border-collapse: collapse;
   margin: 1.2em 0;
   font-size: 0.92em;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 .article-body th,
 .article-body td {
@@ -546,6 +620,9 @@ body {
 .article-body th {
   background: var(--reader-quote-bg);
   font-weight: 700;
+}
+.article-body tbody tr:nth-child(even) {
+  background: color-mix(in srgb, var(--reader-quote-bg) 55%, transparent);
 }
 .article-body ul,
 .article-body ol {
@@ -785,4 +862,27 @@ body {
 .goog-te-gadget {
   font-family: var(--font-sans) !important;
   color: inherit !important;
+}
+
+/* ============================================================
+   页面切换动画（View Transitions API，渐进增强）
+   React Router 7 的 viewTransition 链接触发；不支持的浏览器静默跳过
+   ============================================================ */
+@media (prefers-reduced-motion: no-preference) {
+  ::view-transition-old(root) {
+    animation: vt-fade-out 0.22s ease both;
+  }
+  ::view-transition-new(root) {
+    animation: vt-fade-in 0.3s ease both;
+  }
+}
+@keyframes vt-fade-out {
+  to {
+    opacity: 0.35;
+  }
+}
+@keyframes vt-fade-in {
+  from {
+    opacity: 0.35;
+  }
 }

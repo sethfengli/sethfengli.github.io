@@ -14,7 +14,7 @@ import { LotCylinder } from '../components/zen/LotCylinder'
 import { LotCylinder3D } from '../components/zen3d/LotCylinder3D'
 import { IncenseBurner } from '../components/zen/IncenseBurner'
 import { Incense3D } from '../components/zen3d/Incense3D'
-import { CoverImage } from '../components/zen/CoverImage'
+import { PageBanner } from '../components/ui/PageBanner'
 
 type Phase = 'idle' | 'shaking' | 'revealed'
 
@@ -75,17 +75,13 @@ export function Lots() {
   return (
     <div>
       {/* 页头：观音像 */}
-      <header className="relative overflow-hidden bg-sandalwood-950 py-16 text-center text-paper">
-        <div className="absolute inset-0">
-          <CoverImage src="/photos/guanyin.jpg" alt="" fallbackVariant="meditation" className="h-full w-full" />
-        </div>
-        <div className="absolute inset-0 bg-gradient-to-b from-sandalwood-950/30 via-sandalwood-950/0 to-sandalwood-950/70" />
-        <div className="relative">
-          <p className="banner-text font-serif text-sm tracking-[0.5em] text-gold-300">观 音 法 门</p>
-          <h1 className="mt-3 banner-text font-brush text-4xl sm:text-5xl">{t('lots.title')}</h1>
-          <p className="mt-3 banner-text font-serif text-sm text-paper">{t('lots.subtitle')}</p>
-        </div>
-      </header>
+      <PageBanner
+        image="/photos/guanyin.jpg"
+        kicker="观 音 法 门"
+        title={t('lots.title')}
+        subtitle={t('lots.subtitle')}
+        gradient="from-sandalwood-950/30 via-sandalwood-950/5 to-sandalwood-950/70"
+      />
 
       <div className="mx-auto max-w-5xl px-4 py-12 sm:px-6">
         <p className="mx-auto max-w-2xl text-center font-serif text-sm leading-loose text-ink-700">
@@ -102,6 +98,7 @@ export function Lots() {
                   src="/photos/guanyin.jpg"
                   alt="南无观世音菩萨"
                   loading="lazy"
+                  decoding="async"
                   className="h-72 w-48 object-cover sm:h-96 sm:w-60"
                 />
               </div>
@@ -164,7 +161,7 @@ export function Lots() {
                     <button
                       type="button"
                       onClick={() => openHistory(l.id)}
-                      className="card flex w-full cursor-pointer items-center gap-4 p-4 text-left"
+                      className="card-link flex w-full cursor-pointer items-center gap-4 p-4 text-left"
                     >
                       <span className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-sm font-bold ${levelClass(l.level)}`}>
                         {l.id}
@@ -227,7 +224,13 @@ function LotModal({
       if (e.key === 'Escape') onClose()
     }
     window.addEventListener('keydown', onKey)
-    return () => window.removeEventListener('keydown', onKey)
+    // 锁定背景滚动
+    const prevOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    return () => {
+      window.removeEventListener('keydown', onKey)
+      document.body.style.overflow = prevOverflow
+    }
   }, [onClose])
 
   return (

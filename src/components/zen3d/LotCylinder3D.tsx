@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, type ReactNode } from 'react'
 import type * as THREE from 'three'
 import { createStage, type Stage } from './stage'
+import { useI18n } from '../../i18n'
 
 /**
  * 3D 朱漆描金签筒：回纹金带、卍字与莲徽、廿四签支。
@@ -84,6 +85,7 @@ function drawCylinderTexture(): HTMLCanvasElement {
 }
 
 export function LotCylinder3D({ shaking, revealed, onShake, fallback }: Props) {
+  const { t } = useI18n()
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const rigRef = useRef<CylinderRig | null>(null)
   const [failed, setFailed] = useState(false)
@@ -144,6 +146,8 @@ export function LotCylinder3D({ shaking, revealed, onShake, fallback }: Props) {
       base2.position.y = -3.3
       group.add(base2)
       S.add(group)
+      // 底座接地软阴影（视觉“落地”）
+      stage.addCatchShadow({ radius: 3.4, y: -3.62, opacity: 0.5 })
 
       /* ---------- 廿四签支（扁平签条，竹色 + 红签头） ---------- */
       const sticks = new THREE.Group()
@@ -248,7 +252,7 @@ export function LotCylinder3D({ shaking, revealed, onShake, fallback }: Props) {
     <div className="relative h-[300px] w-full max-w-[400px] sm:h-[340px]">
       <canvas ref={canvasRef} className="h-full w-full" aria-label="3D 签筒" />
       <p className="pointer-events-none absolute bottom-1 left-1/2 -translate-x-1/2 rounded-full bg-sandalwood-950/60 px-3 py-1 text-[11px] text-paper/80 backdrop-blur-sm">
-        拖拽旋转 · 滚轮缩放 · 点击签筒摇签
+        {t('common.lotHint')}
       </p>
     </div>
   )

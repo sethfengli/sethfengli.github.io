@@ -4,6 +4,7 @@ import { useI18n } from '../i18n'
 import { CATALOG, photoForSlug, readingMinutes, type School } from '../lib/content'
 import { ZenIllustration } from '../components/zen/ZenIllustration'
 import { CoverImage } from '../components/zen/CoverImage'
+import { PageIntro } from '../components/ui/PageBanner'
 
 const PAGE_SIZE = 24
 
@@ -34,17 +35,10 @@ export function Articles() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
       {/* 页头 */}
-      <header className="text-center">
-        <p className="font-serif text-sm tracking-[0.4em] text-gold-600">法 藏</p>
-        <h1 className="mt-2 font-brush text-4xl text-sandalwood-800 sm:text-5xl">{t('articles.title')}</h1>
-        <p className="mt-3 font-serif text-sm text-sandalwood-500">{t('articles.subtitle')}</p>
-        <div className="zen-divider mt-5">
-          <span className="text-gold-500">❖</span>
-        </div>
-      </header>
+      <PageIntro kicker="法 藏" title={t('articles.title')} subtitle={t('articles.subtitle')} />
 
       {/* 头图横幅（真实照片） */}
-      <div className="mx-auto mt-8 h-40 max-w-3xl overflow-hidden rounded-3xl shadow-md">
+      <div className="mx-auto mt-8 h-40 max-w-3xl overflow-hidden rounded-3xl shadow-md shadow-sandalwood-900/10">
         <CoverImage src="/photos/gate.jpg" alt="" fallbackVariant="clouds" className="h-full w-full" />
       </div>
 
@@ -84,10 +78,11 @@ export function Articles() {
               setVisible(PAGE_SIZE)
             }}
             placeholder={t('articles.searchPlaceholder')}
-            className="w-full rounded-full border border-sandalwood-300/70 bg-surface py-2.5 pr-4 pl-11 font-sans text-sm text-ink-900 placeholder:text-ink-300 focus:border-gold-500 focus:ring-2 focus:ring-gold-300 focus:outline-none"
+            aria-label={t('articles.searchPlaceholder')}
+            className="w-full rounded-full border border-sandalwood-300/70 bg-surface py-2.5 pr-4 pl-11 font-sans text-sm text-ink-900 transition-colors placeholder:text-ink-300 focus:border-gold-500 focus:ring-2 focus:ring-gold-300 focus:outline-none"
           />
         </div>
-        <p className="text-xs text-sandalwood-400">
+        <p className="text-xs tabular-nums text-sandalwood-400">
           {filtered.length} 篇
         </p>
       </div>
@@ -101,7 +96,7 @@ export function Articles() {
       ) : (
         <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {shown.map((a) => (
-            <Link key={a.slug} to={`/articles/${a.slug}`} className="card group flex flex-col overflow-hidden">
+            <Link key={a.slug} to={`/articles/${a.slug}`} viewTransition className="card-link group flex flex-col overflow-hidden">
               <div className="relative overflow-hidden">
                 <CoverImage
                   src={photoForSlug(a.slug)}

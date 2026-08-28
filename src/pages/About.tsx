@@ -1,9 +1,11 @@
-import { useEffect, useRef, useState, type ReactNode } from 'react'
+import { useEffect, useState } from 'react'
 import { useI18n } from '../i18n'
 import { CATALOG, PHOTO_NAMES } from '../lib/content'
 import { CHANTS } from '../data/chants'
 import { LOTS } from '../data/lots'
 import { CoverImage } from '../components/zen/CoverImage'
+import { PageBanner } from '../components/ui/PageBanner'
+import { Reveal } from '../components/ui/Reveal'
 
 const SECTIONS = [
   { id: 'story', key: 'about.storyTitle' },
@@ -44,17 +46,13 @@ export function About() {
   return (
     <div>
       {/* 页头：明亮禅庭照片 */}
-      <header className="relative overflow-hidden bg-sandalwood-900 py-16 text-center text-paper sm:py-20">
-        <div className="absolute inset-0">
-          <CoverImage src="/photos/garden.jpg" alt="" fallbackVariant="bamboo" className="h-full w-full" />
-        </div>
-        <div className="absolute inset-0 bg-gradient-to-b from-sandalwood-900/45 via-sandalwood-900/10 to-sandalwood-900/80" />
-        <div className="relative">
-          <p className="banner-text font-serif text-sm tracking-[0.5em] text-gold-300">山 门</p>
-          <h1 className="mt-3 banner-text font-brush text-4xl sm:text-5xl">{t('about.title')}</h1>
-          <p className="mt-3 banner-text font-serif text-sm text-paper">{t('about.subtitle')}</p>
-        </div>
-      </header>
+      <PageBanner
+        image="/photos/garden.jpg"
+        kicker="山 门"
+        title={t('about.title')}
+        subtitle={t('about.subtitle')}
+        gradient="from-sandalwood-900/45 via-sandalwood-900/10 to-sandalwood-900/80"
+      />
 
       {/* 数字带 */}
       <section className="border-b border-sandalwood-200/60 bg-surface">
@@ -249,34 +247,6 @@ function Stat({ value, label }: { value: string; label: string }) {
     <div>
       <p className="font-brush text-3xl text-tibetan-600">{value}</p>
       <p className="mt-1 font-serif text-xs tracking-widest text-sandalwood-500">{label}</p>
-    </div>
-  )
-}
-
-/** 滚动渐入 */
-function Reveal({ children }: { children: ReactNode }) {
-  const ref = useRef<HTMLDivElement>(null)
-  const [shown, setShown] = useState(false)
-
-  useEffect(() => {
-    const el = ref.current
-    if (!el) return
-    const io = new IntersectionObserver(
-      (entries) => {
-        if (entries[0]?.isIntersecting) {
-          setShown(true)
-          io.disconnect()
-        }
-      },
-      { threshold: 0.08 },
-    )
-    io.observe(el)
-    return () => io.disconnect()
-  }, [])
-
-  return (
-    <div ref={ref} className={shown ? 'animate-fade-up' : 'opacity-0'}>
-      {children}
     </div>
   )
 }

@@ -7,6 +7,8 @@ import tailwindcss from '@tailwindcss/vite'
 // base: '/' + BrowserRouter => 干净 URL（无 #）。
 // GitHub Pages 刷新深链：构建后把 index.html 复制为 404.html，
 // Pages 对未知路径会回退渲染 404.html，SPA 随即按 pathname 恢复路由。
+const rootDir = import.meta.dirname ?? process.cwd()
+
 export default defineConfig({
   base: '/',
   plugins: [
@@ -16,7 +18,7 @@ export default defineConfig({
       name: 'spa-404-fallback',
       apply: 'build',
       closeBundle() {
-        copyFileSync(resolve(__dirname, 'dist/index.html'), resolve(__dirname, 'dist/404.html'))
+        copyFileSync(resolve(rootDir, 'dist/index.html'), resolve(rootDir, 'dist/404.html'))
       },
     },
   ],
