@@ -21,11 +21,17 @@ export default defineConfig({
     },
   ],
   build: {
-    chunkSizeWarningLimit: 1200,
+    // Vite 8 (Rolldown)：manualChunks 已废弃，使用 output.codeSplitting.groups
+    chunkSizeWarningLimit: 1300,
     rollupOptions: {
       output: {
-        manualChunks: {
-          vendor: ['react', 'react-dom', 'react-router-dom'],
+        codeSplitting: {
+          groups: [
+            {
+              name: 'vendor',
+              test: /node_modules[\\/](react|react-dom|react-router|react-router-dom)[\\/]/,
+            },
+          ],
         },
       },
     },
