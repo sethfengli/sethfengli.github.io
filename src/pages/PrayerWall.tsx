@@ -4,7 +4,7 @@ import { createWishRepository, type Wish } from '../lib/wishes'
 import { downloadFile, getDeviceId } from '../lib/storage'
 import { WishTree } from '../components/zen/WishTree'
 import { Tree3D } from '../components/zen3d/Tree3D'
-import { CoverImage } from '../components/zen/CoverImage'
+import { PageBanner } from '../components/ui/PageBanner'
 
 const MAX_WISH = 120
 const TREE_CAPACITY = 24
@@ -103,32 +103,31 @@ export function PrayerWall() {
 
   return (
     <div>
-      {/* 页头 */}
-      <header className="relative overflow-hidden bg-gradient-to-b from-tibetan-800 to-tibetan-900 py-16 text-center text-paper">
-        <div className="pointer-events-none absolute inset-0">
-          <CoverImage src="/photos/lantern.jpg" alt="" fallbackVariant="incense" className="h-full w-full" />
-          <div className="absolute inset-0 bg-gradient-to-b from-tibetan-900/50 via-tibetan-900/5 to-tibetan-900/75" />
-          {Array.from({ length: 18 }).map((_, i) => (
-            <span
-              key={i}
-              className="absolute animate-glow rounded-full bg-gold-300"
-              style={{
-                width: `${3 + (i % 4)}px`,
-                height: `${3 + (i % 4)}px`,
-                left: `${(i * 53) % 100}%`,
-                top: `${(i * 31) % 100}%`,
-                animationDelay: `${(i % 6) * 0.6}s`,
-                opacity: 0.5,
-              }}
-            />
-          ))}
-        </div>
-        <div className="relative">
-          <p className="banner-text font-serif text-sm tracking-[0.5em] text-gold-300">供 灯</p>
-          <h1 className="mt-3 banner-text font-brush text-4xl sm:text-5xl">{t('prayer.title')}</h1>
-          <p className="mt-3 banner-text font-serif text-sm text-paper">{t('prayer.subtitle')}</p>
-        </div>
-      </header>
+      {/* 页头（明亮浅色调 + 漂浮灯火） */}
+      <PageBanner
+        image="/photos/lantern.jpg"
+        kicker="供 灯"
+        title={t('prayer.title')}
+        subtitle={t('prayer.subtitle')}
+        decor={
+          <div className="pointer-events-none absolute inset-0" aria-hidden>
+            {Array.from({ length: 18 }).map((_, i) => (
+              <span
+                key={i}
+                className="absolute animate-glow rounded-full bg-gold-400"
+                style={{
+                  width: `${3 + (i % 4)}px`,
+                  height: `${3 + (i % 4)}px`,
+                  left: `${(i * 53) % 100}%`,
+                  top: `${(i * 31) % 100}%`,
+                  animationDelay: `${(i % 6) * 0.6}s`,
+                  opacity: 0.55,
+                }}
+              />
+            ))}
+          </div>
+        }
+      />
 
       <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
         <div className="space-y-10">
@@ -224,18 +223,17 @@ export function PrayerWall() {
             </div>
             <p className="mt-2 font-serif text-xs leading-relaxed text-sandalwood-500">{t('prayer.treeHint')}</p>
 
-            {shown.length === 0 ? (
-              <div className="mt-6 rounded-3xl border-2 border-dashed border-sandalwood-200 bg-rice-100/50 p-14 text-center">
-                <div className="mx-auto h-16 w-16 animate-glow rounded-full bg-gold-200/70 text-3xl leading-[4rem]">🪔</div>
-                <p className="mt-5 font-serif text-sandalwood-600">{t('prayer.wallEmpty')}</p>
-              </div>
-            ) : (
-              <div className="mt-6 rounded-3xl border border-sandalwood-200/70 bg-gradient-to-b from-moon-50 to-rice-100/60 p-3 shadow-inner sm:p-5">
-                <Tree3D
-                  wishes={onTree}
-                  onRibbonClick={setSelected}
-                  fallback={<WishTree wishes={onTree} onRibbonClick={setSelected} />}
-                />
+            {/* 许愿树（始终展示，无愿望时以提示语引导） */}
+            <div className="mt-6 rounded-3xl border border-sandalwood-200/70 bg-gradient-to-b from-moon-50 to-rice-100/60 p-3 shadow-inner sm:p-5">
+              <Tree3D
+                wishes={onTree}
+                onRibbonClick={setSelected}
+                fallback={<WishTree wishes={onTree} onRibbonClick={setSelected} />}
+              />
+            </div>
+            {shown.length === 0 && (
+              <div className="mt-4 rounded-2xl border-2 border-dashed border-sandalwood-200 bg-rice-100/40 px-6 py-4 text-center">
+                <p className="font-serif text-sm text-sandalwood-600">{t('prayer.wallEmpty')}</p>
               </div>
             )}
 

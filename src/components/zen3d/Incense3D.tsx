@@ -14,8 +14,10 @@ interface Props {
   scale?: number
   /** 场景高度（配合版面） */
   heightClass?: string
-  /** 相机距离（越小越近） */
+  /** 相机距离（初始即全景，最小缩放） */
   distance?: number
+  /** 最大距离（默认 = distance，起始即放到最远） */
+  maxDistance?: number
   fallback?: ReactNode
 }
 
@@ -24,6 +26,7 @@ export function Incense3D({
   scale = 1,
   heightClass = 'h-[300px]',
   distance = 7,
+  maxDistance,
   fallback,
 }: Props) {
   const { t } = useI18n()
@@ -40,17 +43,29 @@ export function Incense3D({
     void import('three').then((THREE) => {
       if (disposed || !canvas.isConnected) return
       try {
-        stage = createStage(THREE, canvas, { distance, autoRotate: 0, phi: 1.0, minDistance: 4, maxDistance: 16 })
+        // 起始即最小缩放（相机放到最远），由用户自行拉近
+        stage = createStage(THREE, canvas, {
+          distance: maxDistance ?? distance,
+          minDistance: 4,
+          maxDistance: maxDistance ?? distance,
+          autoRotate: 0,
+          phi: 1.0,
+        })
       } catch {
         setFailed(true)
         return
       }
       const S = stage.scene
       const { group, rig } = createCenser(THREE, variantRef.current, scale)
+      // 入场轻缩放：从 0.82 → 1（最短距离为全景，物体不会遮挡视野）
+      group.scale.setScalar(scale * 0.82)
       S.add(group)
 
       stage.onFrame((dt, t) => {
         rig.update(dt, t)
+        const k = Math.min(1, t / 1.6)
+        const s = scale * (0.82 + 0.18 * (1 - Math.pow(1 - k, 3)))
+        group.scale.setScalar(s)
         // 香炉微转（仅当用户未交互时由 stage 自行处理阻尼；此处不做自动旋转）
         group.rotation.y = Math.sin(t * 0.3) * 0.06
       })

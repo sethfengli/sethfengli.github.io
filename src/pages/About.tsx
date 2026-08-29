@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { useI18n } from '../i18n'
 import { CATALOG, PHOTO_NAMES } from '../lib/content'
 import { CHANTS } from '../data/chants'
 import { LOTS } from '../data/lots'
 import { CoverImage } from '../components/zen/CoverImage'
-import { PageBanner } from '../components/ui/PageBanner'
+import { PageBanner, SectionHeading } from '../components/ui/PageBanner'
 import { Reveal } from '../components/ui/Reveal'
 
 const SECTIONS = [
@@ -46,26 +47,20 @@ export function About() {
   return (
     <div>
       {/* 页头：明亮禅庭照片 */}
-      <PageBanner
-        image="/photos/garden.jpg"
-        kicker="山 门"
-        title={t('about.title')}
-        subtitle={t('about.subtitle')}
-        gradient="from-sandalwood-900/45 via-sandalwood-900/10 to-sandalwood-900/80"
-      />
+      <PageBanner image="/photos/garden.jpg" kicker="山 门" title={t('about.title')} subtitle={t('about.subtitle')} />
 
       {/* 数字带 */}
       <section className="border-b border-sandalwood-200/60 bg-surface">
-        <div className="mx-auto grid max-w-4xl grid-cols-2 gap-6 px-4 py-8 text-center sm:grid-cols-4 sm:px-6">
-          <Stat value={String(CATALOG.length)} label="佛学文章" />
-          <Stat value={String(PHOTO_NAMES.length)} label="免版权照片" />
-          <Stat value={String(CHANTS.length + 1)} label="梵呗音档" />
-          <Stat value={String(LOTS.length)} label="观音灵签" />
+        <div className="mx-auto grid max-w-4xl grid-cols-2 gap-6 px-4 py-9 text-center sm:grid-cols-4 sm:px-6">
+          <Stat value={String(CATALOG.length)} label="篇文章，等您来读" />
+          <Stat value={String(PHOTO_NAMES.length)} label="张真实照片配图" />
+          <Stat value={String(CHANTS.length + 1)} label="段梵呗音档" />
+          <Stat value={`${LOTS.length}+125`} label="签文 · 棋卦，随缘问" />
         </div>
       </section>
 
       <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
-        <div className="lg:grid lg:grid-cols-[220px_minmax(0,1fr)] lg:gap-10">
+        <div className="lg:grid lg:grid-cols-[220px_minmax(0,1fr)] lg:gap-12">
           {/* 吸附分节导航 */}
           <aside className="hidden lg:block">
             <nav className="sticky top-24 space-y-1 text-sm" aria-label="页面分节导航">
@@ -89,23 +84,33 @@ export function About() {
             </nav>
           </aside>
 
-          <div className="min-w-0 space-y-16">
-            {/* 缘起 */}
+          <div className="min-w-0 space-y-20">
+            {/* 缘起：图文并排 */}
             <Reveal>
               <section id="story" className="scroll-mt-24">
-                <h2 className="flex items-center gap-3 font-serif text-2xl font-bold text-sandalwood-800">
-                  <span className="h-6 w-1.5 rounded-full bg-tibetan-600" />
-                  {t('about.storyTitle')}
-                </h2>
-                <div className="mt-6 space-y-5 font-serif text-[15px] leading-loose text-ink-700">
-                  <p className="text-indent-2em">{t('about.story1')}</p>
-                  <p className="text-indent-2em">{t('about.story2')}</p>
-                  <p className="text-indent-2em">{t('about.story3')}</p>
+                <div className="grid items-start gap-8 md:grid-cols-[1fr_280px]">
+                  <div>
+                    <h2 className="flex items-center gap-3 font-serif text-2xl font-bold text-sandalwood-800">
+                      <span className="h-6 w-1.5 rounded-full bg-tibetan-600" />
+                      {t('about.storyTitle')}
+                    </h2>
+                    <div className="mt-6 space-y-5 font-serif text-[15px] leading-loose text-ink-700">
+                      <p className="text-indent-2em">{t('about.story1')}</p>
+                      <p className="text-indent-2em">{t('about.story2')}</p>
+                      <p className="text-indent-2em">{t('about.story3')}</p>
+                    </div>
+                  </div>
+                  {/* 竖排照片拼贴 */}
+                  <div className="hidden gap-3 md:flex md:flex-col">
+                    <CoverImage src="/photos/lotus.jpg" alt="" fallbackVariant="lotus" className="h-44 w-full rounded-2xl object-cover shadow-md" />
+                    <CoverImage src="/photos/gate.jpg" alt="" fallbackVariant="clouds" className="h-56 w-full rounded-2xl object-cover shadow-md" />
+                    <CoverImage src="/photos/blossom.jpg" alt="" fallbackVariant="mountains" className="h-40 w-full rounded-2xl object-cover shadow-md" />
+                  </div>
                 </div>
               </section>
             </Reveal>
 
-            {/* 一脉相承 */}
+            {/* 一脉相承：卡片行 */}
             <Reveal>
               <section id="heritage" className="scroll-mt-24">
                 <h2 className="flex items-center gap-3 font-serif text-2xl font-bold text-sandalwood-800">
@@ -114,13 +119,18 @@ export function About() {
                 </h2>
                 <div className="mt-6 grid gap-4 sm:grid-cols-3">
                   {heritage.map((h, i) => (
-                    <div key={i} className="card overflow-hidden">
-                      <CoverImage
-                        src={['/photos/lotus.jpg', '/photos/garden.jpg', '/photos/blossom.jpg'][i]}
-                        alt={h.title}
-                        fallbackVariant={(['lotus', 'enso', 'meditation'] as const)[i]}
-                        className="h-32 w-full"
-                      />
+                    <div key={i} className="card-link group overflow-hidden">
+                      <div className="relative overflow-hidden">
+                        <CoverImage
+                          src={['/photos/lotus.jpg', '/photos/garden.jpg', '/photos/blossom.jpg'][i]}
+                          alt={h.title}
+                          fallbackVariant={(['lotus', 'enso', 'meditation'] as const)[i]}
+                          className="h-32 w-full transition-transform duration-500 group-hover:scale-105"
+                        />
+                        <span className="absolute bottom-3 left-3 rounded-full bg-sandalwood-950/70 px-2.5 py-1 font-brush text-sm text-gold-200 backdrop-blur-sm">
+                          0{i + 1}
+                        </span>
+                      </div>
                       <div className="p-5 text-center">
                         <h3 className="font-serif text-lg font-bold text-sandalwood-800">{h.title}</h3>
                         <p className="mt-2 font-serif text-sm leading-relaxed text-ink-700">{h.desc}</p>
@@ -131,20 +141,25 @@ export function About() {
               </section>
             </Reveal>
 
-            {/* 照片墙 */}
+            {/* 照片墙（2 大 4 小 交错） */}
             <Reveal>
               <section aria-label="禅院掠影">
-                <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-                  {Array.from({ length: 8 }).map((_, i) => (
-                    <div key={i} className="group overflow-hidden rounded-2xl shadow-sm">
-                      <img
-                        src={`/photos/${PHOTO_NAMES[(i * 11) % PHOTO_NAMES.length]}`}
-                        alt=""
-                        loading="lazy"
-                        className="h-32 w-full object-cover transition duration-500 group-hover:scale-110 sm:h-40"
-                      />
-                    </div>
-                  ))}
+                <SectionHeading title={t('about.galleryTitle')} subtitle={t('about.gallerySubtitle')} />
+                <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4">
+                  {Array.from({ length: 8 }).map((_, i) => {
+                    const big = i % 4 === 0
+                    return (
+                      <div key={i} className={`group overflow-hidden rounded-2xl shadow-sm ${big ? 'row-span-2' : ''}`}>
+                        <img
+                          src={`/photos/${PHOTO_NAMES[(i * 11) % PHOTO_NAMES.length]}`}
+                          alt=""
+                          loading="lazy"
+                          decoding="async"
+                          className={`w-full object-cover transition duration-500 group-hover:scale-110 ${big ? 'h-full min-h-[16rem]' : 'h-36 sm:h-40'}`}
+                        />
+                      </div>
+                    )
+                  })}
                 </div>
               </section>
             </Reveal>
@@ -157,18 +172,27 @@ export function About() {
                   {t('about.contactTitle')}
                 </h2>
                 <p className="mt-4 font-serif text-sm leading-loose text-ink-700">{t('about.contactDesc')}</p>
-                <a
-                  href="https://github.com/sethfengli/sethfengli.github.io/issues/new"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="card mt-5 flex items-center gap-4 p-5 transition hover:border-gold-400"
-                >
-                  <span className="flex h-12 w-12 items-center justify-center rounded-full bg-sandalwood-100 text-2xl">✉️</span>
-                  <span>
-                    <span className="block font-serif font-bold text-sandalwood-800">{t('about.contactEmail')}</span>
-                    <span className="mt-0.5 block text-xs text-sandalwood-500">{t('about.contactEmailDesc')}</span>
-                  </span>
-                </a>
+                <div className="mt-5 grid gap-4 sm:grid-cols-2">
+                  <a
+                    href="https://github.com/sethfengli/sethfengli.github.io/issues/new"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="card-link flex items-center gap-4 p-5"
+                  >
+                    <span className="flex h-12 w-12 items-center justify-center rounded-full bg-sandalwood-100 text-2xl">✉️</span>
+                    <span>
+                      <span className="block font-serif font-bold text-sandalwood-800">{t('about.contactEmail')}</span>
+                      <span className="mt-0.5 block text-xs text-sandalwood-500">{t('about.contactEmailDesc')}</span>
+                    </span>
+                  </a>
+                  <Link to="/articles" viewTransition className="card-link flex items-center gap-4 p-5">
+                    <span className="flex h-12 w-12 items-center justify-center rounded-full bg-gold-100 text-2xl" aria-hidden>📚</span>
+                    <span>
+                      <span className="block font-serif font-bold text-sandalwood-800">{t('about.contactBrowse')}</span>
+                      <span className="mt-0.5 block text-xs text-sandalwood-500">{t('about.contactBrowseDesc')}</span>
+                    </span>
+                  </Link>
+                </div>
               </section>
             </Reveal>
 
@@ -181,7 +205,7 @@ export function About() {
                 </h2>
                 <div className="mt-6 space-y-3">
                   {faqs.map((f, i) => (
-                    <div key={i} className="overflow-hidden rounded-2xl border border-sandalwood-200/70 bg-surface">
+                    <div key={i} className="overflow-hidden rounded-2xl border border-sandalwood-200/70 bg-surface transition-shadow hover:shadow-md">
                       <button
                         type="button"
                         onClick={() => setOpenFaq(openFaq === i ? null : i)}
@@ -189,12 +213,14 @@ export function About() {
                         aria-expanded={openFaq === i}
                       >
                         <span className="font-serif font-bold text-sandalwood-800">{f.q}</span>
-                        <span className={`text-gold-600 transition-transform ${openFaq === i ? 'rotate-45' : ''}`} aria-hidden>
+                        <span className={`text-gold-600 transition-transform duration-300 ${openFaq === i ? 'rotate-45' : ''}`} aria-hidden>
                           ＋
                         </span>
                       </button>
                       {openFaq === i && (
-                        <p className="border-t border-sandalwood-100 px-5 py-4 font-serif text-sm leading-loose text-ink-700">{f.a}</p>
+                        <div className="px-5 pt-4 pb-5">
+                          <div className="border-t border-sandalwood-100 pt-4 font-serif text-sm leading-loose text-ink-700">{f.a}</div>
+                        </div>
                       )}
                     </div>
                   ))}
@@ -205,15 +231,15 @@ export function About() {
             {/* 版权与技术 */}
             <Reveal>
               <section id="copyright" className="scroll-mt-24 grid gap-5 sm:grid-cols-2">
-                <div className="rounded-2xl border border-sandalwood-200/70 bg-rice-100/60 p-6">
+                <div className="card-link p-6">
                   <h3 className="font-serif font-bold text-sandalwood-800">📜 {t('about.copyrightTitle')}</h3>
                   <p className="mt-3 font-serif text-sm leading-relaxed text-ink-700">{t('about.copyright')}</p>
                 </div>
-                <div className="rounded-2xl border border-sandalwood-200/70 bg-rice-100/60 p-6">
+                <div className="card-link p-6">
                   <h3 className="font-serif font-bold text-sandalwood-800">🛠 {t('about.techTitle')}</h3>
                   <p className="mt-3 font-serif text-sm leading-relaxed text-ink-700">{t('about.techDesc')}</p>
                 </div>
-                <div className="rounded-2xl border border-sandalwood-200/70 bg-rice-100/60 p-6 sm:col-span-2">
+                <div className="card-link p-6 sm:col-span-2">
                   <h3 className="font-serif font-bold text-sandalwood-800">🖼 {t('about.creditsTitle')}</h3>
                   <p className="mt-3 font-serif text-sm leading-relaxed text-ink-700">{t('about.creditsDesc')}</p>
                   <p className="mt-2 font-sans text-sm">
@@ -231,7 +257,7 @@ export function About() {
           </div>
         </div>
 
-        <div className="zen-divider mt-14">
+        <div className="zen-divider mt-16">
           <span>❖</span>
         </div>
         <p className="mt-6 text-center font-serif text-sm text-sandalwood-500">

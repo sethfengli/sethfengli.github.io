@@ -2,15 +2,16 @@ import type { ReactNode } from 'react'
 import { CoverImage } from '../zen/CoverImage'
 
 /**
- * 全站统一页面横幅（照片底 + 渐变遮罩 + 居中标语）。
- * Banner 图 eager + fetchpriority=high（首屏关键图）。
+ * 全站统一页面横幅。
+ * - tone="light"（默认）：明亮照片 + 白色暖雾遮罩 + 深墨文字 —— 明快、积极、不压抑；
+ * - tone="dark"：深色调（适用本身暗沉的素材图）。Banner 图 eager + fetchpriority=high。
  */
 export function PageBanner({
   image,
   kicker,
   title,
   subtitle,
-  gradient = 'from-sandalwood-950/45 via-sandalwood-950/5 to-sandalwood-950/80',
+  tone = 'light',
   compact = false,
   children,
   decor,
@@ -19,36 +20,59 @@ export function PageBanner({
   kicker?: string
   title: string
   subtitle?: string
-  gradient?: string
+  tone?: 'light' | 'dark'
   compact?: boolean
   children?: ReactNode
   /** 全幅定位的装饰元素（莲花、浮光等，作为 banner 直接子元素） */
   decor?: ReactNode
 }) {
+  const dark = tone === 'dark'
   return (
-    <header className="relative overflow-hidden bg-sandalwood-950 text-paper">
+    <header className={`relative overflow-hidden text-center ${dark ? 'bg-sandalwood-950 text-paper' : 'bg-rice-50 text-ink-900'}`}>
       <div className="absolute inset-0">
         <CoverImage
           src={image}
           alt=""
           fallbackVariant="clouds"
           priority
-          className={`h-full w-full ${compact ? '' : 'scale-105'}`}
+          className="h-full w-full object-cover"
         />
       </div>
-      <div className={`pointer-events-none absolute inset-0 bg-gradient-to-b ${gradient}`} />
+      {dark ? (
+        <>
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-sandalwood-950/45 via-sandalwood-950/15 to-sandalwood-950/80" />
+          <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-gold-400/50 to-transparent" />
+        </>
+      ) : (
+        <>
+          {/* 明亮模式：白色暖雾 + 顶部柔光，保留照片的明快感 */}
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-rice-50/85 via-rice-50/55 to-rice-50/90" />
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(255,251,235,0.55),transparent_60%)]" />
+          <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-gold-500/45 to-transparent" />
+        </>
+      )}
       {decor}
-      {/* 底部金色细线 */}
-      <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-gold-400/50 to-transparent" />
-      <div className={`relative mx-auto max-w-4xl px-4 text-center sm:px-6 ${compact ? 'py-12' : 'py-16 sm:py-20'}`}>
+      <div className={`relative mx-auto max-w-4xl px-4 sm:px-6 ${compact ? 'py-10 sm:py-12' : 'py-14 sm:py-20'}`}>
         {kicker && (
-          <p className="banner-text font-serif text-xs tracking-[0.5em] text-gold-300 uppercase sm:text-sm">
+          <p
+            className={`font-serif text-xs tracking-[0.5em] uppercase sm:text-sm ${
+              dark ? 'banner-text text-gold-300' : 'text-tibetan-600'
+            }`}
+          >
             {kicker}
           </p>
         )}
-        <h1 className="mt-3 banner-text font-brush text-4xl tracking-[0.04em] sm:text-5xl">{title}</h1>
+        <h1
+          className={`mt-3 font-brush text-4xl tracking-[0.04em] sm:text-5xl ${
+            dark ? 'banner-text' : 'text-ink-900 [filter:drop-shadow(0_1px_0_rgba(255,255,255,0.6))]'
+          }`}
+        >
+          {title}
+        </h1>
         {subtitle && (
-          <p className="mt-3 banner-text font-serif text-sm text-paper/95 sm:text-base">{subtitle}</p>
+          <p className={`mt-3 font-serif text-sm sm:text-base ${dark ? 'banner-text text-paper/95' : 'text-ink-700'}`}>
+            {subtitle}
+          </p>
         )}
         {children}
       </div>

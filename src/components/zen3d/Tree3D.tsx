@@ -90,7 +90,7 @@ function makePineTuft(THREE: typeof import('three'), shade: 0 | 1 | 2): THREE.Ca
   return tex
 }
 
-/** 树皮纹理（纵向皴纹 + 节疤） */
+/** 树皮纹理（纵向皴纹 + 节疤 + 深裂纹） */
 function makeBarkTexture(THREE: typeof import('three')): THREE.CanvasTexture {
   const cv = document.createElement('canvas')
   cv.width = 512
@@ -98,9 +98,22 @@ function makeBarkTexture(THREE: typeof import('three')): THREE.CanvasTexture {
   const ctx = cv.getContext('2d')!
   ctx.fillStyle = '#6a5947'
   ctx.fillRect(0, 0, 512, 512)
+  // 纵向深裂纹（先画暗槽）
+  for (let i = 0; i < 60; i++) {
+    const x = Math.random() * 512
+    ctx.strokeStyle = `rgba(30,22,14,${0.2 + Math.random() * 0.4})`
+    ctx.lineWidth = 2 + Math.random() * 4
+    ctx.beginPath()
+    ctx.moveTo(x, 0)
+    for (let y = 0; y <= 512; y += 24) {
+      ctx.lineTo(x + Math.sin(y * 0.02 + i) * 7, y)
+    }
+    ctx.stroke()
+  }
+  // 中间基调纹
   for (let i = 0; i < 150; i++) {
     const x = Math.random() * 512
-    ctx.strokeStyle = `rgba(61,47,32,${0.15 + Math.random() * 0.35})`
+    ctx.strokeStyle = `rgba(96,76,52,${0.2 + Math.random() * 0.3})`
     ctx.lineWidth = 1 + Math.random() * 3
     ctx.beginPath()
     ctx.moveTo(x, 0)
@@ -109,18 +122,71 @@ function makeBarkTexture(THREE: typeof import('three')): THREE.CanvasTexture {
     }
     ctx.stroke()
   }
-  for (let i = 0; i < 7; i++) {
+  // 亮面棱线
+  for (let i = 0; i < 60; i++) {
+    const x = Math.random() * 512
+    ctx.strokeStyle = `rgba(180,150,110,${0.08 + Math.random() * 0.12})`
+    ctx.lineWidth = 1 + Math.random() * 2
+    ctx.beginPath()
+    ctx.moveTo(x, 0)
+    for (let y = 0; y <= 512; y += 32) {
+      ctx.lineTo(x + Math.sin(y * 0.02 + i * 2) * 5, y)
+    }
+    ctx.stroke()
+  }
+  // 节疤/树瘤
+  for (let i = 0; i < 8; i++) {
     const x = Math.random() * 512
     const y = Math.random() * 512
     ctx.strokeStyle = '#3b2f20'
-    ctx.lineWidth = 3
+    ctx.lineWidth = 3 + Math.random() * 2
     ctx.beginPath()
-    ctx.ellipse(x, y, 10 + Math.random() * 18, 6 + Math.random() * 10, Math.random() * 3, 0, Math.PI * 2)
+    ctx.ellipse(x, y, 10 + Math.random() * 20, 6 + Math.random() * 11, Math.random() * 3, 0, Math.PI * 2)
     ctx.stroke()
+    ctx.fillStyle = 'rgba(80,60,38,0.5)'
+    ctx.beginPath()
+    ctx.ellipse(x, y, 6 + Math.random() * 10, 4 + Math.random() * 6, 0, 0, Math.PI * 2)
+    ctx.fill()
   }
   const tex = new THREE.CanvasTexture(cv)
   tex.colorSpace = THREE.SRGBColorSpace
   tex.wrapS = THREE.RepeatWrapping
+  return tex
+}
+
+/** 树皮凹凸贴图（只画裂纹明暗，供 bumpMap） */
+function makeBarkBump(THREE: typeof import('three')): THREE.CanvasTexture {
+  const cv = document.createElement('canvas')
+  cv.width = 512
+  cv.height = 512
+  const ctx = cv.getContext('2d')!
+  ctx.fillStyle = '#808080'
+  ctx.fillRect(0, 0, 512, 512)
+  for (let i = 0; i < 90; i++) {
+    const x = Math.random() * 512
+    ctx.strokeStyle = `rgba(60,60,60,${0.35 + Math.random() * 0.3})`
+    ctx.lineWidth = 2 + Math.random() * 5
+    ctx.beginPath()
+    ctx.moveTo(x, 0)
+    for (let y = 0; y <= 512; y += 24) {
+      ctx.lineTo(x + Math.sin(y * 0.02 + i) * 7, y)
+    }
+    ctx.stroke()
+  }
+  for (let i = 0; i < 60; i++) {
+    const x = Math.random() * 512
+    ctx.strokeStyle = `rgba(160,160,160,${0.2 + Math.random() * 0.25})`
+    ctx.lineWidth = 1 + Math.random() * 2
+    ctx.beginPath()
+    ctx.moveTo(x, 0)
+    for (let y = 0; y <= 512; y += 32) {
+      ctx.lineTo(x + Math.sin(y * 0.02 + i * 2) * 5, y)
+    }
+    ctx.stroke()
+  }
+  const tex = new THREE.CanvasTexture(cv)
+  tex.wrapS = THREE.RepeatWrapping
+  tex.wrapT = THREE.RepeatWrapping
   return tex
 }
 
@@ -142,13 +208,13 @@ export function Tree3D({ wishes, onRibbonClick, fallback }: Props) {
       if (disposed || !canvas.isConnected) return
       try {
         stage = createStage(THREE, canvas, {
-          distance: 14,
+          distance: 30,
           autoRotate: 0,
           phi: 1.02,
           minPhi: 0.4,
           maxPhi: 1.5,
           minDistance: 4.5,
-          maxDistance: 46,
+          maxDistance: 30,
         })
         stageRef.current = stage
       } catch {
@@ -185,10 +251,22 @@ export function Tree3D({ wishes, onRibbonClick, fallback }: Props) {
         S.add(f)
       }
 
-      /* ---------- 虬曲老干 ---------- */
+      /* ---------- 虬曲老干（千年古柏：深皴树皮 + 根部板根 + 树瘤） ---------- */
       const barkTex = makeBarkTexture(THREE)
-      const bark = new THREE.MeshStandardMaterial({ map: barkTex, roughness: 0.92 })
-      const bark2 = new THREE.MeshStandardMaterial({ map: barkTex, color: 0xb08d63, roughness: 0.9 })
+      const barkBump = makeBarkBump(THREE)
+      const bark = new THREE.MeshStandardMaterial({
+        map: barkTex,
+        bumpMap: barkBump,
+        bumpScale: 0.6,
+        roughness: 0.94,
+      })
+      const bark2 = new THREE.MeshStandardMaterial({
+        map: barkTex,
+        bumpMap: barkBump,
+        bumpScale: 0.55,
+        color: 0xb08d63,
+        roughness: 0.9,
+      })
       const trunkPts = [
         [0, -4.4, 0],
         [0.35, -3.3, 0.4],
@@ -202,7 +280,7 @@ export function Tree3D({ wishes, onRibbonClick, fallback }: Props) {
         [-0.15, 4.9, 0.25],
         [0.1, 5.8, -0.05],
       ].map(([x, y, z]) => new THREE.Vector3(x, y, z))
-      const radii = [1.7, 1.55, 1.4, 1.25, 1.12, 1.0, 0.88, 0.76, 0.64, 0.52, 0.42]
+      const radii = [1.85, 1.65, 1.48, 1.3, 1.16, 1.02, 0.9, 0.78, 0.66, 0.54, 0.44]
       for (let i = 0; i < trunkPts.length - 1; i++) {
         const a = trunkPts[i]
         const b = trunkPts[i + 1]
@@ -211,10 +289,34 @@ export function Tree3D({ wishes, onRibbonClick, fallback }: Props) {
         const len = a.distanceTo(b) * 1.22
         const rTop = radii[i + 1]
         const rBot = radii[i]
-        const seg = new THREE.Mesh(new THREE.CylinderGeometry(rTop, rBot, len, 20), i % 2 ? bark : bark2)
+        const seg = new THREE.Mesh(new THREE.CylinderGeometry(rTop, rBot, len, 26), i % 2 ? bark : bark2)
+        seg.castShadow = true
         seg.position.copy(mid)
         seg.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), b.clone().sub(a).normalize())
         S.add(seg)
+      }
+      // 板根/露根（千年古柏的标志）：根部八向鼓包
+      const rootMat = new THREE.MeshStandardMaterial({ map: barkTex, bumpMap: barkBump, bumpScale: 0.6, roughness: 0.95 })
+      for (let i = 0; i < 8; i++) {
+        const a = (i / 8) * Math.PI * 2 + 0.25
+        const root = new THREE.Mesh(new THREE.ConeGeometry(0.55 + Math.random() * 0.3, 1.5 + Math.random() * 0.5, 8), rootMat)
+        root.position.set(Math.cos(a) * 1.55, -4.05, Math.sin(a) * 1.55)
+        root.rotation.x = Math.PI - Math.sin(a) * 0.35
+        root.rotation.z = Math.cos(a) * 0.35
+        S.add(root)
+      }
+      // 树瘤（树干上凸起的结节）
+      const burlMat = new THREE.MeshStandardMaterial({ map: barkTex, bumpMap: barkBump, bumpScale: 0.5, roughness: 0.95 })
+      for (let i = 0; i < 9; i++) {
+        const t = 0.12 + Math.random() * 0.75
+        const idx = Math.min(trunkPts.length - 2, Math.floor(t * (trunkPts.length - 1)))
+        const p = trunkPts[idx].clone().lerp(trunkPts[idx + 1], t * (trunkPts.length - 1) - idx)
+        const a = Math.random() * Math.PI * 2
+        const r = radii[idx] * 0.9
+        const burl = new THREE.Mesh(new THREE.SphereGeometry(0.16 + Math.random() * 0.22, 10, 8), burlMat)
+        burl.scale.set(1, 0.7 + Math.random() * 0.5, 1)
+        burl.position.set(p.x + Math.cos(a) * r, p.y, p.z + Math.sin(a) * r)
+        S.add(burl)
       }
 
       /* ---------- 平展枝干 ---------- */

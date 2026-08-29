@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import { useI18n } from '../i18n'
 import {
   LOTS,
@@ -14,12 +15,17 @@ import { LotCylinder } from '../components/zen/LotCylinder'
 import { LotCylinder3D } from '../components/zen3d/LotCylinder3D'
 import { IncenseBurner } from '../components/zen/IncenseBurner'
 import { Incense3D } from '../components/zen3d/Incense3D'
+import { LingQiBoard } from '../components/zen/LingQiBoard'
 import { PageBanner } from '../components/ui/PageBanner'
+import { Reveal } from '../components/ui/Reveal'
 
 type Phase = 'idle' | 'shaking' | 'revealed'
+type Tab = 'lots' | 'lingqi'
 
 export function Lots() {
   const { t } = useI18n()
+  const [params, setParams] = useSearchParams()
+  const [tab, setTab] = useState<Tab>(() => (params.get('tab') === 'lingqi' ? 'lingqi' : 'lots'))
   const [phase, setPhase] = useState<Phase>('idle')
   const [lot, setLot] = useState<GuanyinLot | null>(null)
   const [saved, setSaved] = useState<SavedLot[]>(loadSavedLots)
@@ -74,115 +80,172 @@ export function Lots() {
 
   return (
     <div>
-      {/* 页头：观音像 */}
+      {/* 页头：观音法门（明亮浅色调） */}
       <PageBanner
         image="/photos/guanyin.jpg"
-        kicker="观 音 法 门"
+        kicker="双 法 门 · 随 缘 问 卦"
         title={t('lots.title')}
         subtitle={t('lots.subtitle')}
-        gradient="from-sandalwood-950/30 via-sandalwood-950/5 to-sandalwood-950/70"
       />
 
       <div className="mx-auto max-w-5xl px-4 py-12 sm:px-6">
-        <p className="mx-auto max-w-2xl text-center font-serif text-sm leading-loose text-ink-700">
-          {t('lots.intro')}
-        </p>
-
-        {/* ---------- 抽签区 ---------- */}
-        <section className="mt-10">
-          <div className="mx-auto flex max-w-3xl flex-col items-center gap-8 rounded-3xl border border-sandalwood-200/70 bg-gradient-to-b from-rice-100/80 to-rice-50 p-6 shadow-inner sm:flex-row sm:justify-center sm:gap-14 sm:p-10">
-            {/* 观音像（真实照片） */}
-            <div className="flex flex-col items-center gap-2">
-              <div className="overflow-hidden rounded-2xl ring-4 ring-gold-400/60 shadow-lg">
-                <img
-                  src="/photos/guanyin.jpg"
-                  alt="南无观世音菩萨"
-                  loading="lazy"
-                  decoding="async"
-                  className="h-72 w-48 object-cover sm:h-96 sm:w-60"
-                />
-              </div>
-              <p className="font-serif text-xs tracking-[0.3em] text-sandalwood-400">南无观世音菩萨</p>
-            </div>
-
-            {/* 3D 签筒 */}
-            <div className="flex flex-col items-center">
-              <LotCylinder3D
-                shaking={phase === 'shaking'}
-                revealed={phase === 'revealed'}
-                onShake={shake}
-                fallback={<LotCylinder shaking={phase === 'shaking'} revealed={phase === 'revealed'} />}
-              />
-            </div>
-          </div>
-
-          {/* 3D 塔香香炉 */}
-          <div className="mx-auto mt-2 max-w-sm">
-            <Incense3D variant="cone" scale={0.9} distance={16} heightClass="h-[300px]" fallback={<IncenseBurner bare />} />
-          </div>
-
-          {/* 抽签按钮 */}
-          <div className="mt-4 flex flex-col items-center gap-3">
+        {/* 法门切换 */}
+        <div className="mx-auto flex w-fit items-center gap-1 rounded-full border border-sandalwood-200/80 bg-surface p-1 shadow-sm">
+          {(
+            [
+              { id: 'lots', label: t('lots.tabLots'), icon: '🪷' },
+              { id: 'lingqi', label: t('lots.tabLingqi'), icon: '🎲' },
+            ] as Array<{ id: Tab; label: string; icon: string }>
+          ).map((x) => (
             <button
+              key={x.id}
               type="button"
-              onClick={shake}
-              disabled={phase === 'shaking'}
-              className="btn-primary !px-10 !py-3 text-base disabled:cursor-wait disabled:opacity-70"
+              onClick={() => {
+                setTab(x.id)
+                setParams(x.id === 'lingqi' ? { tab: 'lingqi' } : {})
+              }}
+              aria-pressed={tab === x.id}
+              className={`flex cursor-pointer items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium transition-all duration-200 ${
+                tab === x.id
+                  ? 'bg-tibetan-600 text-paper shadow-md shadow-tibetan-900/25'
+                  : 'text-ink-700 hover:bg-rice-100'
+              }`}
             >
-              {phase === 'shaking' ? t('lots.drawing') : phase === 'revealed' ? t('lots.again') : t('lots.draw')}
+              <span aria-hidden>{x.icon}</span>
+              {x.label}
             </button>
-            {phase !== 'shaking' && <p className="font-serif text-xs text-sandalwood-400">{t('lots.shakeHint')}</p>}
-          </div>
-        </section>
+          ))}
+        </div>
 
-        {/* ---------- 我的签文 ---------- */}
-        <section className="mt-16">
-          <div className="flex flex-wrap items-center justify-between gap-3">
-            <h2 className="font-serif text-xl font-bold text-sandalwood-800">{t('lots.historyTitle')}</h2>
-            {saved.length > 0 && (
-              <button type="button" onClick={clear} className="cursor-pointer text-xs text-tibetan-500 underline underline-offset-4 transition hover:text-tibetan-700">
-                {t('lots.clearHistory')}
-              </button>
-            )}
-          </div>
-          <p className="mt-1 text-xs text-sandalwood-400">{t('lots.historyHint')}</p>
+        {/* ---------- 观音灵签 ---------- */}
+        {tab === 'lots' ? (
+          <div className="mt-12 space-y-14">
+            <Reveal>
+              <p className="mx-auto max-w-2xl text-center font-serif text-[15px] leading-loose text-ink-700">
+                {t('lots.intro')}
+              </p>
+            </Reveal>
 
-          {saved.length === 0 ? (
-            <p className="mt-6 rounded-2xl border-2 border-dashed border-sandalwood-200 bg-rice-100/50 p-10 text-center font-serif text-sandalwood-500">
-              {t('lots.historyEmpty')}
-            </p>
-          ) : (
-            <ul className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-              {saved.map((s) => {
-                const l = LOTS.find((x) => x.id === s.lotId)
-                if (!l) return null
-                return (
-                  <li key={`${s.lotId}-${s.drawnAt}`}>
-                    <button
-                      type="button"
-                      onClick={() => openHistory(l.id)}
-                      className="card-link flex w-full cursor-pointer items-center gap-4 p-4 text-left"
-                    >
-                      <span className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-sm font-bold ${levelClass(l.level)}`}>
-                        {l.id}
-                      </span>
-                      <span className="min-w-0">
-                        <span className="block truncate font-serif font-bold text-sandalwood-800">
-                          {t('lots.lotNumber', { n: l.id })} · {l.title}
-                        </span>
-                        <span className="mt-0.5 block text-xs text-sandalwood-400">
-                          {new Date(s.drawnAt).toLocaleString()}
-                        </span>
-                      </span>
+            {/* 抽签区：两栏卡片，不再拥挤 */}
+            <div className="grid gap-6 md:grid-cols-2">
+              <Reveal>
+                <div className="card-link flex h-full flex-col items-center gap-3 p-6 text-center">
+                  <div className="overflow-hidden rounded-2xl ring-4 ring-gold-400/50 shadow-md">
+                    <img
+                      src="/photos/guanyin.jpg"
+                      alt="南无观世音菩萨"
+                      loading="lazy"
+                      decoding="async"
+                      className="h-72 w-52 object-cover sm:h-80 sm:w-56"
+                    />
+                  </div>
+                  <p className="font-serif text-xs tracking-[0.3em] text-sandalwood-400">南无观世音菩萨</p>
+                  <p className="max-w-xs font-serif text-[13px] leading-relaxed text-ink-700">{t('lots.guanyinDesc')}</p>
+                </div>
+              </Reveal>
+
+              <Reveal delay={100}>
+                <div className="card-link flex h-full flex-col items-center justify-center gap-4 p-6">
+                  <LotCylinder3D
+                    shaking={phase === 'shaking'}
+                    revealed={phase === 'revealed'}
+                    onShake={shake}
+                    fallback={<LotCylinder shaking={phase === 'shaking'} revealed={phase === 'revealed'} />}
+                  />
+                  <button
+                    type="button"
+                    onClick={shake}
+                    disabled={phase === 'shaking'}
+                    className="btn-primary !px-10 !py-3 text-base disabled:cursor-wait disabled:opacity-70"
+                  >
+                    {phase === 'shaking' ? t('lots.drawing') : phase === 'revealed' ? t('lots.again') : t('lots.draw')}
+                  </button>
+                  {phase !== 'shaking' && <p className="font-serif text-xs text-sandalwood-400">{t('lots.shakeHint')}</p>}
+                </div>
+              </Reveal>
+            </div>
+
+            {/* 塔香点缀 */}
+            <Reveal>
+              <div className="mx-auto max-w-sm">
+                <Incense3D variant="cone" scale={0.9} distance={16} maxDistance={16} heightClass="h-[260px]" fallback={<IncenseBurner bare />} />
+              </div>
+            </Reveal>
+
+            {/* 我的签文 */}
+            <Reveal>
+              <section>
+                <div className="flex flex-wrap items-center justify-between gap-3">
+                  <h2 className="font-serif text-xl font-bold text-sandalwood-800">{t('lots.historyTitle')}</h2>
+                  {saved.length > 0 && (
+                    <button type="button" onClick={clear} className="cursor-pointer text-xs text-tibetan-500 underline underline-offset-4 transition hover:text-tibetan-700">
+                      {t('lots.clearHistory')}
                     </button>
-                  </li>
-                )
-              })}
-            </ul>
-          )}
-        </section>
+                  )}
+                </div>
+                <p className="mt-1 text-xs text-sandalwood-400">{t('lots.historyHint')}</p>
 
-        <p className="mt-14 text-center font-serif text-xs leading-relaxed text-sandalwood-400">{t('lots.disclaimer')}</p>
+                {saved.length === 0 ? (
+                  <p className="mt-6 rounded-2xl border-2 border-dashed border-sandalwood-200 bg-rice-100/50 p-10 text-center font-serif text-sandalwood-500">
+                    {t('lots.historyEmpty')}
+                  </p>
+                ) : (
+                  <ul className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                    {saved.map((s) => {
+                      const l = LOTS.find((x) => x.id === s.lotId)
+                      if (!l) return null
+                      return (
+                        <li key={`${s.lotId}-${s.drawnAt}`}>
+                          <button
+                            type="button"
+                            onClick={() => openHistory(l.id)}
+                            className="card-link flex w-full cursor-pointer items-center gap-4 p-4 text-left"
+                          >
+                            <span className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-sm font-bold ${levelClass(l.level)}`}>
+                              {l.id}
+                            </span>
+                            <span className="min-w-0">
+                              <span className="block truncate font-serif font-bold text-sandalwood-800">
+                                {t('lots.lotNumber', { n: l.id })} · {l.title}
+                              </span>
+                              <span className="mt-0.5 block text-xs text-sandalwood-400">
+                                {new Date(s.drawnAt).toLocaleString()}
+                              </span>
+                            </span>
+                          </button>
+                        </li>
+                      )
+                    })}
+                  </ul>
+                )}
+              </section>
+            </Reveal>
+
+            <p className="text-center font-serif text-xs leading-relaxed text-sandalwood-400">{t('lots.disclaimer')}</p>
+          </div>
+        ) : (
+          /* ---------- 灵棋经 ---------- */
+          <Reveal>
+            <div className="mt-12 space-y-10">
+              <p className="mx-auto max-w-2xl text-center font-serif text-[15px] leading-loose text-ink-700">
+                {t('lingqi.subtitle')}
+              </p>
+              <LingQiBoard />
+              <a
+                href="https://github.com/seth2000/linqijing"
+                target="_blank"
+                rel="noreferrer"
+                className="card-link mx-auto flex max-w-xl items-center gap-4 p-5 text-center"
+              >
+                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-gold-100 text-2xl" aria-hidden>📖</span>
+                <span className="text-left">
+                  <span className="block font-serif font-bold text-sandalwood-800">{t('lingqi.fullText')}</span>
+                  <span className="mt-0.5 block text-xs text-sandalwood-500">{t('lingqi.fullTextDesc')}</span>
+                </span>
+              </a>
+            </div>
+          </Reveal>
+        )}
       </div>
 
       {/* ---------- 签文浮动弹窗 ---------- */}

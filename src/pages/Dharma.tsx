@@ -11,11 +11,10 @@ import { storageGet, storageSet } from '../lib/storage'
 const CHANT_KEY = 'hdc.chantCount'
 
 export function Dharma() {
-  const { t, arr } = useI18n()
+  const { t } = useI18n()
   const [counts, setCounts] = useState<Record<number, number>>(() =>
     storageGet<Record<number, number>>(CHANT_KEY, {}),
   )
-  const talks = arr('dharma.talkLinks') as Array<{ name: string; desc: string; url: string }>
 
   const resetCounts = () => {
     setCounts({})
@@ -26,8 +25,13 @@ export function Dharma() {
 
   return (
     <div>
-      {/* 页头 */}
-      <PageBanner image="/photos/bell.jpg" kicker="梵 呗" title={t('dharma.title')} subtitle={t('dharma.subtitle')} />
+      {/* 页头（明亮浅色调） */}
+      <PageBanner
+        image="/photos/bell.jpg"
+        kicker="静 心 听 经"
+        title={t('dharma.title')}
+        subtitle={t('dharma.subtitle')}
+      />
 
       <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
         {/* 闻钟 */}
@@ -80,44 +84,6 @@ export function Dharma() {
               </button>
             </div>
           )}
-        </section>
-
-        <div className="zen-divider mt-14">
-          <span>❖</span>
-        </div>
-
-        {/* 讲经开示 · 道场外链 */}
-        <section className="mt-12">
-          <Reveal>
-            <SectionHeading title={t('dharma.talksTitle')} />
-          </Reveal>
-          <p className="mx-auto mt-3 max-w-2xl text-center font-serif text-sm leading-relaxed text-ink-700">
-            {t('dharma.talksDesc')}
-          </p>
-          <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {talks.map((link, i) => (
-              <Reveal key={i} delay={i * 80}>
-                <a
-                  href={link.url}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="card-link group flex h-full flex-col p-6 text-center"
-                >
-                  <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-tibetan-50 text-2xl transition-transform duration-300 group-hover:scale-110">
-                    {['📿', '🪷', '🕯', '⛰'][i]}
-                  </div>
-                  <p className="mt-4 font-serif font-bold text-sandalwood-800">{link.name}</p>
-                  <p className="mt-2 flex-1 font-serif text-sm leading-relaxed text-ink-700">{link.desc}</p>
-                  <span className="mt-4 inline-flex items-center justify-center gap-1 text-xs font-medium text-tibetan-600">
-                    前往听经
-                    <svg viewBox="0 0 24 24" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round">
-                      <path d="M7 17L17 7M9 7h8v8" />
-                    </svg>
-                  </span>
-                </a>
-              </Reveal>
-            ))}
-          </div>
         </section>
       </div>
     </div>

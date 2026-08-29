@@ -5,8 +5,12 @@ import { useBellSound } from '../../lib/bellSound'
 import { createStage, makeTextCanvas, type Stage } from './stage'
 
 /**
- * 3D 铜钟：木架悬钟 + 撞木，鼠标拖拽旋转 / 滚轮缩放；
- * 点击铜钟或撞木（或下方按钮）击钟——撞木荡起、铜钟摇摆、声波金环扩散、“嗡”字浮现。
+ * 3D 梵钟（经典 梵鐘/bonsho 形制）：
+ * - 典型轮廓：曲肩、乳の紋两圈乳钉、池の間铭文带、草の間回纹带、外张裙部与厚口縁（钟口敞开）；
+ * - 冠钮（竜頭）挂环悬于木架，撞座（strike boss）厚板位于下部摆线；
+ * - 铜材质：青铜渐变贴图 + 铜绿包浆 + 凹凸纹理（bumpMap）；
+ * - 鼠标拖拽旋转 / 滚轮缩放，点击铜钟或撞木（或下方按钮）击钟；
+ * - 起始即全景（最小缩放，distance=55）。
  * WebGL 不可用时回退到 2D SVG 铜钟（fallback）。
  */
 
@@ -20,6 +24,25 @@ interface BellRig {
   oms: Array<{ sprite: THREE.Sprite; born: number }>
   flash: THREE.PointLight
 }
+
+/** 梵钟剖面（半径, 高度）：顶部 y=0、口沿 y=-12，钟口敞开（内沿折回） */
+const BELL_PROFILE: Array<[number, number]> = [
+  [0.0, 0.18],
+  [0.9, 0.05],
+  [2.0, -0.55],
+  [3.2, -1.5],
+  [4.05, -2.7],
+  [4.4, -4.1],
+  [4.35, -5.3],
+  [4.1, -6.6],
+  [3.9, -7.8],
+  [3.95, -9.2],
+  [4.25, -10.6],
+  [4.5, -11.5],
+  [4.55, -12.0],
+  [4.15, -12.12],
+  [3.95, -11.7],
+]
 
 export function Bell3D({ fallback }: { fallback?: ReactNode }) {
   const { t } = useI18n()
@@ -42,7 +65,16 @@ export function Bell3D({ fallback }: { fallback?: ReactNode }) {
     void import('three').then((THREE) => {
       if (disposed || !canvas.isConnected) return
       try {
-        stage = createStage(THREE, canvas, { distance: 21, autoRotate: 0, phi: 1.15, minPhi: 0.5, maxPhi: 1.5, minDistance: 8, maxDistance: 55 })
+        // 起始即全景（最小缩放），用户可自行拉近看铭文细节
+        stage = createStage(THREE, canvas, {
+          distance: 55,
+          autoRotate: 0,
+          phi: 1.12,
+          minPhi: 0.5,
+          maxPhi: 1.5,
+          minDistance: 8,
+          maxDistance: 55,
+        })
         stageRef.current = stage
       } catch {
         setFailed(true)
@@ -60,7 +92,7 @@ export function Bell3D({ fallback }: { fallback?: ReactNode }) {
       beam.position.set(0, 6.8, 0)
       const cross = new THREE.Mesh(new THREE.BoxGeometry(14.6, 0.7, 0.7), wood)
       cross.position.set(0, 5.6, 0)
-      const gold = new THREE.MeshStandardMaterial({ color: 0xd4a92c, roughness: 0.3, metalness: 0.7 })
+      const gold = new THREE.MeshStandardMaterial({ color: 0xd4a92c, roughness: 0.35, metalness: 0.7 })
       S.add(postL, postR, beam, cross)
       for (const x of [-7.2, 7.2]) {
         const cap = new THREE.Mesh(new THREE.SphereGeometry(0.6, 20, 20), gold)
@@ -107,7 +139,7 @@ export function Bell3D({ fallback }: { fallback?: ReactNode }) {
       plaque2.position.set(0, 5.6, 0.37)
       S.add(plaque2)
 
-      /* ---------- 铜钟（梵钟形制：收肩、鼓腹、撇口、撞座） ---------- */
+      /* ---------- 钟身贴图：青铜渐变 + 铜绿包浆 + 池ノ間铭文带 + 草ノ間回纹 ---------- */
       const INSC_POOL = ['南無阿彌陀佛', '風調雨順', '國泰民安', '佛日增輝', '法輪常轉', '聞鐘聲煩惱輕', '智慧長菩提生', '慧燈常照']
       const picked = [...INSC_POOL].sort(() => Math.random() - 0.5).slice(0, 5)
       const bellTexCv = document.createElement('canvas')
@@ -115,96 +147,153 @@ export function Bell3D({ fallback }: { fallback?: ReactNode }) {
       bellTexCv.height = 1024
       const bctx = bellTexCv.getContext('2d')!
       const bg = bctx.createLinearGradient(0, 0, 2048, 0)
-      bg.addColorStop(0, '#7a5230')
-      bg.addColorStop(0.2, '#b98a57')
-      bg.addColorStop(0.5, '#c99a63')
-      bg.addColorStop(0.8, '#b98a57')
-      bg.addColorStop(1, '#7a5230')
+      bg.addColorStop(0, '#6e4c2c')
+      bg.addColorStop(0.2, '#a97e4d')
+      bg.addColorStop(0.5, '#c2915a')
+      bg.addColorStop(0.8, '#a97e4d')
+      bg.addColorStop(1, '#6e4c2c')
       bctx.fillStyle = bg
       bctx.fillRect(0, 0, 2048, 1024)
-      // 铜绿包浆斑
-      for (let i = 0; i < 60; i++) {
-        bctx.fillStyle = `rgba(90,130,120,${0.04 + Math.random() * 0.08})`
+      // 铜绿包浆斑（偏青绿，颜色往灰绿走，模拟青铜氧化）
+      for (let i = 0; i < 90; i++) {
+        bctx.fillStyle = `rgba(84,122,110,${0.03 + Math.random() * 0.08})`
         bctx.beginPath()
-        bctx.ellipse(Math.random() * 2048, Math.random() * 1024, 30 + Math.random() * 90, 20 + Math.random() * 60, Math.random() * 3, 0, Math.PI * 2)
+        bctx.ellipse(Math.random() * 2048, Math.random() * 1024, 26 + Math.random() * 85, 16 + Math.random() * 55, Math.random() * 3, 0, Math.PI * 2)
         bctx.fill()
       }
-      // 竖排铭文（五列，绕钟身）
+      // 池ノ間（上部铭文带）：上弦纹
+      bctx.strokeStyle = 'rgba(240,208,110,0.85)'
+      bctx.lineWidth = 8
+      bctx.beginPath()
+      bctx.moveTo(0, 300)
+      bctx.lineTo(2048, 300)
+      bctx.stroke()
+      // 五列竖排铭文（绕钟身一圈）
       bctx.fillStyle = '#f1d25f'
       bctx.textAlign = 'center'
       bctx.textBaseline = 'middle'
       const cols = [205, 614, 1024, 1434, 1843]
       picked.forEach((text, ci) => {
-        bctx.font = 'bold 92px "LXGW WenKai","KaiTi","SimSun",serif'
+        bctx.font = 'bold 88px "LXGW WenKai","KaiTi","SimSun",serif'
         for (let i = 0; i < text.length; i++) {
-          bctx.fillText(text[i], cols[ci], 520 + i * 116)
+          bctx.fillText(text[i], cols[ci], 540 + i * 108)
         }
       })
-      // 上下弦纹
-      bctx.strokeStyle = 'rgba(241,210,95,0.8)'
-      bctx.lineWidth = 10
+      // 草ノ間（下部）：雷雲回纹
+      bctx.strokeStyle = 'rgba(212,169,44,0.6)'
+      bctx.lineWidth = 6
+      for (let x = 20; x < 2048; x += 120) {
+        bctx.beginPath()
+        bctx.moveTo(x, 862)
+        bctx.quadraticCurveTo(x + 30, 844, x + 60, 862)
+        bctx.quadraticCurveTo(x + 90, 880, x + 120, 862)
+        bctx.stroke()
+      }
+      bctx.strokeStyle = 'rgba(240,208,110,0.85)'
+      bctx.lineWidth = 8
       bctx.beginPath()
-      bctx.moveTo(0, 470)
-      bctx.lineTo(2048, 470)
-      bctx.moveTo(0, 940)
-      bctx.lineTo(2048, 940)
+      bctx.moveTo(0, 930)
+      bctx.lineTo(2048, 930)
       bctx.stroke()
       const bellTex = new THREE.CanvasTexture(bellTexCv)
       bellTex.colorSpace = THREE.SRGBColorSpace
       bellTex.flipY = false
       bellTex.anisotropy = 8
+      // 凹凸纹理：铸痕斑驳
+      const bumpCv = document.createElement('canvas')
+      bumpCv.width = 256
+      bumpCv.height = 256
+      const bctx2 = bumpCv.getContext('2d')!
+      bctx2.fillStyle = '#808080'
+      bctx2.fillRect(0, 0, 256, 256)
+      for (let i = 0; i < 700; i++) {
+        const g = 90 + Math.random() * 76
+        bctx2.fillStyle = `rgb(${g},${g},${g})`
+        bctx2.beginPath()
+        bctx2.arc(Math.random() * 256, Math.random() * 256, 0.8 + Math.random() * 2.6, 0, Math.PI * 2)
+        bctx2.fill()
+      }
+      const bumpTexture = new THREE.CanvasTexture(bumpCv)
+      bumpTexture.wrapS = THREE.RepeatWrapping
+      bumpTexture.wrapT = THREE.RepeatWrapping
 
-      // 梵钟形制：冠钮 → 收肩 → 肩部鼓起 → 腰部收窄 → 口沿外张（裙部）
-      const bellPts: Array<[number, number]> = [
-        [0, 0.2],
-        [1.1, 0],
-        [2.6, -0.7],
-        [4.3, -2.2],
-        [4.95, -4.6],
-        [4.8, -7.0],
-        [4.1, -9.2],
-        [3.6, -10.8],
-        [4.4, -11.8],
-        [4.9, -12.2],
-        [0, -12.2],
-      ]
+      /* ---------- 钟身（敞开钟口） ---------- */
       const bellGeo = new THREE.LatheGeometry(
-        bellPts.map(([x, y]) => new THREE.Vector2(x, y)),
-        72,
+        BELL_PROFILE.map(([x, y]) => new THREE.Vector2(x, y)),
+        80,
       )
-      const bronze = new THREE.MeshStandardMaterial({ map: bellTex, roughness: 0.34, metalness: 0.8 })
+      const bronze = new THREE.MeshStandardMaterial({
+        map: bellTex,
+        bumpMap: bumpTexture,
+        bumpScale: 0.35,
+        roughness: 0.42,
+        metalness: 0.72,
+      })
       const bellMesh = new THREE.Mesh(bellGeo, bronze)
       bellMesh.castShadow = true
       const bell = new THREE.Group()
       bell.position.set(0, 5.2, 0)
       bell.add(bellMesh)
-      // 冠钮：明确封闭的钟顶（避免误读为“开口向上”）
-      const crownPlate = new THREE.Mesh(new THREE.CylinderGeometry(1.35, 1.15, 0.3, 24), bronze)
-      crownPlate.position.y = 0.35
-      bell.add(crownPlate)
-      const crownNeck = new THREE.Mesh(new THREE.CylinderGeometry(0.6, 0.7, 0.7, 16), bronze)
-      crownNeck.position.y = 0.85
-      bell.add(crownNeck)
-      const crownKnob = new THREE.Mesh(new THREE.SphereGeometry(0.55, 20, 20), bronze)
-      crownKnob.position.y = 1.35
-      bell.add(crownKnob)
-      const crownRing = new THREE.Mesh(new THREE.TorusGeometry(0.42, 0.14, 12, 32), gold)
-      crownRing.rotation.x = Math.PI / 2
-      crownRing.position.y = 1.35
-      bell.add(crownRing)
-      const band = new THREE.Mesh(new THREE.TorusGeometry(4.5, 0.2, 16, 96), gold)
-      band.position.y = -1.4
-      band.rotation.x = Math.PI / 2
-      bell.add(band)
-      const boss = new THREE.Mesh(new THREE.CylinderGeometry(0.66, 0.66, 0.28, 28), gold)
-      boss.position.set(0, -4.7, 4.9)
+      shadowCasters.push(bellMesh)
+
+      /* ---------- 乳の紋：肩部两圈乳钉（真实梵钟的标志细节） ---------- */
+      const nippleGeo = new THREE.SphereGeometry(0.16, 10, 10)
+      const nippleMat = new THREE.MeshStandardMaterial({ color: 0xb08a55, roughness: 0.5, metalness: 0.6 })
+      for (let ringI = 0; ringI < 2; ringI++) {
+        const y = -2.1 - ringI * 1.05
+        const r = ringI === 0 ? 3.78 : 4.28
+        for (let i = 0; i < 22; i++) {
+          const a = (i / 22) * Math.PI * 2
+          const n = new THREE.Mesh(nippleGeo, nippleMat)
+          n.position.set(Math.cos(a) * r, y, Math.sin(a) * r)
+          bell.add(n)
+        }
+      }
+      // 池ノ間/草ノ間 金弦带
+      const band1 = new THREE.Mesh(new THREE.TorusGeometry(4.32, 0.16, 14, 90), gold)
+      band1.rotation.x = Math.PI / 2
+      band1.position.y = -4.6
+      bell.add(band1)
+      const band2 = new THREE.Mesh(new THREE.TorusGeometry(3.98, 0.15, 14, 90), gold)
+      band2.rotation.x = Math.PI / 2
+      band2.position.y = -8.6
+      bell.add(band2)
+
+      /* ---------- 撞座（下部撞板 + 圆环） ---------- */
+      const strikerBossY = -9.6
+      const strikerBossR = 4.1
+      const boss = new THREE.Mesh(new THREE.CylinderGeometry(0.85, 0.85, 0.3, 28), gold)
+      boss.position.set(0, strikerBossY, strikerBossR)
       boss.rotation.x = Math.PI / 2
       bell.add(boss)
-      shadowCasters.push(bellMesh, crownPlate, crownNeck, crownKnob, band)
-      // 摆动轴心在冠钮（绳环）处 → 撞钟时绕顶部自然晃荡
+      const bossRing = new THREE.Mesh(new THREE.TorusGeometry(0.95, 0.09, 12, 48), gold)
+      bossRing.position.set(0, strikerBossY, strikerBossR + 0.02)
+      bell.add(bossRing)
+
+      /* ---------- 冠钮（竜頭）：顶环 + 盖板 + 龙首钮头 ---------- */
+      const crownPlate = new THREE.Mesh(new THREE.CylinderGeometry(1.05, 1.35, 0.28, 28), bronze)
+      crownPlate.position.y = 0.3
+      bell.add(crownPlate)
+      const crownNeck = new THREE.Mesh(new THREE.CylinderGeometry(0.5, 0.62, 0.55, 16), bronze)
+      crownNeck.position.y = 0.75
+      bell.add(crownNeck)
+      const crownKnob = new THREE.Mesh(new THREE.SphereGeometry(0.5, 20, 16), bronze)
+      crownKnob.position.y = 1.3
+      crownKnob.scale.y = 1.2
+      bell.add(crownKnob)
+      const crownRing = new THREE.Mesh(new THREE.TorusGeometry(0.4, 0.13, 12, 32), gold)
+      crownRing.rotation.x = Math.PI / 2
+      crownRing.position.y = 1.62
+      bell.add(crownRing)
+      const hook = new THREE.Mesh(new THREE.CylinderGeometry(0.08, 0.08, 0.7, 8), gold)
+      hook.position.y = 2.15
+      bell.add(hook)
+      shadowCasters.push(crownPlate, crownNeck, crownKnob)
+
+      // 摆动轴心在冠钮（挂点）处 → 撞钟时绕顶部自然晃荡
       const bellPivot = new THREE.Group()
-      bellPivot.position.set(0, 5.2 + 1.35, 0)
-      bell.position.y = -1.35
+      bellPivot.position.set(0, 5.2 + 2.15, 0)
+      bell.position.y = -2.15
       bellPivot.add(bell)
       S.add(bellPivot)
 

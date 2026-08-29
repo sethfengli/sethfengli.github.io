@@ -11,17 +11,6 @@ import { Reveal } from '../components/ui/Reveal'
 
 const FEATURED_SLUGS = ['301jgj', '302xinj', '303liuzutanjing', '102lfsx', '001jznf', '001zyxuefo', '402nianfolun', '202bada']
 
-const SCHOOLS: Array<{
-  key: 'schoolJing' | 'schoolChan' | 'schoolXiuxue'
-  to: string
-  variant: IllustrationVariant
-  photo: string
-}> = [
-  { key: 'schoolJing', to: '/articles?school=jing', variant: 'lotus', photo: '/photos/hero.jpg' },
-  { key: 'schoolChan', to: '/articles?school=chan', variant: 'enso', photo: '/photos/garden.jpg' },
-  { key: 'schoolXiuxue', to: '/articles?school=xiuxue', variant: 'mountains', photo: '/photos/blossom.jpg' },
-]
-
 export function Home() {
   const { t } = useI18n()
   const verse = verseOfTheMoment()
@@ -32,69 +21,60 @@ export function Home() {
 
   return (
     <div>
-      {/* ---------- Hero ---------- */}
+      {/* ---------- Hero（明快浅色调） ---------- */}
       <PageBanner
-        image="/photos/hero.jpg"
+        image="/photos/blossom.jpg"
         kicker={t('home.heroKicker')}
         title={t('home.heroTitle')}
-        gradient="from-sandalwood-950/35 via-sandalwood-950/10 to-sandalwood-950/75"
+        subtitle={t('home.heroSubtitle')}
         decor={
           <>
             {/* 飘浮莲花 */}
             <div className="pointer-events-none absolute top-24 right-[8%] hidden animate-float md:block" aria-hidden>
-              <PhotoLogo className="h-20 w-20 opacity-90" />
+              <PhotoLogo className="h-20 w-20 opacity-70" />
             </div>
-            <div className="pointer-events-none absolute bottom-32 left-[6%] hidden animate-float-slow md:block" aria-hidden>
-              <PhotoLogo className="h-14 w-14 opacity-60" />
+            <div className="pointer-events-none absolute bottom-24 left-[6%] hidden animate-float-slow md:block" aria-hidden>
+              <PhotoLogo className="h-14 w-14 opacity-45" />
             </div>
           </>
         }
       >
-        <div className="flex flex-col items-center pt-16 pb-2 sm:pt-20">
-          <p className="animate-fade-up banner-text text-xs tracking-[0.4em] text-gold-200/90 uppercase" style={{ animationDelay: '0.15s' }}>
-            {t('appNameEn')}
-          </p>
-          <div className="zen-divider mt-6 animate-fade-up" style={{ animationDelay: '0.25s' }}>
+        <div className="flex flex-col items-center pt-6 pb-2">
+          <div className="zen-divider mt-4 animate-fade-up" style={{ animationDelay: '0.15s' }}>
             <span className="text-lg">✦</span>
           </div>
-          <p
-            className="mt-6 max-w-2xl banner-text animate-fade-up font-serif text-base leading-loose text-paper sm:text-lg"
-            style={{ animationDelay: '0.3s' }}
-          >
-            {t('home.heroSubtitle')}
-          </p>
-          <div className="mt-9 flex animate-fade-up flex-wrap items-center justify-center gap-4" style={{ animationDelay: '0.4s' }}>
+          <div className="mt-8 flex animate-fade-up flex-wrap items-center justify-center gap-4" style={{ animationDelay: '0.25s' }}>
             <Link to="/articles" viewTransition className="btn-gold">
               {t('home.ctaArticles')}
             </Link>
-            <Link to="/lots" viewTransition className="btn-secondary border-paper/40 text-paper hover:border-gold-300 hover:bg-paper/10 hover:text-gold-200">
+            <Link to="/lots" viewTransition className="btn-secondary border-sandalwood-500/50 bg-rice-50/70 text-sandalwood-800 hover:border-tibetan-500 hover:bg-rice-50 hover:text-tibetan-700">
               {t('home.ctaLots')}
             </Link>
           </div>
 
           {/* 每日法语 */}
           <blockquote
-            className="mt-14 max-w-2xl animate-fade-up rounded-2xl border border-gold-400/25 bg-sandalwood-900/60 px-6 py-5 backdrop-blur-sm sm:px-8"
-            style={{ animationDelay: '0.5s' }}
+            className="mt-12 max-w-2xl animate-fade-up rounded-2xl border border-gold-500/40 bg-paper/80 px-6 py-5 shadow-lg shadow-sandalwood-900/5 backdrop-blur-sm sm:px-8"
+            style={{ animationDelay: '0.35s' }}
           >
-            <p className="font-serif text-sm tracking-widest text-gold-300">{t('home.dailyVerseTitle')}</p>
-            <p className="mt-3 font-brush text-xl leading-relaxed text-paper/95">「{verse.text}」</p>
-            <footer className="mt-2 text-right font-serif text-xs text-paper/60">—— {verse.source}</footer>
+            <p className="font-serif text-sm tracking-widest text-tibetan-600">{t('home.dailyVerseTitle')}</p>
+            <p className="mt-3 font-brush text-xl leading-relaxed text-ink-900">「{verse.text}」</p>
+            <footer className="mt-2 text-right font-serif text-xs text-ink-500">—— {verse.source}</footer>
           </blockquote>
 
           {/* 滚动提示 */}
-          <div className="mt-10 animate-fade-up" style={{ animationDelay: '0.65s' }} aria-hidden>
-            <div className="mx-auto flex h-9 w-5 items-start justify-center rounded-full border border-paper/40 p-1">
-              <div className="h-2 w-1 animate-bounce rounded-full bg-gold-300" />
+          <div className="mt-10 animate-fade-up" style={{ animationDelay: '0.45s' }} aria-hidden>
+            <div className="mx-auto flex h-9 w-5 items-start justify-center rounded-full border border-sandalwood-600/50 p-1">
+              <div className="h-2 w-1 animate-bounce rounded-full bg-tibetan-500" />
             </div>
           </div>
         </div>
       </PageBanner>
 
-      {/* ---------- 禅院导览 ---------- */}
+      {/* ---------- 从这里开始（导览卡片） ---------- */}
       <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
         <Reveal>
-          <SectionHeading title={t('home.quickTitle')} />
+          <SectionHeading title={t('home.quickTitle')} subtitle={t('home.quickSubtitle')} />
         </Reveal>
         <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {[
@@ -110,7 +90,7 @@ export function Home() {
         </div>
       </section>
 
-      {/* ---------- 精选经论 ---------- */}
+      {/* ---------- 读一部经典 ---------- */}
       <section className="bg-rice-100/70 py-16">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <Reveal>
@@ -131,37 +111,14 @@ export function Home() {
         </div>
       </section>
 
-      {/* ---------- 三大修学门径 ---------- */}
-      <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
-        <Reveal>
-          <SectionHeading title={t('home.schoolsTitle')} subtitle={t('home.schoolsSubtitle')} />
-        </Reveal>
-        <div className="mt-10 grid gap-6 md:grid-cols-3">
-          {SCHOOLS.map((s, i) => (
-            <Reveal key={s.key} delay={i * 110}>
-              <div className="card-link overflow-hidden">
-                <CoverImage src={s.photo} alt={t(`home.${s.key}`)} fallbackVariant={s.variant} className="h-36 w-full" />
-                <div className="p-6">
-                  <h3 className="font-serif text-xl font-bold text-sandalwood-800">{t(`home.${s.key}`)}</h3>
-                  <p className="mt-3 font-serif text-sm leading-relaxed text-ink-700">{t(`home.${s.key}Desc`)}</p>
-                  <Link to={s.to} viewTransition className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-tibetan-600 transition hover:gap-2 hover:text-tibetan-500">
-                    {t('home.enterSchool')}
-                    <span aria-hidden>→</span>
-                  </Link>
-                </div>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-      </section>
-
-      {/* ---------- 互动香炉 ---------- */}
+      {/* ---------- 小憩：一炷心香 ---------- */}
       <section className="bg-gradient-to-b from-transparent to-rice-100/60 pb-20">
         <div className="mx-auto flex max-w-3xl flex-col items-center gap-6 px-4 text-center sm:px-6">
           <Reveal>
             <p className="font-serif text-sm text-sandalwood-500">{t('home.incenseHint')}</p>
           </Reveal>
-          <Incense3D variant="sticks" distance={16} heightClass="h-[440px] w-[440px] max-w-full" />
+          {/* 起始即全景（最小缩放），用户可自行拉近 */}
+          <Incense3D variant="sticks" distance={16} maxDistance={16} heightClass="h-[440px] w-[440px] max-w-full" />
         </div>
       </section>
     </div>

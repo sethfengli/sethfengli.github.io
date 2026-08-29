@@ -99,7 +99,16 @@ export function LotCylinder3D({ shaking, revealed, onShake, fallback }: Props) {
     void import('three').then((THREE) => {
       if (disposed || !canvas.isConnected) return
       try {
-        stage = createStage(THREE, canvas, { distance: 8.5, autoRotate: 0, phi: 1.05 })
+        // 起始距离稍大：一眼能看到筒内签支与整座签筒，用户可拉近看金字
+        stage = createStage(THREE, canvas, {
+          distance: 11,
+          minDistance: 6,
+          maxDistance: 15,
+          autoRotate: 0,
+          phi: 0.98,
+          minPhi: 0.6,
+          maxPhi: 1.4,
+        })
       } catch {
         setFailed(true)
         return

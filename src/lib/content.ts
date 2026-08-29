@@ -39,13 +39,56 @@ export const CATALOG: ArticleMeta[] = catalogJson as ArticleMeta[]
 /** 免版权真实照片（Wikimedia Commons，本地托管 public/photos/） */
 export const PHOTO_NAMES: string[] = (photosJson as { photos?: string[] }).photos ?? []
 
-/** 按目录序 + 步长分配封面照片：相邻文章跳到相隔 7 张（跨类别）的照片，避免雷同/重复 */
+/* ------------------------------------------------------------------
+   封面照片按院系语义分池（2026-08 意境核对）：
+   - 净修院（净土/莲花）→ 莲池、清净园林
+   - 禅修院（禅门）→ 梵钟、山峦、禅修雕像
+   - 修学园地（随笔）→ 寺院山门、殿堂、行脚路
+   已从池中剔除与佛法意境不符的照片（大象象牙雕、军工博物馆、
+   军乐队、武士刀镡、面目狰狞雕像等，见 public/photos/CREDITS.md）。
+------------------------------------------------------------------- */
+const LOTUS_POOL = ['photo-111', 'photo-112', 'photo-113', 'photo-114', 'photo-115', 'photo-116', 'photo-117']
+const BELL_POOL = [
+  'photo-50', 'photo-53', 'photo-55', 'photo-56', 'photo-58', 'photo-59', 'photo-65',
+  'photo-66', 'photo-68', 'photo-69', 'photo-74', 'photo-77', 'photo-79', 'photo-81',
+]
+const STATUE_POOL = [
+  'photo-02', 'photo-03', 'photo-04', 'photo-06', 'photo-07', 'photo-09', 'photo-10',
+  'photo-12', 'photo-13', 'photo-14', 'photo-15', 'photo-16', 'photo-17', 'photo-18',
+  'photo-19', 'photo-20', 'photo-21', 'photo-22', 'photo-23', 'photo-24', 'photo-25',
+  'photo-26', 'photo-27', 'photo-28', 'photo-29', 'photo-30', 'photo-31', 'photo-32',
+  'photo-33', 'photo-34', 'photo-35', 'photo-36', 'photo-37', 'photo-38', 'photo-39',
+  'photo-40', 'photo-41', 'photo-42', 'photo-43', 'photo-44', 'photo-45', 'photo-46',
+  'photo-47', 'photo-95', 'photo-96', 'photo-97', 'photo-98', 'photo-105', 'photo-108',
+]
+const TEMPLE_POOL = [
+  'photo-49', 'photo-52', 'photo-54', 'photo-60', 'photo-61', 'photo-62', 'photo-63',
+  'photo-64', 'photo-71', 'photo-72', 'photo-73', 'photo-75', 'photo-76', 'photo-78',
+  'photo-83', 'photo-88', 'photo-89', 'photo-99', 'photo-101', 'photo-102', 'photo-103',
+  'photo-104', 'photo-106', 'photo-107', 'photo-109',
+]
+const MOUNTAIN_POOL = ['photo-84', 'photo-89', 'photo-118', 'photo-119']
+
+function poolFor(school: School): string[] {
+  switch (school) {
+    case 'jing':
+      return [...LOTUS_POOL, ...LOTUS_POOL, ...TEMPLE_POOL] // 莲池为主，穿插清净园林
+    case 'chan':
+      return [...BELL_POOL, ...BELL_POOL, ...MOUNTAIN_POOL, ...STATUE_POOL.slice(0, 14)]
+    case 'xiuxue':
+      return [...TEMPLE_POOL, ...TEMPLE_POOL, ...STATUE_POOL.slice(14, 30)]
+  }
+}
+
+/** 按目录序 + 步长分配封面照片：同院系相邻文章跳 7 张，避免雷同/重复 */
 export function photoForSlug(slug: string): string {
-  if (PHOTO_NAMES.length === 0) return ''
   const idx = CATALOG.findIndex((a) => a.slug === slug)
+  const meta = idx >= 0 ? CATALOG[idx] : null
+  const pool = poolFor(meta?.school ?? 'xiuxue')
+  if (pool.length === 0) return PHOTO_NAMES.length ? `/photos/${PHOTO_NAMES[0]}` : ''
   const base = idx < 0 ? 0 : idx
-  const pick = (((base * 7) % PHOTO_NAMES.length) + PHOTO_NAMES.length) % PHOTO_NAMES.length
-  return `/photos/${PHOTO_NAMES[pick]}`
+  const pick = (((base * 7) % pool.length) + pool.length) % pool.length
+  return `/photos/${pool[pick]}.jpg`
 }
 
 export const SCHOOL_LABEL_ZH: Record<School, string> = {
