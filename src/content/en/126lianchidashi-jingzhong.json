@@ -40,10 +40,10 @@
                        "t":  "quote",
                        "inline":  [
                                       {
-                                          "s":  "ã€"
+                                          "s":  "["
                                       },
                                       {
-                                          "s":  "After I left home, I went about visiting and seeking instruction. At that time Master Bianrong\u0027s teaching was greatly flourishing, and I"
+                                          "s":  "After I left home, I went about visiting and seeking instruction. At that time Master Bianrong’s teaching was greatly flourishing, and I"
                                       },
                                       {
                                           "s":  "(the same as \"I\", meaning \"I myself\")"
@@ -76,7 +76,7 @@
                                           "s":  "This is why it is his goodness.” To this day I have honestly kept and observed it, and have not let it go."
                                       },
                                       {
-                                          "s":  "ã€‘"
+                                          "s":  "]"
                                       }
                                   ]
                    },
@@ -90,7 +90,7 @@
                                           "s":  "At"
                                       },
                                       {
-                                          "s":  "that time Master Bianrong\u0027s"
+                                          "s":  "that time Master Bianrong’s"
                                       },
                                       {
                                           "s":  "great"
@@ -138,7 +138,7 @@
                                           "s":  "The great master taught me"
                                       },
                                       {
-                                          "s":  ", saying: \\u201cYou"
+                                          "s":  ", saying: “You"
                                       },
                                       {
                                           "s":  "should"
@@ -150,7 +150,7 @@
                                           "s":  "Be sure to"
                                       },
                                       {
-                                          "s":  "keep cause and effect clear, and be single-minded in reciting the Buddha.\\u201d"
+                                          "s":  "keep cause and effect clear, and be single-minded in reciting the Buddha.”"
                                       },
                                       {
                                           "s":  "I"
@@ -168,7 +168,7 @@
                                           "s":  "all burst out"
                                       },
                                       {
-                                          "s":  "laughing, thinking that any of them could have said these words \\u2014 who could not say"
+                                          "s":  "laughing, thinking that any of them could have said these words — who could not say"
                                       },
                                       {
                                           "s":  "them"
@@ -198,7 +198,7 @@
                                           "s":  "I said"
                                       },
                                       {
-                                          "s":  ": \\u201cThis is precisely where his"
+                                          "s":  ": “This is precisely where his"
                                       },
                                       {
                                           "s":  "goodness"
@@ -255,10 +255,10 @@
                                           "s":  "his own person"
                                       },
                                       {
-                                          "s":  "\\u2014 close"
+                                          "s":  "— close"
                                       },
                                       {
-                                          "s":  "and practical \\u2014 admonishing us earnestly."
+                                          "s":  "and practical — admonishing us earnestly."
                                       },
                                       {
                                           "s":  "Therefore this"
@@ -270,7 +270,7 @@
                                           "s":  "where"
                                       },
                                       {
-                                          "s":  "his goodness lies.\\u201d Even to this day I"
+                                          "s":  "his goodness lies.” Even to this day I"
                                       },
                                       {
                                           "s":  "have"
@@ -312,10 +312,10 @@
                        "t":  "p",
                        "inline":  [
                                       {
-                                          "s":  "[Cause and effect clear] to deeply know “such a cause, such a fruit,” and therefore to be on guard over one thought, one word, one deed of one\u0027s own, so that the good fruit is abundant. Hence the sutra says: “The bodhisattva fears the cause; the ordinary being fears the fruit.” Beings create evil out of greed and anger because they do not know cause and effect, do not believe in cause and effect, or else profess belief with the lips while not truly believing it. Once the evil fruit appears, they are panic-stricken and fearful, at a loss what to do. [Single-minded in reciting the Buddha] single-minded means mind following mind without interruption, with no other thought mingling in. (See"
+                                          "s":  "[Cause and effect clear] to deeply know “such a cause, such a fruit,” and therefore to be on guard over one thought, one word, one deed of one’s own, so that the good fruit is abundant. Hence the sutra says: “The bodhisattva fears the cause; the ordinary being fears the fruit.” Beings create evil out of greed and anger because they do not know cause and effect, do not believe in cause and effect, or else profess belief with the lips while not truly believing it. Once the evil fruit appears, they are panic-stricken and fearful, at a loss what to do. [Single-minded in reciting the Buddha] single-minded means mind following mind without interruption, with no other thought mingling in. (See"
                                       },
                                       {
-                                          "s":  "“Master Shandao\u0027s Pure Land Teachings”",
+                                          "s":  "“Master Shandao’s Pure Land Teachings”",
                                           "href":  "/articles/072shandaokaishi"
                                       },
                                       {
@@ -335,7 +335,10 @@
                        "t":  "quote",
                        "inline":  [
                                       {
-                                          "s":  "Single-minded recitation of the Buddha brings the three studies of discipline, concentration, and wisdom to full completion. Master Lianchi, in his Pure Land Collected Sayings of Yunqi, says:"
+                                          "s":  "Single-minded recitation of the Buddha brings the three studies of discipline, concentration, and wisdom to full completion."
+                                      },
+                                      {
+                                          "s":  " Master Lianchi, in his Pure Land Collected Sayings of Yunqi, says:"
                                       },
                                       {
                                           "s":  "“"
@@ -347,7 +350,7 @@
                                           "s":  "single-minded in reciting the Buddha"
                                       },
                                       {
-                                          "s":  ", all evils dare not enter â€” that is discipline. Concentration means removing distraction. If one is"
+                                          "s":  ", all evils dare not enter — that is discipline. Concentration means removing distraction. If one is"
                                       },
                                       {
                                           "s":  "single-minded in reciting the Buddha"
@@ -359,7 +362,7 @@
                                           "s":  "(the mind does not bind itself to other things)"
                                       },
                                       {
-                                          "s":  "â€” that is concentration. Wisdom means clear illumination. If one contemplates the Buddha-sound so that each word is clear and distinct, and also contemplates that both the one who recites and what is recited are unobtainable, that is wisdom. To recite the Buddha in this way is discipline, concentration, and wisdom.”"
+                                          "s":  "— that is concentration. Wisdom means clear illumination. If one contemplates the Buddha-sound so that each word is clear and distinct, and also contemplates that both the one who recites and what is recited are unobtainable, that is wisdom. To recite the Buddha in this way is discipline, concentration, and wisdom.”"
                                       },
                                       {
                                           "s":  "(Translation: discipline means guarding against wrongdoing; if one can be single-minded in reciting the Buddha, all evils dare not enter, and this is discipline. Concentration means removing distraction; if one is single-minded in reciting the Buddha, the mind does not bind itself to other things, and this is concentration. Wisdom means clear illumination; if one contemplates the Buddha-sound so each word is clear and distinct, and also contemplates that the one who recites and what is recited are both unobtainable, this is wisdom. Reciting the Buddha in this way is discipline, concentration, and wisdom.)"
@@ -370,7 +373,10 @@
                        "t":  "quote",
                        "inline":  [
                                       {
-                                          "s":  "Single-minded recitation of the Buddha brings the six perfections and the myriad practices all to completeness. Master Lianchi, in his Commentary on the Amitabha Sutra, says:"
+                                          "s":  "Single-minded recitation of the Buddha brings the six perfections and the myriad practices all to completeness."
+                                      },
+                                      {
+                                          "s":  " Master Lianchi, in his Commentary on the Amitabha Sutra, says:"
                                       },
                                       {
                                           "s":  "“"
@@ -382,31 +388,31 @@
                                           "s":  "single-minded in reciting the Buddha"
                                       },
                                       {
-                                          "s":  ", the myriad conditions naturally cast themselves aside â€” that is the perfection of giving;"
+                                          "s":  ", the myriad conditions naturally cast themselves aside — that is the perfection of giving;"
                                       },
                                       {
                                           "s":  "single-minded in reciting the Buddha"
                                       },
                                       {
-                                          "s":  ", all evils naturally cease â€” that is the perfection of moral precepts;"
+                                          "s":  ", all evils naturally cease — that is the perfection of moral precepts;"
                                       },
                                       {
                                           "s":  "single-minded in reciting the Buddha"
                                       },
                                       {
-                                          "s":  ", the mind naturally becomes gentle â€” that is the perfection of patience;"
+                                          "s":  ", the mind naturally becomes gentle — that is the perfection of patience;"
                                       },
                                       {
                                           "s":  "single-minded in reciting the Buddha"
                                       },
                                       {
-                                          "s":  ", one never retreats â€” that is the perfection of diligence;"
+                                          "s":  ", one never retreats — that is the perfection of diligence;"
                                       },
                                       {
                                           "s":  "single-minded in reciting the Buddha"
                                       },
                                       {
-                                          "s":  ", other thoughts do not arise â€” that is the perfection of meditation; single-minded in reciting the Buddha, right mindfulness is clear â€” that is the perfection of wisdom. Pushing it to the utmost,"
+                                          "s":  ", other thoughts do not arise — that is the perfection of meditation; single-minded in reciting the Buddha, right mindfulness is clear — that is the perfection of wisdom. Pushing it to the utmost,"
                                       },
                                       {
                                           "s":  "it does not depart from the single mind"
@@ -432,7 +438,7 @@
                                           "s":  "[The bodhisattva fears the cause, the ordinary being fears the fruit"
                                       },
                                       {
-                                          "s":  "] Master Yinguang says: “The sutra says: ‘The bodhisattva fears the cause; the ordinary being fears the fruit.’ The bodhisattva, fearing the evil fruit, cuts off the evil cause in advance. Thus his karmic hindrances are destroyed, his merit is fulfilled, and he goes on until Buddhahood is attained and only then stops. The ordinary being always creates evil causes, yet wishes to escape the evil fruit â€” like one who runs from his own shadow in the daylight, laboring in vain.” (from Collected Writings of Master Yinguang, Primarily Edited, the Letter to Wei Jinzhou)"
+                                          "s":  "] Master Yinguang says: “The sutra says: ‘The bodhisattva fears the cause; the ordinary being fears the fruit.’ The bodhisattva, fearing the evil fruit, cuts off the evil cause in advance. Thus his karmic hindrances are destroyed, his merit is fulfilled, and he goes on until Buddhahood is attained and only then stops. The ordinary being always creates evil causes, yet wishes to escape the evil fruit — like one who runs from his own shadow in the daylight, laboring in vain.” (from Collected Writings of Master Yinguang, Primarily Edited, the Letter to Wei Jinzhou)"
                                       },
                                       {
                                           "s":  "·"
@@ -446,7 +452,7 @@
                        "t":  "p",
                        "inline":  [
                                       {
-                                          "s":  "Question: Since it is “such a cause, such a fruit,” why is it that cutting off evil and practicing good can transform one\u0027s destiny?"
+                                          "s":  "Question: Since it is “such a cause, such a fruit,” why is it that cutting off evil and practicing good can transform one’s destiny?"
                                       }
                                   ]
                    },
@@ -460,16 +466,16 @@
                    },
                    {
                        "t":  "h3",
-                       "text":  "Human Life Is at the Breath\u0027s End"
+                       "text":  "Human Life Is at the Breath’s End"
                    },
                    {
                        "t":  "quote",
                        "inline":  [
                                       {
-                                          "s":  "ã€"
+                                          "s":  "["
                                       },
                                       {
-                                          "s":  "The essential gate of entering the Way takes faith as first. Even evil, if not believed in, is not brought to completion â€” how much less good? Consider the thieves of the world: when they are exposed, the authorities do not fail to punish them with the severest penalties. And when"
+                                          "s":  "The essential gate of entering the Way takes faith as first. Even evil, if not believed in, is not brought to completion — how much less good? Consider the thieves of the world: when they are exposed, the authorities do not fail to punish them with the severest penalties. And when"
                                       },
                                       {
                                           "s":  "("
@@ -502,7 +508,7 @@
                                           "s":  "a single coin of capital, they gain profit beyond all reckoning. And so, though they endure bitter suffering, they never retreat into regret."
                                       },
                                       {
-                                          "s":  "ã€‘"
+                                          "s":  "]"
                                       }
                                   ]
                    },
@@ -518,16 +524,16 @@
                        "t":  "quote",
                        "inline":  [
                                       {
-                                          "s":  "ã€"
+                                          "s":  "["
                                       },
                                       {
-                                          "s":  "People today, in reciting the Buddha, are unwilling ever again to be truly earnest in applying effort, simply because they have never deeply reflected and sincerely believed. Put aside not believing in the Pure Land â€” take even this one saying of the World-Honored One:"
+                                          "s":  "People today, in reciting the Buddha, are unwilling ever again to be truly earnest in applying effort, simply because they have never deeply reflected and sincerely believed. Put aside not believing in the Pure Land — take even this one saying of the World-Honored One:"
                                       },
                                       {
-                                          "s":  "“Human life is at the breath\u0027s end,”"
+                                          "s":  "“Human life is at the breath’s end,”"
                                       },
                                       {
-                                          "s":  "this sentence, in terms of its meaning, is not hard to explain. You have seen it with your own eyes and heard it with your own ears, passing through many examples of it. Yet now to have you believe this sentence â€” you are already"
+                                          "s":  "this sentence, in terms of its meaning, is not hard to explain. You have seen it with your own eyes and heard it with your own ears, passing through many examples of it. Yet now to have you believe this sentence — you are already"
                                       },
                                       {
                                           "s":  "("
@@ -554,7 +560,7 @@
                                           "s":  ", which ten thousand oxen could not drag back."
                                       },
                                       {
-                                          "s":  "ã€‘"
+                                          "s":  "]"
                                       }
                                   ]
                    },
@@ -562,7 +568,7 @@
                        "t":  "p",
                        "inline":  [
                                       {
-                                          "s":  "People today, in reciting the Buddha, even when admonished again and again, are unwilling to be truly earnest in applying effort â€” only because they have never deeply reflected and sincerely believed. Put aside not believing in the Western Land of Ultimate Bliss; take even this one saying of the World-Honored One, “Human life is at the breath\u0027s end” â€” in principle it is not hard to understand and explain. You have seen it with your own eyes and heard it with your own ears; there have already been many actual instances of “human life at the breath\u0027s end.” Now, to have you believe this saying, “human life is at the breath\u0027s end,” you have long been unable to do so. If you could truly believe this saying, then the Dharma gate of Buddha-recitation would not require me to exhaust my strength and exhort you a thousand and ten thousand times; you would of yourselves flow downward like the water of the mountains into a ravine, which ten thousand oxen could not drag back."
+                                          "s":  "People today, in reciting the Buddha, even when admonished again and again, are unwilling to be truly earnest in applying effort — only because they have never deeply reflected and sincerely believed. Put aside not believing in the Western Land of Ultimate Bliss; take even this one saying of the World-Honored One, “Human life is at the breath’s end” — in principle it is not hard to understand and explain. You have seen it with your own eyes and heard it with your own ears; there have already been many actual instances of “human life at the breath’s end.” Now, to have you believe this saying, “human life is at the breath’s end,” you have long been unable to do so. If you could truly believe this saying, then the Dharma gate of Buddha-recitation would not require me to exhaust my strength and exhort you a thousand and ten thousand times; you would of yourselves flow downward like the water of the mountains into a ravine, which ten thousand oxen could not drag back."
                                       }
                                   ]
                    },
@@ -570,13 +576,13 @@
                        "t":  "quote",
                        "inline":  [
                                       {
-                                          "s":  "[Human life is at the breath\u0027s end] In the Sutra of Forty-two Sections, the Buddha asked a monk: “How far does human life lie between?” He answered: “In a few days.” The Buddha said: “You have not yet understood the Way.” He asked another monk: “How far does human life lie between?” He answered: “Between a meal.” The Buddha said: “You have not yet understood the Way.” He asked yet another monk: “How far does human life lie between?” He answered: “At the breath.” The Buddha praised him: “Excellent! You have understood the Way!” (The original reads:"
+                                          "s":  "[Human life is at the breath’s end] In the Sutra of Forty-two Sections, the Buddha asked a monk: “How far does human life lie between?” He answered: “In a few days.” The Buddha said: “You have not yet understood the Way.” He asked another monk: “How far does human life lie between?” He answered: “Between a meal.” The Buddha said: “You have not yet understood the Way.” He asked yet another monk: “How far does human life lie between?” He answered: “At the breath.” The Buddha praised him: “Excellent! You have understood the Way!” (The original reads:"
                                       },
                                       {
                                           "s":  "“The Buddha asked a monk: ‘How far does human life lie between?’ He answered: ‘Within a few days.’ The Buddha said: ‘My son, you have not yet understood the Way.’ He asked again of a monk: ‘How far does human life lie between?’ He answered: ‘Within a meal.’ The Buddha said: ‘My son, you have not yet understood the Way.’ He asked again of a monk: ‘How far does human life lie between?’ He answered: ‘At the breath.’ The Buddha said: ‘Excellent! My son, you have understood the Way!’”"
                                       },
                                       {
-                                          "s":  ") [At the breath] â€” within the space of a breath life may be cut off; this is what is meant by “the out-breath being not guaranteed to be followed by the in-breath.” The Buddha here makes it clear: human life is impermanent, the out-breath being not guaranteed to return as an in-breath; so the student of the Way must be vigilant and diligent, striving to complete the career of the Way before death overtakes him."
+                                          "s":  ") [At the breath] — within the space of a breath life may be cut off; this is what is meant by “the out-breath being not guaranteed to be followed by the in-breath.” The Buddha here makes it clear: human life is impermanent, the out-breath being not guaranteed to return as an in-breath; so the student of the Way must be vigilant and diligent, striving to complete the career of the Way before death overtakes him."
                                       }
                                   ]
                    },
@@ -584,10 +590,10 @@
                        "t":  "quote",
                        "inline":  [
                                       {
-                                          "s":  "ã€"
+                                          "s":  "["
                                       },
                                       {
-                                          "s":  "Take only the other day, when we saw off a deceased monk â€” you saw this example, and should have been saddened and distressed"
+                                          "s":  "Take only the other day, when we saw off a deceased monk — you saw this example, and should have been saddened and distressed"
                                       },
                                       {
                                           "s":  "(qiao)"
@@ -605,10 +611,10 @@
                                           "s":  ","
                                       },
                                       {
-                                          "s":  "we must make haste to recite the Buddha, not letting the moment slip by” — that would be well. Yet I see you say among yourselves that it is a pity, and say to others that it is a pity; but when it comes to the valuation and auction in the hall, you talk and laugh as freely as ever. You simply do not believe that human life is at the breath\u0027s end!"
+                                          "s":  "we must make haste to recite the Buddha, not letting the moment slip by” — that would be well. Yet I see you say among yourselves that it is a pity, and say to others that it is a pity; but when it comes to the valuation and auction in the hall, you talk and laugh as freely as ever. You simply do not believe that human life is at the breath’s end!"
                                       },
                                       {
-                                          "s":  "ã€‘"
+                                          "s":  "]"
                                       }
                                   ]
                    },
@@ -616,7 +622,7 @@
                        "t":  "p",
                        "inline":  [
                                       {
-                                          "s":  "Take only the other day, when we saw off a deceased monk â€” you saw with your own eyes the arrival of death, and you should have been solemn and grave, and earnestly admonished one another, saying: “All! You and I are without end today escorting one monk and tomorrow escorting another. Before we know it, our turn comes. At this point regret would be too late; we must now make haste to recite the Buddha, not letting the moment slip by, so as to accomplish the career of the Way before death arrives — that would be good.” I see you say to yourselves that his career of the Way was not accomplished and his death is a pity, and say to others that his career of the Way was not accomplished and his death is a pity. But when it comes to the valuation and auction of his belongings in the hall, you talk and laugh as freely as ever. You simply do not believe that human life is at the breath\u0027s end!"
+                                          "s":  "Take only the other day, when we saw off a deceased monk — you saw with your own eyes the arrival of death, and you should have been solemn and grave, and earnestly admonished one another, saying: “All! You and I are without end today escorting one monk and tomorrow escorting another. Before we know it, our turn comes. At this point regret would be too late; we must now make haste to recite the Buddha, not letting the moment slip by, so as to accomplish the career of the Way before death arrives — that would be good.” I see you say to yourselves that his career of the Way was not accomplished and his death is a pity, and say to others that his career of the Way was not accomplished and his death is a pity. But when it comes to the valuation and auction of his belongings in the hall, you talk and laugh as freely as ever. You simply do not believe that human life is at the breath’s end!"
                                       }
                                   ]
                    },
@@ -624,7 +630,7 @@
                        "t":  "p",
                        "inline":  [
                                       {
-                                          "s":  "[Seeing off] the sending off of a deceased monk is called “seeing off” at a monastery. [Then regret will be too late] to repent only at the point of death that one was earlier not diligent enough and did not accomplish the career of the Way is too late â€” this is truly a pity beyond measure! [We must make haste to recite the Buddha, not letting the moment slip by] to accomplish the career of the Way before death arrives. [A pity] to grieve that the deceased monk passed away without his career of the Way being accomplished. [Valuation and auction] the belongings of the deceased monk are distributed to the monks present; first the value is set, called “valuing the things,” and then they are auctioned before the assembly, called “auctioning the things.”"
+                                          "s":  "[Seeing off] the sending off of a deceased monk is called “seeing off” at a monastery. [Then regret will be too late] to repent only at the point of death that one was earlier not diligent enough and did not accomplish the career of the Way is too late — this is truly a pity beyond measure! [We must make haste to recite the Buddha, not letting the moment slip by] to accomplish the career of the Way before death arrives. [A pity] to grieve that the deceased monk passed away without his career of the Way being accomplished. [Valuation and auction] the belongings of the deceased monk are distributed to the monks present; first the value is set, called “valuing the things,” and then they are auctioned before the assembly, called “auctioning the things.”"
                                       }
                                   ]
                    },
@@ -632,7 +638,7 @@
                        "t":  "p",
                        "inline":  [
                                       {
-                                          "s":  "The Rhapsody on the Epang Palace says: “The men of Qin had no leisure to grieve for themselves, and so the men of later ages grieved for them; and when the men of later ages grieve for them without taking them as a warning, they make the men of still later ages grieve once more for them.” (Translation: the men of Qin had no leisure to grieve over their own destruction, and had to let the men of later ages grieve for them; and if the men of later ages only grieve without taking it as a warning, then their own destruction would in turn be grieved over by the men of still later ages.) â€” To grieve but not to take warning: a sigh shared by ancient and modern alike!"
+                                          "s":  "The Rhapsody on the Epang Palace says: “The men of Qin had no leisure to grieve for themselves, and so the men of later ages grieved for them; and when the men of later ages grieve for them without taking them as a warning, they make the men of still later ages grieve once more for them.” (Translation: the men of Qin had no leisure to grieve over their own destruction, and had to let the men of later ages grieve for them; and if the men of later ages only grieve without taking it as a warning, then their own destruction would in turn be grieved over by the men of still later ages.) — To grieve but not to take warning: a sigh shared by ancient and modern alike!"
                                       }
                                   ]
                    },
@@ -648,7 +654,7 @@
                        "t":  "p",
                        "inline":  [
                                       {
-                                          "s":  "The Universal Worthy (Samantabhadra) Bodhisattva\u0027s Admonitory Verse says:"
+                                          "s":  "The Universal Worthy (Samantabhadra) Bodhisattva’s Admonitory Verse says:"
                                       },
                                       {
                                           "s":  "“"
@@ -686,13 +692,13 @@
                                           "s":  "career of the Way"
                                       },
                                       {
-                                          "s":  "before death and confusion overtake you. [Impermanence] â€” that which has no permanent dwelling (all things of the world arising and ceasing, flowing and changing, not abiding even for an instant); it also refers to death, the spirit that seizes the soul. [In no way be lax and indolent] â€” do not on any account give yourself over to idle pleasure and waste your spirit and time. The Buddha said: “"
+                                          "s":  "before death and confusion overtake you. [Impermanence] — that which has no permanent dwelling (all things of the world arising and ceasing, flowing and changing, not abiding even for an instant); it also refers to death, the spirit that seizes the soul. [In no way be lax and indolent] — do not on any account give yourself over to idle pleasure and waste your spirit and time. The Buddha said: “"
                                       },
                                       {
                                           "s":  "Though one toils for a single life, in a brief space one is reborn in the Land of Immeasurable Life, with joy beyond measure.”"
                                       },
                                       {
-                                          "s":  "(From the Sutra of the Buddha\u0027s Sermon on the Buddha of Immeasurable Life)"
+                                          "s":  "(From the Sutra of the Buddha’s Sermon on the Buddha of Immeasurable Life)"
                                       }
                                   ]
                    },
@@ -704,10 +710,10 @@
                        "t":  "quote",
                        "inline":  [
                                       {
-                                          "s":  "ã€"
+                                          "s":  "["
                                       },
                                       {
-                                          "s":  "I see beginners who, the moment they set a single word of the Buddha upon their minds, find that idle thoughts and false imaginings seem to boil and surge all the more, and thereupon say that the practice of Buddha-recitation cannot gather the mind. You do not know that this false thinking is the root and origin of your birth-and-death through countless kalpas â€” how can it be cut off all at once? And at the very moment when the ten thousand thoughts are flying about is precisely the time for doing the practice. Gathering and sinking, sinking and gathering, over and over; when after a long time the practice becomes fully mature, the false thoughts will naturally not arise. And as for your being able to notice that the false thoughts are heavy â€” you have this single word of the Buddha to thank"
+                                          "s":  "I see beginners who, the moment they set a single word of the Buddha upon their minds, find that idle thoughts and false imaginings seem to boil and surge all the more, and thereupon say that the practice of Buddha-recitation cannot gather the mind. You do not know that this false thinking is the root and origin of your birth-and-death through countless kalpas — how can it be cut off all at once? And at the very moment when the ten thousand thoughts are flying about is precisely the time for doing the practice. Gathering and sinking, sinking and gathering, over and over; when after a long time the practice becomes fully mature, the false thoughts will naturally not arise. And as for your being able to notice that the false thoughts are heavy — you have this single word of the Buddha to thank"
                                       },
                                       {
                                           "s":  "("
@@ -719,10 +725,10 @@
                                           "s":  ")"
                                       },
                                       {
-                                          "s":  ". If at the time you are not reciting the Buddha, false thoughts roll like waves and surge like the tide, not pausing for an instant â€” could you of yourself be aware of them?"
+                                          "s":  ". If at the time you are not reciting the Buddha, false thoughts roll like waves and surge like the tide, not pausing for an instant — could you of yourself be aware of them?"
                                       },
                                       {
-                                          "s":  "ã€‘"
+                                          "s":  "]"
                                       }
                                   ]
                    },
@@ -730,7 +736,7 @@
                        "t":  "p",
                        "inline":  [
                                       {
-                                          "s":  "I see beginners who, the moment they set a single word of the Buddha upon their minds, find that idle thoughts and false imaginings seem to boil and surge all the more, and thereupon say that the practice of Buddha-recitation cannot gather the mind. They do not know that this false thinking is the root and origin of your birth-and-death through countless kalpas â€” how can it be cut off at once? And at the very moment when the ten thousand thoughts are flying about is precisely the time for doing the practice. Gathering and sinking, sinking and gathering; practicing on in this way, after a long time the practice becomes fully mature, and the false thoughts naturally do not arise. And as for your being able to notice that the false thoughts are heavy â€” it is due to this single word of the Buddha. If at the time you were not reciting the Buddha, false thoughts would roll like waves and surge like the tide, not pausing for an instant â€” could you of yourself be aware of them?"
+                                          "s":  "I see beginners who, the moment they set a single word of the Buddha upon their minds, find that idle thoughts and false imaginings seem to boil and surge all the more, and thereupon say that the practice of Buddha-recitation cannot gather the mind. They do not know that this false thinking is the root and origin of your birth-and-death through countless kalpas — how can it be cut off at once? And at the very moment when the ten thousand thoughts are flying about is precisely the time for doing the practice. Gathering and sinking, sinking and gathering; practicing on in this way, after a long time the practice becomes fully mature, and the false thoughts naturally do not arise. And as for your being able to notice that the false thoughts are heavy — it is due to this single word of the Buddha. If at the time you were not reciting the Buddha, false thoughts would roll like waves and surge like the tide, not pausing for an instant — could you of yourself be aware of them?"
                                       }
                                   ]
                    },
@@ -738,10 +744,10 @@
                        "t":  "p",
                        "inline":  [
                                       {
-                                          "s":  "[Gathering (xuan)] straightaway. [Gathering and sinking, sinking and gathering] â€” the moment one gathers the thought onto the Buddha-name, it immediately scatters (false thoughts arise); the moment the thought scatters, one immediately gathers it again onto the Buddha-name. “Gathering and sinking” describes the beginner\u0027s recitation of the Buddha; the remedy for it is “sinking and gathering.” [If at the time you were not reciting the Buddha, false thoughts roll like waves and surge like the tide, not pausing for an instant â€” could you of yourself be aware of them?]"
+                                          "s":  "[Gathering (xuan)] straightaway. [Gathering and sinking, sinking and gathering] — the moment one gathers the thought onto the Buddha-name, it immediately scatters (false thoughts arise); the moment the thought scatters, one immediately gathers it again onto the Buddha-name. “Gathering and sinking” describes the beginner’s recitation of the Buddha; the remedy for it is “sinking and gathering.” [If at the time you were not reciting the Buddha, false thoughts roll like waves and surge like the tide, not pausing for an instant — could you of yourself be aware of them?]"
                                       },
                                       {
-                                          "s":  "If at the time one is not reciting the Buddha, false thoughts roll like waves and surge like the tide, not pausing for an instant â€” could one of oneself be aware of them?"
+                                          "s":  "If at the time one is not reciting the Buddha, false thoughts roll like waves and surge like the tide, not pausing for an instant — could one of oneself be aware of them?"
                                       }
                                   ]
                    },
@@ -749,7 +755,7 @@
                        "t":  "p",
                        "inline":  [
                                       {
-                                          "s":  "Beginners do not have the skill of becoming aware at the very rising of a thought, and often sink into false thinking without being able to notice it â€” let alone free themselves from it. This is creating the karma of transmigration. So one must on all account recite the Buddha more, in order to lessen the time spent in false thinking that creates the karma of transmigration, and to increase the time devoted to the Pure Land karma, while at the same time improving one\u0027s skill in reciting the Buddha."
+                                          "s":  "Beginners do not have the skill of becoming aware at the very rising of a thought, and often sink into false thinking without being able to notice it — let alone free themselves from it. This is creating the karma of transmigration. So one must on all account recite the Buddha more, in order to lessen the time spent in false thinking that creates the karma of transmigration, and to increase the time devoted to the Pure Land karma, while at the same time improving one’s skill in reciting the Buddha."
                                       }
                                   ]
                    },
@@ -769,7 +775,7 @@
                        "t":  "quote",
                        "inline":  [
                                       {
-                                          "s":  "ã€"
+                                          "s":  "["
                                       },
                                       {
                                           "s":  "In reciting the Buddha there is silent holding, loud holding, and vajra holding. Yet the loud seems too laborious, and the silent easily turns drowsy. Only the continuous and close, the sound dwelling between the lips and the teeth, is called vajra holding. Nor may one fix upon it in a rigid way. If one feels it laborious, then it is fine to hold silently"
@@ -790,10 +796,10 @@
                                           "s":  ")"
                                       },
                                       {
-                                          "s":  "and call out at random, and so gain no benefit. Each word must issue from the mouth and enter the ear, each sound awakening one\u0027s own self-mind. It is like a man sunk in heavy sleep, and another calling: “So-and-so!” â€” whereupon he at once wakes. This is why reciting the Buddha is best able to gather the mind."
+                                          "s":  "and call out at random, and so gain no benefit. Each word must issue from the mouth and enter the ear, each sound awakening one’s own self-mind. It is like a man sunk in heavy sleep, and another calling: “So-and-so!” — whereupon he at once wakes. This is why reciting the Buddha is best able to gather the mind."
                                       },
                                       {
-                                          "s":  "ã€‘"
+                                          "s":  "]"
                                       }
                                   ]
                    },
@@ -801,7 +807,7 @@
                        "t":  "p",
                        "inline":  [
                                       {
-                                          "s":  "In reciting the Buddha there is silent holding, loud holding, and vajra holding. Yet the loud holding seems too laborious, and the silent holding easily turns drowsy. Only the continuous and close, the sound dwelling between the lips and the teeth, is vajra holding. Yet one cannot rigidly fix on any one of them. If one feels it laborious, then it is fine to hold silently; if one feels drowsy, then it is fine to hold aloud. Those who recite the Buddha today merely tap the wooden fish and call out at random, and so gain no benefit. Each word must issue from the mouth and enter the ear, each sound awakening one\u0027s own self-mind. It is like a man sunk in heavy sleep, and another calling: “So-and-so!” â€” whereupon he wakes (a metaphor for the self-mind waking up from false thinking). This is why reciting the Buddha is best able to gather the mind and remove false thinking."
+                                          "s":  "In reciting the Buddha there is silent holding, loud holding, and vajra holding. Yet the loud holding seems too laborious, and the silent holding easily turns drowsy. Only the continuous and close, the sound dwelling between the lips and the teeth, is vajra holding. Yet one cannot rigidly fix on any one of them. If one feels it laborious, then it is fine to hold silently; if one feels drowsy, then it is fine to hold aloud. Those who recite the Buddha today merely tap the wooden fish and call out at random, and so gain no benefit. Each word must issue from the mouth and enter the ear, each sound awakening one’s own self-mind. It is like a man sunk in heavy sleep, and another calling: “So-and-so!” — whereupon he wakes (a metaphor for the self-mind waking up from false thinking). This is why reciting the Buddha is best able to gather the mind and remove false thinking."
                                       }
                                   ]
                    },
@@ -809,7 +815,13 @@
                        "t":  "p",
                        "inline":  [
                                       {
-                                          "s":  "[Merely tap the wooden fish and call out at random, and so gain no benefit] Master Hanshan\u0027s Song of Wasted Leisure in his Dream Travels Collection says: “With the mouth reciting Amitabha while the mind is scattered / Even to split the throat by calling is in vain.” (See"
+                                          "s":  "[Merely tap the wooden fish and call out at random, and so gain no benefit]"
+                                      },
+                                      {
+                                          "s":  " Master Hanshan’s Song of Wasted Leisure in his Dream Travels Collection says:"
+                                      },
+                                      {
+                                          "s":  " “With the mouth reciting Amitabha while the mind is scattered / Even to split the throat by calling is in vain.” (See"
                                       },
                                       {
                                           "s":  "“The Essential Points of Chan and Pure Land”",
@@ -828,7 +840,7 @@
                        "t":  "p",
                        "inline":  [
                                       {
-                                          "s":  "ã€"
+                                          "s":  "["
                                       },
                                       {
                                           "s":  "People today will not recite the Buddha, simply because they make light of the West"
@@ -837,10 +849,10 @@
                                           "s":  ","
                                       },
                                       {
-                                          "s":  "not knowing that reborn in the West is an undertaking of great virtue and great fortune, of great wisdom and great understanding, of great sages and great worthies, turning Saha into the Pure Land â€” no small matter of ordinary conditions. "
+                                          "s":  "not knowing that reborn in the West is an undertaking of great virtue and great fortune, of great wisdom and great understanding, of great sages and great worthies, turning Saha into the Pure Land — no small matter of ordinary conditions. "
                                       },
                                       {
-                                          "s":  "ã€‘"
+                                          "s":  "]"
                                       }
                                   ]
                    },
@@ -856,16 +868,16 @@
                        "t":  "quote",
                        "inline":  [
                                       {
-                                          "s":  "[Merely make light of the West] only because one regards rebirth in the Western Land of Ultimate Bliss as too easy. Though all know that “ten recitations at the point of death, if continuous, bring rebirth,” they take this continuity of ten recitations too lightly, thinking that they will be able to accomplish it at the point of death. On this, Master Daochuo instructs: however, the minds of all ordinary beings are like wild horses and their consciousness like apes, galloping over the six objects (forms, sounds, scents, tastes, tangibles, and ideas) â€” have they ever rested for a moment? So, each person must resolve on a single mind of faith, and beforehand train himself to single-minded concentration, thought following thought continuously,"
+                                          "s":  "[Merely make light of the West] only because one regards rebirth in the Western Land of Ultimate Bliss as too easy. Though all know that “ten recitations at the point of death, if continuous, bring rebirth,” they take this continuity of ten recitations too lightly, thinking that they will be able to accomplish it at the point of death. On this, Master Daochuo instructs: however, the minds of all ordinary beings are like wild horses and their consciousness like apes, galloping over the six objects (forms, sounds, scents, tastes, tangibles, and ideas) — have they ever rested for a moment? So, each person must resolve on a single mind of faith, and beforehand train himself to single-minded concentration, thought following thought continuously,"
                                       },
                                       {
                                           "s":  "so that through practice it becomes second nature"
                                       },
                                       {
-                                          "s":  "(through continual practice, make the mind\u0027s single-mindedness, thought following thought continuously, become a second nature). Only then can the ten continuous recitations be accomplished at the point of death. Otherwise, when the knife-wind of death arrives and a hundred sufferings press down in scorching pain, if beforehand one has not achieved the single-mindedness of thought following thought continuously as a second nature, then at the point of death merely wishing to accomplish the “ten continuous recitations” â€” how could it be done? (For the original text and notes, see"
+                                          "s":  "(through continual practice, make the mind’s single-mindedness, thought following thought continuously, become a second nature). Only then can the ten continuous recitations be accomplished at the point of death. Otherwise, when the knife-wind of death arrives and a hundred sufferings press down in scorching pain, if beforehand one has not achieved the single-mindedness of thought following thought continuously as a second nature, then at the point of death merely wishing to accomplish the “ten continuous recitations” — how could it be done? (For the original text and notes, see"
                                       },
                                       {
-                                          "s":  "“Master Daochuo\u0027s Pure Practice Instruction”",
+                                          "s":  "“Master Daochuo’s Pure Practice Instruction”",
                                           "href":  "/articles/099daochuodashi"
                                       },
                                       {
@@ -877,13 +889,13 @@
                        "t":  "p",
                        "inline":  [
                                       {
-                                          "s":  "ã€"
+                                          "s":  "["
                                       },
                                       {
-                                          "s":  "You look only at this city: in one day, one night, how many people die? Put aside rebirth in the West â€” even among those reborn in heaven, there is not one in a thousand. Among those who are self-conceited in their practice, they only manage not to lose the human body."
+                                          "s":  "You look only at this city: in one day, one night, how many people die? Put aside rebirth in the West — even among those reborn in heaven, there is not one in a thousand. Among those who are self-conceited in their practice, they only manage not to lose the human body."
                                       },
                                       {
-                                          "s":  "ã€‘"
+                                          "s":  "]"
                                       }
                                   ]
                    },
@@ -891,7 +903,7 @@
                        "t":  "p",
                        "inline":  [
                                       {
-                                          "s":  "You look only at this city: in one day and one night, how many people die? Put aside rebirth in the Western Land of Ultimate Bliss â€” even for rebirth among the heavens, there is not one in a thousand. And of those who are conceited and rely on their own strength in practice, they only manage not to lose the human body."
+                                          "s":  "You look only at this city: in one day and one night, how many people die? Put aside rebirth in the Western Land of Ultimate Bliss — even for rebirth among the heavens, there is not one in a thousand. And of those who are conceited and rely on their own strength in practice, they only manage not to lose the human body."
                                       }
                                   ]
                    },
@@ -899,7 +911,7 @@
                        "t":  "p",
                        "inline":  [
                                       {
-                                          "s":  "ã€"
+                                          "s":  "["
                                       },
                                       {
                                           "s":  "Therefore our World-Honored One, in his great compassion and great pity, pointed out this Dharma gate. His merit overpasses heaven and earth, his kindness surpasses father and mother"
@@ -911,7 +923,7 @@
                                           "s":  "even to grinding our bones to powder and shattering our bodies, we could not repay it!"
                                       },
                                       {
-                                          "s":  "ã€‘"
+                                          "s":  "]"
                                       }
                                   ]
                    },
@@ -919,7 +931,7 @@
                        "t":  "p",
                        "inline":  [
                                       {
-                                          "s":  "Therefore our World-Honored One, in his great compassion and great pity, pointed out this Pure Land Dharma gate. His merit overpasses heaven and earth, his kindness surpasses father and mother â€” even to grinding our bones to powder and shattering our bodies, we could not repay it!"
+                                          "s":  "Therefore our World-Honored One, in his great compassion and great pity, pointed out this Pure Land Dharma gate. His merit overpasses heaven and earth, his kindness surpasses father and mother — even to grinding our bones to powder and shattering our bodies, we could not repay it!"
                                       }
                                   ]
                    },
@@ -939,7 +951,7 @@
                        "t":  "quote",
                        "inline":  [
                                       {
-                                          "s":  "ã€"
+                                          "s":  "["
                                       },
                                       {
                                           "s":  "When I was young I did not yet know how to recite the Buddha. I saw an elderly neighbor woman"
@@ -951,7 +963,7 @@
                                           "s":  "who each day recited the Buddha several thousand times. I asked, “Why do you do so?” She answered, “My late husband, when he was alive, recited the Buddha, and his passing was very good, so I recite like this. When my late husband passed away, he had no other illness, only a single farewell, and he left.” How can we who have left home fail to recite the Buddha?"
                                       },
                                       {
-                                          "s":  "ã€‘"
+                                          "s":  "]"
                                       }
                                   ]
                    },
@@ -1133,7 +1145,7 @@
                        "t":  "p",
                        "inline":  [
                                       {
-                                          "s":  "Master Lianchi\u0027s Stupa Inscription",
+                                          "s":  "Master Lianchi’s Stupa Inscription",
                                           "href":  "/articles/126lianchidashi-taming"
                                       }
                                   ]
@@ -1142,7 +1154,7 @@
                        "t":  "p",
                        "inline":  [
                                       {
-                                          "s":  "Master Lianchi\u0027s Song of \"A Single Stroke of the Brush\"",
+                                          "s":  "Master Lianchi’s Song of \"A Single Stroke of the Brush\"",
                                           "href":  "/articles/098yibigou"
                                       }
                                   ]

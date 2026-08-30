@@ -112,7 +112,10 @@
     "t": "p",
     "inline": [
      {
-      "s": "Worldlings all know that the immortals are best, Yet unto gold and silver ne'er they rest;"
+      "s": "Worldlings all know that the immortals are best, Yet unto gold and silver ne'er they rest"
+     },
+     {
+      "s": ";"
      }
     ]
    },
@@ -128,7 +131,10 @@
     "t": "p",
     "inline": [
      {
-      "s": "Worldlings all know that the immortals are best, Yet their fond arms for a fair wife ne'er rest;"
+      "s": "Worldlings all know that the immortals are best, Yet their fond arms for a fair wife ne'er rest"
+     },
+     {
+      "s": ";"
      }
     ]
    },
@@ -144,7 +150,10 @@
     "t": "p",
     "inline": [
      {
-      "s": "Worldlings all know that the immortals are best, Yet their care for sons and grandsons ne'er rest;"
+      "s": "Worldlings all know that the immortals are best, Yet their care for sons and grandsons ne'er rest"
+     },
+     {
+      "s": ";"
      }
     ]
    },
@@ -176,7 +185,13 @@
     "t": "p",
     "inline": [
      {
-      "s": "[Tablet (hù) filling the couch]It pictures the height of former wealth and splendor. The allusion comes from the Old Book of Tang: when the famed Tang general Guo Ziyi, Prince of Fenyang, celebrated his sixtieth birthday, his seven sons and eight sons-in-law all came to offer congratulations. Since they were all ministers at court, each held a tablet of office; and when they came to bow, the tablets covered the ivory couch (an ivory-decorated couch) till it was full."
+      "s": "[Tablet ("
+     },
+     {
+      "s": "hù"
+     },
+     {
+      "s": ") filling the couch]It pictures the height of former wealth and splendor. The allusion comes from the Old Book of Tang: when the famed Tang general Guo Ziyi, Prince of Fenyang, celebrated his sixtieth birthday, his seven sons and eight sons-in-law all came to offer congratulations. Since they were all ministers at court, each held a tablet of office; and when they came to bow, the tablets covered the ivory couch (an ivory-decorated couch) till it was full."
      }
     ]
    },
