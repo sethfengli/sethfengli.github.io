@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useI18n } from '../i18n'
-import { CATALOG, photoForSlug } from '../lib/content'
+import { CATALOG, localizedMeta, photoForSlug } from '../lib/content'
 import { verseOfTheMoment } from '../data/verses'
 import type { IllustrationVariant } from '../components/zen/ZenIllustration'
 import { CoverImage } from '../components/zen/CoverImage'
@@ -12,8 +12,10 @@ import { Reveal } from '../components/ui/Reveal'
 const FEATURED_SLUGS = ['301jgj', '302xinj', '303liuzutanjing', '102lfsx', '001jznf', '001zyxuefo', '402nianfolun', '202bada']
 
 export function Home() {
-  const { t } = useI18n()
+  const { t, lang } = useI18n()
   const verse = verseOfTheMoment()
+  const verseText = lang === 'en' ? verse.en.text : verse.text
+  const verseSource = lang === 'en' ? verse.en.source : verse.source
 
   const featured = FEATURED_SLUGS.map((s) => CATALOG.find((a) => a.slug === s)).filter(
     (a): a is NonNullable<typeof a> => Boolean(a),
@@ -58,8 +60,10 @@ export function Home() {
             style={{ animationDelay: '0.35s' }}
           >
             <p className="font-serif text-sm tracking-widest text-tibetan-600">{t('home.dailyVerseTitle')}</p>
-            <p className="mt-3 font-brush text-xl leading-relaxed text-ink-900">「{verse.text}」</p>
-            <footer className="mt-2 text-right font-serif text-xs text-ink-500">—— {verse.source}</footer>
+            <p className="mt-3 font-brush text-xl leading-relaxed text-ink-900">
+              {lang === 'zh' ? `「${verseText}」` : `“${verseText}”`}
+            </p>
+            <footer className="mt-2 text-right font-serif text-xs text-ink-500">—— {verseSource}</footer>
           </blockquote>
 
           {/* 滚动提示 */}
@@ -97,11 +101,14 @@ export function Home() {
             <SectionHeading title={t('home.featuredTitle')} subtitle={t('home.featuredSubtitle')} />
           </Reveal>
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {featured.map((a, i) => (
-              <Reveal key={a.slug} delay={(i % 3) * 90}>
-                <ArticleCard slug={a.slug} title={a.title} excerpt={a.excerpt} illustration={a.illustration} author={a.author} />
-              </Reveal>
-            ))}
+            {featured.map((a, i) => {
+              const m = localizedMeta(a, lang)
+              return (
+                <Reveal key={a.slug} delay={(i % 3) * 90}>
+                  <ArticleCard slug={a.slug} title={m.title} excerpt={m.excerpt} illustration={a.illustration} author={m.author} />
+                </Reveal>
+              )
+            })}
           </div>
           <div className="mt-10 text-center">
             <Link to="/articles" viewTransition className="btn-secondary">
@@ -169,23 +176,25 @@ function ArticleCard({
   illustration: IllustrationVariant
   author: string
 }) {
+  const { t, lang } = useI18n()
+  const quoted = lang === 'en' ? title : `《${title}》`
   return (
     <Link to={`/articles/${slug}`} viewTransition className="card-link group flex flex-col overflow-hidden">
       <div className="relative overflow-hidden">
-        <CoverImage src={photoForSlug(slug)} alt={`${title} · 配图`} fallbackVariant={illustration} className="h-36 w-full transition-transform duration-500 group-hover:scale-105" />
+        <CoverImage src={photoForSlug(slug)} alt={t('home.coverAlt', { t: title })} fallbackVariant={illustration} className="h-36 w-full transition-transform duration-500 group-hover:scale-105" />
         <span className="absolute right-3 bottom-3 rounded-full bg-sandalwood-950/70 px-2.5 py-1 text-[10px] tracking-wider text-gold-200">
-          慧灯 · 法藏
+          {t('home.badge')}
         </span>
       </div>
       <div className="flex flex-1 flex-col p-5">
         <h3 className="font-serif text-lg font-bold text-sandalwood-800 transition group-hover:text-tibetan-700">
-          《{title}》
+          {quoted}
         </h3>
-        {author && <p className="mt-1 text-xs text-sandalwood-400">作者：{author}</p>}
+        {author && <p className="mt-1 text-xs text-sandalwood-400">{t('common.authorBy', { name: author })}</p>}
         <p className="mt-3 line-clamp-3 flex-1 font-serif text-sm leading-relaxed text-ink-700">{excerpt}</p>
         <span className="mt-4 inline-flex items-center gap-1 text-xs font-medium text-gold-600">
           <span className="h-px w-6 bg-gold-400" />
-          阅读全文
+          {t('home.readFull')}
         </span>
       </div>
     </Link>

@@ -1,0 +1,673 @@
+{
+  "slug": "060yuyinlangdu",
+  "title": "Text-to-Speech Reading Tool",
+  "author": "Zhiyu",
+  "excerpt": "Of all sentient beings in the Saha world, the ear faculty is the keenest. Reading while listening is often easier to understand and remember than reading alone. Therefore you can use a text-to-speech reading tool to read the study materials aloud, listening while you read. Moreover, you can also soak yourself in them through repeated listening.",
+  "blocks": [
+    {
+      "t": "p",
+      "inline": [
+        {"s": "Of all sentient beings in the Saha world, the ear faculty is the keenest. Reading while listening is often easier to understand and remember than reading alone. Therefore you can use a text-to-speech reading tool to read the study materials aloud, listening while you read. Moreover, you can also soak yourself in them through repeated listening."}
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        {"s": "The text-to-speech reading tool is a tool that helps us study. Like any other tool, the more often you use it, the more skilled you become, the more pronounced the results, and the more precisely you apply it. If you are not familiar with installing and configuring software, you can ask a skilled friend to help, and you need only use it."}
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        {"s": "There are many text-to-speech programs; for example, “ReaderGirl” is a simple, easy-to-use, and free text-to-speech program. The method of using “ReaderGirl” is described below:"}
+      ]
+    },
+    {
+      "t": "h2",
+      "text": "1. Downloading and Installing “ReaderGirl”"
+    },
+    {
+      "t": "p",
+      "inline": [
+        {"s": "You can use the “"},
+        {"s": "360"},
+        {"s": "Software Manager” to download and install “ReaderGirl”; or you can enter “"},
+        {"s": "360"},
+        {"s": "Software Library” (its web address is "},
+        {"s": "http://baoku.360.cn/"},
+        {"s": "), and then search for “ReaderGirl,” whereupon you can download and install it."}
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        {"s": "After downloading, decompress and install it. When it runs, the “ReaderGirl” interface is shown in the figure below:"}
+      ]
+    },
+    {
+      "t": "h2",
+      "text": "2. Downloading and Installing the Voice Library"
+    },
+    {
+      "t": "p",
+      "inline": [
+        {"s": "At the bottom of the “ReaderGirl” interface there is a “Download Speakers” icon. Once you click it, you enter the download page, where you select the voice library you wish to download, for example: “"},
+        {"s": "Liang"},
+        {"s": "Chinese Male Voice” and “"},
+        {"s": "Hui"},
+        {"s": "Chinese Female Voice.” These two voice libraries are not only good in pronunciation, but both have the “custom pronunciation” feature."}
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        {"s": "After downloading, decompress and install it."}
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        {"s": "Now take the “"},
+        {"s": "Liang"},
+        {"s": "Chinese Male Voice” as an example to explain how to decompress and install it:"}
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        {"s": "1."},
+        {"s": "Decompress the downloaded cn-Liang-y.zip file into the folder of your choice. (Note: the names of this folder and of the folders above it must all be in English, otherwise it will not work properly!)"}
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        {"s": "2."},
+        {"s": "Enter the decompressed "},
+        {"s": "Liang"},
+        {"s": "folder, find the “Voice Library Service Start/Stop Program"},
+        {"s": ".exe ”"},
+        {"s": ", double-click this file, and then click “Start Voice Library Service.”"}
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        {"s": "3."},
+        {"s": "Reopen your reading program; in the “Speaker” column, select "},
+        {"s": "VW Liang"},
+        {"s": ", and you can use this voice library to read text aloud."}
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        {"s": "Note: for the specific method of downloading and installing the voice library, see the appendix: “Downloading and Installing the Voice Library.”"}
+      ]
+    },
+    {
+      "t": "h2",
+      "text": "3. Making a Reading Script"
+    },
+    {
+      "t": "p",
+      "inline": [
+        {"s": "Open “ReaderGirl,” click “File” on the menu, then click “New,” and a blank text document appears in the editor."}
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        {"s": "Then right-click the web page to be read, click “Select All,” right-click the “ReaderGirl” editor, click “Paste,” and in this way the study content is copied into “ReaderGirl.”"}
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        {"s": "Click “Format” on the menu, then click “First-line indent,” so that each paragraph begins indented by two spaces."}
+      ]
+    },
+    {
+      "t": "p", "inline": [
+        {"s": "You can also, on the “Format” menu, do “Simplified to Traditional” or “Traditional to Simplified,” as well as set the font size, color, and so on."}
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        {"s": "Finally, click “File” on the “ReaderGirl” menu, then click “Save,” fill in the name of this file, click “Save,” and the making of the reading script is complete."}
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        {"s": "“"},
+        {"s": "ReaderGirl” each time it opens can continue reading from the position where it last stopped."}
+      ]
+    },
+    {
+      "t": "h2",
+      "text": "4. Setting Up"
+    },
+    {
+      "t": "h3",
+      "text": "(1) Selecting a Speaker"
+    },
+    {
+      "t": "p",
+      "inline": [
+        {"s": "In the “Speaker” column, select the speaker you prefer. To the right of the “Speaker” column is the “Online Speakers” icon, where you can select an online speaker."}
+      ]
+    },
+    {
+      "t": "h3",
+      "text": "(2) Adjusting Volume and Speaking Speed"
+    },
+    {
+      "t": "p",
+      "inline": [
+        {"s": "Adjust the volume and speaking speed according to your own needs."}
+      ]
+    },
+    {
+      "t": "h3",
+      "text": "(3) Hotkey Settings"
+    },
+    {
+      "t": "p",
+      "inline": [
+        {"s": "For convenience of use, enable the “Pause"},
+        {"s": "/"},
+        {"s": "Resume” function during reading; for example, set the “"},
+        {"s": "End”"},
+        {"s": "key as the “Pause"},
+        {"s": "/"},
+        {"s": "Resume”"}
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        {"s": "The specific method is as follows:"}
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        {"s": "Click “Settings” in the second row, then click “Hotkey Settings”; in the “Pause"},
+        {"s": "/"},
+        {"s": "Resume” column, press the “"},
+        {"s": "End”"},
+        {"s": "key (as shown in the figure below), and the setting takes effect. During reading, press the “"},
+        {"s": "End”"},
+        {"s": "key to pause or resume."}
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        {"s": "By the same method, you can respectively set the numeric keypad “"},
+        {"s": "+”"},
+        {"s": "key as the “Start Reading” key, and the numeric keypad “"},
+        {"s": "*”"},
+        {"s": "key as the “Stop Reading” key."}
+      ]
+    },
+    {
+      "t": "h2",
+      "text": "5. Listening While Reading"
+    },
+    {
+      "t": "p",
+      "inline": [
+        {"s": "In the process of listening while reading, the text you look at may, according to each person’s preference, be one of the following:"}
+      ]
+    },
+    {
+      "t": "h3",
+      "text": "(1) Reading the Text on the Web Page"
+    },
+    {
+      "t": "p",
+      "inline": [
+        {"s": "You can have “ReaderGirl” read aloud, while you read the text on the web page."}
+      ]
+    },
+    {
+      "t": "h3",
+      "text": "(2) Reading the Text in “ReaderGirl”"
+    },
+    {
+      "t": "p",
+      "inline": [
+        {"s": "You can also, while “ReaderGirl” reads aloud, read the text in the “ReaderGirl” editor."}
+      ]
+    },
+    {
+      "t": "h3",
+      "text": "(3) Reading the Desktop Subtitles"
+    },
+    {
+      "t": "p",
+      "inline": [
+        {"s": "If you like, as when watching a disc, to have the read content displayed sentence by sentence, then click “Read” on the “ReaderGirl” menu, and then click “Turn desktop subtitles"},
+        {"s": "/"},
+        {"s": "on or off” and it is done. (If later you want to turn the desktop subtitles off, do the same thing once more.)"}
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        {"s": "When the mouse points at the desktop subtitles, a toolbar for setting the subtitles appears; from it you can set the subtitle color, font, whether to use kara"},
+        {"s": "ok"},
+        {"s": "mode or non-kara"},
+        {"s": "ok"},
+        {"s": "mode, as well as turn the subtitles off."}
+      ]
+    },
+    {
+      "t": "h2",
+      "text": "6. Reading a Web Page"
+    },
+    {
+      "t": "p",
+      "inline": [
+        {"s": "On a web page, select (highlight) the chapter or paragraph to be read (or right-click the mouse and select all of this text), then right-click and click the “ReaderGirl” icon (or directly click the floating “ReaderGirl” icon), and reading begins. After reading, if you need to read again, you can click the “ReaderGirl” icon again (or directly click the floating “ReaderGirl” icon), and it will read again from the start."}
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        {"s": "Question: How do I remove the floating “ReaderGirl” icon?"}
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        {"s": "Answer: Click “Settings” in the second row, then click “Basic Settings,” then click the small checkbox before “Show floating reading icon” to deselect it."}
+      ]
+    },
+    {
+      "t": "h2",
+      "text": "7. Custom Pronunciation"
+    },
+    {
+      "t": "p",
+      "inline": [
+        {"s": "If you need to, you can customize the pronunciation (at present only the "},
+        {"s": "Neospeech"},
+        {"s": "series of voice libraries have this feature). Below we take the "},
+        {"s": "Lily"},
+        {"s": "voice library as an example (the method of custom pronunciation for “"},
+        {"s": "Liang"},
+        {"s": "Chinese Male Voice” and “"},
+        {"s": "Hui"},
+        {"s": "Chinese Female Voice” is the same), to explain how to make “"},
+        {"s": "++”"},
+        {"s": "be read as “jia jia” (for each step please refer to the corresponding numbered part of the figure below; by the same method of custom pronunciation, you can make the word “bō rě” be read as “bō ruò”):"}
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        {"s": "1."},
+        {"s": "Enter this directory, the voice library directory: “"},
+        {"s": "Lily\\M16-SAPI5\\lib”"},
+        {"s": "."}
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        {"s": "2."},
+        {"s": "Double-click “"},
+        {"s": "UserDicChi.exe”"},
+        {"s": "to run this dictionary edit program. (“"},
+        {"s": "UserDicChi_c.chm”"},
+        {"s": "is the bundled help file; if you want to consult the instructions for using “custom pronunciation,” please double-click “"},
+        {"s": "UserDicChi_c.chm”"},
+        {"s": ".)"}
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        {"s": "3."},
+        {"s": "Click “Open File.”"}
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        {"s": "4."},
+        {"s": "Click “Add Entry.”"}
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        {"s": "5."},
+        {"s": "Choose the phonetic notation method: if you select “Simplified Chinese,” then use Chinese characters to annotate the pronunciation (as shown in this example); if you select “Pinyin,” then use pinyin symbols to annotate the pronunciation (as shown in the next example)."}
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        {"s": "6."},
+        {"s": "In the “Original Word” column, type on the keyboard: "},
+        {"s": "++"},
+        {"s": ". In the “Target” column, type on the keyboard: jia jia."}
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        {"s": "7."},
+        {"s": "Click “Read” to preview the pronunciation."}
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        {"s": "8."},
+        {"s": "After previewing, if there is no problem, click “OK.”"}
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        {"s": "9."},
+        {"s": "Then click “Save” to save the content just edited."}
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        {"s": "10."},
+        {"s": "After saving, click “Finish” to exit the dictionary editor."}
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        {"s": "After completing the above steps, exit the “ReaderGirl” program, and then restart the “ReaderGirl” program; the settings take effect."}
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        {"s": "If you select “Pinyin,” then pinyin symbols are used to annotate the pronunciation (as shown in the figure below). Below we take the word b"},
+        {"s": "ō"},
+        {"s": "r"},
+        {"s": "ě"},
+        {"s": "as an example to explain."}
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        {"s": "1) Chinese Pinyin"}
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        {"s": "A Chinese syllable is formed by a combination of a vowel (final), a consonant (initial), and a tone. Pinyin can be represented by the combination of the above phonetic elements. Tones are marked by the four tone symbols placed above the vowel. In the user dictionary editor, tones are represented by numbers and placed after the vowel."}
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        {"s": "2) Method of Inputting"}
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        {"s": "①"},
+        {"s": "Vowels (finals)"}
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        {"s": "You can click to input among the following vowels:"}
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        {"s": "iang, iong, uang, ang, eng, ong, iao, ian, ing, uai, er, ai, ei, ao, ou, an, en, ia, ie, in, iu, ua, ue, ui, un, uo, ve, a, o, e, i, u, v."}
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        {"s": "※"},
+        {"s": "Here, "},
+        {"s": "v"},
+        {"s": "represents "},
+        {"s": "ü"},
+        {"s": ", and "},
+        {"s": "ve"},
+        {"s": "represents "},
+        {"s": "üe"},
+        {"s": "."}
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        {"s": "②"},
+        {"s": "Consonants (initials)"}
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        {"s": "You can click to input among the following consonants."}
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        {"s": "b, p, m, f, d, t, n, l, zh, ch, sh, z, c, s, r, j, q, x, g, k, h, y, w"}
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        {"s": "③"},
+        {"s": "Tones"}
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        {"s": "In the Scheme for the Chinese Phonetic Alphabet, there are the high-level tone ("},
+        {"s": "ˉ"},
+        {"s": "), the rising tone ("},
+        {"s": "ˊ"},
+        {"s": "), the low-dipping tone ("},
+        {"s": "ˇ"},
+        {"s": "), the falling tone ("},
+        {"s": "ˋ"},
+        {"s": "), and the neutral tone (unmarked) — these five tones. In this editor they are respectively represented by "},
+        {"s": "1"},
+        {"s": ", "},
+        {"s": "2"},
+        {"s": ", "},
+        {"s": "3"},
+        {"s": ", "},
+        {"s": "4"},
+        {"s": ", "},
+        {"s": "5"},
+        {"s": ", these five numbers:"}
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        {"s": "1"},
+        {"s": "represents the high-level tone ("},
+        {"s": "ˉ"},
+        {"s": ");"}
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        {"s": "2"},
+        {"s": "represents the rising tone ("},
+        {"s": "ˊ"},
+        {"s": ");"}
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        {"s": "3"},
+        {"s": "represents the low-dipping tone ("},
+        {"s": "ˇ"},
+        {"s": ");"}
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        {"s": "4"},
+        {"s": "represents the falling tone ("},
+        {"s": "ˋ"},
+        {"s": ");"}
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        {"s": "5"},
+        {"s": "represents the neutral tone."}
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        {"s": "For example, b"},
+        {"s": "ō"},
+        {"s": "r"},
+        {"s": "ě"},
+        {"s": " is represented by “"},
+        {"s": "bo1re3”"},
+        {"s": ". The "},
+        {"s": "bo1re3"},
+        {"s": " in the “Target” column can be typed directly on the keyboard, or you can click the phonetic symbols in the vowel and consonant tables and the numbers in the tone table to input it."}
+      ]
+    },
+    {
+      "t": "h2",
+      "text": "Appendix: Downloading and Installing the Voice Library"
+    },
+    {
+      "t": "h3",
+      "text": "1. Downloading the Voice Library"
+    },
+    {
+      "t": "p",
+      "inline": [
+        {"s": "One, in the lower part of the “ReaderGirl” interface (see the figure below), click “Download Speakers” to enter the download page. Or, directly visit the download page (its web address is: "},
+        {"s": "http://www.443w.com/tts/?post=2"},
+        {"s": ")."}
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        {"s": "Two, after entering the voice library download page,"}
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        {"s": "1"},
+        {"s": ", first preview the pronunciation effect of the speaker;"}
+      ]
+    },
+    {
+      "t": "p", "inline": [
+        {"s": "2"},
+        {"s": ", if you like it, click the download link to download it (as shown in the figure below)."}
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        {"s": "Three, after entering the relevant cloud-drive address, click download to complete (as shown in the figure below):"}
+      ]
+    },
+    {
+      "t": "h3",
+      "text": "2. Installing the Voice Library"
+    },
+    {
+      "t": "p",
+      "inline": [
+        {"s": "After downloading the voice library (speaker), install the voice library according to the instructions in the file package and it is done (as shown in the figure below)."}
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        {"s": "One, decompress the file"}
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        {"s": "Right-click the downloaded compressed file (for example, “"},
+        {"s": "cn-Lily-y.zip”"},
+        {"s": "), and choose which folder to decompress into. (Note: the names of this folder and of the folders above it must all be in English, otherwise it will not work properly!)"}
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        {"s": "Two, start the voice library"}
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        {"s": "Enter the voice library folder just decompressed, and double-click the “Voice Library Service Start/Stop Program"},
+        {"s": ".exe”"},
+        {"s": "(as shown in the figure below)."}
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        {"s": "Note: some antivirus software may falsely report the “Voice Library Service Start/Stop Program” as a virus. If it is killed by the antivirus software as a virus, please recover the file, select “Trust,” and then run it again."}
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        {"s": "When the dialog box shown in the figure above appears, single-click “Start Voice Library Service.” Afterward, a dialog box as shown below will appear; choose “Yes.”"}
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        {"s": "Then again the following dialog box appears; choose “OK,” and the installation of the voice library is complete."}
+      ]
+    },
+    {
+      "t": "h3",
+      "text": "3. Selecting the Voice Library (Speaker)"
+    },
+    {
+      "t": "p",
+      "inline": [
+        {"s": "After installing the voice library, restart “ReaderGirl,” single-click “Speaker,” and after the “Speaker” list pops up, click the speaker you just installed (as shown in the figure below), and you can use it to read text aloud."}
+      ]
+    }
+  ]
+}

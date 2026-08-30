@@ -32,7 +32,7 @@ export function Footer() {
           <p className="mt-3 font-serif text-xs text-gold-300/90">「{t('slogan')}」</p>
         </div>
 
-        <nav aria-label="页脚导航">
+        <nav aria-label={t('common.footerNav')}>
           <h3 className="mb-3 font-sans text-sm font-semibold tracking-widest text-gold-300">{t('common.footerNav')}</h3>
           <ul className="space-y-2 text-sm text-paper/75">
             {NAV.map((item) => (

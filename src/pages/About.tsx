@@ -47,15 +47,15 @@ export function About() {
   return (
     <div>
       {/* 页头：明亮禅庭照片 */}
-      <PageBanner image="/photos/garden.jpg" kicker="山 门" title={t('about.title')} subtitle={t('about.subtitle')} />
+      <PageBanner image="/photos/garden.jpg" kicker={t('about.kicker')} title={t('about.title')} subtitle={t('about.subtitle')} />
 
       {/* 数字带 */}
       <section className="border-b border-sandalwood-200/60 bg-surface">
         <div className="mx-auto grid max-w-4xl grid-cols-2 gap-6 px-4 py-9 text-center sm:grid-cols-4 sm:px-6">
-          <Stat value={String(CATALOG.length)} label="篇文章，等您来读" />
-          <Stat value={String(PHOTO_NAMES.length)} label="张真实照片配图" />
-          <Stat value={String(CHANTS.length + 1)} label="段梵呗音档" />
-          <Stat value={`${LOTS.length}+125`} label="签文 · 棋卦，随缘问" />
+          <Stat value={String(CATALOG.length)} label={t('about.statArticles')} />
+          <Stat value={String(PHOTO_NAMES.length)} label={t('about.statPhotos')} />
+          <Stat value={String(CHANTS.length + 1)} label={t('about.statAudio')} />
+          <Stat value={`${LOTS.length}+125`} label={t('about.statLots')} />
         </div>
       </section>
 
@@ -63,7 +63,7 @@ export function About() {
         <div className="lg:grid lg:grid-cols-[220px_minmax(0,1fr)] lg:gap-12">
           {/* 吸附分节导航 */}
           <aside className="hidden lg:block">
-            <nav className="sticky top-24 space-y-1 text-sm" aria-label="页面分节导航">
+            <nav className="sticky top-24 space-y-1 text-sm" aria-label={t('about.sectionNav')}>
               {SECTIONS.map((s, i) => (
                 <button
                   key={s.id}
@@ -143,7 +143,7 @@ export function About() {
 
             {/* 照片墙（2 大 4 小 交错） */}
             <Reveal>
-              <section aria-label="禅院掠影">
+              <section aria-label={t('about.galleryTitle')}>
                 <SectionHeading title={t('about.galleryTitle')} subtitle={t('about.gallerySubtitle')} />
                 <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4">
                   {Array.from({ length: 8 }).map((_, i) => {

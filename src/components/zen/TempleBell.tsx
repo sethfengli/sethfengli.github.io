@@ -158,8 +158,8 @@ export function TempleBell() {
         type="button"
         onClick={ring}
         disabled={ringing}
-        aria-label="撞钟"
-        title="撞钟"
+        aria-label={t('dharma.ringBell')}
+        title={t('dharma.ringBell')}
         className={`group relative block cursor-pointer rounded-full focus-visible:ring-2 focus-visible:ring-gold-400 focus-visible:outline-none ${
           ringing ? 'cursor-wait opacity-90' : ''
         }`}
@@ -215,7 +215,7 @@ export function TempleBell() {
       </button>
 
       <div className="text-center font-serif text-sm text-sandalwood-500">
-        {ringing ? t('dharma.ringing') : count > 0 ? `第 ${count} 声` : '\u00a0'}
+        {ringing ? t('dharma.ringing') : count > 0 ? t('dharma.bellCount', { n: count }) : '\u00a0'}
         <p className="mt-1 text-[11px] text-sandalwood-400">
           {BELL_TRACK.author} · {BELL_TRACK.license} · Wikimedia Commons
         </p>

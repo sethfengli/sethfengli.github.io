@@ -42,6 +42,9 @@ export const zh = {
     featuredSubtitle: '不艰深 · 不难懂 · 从能读进去的那本开始',
     featuredAll: '去书架看看',
     incenseHint: '点一炷心香，给此刻的自己',
+    badge: '慧灯 · 法藏',
+    readFull: '阅读全文',
+    coverAlt: '{{t}} · 配图',
   },
 
   articles: {
@@ -56,6 +59,11 @@ export const zh = {
     noResults: '没找到，换几个关键词试试？',
     loadMore: '往下翻',
     illustrationAlt: '禅意插画',
+    kicker: '法 藏',
+    count: '{{n}} 篇',
+    badgeJing: '净修院',
+    badgeChan: '禅修院',
+    badgeXiuxue: '修学园地',
   },
 
   reader: {
@@ -83,6 +91,12 @@ export const zh = {
     notFound: '文章不存在或尚未收录',
     backHome: '返回首页',
     likeNote: '愿以此功德，普及于一切',
+    docTitle: '《{{title}}》 · 慧灯禅院',
+    titleWithQuotes: '《{{title}}》',
+    wordCount: '约 {{n}} 字',
+    coverAlt: '{{t}} · 封面',
+    nativeEn: '英文版',
+    untranslatedFallback: '本文英文版尚在翻译中，暂显示中文原文；可使用右侧「翻译本文」临时机翻。',
   },
 
   dharma: {
@@ -103,6 +117,8 @@ export const zh = {
     count: '已持诵 {{n}} 声',
     resetCount: '归零',
     mantraTitle: '闻钟偈',
+    kicker: '静 心 听 经',
+    bellCount: '第 {{n}} 声',
   },
 
   prayer: {
@@ -140,6 +156,8 @@ export const zh = {
     minutesAgo: '{{n}} 分钟前',
     hoursAgo: '{{n}} 小时前',
     daysAgo: '{{n}} 天前',
+    kicker: '供 灯',
+    backupPrefix: '慧灯禅院-祈福备份',
   },
 
   lots: {
@@ -166,6 +184,8 @@ export const zh = {
     historyHint: '签文与收藏仅保存在本机浏览器中',
     disclaimer: '灵签仅供自省参考，人生方向还请依止佛法、自作主宰。',
     shakeHint: '心中默念所问之事',
+    kicker: '双 法 门 · 随 缘 问 卦',
+    guanyinName: '南无观世音菩萨',
   },
 
   lingqi: {
@@ -243,6 +263,19 @@ export const zh = {
     techTitle: '本站技术',
     techDesc:
       'React 18 + TypeScript + Vite + Tailwind CSS，纯静态托管于 GitHub Pages。无后端、无追踪、无 Cookie；阅读偏好、心愿与签文均保存在您的浏览器中。',
+    kicker: '山 门',
+    sectionNav: '页面分节导航',
+    statArticles: '篇文章，等您来读',
+    statPhotos: '张真实照片配图',
+    statAudio: '段梵呗音档',
+    statLots: '签文 · 棋卦，随缘问',
+  },
+
+  incense: {
+    litMany: '今日已供 {{n}} 炷心香',
+    litOne: '心香一炷，遍满十方',
+    idle: '轻触香炉 · 供上一炷心香',
+    aria: '点燃心香',
   },
 
   common: {
@@ -266,5 +299,14 @@ export const zh = {
     lotHint: '拖拽旋转 · 滚轮缩放 · 点击签筒摇签',
     themeReset: '已恢复默认阅读设置',
     offlineNotice: '当前处于离线状态，翻译功能暂不可用',
+    authorBy: '作者：{{name}}',
+    jumpTo: '跳转到「{{t}}」',
+    logoAlt: '莲花徽记',
+    treeAlt: '3D 千年松柏许愿树',
+    censerAlt: '3D 鼎式香炉',
+    bellAlt: '3D 铜钟',
+    cylinderAlt: '3D 签筒',
+    mainNav: '主导航',
+    mobileNav: '移动导航',
   },
 } as const

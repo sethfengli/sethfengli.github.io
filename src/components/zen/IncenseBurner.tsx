@@ -1,4 +1,5 @@
 import { useCallback, useState } from 'react'
+import { useI18n } from '../../i18n'
 
 /**
  * 互动香炉：点击点燃心香，青烟升起、香头炭火明灭。
@@ -6,6 +7,7 @@ import { useCallback, useState } from 'react'
  */
 
 export function IncenseBurner({ bare = false }: { bare?: boolean }) {
+  const { t } = useI18n()
   const [lit, setLit] = useState(false)
   const [count, setCount] = useState(0)
 
@@ -57,7 +59,7 @@ export function IncenseBurner({ bare = false }: { bare?: boolean }) {
         )}
       </svg>
       <div className="mt-1 text-center font-serif text-xs text-sandalwood-500">
-        {lit ? (count > 1 ? `今日已供 ${count} 炷心香` : '心香一炷，遍满十方') : '轻触香炉 · 供上一炷心香'}
+        {lit ? (count > 1 ? t('incense.litMany', { n: count }) : t('incense.litOne')) : t('incense.idle')}
       </div>
     </>
   )
@@ -67,7 +69,7 @@ export function IncenseBurner({ bare = false }: { bare?: boolean }) {
       <button
         type="button"
         onClick={light}
-        aria-label="点燃心香"
+        aria-label={t('incense.aria')}
         className="block cursor-pointer rounded-2xl p-2 text-left transition hover:opacity-90 focus-visible:ring-2 focus-visible:ring-gold-400 focus-visible:outline-none"
       >
         {inner}
@@ -79,7 +81,7 @@ export function IncenseBurner({ bare = false }: { bare?: boolean }) {
     <button
       type="button"
       onClick={light}
-      aria-label="点击点燃心香"
+      aria-label={t('incense.aria')}
       className="group relative block cursor-pointer rounded-2xl border border-sandalwood-200/60 bg-rice-100/60 p-4 text-left transition hover:border-gold-400 hover:bg-rice-100 focus-visible:ring-2 focus-visible:ring-gold-400 focus-visible:outline-none"
     >
       {inner}

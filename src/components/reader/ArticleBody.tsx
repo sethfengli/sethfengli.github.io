@@ -1,5 +1,6 @@
 import { Fragment, useMemo } from 'react'
 import { Link } from 'react-router-dom'
+import { useI18n } from '../../i18n'
 import type { ArticleDoc, Block, Inline } from '../../lib/content'
 import { headingAnchorMap, headingId } from '../../lib/content'
 
@@ -29,11 +30,13 @@ function BlockView({
   block,
   index,
   anchorMap,
+  jumpLabel,
 }: {
   doc: ArticleDoc
   block: Block
   index: number
   anchorMap: Map<string, string>
+  jumpLabel: (text: string) => string
 }) {
   switch (block.t) {
     case 'h2':
@@ -81,7 +84,7 @@ function BlockView({
                               e.preventDefault()
                               scrollToHeading(anchor)
                             }}
-                            title={`跳转到「${joined}」`}
+                            title={jumpLabel(joined)}
                           >
                             <InlineSegs segs={cell} />
                           </a>
@@ -103,11 +106,12 @@ function BlockView({
 }
 
 export function ArticleBody({ doc }: { doc: ArticleDoc }) {
+  const { t } = useI18n()
   const anchorMap = useMemo(() => headingAnchorMap(doc), [doc])
   return (
     <article className="article-body">
       {doc.blocks.map((b, i) => (
-        <BlockView key={i} doc={doc} block={b} index={i} anchorMap={anchorMap} />
+        <BlockView key={i} doc={doc} block={b} index={i} anchorMap={anchorMap} jumpLabel={(x) => t('common.jumpTo', { t: x })} />
       ))}
     </article>
   )

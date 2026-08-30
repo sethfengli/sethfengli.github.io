@@ -44,6 +44,9 @@ export const en: Dict = {
     featuredSubtitle: 'Not deep-end · not hard · begin with one you can actually read',
     featuredAll: 'Browse the shelf',
     incenseHint: 'Light a stick of heart-incense for this very moment',
+    badge: 'Huideng · Dharma Treasury',
+    readFull: 'Read the full text',
+    coverAlt: '{{t}} · cover image',
   },
 
   articles: {
@@ -58,6 +61,11 @@ export const en: Dict = {
     noResults: 'Nothing found — try different words?',
     loadMore: 'Keep scrolling',
     illustrationAlt: 'Zen illustration',
+    kicker: 'Dharma Treasury',
+    count: '{{n}} texts',
+    badgeJing: 'Pure Practice',
+    badgeChan: 'Chan School',
+    badgeXiuxue: 'Study Garden',
   },
 
   reader: {
@@ -85,6 +93,13 @@ export const en: Dict = {
     notFound: 'Article not found',
     backHome: 'Back to home',
     likeNote: 'May the merit of this text benefit all beings',
+    docTitle: '{{title}} · Huideng Zen Temple',
+    titleWithQuotes: '{{title}}',
+    wordCount: '≈ {{n}} characters',
+    coverAlt: '{{t}} · cover',
+    nativeEn: 'English edition',
+    untranslatedFallback:
+      'The English edition of this text is still being prepared; the Chinese original is shown for now. Use “Translate” on the right for a temporary machine translation.',
   },
 
   dharma: {
@@ -108,6 +123,8 @@ export const en: Dict = {
     count: 'Recited {{n}} times',
     resetCount: 'Reset',
     mantraTitle: 'Bell Gatha',
+    kicker: 'Stillness · Listening',
+    bellCount: 'Ring {{n}}',
   },
 
   prayer: {
@@ -146,6 +163,8 @@ export const en: Dict = {
     minutesAgo: '{{n}} min ago',
     hoursAgo: '{{n}} h ago',
     daysAgo: '{{n}} d ago',
+    kicker: 'Offer Light',
+    backupPrefix: 'huideng-prayer-backup',
   },
 
   lots: {
@@ -172,6 +191,8 @@ export const en: Dict = {
     historyHint: 'Lots are stored only in this browser',
     disclaimer: 'The oracle is for reflection only. For life’s direction, rely on the Dharma and your own true mind.',
     shakeHint: 'Silently ask your question first',
+    kicker: 'Two Gates · Cast and Reflect',
+    guanyinName: 'Namo Guanshiyin Bodhisattva',
   },
 
   lingqi: {
@@ -252,6 +273,19 @@ export const en: Dict = {
     techTitle: 'Technology',
     techDesc:
       'React 18 + TypeScript + Vite + Tailwind CSS, hosted statically on GitHub Pages. No backend, no tracking, no cookies; reading preferences, wishes and lots stay in your browser.',
+    kicker: 'The Gate',
+    sectionNav: 'On-page section navigation',
+    statArticles: 'texts awaiting you',
+    statPhotos: 'authentic photographs',
+    statAudio: 'chant recordings',
+    statLots: 'lots & hexagrams to cast',
+  },
+
+  incense: {
+    litMany: '{{n}} sticks of heart-incense offered today',
+    litOne: 'One stick of heart-incense fills the ten directions',
+    idle: 'Touch the censer · offer a stick of heart-incense',
+    aria: 'Light heart-incense',
   },
 
   common: {
@@ -276,5 +310,14 @@ export const en: Dict = {
     lotHint: 'Drag to rotate · scroll to zoom · click the cylinder to draw a lot',
     themeReset: 'Reading settings restored to defaults',
     offlineNotice: 'You are offline — translation is unavailable',
+    authorBy: 'By {{name}}',
+    jumpTo: 'Jump to “{{t}}”',
+    logoAlt: 'Lotus emblem',
+    treeAlt: '3D thousand-year wishing tree',
+    censerAlt: '3D bronze censer',
+    bellAlt: '3D bronze bell',
+    cylinderAlt: '3D lot cylinder',
+    mainNav: 'Main navigation',
+    mobileNav: 'Mobile navigation',
   },
 }

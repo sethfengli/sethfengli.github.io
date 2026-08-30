@@ -7,6 +7,7 @@ import {
   drawLot,
   levelClass,
   loadSavedLots,
+  localizedLot,
   saveLot,
   type GuanyinLot,
   type SavedLot,
@@ -23,7 +24,7 @@ type Phase = 'idle' | 'shaking' | 'revealed'
 type Tab = 'lots' | 'lingqi'
 
 export function Lots() {
-  const { t } = useI18n()
+  const { t, lang } = useI18n()
   const [params, setParams] = useSearchParams()
   const [tab, setTab] = useState<Tab>(() => (params.get('tab') === 'lingqi' ? 'lingqi' : 'lots'))
   const [phase, setPhase] = useState<Phase>('idle')
@@ -83,7 +84,7 @@ export function Lots() {
       {/* 页头：观音法门（明亮浅色调） */}
       <PageBanner
         image="/photos/guanyin.jpg"
-        kicker="双 法 门 · 随 缘 问 卦"
+        kicker={t('lots.kicker')}
         title={t('lots.title')}
         subtitle={t('lots.subtitle')}
       />
@@ -133,13 +134,13 @@ export function Lots() {
                   <div className="overflow-hidden rounded-2xl ring-4 ring-gold-400/50 shadow-md">
                     <img
                       src="/photos/guanyin.jpg"
-                      alt="南无观世音菩萨"
+                      alt={t('lots.guanyinName')}
                       loading="lazy"
                       decoding="async"
                       className="h-72 w-52 object-cover sm:h-80 sm:w-56"
                     />
                   </div>
-                  <p className="font-serif text-xs tracking-[0.3em] text-sandalwood-400">南无观世音菩萨</p>
+                  <p className="font-serif text-xs tracking-[0.3em] text-sandalwood-400">{t('lots.guanyinName')}</p>
                   <p className="max-w-xs font-serif text-[13px] leading-relaxed text-ink-700">{t('lots.guanyinDesc')}</p>
                 </div>
               </Reveal>
@@ -194,6 +195,7 @@ export function Lots() {
                     {saved.map((s) => {
                       const l = LOTS.find((x) => x.id === s.lotId)
                       if (!l) return null
+                      const lx = localizedLot(l, lang)
                       return (
                         <li key={`${s.lotId}-${s.drawnAt}`}>
                           <button
@@ -206,7 +208,7 @@ export function Lots() {
                             </span>
                             <span className="min-w-0">
                               <span className="block truncate font-serif font-bold text-sandalwood-800">
-                                {t('lots.lotNumber', { n: l.id })} · {l.title}
+                                {t('lots.lotNumber', { n: l.id })} · {lx.title}
                               </span>
                               <span className="mt-0.5 block text-xs text-sandalwood-400">
                                 {new Date(s.drawnAt).toLocaleString()}
@@ -279,8 +281,9 @@ function LotModal({
   onSave: () => void
   onClose: () => void
 }) {
-  const { t } = useI18n()
+  const { t, lang } = useI18n()
   const [showMeaning, setShowMeaning] = useState(false)
+  const lx = localizedLot(lot, lang)
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -312,8 +315,8 @@ function LotModal({
         </button>
 
         <div className="flex flex-wrap items-center justify-center gap-2">
-          <span className={`rounded-full px-3 py-1 text-xs font-bold ${levelClass(lot.level)}`}>{lot.level}</span>
-          <h3 className="font-brush text-3xl text-sandalwood-900">{lot.title}</h3>
+          <span className={`rounded-full px-3 py-1 text-xs font-bold ${levelClass(lot.level)}`}>{lx.level}</span>
+          <h3 className="font-brush text-3xl text-sandalwood-900">{lx.title}</h3>
           <span className="text-sm text-sandalwood-400">{t('lots.lotNumber', { n: lot.id })}</span>
         </div>
 
@@ -321,7 +324,7 @@ function LotModal({
         <div className="mt-6 rounded-2xl border border-gold-400/50 bg-gradient-to-b from-rice-100 to-rice-50 px-6 py-6">
           <p className="font-serif text-xs tracking-[0.4em] text-gold-600">{t('lots.poemLabel')}</p>
           <p className="mt-4 space-y-2 font-brush text-xl leading-relaxed text-ink-900 sm:text-2xl">
-            {lot.poem.map((line, i) => (
+            {lx.poem.map((line, i) => (
               <span key={i} className="block">
                 {line}
               </span>
@@ -339,11 +342,11 @@ function LotModal({
         ) : (
           <div className="lot-fade-in mt-6 rounded-2xl bg-tibetan-50 px-6 py-5">
             <p className="font-serif text-sm font-bold tracking-widest text-tibetan-600">{t('lots.interpretationLabel')}</p>
-            <p className="mt-2 font-serif text-[15px] leading-loose text-ink-700">{lot.meaning}</p>
+            <p className="mt-2 font-serif text-[15px] leading-loose text-ink-700">{lx.meaning}</p>
             {/* 禅语祝福：与解签一体 */}
             <div className="mt-5 border-t border-tibetan-200/70 pt-4">
               <p className="font-serif text-sm font-bold tracking-widest text-tibetan-600">{t('lots.blessingLabel')}</p>
-              <p className="mt-2 font-brush text-lg leading-relaxed text-tibetan-600">{lot.blessing}</p>
+              <p className="mt-2 font-brush text-lg leading-relaxed text-tibetan-600">{lx.blessing}</p>
             </div>
           </div>
         )}

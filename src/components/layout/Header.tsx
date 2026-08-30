@@ -53,7 +53,7 @@ export function Header() {
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-1 lg:flex" aria-label="主导航">
+        <nav className="hidden items-center gap-1 lg:flex" aria-label={t('common.mainNav')}>
           {NAV.map((item) => (
             <NavLink
               key={item.to}
@@ -115,7 +115,7 @@ export function Header() {
         }`}
       >
         <div className="min-h-0">
-          <nav className="border-t border-sandalwood-200/60 px-4 pt-2 pb-4" aria-label="移动导航">
+          <nav className="border-t border-sandalwood-200/60 px-4 pt-2 pb-4" aria-label={t('common.mobileNav')}>
             <ul className="flex flex-col gap-0.5">
               {NAV.map((item) => (
                 <li key={item.to}>

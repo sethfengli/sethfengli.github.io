@@ -446,7 +446,7 @@ export function Bell3D({ fallback }: { fallback?: ReactNode }) {
   return (
     <div className="flex flex-col items-center gap-4">
       <div className="relative h-[380px] w-full max-w-[560px] sm:h-[430px]">
-        <canvas ref={canvasRef} className="h-full w-full" aria-label="3D 铜钟" />
+        <canvas ref={canvasRef} className="h-full w-full" aria-label={t('common.bellAlt')} />
         {ringing && (
           <span className="pointer-events-none absolute top-6 left-1/2 -translate-x-1/2 font-brush text-2xl text-gold-600">
             {t('dharma.ringing')}
@@ -462,7 +462,7 @@ export function Bell3D({ fallback }: { fallback?: ReactNode }) {
         🔔 {ringing ? t('dharma.ringing') : count > 0 ? t('dharma.ringAgain') : t('dharma.ringBell')}
       </button>
       <div className="text-center font-serif text-sm text-sandalwood-500" aria-live="polite">
-        {count > 0 ? `第 ${count} 声` : '\u00a0'}
+        {count > 0 ? t('dharma.bellCount', { n: count }) : '\u00a0'}
         <p className="mt-1 text-[11px] text-sandalwood-400">{t('common.bellHint')}</p>
       </div>
     </div>

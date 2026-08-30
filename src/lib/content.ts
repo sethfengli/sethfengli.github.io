@@ -1,6 +1,7 @@
 import type { IllustrationVariant } from '../components/zen/ZenIllustration'
 
 export type School = 'jing' | 'chan' | 'xiuxue'
+export type Lang = 'zh' | 'en'
 
 /** 行内片段：s 为文本，href 为可选的站内文章链接 */
 export interface Inline {
@@ -30,11 +31,30 @@ export interface ArticleDoc extends ArticleMeta {
   blocks: Block[]
 }
 
+/** 英文覆盖数据（src/content/en/<slug>.json），字段与中文文章一一对应 */
+export interface ArticleEn {
+  slug: string
+  title?: string
+  author?: string
+  excerpt?: string
+  blocks?: Block[]
+}
+
 /* ---------------- 目录 ---------------- */
 import catalogJson from '../content/catalog.json'
+import catalogEnJson from '../content/catalog-en.json'
 import photosJson from '../data/photos.json'
 
 export const CATALOG: ArticleMeta[] = catalogJson as ArticleMeta[]
+
+/** slug → 英文标题/摘录/作者（由 scripts/build-catalog-en.mjs 从 en/*.json 生成） */
+export const CATALOG_EN: Record<string, { title?: string; author?: string; excerpt?: string }> =
+  catalogEnJson as Record<string, { title?: string; author?: string; excerpt?: string }>
+
+/** 是否已有英文正文覆盖（决定阅读器是否显示“原文+机翻”兜底提示） */
+export function hasEnglish(slug: string): boolean {
+  return Boolean(enFiles[`../content/en/${slug}.json`])
+}
 
 /** 免版权真实照片（Wikimedia Commons，本地托管 public/photos/） */
 export const PHOTO_NAMES: string[] = (photosJson as { photos?: string[] }).photos ?? []
@@ -97,8 +117,34 @@ export const SCHOOL_LABEL_ZH: Record<School, string> = {
   xiuxue: '修学园地',
 }
 
+export const SCHOOL_LABEL_EN: Record<School, string> = {
+  jing: 'Pure Practice',
+  chan: 'Chan School',
+  xiuxue: 'Study Garden',
+}
+
+export function schoolLabel(school: School, lang: Lang): string {
+  return lang === 'en' ? SCHOOL_LABEL_EN[school] : SCHOOL_LABEL_ZH[school]
+}
+
+/** 按语言取文章元信息（标题/作者/摘录），英文缺失时回退中文 */
+export function localizedMeta(
+  a: ArticleMeta,
+  lang: Lang,
+): { title: string; author: string; excerpt: string } {
+  if (lang !== 'en') return { title: a.title, author: a.author, excerpt: a.excerpt }
+  const en = CATALOG_EN[a.slug]
+  if (!en) return { title: a.title, author: a.author, excerpt: a.excerpt }
+  return {
+    title: en.title ?? a.title,
+    author: en.author ?? a.author,
+    excerpt: en.excerpt ?? a.excerpt,
+  }
+}
+
 /* ---------------- 文章懒加载（Vite 按需分包） ---------------- */
 const files = import.meta.glob<{ default: ArticleDoc }>('../content/articles/*.json')
+const enFiles = import.meta.glob<{ default: ArticleEn }>('../content/en/*.json')
 
 export async function loadArticle(slug: string): Promise<ArticleDoc | null> {
   const loader = files[`../content/articles/${slug}.json`]
@@ -108,6 +154,27 @@ export async function loadArticle(slug: string): Promise<ArticleDoc | null> {
     return mod.default
   } catch {
     return null
+  }
+}
+
+/** 按语言加载文章：英文模式且有原生译文时，将标题/作者/摘录/正文替换为英文 */
+export async function loadArticleForLang(slug: string, lang: Lang): Promise<ArticleDoc | null> {
+  const doc = await loadArticle(slug)
+  if (!doc || lang !== 'en') return doc
+  const loader = enFiles[`../content/en/${slug}.json`]
+  if (!loader) return doc
+  try {
+    const mod = await loader()
+    const en = mod.default
+    return {
+      ...doc,
+      title: en.title ?? doc.title,
+      author: en.author ?? doc.author,
+      excerpt: en.excerpt ?? doc.excerpt,
+      blocks: en.blocks ?? doc.blocks,
+    }
+  } catch {
+    return doc
   }
 }
 
@@ -149,29 +216,66 @@ function toCnNum(n: number): string {
   return String(n)
 }
 
+const ROMAN = [
+  [10, 'X'],
+  [9, 'IX'],
+  [5, 'V'],
+  [4, 'IV'],
+  [1, 'I'],
+] as const
+
+function toRomanNum(n: number): string {
+  if (n <= 0) return String(n)
+  let out = ''
+  let rest = n
+  for (const [v, s] of ROMAN) {
+    while (rest >= v) {
+      out += s
+      rest -= v
+    }
+  }
+  return out
+}
+
 /** 标题自带编号（一、/1./（一）开头）时，目录不再前置标号，避免“一 一、培养目标”式重复 */
 function hasOwnNumber(text: string): boolean {
   return /^[一二三四五六七八九十百]+[、.．，,]/.test(text) || /^\d+[、.．]/.test(text) || /^[（(][一二三四五六七八九十\d]+[)）]/.test(text)
 }
 
-export function tocOf(doc: ArticleDoc): TocItem[] {
+export function tocOf(doc: ArticleDoc, lang: Lang = 'zh'): TocItem[] {
   const out: TocItem[] = []
   let h2c = 0
   let h3c = 0
   let h4c = 0
+  const en = lang === 'en'
   for (const b of doc.blocks) {
     if (b.t === 'h2') {
       h2c++
       h3c = 0
       h4c = 0
-      out.push({ id: `s-${h2c}`, level: 2, text: b.text, num: hasOwnNumber(b.text) ? '' : toCnNum(h2c) })
+      out.push({
+        id: `s-${h2c}`,
+        level: 2,
+        text: b.text,
+        num: hasOwnNumber(b.text) ? '' : en ? `${toRomanNum(h2c)}.` : toCnNum(h2c),
+      })
     } else if (b.t === 'h3') {
       h3c++
       h4c = 0
-      out.push({ id: `s-${h2c}-${h3c}`, level: 3, text: b.text, num: hasOwnNumber(b.text) ? '' : String(h3c) })
+      out.push({
+        id: `s-${h2c}-${h3c}`,
+        level: 3,
+        text: b.text,
+        num: hasOwnNumber(b.text) ? '' : en ? `${h3c}.` : String(h3c),
+      })
     } else if (b.t === 'h4') {
       h4c++
-      out.push({ id: `s-${h2c}-${h3c}-${h4c}`, level: 4, text: b.text, num: hasOwnNumber(b.text) ? '' : `（${h4c}）` })
+      out.push({
+        id: `s-${h2c}-${h3c}-${h4c}`,
+        level: 4,
+        text: b.text,
+        num: hasOwnNumber(b.text) ? '' : en ? `(${h4c})` : `（${h4c}）`,
+      })
     }
   }
   return out

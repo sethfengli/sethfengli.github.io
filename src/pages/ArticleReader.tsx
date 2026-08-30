@@ -3,11 +3,13 @@ import { Link, useParams } from 'react-router-dom'
 import { useI18n } from '../i18n'
 import {
   photoForSlug,
-  loadArticle,
+  loadArticleForLang,
+  hasEnglish,
   neighborsOf,
   readingMinutes,
   tocOf,
-  SCHOOL_LABEL_ZH,
+  localizedMeta,
+  schoolLabel,
   type ArticleDoc,
 } from '../lib/content'
 import {
@@ -40,8 +42,9 @@ const THEMES: Array<{
 
 export function ArticleReader() {
   const { slug = '' } = useParams()
-  const { t } = useI18n()
+  const { t, lang } = useI18n()
   const [doc, setDoc] = useState<ArticleDoc | null>(null)
+  const [nativeEn, setNativeEn] = useState(false)
   const [loading, setLoading] = useState(true)
   const [prefs, setPrefs] = useState(loadPrefs)
   const [progress, setProgressState] = useState(0)
@@ -60,18 +63,19 @@ export function ArticleReader() {
     setSettingsOpen(false)
     setTocOpen(false)
     suppressedRef.current = true
-    void loadArticle(slug).then((d) => {
+    void loadArticleForLang(slug, lang).then((d) => {
       if (!alive) return
       setDoc(d)
+      setNativeEn(lang === 'en' && hasEnglish(slug))
       setLoading(false)
       window.scrollTo({ top: 0 })
       if (d) {
-        document.title = `《${d.title}》 · 慧灯禅院`
+        document.title = t('reader.docTitle', { title: d.title })
         const saved = getProgress(d.slug)
         setRestorePct(saved > 3 ? saved : null)
         setProgressState(0)
       } else {
-        document.title = '文章未找到 · 慧灯禅院'
+        document.title = `${t('common.notFoundTitle')} · ${t('appName')}`
       }
       // 让“恢复进度”的防抖冷静期过后再激活进度记录
       window.setTimeout(() => {
@@ -81,7 +85,7 @@ export function ArticleReader() {
     return () => {
       alive = false
     }
-  }, [slug])
+  }, [slug, lang, t])
 
   /* ---------- 阅读进度 ---------- */
   useEffect(() => {
@@ -105,7 +109,7 @@ export function ArticleReader() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [doc])
 
-  const toc = useMemo(() => (doc ? tocOf(doc) : []), [doc])
+  const toc = useMemo(() => (doc ? tocOf(doc, lang) : []), [doc, lang])
   const { prev, next } = useMemo(
     () => (doc ? neighborsOf(doc.slug, doc.school) : { prev: null, next: null }),
     [doc],
@@ -241,26 +245,31 @@ export function ArticleReader() {
           <div ref={articleRef} className="min-w-0">
             {/* 封面插画 */}
             <div className="overflow-hidden rounded-3xl shadow-md shadow-sandalwood-900/10">
-              <CoverImage src={photoForSlug(doc.slug)} alt={`${doc.title} · 封面`} fallbackVariant={doc.illustration} className="h-44 w-full sm:h-56" />
+              <CoverImage src={photoForSlug(doc.slug)} alt={t('reader.coverAlt', { t: doc.title })} fallbackVariant={doc.illustration} className="h-44 w-full sm:h-56" />
             </div>
 
             {/* 题头 */}
             <header className="mt-8 text-center">
-              <p className="font-serif text-xs tracking-[0.4em] text-sandalwood-500">{SCHOOL_LABEL_ZH[doc.school]}</p>
+              <p className="font-serif text-xs tracking-[0.4em] text-sandalwood-500">{schoolLabel(doc.school, lang)}</p>
               <h1 className="mt-3 font-brush text-4xl leading-snug text-sandalwood-900 sm:text-5xl">
-                《{doc.title}》
+                {t('reader.titleWithQuotes', { title: doc.title })}
               </h1>
               <div className="mt-4 flex flex-wrap items-center justify-center gap-x-5 gap-y-1 text-sm text-sandalwood-500">
                 {doc.author && (
                   <span>
-                    {t('reader.authorLabel')}：{doc.author}
+                    {t('common.authorBy', { name: doc.author })}
                   </span>
                 )}
                 <span>
                   {t('articles.readingTime', { n: readingMinutes(doc.chars) })}
                 </span>
-                <span className="hidden sm:inline">约 {doc.chars.toLocaleString()} 字</span>
+                <span className="hidden sm:inline">{t('reader.wordCount', { n: doc.chars.toLocaleString() })}</span>
               </div>
+              {lang === 'en' && !nativeEn && (
+                <p className="mx-auto mt-4 max-w-xl rounded-xl border border-gold-400/50 bg-gold-50/60 px-4 py-2.5 font-serif text-xs leading-relaxed text-sandalwood-600">
+                  {t('reader.untranslatedFallback')}
+                </p>
+              )}
               <div className="zen-divider mt-5">
                 <span>❖</span>
               </div>
@@ -289,7 +298,7 @@ export function ArticleReader() {
                   {Math.round(progress)}%
                 </span>
               </div>
-              <TranslateWidget />
+              {!(lang === 'en' && nativeEn) && <TranslateWidget />}
             </div>
 
             {/* 设置面板 */}
@@ -322,7 +331,7 @@ export function ArticleReader() {
                 <Link to={`/articles/${prev.slug}`} className="card group p-5">
                   <p className="text-xs text-sandalwood-400">← {t('reader.prevArticle')}</p>
                   <p className="mt-2 font-serif font-bold text-sandalwood-800 transition group-hover:text-tibetan-700">
-                    《{prev.title}》
+                    {t('reader.titleWithQuotes', { title: localizedMeta(prev, lang).title })}
                   </p>
                 </Link>
               ) : (
@@ -332,7 +341,7 @@ export function ArticleReader() {
                 <Link to={`/articles/${next.slug}`} className="card group p-5 text-right">
                   <p className="text-xs text-sandalwood-400">{t('reader.nextArticle')} →</p>
                   <p className="mt-2 font-serif font-bold text-sandalwood-800 transition group-hover:text-tibetan-700">
-                    《{next.title}》
+                    {t('reader.titleWithQuotes', { title: localizedMeta(next, lang).title })}
                   </p>
                 </Link>
               )}

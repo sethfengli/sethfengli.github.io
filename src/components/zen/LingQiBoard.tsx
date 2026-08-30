@@ -1,12 +1,14 @@
 import { useEffect, useRef, useState } from 'react'
 import { useI18n } from '../../i18n'
 import LINGQI_JSON from '../../content/lingqi.json'
+import LINGQI_EN_JSON from '../../content/lingqi-en.json'
 import { storageGet, storageSet } from '../../lib/storage'
 
 /**
  * 灵棋经占卜（纯 2D，无 three 依赖）：
  * 十二枚棋子（上/中/下各四枚），掷出后统计三个层级各自「现字」的数量（0~4），
  * 依 上中下 计数得卦（如 121 = 一上二中一下），全文 125 卦见 src/content/lingqi.json。
+ * 英文界面使用 src/content/lingqi-en.json（按 code 对齐，缺失时回退中文）。
  */
 
 interface LingqiItem {
@@ -24,6 +26,7 @@ interface LingqiItem {
 }
 
 const LINGQI = LINGQI_JSON as LingqiItem[]
+const LINGQI_EN = LINGQI_EN_JSON as LingqiItem[]
 const KEY = 'hdc.lingqiHistory'
 
 export interface LingqiRecord {
@@ -45,7 +48,7 @@ function castLingqi(): { code: string; counts: [number, number, number] } {
 const LVL_KEYS = ['lingqi.level0', 'lingqi.level1', 'lingqi.level2'] as const
 
 export function LingQiBoard() {
-  const { t } = useI18n()
+  const { t, lang } = useI18n()
   const [rolling, setRolling] = useState(false)
   const [result, setResult] = useState<{ code: string; counts: [number, number, number] } | null>(null)
   const [history, setHistory] = useState<LingqiRecord[]>(loadHistory)
@@ -89,6 +92,21 @@ export function LingQiBoard() {
 
   const item = result ? LINGQI.find((q) => q.code === result.code) : undefined
   const counts = result?.counts ?? [0, 0, 0]
+
+  /* 英文模式：按 code 找英文卦辞；个别字段缺失时回退中文 */
+  const itemEn = lang === 'en' && item ? LINGQI_EN.find((q) => q.code === item.code) : undefined
+  const view = item
+    ? {
+        name: itemEn?.name ?? item.name,
+        image: itemEn?.image ?? item.image,
+        xiang: itemEn?.xiang ?? item.xiang,
+        shi: itemEn?.shi ?? item.shi,
+        yan: itemEn?.yan ?? item.yan,
+        he: itemEn?.he ?? item.he,
+        chen: itemEn?.chen ?? item.chen,
+        liu: itemEn?.liu ?? item.liu,
+      }
+    : null
 
   return (
     <div className="space-y-10">
@@ -159,8 +177,8 @@ export function LingQiBoard() {
           <div className="relative flex flex-wrap items-center gap-8">
             <div className="mx-auto text-center sm:mx-0">
               <p className="font-serif text-xs tracking-[0.35em] text-gold-600">{t('lingqi.resultLabel')}</p>
-              <p className="mt-3 font-brush text-5xl text-tibetan-600">{item.name}</p>
-              <p className="mt-2 font-serif text-sm tracking-[0.25em] text-sandalwood-600">{item.image}</p>
+              <p className="mt-3 font-brush text-5xl text-tibetan-600">{view?.name}</p>
+              <p className="mt-2 font-serif text-sm tracking-[0.25em] text-sandalwood-600">{view?.image}</p>
               {/* 层级计数徽章 */}
               <div className="mt-4 flex justify-center gap-2">
                 {counts.map((c, i) => (
@@ -172,11 +190,11 @@ export function LingQiBoard() {
             </div>
             <div className="min-w-0 flex-1 rounded-2xl border border-gold-400/40 bg-gradient-to-b from-rice-100/70 to-rice-50 px-6 py-5">
               <p className="font-serif text-xs tracking-[0.3em] text-tibetan-600">{t('lingqi.xiang')}</p>
-              <p className="mt-3 font-brush text-lg leading-relaxed text-ink-900 sm:text-xl">{item.xiang}</p>
-              {item.shi && (
+              <p className="mt-3 font-brush text-lg leading-relaxed text-ink-900 sm:text-xl">{view?.xiang}</p>
+              {view?.shi && (
                 <>
                   <p className="mt-5 border-t border-gold-400/30 pt-4 font-serif text-xs tracking-[0.3em] text-gold-700">{t('lingqi.shi')}</p>
-                  <p className="mt-2 font-brush text-base leading-relaxed text-sandalwood-800">{item.shi}</p>
+                  <p className="mt-2 font-brush text-base leading-relaxed text-sandalwood-800">{view.shi}</p>
                 </>
               )}
             </div>
@@ -196,10 +214,10 @@ export function LingQiBoard() {
             {expanded && (
               <div className="mt-3 grid gap-3 sm:grid-cols-2">
                 {[
-                  ['yan', t('lingqi.yan'), item.yan],
-                  ['he', t('lingqi.he'), item.he],
-                  ['chen', t('lingqi.chen'), item.chen],
-                  ['liu', t('lingqi.liu'), item.liu],
+                  ['yan', t('lingqi.yan'), view?.yan],
+                  ['he', t('lingqi.he'), view?.he],
+                  ['chen', t('lingqi.chen'), view?.chen],
+                  ['liu', t('lingqi.liu'), view?.liu],
                 ].map(([k, label, text]) =>
                   text ? (
                     <div key={k} className="rounded-xl bg-rice-100/70 px-4 py-3">
@@ -233,6 +251,9 @@ export function LingQiBoard() {
             {history.map((h) => {
               const q = LINGQI.find((x) => x.code === h.code)
               if (!q) return null
+              const qEn = lang === 'en' ? LINGQI_EN.find((x) => x.code === h.code) : undefined
+              const name = qEn?.name ?? q.name
+              const image = qEn?.image ?? q.image
               return (
                 <li key={`${h.code}-${h.at}`}>
                   <button
@@ -249,7 +270,7 @@ export function LingQiBoard() {
                     </span>
                     <span className="min-w-0">
                       <span className="block truncate font-serif font-bold text-sandalwood-800">
-                        {q.name} · {q.image}
+                        {name} · {image}
                       </span>
                       <span className="mt-0.5 block text-xs text-sandalwood-400">
                         {new Date(h.at).toLocaleString()}

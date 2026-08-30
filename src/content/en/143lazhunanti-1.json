@@ -1,0 +1,67 @@
+{
+  "slug": "143lazhunanti-1",
+  "title": "The Candle Problem",
+  "author": "Mingde",
+  "excerpt": "Have you made use of all the available conditions?",
+  "blocks": [
+    {
+      "t": "h2",
+      "text": "The Solution to the Candle Problem"
+    },
+    {
+      "t": "p",
+      "inline": [
+        {
+          "s": "Have you made use of all the available conditions?"
+        }
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        {
+          "s": "Many people will try to pin the candle to the wall with thumbtacks, which of course does not work. Others use a match to melt the edge of the candle and try to stick it to the wall — this seems like a good idea, but it does not work either. Gradually, after five or ten minutes, many people arrive at the answer."
+        }
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        {
+          "s": "The answer"
+        },
+        {
+          "s": "is shown below:"
+        }
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        {
+          "s": "So the key to solving this problem lies in overcoming a psychological obstacle called 'functional fixedness ("
+        },
+        {
+          "s": "functional fixedness"
+        },
+        {
+          "s": ").' When you see the box, you treat it merely as a container for the thumbtacks, but it can serve other purposes too! If you use it as a platform for the candle, the problem is solved."
+        }
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        {
+          "s": "The lesson: have you made full use of"
+        },
+        {
+          "s": "all the"
+        },
+        {
+          "s": "available conditions? Lu You wrote in his Instructions to My Son: 'If you truly wish to learn poetry, the real work lies beyond poetry itself.'"
+        }
+      ]
+    }
+  ]
+}

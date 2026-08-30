@@ -28,7 +28,7 @@ export function Dharma() {
       {/* 页头（明亮浅色调） */}
       <PageBanner
         image="/photos/bell.jpg"
-        kicker="静 心 听 经"
+        kicker={t('dharma.kicker')}
         title={t('dharma.title')}
         subtitle={t('dharma.subtitle')}
       />

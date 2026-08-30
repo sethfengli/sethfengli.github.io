@@ -70,7 +70,7 @@ export function PrayerWall() {
 
   const exportJson = () => {
     downloadFile(
-      `慧灯禅院-祈福备份-${new Date().toISOString().slice(0, 10)}.json`,
+      `${t('prayer.backupPrefix')}-${new Date().toISOString().slice(0, 10)}.json`,
       JSON.stringify({ app: 'huideng-chanlin', version: 1, wishes }, null, 2),
     )
     showToast(t('prayer.exportDone', { n: wishes.length }))
@@ -106,7 +106,7 @@ export function PrayerWall() {
       {/* 页头（明亮浅色调 + 漂浮灯火） */}
       <PageBanner
         image="/photos/lantern.jpg"
-        kicker="供 灯"
+        kicker={t('prayer.kicker')}
         title={t('prayer.title')}
         subtitle={t('prayer.subtitle')}
         decor={

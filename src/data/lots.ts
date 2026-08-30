@@ -2,9 +2,27 @@
  * 观音灵签 · 三十二签
  * 签诗为本寺依古签体例新撰（四句七言），解签与禅语为原创开示。
  * 签文旨在启发自省，不作吉凶预言。
+ * English: the poems are rendered as rhymed quatrains, with the
+ * interpretation and Zen wish translated in a plain, faithful register.
  */
 
 export type LotLevel = '上上' | '上吉' | '中吉' | '中平' | '中下' | '下下'
+
+export const LEVEL_EN: Record<LotLevel, string> = {
+  '上上': 'Supreme Fortune',
+  '上吉': 'Great Fortune',
+  '中吉': 'Good Fortune',
+  '中平': 'Fair',
+  '中下': 'Below Fair',
+  '下下': 'Adverse',
+}
+
+export interface LotEn {
+  title: string
+  poem: [string, string, string, string]
+  meaning: string
+  blessing: string
+}
 
 export interface GuanyinLot {
   id: number
@@ -13,6 +31,7 @@ export interface GuanyinLot {
   poem: [string, string, string, string]
   meaning: string
   blessing: string
+  en: LotEn
 }
 
 export const LOTS: GuanyinLot[] = [
@@ -24,6 +43,18 @@ export const LOTS: GuanyinLot[] = [
     meaning:
       '所问之事如旭日初升，长夜将尽，阻碍渐消。此时最宜坚定初心、勇猛精进，切莫因黎明前的微寒而退转。事业、学业皆有转机，贵人自远方来。',
     blessing: '愿你的心光如旭日东升，无有遮掩，朗照十方。',
+    en: {
+      title: 'Sunrise over Fusang',
+      poem: [
+        'From the eastern sea the crimson sun ascends;',
+        'Ten thousand golden rays cleave the cloudy sky.',
+        'Ask no more whither tomorrow’s road may wend —',
+        'A heavenly fragrance leads where pathways lie.',
+      ],
+      meaning:
+        'What you ask about is like the sun at dawn: the long night is ending and every obstacle is dissolving. This is the moment to hold fast to your first resolve and press forward boldly — do not turn back for the small chill that comes just before sunrise. Career and study are both turning for the better, and a benefactor will arrive from afar.',
+      blessing: 'May the light of your heart rise like the morning sun — unveiled, unshaded, shining across the ten directions.',
+    },
   },
   {
     id: 2,
@@ -33,6 +64,18 @@ export const LOTS: GuanyinLot[] = [
     meaning:
       '所处环境虽非清净，正可磨砺心志。莲之贵在于出淤泥而不染——勿自轻出身与境遇，守住本分，芬芳自远。所谋之事，静待花开。',
     blessing: '身在尘中不染尘，花开见佛悟无生。',
+    en: {
+      title: 'The Lotus Rises from the Water',
+      poem: [
+        'Deep in the mire a sacred root takes hold,',
+        'Yet the flower opens stainless on the pool.',
+        'Never say a humble birth keeps you from gold:',
+        'One petal’s fragrance fills the cosmos full.',
+      ],
+      meaning:
+        'Your surroundings may not be pure, but they are precisely what hones the mind. The lotus is honored because it rises from the mud unstained — do not belittle your origin or your circumstances. Keep to your own part and your fragrance will travel far of itself. As for the matter you pursue: wait quietly for the flower to open.',
+      blessing: 'Living in the dust, unstained by the dust; seeing the flower, awaken to the unborn.',
+    },
   },
   {
     id: 3,
@@ -42,6 +85,18 @@ export const LOTS: GuanyinLot[] = [
     meaning:
       '所问之事本来圆满，障碍皆由心中浮云所生。放下妄求，回光返照，答案自然现前。此签利静修、利和解、利放下。',
     blessing: '千江有水千江月，万里无云万里天。',
+    en: {
+      title: 'A Full Moon Overhead',
+      poem: [
+        'For ten thousand miles no cloud — the full moon bright;',
+        'Every river that holds water holds it clear.',
+        'The mind was pure from the first: why seek its light?',
+        'One thought turned back upon itself — and it is here.',
+      ],
+      meaning:
+        'The matter you ask about is already whole and complete; the obstacles are only clouds drifting through the mind. Put down anxious striving, turn your gaze back upon yourself, and the answer will present itself. This lot favors quiet practice, reconciliation, and letting go.',
+      blessing: 'A thousand rivers, a thousand moons; ten thousand miles of cloudless sky.',
+    },
   },
   {
     id: 4,
@@ -51,6 +106,18 @@ export const LOTS: GuanyinLot[] = [
     meaning:
       '枯木逢春之象。久困之事渐现生机，人际冰霜亦将消融。宜把握阳气初动之时，早做安排；旧缘可续，新机可成。',
     blessing: '心地若无分别念，处处皆是好春光。',
+    en: {
+      title: 'Spring Returns to the Earth',
+      poem: [
+        'Last night the east wind brushed the little tower;',
+        'Dead boughs grew tender with its vernal power.',
+        'Ice melts and snow recedes, warmth stirs the air —',
+        'A tree of fresh green buds beyond compare.',
+      ],
+      meaning:
+        'The image of dead wood meeting spring. Matters long stuck are showing signs of life, and the frost between people will thaw as well. Seize the season when the warm energy first stirs and make your arrangements early; old ties can be renewed, and new openings can take root.',
+      blessing: 'When the mind holds no dividing thoughts, every place is springtime.',
+    },
   },
   {
     id: 5,
@@ -60,6 +127,18 @@ export const LOTS: GuanyinLot[] = [
     meaning:
       '时运顺遂，诸事有贵人相扶。然风顺水急之时，最忌得意乱桨。稳住方向、量力而行，则一泻千里；若贪快冒进，反生颠簸。',
     blessing: '顺境修福，逆境修心，平常心是道。',
+    en: {
+      title: 'A Boat Running Downstream',
+      poem: [
+        'A little boat runs with the river’s flow,',
+        'Green banks escort it where the waters go.',
+        'Fair wind, swift tide — row not in haste or fright:',
+        'Hold the helm steady, ride the surge aright.',
+      ],
+      meaning:
+        'The times are with you, and helpers attend every matter. Yet when both wind and current are swift, the worst mistake is overconfidence and a flailing oar. Keep your direction steady and act within your strength, and you will cover a thousand miles; rush greedily, and the ride turns rough.',
+      blessing: 'In fair weather grow merit; in foul, grow the mind. The ordinary mind is the Way.',
+    },
   },
   {
     id: 6,
@@ -69,6 +148,18 @@ export const LOTS: GuanyinLot[] = [
     meaning:
       '此签主传承、教化、利他之事大吉。你所学所悟，正当与人分享；法布施者，福慧双增。所问之事宜放大心量，利益众生则自成。',
     blessing: '以一灯传诸灯，终至万灯皆明。',
+    en: {
+      title: 'The Lamp Passed Down the Ages',
+      poem: [
+        'One heart-lamp burns undimmed for ages long,',
+        'Unmoved by wind, and calm beneath the rain.',
+        'Pass on the lamp — the living flame stays strong —',
+        'And light the dark night’s road for all who strain.',
+      ],
+      meaning:
+        'This lot greatly favors transmission, teaching, and service to others. What you have learned and realized is exactly what you should share; those who give the gift of the Dharma grow in both merit and wisdom. Whatever you ask about: widen your heart to benefit all beings, and your own aim accomplishes itself.',
+      blessing: 'From one lamp kindle many, until ten thousand lamps all shine.',
+    },
   },
   {
     id: 7,
@@ -78,6 +169,18 @@ export const LOTS: GuanyinLot[] = [
     meaning:
       '迷惘将散，真相渐明。所求之事虽有周折，但已走过多半路程；勿因疲惫而生退意，再行数步，豁然开朗。',
     blessing: '行到水穷处，坐看云起时。',
+    en: {
+      title: 'Clouds Part, the Mountain Appears',
+      poem: [
+        'Where thick clouds part, the green-blue mountain shows,',
+        'And through the trees a hidden bell resounds.',
+        'Say not the climbing road is far or close —',
+        'Turn round: you stand halfway among the clouds.',
+      ],
+      meaning:
+        'Confusion is about to lift and the truth to show itself. The matter you seek has met with detours, but you have already covered more than half the road; do not turn back out of weariness. A few more steps, and everything opens wide.',
+      blessing: 'Walk to where the water ends, and sit and watch the clouds arise.',
+    },
   },
   {
     id: 8,
@@ -87,6 +190,18 @@ export const LOTS: GuanyinLot[] = [
     meaning:
       '潜藏之才，静待时机。眼下虽未显达，正是养精蓄锐之时。时机一到（如考试、晋升、因缘），奋力一跃即可脱胎换骨。切忌躁进。',
     blessing: '不飞则已，一飞冲天；不鸣则已，一鸣惊人。',
+    en: {
+      title: 'The Golden Carp Becomes a Dragon',
+      poem: [
+        'Long in the deep the golden carp lies still;',
+        'One spring, the thunder wakes the ninefold sky.',
+        'Clear Yu’s Gate’s three surges, leap at will —',
+        'Clouds gather and winds meet when years are high.',
+      ],
+      meaning:
+        'Hidden talent waiting for its time. Though nothing shows yet, this is precisely the season to gather strength. When the moment comes — an examination, a promotion, a meeting of affinities — one bold leap will change everything. Only do not rush.',
+      blessing: 'If it does not fly, no one knows it; when it flies, it shakes the sky. If it does not cry, no one hears it; when it cries, it startles all.',
+    },
   },
   {
     id: 9,
@@ -96,6 +211,18 @@ export const LOTS: GuanyinLot[] = [
     meaning:
       '所求的答案本在自己身上。外求无益，回头梳理内心，清点已有的资源与福德，清泉自涌。利求学、利反省、利重整旧业。',
     blessing: '宝山在身，何假外求；回光返照，甘泉自流。',
+    en: {
+      title: 'Spring Water in a Dry Well',
+      poem: [
+        'The old well, still and undredged, long lay dumb;',
+        'One day of dredging and clear waters come.',
+        'The sweet spring lies beneath the muddy floor:',
+        'Beg not a half-ladle at a stranger’s door.',
+      ],
+      meaning:
+        'The answer you seek lies within yourself. Looking outward gains nothing; turn back, tidy the mind, and take stock of the resources and blessings you already have, and the clear spring will well up on its own. Favorable for study, for self-examination, and for restoring an old undertaking.',
+      blessing: 'The treasure mountain is on your own body — why seek outside? Turn the light back, and the sweet spring flows of itself.',
+    },
   },
   {
     id: 10,
@@ -105,6 +232,18 @@ export const LOTS: GuanyinLot[] = [
     meaning:
       '怀才待沽之象。不必焦虑无人赏识，修好自身、发清正之音，知音自然云集。利投稿、面试、表白、合作。',
     blessing: '德不孤，必有邻；声和则响清。',
+    en: {
+      title: 'The Crane Cries in the Ninefold Marsh',
+      poem: [
+        'Deep in the marsh the crane’s clear cry resounds;',
+        'One soaring note startles the thousand kinds.',
+        'A friend who knows the tune will come around —',
+        'Beyond the clouds, a harmony you’ll find.',
+      ],
+      meaning:
+        'The image of talent awaiting recognition. Do not fret that no one appreciates you; refine yourself and sound a clear, upright note, and kindred spirits will gather of themselves. Favorable for submissions, interviews, confessions, and partnerships.',
+      blessing: 'Virtue is never alone; it always has neighbors. When the sound is true, the echo is clear.',
+    },
   },
   {
     id: 11,
@@ -114,6 +253,18 @@ export const LOTS: GuanyinLot[] = [
     meaning:
       '事情本身不坏，坏在久未打理。人际关系、项目、身体皆是如此——勤拂拭则光明自现。此签劝你：莫换赛道，先做清洁。',
     blessing: '时时勤拂拭，莫使惹尘埃。',
+    en: {
+      title: 'Polishing the Precious Mirror',
+      poem: [
+        'Long dim with dust, the precious mirror sleeps;',
+        'Polish it often and the light returns.',
+        'Seek not the true self over distant deeps —',
+        'One bright heart-terrace clears the myriad forms.',
+      ],
+      meaning:
+        'The thing itself is not bad — it has merely been left untended. Relationships, projects, health: all are like this. Wipe them diligently and the light appears of itself. This lot advises you: do not change course; first do the cleaning.',
+      blessing: 'Polish it always, diligently — let no dust ever settle.',
+    },
   },
   {
     id: 12,
@@ -123,6 +274,18 @@ export const LOTS: GuanyinLot[] = [
     meaning:
       '因果昭然之签。今日之果，昔日之因；今日之因，来日之果。所问之事，依正因正行必有善果，只是时节未到。宜多种善因。',
     blessing: '善恶到头终有报，只争来早与来迟。',
+    en: {
+      title: 'Plant Melons, Reap Melons',
+      poem: [
+        'One seed in spring yields ten thousand at the fall;',
+        'Root goodness deep and fortune twines around.',
+        'Ask not if heaven is partial after all:',
+        'Cause and effect in their own time are found.',
+      ],
+      meaning:
+        'A lot of unmistakable cause and effect. Today’s fruit is yesterday’s seed; today’s seed is tomorrow’s fruit. Whatever you ask about: with right causes and right actions, a good result is certain — only the season has not yet arrived. Plant good causes freely.',
+      blessing: 'Good and evil are repaid in the end; only early and late differ.',
+    },
   },
   {
     id: 13,
@@ -132,6 +295,18 @@ export const LOTS: GuanyinLot[] = [
     meaning:
       '提示你正空耗时日等待侥幸。机会不会自己撞上来，唯有踏实耕耘才有收获。所问之事：主动出击，勿再观望。',
     blessing: '临渊羡鱼，不如退而结网。',
+    en: {
+      title: 'Watching the Stump for a Hare',
+      poem: [
+        'All day beside the stump you watch for hares;',
+        'Time once departed never comes again.',
+        'Till the field — that is the work that fares:',
+        'The harvest comes of itself, no need to guess.',
+      ],
+      meaning:
+        'A reminder that you are spending your days waiting on luck. Opportunity will not come crashing into you of itself; only steady cultivation brings a yield. As for the matter you ask about: take the initiative, and stop standing by.',
+      blessing: 'Better to go home and weave a net than to stand by the pond longing for fish.',
+    },
   },
   {
     id: 14,
@@ -141,6 +316,18 @@ export const LOTS: GuanyinLot[] = [
     meaning:
       '眼下阻力较大，硬拼易耗。可暂缓脚步、审时度势，待风头转向再行。并非放弃，而是以退为进。',
     blessing: '歇即菩提，退步原来是向前。',
+    en: {
+      title: 'Rowing Against the Stream',
+      poem: [
+        'Against the stream, pause not — you drift behind;',
+        'The pole dips in the cold and churning spray.',
+        'Rest on your oars and watch the wind’s own mind:',
+        'When the tide turns, the rapids give you way.',
+      ],
+      meaning:
+        'The resistance right now is considerable, and brute force will only exhaust you. Slow your pace for a while, judge the time and the lay of things, and move again when the wind shifts. This is not giving up — it is advancing by withdrawing.',
+      blessing: 'To rest is bodhi; a step backward is sometimes a step forward.',
+    },
   },
   {
     id: 15,
@@ -150,6 +337,18 @@ export const LOTS: GuanyinLot[] = [
     meaning:
       '所谋之事基础不牢或方向不对，纵有千般努力也难结果。与其硬撑，不如及早调整方向、更换环境。知止而后有定。',
     blessing: '放下执着石头开花的心，转身即是沃土。',
+    en: {
+      title: 'Planting Flowers on a Stone',
+      poem: [
+        'On stone you plant your flowers, and in vain;',
+        'No inch of soil — how shall the roots take hold?',
+        'Move them into a garden in the spring rain:',
+        'With dew and sun, each blossom will unfold.',
+      ],
+      meaning:
+        'The matter you pursue rests on a weak foundation or a wrong direction; however hard you push, it will not bear fruit. Rather than forcing it, adjust course early and change the setting. Knowing when to stop brings steadiness.',
+      blessing: 'Let go of making stones bloom; turn around, and there is fertile soil.',
+    },
   },
   {
     id: 16,
@@ -159,6 +358,18 @@ export const LOTS: GuanyinLot[] = [
     meaning:
       '你正置身事外，对所求之事了解不深。别人的经验是隔岸灯火，照不亮你的路。宜亲身投入、实地了解后再做决断。',
     blessing: '不入虎穴，焉得虎子；不入红尘，怎知莲心。',
+    en: {
+      title: 'Watching the Fire from the Far Shore',
+      poem: [
+        'Across the stream another’s fire burns clear,',
+        'Its heat and cold touch not the watcher’s skin.',
+        'Take counsel: be no idle gazer here —',
+        'Only experience knows what lies within.',
+      ],
+      meaning:
+        'You are standing outside the matter and do not yet understand it deeply. Other people’s experience is a fire across the water — it cannot light your road. Better to step in yourself and learn the ground before you decide.',
+      blessing: 'No venture into the tiger’s den, no tiger cubs; no walk through the red dust, no knowing the lotus heart.',
+    },
   },
   {
     id: 17,
@@ -168,6 +379,18 @@ export const LOTS: GuanyinLot[] = [
     meaning:
       '眼下境遇只是暂时的过渡。寄人檐下不必气馁，借此积蓄力量、丰满羽翼。所问之事宜隐忍蓄势，不宜此刻摊牌。',
     blessing: '大鹏一日同风起，扶摇直上九万里。',
+    en: {
+      title: 'Sheltering Under the Eaves',
+      poem: [
+        'Beneath the eaves you shelter from the blast,',
+        'A guest beneath another’s roof — hold fast.',
+        'Wait till your wings are fully fledged and strong:',
+        'One stroke, and you will soar ten thousand miles long.',
+      ],
+      meaning:
+        'Your present circumstance is only a passage. Do not be disheartened by living under another’s roof; use the time to gather strength and feather your wings. Whatever you ask about: endure and husband your power; do not force a showdown now.',
+      blessing: 'The great roc rises on the wind one day, and mounts ninety thousand miles on the whirlwind.',
+    },
   },
   {
     id: 18,
@@ -177,6 +400,18 @@ export const LOTS: GuanyinLot[] = [
     meaning:
       '所问之事考验恒心。短期内难见成效，但方向正确，贵在坚持。勿求速成，每日精进一点，终有水滴石穿之日。',
     blessing: '制心一处，无事不办。',
+    en: {
+      title: 'Grinding an Iron Pestle into a Needle',
+      poem: [
+        'An iron pestle to a needle: not one dawn;',
+        'Yet in the deep, long work the heart grows free.',
+        'Only let no single moment’s thought be gone —',
+        'Drip by drip wears the stone; the road’s not far to see.',
+      ],
+      meaning:
+        'The matter you ask about tests your constancy. Results will be slow to show, but the direction is right and persistence is what counts. Do not seek quick success; advance a little every day, and the day comes when water has worn the stone through.',
+      blessing: 'Fix the mind on one place, and there is nothing it cannot accomplish.',
+    },
   },
   {
     id: 19,
@@ -186,6 +421,18 @@ export const LOTS: GuanyinLot[] = [
     meaning:
       '眼前一片安稳，是修整身心的好时节。莫因贪恋远方风光而自寻风波。所问之事：维持现状即是上策，知足常乐。',
     blessing: '春有百花秋有月，夏有凉风冬有雪；若无闲事挂心头，便是人间好时节。',
+    en: {
+      title: 'Boating on a Calm Lake',
+      poem: [
+        'The lake lies mirror-still, with scarce a swell;',
+        'A leaf-like boat drifts slowly out and in.',
+        'Enjoy the quiet fortune where you dwell —',
+        'Covet not the distant hills you’ll never win.',
+      ],
+      meaning:
+        'Everything before you is calm and safe — a fine season for resting and mending body and mind. Do not stir up storms by coveting distant scenery. As for the matter you ask about: keeping the present course is the best policy; contentment is a lasting joy.',
+      blessing: 'Spring has its hundred flowers, autumn its moon; summer its cool wind, winter its snow. With no idle cares weighing on the heart, every season is the best of seasons.',
+    },
   },
   {
     id: 20,
@@ -195,6 +442,18 @@ export const LOTS: GuanyinLot[] = [
     meaning:
       '所问之事关乎争执、分割、合作。硬争则两伤，各退一步则天地皆宽。宜和气协商、主动让利，长久之利反在其中。',
     blessing: '让他三尺又何妨，万里长城今犹在，不见当年秦始皇。',
+    en: {
+      title: 'Each Takes a Step Back',
+      poem: [
+        'To split the gold and draw the line — an ancient war;',
+        'How many feuds have sprung from plots of ground!',
+        'Each yields three feet and the wide world opens far;',
+        'One round of good will keeps you safe and sound.',
+      ],
+      meaning:
+        'The matter you ask about involves contention, division, or cooperation. Pressing hard wounds both sides; each stepping back widens the whole world. Negotiate with good will and offer concessions willingly — the lasting gain lies in that.',
+      blessing: 'What harm in yielding three feet of wall? The Great Wall still stands; the First Emperor of Qin is gone.',
+    },
   },
   {
     id: 21,
@@ -204,6 +463,18 @@ export const LOTS: GuanyinLot[] = [
     meaning:
       '你正用错误的方式解决问题，越用力纠缠越紧。此时宜先放下、抽身、冷却，再作打算。有些事，不解决就是最好的解决。',
     blessing: '应无所住而生其心，放下即自在。',
+    en: {
+      title: 'Carrying Firewood to a Fire',
+      poem: [
+        'You carry wood to quench a fire — it flares;',
+        'You fight the knot, and it winds tighter round.',
+        'Lay down the thousand-fathom knot of cares —',
+        'One turn about, and freedom will be found.',
+      ],
+      meaning:
+        'You are solving the problem the wrong way; the harder you strain, the tighter it holds. Now is the time to lay it down, step back, and let it cool before deciding again. Some things are best left unsolved — that is their solution.',
+      blessing: 'Abide nowhere, let the mind arise; the moment you let go, there is freedom.',
+    },
   },
   {
     id: 22,
@@ -213,6 +484,18 @@ export const LOTS: GuanyinLot[] = [
     meaning:
       '提示你执着于形式而忘了初心。方法、工具、名分皆是指月之指，莫把手指当月亮。所问之事：回到初心，大道至简。',
     blessing: '法尚应舍，何况非法；但得本，不愁末。',
+    en: {
+      title: 'Seeing the Moon, Forgetting the Finger',
+      poem: [
+        'When you see the moon, don’t take the pointing finger for the mind;',
+        'Cling to the words and lose the meaning — you sink.',
+        'The Buddha’s teaching is a raft to leave behind:',
+        'The far shore’s beauty is not won by seeking.',
+      ],
+      meaning:
+        'A reminder that you have fixed on the form and forgotten the original intent. Methods, tools, and titles are all fingers pointing at the moon — do not mistake the finger for the moon. As for the matter you ask about: return to your first intention; the great way is simple.',
+      blessing: 'Even the Dharma should be cast aside, let alone what is not Dharma. Gain the root, and the branches take care of themselves.',
+    },
   },
   {
     id: 23,
@@ -222,6 +505,18 @@ export const LOTS: GuanyinLot[] = [
     meaning:
       '眼下信息不明、方向难辨，非抉择之时。宜按兵不动、多闻多问，待雾散月明再定航向。切忌在迷雾中重注押宝。',
     blessing: '静水流深，人稳不言；待得云开，月明自现。',
+    en: {
+      title: 'Thick Fog at the Ferry',
+      poem: [
+        'The ferry crossing lies locked fast in fog,',
+        'And every road looks like every other there.',
+        'Moor the boat, and do not sail on in the smog:',
+        'When the mist parts, the North Star will stand clear.',
+      ],
+      meaning:
+        'For the moment the information is unclear and the direction unreadable — not a time for decisions. Better to hold still, ask around, and listen more; set your course when the fog clears and the moon comes out. Above all, do not stake everything while blind.',
+      blessing: 'Still waters run deep; the steady man holds his tongue. Wait for the clouds to open, and the moon will show itself.',
+    },
   },
   {
     id: 24,
@@ -231,6 +526,18 @@ export const LOTS: GuanyinLot[] = [
     meaning:
       '所问之事正处萧瑟低谷，人事凋零、心绪低落。然叶落是护根，非树死。守好根本、养精蓄锐，来年自会抽新芽。',
     blessing: '冬天来了，春天还会远吗？',
+    en: {
+      title: 'Autumn Leaves Drifting Down',
+      poem: [
+        'Where the autumn wind gets up, the leaves let go;',
+        'On the bare branches two or three crows complain.',
+        'Sigh not over the bleak scene here below:',
+        'Roots that run deep will meet the spring again.',
+      ],
+      meaning:
+        'The matter you ask about is passing through a bleak low season; people and affairs are thinning, and the heart sits low. But falling leaves protect the root — the tree is not dead. Guard your foundation, husband your strength, and next year will put out new shoots of itself.',
+      blessing: 'If winter comes, can spring be far behind?',
+    },
   },
   {
     id: 25,
@@ -240,6 +547,18 @@ export const LOTS: GuanyinLot[] = [
     meaning:
       '警示之签：大患多起于小疏。所问之事正被细节侵蚀——合同条款、健康习惯、言语分寸。即刻排查补漏，勿因小失大。',
     blessing: '勿以恶小而为之，勿以善小而不为。',
+    en: {
+      title: 'An Ant Hole Breaks the Dyke',
+      poem: [
+        'A thousand-mile dyke bursts at one ant’s hole;',
+        'The smallest oversight brews ruin deep.',
+        'From now on let each smallest thing be whole —',
+        'Check every small thing early: the rule to keep.',
+      ],
+      meaning:
+        'A warning lot: great calamities usually begin in small omissions. The matter you ask about is being eaten away by details — contract clauses, health habits, the measure of a word. Check and repair now; do not lose the great for the small.',
+      blessing: 'Do not do evil because it is small; do not skip good because it is small.',
+    },
   },
   {
     id: 26,
@@ -249,6 +568,18 @@ export const LOTS: GuanyinLot[] = [
     meaning:
       '你陷入自怜自伤的漩涡，把一时失意看成了全部。请抬头：天地广阔，机缘流转。所问之事，换个角度看，未必是坏事。',
     blessing: '心包太虚，量周沙界；一念转，万境宽。',
+    en: {
+      title: 'Pitying Oneself Before the Shadow',
+      poem: [
+        'You pace and sigh before your lonely shade,',
+        'One lamp upon the wall, the moon gone west.',
+        'Lift up your eyes to where the stars parade:',
+        'The everlasting sky keeps no fixed nest.',
+      ],
+      meaning:
+        'You have fallen into the whirlpool of self-pity and mistaken one setback for the whole of your life. Lift your head: heaven and earth are vast, and fortune keeps turning. Looked at from another angle, the matter you ask about may not be bad at all.',
+      blessing: 'The heart enfolds the cosmos; the measure of mind spans the worlds. One thought turns, and ten thousand scenes grow wide.',
+    },
   },
   {
     id: 27,
@@ -258,6 +589,18 @@ export const LOTS: GuanyinLot[] = [
     meaning:
       '一时困顿，非池中之物。眼下环境施展不开，反遭小人轻慢。切莫因此自贬身价；静养锋芒，等待换境或潮信之机。',
     blessing: '他日若得凌云志，敢笑黄巢不丈夫——然则志在度众生，不在傲同侪。',
+    en: {
+      title: 'A Dragon Stranded in Shallow Water',
+      poem: [
+        'In shallow shoals the dragon lies confined,',
+        'By shrimps and minnows mocked, its glory dimmed.',
+        'Grow your scales, wait the tide’s appointed sign —',
+        'Once in deep water, ride the clouds and wind.',
+      ],
+      meaning:
+        'A temporary straitening — you are no pond creature. The present setting gives you no room, and small people slight you. On no account devalue yourself for it; keep your edge quietly and wait for a change of place or the turning tide.',
+      blessing: 'If someday my will mounts the clouds, I might dare laugh at Huang Chao as no hero — yet the true aspiration is to ferry all beings, not to outshine one’s peers.',
+    },
   },
   {
     id: 28,
@@ -267,6 +610,18 @@ export const LOTS: GuanyinLot[] = [
     meaning:
       '意见纷纭，越问越乱。此时莫再外求，静下来回望初心：当初为何出发？答案不在别人的嘴里，而在你最初的那一念。',
     blessing: '不忘初心，方得始终。',
+    en: {
+      title: 'Asking the Way at the Crossroads',
+      poem: [
+        'At the busy crossroads you ask your way,',
+        'And every voice confounds more than the last.',
+        'Stop; look back on the road you walked today:',
+        'The one lamp of first intent will hold you fast.',
+      ],
+      meaning:
+        'Opinions clash and the more you ask the more tangled it grows. Stop seeking outside and quietly recall your starting point: why did you set out? The answer is not in other people’s mouths but in that first thought of yours.',
+      blessing: 'Do not forget the beginning, and the end is assured.',
+    },
   },
   {
     id: 29,
@@ -276,6 +631,18 @@ export const LOTS: GuanyinLot[] = [
     meaning:
       '诸事不顺，逆境叠加，正是消业时。物极必反、否极泰来，此时最忌自乱阵脚。咬牙挺住、收缩开支、简化事务，静待转运。',
     blessing: '不经一番寒彻骨，怎得梅花扑鼻香。',
+    en: {
+      title: 'Frost on Top of Snow',
+      poem: [
+        'Snow heaped with frost — the cold cuts deeper yet;',
+        'The roof leaks, and the night rain lashes in.',
+        'Know: when misfortune peaks, the good is set —',
+        'Clench your teeth and endure the winter keen.',
+      ],
+      meaning:
+        'Nothing is going right and the adversities have stacked up — precisely the season when karmic debt is being paid off. Things reverse at their extreme, and good follows the worst; the one danger now is losing your nerve. Grit your teeth, cut expenses, simplify affairs, and wait quietly for the turn.',
+      blessing: 'Without a spell of biting cold, how would the plum blossom get its piercing fragrance?',
+    },
   },
   {
     id: 30,
@@ -285,6 +652,18 @@ export const LOTS: GuanyinLot[] = [
     meaning:
       '机会错过、追悔无用。与其在悔恨中空转，不如收心回到当下——脚下这一步就是道场。所问之事：止损离场，重新起步。',
     blessing: '过去心不可得，现在心不可得，未来心不可得；安住当下，步步莲花。',
+    en: {
+      title: 'The Sheep Lost at the Forking Roads',
+      poem: [
+        'Lost at the forking roads, the sheep is gone;',
+        'Regret and recollection stretch on and on.',
+        'Call the heart back, turn the light around:',
+        'Every step you tread is a training ground.',
+      ],
+      meaning:
+        'An opportunity is missed, and regret changes nothing. Rather than spin in remorse, bring the mind back to the present — this step beneath your feet is itself the place of practice. As for the matter you ask about: cut the loss, step away, and begin again.',
+      blessing: 'The past mind cannot be grasped, the present mind cannot be grasped, the future mind cannot be grasped. Rest in the now, and every step is a lotus.',
+    },
   },
   {
     id: 31,
@@ -294,6 +673,18 @@ export const LOTS: GuanyinLot[] = [
     meaning:
       '所追求之物如镜花水月，看似美好，实则空幻。此签劝你看破虚名浮利，转向真实的内心富足。放下时，反得大自在。',
     blessing: '一切有为法，如梦幻泡影，如露亦如电，应作如是观。',
+    en: {
+      title: 'Flowers in a Mirror, Moon in the Water',
+      poem: [
+        'Mirror blooms and watery moon — bright but untrue;',
+        'Fame, gain, and honor are all empty too.',
+        'Once you truly see the meaning of the void —',
+        'All the gold of the world could not buy it from you.',
+      ],
+      meaning:
+        'What you are pursuing is like a flower in a mirror or the moon in water — lovely to look at, empty in substance. This lot counsels you to see through hollow fame and profit and turn toward true inner wealth. The moment you let go, you gain the greatest freedom.',
+      blessing: 'All conditioned things are like a dream, a phantom, a bubble, a shadow; like dew, like lightning — thus should you contemplate them.',
+    },
   },
   {
     id: 32,
@@ -303,6 +694,18 @@ export const LOTS: GuanyinLot[] = [
     meaning:
       '最险之签，亦最慈悲。此刻你正行至悬崖而不自知——或有重大风险、错误决策正在酝酿。此签是急刹车的提醒：立即止步，回头即是青天。',
     blessing: '苦海无边，回头是岸；放下屠刀，立地成佛。',
+    en: {
+      title: 'Reining in the Horse at the Cliff’s Edge',
+      poem: [
+        'A blind man on a blind horse rides toward the cliff at night;',
+        'At the brink of danger pull the rein with might.',
+        'Turn the light within, draw rein before the fall —',
+        'One backward step, and open sky is all.',
+      ],
+      meaning:
+        'The most perilous lot, and the most compassionate. At this moment you are nearing the edge without knowing it — a major risk or a wrong decision may be taking shape. This lot is a call to slam on the brakes: stop at once, and one step back is open sky.',
+      blessing: 'Boundless is the sea of suffering — turn back and there is the shore; lay down the butcher’s knife, and become a Buddha on the spot.',
+    },
   },
 ]
 
@@ -321,6 +724,18 @@ export function levelClass(level: LotLevel): string {
       return 'bg-moon-200 text-moon-700'
     case '下下':
       return 'bg-ink-500 text-on-accent'
+  }
+}
+
+/** 依语言取签文（en 缺省时回退中文） */
+export function localizedLot(lot: GuanyinLot, lang: 'zh' | 'en') {
+  if (lang !== 'en') return { level: lot.level, title: lot.title, poem: lot.poem, meaning: lot.meaning, blessing: lot.blessing }
+  return {
+    level: LEVEL_EN[lot.level],
+    title: lot.en.title,
+    poem: lot.en.poem,
+    meaning: lot.en.meaning,
+    blessing: lot.en.blessing,
   }
 }
 

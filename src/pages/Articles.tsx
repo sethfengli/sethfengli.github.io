@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import { useI18n } from '../i18n'
-import { CATALOG, photoForSlug, readingMinutes, type School } from '../lib/content'
+import { CATALOG, localizedMeta, photoForSlug, readingMinutes, schoolLabel, type School } from '../lib/content'
 import { ZenIllustration } from '../components/zen/ZenIllustration'
 import { CoverImage } from '../components/zen/CoverImage'
 import { PageIntro } from '../components/ui/PageBanner'
@@ -9,7 +9,7 @@ import { PageIntro } from '../components/ui/PageBanner'
 const PAGE_SIZE = 24
 
 export function Articles() {
-  const { t } = useI18n()
+  const { t, lang } = useI18n()
   const [params, setParams] = useSearchParams()
   const school = (params.get('school') as School | null) ?? null
   const [query, setQuery] = useState('')
@@ -19,10 +19,15 @@ export function Articles() {
     const q = query.trim().toLowerCase()
     return CATALOG.filter((a) => {
       if (school && a.school !== school) return false
-      if (q && !a.title.toLowerCase().includes(q) && !a.slug.includes(q)) return false
-      return true
+      if (!q) return true
+      const m = localizedMeta(a, lang)
+      return (
+        m.title.toLowerCase().includes(q) ||
+        a.title.toLowerCase().includes(q) ||
+        a.slug.includes(q)
+      )
     })
-  }, [school, query])
+  }, [school, query, lang])
 
   const shown = filtered.slice(0, visible)
 
@@ -35,7 +40,7 @@ export function Articles() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
       {/* 页头 */}
-      <PageIntro kicker="法 藏" title={t('articles.title')} subtitle={t('articles.subtitle')} />
+      <PageIntro kicker={t('articles.kicker')} title={t('articles.title')} subtitle={t('articles.subtitle')} />
 
       {/* 头图横幅（真实照片） */}
       <div className="mx-auto mt-8 h-40 max-w-3xl overflow-hidden rounded-3xl shadow-md shadow-sandalwood-900/10">
@@ -83,7 +88,7 @@ export function Articles() {
           />
         </div>
         <p className="text-xs tabular-nums text-sandalwood-400">
-          {filtered.length} 篇
+          {t('articles.count', { n: filtered.length })}
         </p>
       </div>
 
@@ -95,31 +100,35 @@ export function Articles() {
         </div>
       ) : (
         <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {shown.map((a) => (
-            <Link key={a.slug} to={`/articles/${a.slug}`} viewTransition className="card-link group flex flex-col overflow-hidden">
-              <div className="relative overflow-hidden">
-                <CoverImage
-                  src={photoForSlug(a.slug)}
-                  alt={`${a.title} · 配图`}
-                  fallbackVariant={a.illustration}
-                  className="h-32 w-full transition-transform duration-500 group-hover:scale-105"
-                />
-                <span className="absolute top-3 left-3 rounded-full bg-sandalwood-950/70 px-2.5 py-1 text-[10px] tracking-wider text-gold-200 backdrop-blur-sm">
-                  {schoolName(a.school)}
-                </span>
-              </div>
-              <div className="flex flex-1 flex-col p-5">
-                <h2 className="font-serif text-base font-bold text-sandalwood-800 transition group-hover:text-tibetan-700">
-                  《{a.title}》
-                </h2>
-                <p className="mt-2 line-clamp-2 flex-1 font-serif text-sm leading-relaxed text-ink-700">{a.excerpt}</p>
-                <div className="mt-4 flex items-center justify-between text-xs text-sandalwood-400">
-                  <span>{a.author ? `作者：${a.author}` : t('reader.authorLabel')}</span>
-                  <span>{t('articles.readingTime', { n: readingMinutes(a.chars) })}</span>
+          {shown.map((a) => {
+            const m = localizedMeta(a, lang)
+            const quoted = lang === 'zh' ? `《${m.title}》` : m.title
+            return (
+              <Link key={a.slug} to={`/articles/${a.slug}`} viewTransition className="card-link group flex flex-col overflow-hidden">
+                <div className="relative overflow-hidden">
+                  <CoverImage
+                    src={photoForSlug(a.slug)}
+                    alt={t('home.coverAlt', { t: m.title })}
+                    fallbackVariant={a.illustration}
+                    className="h-32 w-full transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <span className="absolute top-3 left-3 rounded-full bg-sandalwood-950/70 px-2.5 py-1 text-[10px] tracking-wider text-gold-200 backdrop-blur-sm">
+                    {schoolLabel(a.school, lang)}
+                  </span>
                 </div>
-              </div>
-            </Link>
-          ))}
+                <div className="flex flex-1 flex-col p-5">
+                  <h2 className="font-serif text-base font-bold text-sandalwood-800 transition group-hover:text-tibetan-700">
+                    {quoted}
+                  </h2>
+                  <p className="mt-2 line-clamp-2 flex-1 font-serif text-sm leading-relaxed text-ink-700">{m.excerpt}</p>
+                  <div className="mt-4 flex items-center justify-between text-xs text-sandalwood-400">
+                    <span>{m.author ? t('common.authorBy', { name: m.author }) : t('reader.authorLabel')}</span>
+                    <span>{t('articles.readingTime', { n: readingMinutes(a.chars) })}</span>
+                  </div>
+                </div>
+              </Link>
+            )
+          })}
         </div>
       )}
 
@@ -133,17 +142,6 @@ export function Articles() {
       )}
     </div>
   )
-}
-
-function schoolName(school: School): string {
-  switch (school) {
-    case 'jing':
-      return '净修院'
-    case 'chan':
-      return '禅修院'
-    case 'xiuxue':
-      return '修学园地'
-  }
 }
 
 function FilterChip({

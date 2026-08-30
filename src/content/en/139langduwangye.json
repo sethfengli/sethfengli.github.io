@@ -1,0 +1,649 @@
+{
+  "slug": "139langduwangye",
+  "title": "Reading Web Pages Aloud with a Computer",
+  "author": "Zhiyu",
+  "excerpt": "Living beings in the Sahā world have the keenest ear faculty. Listening while reading is often easier to understand and remember than reading alone. Therefore, you can use a computer to read the teaching materials aloud while you listen and read along. Moreover, you can steep yourself in the teachings through repeated listening.",
+  "blocks": [
+    {
+      "t": "p",
+      "inline": [
+        {
+          "s": "Living beings in the Sahā world have the keenest ear faculty. Listening while reading is often easier to understand and remember than reading alone. Therefore, you can use a computer to read the teaching materials aloud while you listen and read along. Moreover, you can steep yourself in the teachings through repeated listening."
+        }
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        {
+          "s": "There are two ways to have a computer read the teaching materials aloud: use a browser extension, or use text-to-speech software."
+        }
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        {
+          "s": "You can install the free browser extension “"
+        },
+        {
+          "s": "Read Aloud”"
+        },
+        {
+          "s": " to read selected text aloud; it is very convenient. The method is as follows:"
+        }
+      ]
+    },
+    {
+      "t": "h2",
+      "text": "1. Install “Read Aloud”"
+    },
+    {
+      "t": "p",
+      "inline": [
+        {
+          "s": "Click the following web address to go to the “"
+        },
+        {
+          "s": "Chrome Web Store — Extensions"
+        },
+        {
+          "s": "” page, then click “Add to"
+        },
+        {
+          "s": "Chrome”"
+        },
+        {
+          "s": " (as shown in the figure below)."
+        }
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        {
+          "s": "https://chrome.google.com/webstore/detail/read-aloud-a-text-to-spee/hdhinadidafjejdhmfkjgnolgimiaplp?hl=zh-CN"
+        }
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        {
+          "s": "Note: if you are using the 360 Browser, the steps above work just the same."
+        }
+      ]
+    },
+    {
+      "t": "h2",
+      "text": "2. Read the Selected Text Aloud"
+    },
+    {
+      "t": "p",
+      "inline": [
+        {
+          "s": "Move the mouse to select the text you wish to have read aloud on the web page, right-click, and “"
+        },
+        {
+          "s": "Read Aloud”"
+        },
+        {
+          "s": " will appear on the menu; click it and the computer will read aloud automatically."
+        }
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        {
+          "s": "If you want to stop or pause the reading, click the"
+        },
+        {
+          "s": "“"
+        },
+        {
+          "s": "Read Aloud” icon on the toolbar (as shown below); a window will appear with"
+        },
+        {
+          "s": "the stop and pause icons."
+        }
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        {
+          "s": "Q: My browser cannot install"
+        },
+        {
+          "s": "“"
+        },
+        {
+          "s": "Read Aloud.”"
+        },
+        {
+          "s": " What should I do?"
+        }
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        {
+          "s": "A: You can install it using the “360 Safe Browser.” Alternatively, you can first install “Google Chrome,” and then install"
+        },
+        {
+          "s": "“"
+        },
+        {
+          "s": "Read Aloud”"
+        },
+        {
+          "s": " on it."
+        }
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        {
+          "s": "Because"
+        },
+        {
+          "s": " the “360 Safe Browser” and “Google Chrome” use different voice libraries and different voices, you can compare them and see which one you prefer."
+        }
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        {
+          "s": "To install Google Chrome,"
+        },
+        {
+          "s": "click the following web address:"
+        }
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        {
+          "s": "https://www.google.com/intl/en/chrome/?standalone=1"
+        }
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        {
+          "s": "On the page that appears (as shown below), click “"
+        },
+        {
+          "s": "Download Chrome”"
+        },
+        {
+          "s": " to install “Google Chrome,” the official Google version."
+        }
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        {
+          "s": "By the way, Google has a “Google Translate” page that can translate between English and Chinese; it is very convenient. Its web address is:"
+        }
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        {
+          "s": "https://translate.google.cn/#en/zh-CN/An%20object%20apparent%20to%20the%20mind.https%3A"
+        }
+      ]
+    },
+    {
+      "t": "quote",
+      "inline": [
+        {
+          "s": "Text-to-speech software is a tool that helps us study. Like any other tool, the more you use it, the more skilled you become, the more noticeable the results, and the better you can put it to good use. If you are not familiar with installing and configuring the software, ask a friend who knows to help; you need only use it. This tool"
+        },
+        {
+          "s": "has two modes:"
+        },
+        {
+          "s": "the web-page reading mode"
+        },
+        {
+          "s": "and"
+        },
+        {
+          "s": "the video viewing mode"
+        },
+        {
+          "s": "."
+        }
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        {
+          "s": "There are quite a few text-to-speech programs; for example, “Langdunü” (Read-Aloud Girl) is a simple and easy-to-use one. The methods for using “Langdunü” to read web pages aloud and to view in video mode are introduced below:"
+        }
+      ]
+    },
+    {
+      "t": "h2",
+      "text": "1. Download and Install Langdunü"
+    },
+    {
+      "t": "p",
+      "inline": [
+        {
+          "s": "This software can be downloaded from the official website of “Langdunü.” Its web address is:"
+        },
+        {
+          "s": "http://www.443w.com/tts/"
+        }
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        {
+          "s": "After downloading, extract and install it. When running, the interface of “Langdunü” looks like the figure below:"
+        }
+      ]
+    },
+    {
+      "t": "h2",
+      "text": "2. Select a Voice"
+    },
+    {
+      "t": "p",
+      "inline": [
+        {
+          "s": "There are online voices and offline voices."
+        }
+      ]
+    },
+    {
+      "t": "h3",
+      "text": "(1) Online Voice"
+    },
+    {
+      "t": "p",
+      "inline": [
+        {
+          "s": "On the “Langdunü” interface, click the icon to the right of “Voice” to select an online voice."
+        }
+      ]
+    },
+    {
+      "t": "h3",
+      "text": "(2) Offline Voice"
+    },
+    {
+      "t": "p",
+      "inline": [
+        {
+          "s": "To use an offline voice, you must first download and install a voice library. The method is as follows:"
+        }
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        {
+          "s": "At the bottom of the “Langdunü” interface there is a “Download Voice” icon; after clicking it, you will enter the download page. Choose the voice library you want, for example: “"
+        },
+        {
+          "s": "Liang"
+        },
+        {
+          "s": " Chinese Male Voice” and “"
+        },
+        {
+          "s": "Hui"
+        },
+        {
+          "s": " Chinese Female Voice.” These two voice libraries not only sound good, but also have a “custom pronunciation” function that lets you redefine the pronunciation of a particular word to suit your needs."
+        }
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        {
+          "s": "After downloading, extract and install them."
+        }
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        {
+          "s": "Now, using “"
+        },
+        {
+          "s": "Liang"
+        },
+        {
+          "s": " Chinese Male Voice” as an example, here is how to extract and install:"
+        }
+      ]
+    },
+    {
+      "t": "quote",
+      "inline": [
+        {
+          "s": "1."
+        },
+        {
+          "s": "Extract the downloaded"
+        },
+        {
+          "s": "cn-Liang-y.zip"
+        },
+        {
+          "s": " file to a folder of your choice. ("
+        },
+        {
+          "s": "Note:"
+        },
+        {
+          "s": " the names of this folder and the folders above it must all be in Latin letters and not in Chinese characters, otherwise it will not work properly! You can create a folder called yuyinku, then put all the voice-library files in this folder to extract and install them, which makes them easier to manage.)"
+        }
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        {
+          "s": "2."
+        },
+        {
+          "s": "Enter the extracted"
+        },
+        {
+          "s": "Liang"
+        },
+        {
+          "s": " folder and find “the voice-library service start/stop program"
+        },
+        {
+          "s": ".exe”"
+        },
+        {
+          "s": ", double-click the file, then click “Start Voice Library Service.”"
+        }
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        {
+          "s": "3."
+        },
+        {
+          "s": "Open “Langdunü” again, and in the “Voice” field select"
+        },
+        {
+          "s": "VW Liang"
+        },
+        {
+          "s": ", and you can use this voice library to read text aloud."
+        }
+      ]
+    },
+    {
+      "t": "h2",
+      "text": "3. Read Web Pages Aloud"
+    },
+    {
+      "t": "p",
+      "inline": [
+        {
+          "s": "Select a passage you wish to have read aloud on the web page, then press the"
+        },
+        {
+          "s": "F1"
+        },
+        {
+          "s": " key to read it aloud. (If for some reason the F1 key does not work, you can use “copy-paste” to paste the passage into the reading interface to read it aloud.)"
+        }
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        {
+          "s": "You can also right-click and select the whole article, then press the"
+        },
+        {
+          "s": "F1"
+        },
+        {
+          "s": " key to read it aloud. (If for some reason the F1 key does not work, you can use “copy-paste” to paste the passage into the reading interface to read it aloud.) You can also click “File” on the menu to save the text for later reading. When reading, it will automatically resume from where it last stopped. To restart the reading from a certain point, simply double-click that point in the text in the “Langdunü” interface."
+        }
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        {
+          "s": "The loudness can be adjusted by clicking the speaker icon (volume)."
+        }
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        {
+          "s": "The speed of reading can be set by clicking the “speed” icon to the right of the speaker icon."
+        }
+      ]
+    },
+    {
+      "t": "h2",
+      "text": "4. Setting Hotkeys"
+    },
+    {
+      "t": "p",
+      "inline": [
+        {
+          "s": "For convenience, you can set"
+        },
+        {
+          "s": "F2"
+        },
+        {
+          "s": " as the “pause"
+        },
+        {
+          "s": "/"
+        },
+        {
+          "s": "resume” hotkey. The method is as follows:"
+        }
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        {
+          "s": "Click “Settings” in the row below the menu, then click “Hotkey Settings”; in the “pause"
+        },
+        {
+          "s": "/"
+        },
+        {
+          "s": "resume” field, press the “"
+        },
+        {
+          "s": "F2”"
+        },
+        {
+          "s": " key (as shown below), and the setting takes effect. While reading, press the “"
+        },
+        {
+          "s": "F2”"
+        },
+        {
+          "s": " key to pause or resume."
+        }
+      ]
+    },
+    {
+      "t": "h2",
+      "text": "5. Custom Pronunciation"
+    },
+    {
+      "t": "p",
+      "inline": [
+        {
+          "s": "For certain words or phrases, if the voice's pronunciation is unsatisfactory, you can use the “escape characters” function to set the pronunciation. For example, for “hùliánwǎng (the Internet)"
+        },
+        {
+          "s": "+”"
+        },
+        {
+          "s": ", the voice will usually read only “hùliánwǎng,” while the “"
+        },
+        {
+          "s": "+”"
+        },
+        {
+          "s": " will not be read at all. You can go to the “escape characters” page under “Settings” to set it so that it reads “hùliánwǎng jiā” (as shown below):"
+        }
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        {
+          "s": "1"
+        },
+        {
+          "s": ". Single-click to select “Enable: escape-character function.”"
+        }
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        {
+          "s": "2"
+        },
+        {
+          "s": ". In the “Add” and “Delete” row below, enter the pronunciation to be set: hùliánwǎng"
+        },
+        {
+          "s": "+"
+        },
+        {
+          "s": " hùliánwǎng jiā."
+        }
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        {
+          "s": "3"
+        },
+        {
+          "s": ". Single-click “Add.”"
+        }
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        {
+          "s": "4. Return to the “Read” interface."
+        }
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        {
+          "s": "Another example: “bōrě” (prajñā) would be read with the sound “bānruò,” and “xíng zhù zuò wò” (walking, standing, sitting, and lying down) would be read with the sound “háng zhù zuò wò.” So you can use the “escape characters” page to set up replacements so that they are read with the correct sounds “bōruò” and “xíng zhù zuò wò.”"
+        }
+      ]
+    },
+    {
+      "t": "h2",
+      "text": "6. Video Mode"
+    },
+    {
+      "t": "p",
+      "inline": [
+        {
+          "s": "If you like the content being read to be displayed on the desktop sentence by sentence, like watching a video, click “Read” on the “Langdunü” menu, then click “open"
+        },
+        {
+          "s": "/"
+        },
+        {
+          "s": "close desktop subtitles.” (If you later want to close the desktop subtitles, just do the same thing again.)"
+        }
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        {
+          "s": "When the mouse points at the desktop subtitles, a toolbar for setting the subtitles will appear; from it you can set the color and font of the subtitles, and choose kara"
+        },
+        {
+          "s": "ok"
+        },
+        {
+          "s": "e mode or non-kara"
+        },
+        {
+          "s": "ok"
+        },
+        {
+          "s": "e mode, as well as close the subtitles."
+        }
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        {
+          "s": "For the “custom pronunciation” method in video mode, see"
+        },
+        {
+          "s": "The Text-to-Speech Tool",
+          "href": "/articles/060yuyinlangdu"
+        },
+        {
+          "s": ", the section “Custom Voice.”"
+        }
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        {
+          "s": "Further reading:"
+        }
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        {
+          "s": "The Text-to-Speech Tool",
+          "href": "/articles/060yuyinlangdu"
+        }
+      ]
+    }
+  ]
+}
