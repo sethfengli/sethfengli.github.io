@@ -1,163 +1,163 @@
 {
-  "slug": "060yuyinku",
-  "title": "MyTmp",
-  "excerpt": "1. In the lower part of the 'Langdunü' interface (see the figure below), click 'Download Voice' to enter the download page. Or, visit the download page directly (its URL is: http://www.443w.com/tts/?post=2).",
-  "blocks": [
+ "slug": "060yuyinku",
+ "title": "Downloading and Installing the Voice Library",
+ "excerpt": "1. In the lower part of the 'Langdunü' interface (see the figure below), click 'Download Voice' to enter the download page. Or, visit the download page directly (its URL is: http://www.443w.com/tts/?post=2).",
+ "blocks": [
+  {
+   "t": "h2",
+   "text": "Downloading and Installing a Voice Library"
+  },
+  {
+   "t": "h3",
+   "text": "1. Downloading the Voice Library"
+  },
+  {
+   "t": "p",
+   "inline": [
     {
-      "t": "h2",
-      "text": "Downloading and Installing a Voice Library"
+     "s": "1. In the lower part of the 'Langdunü' interface (see the figure below), click 'Download Voice' to enter the download page. Or, visit the download page directly (its URL is:"
     },
     {
-      "t": "h3",
-      "text": "1. Downloading the Voice Library"
+     "s": "http://www.443w.com/tts/?post=2"
     },
     {
-      "t": "p",
-      "inline": [
-        {
-          "s": "1. In the lower part of the 'Langdunü' interface (see the figure below), click 'Download Voice' to enter the download page. Or, visit the download page directly (its URL is:"
-        },
-        {
-          "s": "http://www.443w.com/tts/?post=2"
-        },
-        {
-          "s": ")."
-        }
-      ]
-    },
-    {
-      "t": "p",
-      "inline": [
-        {
-          "s": "2. After entering the voice library download page,"
-        }
-      ]
-    },
-    {
-      "t": "p",
-      "inline": [
-        {
-          "s": "1"
-        },
-        {
-          "s": ". First, preview the pronunciation of the speaker;"
-        }
-      ]
-    },
-    {
-      "t": "p",
-      "inline": [
-        {
-          "s": "2"
-        },
-        {
-          "s": ". If you like it, click the download link to download it (as shown below)."
-        }
-      ]
-    },
-    {
-      "t": "p",
-      "inline": [
-        {
-          "s": "3. After entering the relevant cloud-disk address, simply click to download (see the figure below):"
-        }
-      ]
-    },
-    {
-      "t": "h3",
-      "text": "2. Installing the Voice Library"
-    },
-    {
-      "t": "p",
-      "inline": [
-        {
-          "s": "After downloading the voice library (speaker), follow the usage instructions in the file package to install the voice library."
-        }
-      ]
-    },
-    {
-      "t": "p",
-      "inline": [
-        {
-          "s": "1. Extract the files"
-        }
-      ]
-    },
-    {
-      "t": "p",
-      "inline": [
-        {
-          "s": "Right-click the downloaded compressed file (for example, '"
-        },
-        {
-          "s": "cn-Lily-y.zip'"
-        },
-        {
-          "s": "), and choose which folder to extract it to. (Note: the names of this folder and all folders above it must be in English, otherwise it will not work properly!)"
-        }
-      ]
-    },
-    {
-      "t": "p",
-      "inline": [
-        {
-          "s": "2. Start the voice library"
-        }
-      ]
-    },
-    {
-      "t": "p",
-      "inline": [
-        {
-          "s": "Enter the voice library folder you just extracted and double-click 'Start and Stop Voice Service Program"
-        },
-        {
-          "s": ".exe'"
-        },
-        {
-          "s": "."
-        }
-      ]
-    },
-    {
-      "t": "p",
-      "inline": [
-        {
-          "s": "Note: some antivirus software may mistakenly report 'Start and Stop Voice Service Program' as a virus. If it is removed as a virus by your antivirus software, please recover the file, mark it as trusted, and then run it."
-        }
-      ]
-    },
-    {
-      "t": "p",
-      "inline": [
-        {
-          "s": "Click 'Start Voice Service,' and the following dialog box will appear; select 'Yes.'"
-        }
-      ]
-    },
-    {
-      "t": "p",
-      "inline": [
-        {
-          "s": "Then another dialog box will appear; select 'OK' to complete the installation of the voice library."
-        }
-      ]
-    },
-    {
-      "t": "h3",
-      "text": "3. Selecting the Voice Library (Speaker)"
-    },
-    {
-      "t": "p",
-      "inline": [
-        {
-          "s": "After installing the voice library, restart 'Langdunü,' click 'Speaker,' and after the 'Speaker' list appears, click the speaker you just installed, and you can use it to read text aloud."
-        }
-      ]
-    },
-    {
-      "t": "h2",
-      "text": "Editing a Custom Pronunciation Table"
+     "s": ")."
     }
-  ]
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "2. After entering the voice library download page,"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "1"
+    },
+    {
+     "s": ". First, preview the pronunciation of the speaker;"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "2"
+    },
+    {
+     "s": ". If you like it, click the download link to download it (as shown below)."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "3. After entering the relevant cloud-disk address, simply click to download (see the figure below):"
+    }
+   ]
+  },
+  {
+   "t": "h3",
+   "text": "2. Installing the Voice Library"
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "After downloading the voice library (speaker), follow the usage instructions in the file package to install the voice library."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "1. Extract the files"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Right-click the downloaded compressed file (for example, '"
+    },
+    {
+     "s": "cn-Lily-y.zip'"
+    },
+    {
+     "s": "), and choose which folder to extract it to. (Note: the names of this folder and all folders above it must be in English, otherwise it will not work properly!)"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "2. Start the voice library"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Enter the voice library folder you just extracted and double-click 'Start and Stop Voice Service Program"
+    },
+    {
+     "s": ".exe'"
+    },
+    {
+     "s": "."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Note: some antivirus software may mistakenly report 'Start and Stop Voice Service Program' as a virus. If it is removed as a virus by your antivirus software, please recover the file, mark it as trusted, and then run it."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Click 'Start Voice Service,' and the following dialog box will appear; select 'Yes.'"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Then another dialog box will appear; select 'OK' to complete the installation of the voice library."
+    }
+   ]
+  },
+  {
+   "t": "h3",
+   "text": "3. Selecting the Voice Library (Speaker)"
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "After installing the voice library, restart 'Langdunü,' click 'Speaker,' and after the 'Speaker' list appears, click the speaker you just installed, and you can use it to read text aloud."
+    }
+   ]
+  },
+  {
+   "t": "h2",
+   "text": "Editing a Custom Pronunciation Table"
+  }
+ ]
 }

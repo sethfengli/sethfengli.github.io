@@ -1,301 +1,1445 @@
 {
-  "000jxdg-chan": { "title": "Teaching Syllabus", "excerpt": "Studying Buddhism is practice — practice exactly as the Buddha taught." },
-  "001juezhichan": { "title": "Awareness Chan", "author": "Zhanran", "excerpt": "In its cultivation there is a graded entry; in its realization there is the truth attained for oneself." },
-  "001jznf": { "title": "Awareness Buddha-Recitation", "author": "Zhanran", "excerpt": "In its cultivation there is a graded entry; in its realization there is the truth attained for oneself." },
-  "001zyxuefo": { "title": "How to Study Buddhism", "author": "Zhiyu", "excerpt": "Studying Buddhism is practice — practice exactly as the Buddha taught." },
-  "001zyxuefo-ft": { "title": "How to Study Buddhism", "author": "Zhiyu", "excerpt": "The purpose of studying Buddhism is to seek the Buddha Way above and to transform living beings below. This is also the great mission of every Buddhist practitioner. How, then, is this purpose to be fulfilled and this mission accomplished?" },
-  "002baiyunxy": { "title": "The Heart-Essence of the White Cloud (A Treasured Manual on Observing the Mind)", "author": "Just Observe Your Own Mind", "excerpt": "This book is compiled from The Essentials of the Buddhadharma and The Letters of Mr. Liu Zhuyuan. Its author, Mr. Liu Zhuyuan (Master Changzong), was a modern-day sage, deeply versed in the scriptural treasury and thoroughly practiced in doctrinal contemplation; because he lived in seclusion, few knew of him. The depth of his attainment and the height of his realization can be seen in the following three points..." },
-  "002fangsw": { "title": "Master Yinguang on Releasing Living Beings (Original Text and Vernacular)", "author": "By Master Yinguang", "excerpt": "(Original title: An Appeal for the Restoration of the Life-Release Pond at Nanxun Temple of Ultimate Bliss.)" },
-  "003xffayuanw": { "title": "Annotated Vow of Rebirth in the Western Land", "author": "Annotated by Zhanran", "excerpt": "The Vow of Rebirth in the Western Land was composed by Master Lianchi, the eighth patriarch of the Pure Land school and a renowned Ming-dynasty monk, as a vow to be reborn in the Western Land of Ultimate Bliss. There are many such vows, but this one alone is complete in principle and practice and supremely perfect, so Master Xing'an (the eleventh patriarch of the Pure Land school) said..." },
-  "004yixinbuluan": { "title": "One-Pointed Mind, Undisturbed", "author": "Zhanran", "excerpt": "The Buddha Speaks of the Amitabha Sutra is the heart-essence that the World-Honored One preached without being asked, a profound sutra praised by Buddhas of all directions, the wondrous teaching of ultimate skillful means, and the consummate and perfect guide. In this sutra the World-Honored One specifically taught how to ensure rebirth in the Western Land of Ultimate Bliss: faith, aspiration, and mindful invocation, single-minded and undisturbed — thereby establishing the Pure Land school's..." },
-  "005rsxiuxing": { "title": "Practice as Taught", "author": "Zhanran", "excerpt": "The Amitabha Sutra has two translations: one translated by Master Kumārajīva in the Later Qin, commonly called the Qin translation, and one by Master Xuanzang in the Tang dynasty, commonly called the Tang translation. Adapting to the Chinese preference for brevity, Master Kumārajīva translated mainly by meaning; his text is concise yet rich..." },
-  "006linzhongzn": { "title": "Right Mindfulness at the Moment of Death", "author": "Zhanran", "excerpt": "The principle of rebirth: right mindfulness at the moment of death evokes the Buddha's coming to welcome one." },
-  "007deshengyf": { "title": "Whether One Is Reborn", "author": "Zhanran", "excerpt": "Question: What does it mean that “whether one attains rebirth depends entirely on the presence of faith and aspiration, while the grade of one's rebirth depends entirely on the depth of one's mindful invocation”?" },
-  "007xinyuanxing": { "title": "Faith, Aspiration, and Practice", "author": "Zhanran", "excerpt": "Faith, aspiration, and practice are the three essential elements for rebirth in the Western Land of Ultimate Bliss — like the three legs of a tripod, none may be lacking. On the meaning and mutual relationship of these three, Master Ouyi gives clear instruction in his Essential Explanation of the Amitabha Sutra (see the Annotated Essential Explanation of the Amitabha Sutra):" },
-  "008yinianxy": { "title": "One Thought in Accord", "author": "Annotated by Zhanran", "excerpt": "Excerpted from Master Chewu's Collected Works: A Letter in Reply to Layman Xiangyan." },
-  "009xiuwfayao": { "title": "The Essentials of Cultivation and Awakening", "author": "Annotated by Zhanran", "excerpt": "Cultivation: following the flow of one's own mind's manifestations and purging away deluded thoughts and habitual patterns." },
-  "010dzjcy": { "title": "A Glossary of Terms in the Sutra of the Original Vows of Ksitigarbha Bodhisattva", "author": "Glossary of Terms", "excerpt": "What to know when reciting the Sutra of the Original Vows of Ksitigarbha Bodhisattva." },
-  "011errusx": { "title": "A Detailed Exposition of the Treatise on the Two Entrances and Four Practices", "author": "Directly transmitted by Patriarch Bodhidharma", "excerpt": "The Treatise on the Two Entrances and Four Practices is the essential teaching on entering the Way that Patriarch Bodhidharma personally transmitted to Daoyu and Huike, as recorded by his disciple Tanlin. Concise in words yet rich in meaning, complete in both principle and practice, it is truly the guiding outline of the Chan school and a compass for practitioners." },
-  "012liuzutanjing_kp": { "title": "The Platform Sutra of the Sixth Patriarch (with Section Divisions)", "author": "Recorded by the disciple Fahai", "excerpt": "Zhanran's note: The subheadings under each chapter are structural divisions, not part of the sutra text." },
-  "013zhufasx": { "title": "The True Mark of All Dharmas", "author": "Zhanran", "excerpt": "The true mark of all dharmas is the fundamental principle of the Buddhadharma and the watershed between the Buddhadharma and the doctrines of non-Buddhists and demons. The Treasury of Dharma Teachings states: “All the Mahayana sutras preached by the Tathagata are sealed and established by the principle of the true mark. Non-Buddhists cannot adulterate it, and heavenly demons cannot destroy it. Where there is the seal of the true mark, it is the Buddha's teaching; where there is no such seal, it is the teaching of demons...”" },
-  "014guanxincx": { "title": "Observing the Mind to Remove Habitual Patterns", "excerpt": "Extracted from Mr. Xu Hengzhi's What It Means to Study Buddhism and How to Practice the Buddhadharma." },
-  "016xdwsjwl": { "title": "Records of Modern-Day Rebirths", "excerpt": "[Note] For the convenience of modern readers, the wording has been slightly revised." },
-  "017jdwsswl": { "title": "Records of Recent Rebirths", "author": "Compiled by Master Kuanlü", "excerpt": "The compiler of this book, Master Kuanlü, whose Dharma name was Foxing, was over eighty years old and a native of Zhejiang Province. In 1952 he went to Shanghai, took refuge with the Elder Master Xuyun, and was ordained. Later Master Xuyun asked him to reside at Nanhua Monastery. At that time Nanhua Monastery had been severely damaged during the Cultural Revolution, with most of its scriptures ruined beyond repair. Together with six lay practitioners from Shanghai..." },
-  "018xinyzx": { "title": "Mind, Self-Nature, and the Tathagatagarbha", "author": "Zhanran", "excerpt": "1. Self-nature, original nature (the tathagatagarbha), and the nature of consciousness." },
-  "019xinnzy": { "title": "The Mind Can Transform Karma", "author": "Karma Cannot Bind", "excerpt": "By replacing them with the Buddha's name, one transforms karma through the mind." },
-  "020taishanggy-1": { "title": "The Treatise on Response and Retribution, Compiled (Vernacular, Volume 1)", "author": "The Way to Gather Blessings and Avert Disasters", "excerpt": "The Most High says: “Fortune and misfortune have no gate; they are summoned only by people themselves.”" },
-  "021taishanggy-2": { "title": "The Treatise on Response and Retribution, Compiled (Volume 2)", "author": "The Way to Gather Blessings and Avert Disasters", "excerpt": "Regard others' gains as your own gains, and others' losses as your own losses." },
-  "022taishanggy-3": { "title": "The Treatise on Response and Retribution, Compiled (Vernacular, Volume 3)", "author": "The Way to Gather Blessings and Avert Disasters", "excerpt": "The Treatise of the Most High on Response and Retribution, with Annotations, Lectures, and Attested Cases — Vernacular Abridged Edition, Volume 3." },
-  "023taishanggy-4": { "title": "The Treatise on Response and Retribution, Compiled (Vernacular, Volume 4)", "author": "The Way to Gather Blessings and Avert Disasters", "excerpt": "Pointing to heaven and earth to bear witness to one's base feelings, invoking the gods to scrutinize one's shameful deeds." },
-  "024lfsx-yw": { "title": "The Four Lessons of Liaofan (Original Text)", "author": "The Study of Establishing One's Destiny", "excerpt": "In my childhood I lost my father. My aging mother bade me give up the examinations and study medicine, saying, “It can sustain life and relieve others; and mastering a craft to make a name for yourself was your father's long-cherished wish.”" },
-  "025taishanggy-yw": { "title": "The Treatise on Response and Retribution, Compiled (Original Text)", "author": "In Praise of Lord Yao Duanke", "excerpt": "The Treatise of the Most High on Response and Retribution, with Annotations, Lectures, and Attested Cases, Volume 1." },
-  "026yjy-baihua": { "title": "The Story of Yu Jingyi's Encounter with the Kitchen God, in Vernacular and Original Text (A Model for Transforming Destiny)", "author": "Translated by Mingde", "excerpt": "Note: The headings in the text were added by the translator." },
-  "027lfsx-baihua": { "title": "The Four Lessons of Liaofan, Original Text and Vernacular", "author": "Translated by Mingde", "excerpt": "Note: The subheadings in the text were added by the translator." },
-  "028baofufa": { "title": "How to Preserve Wealth", "author": "Nie Yuntai", "excerpt": "The author of How to Preserve Wealth, Mr. Nie Yuntai, was a grandson of the famous Qing statesman Zeng Guofan and the first chairman of the Shanghai Chamber of Commerce. Drawing on his own family's experience and the rise and fall of wealthy families he saw in Shanghai, he discusses how prosperous families can endure and flourish. It is well worth reading, especially in the present age." },
-  "030gonggg": { "title": "The Ledger of Merits and Demerits", "author": "Translated and annotated by Mingde", "excerpt": "The ledger of merits and demerits is a book for those who refrain from evil and practice good to encourage and examine themselves. It has two sections — a merit register (good deeds) and a demerit register (bad deeds) — one page per month, bound into a book. Day by day one records the merits and demerits of one's deeds, whether good or evil — for example, one merit, ten merits, a hundred merits; one demerit, ten demerits, a hundred demerits. Only the number is recorded, not the matter..." },
-  "031liaozhibingj": { "title": "The Sutra on Healing Hemorrhoids, Spoken by the Buddha", "excerpt": "Thus have I heard. At one time the Bhagavan was dwelling in the Bamboo Grove of the great city of Rajagriha, together with a great assembly of five hundred bhikshus. At that time many bhikshus were afflicted with hemorrhoids; their bodies were emaciated and wasted, wrapped in suffering, tormented day and night by extreme distress..." },
-  "032xyxing": { "title": "Yearning for Ultimate Bliss, Renouncing Samsara", "author": "Zhanran", "excerpt": "The suffering of Samsara is beyond words; the bliss of Ultimate Bliss is beyond compare." },
-  "033shiyixinyuliyixin": { "title": "One-Pointed Mind in Practice and in Principle", "author": "Zhanran", "excerpt": "Question: What are the one-pointed mind in practice and the one-pointed mind in principle?" },
-  "034xiaochujiuye": { "title": "Eliminating Past Karma", "author": "Zhanran", "excerpt": "Answer: Master Hanshan instructs in his Dream Roamings: An Admonition to Dong Zhiguang:" },
-  "035shifajietujie": { "title": "An Illustrated Explanation of the Ten Dharma Realms", "author": "Compiled and annotated by Zhanran", "excerpt": "The ordinary and the sage do not go beyond the one mind; good and evil are both created by the mind." },
-  "036yinianbusheng": { "title": "Not a Single Thought Arises", "author": "Annotated by Zhanran", "excerpt": "(Excerpted from Master Hanshan's Dream Roamings: To Bao Zhongsu of the Ministry of Rites.)" },
-  "037zhufasxg": { "title": "Contemplation of the True Mark of All Dharmas", "excerpt": "Excerpted from The Essential Method of Contemplation (translated by Master Kumārajīva of the Later Qin). Annotated by Zhanran." },
-  "038jingsheyw": { "title": "Vow to Establish a Pure Land Society During Grave Illness", "author": "By Master Ouyi", "excerpt": "[On the thirteenth day of the twelfth month of the Jiawu year, the bodhisattva-precept disciple Zhixu single-mindedly took refuge in Amitābha Buddha of the Land of Ultimate Bliss, Avalokiteśvara, Mahāsthāmaprāpta, the pure ocean-wide assembly, and all the Triple Gem of the ten directions and three times.]" },
-  "039nianerwunian": { "title": "Reciting Yet Not Reciting", "author": "Annotated by Zhanran", "excerpt": "All his life Mr. Jiang Weinong taught the Prajñā and practiced with Amitābha, deeply attaining the essentials of Buddha-recitation. At the moment of death he said himself: “A golden light shines everywhere; the Buddha has come to welcome me.” And amid the sound of the Buddha's name he passed away in peace." },
-  "040busbumie": { "title": "Neither Arising Nor Ceasing", "author": "Zhanran", "excerpt": "Question: In the sutras and treatises, what does “neither arising nor ceasing” mean? Does it mean eternal existence?" },
-  "040zhaozgz": { "title": "Does a Dog Have Buddha-Nature?", "author": "Zhanran", "excerpt": "“Does a dog have Buddha-nature or not?” This is one of the most famous koans in Chan. It is famous because the Tang-dynasty master Huangbo, in his Essentials of Mind Transmission, used this koan to open the way of huatou (head-word) Chan." },
-  "041chanjingsx": { "title": "The Dual Cultivation of Chan and Pure Land", "author": "Zhanran", "excerpt": "A Chan practitioner came to visit and asked: At the moment of death, if one has not yet seen the mind and nature (thoroughly perceived one's original nature), or has seen them but not yet severed the delusions of views and thoughts, by what means can one end birth and death?" },
-  "043mengyouji": { "title": "Master Hanshan's Dream Roamings", "author": "Self-Commendation by the Elder Hanshan", "excerpt": "Daily records by the attendant Fushan; edited by the disciple Tongjiong; re-collated by the Lingnan disciple Liu Qixiang." },
-  "046yixinbuluan": { "title": "One-Pointed Mind, Undisturbed: Questions and Answers", "author": "Zhanran", "excerpt": "Why must Buddha-recitation be single-minded and undisturbed? How is the state of single-mindedness achieved? Why is the Pure Land path called the easy path? Must Buddha-recitation be single-minded and undisturbed for one to be reborn?" },
-  "047shengmingdcj": { "title": "Rebuilding Your Life", "author": "Preface to the Original Book", "excerpt": "Whatever we send out returns to us in the blink of an eye." },
-  "048wangshengfl": { "title": "Examples of Rebirth", "author": "Editor's Afterword", "excerpt": "Master Tanxu says in his Instructions for the Seven-Day Buddha-Recitation Retreat:" },
-  "049kulianyiwan": { "title": "Deliberate Practice: Ten Thousand Hours to Mastery", "author": "Tongren Yuye", "excerpt": "(Original title: How to Practice for Ten Thousand Hours.)" },
-  "050ningjingspeaks": { "title": "Stillness Speaks", "author": "Translated by You You", "excerpt": "Stillness Speaks" },
-  "051ianjiechanding": { "title": "One-Minute Meditation", "excerpt": "(Mr. Wang Xianglu's “Simple and Direct Method of Meditation.”)" },
-  "052wangshengyuanli": { "title": "The Principle of Rebirth", "author": "Zhanran", "excerpt": "The principle of rebirth: right mindfulness at the moment of death evokes the Buddha's coming to welcome one." },
-  "053sanxinnianfo": { "title": "Does Scattered Buddha-Recitation Still Ensure Rebirth?", "author": "Zhanran", "excerpt": "The Pure Land sutras and treatises all repeatedly teach that one should recite the Buddha's name single-mindedly." },
-  "054ouyilunxyx": { "title": "Master Ouyi on Faith, Aspiration, and Practice", "author": "Zhanran", "excerpt": "Question: Some articles say that Master Ouyi taught that with faith and aspiration alone one is certain to be reborn. Other articles say that Master Ouyi taught that with true faith and earnest aspiration even scattered Buddha-recitation ensures rebirth. Yet when I read Master Ouyi's Essential Explanation of the Amitabha Sutra, it seems quite the opposite..." },
-  "056chengzanjingtujing": { "title": "The Sutra of Praise for the Pure Land and the Buddha's Protection (with Section Divisions)", "author": "Divided into sections by Zhanran", "excerpt": "Note: The headings of the following sections are structural divisions, not part of the sutra text." },
-  "056chengzanjingtujingzhu": { "title": "Annotated Sutra of Praise for the Pure Land and the Buddha's Protection", "author": "Annotated by Zhanran", "excerpt": "The Amitabha Sutra is the heart-essence that the World-Honored One preached without being asked, a profound sutra praised by Buddhas of all directions, the wondrous teaching of ultimate skillful means, and the consummate and perfect guide. It is the most important classic of the Pure Land school, called the foremost Pure Land sutra, because in it Shakyamuni Buddha praises the Western Land of Ultimate Bliss and reveals the sure method of rebirth there..." },
-  "057yunhefan": { "title": "The Yunhe Verse", "excerpt": "In the printed Diamond Sutra, before the sutra text there is a verse called the “Yunhe” gatha, which is exceedingly fine:" },
-  "058xuanzhuangyijing": { "title": "Master Xuanzang's Work of Translating the Scriptures", "excerpt": "After returning to China, Master Xuanzang was held in high esteem by two successive emperors, Taizong and Gaozong of the Tang, who provided for him at court and conferred on him the title “Tripitaka Master.” Twice Emperor Taizong urged him to give up the religious life and assist in government, but the master firmly declined, saying, “I wish to keep the precepts in the monastic robe and propagate the legacy of the Dharma.” The emperor had no choice but to honor his wish and support his translation work..." },
-  "059huofotanming": { "title": "A Living Buddha Discusses Fate", "excerpt": "There are many people in the world who delight in fortune-telling and physiognomy. Chinese women, especially, are addicted to such things. Some women, who are extremely stingy and unwilling to part with a single coin, will spend without regret on a fortune-teller. In their hearts, they must consult a fortune-teller about every matter, great or small..." },
-  "060yuyinku": { "title": "MyTmp", "excerpt": "1. In the lower part of the “Reader” interface (see the figure below), click “Download Voice” to enter the download page. Alternatively, visit the download page directly (at http://www.443w.com/tts/?post=2)." },
-  "060yuyinlangdu": { "title": "Text-to-Speech Reading Tools", "author": "Zhiyu", "excerpt": "Living beings in the Saha world are sharpest in the ear faculty. Listening while reading is often easier to understand and remember than reading alone. Therefore, one can use text-to-speech tools to read study materials aloud while listening. Moreover, repeated listening serves as nurturing cultivation." },
-  "061mingxinjianxing": { "title": "Seeing the Mind and Perceiving the Nature", "author": "Zhanran", "excerpt": "Answer: Seeing the mind means stilling thoughts. Thoughts are of three kinds: coarse, fine, and subtle. Perceiving the nature has two levels: glimpsing self-nature and thoroughly perceiving original nature. When both coarse and fine thoughts are stilled (the ordinary state called no-thought) and one realizes the inner spiritual energy (the master within), that is glimpsing self-nature..." },
-  "062xueshanjie": { "title": "Annotated Snow-Mountain Verse", "author": "Annotated by Zhanran", "excerpt": "The Snow-Mountain Verse is four lines from the Nirvana Sutra. In a past life, when Shakyamuni Buddha was the Snow-Mountain Youth, he heard from a rakshasa the two lines “All formations are impermanent; this is the law of arising and ceasing.” He gave up his body and life to hear the remaining two lines (“When arising and ceasing cease, nirvana is bliss”), and so these four lines came to be called the Snow-Mountain Verse." },
-  "063dsznianfoytzzhu": { "title": "Annotated Chapter on the Perfect Penetration of Buddha-Recitation by Mahāsthāmaprāpta Bodhisattva", "author": "Annotated by Zhanran", "excerpt": "Master Yinguang's Preface to the Reprint of the Five Pure Land Sutras says: “The Mahayana sutras that touch on the Pure Land are too numerous to count. But the Shurangama Sutra's chapter on the Perfect Penetration of Buddha-Recitation by Mahāsthāmaprāpta is truly the finest instruction on Buddha-recitation. If living beings can ‘gather in all six faculties and continue with pure mindfulness,’ how could they fail to see the Buddha, whether now or in the future, and draw near to perfect penetration?”" },
-  "066xinliliaobing": { "title": "Healing Through the Mind", "excerpt": "The latent potential of human life is in fact far from being noticed and developed by ourselves. If this potential could be developed, it would be a leap for humanity itself! Self-hypnotic meditative therapy is a basic method for developing this potential. I have read some related works, among which Western..." },
-  "067dakewen": { "title": "Video Instruction: Questions and Answers", "author": "Zhanran", "excerpt": "Question: Why does your institute have only written materials and no videos? Are they still in production?" },
-  "068shandaolzznw": { "title": "Master Shandao's Essay on Right Mindfulness for Rebirth at the Moment of Death (Annotated)", "author": "Annotated by Zhanran", "excerpt": "Original title: “Master Shandao's Essay on Right Mindfulness for Rebirth at the Moment of Death.”" },
-  "068xiangxujs": { "title": "Continuous Recitation Brings Rebirth", "author": "Zhanran", "excerpt": "Master Shandao says: “Precisely because invocation is easy, continuous recitation brings rebirth. If one can continue thought after thought, vowing to persist for life, then ten out of ten will be reborn, a hundred out of a hundred... May all people reflect well: whether walking, standing, sitting, or lying, one must exert the mind and master oneself, never ceasing day or night. When the last thought of this life ends, the next thought is already born [in the Pure Land]. Forever receiving the unconditioned...”" },
-  "069lingzhongzndkw": { "title": "Right Mindfulness at the Moment of Death: Questions and Answers", "author": "Zhanran", "excerpt": "The principle of rebirth: right mindfulness at the moment of death evokes the Buddha's coming to welcome one." },
-  "070hongyuanmen": { "title": "Hōnen's Fabrication of the “Gate of the Great Vow”", "author": "Zhanran", "excerpt": "Answer: The so-called “Gate of the Great Vow” is a teaching fabricated by the Japanese Master Hōnen (1132–1212) by distorting a passage of Master Shandao's instruction in his Commentary on the Contemplation Sutra." },
-  "071shandaosixiang": { "title": "Is This Master Shandao's Pure Land Thought?", "author": "Zhanran", "excerpt": "Question: Master Shandao gave clear instruction on how the Pure Land school should be practiced: “Practice is of two kinds: first, proper practice; second, miscellaneous practice. Proper practice means practicing solely in accordance with the sutras on rebirth. What is it? Single-mindedly reciting and studying the Contemplation Sutra, the Amitabha Sutra, the Infinite Life Sutra, and so on, and single-mindedly contemplating...”" },
-  "072shandaokaishi": { "title": "Master Shandao's Pure Land Teachings", "author": "Compiled and annotated by Zhanran", "excerpt": "Continue thought after thought, vowing to persist for life; exert the mind and master yourself, never ceasing day or night." },
-  "072zyshouchijgj": { "title": "Understanding and Practice in Accord", "author": "Zhanran", "excerpt": "In studying Buddhism, understanding and practice must accord with each other for one to gain real benefit. Otherwise one is like someone counting another's vast fortune while owning not a cent oneself. At the same time, understanding exists for the sake of practice, and only through practice can understanding deepen." },
-  "074chimingnf48": { "title": "Forty-Eight Methods of Buddha-Recitation by Invoking the Name", "excerpt": "Written by the layman Zheng Wei'an (published by the Buddhist Book Company in 1933)." },
-  "076zuihouyisheng": { "title": "This Life Will Be My Last in the Saha World (Recitation)", "excerpt": "I shall bid farewell to this Saha world forever." },
-  "077faranqujie": { "title": "Hōnen's Distortion of the Sutra of Praise for the Pure Land and the Buddha's Protection", "author": "Zhanran", "excerpt": "The questioner says: The view that “right mindfulness at death, then the Buddha comes to welcome” is wrong, while “the Buddha comes to welcome, then one abides in right mindfulness” is right. Master Hōnen says: “Moreover, one who truly aspires to rebirth, who trusts in Amitābha's original vow and recites the Buddha's name, will suffer no inversion at death. The reason: the Buddha's coming to welcome is precisely for the sake of the practitioner's right mindfulness at death...”" },
-  "078faranshizuchu": { "title": "Where Hōnen Stumbled", "author": "Zhanran", "excerpt": "1. He distorted the Eighteenth Vow. The phrase “even ten recitations” in the Eighteenth Vow refers to ten continuous recitations at the moment of death. For the basis of this, see the essay “The Eighteenth Vow.” Yet Hōnen distorted “even ten recitations” in the Eighteenth Vow to mean that merely reciting the Buddha's name ten times with a scattered mind in ordinary times ensures rebirth, and on this he built..." },
-  "079buyaobenyuanfamen": { "title": "Do Not Promote the Japanese Original-Vow Teaching", "author": "Long'ang", "excerpt": "[Editor's note] Hōnen and his followers loudly proclaim that invocation of the name guarantees rebirth, that no cultivation is needed, no precepts need be kept, no good deeds done, no purification of the mind required — that even a lifetime of evil does not matter. The question is: does invocation of the name really guarantee rebirth? Does it accord with the actual facts of past and present? If it really did..." },
-  "080waiqushandaodashi": { "title": "Hōnen and Others Distort and Defame Master Shandao", "author": "Zhanran", "excerpt": "Question: It is said that Master Hōnen “founded the Pure Land school himself based on the Pure Land thought of Master Shandao, an emanation of Amitābha.” Is this so?" },
-  "081di18yuan": { "title": "The Eighteenth Vow", "author": "Zhanran", "excerpt": "Answer: To broadly deliver living beings of the ten directions, Amitābha Buddha made forty-eight great vows. Among them, the Eighteenth Vow is: “If, when I attain Buddhahood, living beings of the ten directions who sincerely and joyfully entrust themselves, who wish to be born in my land, even with ten recitations, should not be born there, may I not attain perfect enlightenment — excluding only those who commit the five grave offenses and slander the true Dharma.” (The Buddha Speaks of the Infinite Life Sutra.)" },
-  "082renshibenyuanfamen": { "title": "The Practice of Hōnen's Teachings", "author": "The Eighteenth Vow", "excerpt": "Reprinted from the “Editor's Note” in the fourth issue of Chan Magazine, 2000." },
-  "083ribenbenyuanfamenxie": { "title": "The Original-Vow Teaching Is a Non-Buddhist Path That Rides on the Buddha", "author": "Zhanran", "excerpt": "Question: Is the Original-Vow teaching a non-Buddhist path that rides on the Buddha?" },
-  "084huimingkaishilu": { "title": "Master Huiming's Record of Instructions", "excerpt": "Shi Huiming (1860–1930), an eminent monk of the late Qing and early Republic, was a native of Fujian. Much like the Sixth Patriarch Huineng, he was unprepossessing and had no formal schooling. Relying on strict observance of the precepts, arduous cultivation, long journeys on foot, and broad learning with solitary awakening, he finally attained the Way. Thereupon his wisdom opened wide, his thoughts flowed like a spring, and he mounted the platform to expound the Dharma..." },
-  "085mituobenyuan": { "title": "Amitābha's Original Vow", "author": "Zhanran", "excerpt": "Answer: When Amitābha Buddha was the bhikshu Dharmakara in the past, he made forty-eight great vows to bring about the Western Land of Ultimate Bliss and deliver all living beings. Among them, the Eighteenth Vow is called Amitābha's original vow. (See the Buddha Speaks of the Infinite Life Sutra.)" },
-  "086guanjingxiapinxiasheng": { "title": "Annotated Chapter on the Lowest Grade of the Lower Tier of Rebirth in the Contemplation Sutra", "author": "Zhanran", "excerpt": "The Buddha Speaks of the Contemplation Sutra of Amitayus (abbreviated as the Contemplation Sutra of Amitayus, or the Contemplation Sutra) is one of the three Pure Land sutras." },
-  "087benyuanfamen": { "title": "What Is the Original-Vow Teaching?", "author": "Zhanran", "excerpt": "Appendix: An Undercurrent the Buddhist World Should Take Seriously." },
-  "088linzhongshinianxiangxu": { "title": "Ten Recitations at Death: Continuous Recitation Brings Rebirth", "author": "With Deep Faith and Earnest Aspiration", "excerpt": "the boundless enthusiasm, perseverance, and willpower that spring forth." },
-  "091wuyalishenghuo": { "title": "Living Without Stress (Video)", "author": "Stillness Speaks", "excerpt": "Your browser does not support the video tag." },
-  "091yes": { "title": "Tolle: The Astonishing Power of Yes (Video)", "excerpt": "Align with the present moment, and you will find that space." },
-  "092shangdaochuan": { "title": "Biography of Master Shandao (Vernacular and Original Text)", "author": "The Eighteenth Vow", "excerpt": "(Original text from the Records of Pure Land Sages.)" },
-  "094lunshuoshengsi": { "title": "On Birth and Death", "author": "Annotated by Zhanran", "excerpt": "Death is the dark shadow that hangs over your life, yet it is illusory, which is why the patriarchs often said, “We undergo birth and death in vain.” To break through the delusion of views, the chapter “The True Mind Transcends Death” from the Straightforward Talk on the True Mind is excerpted and annotated below, in the hope that readers will deeply realize “no birth and death” and enter into it, and thereby..." },
-  "095luelunmxjx": { "title": "A Concise Discourse on Seeing the Mind and Perceiving the Nature", "author": "By Elder Yuanyin", "excerpt": "We living beings, since time without beginning, have been lost to our original face. Mistaking the false for the true, calling the servant “master,” we give rise to greed and anger, create karma, and receive its retribution — like spring silkworms spinning cocoons, binding ourselves tighter and tighter with no time of release. The foolish, in ignorance, quietly endure their suffering and do not seek liberation; the wise, though knowing that birth and death are the great matter and the sea of suffering is boundless, seek to..." },
-  "097chengmingbisheng": { "title": "Does Invoking the Name Guarantee Rebirth?", "author": "Zhanran", "excerpt": "Master Shandao says: “Precisely because invocation is easy, continuous recitation brings rebirth. If one can continue thought after thought, vowing to persist for life, then ten out of ten will be reborn, a hundred out of a hundred...”" },
-  "098haoliaoge": { "title": "The Song of ‘All Is Well’ and Its Commentary", "author": "Annotated by Zhanran", "excerpt": "To the southeast lies the city of Gusu. Within the city, outside Chang Gate, is the most prosperous, refined quarter of the whole world of dust. Beyond Chang Gate is Ten-Li Street; within the street is Renqing Lane; within the lane is an old temple which, because the site is cramped, everyone calls “Gourd Temple.” Beside the temple lives a retired official..." },
-  "098yibigou": { "title": "Master Lianchi: “Cross It Off with One Stroke” (Annotated)", "author": "Annotated by Zhanran", "excerpt": "On New Year's Eve of the Yichou year of Jiajing (1565), Master Lianchi asked his wife, née Tang, to make tea. As she brought the cup to the table, it slipped from her hands and fell. Seeing the beloved heirloom jade cup shattered, the master laughed and said, “There is no conditioned thing that does not disperse.” The next year he bade farewell to Tang, saying, “Affection cannot last forever, and birth and death...”" },
-  "099daochuodashi": { "title": "Master Daochuo's Pure Land Teachings", "author": "Compiled and annotated by Zhanran", "excerpt": "At the moment of death, if all living beings continue ten recitations thought after thought, they will attain rebirth." },
-  "100xiangyanjizhu": { "title": "Xiangyan Hears the Bamboo Crack", "author": "Zhanran", "excerpt": "Chan Master Xiangyan Zhixian was a native of Qingzhou. Weary of the world, he left his family and sought the Way far and wide. Under Baizhang he was quick-witted and intelligent, but he could not penetrate Chan. After Baizhang passed away, he went to study under Guishan (the eminent Tang master and founder of the Guiyang school). Guishan asked: “I hear that when you were with the late master Baizhang...”" },
-  "101yebunengxi": { "title": "Karma Cannot Bind", "author": "Zhanran", "excerpt": "At the moment of death, karma cannot bind him, and he goes freely wherever he wishes." },
-  "102lengqiejingxuanzhu": { "title": "Selected Passages from the Lankavatara Sutra, Annotated", "author": "Annotated by Zhanran", "excerpt": "1. The gateless gate as the Dharma gate; 2. The five dharmas and the three self-natures." },
-  "102lfsx": { "title": "The Four Lessons of Liaofan, Annotated", "author": "Annotated by Mingde", "excerpt": "From ancient times, countless people have been bound by their destiny and unable to be masters of themselves. Only those of great goodness cannot be bound by destiny — hence the saying that the sage possesses the secret of creating his own fate." },
-  "103yjy": { "title": "The Story of Yu Jingyi's Encounter with the Kitchen God, Annotated", "author": "Annotated by Mingde", "excerpt": "Note: The headings in the text were added by the annotator." },
-  "104fofazaishijian": { "title": "The Buddhadharma in the World", "author": "Zhanran", "excerpt": "Question: What does it mean that “the Buddhadharma is in the world, and awakening is not apart from the world”?" },
-  "104ganyingp": { "title": "The Treatise on Response and Retribution, Annotated", "author": "Annotated by Mingde", "excerpt": "All people delight in blessings and dread calamity. So to gain blessings and avoid calamity is everyone's common wish. Yet things often go against our wishes: wanting blessings, blessings depart; wanting to avoid calamity, calamity comes. Why is this? Tracing the causes, they fall into the following categories:" },
-  "105shengyuyouhuan": { "title": "When Heaven Is About to Confer a Great Task", "author": "Annotated by Mingde", "excerpt": "[Hardship and suffering polish you to completion] The tempering of hardship is like carving jade into a vessel: it brings you to success." },
-  "105wangfengyijiayanlu": { "title": "Wang Fengyi's Record of Good Words", "author": "Foreword", "excerpt": "Section 15: The Way of the Maiden, the Way of the Daughter-in-Law, the Way of the Elderly Woman." },
-  "106guanniannianjizhu": { "title": "Observe the Thought and It Stills", "author": "Zhanran", "excerpt": "Question: What does “observe the thought and it stills” mean?" },
-  "108lettinggo": { "title": "The Sedona Method of Emotional Release (Video)", "excerpt": "Watch your thoughts, feel your emotions, observe your reactions to events." },
-  "109chenggong": { "title": "How Much Do You Really Want to Succeed? (Video)", "author": "Like a Drowning Man", "excerpt": "I do not sleep, because now I have a chance to realize my dream." },
-  "110yimengmanyan": { "title": "A Dreamlike Rambling", "author": "A Dreamlike Rambling", "excerpt": "An account by the Elder Jianyue, abbot of Qianhua Monastery." },
-  "111mituoyuanzhongchao": { "title": "The Yuanzhong Chao on the Amitabha Sutra", "excerpt": "A classical commentary on the Amitabha Sutra." },
-  "112shiyongneiguanlianxi": { "title": "Practical Vipassana Exercises", "excerpt": "By the Venerable Mahasi Sayadaw of Burma; translated by Lin Wurui." },
-  "113neiguanchanxiulianxi": { "title": "Vipassana Meditation Exercises", "excerpt": "Original title: Vipassana Meditation: Basic and Progressive Exercises. By the Venerable Mahasi Sayadaw; translated by Lin Wurui." },
-  "114huxinianfojingyi": { "title": "The Essentials of Buddha-Recitation with the Breath", "author": "Zhanran", "excerpt": "[Ten continuous recitations, repeated until they become second nature] This is the reliable guarantee of rebirth. See the essay “The Conditions for Rebirth.” [Continuous] The thoughts of Buddha-recitation link together, uninterrupted by deluded thoughts. [Repeated until second nature] Through repeated practice, it becomes instinct." },
-  "115xifangquezhi": { "title": "The Definitive Guide to the Western Land, Annotated", "author": "Annotated by Zhanran", "excerpt": "This book (The Definitive Guide to the Western Land) is a record of the instructions of Bodhisattva Jueming Miaoxing. This bodhisattva came from the Western Land of Ultimate Bliss, and all his words are the essential wonders of practice. If one can constantly realize them and strive to follow them, one is certain to be born in the highest grade." },
-  "116muaidazaodejinpai": { "title": "A Gold Medal Forged by a Mother's Love", "excerpt": "Under the bright starry sky, Xiaopeng took out the gold medal and hung it around his mother's neck..." },
-  "117zhixingli": { "title": "What Is Execution Ability?", "excerpt": "Execution ability is the capacity to reach one's set goals and complete one's tasks." },
-  "118yili": { "title": "The Key to Success: Perseverance (Video)", "excerpt": "Perseverance is passion for long-term goals and steadfast endurance." },
-  "120huirichuzui": { "title": "The Sun of Wisdom Dispels Sins", "author": "Annotated by Zhanran", "excerpt": "Deluded thoughts are the cause of all karma; if one is not driven by deluded thoughts, there is no cause for creating karma. If one can cut off a deluded thought in a single instant the moment it arises, the accumulated roots of past karma are eliminated on the spot." },
-  "121foshuoemituojingzhu": { "title": "Annotated Amitabha Sutra", "author": "Annotated by Zhanran", "excerpt": "The Amitabha Sutra is the heart-essence that the World-Honored One preached without being asked, a profound sutra praised by Buddhas of all directions, the wondrous teaching of ultimate skillful means, and the consummate and perfect guide. It is the most important classic of the Pure Land school, called the foremost Pure Land sutra, because in it Shakyamuni Buddha reveals the method of liberation in this very life — rebirth in the Western Land of Ultimate Bliss..." },
-  "123yixiangzhuannian": { "title": "Exclusive Recitation", "author": "Zhanran", "excerpt": "Answer: Exclusive recitation means always reciting the Buddha's name single-mindedly, without any other thoughts. It is what Master Shandao taught: “Continue thought after thought, vowing to persist for life.”" },
-  "124tanluandashikaishi": { "title": "Master Tanluan's Pure Land Teachings", "author": "Compiled and annotated by Zhanran", "excerpt": "One mind means thought after thought in continuity, with no other thoughts intermingled." },
-  "125yuanyinlaorenlunguanxin": { "title": "Elder Yuanyin on Observing the Mind", "excerpt": "Patriarch Bodhidharma said: “The single method of observing the mind encompasses all dharmas and is the most economical and essential.”" },
-  "126lianchidashi-jingzhong": { "title": "Master Lianchi: An Admonition to the Assembly", "author": "Annotated by Zhanran", "excerpt": "(Original text from the Collected Pure Land Sayings of Yunqi: Admonishing the Assembly.)" },
-  "126lianchidashi-taming": { "title": "Epitaph for Master Lianchi's Stupa (Annotated)", "author": "Composed by Master Hanshan", "excerpt": "[The master's taboo name was Zhuhong, his courtesy name Fohui, and his sobriquet Lianchi, indicating the direction of his aspiration. His lay surname was Shen, and he was a native of Renhe in old Hangzhou. His family was prominent for generations; his father, Dejian, was known as Master Mingzhai, and his mother was of the Zhou clan. The master was born intelligent and outstanding, indifferent to worldly pleasures. At seventeen he entered the county academy, repeatedly topping the examinations, and was esteemed in his time for learning and conduct, as though the civil-service degree were already within his grasp...]" },
-  "126lianchidashi-zijingqitiao": { "title": "Master Lianchi: Seven Self-Admonitions", "author": "Annotated by Zhanran", "excerpt": "(Original text from the Posthumous Manuscripts of Master Yunqi: Self-Admonitions.)" },
-  "127feixiange": { "title": "Annotated Song on Wasting Idle Effort", "author": "By Master Hanshan", "excerpt": "“Fei” means spending time and energy; “xian” means useless — labor in vain. “Fei xian” means spending time and energy without real result, what is commonly called making a futile effort." },
-  "128ziyou": { "title": "Freedom Is Understanding and According with Necessity", "author": "Mingde", "excerpt": "Freedom is understanding and according with necessity — entering where there is no thickness with a blade that has no thickness. Zhuangzi said: “With no thickness, entering where there is space, how roomy and ample for the blade to move!” (Translation: How broad and ample is the room when an extremely thin blade moves through the gaps between sinew and bone! — Zhuangzi, “The Nurturing of Life.”)" },
-  "130foqikaishi": { "title": "Master Xingce's Instructions for a Vigorous Seven-Day Buddha-Recitation Retreat", "author": "Annotated by Zhanran", "excerpt": "(Original text from Master Xingce's Pure Land Admonitions.)" },
-  "131chanjingzongshi": { "title": "Master Hanshan: Patriarch of Both Chan and Pure Land", "author": "Zhanran", "excerpt": "Looking over Master Hanshan's entire life, like Master Yongming (the sixth Pure Land patriarch) and Master Chewu (the twelfth), he was outstanding in both the cultivation and propagation of Chan and Pure Land, and he is listed in the Records of Pure Land Sages. So he is a patriarch of both the Chan school and the Pure Land school..." },
-  "132pingsanxinnianfo": { "title": "A Critique of “Scattered Buddha-Recitation Can Attain Rebirth”", "author": "Zhanran", "excerpt": "An essay titled “Scattered Buddha-Recitation Can Attain Rebirth” circulates online. Since it touches on questions of great concern to Pure Land practitioners, I will now analyze it point by point:" },
-  "133huiyuandashizhuan": { "title": "Biography of Master Huiyuan (Vernacular and Classical Chinese)", "author": "Compiled and annotated by Zhanran", "excerpt": "Master Huiyuan, the first patriarch of the Pure Land school, was the first to write a commentary on the school's foremost sutra, the Buddha Speaks of the Infinite Life Sutra (see Master Huiyuan's Commentary on the Infinite Life Sutra). Master Yinguang praised him: “His elucidation of the text and explanation of its meaning are the clearest of all.” (Master Yinguang's Collected Writings: Letter to Lady Xu Fuxian.) And at Mount Lu..." },
-  "134bosanxinnianfo": { "title": "Refuting “Scattered Buddha-Recitation Also Ensures Rebirth”", "author": "Zhanran", "excerpt": "“Reciting Amitābha with a scattered mind — shout till your throat bursts and it is all in vain.”" },
-  "135xiuwufayao-baihua": { "title": "The Essentials of Cultivation and Awakening (Vernacular)", "excerpt": "(For the original text and annotations, see Master Hanshan's “The Essentials of Cultivation and Awakening.”)" },
-  "136wangshengdetiaojian": { "title": "The Conditions for Rebirth", "author": "Zhanran", "excerpt": "The condition for rebirth: ten continuous recitations at the moment of death." },
-  "138dinghuidengchi": { "title": "Equal Mastery of Samadhi and Wisdom for the Buddha-Reciter", "author": "Zhanran", "excerpt": "Question: I have achieved continuous recitation thought after thought. How should I proceed in my practice next?" },
-  "139langduwangye": { "title": "Reading Web Pages Aloud with the Computer", "author": "Zhiyu", "excerpt": "Living beings in the Saha world are sharpest in the ear faculty. Listening while reading is often easier to understand and remember than reading alone. Therefore, one can use the computer to read study materials aloud while listening. Moreover, repeated listening serves as nurturing cultivation." },
-  "140qiushengjingtuyuanbutui": { "title": "Aspiring to the Pure Land with an Unretreating Vow", "excerpt": "That Buddha and his people have a lifespan of measureless, boundless asamkhyeya kalpas." },
-  "143lazhunanti-1": { "title": "The Candle Problem", "author": "Mingde", "excerpt": "Have you made use of all the conditions?" },
-  "144yixinnianfo": { "title": "Recite the Buddha's Name Single-Mindedly, Not with a Scattered Mind", "author": "Zhanran", "excerpt": "Single-mindedness is the key to correct practice in the Pure Land school." },
-  "145zhengdingzhiye": { "title": "Hōnen's “Dharma Words for Peace of Mind in Buddha-Recitation”", "author": "Zhanran", "excerpt": "Question: Online there circulates Hōnen's Forty-Eight Dharma Words (also called Dharma Words for Peace of Mind in Buddha-Recitation), carefully selected by Master Huijing (for his background see “What Is the Original-Vow Teaching”) from Hōnen's Complete Works, and claimed to be “Dharma words of Buddha-recitation that bring peace of mind.” Do they really bring peace of mind..." },
-  "146nanquanzhanmao": { "title": "Nanquan Cuts the Cat", "author": "Zhiyu", "excerpt": "(Original text from the Records of the Transmission of the Lamp from the Jingde Era.)" },
-  "147shouyibuyi": { "title": "The Fourth Patriarch: Guard the One Without Wavering", "author": "Annotated by Zhanran", "excerpt": "Below is the instruction on “guarding the one without wavering” given by the Fourth Patriarch, Master Daoxin, in his Essential Method of Entering the Way and Settling the Mind. The method is simple, direct, concrete, practical, and safe (it will not lead one astray). It is the fundamental practice for entering the Way: fix the mind on one point and there is nothing that cannot be accomplished." },
-  "148pingjingtuzongjiaozhang": { "title": "A Critique of Master Huijing's “Pure Land School Constitution”", "author": "Zhanran", "excerpt": "Question: Master Huijing (for his background see “What Is the Original-Vow Teaching”) drew up the “Pure Land School Constitution.” The editor's note says: “The School Constitution is the general outline of a school's (the Pure Land school's) doctrine and the standard that practitioners follow; its importance to the teaching is like that of a nation's constitution.” Is this so?" },
-  "149zengyangnenggouwangsheng": { "title": "How Can One Attain Rebirth?", "author": "Zhanran", "excerpt": "Question: How can one be reborn in the Western Land of Ultimate Bliss?" },
-  "150youraisemeup": { "title": "You Raise Me Up (Audio)", "author": "You Raise Me Up", "excerpt": "You raise me up" },
-  "151sizuanxingyaomen": { "title": "The Fourth Patriarch's Essential Expedient Method of Entering the Way and Settling the Mind (Selected Annotations)", "author": "One-Practice Samādhi", "excerpt": "Composed by Daoxin, the Fourth Patriarch of Chan. Original text from the Records of the Lankavatara Masters. Annotated by Zhanran." },
-  "152sizukaishifarong": { "title": "The Fourth Patriarch's Instruction to Farong", "author": "Annotated by Zhanran", "excerpt": "Guarding: cut off all thinking and deliberation. According: let the mind be free, without love or hate, grasping or rejecting." },
-  "153tongtufamen": { "title": "The Common Path and the Special Path", "author": "Zhanran", "excerpt": "Master Yinguang instructs: “There are two kinds of Dharma paths. Those who rely on their own power to cultivate precepts, samadhi, and wisdom, until they sever delusion (the delusions of views and thoughts), realize the truth, and end birth and death, are called practitioners of the common path. Those who possess true faith and earnest aspiration and invoke the Buddha's name, hoping to rely on the Buddha's compassionate power to be reborn in the West, are called practitioners of the special path.”" },
-  "154yeganxinxian": { "title": "Karma Is Felt, the Mind Manifests", "author": "Annotated by Zhanran", "excerpt": "(Original text from Master Chewu's Collected Works.)" },
-  "155zizaiwangsheng": { "title": "Free and Unhindered Rebirth", "author": "Annotated by Zhanran", "excerpt": "(Original text from Master Chewu's Collected Works.)" },
-  "158xinqiujileyanlisuopo-baihua": { "title": "Yearning for Ultimate Bliss, Renouncing Samsara (Vernacular Edition)", "author": "Zhanran", "excerpt": "(For the original text, see “Yearning for Ultimate Bliss, Renouncing Samsara.”)" },
-  "159yishengzaoe": { "title": "Master Daochuo: Even One Who Has Done Evil All His Life, with Ten Continuous Recitations at Death, Is Reborn", "author": "Zhanran", "excerpt": "On how to be reborn in the Western Land of Ultimate Bliss, Master Daochuo instructs (see Master Daochuo's Pure Land Teachings):" },
-  "160boerenzhengjishuo": { "title": "A Critique of the “Evil Person as the True Object” Doctrine", "author": "Zhanran", "excerpt": "The questioner says: Great as the offenses of ordinary people are, compared with the power of the vow they are like a grain in the vast sea (great as the offenses of ordinary people are, compared with Amitābha Buddha's vow-power they are like a single grain of rice against the ocean, utterly negligible). Therefore breaking the precepts and doing evil do not matter." },
-  "161shoushengzhiyuan": { "title": "The Conditions for Taking Rebirth", "author": "Annotated by Zhanran", "excerpt": "(Original text from Master Chewu's Collected Works.)" },
-  "162duanexingshan": { "title": "Why Refrain from Evil and Do Good", "author": "Mingde", "excerpt": "The Buddha said: “Evil has its evil retribution; good has its good reward.”" },
-  "163shangdaosanduankaishi": { "title": "Three Instructions of Master Shandao", "author": "Zhanran", "excerpt": "Master Shandao is an emanation of Amitābha, and his words are the words of Amitābha Buddha. On the practice of the Pure Land school he gave three supremely important instructions: first, single-minded invocation of the name; second, continuous recitation brings rebirth; third, down to ten recitations." },
-  "165sanwugongfu": { "title": "The Three Non-Abiding Practices: No Thought, No Mark, No Abiding", "excerpt": "The three “non-” — no thought, no mark, no abiding — are the core practices of the Platform Sutra. No thought: amid thoughts, no thought; no mark: amid marks, detach from marks; no abiding: amid objects, no dwelling. Accomplish this and inwardly one is not led by thoughts, outwardly not drawn by objects. No thought is great samadhi, no mark is great precept, no abiding is great wisdom." },
-  "166wangshengtiaojiandakewen": { "title": "The Conditions for Rebirth: Questions and Answers", "author": "Zhanran", "excerpt": "Question: Why must one have right mindfulness at death (ten continuous recitations) to be reborn? Amitābha Buddha's five kalpas of contemplation and measureless kalpas of practice — his entire great vow — was to deliver every living being. With such great compassion, would he not, at the moment of our death, display his majestic vow-power to welcome and guide us?" },
-  "167juezhichuli": { "title": "Firmly Resolving to Transcend", "author": "Annotated by Zhanran", "excerpt": "(Master Hanshan, Dream Roamings: An Admonition to the Chan Practitioner Lusheng of Wusheng.)" },
-  "168shouhubenxin": { "title": "Guarding the Original Mind", "author": "Zhanran", "excerpt": "After perceiving the nature, it is supremely important never to forget to guard the original mind — this is the practice of sustaining realization. The Treatise on Cultivating the Mind says: “One who awakens to this (original mind) and guards it sits in the one-suchness and is unmoved, liberated; one who is deluded and turns from it wanders for long kalpas through the six realms of rebirth.” (See the Detailed Exposition of the Treatise on Cultivating the Mind.)" },
-  "169ergenyuantongfamen": { "title": "The Dharma Gate of Perfect Penetration Through the Ear Faculty", "author": "Zhanran", "excerpt": "“When one faculty returns to the source, the six faculties attain liberation.”" },
-  "170buyuanren": { "title": "Good Man Wang: Bear No Grudge (Audio)", "author": "Wang Fengyi's Record of Good Words", "excerpt": "The nine golden words: bear no grudge, find the good in others, acknowledge your own faults." },
-  "171nianfoshishui": { "title": "Investigative Buddha-Recitation", "author": "Zhanran", "excerpt": "In its cultivation there is a graded entry; in its realization there is the truth attained for oneself." },
-  "172canjiunianfo": { "title": "Instructions on Investigative Buddha-Recitation", "author": "Annotated by Zhanran", "excerpt": "(Dream Roamings: A Reply to the Monk Haiyin of Huzhou.)" },
-  "173kaiwu": { "title": "Awakening", "author": "Annotated by Zhanran", "excerpt": "Awakening has two levels: awakening through understanding and awakening through realization. The awakening of sudden awakening followed by gradual cultivation (perceiving the nature) is awakening through understanding; the awakening of gradual cultivation followed by sudden awakening (seeing the mind and perceiving the nature) is awakening through realization. Sudden-then-gradual and gradual-then-sudden are two paths of cultivation, each with its own merits." },
-  "174dahuichanfa": { "title": "Dahui's Chan Method", "author": "Compiled and narrated by Zhanran", "excerpt": "With the mind nowhere to go, like a mouse entering an ox horn, one sees the matter cut off completely." },
-  "175xuyunchanfa": { "title": "Xuyun's Chan Method", "author": "Compiled and narrated by Zhanran", "excerpt": "The essence of Chan investigation: probe before a single thought has arisen." },
-  "176zhenxiushiwu": { "title": "True Cultivation, Genuine Realization", "author": "Annotated by Zhanran", "excerpt": "In studying Buddhism, what matters is true cultivation and genuine realization, so as to end birth and death. Not letting a single thought slip by is true cultivation; passing through every thought freely is genuine realization." },
-  "177niliujuezhao": { "title": "Turning Against the Stream, Awake and Aware", "author": "Annotated by Zhanran", "excerpt": "Original text from the Treatise on the Fundamental Essence of All Things in the Universe." },
-  "178suiyuanbaoren": { "title": "Sustaining Realization Amid Conditions", "author": "Annotated by Zhanran", "excerpt": "Original text from the Treatise on the Fundamental Essence of All Things in the Universe." },
-  "179huatouchan": { "title": "Huatou Chan", "author": "Zhanran", "excerpt": "Investigation is the vajra king's sword that severs deluded thoughts." },
-  "180jingyuanwuhaochou": { "title": "Objects and Conditions Have No Good or Bad", "author": "Zhanran", "excerpt": "Question: The Fourth Patriarch instructed Farong: “Objects and conditions have no good or bad; good and bad arise from the mind.” But objects and conditions clearly do have good and bad. For example, if your body is healthy, that is good. If you fall ill, or even near death, that is bad. This is objective fact — how can it arise from the mind?" },
-  "181canjiunianfo-dakewen": { "title": "Investigating “Who Is Reciting the Buddha”: Questions and Answers", "author": "Zhanran", "excerpt": "Question: It is said that Master Yinguang opposed investigative Buddha-recitation. Why then do you teach “Who is reciting the Buddha?” in your essay “Investigative Buddha-Recitation”?" },
-  "182fushihuxi": { "title": "Abdominal Breathing", "excerpt": "Appendix 2: The Secrets Revealed by Breathing Rate." },
-  "183canjiunianfo-dayi": { "title": "Investigative Buddha-Recitation: Resolving Doubts", "author": "Zhanran", "excerpt": "Answer: The attainment of Buddha-recitation is reached when one recites without mixed deluded thoughts — when the thoughts of recitation link into one continuous whole. Master Yinguang said: “If your recitation cannot become pure and single, you must control the mind and not let it wander; after long practice it will naturally become pure and single. ‘Becoming a whole’ means pure and single, without mixture.” (Master Yinguang's Collected Writings: Fourth Letter to the Layman Ma Qixi.)" },
-  "184danbanhange": { "title": "The Song of the Plank-Carrying Man (Annotated)", "excerpt": "(From Master Hanshan's Dream Roamings.) Annotated by Zhanran." },
-  "185canchanqieyao": { "title": "The Essentials of Chan Investigation, Annotated", "author": "Annotated by Zhanran", "excerpt": "(Dream Roamings: Showing the Essentials of Chan Investigation.)" },
-  "186hanshandashideyisheng": { "title": "The Life of Master Hanshan (New Edition)", "author": "The Favor of the Prince of Shanyin", "excerpt": "(This book is compiled from the Dream Roamings, the Annotated Chronology of Master Hanshan, and the Records of Pure Land Sages.)" },
-  "187hanshandashinianpushu": { "title": "Annotated Commentary on Master Hanshan's Chronology", "author": "Annotated by Zhanran", "excerpt": "Recorded by the attendant Fushan of the Narayana Cave by the Eastern Sea; the commentary written by the disciple Fuzheng of Kaiyuan in Wuyue." },
-  "187hanshandashinianpushu-old": { "title": "Commentary on Master Hanshan's Chronology", "excerpt": "Recorded by the attendant Fushan of the Narayana Cave by the Eastern Sea; the commentary written by the disciple Fuzheng of Kaiyuan in Wuyue." },
-  "188hanshandashinianfowangsheng": { "title": "Master Hanshan's Buddha-Recitation and Rebirth in the Western Land of Ultimate Bliss", "author": "Zhanran", "excerpt": "6. He strongly urged that all Dharma gates should ultimately point to the Pure Land." },
-  "189sanxinnianfo-dakewen": { "title": "Scattered Buddha-Recitation: Questions and Answers", "author": "Zhanran", "excerpt": "Single-mindedness is the key to correct practice in the Pure Land school." },
-  "190wuliangshoujingwuyiben": { "title": "The Five Original Translations of the Infinite Life Sutra", "excerpt": "The Buddha Speaks of the Sutra of Immeasurable Purity, Equality, and Enlightenment (Han translation)." },
-  "191tuolitongku": { "title": "A Case: Freedom from Suffering", "author": "Zhiyu", "excerpt": "There was no future, no light at the end of the tunnel; it seemed both ends were blocked and I was trapped within." },
-  "192shexinnianfo": { "title": "Gathering the Mind in Buddha-Recitation", "author": "Zhanran", "excerpt": "Answer: Gathering the mind means focusing the mind on a single object, without distraction or dullness. So gathering the mind in Buddha-recitation is single-minded recitation. Master Yinguang instructs: “Gathering the mind in Buddha-recitation is the definite and unchangeable way.” (Master Yinguang's Collected Writings: First Letter to the Layman Liu Guanshan.) Master Yinguang further instructs: “As to...”" },
-  "193guanwuliangshoufojingjijie": { "title": "Collected Commentaries on the Buddha Speaks of the Contemplation Sutra of Amitayus", "author": "The Main Exposition", "excerpt": "In expounding this sutra, I shall first explain the title, then clarify its translation history, and finally explicate the text." },
-  "194kuxinlizhi": { "title": "Gritting One's Teeth and Rousing Determination", "author": "Annotated by Zhanran", "excerpt": "(Dream Roamings: An Admonition to the Student Ou Boyu.)" },
-  "195naizhishinian": { "title": "“Even Ten Recitations”", "author": "Zhanran", "excerpt": "Question: Among Amitābha Buddha's forty-eight great vows, the Eighteenth Vow is: “If, when I attain Buddhahood, living beings of the ten directions who sincerely and joyfully entrust themselves, who wish to be born in my land, even with ten recitations, should not be born there, may I not attain perfect enlightenment — excluding only those who commit the five grave offenses and slander the true Dharma.” (The Buddha Speaks of the Infinite Life Sutra.) In this vow, the four characters “even ten recitations”..." },
-  "196bubeisuoman": { "title": "Not Deceived by Them", "author": "Annotated by Zhanran", "excerpt": "[A saying goes: “All people eat and drink, yet few can taste the flavor.” This says that the Way, though nearest in daily life, is known by few. The ancients said: “Apart from dressing and eating, there is nothing else.” Indeed, in all ages many have been deceived by dressing and eating. If one is not deceived by them, one may be called a hero.]" },
-  "197ruxiangguangshi": { "title": "Entering the Chamber of Fragrance and Light", "author": "Shiwei", "excerpt": "Compiled, edited, and published by the disciple Xu Huijue of Master Liaoran." },
-  "198juedingzhizhi": { "title": "The Resolve of Certainty", "author": "Annotated by Zhanran", "excerpt": "(Excerpted from Dream Roamings: An Admonition to the Scribe Zhihai'an.)" },
-  "199lixinyishican": { "title": "Investigating Apart from Mind, Intellect, and Consciousness", "author": "Zhanran", "excerpt": "The Sixth Patriarch said: “I tell all who study the Way: strive and apply the mind.”" },
-  "200zhenyangyixinbuluan": { "title": "How to Attain One-Pointed Mind, Undisturbed", "author": "Zhanran", "excerpt": "Question: How does one attain single-minded, undisturbed Buddha-recitation?" },
-  "201_42": { "title": "Annotated Sutra of Forty-Two Chapters", "author": "Annotated by Zhanran", "excerpt": "The Buddha Speaks of the Sutra of Forty-Two Chapters is a single volume, jointly translated by Kāśyapa Mātaṅga and Dharmaratna in the Later Han. Because the entire sutra has forty-two chapters, it is called the Sutra of Forty-Two Chapters. Each chapter is brief and to the point; the longest is only a little over a hundred characters, the shortest a little over twenty. These are sayings of Shakyamuni Buddha selected from the Tripitaka's twelve divisions..." },
-  "201linianzhongxiu": { "title": "Cultivating Apart from Thought", "author": "Annotated by Zhanran", "excerpt": "[Chan and Pure Land, as two practices, are originally not two dharmas; Master Yongming demonstrated this long ago. Chan is by nature apart from thought, certainly. Yet the Pure Land has the highest grade of the highest tier of rebirth, which has never not been cultivated apart from thought. If one recites the Buddha's name to single-mindedness without disturbance, is there any thought remaining? But although there is no duality here, when it comes to setting to work there is a difference between the skillful and the clumsy. Using the effort of investigation...]" },
-  "202bada": { "title": "Annotated Sutra of the Eight Realizations of Great Beings", "author": "Annotated by Zhanran", "excerpt": "This sutra sets forth the eight realizations of the bodhisattva (the “great beings” of the title): realization of impermanence and no-self, of few desires and non-action, of contentment with poverty and keeping to the Way, of constant vigor, of broad learning that increases wisdom, of equal regard for friend and foe, of the perils of the five desires, and of the great mind that universally saves — so as to achieve self-awakening and the awakening of others." },
-  "202xindifamen": { "title": "The Dharma Gate of the Mind-Ground", "author": "Annotated by Zhanran", "excerpt": "The ordinary and the sage do not go beyond the one mind; good and evil are both created by the mind." },
-  "203foyj": { "title": "Annotated Sutra of the Buddha's Bequeathed Teachings", "author": "Annotated by Zhanran", "excerpt": "The Sutra of the Buddha's Bequeathed Teachings is the Buddha's final instruction to his disciples before his nirvana, in which he once more, in outline, urges them how to cultivate precepts, samadhi, and wisdom so as to transcend afflictions and birth and death. Master Ouyi said: “When I (Master Ouyi, whose name was Zhixu) had not yet become a monk, reading this bequeathed teaching I knew every word was written in blood and tears...”" },
-  "203xiguanyuchenggong": { "title": "Habit and Success", "excerpt": "The greatest difference between success and failure comes from different habits." },
-  "204danian": { "title": "Annotated Great Discourse on the Foundations of Mindfulness", "author": "Annotated by Zhanran", "excerpt": "In studying Buddhism, what matters is real practice and realization, ending birth and death and transcending the cycle of rebirth. So one must first subdue afflictions and then sever them. In the Great Discourse on the Foundations of Mindfulness, the Buddha explains concretely and in detail how to subdue and sever afflictions: by sustained awareness and observation of the arising and ceasing of body, mind, and world — the most direct path from knowing suffering to ending suffering..." },
-  "204ssydj": { "title": "Annotated Sutra on the Ten Wholesome Ways of Action", "author": "Annotated by Zhanran", "excerpt": "Appendix: An Appeal for the Restoration of the Life-Release Pond at Nanxun Temple of Ultimate Bliss." },
-  "204wangshenghouhuilaibaoxin": { "title": "Returning After Rebirth to Bring Word", "excerpt": "(Honghua Monthly, July 1944, issue 37: “News Reported After Rebirth in the West.”)" },
-  "205jgj-jiangyi": { "title": "Lectures on the Diamond Sutra (by Jiang Weinong)", "author": "By Jiang Weinong", "excerpt": "Reprinted after re-collation against the layman Jiang's own handwritten manuscript." },
-  "206congxinerxiu": { "title": "Cultivating from the Mind", "author": "Zhanran", "excerpt": "Where does one begin to cultivate? This is a great question of deep concern to practitioners. The Treatise on the Essential Gate of Entering the Way by Sudden Awakening discusses it brilliantly:" },
-  "207xinjingqizhongyiben": { "title": "The Seven Translations of the Heart Sutra", "excerpt": "The Heart Sutra has seven important translations, of which two are abridged and five are full. The full versions contain the three main sections — the introduction, the main exposition, and the dissemination — while the abridged versions contain only the main exposition." },
-  "208wubudingshi": { "title": "No Time Without Samadhi", "author": "Annotated by Zhanran", "excerpt": "[The Chan master Zhihuang first studied under the Fifth Patriarch, thinking he had attained correct absorption. He lived in a hut, sitting for twenty years. A disciple of the Master, Xuance, traveling far, came to Heshuo. Hearing of Zhihuang's name, he visited the hut and asked: “What are you doing here?” Zhihuang replied: “Entering samadhi.”]" },
-  "209wunianweizong": { "title": "No-Thought as the Principle", "author": "Zhanran", "excerpt": "The Avatamsaka Sutra, in the chapter on the Tathagata's manifestation, says: “There is no living being who does not possess the wisdom of the Tathagata; it is only because of deluded thoughts and inverted attachments that they do not realize it. If they depart from deluded thoughts, then omniscience, natural wisdom, and unobstructed wisdom will manifest.” (Translation: Every living being possesses the Tathagata's wisdom, but because of deluded thoughts and inverted attachments...)" },
-  "211huangtingchan": { "title": "Yellow Court Chan", "author": "Zhang Defen", "excerpt": "Excerpted from Zhang Defen's Living Out a Whole New Self." },
-  "212frame": { "title": "212frame", "author": "An Elucidation of the Diamond Sutra", "excerpt": "Namo Shakyamuni Buddha, our original teacher (recited three times)." },
-  "213jinggangjing-jingwen": { "title": "The Diamond Sutra (Sutra Text)", "excerpt": "Thus have I heard. At one time the Buddha was dwelling in the Jeta Grove of Anathapindada's park in Sravasti, together with a great assembly of twelve hundred and fifty bhikshus." },
-  "214jieyinyaodian": { "title": "Key Points for Overcoming Addiction", "excerpt": "Excerpted from Overcoming Addiction: Case Studies and a Self-Help Guide to Addiction Treatment." },
-  "217huxinianfoyujingzuo": { "title": "Breath Buddha-Recitation and Sitting Meditation", "author": "Zhiyu", "excerpt": "Question: Sitting meditation can improve the structure and function of the brain, boost immunity, creativity, and quality of life. Moreover, the alpha brain waves produced in sitting meditation are very effective for healing psychological trauma, transforming negativity, and dispelling anxiety, vexation, and depression, so it has attracted more and more attention..." },
-  "219jingluoyangshengfa": { "title": "The 312 Meridian Health Method (Video)", "excerpt": "The theoretical basis of the 312 meridian health method is the meridian theory of traditional Chinese medicine: most diseases of the human body result from blocked meridians, and dysfunction of the meridians is the root cause of illness. Therefore, as long as the meridians are kept clear, the body will be healthy; dredging..." },
-  "221wangshengdebawo": { "title": "Assurance of Rebirth", "author": "Zhanran", "excerpt": "Answer: To be assured of rebirth is to be assured of fulfilling the conditions for rebirth. The condition for rebirth is ten continuous recitations at the moment of death. This condition was taught by Master Shandao, an emanation of Amitābha; Master Yongming, also an emanation of Amitābha; and the realized masters Tanluan and Daochuo. It is..." },
-  "222benyuannianfo": { "title": "Original-Vow Buddha-Recitation", "author": "Zhanran", "excerpt": "Answer: The “original vow” refers to the Eighteenth of Amitābha Buddha's forty-eight great vows (see “Amitābha's Original Vow”). The Eighteenth Vow is: “If, when I attain Buddhahood, living beings of the ten directions who sincerely and joyfully entrust themselves, who wish to be born in my land, even with ten recitations, should not be born there, may I not attain perfect enlightenment — excluding only those who commit the five grave offenses and slander the true Dharma.” (The Buddha Speaks of the Infinite Life Sutra.)" },
-  "223rimianfo": { "title": "The Sun-Faced Buddha, the Moon-Faced Buddha", "author": "Zhiyu", "excerpt": "Question: In the Recorded Sayings of Chan Master Mazu Daoyi, Mazu said: “The sun-faced Buddha, the moon-faced Buddha.” What does this mean?" },
-  "224wumenweifamen": { "title": "The Gateless Gate as the Dharma Gate", "author": "Zhanran", "excerpt": "Only perceive the self-mind's manifestations; deluded thoughts no longer arise, and there is peace and joy, with worldly affairs forever stilled." },
-  "225xuyunlaoheshangshiji": { "title": "The Elder Monk Xuyun at Yunju Mountain", "author": "Master Shaoyun", "excerpt": "Venerable elders, venerable masters, lay practitioners, and all good and faithful friends:" },
-  "227sanshiyuan": { "title": "The Grievance of Three Lifetimes", "author": "Zhanran", "excerpt": "Answer: Because one cultivates in this life, one enjoys the rewards of blessings in the next life, then relies on those blessings to do evil, leading to downfall in the life after that (the third life). Even if one's hell karma is exhausted, one is reborn among hungry ghosts and animals; to regain a human body is harder than ever! So the World-Honored One asked Ananda, holding up earth in his hand: “Is the earth in my hand more...”" },
-  "228zhuanshichengzhi": { "title": "Transforming Consciousness into Wisdom", "author": "Annotated by Zhanran", "excerpt": "(Original text excerpted from Dream Roamings: An Admonition to Zhou Yangru.)" },
-  "229shandaodashilunnianfo": { "title": "Master Shandao on Buddha-Recitation", "author": "Zhanran", "excerpt": "Question: Nowadays some masters publicly teach that Master Shandao taught that invocation of the name guarantees rebirth, and that Master Shandao taught scattered Buddha-recitation. Did Master Shandao really teach this?" },
-  "230guanjingzhu": { "title": "Annotated Buddha Speaks of the Contemplation Sutra of Amitayus", "author": "Annotated by Zhanran", "excerpt": "Translated by the Tripitaka master Kālayaśas of the Western Regions, in the Liu Song dynasty." },
-  "234wuliangshoujingyishu": { "title": "Commentary on the Buddha Speaks of the Infinite Life Sutra", "excerpt": "Translated by the Indian Tripitaka master Saṃghavarman, in the Cao Wei dynasty." },
-  "235╬▐┴┐╩┘╛¡┤≡┐═╬╩-╫╩┴╧2": { "title": "The Compilation of the Infinite Life Sutra: Questions and Answers", "author": "Zhanran", "excerpt": "Master Lianchi said of the compilation: “It renders great service to the Pure Land.”" },
-  "235wuliangshoujinghuijiben-dakewen": { "title": "The Compilation of the Infinite Life Sutra: Questions and Answers", "author": "Zhanran", "excerpt": "Master Lianchi said of the compilation: “It renders great service to the Pure Land.”" },
-  "236kuailedemimi": { "title": "The Secret of Success and Happiness (Audio)", "author": "A New World", "excerpt": "(Excerpted from Eckhart Tolle's A New World.)" },
-  "236yinzhedegushi": { "title": "The Story of the Recluse", "excerpt": "(Original text in Master Hanshan's Self-Narrated Chronology.)" },
-  "238chijingchizhounianfo": { "title": "Reciting Sutras, Holding Mantras, and Buddha-Recitation", "author": "Annotated by Zhanran", "excerpt": "Directly illuminating the mind-ground, dissolving everything back into self-nature, practicing as taught." },
-  "239╬▐┴┐╩┘╛¡╨ú╗ß▒╛-╫╩┴╧": { "title": "Annotated Collated Compilation of the Infinite Life Sutra", "author": "Collated by Zhanran", "excerpt": "Letting body and mind gradually enter, and gradually reach, Ultimate Bliss." },
-  "239wuliangshoujing-huiyi": { "title": "The Compilation of the Infinite Life Sutra", "author": "Zhanran", "excerpt": "True faith and earnest aspiration are the motive force and armor of practice as taught;" },
-  "239wuliangshoujing-huiyi-zhu-╫╩┴╧": { "title": "The Compilation of the Infinite Life Sutra", "author": "Zhanran", "excerpt": "Letting body and mind gradually enter, and gradually reach, Ultimate Bliss." },
-  "239wuliangshoujing-jiaohuibenzhu": { "title": "The Compilation of the Infinite Life Sutra", "author": "Zhanran", "excerpt": "Letting body and mind gradually enter, and gradually reach, Ultimate Bliss." },
-  "240yinguangdashilunhuijiben": { "title": "Master Yinguang on the Compilation", "author": "Zhiyu", "excerpt": "In Master Yinguang's Collected Writings, three passages discuss the compilation of the Infinite Life Sutra, now widely cited as “iron proof” that Master Yinguang opposed compiling the Infinite Life Sutra. Yet the facts are quite the opposite: in these three passages, Master Yinguang not only does not say the Infinite Life Sutra may not be compiled, but..." },
-  "240yinguangdashilunhuijiben-╫╩┴╧": { "title": "Master Yinguang on the Compilation", "author": "Zhiyu", "excerpt": "In Master Yinguang's Collected Writings, three passages discuss the compilation of the Infinite Life Sutra, now widely cited as iron proof that Master Yinguang opposed the compilation. In fact, one can see clearly from these three passages that Master Yinguang did not oppose the compilation at all, still less say that the Infinite Life Sutra may not be..." },
-  "241wuliangshoujing-huiyi-╫╩┴╧": { "title": "The Compilation of the Infinite Life Sutra (Text)", "excerpt": "Thus have I heard: At one time the Buddha was dwelling in the city of Rajagriha, on Mount Gridhrakuta, together with a great assembly of twelve thousand bhikshus." },
-  "241wuliangshoujing-huiyi-wj": { "title": "The Compilation of the Infinite Life Sutra (Text)", "excerpt": "Letting body and mind gradually enter, and gradually reach, Ultimate Bliss." },
-  "242xiuxinduanwang": { "title": "Resting the Mind and Severing Delusion", "author": "Annotated by Zhanran", "excerpt": "[Zhong Mingxing of Chaling, from a family of poetry and propriety, on account of past troubles traveled to Guangdong and visited me at Caoxi. The old man taught him the doctrine of good and evil retribution and cause and effect, settled his mind, and sent him home; his troubles were thereby resolved. That they were resolved was not something recollection could reach — conditions met by chance, and it came about of itself, without intent. Thus the student's possessions were safe, and he entered a state of peace and ease. Yet...]" },
-  "243jiayoulaoren": { "title": "The Inspiration of the Old Gas-Station Attendant", "excerpt": "At the University of California, Berkeley, there was a gymnast named Dan Millman. From a young age he loved gymnastics and enjoyed watching others perform, so he joined a gymnastics team very early. He was very talented and extremely diligent; whenever he was not in class, eating, or sleeping..." },
-  "244guanxin": { "title": "Observing the Mind", "author": "Compiled and narrated by Zhanran", "excerpt": "(Excerpted from The Heart-Essence of the White Cloud (A Treasured Manual on Observing the Mind).)" },
-  "245xiuxinggongfu": { "title": "The Stages of Cultivation", "author": "Zhanran", "excerpt": "Cultivation has three stages: first, thoughts arise but one does not follow them (karma cannot bind); second, love and hate have dissolved (birth and death are ended); third, subtle thoughts have ceased (the Buddha-fruit is perfectly realized)." },
-  "246henghedashouyin": { "title": "The Ganges Mahamudra", "author": "Elder Yuanyin", "excerpt": "The Ganges Mahamudra is a high-level practice of the esoteric school of Buddhism: cultivating without cultivation, cultivation being no-cultivation, where words are cut off and mental activity ceases. In the state where not a single thought arises yet all is clear, clear yet no thought arises, one seeks the message; then one awakens to affliction being bodhi, deluded thoughts being wondrous function, emptiness and existence being non-dual..." },
-  "247lingxinanranzhu": { "title": "Meditation: Letting the Mind Rest at Ease", "author": "Objectless Meditation", "excerpt": "Excerpted from Yongey Mingyur Rinpoche's Ground, Path, and Fruition: The Method and Stages of Meditation." },
-  "248zhixingheyi": { "title": "Wang Yangming: The Unity of Knowledge and Action", "excerpt": "Excerpted from Xu Baoyun's The Sage of the Mind: Wang Yangming." },
-  "249lizhi": { "title": "Wang Yangming: Setting One's Aspiration", "excerpt": "Excerpted from Xu Baoyun's The Sage of the Mind: Wang Yangming." },
-  "250zhizhiyizi": { "title": "The Single Word “Know”", "author": "Zhanran", "excerpt": "Question: Does the original mind (the true mind) know, or is it without knowing?" },
-  "251zhenqiyunxingfa": { "title": "The Five-Step Method of True-Qi Circulation", "excerpt": "The core of life activity — the circulation of true qi." },
-  "253gaojigongfa": { "title": "Advanced Practice After Opening the Governing Vessel", "author": "Li Shaobo", "excerpt": "Most people who study the true-qi circulation method on their own think they have completed the five-step method when they “open the governing vessel,” but in fact they have only completed the first four steps of the elementary stage; very few master the fifth step. Some, whose stillness is good, encounter advanced states in stillness but instead..." },
-  "254zhoutiangong": { "title": "The Microcosmic Orbit Practice", "author": "Mingde", "excerpt": "The microcosmic orbit practice makes true qi circulate through the body along the orbit, thereby moving qi and activating blood, dispersing stagnation and dissolving stasis, and restoring essence to nourish the brain — achieving resistance to disease and immunity, health and longevity." },
-  "255haorenge": { "title": "The Song of a Good Man (Annotated)", "author": "Lü Xinwu", "excerpt": "Original note: His name was Kun, courtesy name Shujian, a native of Ningling, a jinshi of the Jiajing era of the Ming dynasty, who rose to the post of Junior Minister of Justice (vice-minister of the Ministry of Justice)." },
-  "256chengxinxingshan": { "title": "Doing Good with a Sincere Heart", "excerpt": "Translation: The coming of calamity and fortune has no other cause; all are summoned by one's own thoughts and actions. The retribution for good and evil in thought and deed follows like a shadow following its form — doing evil brings calamity, doing good brings fortune." },
-  "257nizhuanshuailao": { "title": "Reversing Aging Through the Practice of the Jiaji Point", "author": "Zhang Xingchun", "excerpt": "Constantly hold this mind, withdrawing it to conceal it in the jiaji point, and guard it without leaving." },
-  "258quanzhenqizizhuan": { "title": "Biographies of the Seven Disciples of Quanzhen", "excerpt": "In this world there is nothing truly difficult, only those whose hearts are set on it." },
-  "259jingzongrumen": { "title": "An Introduction to the Pure Land School", "author": "Zhanran", "excerpt": "The purpose of studying Buddhism is to become a Buddha and deliver living beings. For ordinary people to cultivate and realize Buddhahood, there are two great stages: first, transcending the cycle of rebirth; second, perfectly realizing the Buddha-fruit. The goal of the Buddhist practitioner in this life is to transcend the six realms of rebirth." },
-  "260jinianjiguan": { "title": "Observing the Mind in Buddha-Recitation", "author": "Zhanran", "excerpt": "Observing the mind in Buddha-recitation means that while reciting, one observes the present thought (reciting and observing at once). This is an exceedingly incisive and wondrous method that can steadily achieve: the moment the Buddha's name is raised, deluded thoughts entirely vanish." },
-  "261lengqiejing": { "title": "The Lankavatara Sutra", "excerpt": "Composed by Jiang Zhiqi, Grand Master for Court Discussion, Direct Scholar of the Dragon Diagram Pavilion, Commissioner for Salt and Alum Regulation and Deputy Transport Commissioner of the Jianghuai, Jing, and Zhe Circuits, Senior Guardian, and recipient of the Purple and Gold Fish Pouch." },
-  "262dachengrulengqiejing": { "title": "The Mahayana Lankavatara Sutra", "author": "By Imperial Order", "excerpt": "Translated by imperial command by the Tripitaka master Śikṣānanda of Khotan, in the Great Zhou." },
-  "264gongtongyifashen": { "title": "One Shared Dharmakaya?", "author": "Zhanran", "excerpt": "Question: What does “the Buddhas of the ten directions and three times share one dharmakaya” mean? Is it from the Avatamsaka Sutra? Is it the Buddha's teaching?" },
-  "265weishiyifanshen": { "title": "The Bodies of All Buddhas Are but One Dharmakaya", "author": "Annotated by Zhanran", "excerpt": "(Original text from the Avatamsaka Sutra (80 fascicles), Chapter Ten: The Bodhisattva's Inquiries.)" },
-  "266baochijuezhi": { "title": "Sustaining Awareness", "excerpt": "How, then, does one cultivate awareness and sustain it at all times and in all places? How does one turn daily life into practice and take joy in it? The Collected Writings of Thich Nhat Hanh says:" },
-  "267renshengrumeng": { "title": "Life Is Like a Dream", "author": "Annotated by Zhanran", "excerpt": "(Dream Roamings: A Reply to the General Yang Yuanru.)" },
-  "268zenyangkandaiyezhang": { "title": "How to Deal with Karmic Obstacles", "author": "Elder Mengcan", "excerpt": "True merit and wisdom then manifest." },
-  "269yigenianforendezishu": { "title": "The Dual Cultivation of Nature and Life", "author": "The Essentials of Buddha-Recitation with the Breath", "excerpt": "[Dual cultivation of nature and life] Cultivating nature: liberation of self-nature (transcending the six realms of rebirth); cultivating life: health and longevity." },
-  "272nianfojingju": { "title": "Maxims on Buddha-Recitation (Four Items)", "author": "Venerable Huxi", "excerpt": "All who practice the Pure Land must clearly aim to defeat birth and death, not merely talk and let it go. One should reflect that impermanence is swift and time waits for no one; one must treat this as the one thing to do. If one advances and retreats by halves, half believing and half doubting, what will that accomplish when the end comes? How can one transcend the cycle of rebirth?" },
-  "273wumingmeng": { "title": "The Dream of Ignorance", "author": "Zhanran", "excerpt": "Question: Why is it said that “all dharmas are illusions”?" },
-  "274baizhangyehu": { "title": "Baizhang's Wild Fox", "author": "Annotated by Zhiyu", "excerpt": "Whenever the master (Chan Master Baizhang) ascended the hall, an old man followed the assembly to hear the Dharma. One day, after the assembly had dispersed, only the old man remained. The master asked: “Who are you?” The old man said: “I am not a human being. In the time of Kasyapa Buddha I once lived on this mountain. A student asked me: ‘Does a great practitioner still fall into cause and effect or not?’...”" },
-  "275zhengdaogezhu": { "title": "Annotated Song of Enlightenment", "author": "Annotated by Zhanran", "excerpt": "The Song of Enlightenment is the state of awakening from the dream of ignorance. For example, the song says: “When the dharmakaya awakens, there is not a single thing,” and “In the dream there are clearly the six realms; after awakening there is nothing, not even the great chiliocosm.” Like the Diamond Sutra, the Heart Sutra, and the Platform Sutra, its core is the realization of the patience of the unborn..." },
-  "276sanshixinian": { "title": "Annotated Three-Period Remembrance Ceremony of Zhongfeng", "author": "Annotated by Zhanran", "excerpt": "Note: The headings of each passage of instruction were added for ease of reading and are not part of the original text." },
-  "277linianyizhuo": { "title": "The Single Move of Departing from Thought", "author": "Annotated by Zhanran", "excerpt": "(Dream Roamings: An Admonition to the Chan Practitioner Liaoxin Hai.)" },
-  "278-1jianxingshixing": { "title": "Perceiving the Nature: It Is the Mind", "author": "Annotated by Mingde", "excerpt": "[Ananda, answer me first: you saw the radiant fist. What causes this fist to be radiant? How does it become a fist? With what do you see it? Ananda said: The Buddha's whole body is born of the gold of the Jambu river, brilliant as a jewel mountain, born of purity, hence its radiance. In truth, my eyes see the five fingers, curled and clenched, shown to people, hence the form of a fist.]" },
-  "278-2jianxingbudong": { "title": "Perceiving the Nature: It Is Unmoving", "author": "Annotated by Mingde", "excerpt": "[At that time the World-Honored One extended his radiant hand, with its web-like marks of the Tushita cotton, opened his five fingers, and admonished Ananda and the assembly: “When I first attained the Way, in the Deer Park I said to the five bhikshus such as Ajnata-kaundinya and to your fourfold assembly: All living beings fail to attain bodhi and arhatship because they are misled by the defilements of adventitious dust. What did you awaken to at that time, that you now...”]" },
-  "278-3jianxingbumie": { "title": "Perceiving the Nature: It Is Unceasing", "author": "Annotated by Mingde", "excerpt": "[At that time King Prasenajit rose and addressed the Buddha: “In the past, before I had received the Buddha's admonitions, I met Kaccayana and Vairatiputra, who both said this body is annihilated after death and called that nirvana. Though I have now met the Buddha, I still harbor doubts. How can one demonstrate and know this mind's state of non-arising and non-ceasing? Now in this assembly, those with outflows...”]" },
-  "279wajietongkuzhishen": { "title": "Dissolving the Pain-Body", "excerpt": "By Eckhart Tolle; translated by Zhang Defen." },
-  "280kuoranwusheng": { "title": "Vast Emptiness, No Sage", "author": "Zhiyu", "excerpt": "[Emperor Wu of Liang asked Master Bodhidharma: “What is the first principle of the holy truth?” Bodhidharma said: “Vast emptiness, no sage!” The emperor said: “Who then is facing me?” Bodhidharma said: “I do not know.” The emperor did not understand, and Bodhidharma crossed the river to Wei.]" },
-  "281yinianbusheng": { "title": "Not a Single Thought Arises, Yet All Is Clear", "author": "Zhanran", "excerpt": "Question: Is “not a single thought arises, yet all is clear” a good state or a bad state? Why do some Chan masters severely scold this state?" },
-  "282qishianxin": { "title": "Begging the Master to Pacify the Mind", "author": "Annotated by Zhiyu", "excerpt": "[On the night of the ninth day of the twelfth month of that year, it snowed heavily. Huike stood firm and unmoving, and by dawn the snow had piled past his knees. The patriarch, moved to pity, asked: “You have stood long in the snow; what do you seek?” Huike wept: “I only beg the master, in his compassion, to open the gate of sweet dew and widely deliver all beings.” The patriarch said: “The unsurpassed wondrous Way of the Buddhas requires striving through long kalpas, doing what is hard to do...”]" },
-  "283kongjudeyuantou": { "title": "The Source of Fear", "excerpt": "By Eckhart Tolle; translated by Zhang Defen." },
-  "284erzhonggenben": { "title": "The Two Roots", "author": "Annotated by Zhiyu", "excerpt": "[All living beings, since time without beginning, continue in birth and death because they do not know the permanent true mind, the pure, luminous essence of nature, and use instead deluded thoughts; because these thoughts are not true, there is the cycle of transmigration.]" },
-  "285jingzhongjie": { "title": "Samantabhadra Bodhisattva's Verse Admonishing the Assembly", "excerpt": "Time flies swiftly, and human life is impermanent. Buddhist practitioners must be vigilant at all times; never be careless, frolic and play, and waste time, only to regret it endlessly." },
-  "286yonggongdeliangzhongnanyi": { "title": "Two Kinds of Difficulty and Ease in Practice", "author": "Annotated by Zhanran", "excerpt": "(Original text from the Elder Monk Xuyun's Expedient Instructions.)" },
-  "287qinqingfalv": { "title": "Family and Dharma Companions", "author": "Annotated by Zhanran", "excerpt": "(Original text excerpted from the Elder Monk Xuyun's Self-Narrated Chronology.)" },
-  "288youtanbohuaji": { "title": "The Record of the Udumbara Flower", "author": "Annotated by Zhanran", "excerpt": "(Original text from the Elder Monk Xuyun's Self-Narrated Chronology: The Record of the Udumbara Flower.)" },
-  "289fenbiezhufaxiang": { "title": "Skillfully Discerning the Marks of All Dharmas", "author": "Zhanran", "excerpt": "Question: Please explain “skillfully discerning the marks of all dharmas, yet unmoving in the ultimate truth” (the Vimalakirti Sutra)." },
-  "290zixingsanyi": { "title": "The Three Meanings of Self-Nature", "author": "Zhanran", "excerpt": "Question: Many sutras and treatises say all dharmas lack self-nature. Why then does the Lankavatara Sutra say “just as an ox lacks horse-nature and a horse lacks ox-nature, it is not that they lack self-nature”?" },
-  "291xiuxingdezhendi": { "title": "The True Meaning of Practice", "excerpt": "The mind is like a continuous river. If you cannot use your practice to seize hold of each present moment, then your mantra recitation, visualization, chanting, meditation, and even the lofty view you profess and the lofty conduct you display are all a waste of time." },
-  "292wuzhongzuiqiangdadeliliang": { "title": "The Five Most Powerful Forces", "author": "The True Meaning of Practice", "excerpt": "For practice to become a way of life, one should cultivate the five forces. If we possess the five forces, bodhicitta will naturally arise in the mind." },
-  "293jgj-zhu": { "title": "Annotated Diamond Sutra", "author": "Annotated by Zhanran", "excerpt": "All that has marks is illusory; grasping at no mark, one is thus unmoving." },
-  "301jgj": { "title": "An Elucidation of the Diamond Sutra", "author": "Annotated by Zhanran", "excerpt": "All that has marks is illusory; grasping at no mark, one is thus unmoving." },
-  "302xinj": { "title": "An Elucidation of the Heart Sutra", "author": "An Elucidation of the Heart Sutra", "excerpt": "The Buddha preached the Dharma for forty-nine years, twenty-two of which were devoted to the Prajñā scriptures. One may say the Prajñā scriptures are the soul of the entire Buddhadharma, the Diamond Sutra is the essence of the Prajñā scriptures, and the Heart Sutra is the essence of the Diamond Sutra. Hence for a thousand years the Heart Sutra has been known in every household and loved by all..." },
-  "303liuzutanjing": { "title": "An Elucidation of the Platform Sutra of the Sixth Patriarch", "author": "Annotated by Zhanran", "excerpt": "The Platform Sutra is the only work of indigenous Chinese Buddhism honored with the title “sutra.” It gives a systematic and comprehensive exposition of the theory and practice of the sudden teaching of “perceiving one's original nature and becoming a Buddha by seeing the nature,” and its appearance marks the formal establishment of Chinese Chan, radiant with glory." },
-  "304fozangj": { "title": "Selected Passages from the Buddha Repository Sutra, Annotated", "author": "Selected and annotated by Zhanran", "excerpt": "The Buddha Repository Sutra, in three fascicles, was translated by Master Kumārajīva on the twelfth day of the sixth month of the seventh year of Hongshi (405) in the Later Qin. The sutra has ten chapters, discussing the true mark of all dharmas as unborn and unceasing, markless and unconditioned. The true mark of all dharmas, ultimately empty and quiescent, is itself the Buddha Way. It says that precept-breaking bhikshus have ten arrows of sorrow, and..." },
-  "401amtj": { "title": "Annotated Essential Explanation of the Amitabha Sutra", "author": "Annotated by Zhanran", "excerpt": "Translated by the Tripitaka master Kumārajīva, in the Later Qin." },
-  "402nianfolun": { "title": "A Discourse on Buddha-Recitation (Annotated Sayings of Master Chewu)", "author": "Compiled and annotated by Zhanran", "excerpt": "With one utterance of the Buddha's name, unmixed with other concerns, ten recitations achieve the work and instantly transcend many kalpas." },
-  "403chanjing": { "title": "The Essential Principles of Chan and Pure Land (Annotated Instructions of Master Hanshan)", "author": "Compiled and annotated by Zhanran", "excerpt": "Looking over Master Hanshan's entire life, like Master Yongming (the sixth Pure Land patriarch) and Master Chewu (the twelfth), he was outstanding in both the cultivation and propagation of Chan and Pure Land, and he is listed in the Records of Pure Land Sages. So he is a patriarch of both the Chan school and the Pure Land school..." },
-  "404nianfosanmei": { "title": "A Detailed Exposition of “Feeling the Elephant: On the Samadhi of Buddha-Recitation”", "author": "Annotated by Zhanran", "excerpt": "“Feeling the Elephant: On the Samadhi of Buddha-Recitation” appears in volume four of Master Yinguang's Collected Writings. It is the original draft of Master Liaoyu, published after revision by Master Yinguang, so it also embodies Master Yinguang's own experience and insight in cultivating the samadhi of Buddha-recitation — a rare and precious document of the Buddha-recitation method. This essay..." },
-  "502xiuxinjue": { "title": "A Detailed Exposition of the Essentials of Cultivating the Mind", "author": "Introduction to National Master Puzhao", "excerpt": "Composed by the Korean National Master Puzhao (Jinul); annotated by Zhanran." },
-  "502yuanjuejingjj": { "title": "An Elucidation of the Sutra of Perfect Enlightenment", "author": "Annotated by Zhanran", "excerpt": "The full title of the Sutra of Perfect Enlightenment is “The Great and Vast Sutra of Perfect Enlightenment,” in twelve chapters. In it Shakyamuni Buddha, through dialogues with twelve great bodhisattvas, expounds the wondrous principle of the Tathagata's perfect enlightenment (the perfectly awakened self-nature) and the methods of practice." },
-  "502zhenxinzhishuojingjie": { "title": "A Detailed Exposition of the Straightforward Talk on the True Mind", "author": "Annotated by Zhanran", "excerpt": "Do not seek the Buddha far off on Vulture Peak; Vulture Peak is right here in your own mind;" }
+ "000jxdg-chan": {
+  "title": "Teaching Syllabus",
+  "excerpt": "Studying Buddhism is practice — practice exactly as the Buddha taught."
+ },
+ "001juezhichan": {
+  "title": "Awareness Chan",
+  "author": "Zhanran",
+  "excerpt": "In its cultivation there is a graded entry; in its realization there is the truth attained for oneself."
+ },
+ "001jznf": {
+  "title": "Awareness Buddha-Recitation",
+  "author": "Zhanran",
+  "excerpt": "In its cultivation there is a graded entry; in its realization there is the truth attained for oneself."
+ },
+ "001zyxuefo": {
+  "title": "How to Study Buddhism",
+  "author": "Zhiyu",
+  "excerpt": "Studying Buddhism is practice — practice exactly as the Buddha taught."
+ },
+ "001zyxuefo-ft": {
+  "title": "How to Study Buddhism",
+  "author": "Zhiyu",
+  "excerpt": "The purpose of studying Buddhism is to seek the Buddha Way above and to transform living beings below. This is also the great mission of every Buddhist practitioner. How, then, is this purpose to be fulfilled and this mission accomplished?"
+ },
+ "002baiyunxy": {
+  "title": "The Heart-Essence of the White Cloud (A Treasured Manual on Observing the Mind)",
+  "author": "Just Observe Your Own Mind",
+  "excerpt": "This book is compiled from The Essentials of the Buddhadharma and The Letters of Mr. Liu Zhuyuan. Its author, Mr. Liu Zhuyuan (Master Changzong), was a modern-day sage, deeply versed in the scriptural treasury and thoroughly practiced in doctrinal contemplation; because he lived in seclusion, few knew of him. The depth of his attainment and the height of his realization can be seen in the following three points..."
+ },
+ "002fangsw": {
+  "title": "Master Yinguang on Releasing Living Beings (Original Text and Vernacular)",
+  "author": "By Master Yinguang",
+  "excerpt": "(Original title: An Appeal for the Restoration of the Life-Release Pond at Nanxun Temple of Ultimate Bliss.)"
+ },
+ "003xffayuanw": {
+  "title": "Annotated Vow of Rebirth in the Western Land",
+  "author": "Annotated by Zhanran",
+  "excerpt": "The Vow of Rebirth in the Western Land was composed by Master Lianchi, the eighth patriarch of the Pure Land school and a renowned Ming-dynasty monk, as a vow to be reborn in the Western Land of Ultimate Bliss. There are many such vows, but this one alone is complete in principle and practice and supremely perfect, so Master Xing'an (the eleventh patriarch of the Pure Land school) said..."
+ },
+ "004yixinbuluan": {
+  "title": "One-Pointed Mind, Undisturbed",
+  "author": "Zhanran",
+  "excerpt": "The Buddha Speaks of the Amitabha Sutra is the heart-essence that the World-Honored One preached without being asked, a profound sutra praised by Buddhas of all directions, the wondrous teaching of ultimate skillful means, and the consummate and perfect guide. In this sutra the World-Honored One specifically taught how to ensure rebirth in the Western Land of Ultimate Bliss: faith, aspiration, and mindful invocation, single-minded and undisturbed — thereby establishing the Pure Land school's..."
+ },
+ "005rsxiuxing": {
+  "title": "Practice as Taught",
+  "author": "Zhanran",
+  "excerpt": "The Amitabha Sutra has two translations: one translated by Master Kumārajīva in the Later Qin, commonly called the Qin translation, and one by Master Xuanzang in the Tang dynasty, commonly called the Tang translation. Adapting to the Chinese preference for brevity, Master Kumārajīva translated mainly by meaning; his text is concise yet rich..."
+ },
+ "006linzhongzn": {
+  "title": "Right Mindfulness at the Moment of Death",
+  "author": "Zhanran",
+  "excerpt": "The principle of rebirth: right mindfulness at the moment of death evokes the Buddha's coming to welcome one."
+ },
+ "007deshengyf": {
+  "title": "Whether One Is Reborn",
+  "author": "Zhanran",
+  "excerpt": "Question: What does it mean that “whether one attains rebirth depends entirely on the presence of faith and aspiration, while the grade of one's rebirth depends entirely on the depth of one's mindful invocation”?"
+ },
+ "007xinyuanxing": {
+  "title": "Faith, Aspiration, and Practice",
+  "author": "Zhanran",
+  "excerpt": "Faith, aspiration, and practice are the three essential elements for rebirth in the Western Land of Ultimate Bliss — like the three legs of a tripod, none may be lacking. On the meaning and mutual relationship of these three, Master Ouyi gives clear instruction in his Essential Explanation of the Amitabha Sutra (see the Annotated Essential Explanation of the Amitabha Sutra):"
+ },
+ "008yinianxy": {
+  "title": "One Thought in Accord",
+  "author": "Annotated by Zhanran",
+  "excerpt": "Excerpted from Master Chewu's Collected Works: A Letter in Reply to Layman Xiangyan."
+ },
+ "009xiuwfayao": {
+  "title": "The Essentials of Cultivation and Awakening",
+  "author": "Annotated by Zhanran",
+  "excerpt": "Cultivation: following the flow of one's own mind's manifestations and purging away deluded thoughts and habitual patterns."
+ },
+ "010dzjcy": {
+  "title": "A Glossary of Terms in the Sutra of the Original Vows of Ksitigarbha Bodhisattva",
+  "author": "Glossary of Terms",
+  "excerpt": "What to know when reciting the Sutra of the Original Vows of Ksitigarbha Bodhisattva."
+ },
+ "011errusx": {
+  "title": "A Detailed Exposition of the Treatise on the Two Entrances and Four Practices",
+  "author": "Directly transmitted by Patriarch Bodhidharma",
+  "excerpt": "The Treatise on the Two Entrances and Four Practices is the essential teaching on entering the Way that Patriarch Bodhidharma personally transmitted to Daoyu and Huike, as recorded by his disciple Tanlin. Concise in words yet rich in meaning, complete in both principle and practice, it is truly the guiding outline of the Chan school and a compass for practitioners."
+ },
+ "012liuzutanjing_kp": {
+  "title": "The Platform Sutra of the Sixth Patriarch (with Section Divisions)",
+  "author": "Recorded by the disciple Fahai",
+  "excerpt": "Zhanran's note: The subheadings under each chapter are structural divisions, not part of the sutra text."
+ },
+ "013zhufasx": {
+  "title": "The True Mark of All Dharmas",
+  "author": "Zhanran",
+  "excerpt": "The true mark of all dharmas is the fundamental principle of the Buddhadharma and the watershed between the Buddhadharma and the doctrines of non-Buddhists and demons. The Treasury of Dharma Teachings states: “All the Mahayana sutras preached by the Tathagata are sealed and established by the principle of the true mark. Non-Buddhists cannot adulterate it, and heavenly demons cannot destroy it. Where there is the seal of the true mark, it is the Buddha's teaching; where there is no such seal, it is the teaching of demons...”"
+ },
+ "014guanxincx": {
+  "title": "Observing the Mind to Remove Habitual Patterns",
+  "excerpt": "Extracted from Mr. Xu Hengzhi's What It Means to Study Buddhism and How to Practice the Buddhadharma."
+ },
+ "016xdwsjwl": {
+  "title": "Records of Modern-Day Rebirths",
+  "excerpt": "[Note] For the convenience of modern readers, the wording has been slightly revised."
+ },
+ "017jdwsswl": {
+  "title": "Records of Recent Rebirths",
+  "author": "Compiled by Master Kuanlü",
+  "excerpt": "The compiler of this book, Master Kuanlü, whose Dharma name was Foxing, was over eighty years old and a native of Zhejiang Province. In 1952 he went to Shanghai, took refuge with the Elder Master Xuyun, and was ordained. Later Master Xuyun asked him to reside at Nanhua Monastery. At that time Nanhua Monastery had been severely damaged during the Cultural Revolution, with most of its scriptures ruined beyond repair. Together with six lay practitioners from Shanghai..."
+ },
+ "018xinyzx": {
+  "title": "Mind, Self-Nature, and the Tathagatagarbha",
+  "author": "Zhanran",
+  "excerpt": "1. Self-nature, original nature (the tathagatagarbha), and the nature of consciousness."
+ },
+ "019xinnzy": {
+  "title": "The Mind Can Transform Karma",
+  "author": "Karma Cannot Bind",
+  "excerpt": "By replacing them with the Buddha's name, one transforms karma through the mind."
+ },
+ "020taishanggy-1": {
+  "title": "The Treatise on Response and Retribution, Compiled (Vernacular, Volume 1)",
+  "author": "The Way to Gather Blessings and Avert Disasters",
+  "excerpt": "The Most High says: “Fortune and misfortune have no gate; they are summoned only by people themselves.”"
+ },
+ "021taishanggy-2": {
+  "title": "The Treatise on Response and Retribution, Compiled (Volume 2)",
+  "author": "The Way to Gather Blessings and Avert Disasters",
+  "excerpt": "Regard others' gains as your own gains, and others' losses as your own losses."
+ },
+ "022taishanggy-3": {
+  "title": "The Treatise on Response and Retribution, Compiled (Vernacular, Volume 3)",
+  "author": "The Way to Gather Blessings and Avert Disasters",
+  "excerpt": "The Treatise of the Most High on Response and Retribution, with Annotations, Lectures, and Attested Cases — Vernacular Abridged Edition, Volume 3."
+ },
+ "023taishanggy-4": {
+  "title": "The Treatise on Response and Retribution, Compiled (Vernacular, Volume 4)",
+  "author": "The Way to Gather Blessings and Avert Disasters",
+  "excerpt": "Pointing to heaven and earth to bear witness to one's base feelings, invoking the gods to scrutinize one's shameful deeds."
+ },
+ "024lfsx-yw": {
+  "title": "The Four Lessons of Liaofan (Original Text)",
+  "author": "The Study of Establishing One's Destiny",
+  "excerpt": "In my childhood I lost my father. My aging mother bade me give up the examinations and study medicine, saying, “It can sustain life and relieve others; and mastering a craft to make a name for yourself was your father's long-cherished wish.”"
+ },
+ "025taishanggy-yw": {
+  "title": "The Treatise on Response and Retribution, Compiled (Original Text)",
+  "author": "In Praise of Lord Yao Duanke",
+  "excerpt": "The Treatise of the Most High on Response and Retribution, with Annotations, Lectures, and Attested Cases, Volume 1."
+ },
+ "026yjy-baihua": {
+  "title": "The Story of Yu Jingyi's Encounter with the Kitchen God, in Vernacular and Original Text (A Model for Transforming Destiny)",
+  "author": "Translated by Mingde",
+  "excerpt": "Note: The headings in the text were added by the translator."
+ },
+ "027lfsx-baihua": {
+  "title": "The Four Lessons of Liaofan, Original Text and Vernacular",
+  "author": "Translated by Mingde",
+  "excerpt": "Note: The subheadings in the text were added by the translator."
+ },
+ "028baofufa": {
+  "title": "How to Preserve Wealth",
+  "author": "Nie Yuntai",
+  "excerpt": "The author of How to Preserve Wealth, Mr. Nie Yuntai, was a grandson of the famous Qing statesman Zeng Guofan and the first chairman of the Shanghai Chamber of Commerce. Drawing on his own family's experience and the rise and fall of wealthy families he saw in Shanghai, he discusses how prosperous families can endure and flourish. It is well worth reading, especially in the present age."
+ },
+ "030gonggg": {
+  "title": "The Ledger of Merits and Demerits",
+  "author": "Translated and annotated by Mingde",
+  "excerpt": "The ledger of merits and demerits is a book for those who refrain from evil and practice good to encourage and examine themselves. It has two sections — a merit register (good deeds) and a demerit register (bad deeds) — one page per month, bound into a book. Day by day one records the merits and demerits of one's deeds, whether good or evil — for example, one merit, ten merits, a hundred merits; one demerit, ten demerits, a hundred demerits. Only the number is recorded, not the matter..."
+ },
+ "031liaozhibingj": {
+  "title": "The Sutra on Healing Hemorrhoids, Spoken by the Buddha",
+  "excerpt": "Thus have I heard. At one time the Bhagavan was dwelling in the Bamboo Grove of the great city of Rajagriha, together with a great assembly of five hundred bhikshus. At that time many bhikshus were afflicted with hemorrhoids; their bodies were emaciated and wasted, wrapped in suffering, tormented day and night by extreme distress..."
+ },
+ "032xyxing": {
+  "title": "Yearning for Ultimate Bliss, Renouncing Samsara",
+  "author": "Zhanran",
+  "excerpt": "The suffering of Samsara is beyond words; the bliss of Ultimate Bliss is beyond compare."
+ },
+ "033shiyixinyuliyixin": {
+  "title": "One-Pointed Mind in Practice and in Principle",
+  "author": "Zhanran",
+  "excerpt": "Question: What are the one-pointed mind in practice and the one-pointed mind in principle?"
+ },
+ "034xiaochujiuye": {
+  "title": "Eliminating Past Karma",
+  "author": "Zhanran",
+  "excerpt": "Answer: Master Hanshan instructs in his Dream Roamings: An Admonition to Dong Zhiguang:"
+ },
+ "035shifajietujie": {
+  "title": "An Illustrated Explanation of the Ten Dharma Realms",
+  "author": "Compiled and annotated by Zhanran",
+  "excerpt": "The ordinary and the sage do not go beyond the one mind; good and evil are both created by the mind."
+ },
+ "036yinianbusheng": {
+  "title": "Not a Single Thought Arises",
+  "author": "Annotated by Zhanran",
+  "excerpt": "(Excerpted from Master Hanshan's Dream Roamings: To Bao Zhongsu of the Ministry of Rites.)"
+ },
+ "037zhufasxg": {
+  "title": "Contemplation of the True Mark of All Dharmas",
+  "excerpt": "Excerpted from The Essential Method of Contemplation (translated by Master Kumārajīva of the Later Qin). Annotated by Zhanran."
+ },
+ "038jingsheyw": {
+  "title": "Vow to Establish a Pure Land Society During Grave Illness",
+  "author": "By Master Ouyi",
+  "excerpt": "[On the thirteenth day of the twelfth month of the Jiawu year, the bodhisattva-precept disciple Zhixu single-mindedly took refuge in Amitābha Buddha of the Land of Ultimate Bliss, Avalokiteśvara, Mahāsthāmaprāpta, the pure ocean-wide assembly, and all the Triple Gem of the ten directions and three times.]"
+ },
+ "039nianerwunian": {
+  "title": "Reciting Yet Not Reciting",
+  "author": "Annotated by Zhanran",
+  "excerpt": "All his life Mr. Jiang Weinong taught the Prajñā and practiced with Amitābha, deeply attaining the essentials of Buddha-recitation. At the moment of death he said himself: “A golden light shines everywhere; the Buddha has come to welcome me.” And amid the sound of the Buddha's name he passed away in peace."
+ },
+ "040busbumie": {
+  "title": "Neither Arising Nor Ceasing",
+  "author": "Zhanran",
+  "excerpt": "Question: In the sutras and treatises, what does “neither arising nor ceasing” mean? Does it mean eternal existence?"
+ },
+ "040zhaozgz": {
+  "title": "Does a Dog Have Buddha-Nature?",
+  "author": "Zhanran",
+  "excerpt": "“Does a dog have Buddha-nature or not?” This is one of the most famous koans in Chan. It is famous because the Tang-dynasty master Huangbo, in his Essentials of Mind Transmission, used this koan to open the way of huatou (head-word) Chan."
+ },
+ "041chanjingsx": {
+  "title": "The Dual Cultivation of Chan and Pure Land",
+  "author": "Zhanran",
+  "excerpt": "A Chan practitioner came to visit and asked: At the moment of death, if one has not yet seen the mind and nature (thoroughly perceived one's original nature), or has seen them but not yet severed the delusions of views and thoughts, by what means can one end birth and death?"
+ },
+ "043mengyouji": {
+  "title": "Master Hanshan's Dream Roamings",
+  "author": "Self-Commendation by the Elder Hanshan",
+  "excerpt": "Daily records by the attendant Fushan; edited by the disciple Tongjiong; re-collated by the Lingnan disciple Liu Qixiang."
+ },
+ "046yixinbuluan": {
+  "title": "One-Pointed Mind, Undisturbed: Questions and Answers",
+  "author": "Zhanran",
+  "excerpt": "Why must Buddha-recitation be single-minded and undisturbed? How is the state of single-mindedness achieved? Why is the Pure Land path called the easy path? Must Buddha-recitation be single-minded and undisturbed for one to be reborn?"
+ },
+ "047shengmingdcj": {
+  "title": "Rebuilding Your Life",
+  "author": "Preface to the Original Book",
+  "excerpt": "Whatever we send out returns to us in the blink of an eye."
+ },
+ "048wangshengfl": {
+  "title": "Examples of Rebirth",
+  "author": "Editor's Afterword",
+  "excerpt": "Master Tanxu says in his Instructions for the Seven-Day Buddha-Recitation Retreat:"
+ },
+ "049kulianyiwan": {
+  "title": "Deliberate Practice: Ten Thousand Hours to Mastery",
+  "author": "Tongren Yuye",
+  "excerpt": "(Original title: How to Practice for Ten Thousand Hours.)"
+ },
+ "050ningjingspeaks": {
+  "title": "Stillness Speaks",
+  "author": "Translated by You You",
+  "excerpt": "Stillness Speaks"
+ },
+ "051ianjiechanding": {
+  "title": "One-Minute Meditation",
+  "excerpt": "(Mr. Wang Xianglu's “Simple and Direct Method of Meditation.”)"
+ },
+ "052wangshengyuanli": {
+  "title": "The Principle of Rebirth",
+  "author": "Zhanran",
+  "excerpt": "The principle of rebirth: right mindfulness at the moment of death evokes the Buddha's coming to welcome one."
+ },
+ "053sanxinnianfo": {
+  "title": "Does Scattered Buddha-Recitation Still Ensure Rebirth?",
+  "author": "Zhanran",
+  "excerpt": "The Pure Land sutras and treatises all repeatedly teach that one should recite the Buddha's name single-mindedly."
+ },
+ "054ouyilunxyx": {
+  "title": "Master Ouyi on Faith, Aspiration, and Practice",
+  "author": "Zhanran",
+  "excerpt": "Question: Some articles say that Master Ouyi taught that with faith and aspiration alone one is certain to be reborn. Other articles say that Master Ouyi taught that with true faith and earnest aspiration even scattered Buddha-recitation ensures rebirth. Yet when I read Master Ouyi's Essential Explanation of the Amitabha Sutra, it seems quite the opposite..."
+ },
+ "056chengzanjingtujing": {
+  "title": "The Sutra of Praise for the Pure Land and the Buddha's Protection (with Section Divisions)",
+  "author": "Divided into sections by Zhanran",
+  "excerpt": "Note: The headings of the following sections are structural divisions, not part of the sutra text."
+ },
+ "056chengzanjingtujingzhu": {
+  "title": "Annotated Sutra of Praise for the Pure Land and the Buddha's Protection",
+  "author": "Annotated by Zhanran",
+  "excerpt": "The Amitabha Sutra is the heart-essence that the World-Honored One preached without being asked, a profound sutra praised by Buddhas of all directions, the wondrous teaching of ultimate skillful means, and the consummate and perfect guide. It is the most important classic of the Pure Land school, called the foremost Pure Land sutra, because in it Shakyamuni Buddha praises the Western Land of Ultimate Bliss and reveals the sure method of rebirth there..."
+ },
+ "057yunhefan": {
+  "title": "The Yunhe Verse",
+  "excerpt": "In the printed Diamond Sutra, before the sutra text there is a verse called the “Yunhe” gatha, which is exceedingly fine:"
+ },
+ "058xuanzhuangyijing": {
+  "title": "Master Xuanzang's Work of Translating the Scriptures",
+  "excerpt": "After returning to China, Master Xuanzang was held in high esteem by two successive emperors, Taizong and Gaozong of the Tang, who provided for him at court and conferred on him the title “Tripitaka Master.” Twice Emperor Taizong urged him to give up the religious life and assist in government, but the master firmly declined, saying, “I wish to keep the precepts in the monastic robe and propagate the legacy of the Dharma.” The emperor had no choice but to honor his wish and support his translation work..."
+ },
+ "059huofotanming": {
+  "title": "A Living Buddha Discusses Fate",
+  "excerpt": "There are many people in the world who delight in fortune-telling and physiognomy. Chinese women, especially, are addicted to such things. Some women, who are extremely stingy and unwilling to part with a single coin, will spend without regret on a fortune-teller. In their hearts, they must consult a fortune-teller about every matter, great or small..."
+ },
+ "060yuyinku": {
+  "title": "Downloading and Installing the Voice Library",
+  "excerpt": "1. In the lower part of the “Reader” interface (see the figure below), click “Download Voice” to enter the download page. Alternatively, visit the download page directly (at http://www.443w.com/tts/?post=2)."
+ },
+ "060yuyinlangdu": {
+  "title": "Text-to-Speech Reading Tools",
+  "author": "Zhiyu",
+  "excerpt": "Living beings in the Saha world are sharpest in the ear faculty. Listening while reading is often easier to understand and remember than reading alone. Therefore, one can use text-to-speech tools to read study materials aloud while listening. Moreover, repeated listening serves as nurturing cultivation."
+ },
+ "061mingxinjianxing": {
+  "title": "Seeing the Mind and Perceiving the Nature",
+  "author": "Zhanran",
+  "excerpt": "Answer: Seeing the mind means stilling thoughts. Thoughts are of three kinds: coarse, fine, and subtle. Perceiving the nature has two levels: glimpsing self-nature and thoroughly perceiving original nature. When both coarse and fine thoughts are stilled (the ordinary state called no-thought) and one realizes the inner spiritual energy (the master within), that is glimpsing self-nature..."
+ },
+ "062xueshanjie": {
+  "title": "Annotated Snow-Mountain Verse",
+  "author": "Annotated by Zhanran",
+  "excerpt": "The Snow-Mountain Verse is four lines from the Nirvana Sutra. In a past life, when Shakyamuni Buddha was the Snow-Mountain Youth, he heard from a rakshasa the two lines “All formations are impermanent; this is the law of arising and ceasing.” He gave up his body and life to hear the remaining two lines (“When arising and ceasing cease, nirvana is bliss”), and so these four lines came to be called the Snow-Mountain Verse."
+ },
+ "063dsznianfoytzzhu": {
+  "title": "Annotated Chapter on the Perfect Penetration of Buddha-Recitation by Mahāsthāmaprāpta Bodhisattva",
+  "author": "Annotated by Zhanran",
+  "excerpt": "Master Yinguang's Preface to the Reprint of the Five Pure Land Sutras says: “The Mahayana sutras that touch on the Pure Land are too numerous to count. But the Shurangama Sutra's chapter on the Perfect Penetration of Buddha-Recitation by Mahāsthāmaprāpta is truly the finest instruction on Buddha-recitation. If living beings can ‘gather in all six faculties and continue with pure mindfulness,’ how could they fail to see the Buddha, whether now or in the future, and draw near to perfect penetration?”"
+ },
+ "066xinliliaobing": {
+  "title": "Healing Through the Mind",
+  "excerpt": "The latent potential of human life is in fact far from being noticed and developed by ourselves. If this potential could be developed, it would be a leap for humanity itself! Self-hypnotic meditative therapy is a basic method for developing this potential. I have read some related works, among which Western..."
+ },
+ "067dakewen": {
+  "title": "Video Instruction: Questions and Answers",
+  "author": "Zhanran",
+  "excerpt": "Question: Why does your institute have only written materials and no videos? Are they still in production?"
+ },
+ "068shandaolzznw": {
+  "title": "Master Shandao's Essay on Right Mindfulness for Rebirth at the Moment of Death (Annotated)",
+  "author": "Annotated by Zhanran",
+  "excerpt": "Original title: “Master Shandao's Essay on Right Mindfulness for Rebirth at the Moment of Death.”"
+ },
+ "068xiangxujs": {
+  "title": "Continuous Recitation Brings Rebirth",
+  "author": "Zhanran",
+  "excerpt": "Master Shandao says: “Precisely because invocation is easy, continuous recitation brings rebirth. If one can continue thought after thought, vowing to persist for life, then ten out of ten will be reborn, a hundred out of a hundred... May all people reflect well: whether walking, standing, sitting, or lying, one must exert the mind and master oneself, never ceasing day or night. When the last thought of this life ends, the next thought is already born [in the Pure Land]. Forever receiving the unconditioned...”"
+ },
+ "069lingzhongzndkw": {
+  "title": "Right Mindfulness at the Moment of Death: Questions and Answers",
+  "author": "Zhanran",
+  "excerpt": "The principle of rebirth: right mindfulness at the moment of death evokes the Buddha's coming to welcome one."
+ },
+ "070hongyuanmen": {
+  "title": "Hōnen's Fabrication of the “Gate of the Great Vow”",
+  "author": "Zhanran",
+  "excerpt": "Answer: The so-called “Gate of the Great Vow” is a teaching fabricated by the Japanese Master Hōnen (1132–1212) by distorting a passage of Master Shandao's instruction in his Commentary on the Contemplation Sutra."
+ },
+ "071shandaosixiang": {
+  "title": "Is This Master Shandao's Pure Land Thought?",
+  "author": "Zhanran",
+  "excerpt": "Question: Master Shandao gave clear instruction on how the Pure Land school should be practiced: “Practice is of two kinds: first, proper practice; second, miscellaneous practice. Proper practice means practicing solely in accordance with the sutras on rebirth. What is it? Single-mindedly reciting and studying the Contemplation Sutra, the Amitabha Sutra, the Infinite Life Sutra, and so on, and single-mindedly contemplating...”"
+ },
+ "072shandaokaishi": {
+  "title": "Master Shandao's Pure Land Teachings",
+  "author": "Compiled and annotated by Zhanran",
+  "excerpt": "Continue thought after thought, vowing to persist for life; exert the mind and master yourself, never ceasing day or night."
+ },
+ "072zyshouchijgj": {
+  "title": "Understanding and Practice in Accord",
+  "author": "Zhanran",
+  "excerpt": "In studying Buddhism, understanding and practice must accord with each other for one to gain real benefit. Otherwise one is like someone counting another's vast fortune while owning not a cent oneself. At the same time, understanding exists for the sake of practice, and only through practice can understanding deepen."
+ },
+ "074chimingnf48": {
+  "title": "Forty-Eight Methods of Buddha-Recitation by Invoking the Name",
+  "excerpt": "Written by the layman Zheng Wei'an (published by the Buddhist Book Company in 1933)."
+ },
+ "076zuihouyisheng": {
+  "title": "This Life Will Be My Last in the Saha World (Recitation)",
+  "excerpt": "I shall bid farewell to this Saha world forever."
+ },
+ "077faranqujie": {
+  "title": "Hōnen's Distortion of the Sutra of Praise for the Pure Land and the Buddha's Protection",
+  "author": "Zhanran",
+  "excerpt": "The questioner says: The view that “right mindfulness at death, then the Buddha comes to welcome” is wrong, while “the Buddha comes to welcome, then one abides in right mindfulness” is right. Master Hōnen says: “Moreover, one who truly aspires to rebirth, who trusts in Amitābha's original vow and recites the Buddha's name, will suffer no inversion at death. The reason: the Buddha's coming to welcome is precisely for the sake of the practitioner's right mindfulness at death...”"
+ },
+ "078faranshizuchu": {
+  "title": "Where Hōnen Stumbled",
+  "author": "Zhanran",
+  "excerpt": "1. He distorted the Eighteenth Vow. The phrase “even ten recitations” in the Eighteenth Vow refers to ten continuous recitations at the moment of death. For the basis of this, see the essay “The Eighteenth Vow.” Yet Hōnen distorted “even ten recitations” in the Eighteenth Vow to mean that merely reciting the Buddha's name ten times with a scattered mind in ordinary times ensures rebirth, and on this he built..."
+ },
+ "079buyaobenyuanfamen": {
+  "title": "Do Not Promote the Japanese Original-Vow Teaching",
+  "author": "Long'ang",
+  "excerpt": "[Editor's note] Hōnen and his followers loudly proclaim that invocation of the name guarantees rebirth, that no cultivation is needed, no precepts need be kept, no good deeds done, no purification of the mind required — that even a lifetime of evil does not matter. The question is: does invocation of the name really guarantee rebirth? Does it accord with the actual facts of past and present? If it really did..."
+ },
+ "080waiqushandaodashi": {
+  "title": "Hōnen and Others Distort and Defame Master Shandao",
+  "author": "Zhanran",
+  "excerpt": "Question: It is said that Master Hōnen “founded the Pure Land school himself based on the Pure Land thought of Master Shandao, an emanation of Amitābha.” Is this so?"
+ },
+ "081di18yuan": {
+  "title": "The Eighteenth Vow",
+  "author": "Zhanran",
+  "excerpt": "Answer: To broadly deliver living beings of the ten directions, Amitābha Buddha made forty-eight great vows. Among them, the Eighteenth Vow is: “If, when I attain Buddhahood, living beings of the ten directions who sincerely and joyfully entrust themselves, who wish to be born in my land, even with ten recitations, should not be born there, may I not attain perfect enlightenment — excluding only those who commit the five grave offenses and slander the true Dharma.” (The Buddha Speaks of the Infinite Life Sutra.)"
+ },
+ "082renshibenyuanfamen": {
+  "title": "The Practice of Hōnen's Teachings",
+  "author": "The Eighteenth Vow",
+  "excerpt": "Reprinted from the “Editor's Note” in the fourth issue of Chan Magazine, 2000."
+ },
+ "083ribenbenyuanfamenxie": {
+  "title": "The Original-Vow Teaching Is a Non-Buddhist Path That Rides on the Buddha",
+  "author": "Zhanran",
+  "excerpt": "Question: Is the Original-Vow teaching a non-Buddhist path that rides on the Buddha?"
+ },
+ "084huimingkaishilu": {
+  "title": "Master Huiming's Record of Instructions",
+  "excerpt": "Shi Huiming (1860–1930), an eminent monk of the late Qing and early Republic, was a native of Fujian. Much like the Sixth Patriarch Huineng, he was unprepossessing and had no formal schooling. Relying on strict observance of the precepts, arduous cultivation, long journeys on foot, and broad learning with solitary awakening, he finally attained the Way. Thereupon his wisdom opened wide, his thoughts flowed like a spring, and he mounted the platform to expound the Dharma..."
+ },
+ "085mituobenyuan": {
+  "title": "Amitābha's Original Vow",
+  "author": "Zhanran",
+  "excerpt": "Answer: When Amitābha Buddha was the bhikshu Dharmakara in the past, he made forty-eight great vows to bring about the Western Land of Ultimate Bliss and deliver all living beings. Among them, the Eighteenth Vow is called Amitābha's original vow. (See the Buddha Speaks of the Infinite Life Sutra.)"
+ },
+ "086guanjingxiapinxiasheng": {
+  "title": "Annotated Chapter on the Lowest Grade of the Lower Tier of Rebirth in the Contemplation Sutra",
+  "author": "Zhanran",
+  "excerpt": "The Buddha Speaks of the Contemplation Sutra of Amitayus (abbreviated as the Contemplation Sutra of Amitayus, or the Contemplation Sutra) is one of the three Pure Land sutras."
+ },
+ "087benyuanfamen": {
+  "title": "What Is the Original-Vow Teaching?",
+  "author": "Zhanran",
+  "excerpt": "Appendix: An Undercurrent the Buddhist World Should Take Seriously."
+ },
+ "088linzhongshinianxiangxu": {
+  "title": "Ten Recitations at Death: Continuous Recitation Brings Rebirth",
+  "author": "With Deep Faith and Earnest Aspiration",
+  "excerpt": "the boundless enthusiasm, perseverance, and willpower that spring forth."
+ },
+ "091wuyalishenghuo": {
+  "title": "Living Without Stress (Video)",
+  "author": "Stillness Speaks",
+  "excerpt": "Your browser does not support the video tag."
+ },
+ "091yes": {
+  "title": "Tolle: The Astonishing Power of Yes (Video)",
+  "excerpt": "Align with the present moment, and you will find that space."
+ },
+ "092shangdaochuan": {
+  "title": "Biography of Master Shandao (Vernacular and Original Text)",
+  "author": "The Eighteenth Vow",
+  "excerpt": "(Original text from the Records of Pure Land Sages.)"
+ },
+ "094lunshuoshengsi": {
+  "title": "On Birth and Death",
+  "author": "Annotated by Zhanran",
+  "excerpt": "Death is the dark shadow that hangs over your life, yet it is illusory, which is why the patriarchs often said, “We undergo birth and death in vain.” To break through the delusion of views, the chapter “The True Mind Transcends Death” from the Straightforward Talk on the True Mind is excerpted and annotated below, in the hope that readers will deeply realize “no birth and death” and enter into it, and thereby..."
+ },
+ "095luelunmxjx": {
+  "title": "A Concise Discourse on Seeing the Mind and Perceiving the Nature",
+  "author": "By Elder Yuanyin",
+  "excerpt": "We living beings, since time without beginning, have been lost to our original face. Mistaking the false for the true, calling the servant “master,” we give rise to greed and anger, create karma, and receive its retribution — like spring silkworms spinning cocoons, binding ourselves tighter and tighter with no time of release. The foolish, in ignorance, quietly endure their suffering and do not seek liberation; the wise, though knowing that birth and death are the great matter and the sea of suffering is boundless, seek to..."
+ },
+ "097chengmingbisheng": {
+  "title": "Does Invoking the Name Guarantee Rebirth?",
+  "author": "Zhanran",
+  "excerpt": "Master Shandao says: “Precisely because invocation is easy, continuous recitation brings rebirth. If one can continue thought after thought, vowing to persist for life, then ten out of ten will be reborn, a hundred out of a hundred...”"
+ },
+ "098haoliaoge": {
+  "title": "The Song of ‘All Is Well’ and Its Commentary",
+  "author": "Annotated by Zhanran",
+  "excerpt": "To the southeast lies the city of Gusu. Within the city, outside Chang Gate, is the most prosperous, refined quarter of the whole world of dust. Beyond Chang Gate is Ten-Li Street; within the street is Renqing Lane; within the lane is an old temple which, because the site is cramped, everyone calls “Gourd Temple.” Beside the temple lives a retired official..."
+ },
+ "098yibigou": {
+  "title": "Master Lianchi: “Cross It Off with One Stroke” (Annotated)",
+  "author": "Annotated by Zhanran",
+  "excerpt": "On New Year's Eve of the Yichou year of Jiajing (1565), Master Lianchi asked his wife, née Tang, to make tea. As she brought the cup to the table, it slipped from her hands and fell. Seeing the beloved heirloom jade cup shattered, the master laughed and said, “There is no conditioned thing that does not disperse.” The next year he bade farewell to Tang, saying, “Affection cannot last forever, and birth and death...”"
+ },
+ "099daochuodashi": {
+  "title": "Master Daochuo's Pure Land Teachings",
+  "author": "Compiled and annotated by Zhanran",
+  "excerpt": "At the moment of death, if all living beings continue ten recitations thought after thought, they will attain rebirth."
+ },
+ "100xiangyanjizhu": {
+  "title": "Xiangyan Hears the Bamboo Crack",
+  "author": "Zhanran",
+  "excerpt": "Chan Master Xiangyan Zhixian was a native of Qingzhou. Weary of the world, he left his family and sought the Way far and wide. Under Baizhang he was quick-witted and intelligent, but he could not penetrate Chan. After Baizhang passed away, he went to study under Guishan (the eminent Tang master and founder of the Guiyang school). Guishan asked: “I hear that when you were with the late master Baizhang...”"
+ },
+ "101yebunengxi": {
+  "title": "Karma Cannot Bind",
+  "author": "Zhanran",
+  "excerpt": "At the moment of death, karma cannot bind him, and he goes freely wherever he wishes."
+ },
+ "102lengqiejingxuanzhu": {
+  "title": "Selected Passages from the Lankavatara Sutra, Annotated",
+  "author": "Annotated by Zhanran",
+  "excerpt": "1. The gateless gate as the Dharma gate; 2. The five dharmas and the three self-natures."
+ },
+ "102lfsx": {
+  "title": "The Four Lessons of Liaofan, Annotated",
+  "author": "Annotated by Mingde",
+  "excerpt": "From ancient times, countless people have been bound by their destiny and unable to be masters of themselves. Only those of great goodness cannot be bound by destiny — hence the saying that the sage possesses the secret of creating his own fate."
+ },
+ "103yjy": {
+  "title": "The Story of Yu Jingyi's Encounter with the Kitchen God, Annotated",
+  "author": "Annotated by Mingde",
+  "excerpt": "Note: The headings in the text were added by the annotator."
+ },
+ "104fofazaishijian": {
+  "title": "The Buddhadharma in the World",
+  "author": "Zhanran",
+  "excerpt": "Question: What does it mean that “the Buddhadharma is in the world, and awakening is not apart from the world”?"
+ },
+ "104ganyingp": {
+  "title": "The Treatise on Response and Retribution, Annotated",
+  "author": "Annotated by Mingde",
+  "excerpt": "All people delight in blessings and dread calamity. So to gain blessings and avoid calamity is everyone's common wish. Yet things often go against our wishes: wanting blessings, blessings depart; wanting to avoid calamity, calamity comes. Why is this? Tracing the causes, they fall into the following categories:"
+ },
+ "105shengyuyouhuan": {
+  "title": "When Heaven Is About to Confer a Great Task",
+  "author": "Annotated by Mingde",
+  "excerpt": "[Hardship and suffering polish you to completion] The tempering of hardship is like carving jade into a vessel: it brings you to success."
+ },
+ "105wangfengyijiayanlu": {
+  "title": "Wang Fengyi's Record of Good Words",
+  "author": "Foreword",
+  "excerpt": "Section 15: The Way of the Maiden, the Way of the Daughter-in-Law, the Way of the Elderly Woman."
+ },
+ "106guanniannianjizhu": {
+  "title": "Observe the Thought and It Stills",
+  "author": "Zhanran",
+  "excerpt": "Question: What does “observe the thought and it stills” mean?"
+ },
+ "108lettinggo": {
+  "title": "The Sedona Method of Emotional Release (Video)",
+  "excerpt": "Watch your thoughts, feel your emotions, observe your reactions to events."
+ },
+ "109chenggong": {
+  "title": "How Much Do You Really Want to Succeed? (Video)",
+  "author": "Like a Drowning Man",
+  "excerpt": "I do not sleep, because now I have a chance to realize my dream."
+ },
+ "110yimengmanyan": {
+  "title": "A Dreamlike Rambling",
+  "author": "A Dreamlike Rambling",
+  "excerpt": "An account by the Elder Jianyue, abbot of Qianhua Monastery."
+ },
+ "111mituoyuanzhongchao": {
+  "title": "The Yuanzhong Chao on the Amitabha Sutra",
+  "excerpt": "A classical commentary on the Amitabha Sutra."
+ },
+ "112shiyongneiguanlianxi": {
+  "title": "Practical Vipassana Exercises",
+  "excerpt": "By the Venerable Mahasi Sayadaw of Burma; translated by Lin Wurui."
+ },
+ "113neiguanchanxiulianxi": {
+  "title": "Vipassana Meditation Exercises",
+  "excerpt": "Original title: Vipassana Meditation: Basic and Progressive Exercises. By the Venerable Mahasi Sayadaw; translated by Lin Wurui."
+ },
+ "114huxinianfojingyi": {
+  "title": "The Essentials of Buddha-Recitation with the Breath",
+  "author": "Zhanran",
+  "excerpt": "[Ten continuous recitations, repeated until they become second nature] This is the reliable guarantee of rebirth. See the essay “The Conditions for Rebirth.” [Continuous] The thoughts of Buddha-recitation link together, uninterrupted by deluded thoughts. [Repeated until second nature] Through repeated practice, it becomes instinct."
+ },
+ "115xifangquezhi": {
+  "title": "The Definitive Guide to the Western Land, Annotated",
+  "author": "Annotated by Zhanran",
+  "excerpt": "This book (The Definitive Guide to the Western Land) is a record of the instructions of Bodhisattva Jueming Miaoxing. This bodhisattva came from the Western Land of Ultimate Bliss, and all his words are the essential wonders of practice. If one can constantly realize them and strive to follow them, one is certain to be born in the highest grade."
+ },
+ "116muaidazaodejinpai": {
+  "title": "A Gold Medal Forged by a Mother's Love",
+  "excerpt": "Under the bright starry sky, Xiaopeng took out the gold medal and hung it around his mother's neck..."
+ },
+ "117zhixingli": {
+  "title": "What Is Execution Ability?",
+  "excerpt": "Execution ability is the capacity to reach one's set goals and complete one's tasks."
+ },
+ "118yili": {
+  "title": "The Key to Success: Perseverance (Video)",
+  "excerpt": "Perseverance is passion for long-term goals and steadfast endurance."
+ },
+ "120huirichuzui": {
+  "title": "The Sun of Wisdom Dispels Sins",
+  "author": "Annotated by Zhanran",
+  "excerpt": "Deluded thoughts are the cause of all karma; if one is not driven by deluded thoughts, there is no cause for creating karma. If one can cut off a deluded thought in a single instant the moment it arises, the accumulated roots of past karma are eliminated on the spot."
+ },
+ "121foshuoemituojingzhu": {
+  "title": "Annotated Amitabha Sutra",
+  "author": "Annotated by Zhanran",
+  "excerpt": "The Amitabha Sutra is the heart-essence that the World-Honored One preached without being asked, a profound sutra praised by Buddhas of all directions, the wondrous teaching of ultimate skillful means, and the consummate and perfect guide. It is the most important classic of the Pure Land school, called the foremost Pure Land sutra, because in it Shakyamuni Buddha reveals the method of liberation in this very life — rebirth in the Western Land of Ultimate Bliss..."
+ },
+ "123yixiangzhuannian": {
+  "title": "Exclusive Recitation",
+  "author": "Zhanran",
+  "excerpt": "Answer: Exclusive recitation means always reciting the Buddha's name single-mindedly, without any other thoughts. It is what Master Shandao taught: “Continue thought after thought, vowing to persist for life.”"
+ },
+ "124tanluandashikaishi": {
+  "title": "Master Tanluan's Pure Land Teachings",
+  "author": "Compiled and annotated by Zhanran",
+  "excerpt": "One mind means thought after thought in continuity, with no other thoughts intermingled."
+ },
+ "125yuanyinlaorenlunguanxin": {
+  "title": "Elder Yuanyin on Observing the Mind",
+  "excerpt": "Patriarch Bodhidharma said: “The single method of observing the mind encompasses all dharmas and is the most economical and essential.”"
+ },
+ "126lianchidashi-jingzhong": {
+  "title": "Master Lianchi: An Admonition to the Assembly",
+  "author": "Annotated by Zhanran",
+  "excerpt": "(Original text from the Collected Pure Land Sayings of Yunqi: Admonishing the Assembly.)"
+ },
+ "126lianchidashi-taming": {
+  "title": "Epitaph for Master Lianchi's Stupa (Annotated)",
+  "author": "Composed by Master Hanshan",
+  "excerpt": "[The master's taboo name was Zhuhong, his courtesy name Fohui, and his sobriquet Lianchi, indicating the direction of his aspiration. His lay surname was Shen, and he was a native of Renhe in old Hangzhou. His family was prominent for generations; his father, Dejian, was known as Master Mingzhai, and his mother was of the Zhou clan. The master was born intelligent and outstanding, indifferent to worldly pleasures. At seventeen he entered the county academy, repeatedly topping the examinations, and was esteemed in his time for learning and conduct, as though the civil-service degree were already within his grasp...]"
+ },
+ "126lianchidashi-zijingqitiao": {
+  "title": "Master Lianchi: Seven Self-Admonitions",
+  "author": "Annotated by Zhanran",
+  "excerpt": "(Original text from the Posthumous Manuscripts of Master Yunqi: Self-Admonitions.)"
+ },
+ "127feixiange": {
+  "title": "Annotated Song on Wasting Idle Effort",
+  "author": "By Master Hanshan",
+  "excerpt": "“Fei” means spending time and energy; “xian” means useless — labor in vain. “Fei xian” means spending time and energy without real result, what is commonly called making a futile effort."
+ },
+ "128ziyou": {
+  "title": "Freedom Is Understanding and According with Necessity",
+  "author": "Mingde",
+  "excerpt": "Freedom is understanding and according with necessity — entering where there is no thickness with a blade that has no thickness. Zhuangzi said: “With no thickness, entering where there is space, how roomy and ample for the blade to move!” (Translation: How broad and ample is the room when an extremely thin blade moves through the gaps between sinew and bone! — Zhuangzi, “The Nurturing of Life.”)"
+ },
+ "130foqikaishi": {
+  "title": "Master Xingce's Instructions for a Vigorous Seven-Day Buddha-Recitation Retreat",
+  "author": "Annotated by Zhanran",
+  "excerpt": "(Original text from Master Xingce's Pure Land Admonitions.)"
+ },
+ "131chanjingzongshi": {
+  "title": "Master Hanshan: Patriarch of Both Chan and Pure Land",
+  "author": "Zhanran",
+  "excerpt": "Looking over Master Hanshan's entire life, like Master Yongming (the sixth Pure Land patriarch) and Master Chewu (the twelfth), he was outstanding in both the cultivation and propagation of Chan and Pure Land, and he is listed in the Records of Pure Land Sages. So he is a patriarch of both the Chan school and the Pure Land school..."
+ },
+ "132pingsanxinnianfo": {
+  "title": "A Critique of “Scattered Buddha-Recitation Can Attain Rebirth”",
+  "author": "Zhanran",
+  "excerpt": "An essay titled “Scattered Buddha-Recitation Can Attain Rebirth” circulates online. Since it touches on questions of great concern to Pure Land practitioners, I will now analyze it point by point:"
+ },
+ "133huiyuandashizhuan": {
+  "title": "Biography of Master Huiyuan (Vernacular and Classical Chinese)",
+  "author": "Compiled and annotated by Zhanran",
+  "excerpt": "Master Huiyuan, the first patriarch of the Pure Land school, was the first to write a commentary on the school's foremost sutra, the Buddha Speaks of the Infinite Life Sutra (see Master Huiyuan's Commentary on the Infinite Life Sutra). Master Yinguang praised him: “His elucidation of the text and explanation of its meaning are the clearest of all.” (Master Yinguang's Collected Writings: Letter to Lady Xu Fuxian.) And at Mount Lu..."
+ },
+ "134bosanxinnianfo": {
+  "title": "Refuting “Scattered Buddha-Recitation Also Ensures Rebirth”",
+  "author": "Zhanran",
+  "excerpt": "“Reciting Amitābha with a scattered mind — shout till your throat bursts and it is all in vain.”"
+ },
+ "135xiuwufayao-baihua": {
+  "title": "The Essentials of Cultivation and Awakening (Vernacular)",
+  "excerpt": "(For the original text and annotations, see Master Hanshan's “The Essentials of Cultivation and Awakening.”)"
+ },
+ "136wangshengdetiaojian": {
+  "title": "The Conditions for Rebirth",
+  "author": "Zhanran",
+  "excerpt": "The condition for rebirth: ten continuous recitations at the moment of death."
+ },
+ "138dinghuidengchi": {
+  "title": "Equal Mastery of Samadhi and Wisdom for the Buddha-Reciter",
+  "author": "Zhanran",
+  "excerpt": "Question: I have achieved continuous recitation thought after thought. How should I proceed in my practice next?"
+ },
+ "139langduwangye": {
+  "title": "Reading Web Pages Aloud with the Computer",
+  "author": "Zhiyu",
+  "excerpt": "Living beings in the Saha world are sharpest in the ear faculty. Listening while reading is often easier to understand and remember than reading alone. Therefore, one can use the computer to read study materials aloud while listening. Moreover, repeated listening serves as nurturing cultivation."
+ },
+ "140qiushengjingtuyuanbutui": {
+  "title": "Aspiring to the Pure Land with an Unretreating Vow",
+  "excerpt": "That Buddha and his people have a lifespan of measureless, boundless asamkhyeya kalpas."
+ },
+ "143lazhunanti-1": {
+  "title": "The Candle Problem",
+  "author": "Mingde",
+  "excerpt": "Have you made use of all the conditions?"
+ },
+ "144yixinnianfo": {
+  "title": "Recite the Buddha's Name Single-Mindedly, Not with a Scattered Mind",
+  "author": "Zhanran",
+  "excerpt": "Single-mindedness is the key to correct practice in the Pure Land school."
+ },
+ "145zhengdingzhiye": {
+  "title": "Hōnen's “Dharma Words for Peace of Mind in Buddha-Recitation”",
+  "author": "Zhanran",
+  "excerpt": "Question: Online there circulates Hōnen's Forty-Eight Dharma Words (also called Dharma Words for Peace of Mind in Buddha-Recitation), carefully selected by Master Huijing (for his background see “What Is the Original-Vow Teaching”) from Hōnen's Complete Works, and claimed to be “Dharma words of Buddha-recitation that bring peace of mind.” Do they really bring peace of mind..."
+ },
+ "146nanquanzhanmao": {
+  "title": "Nanquan Cuts the Cat",
+  "author": "Zhiyu",
+  "excerpt": "(Original text from the Records of the Transmission of the Lamp from the Jingde Era.)"
+ },
+ "147shouyibuyi": {
+  "title": "The Fourth Patriarch: Guard the One Without Wavering",
+  "author": "Annotated by Zhanran",
+  "excerpt": "Below is the instruction on “guarding the one without wavering” given by the Fourth Patriarch, Master Daoxin, in his Essential Method of Entering the Way and Settling the Mind. The method is simple, direct, concrete, practical, and safe (it will not lead one astray). It is the fundamental practice for entering the Way: fix the mind on one point and there is nothing that cannot be accomplished."
+ },
+ "148pingjingtuzongjiaozhang": {
+  "title": "A Critique of Master Huijing's “Pure Land School Constitution”",
+  "author": "Zhanran",
+  "excerpt": "Question: Master Huijing (for his background see “What Is the Original-Vow Teaching”) drew up the “Pure Land School Constitution.” The editor's note says: “The School Constitution is the general outline of a school's (the Pure Land school's) doctrine and the standard that practitioners follow; its importance to the teaching is like that of a nation's constitution.” Is this so?"
+ },
+ "149zengyangnenggouwangsheng": {
+  "title": "How Can One Attain Rebirth?",
+  "author": "Zhanran",
+  "excerpt": "Question: How can one be reborn in the Western Land of Ultimate Bliss?"
+ },
+ "150youraisemeup": {
+  "title": "You Raise Me Up (Audio)",
+  "author": "You Raise Me Up",
+  "excerpt": "You raise me up"
+ },
+ "151sizuanxingyaomen": {
+  "title": "The Fourth Patriarch's Essential Expedient Method of Entering the Way and Settling the Mind (Selected Annotations)",
+  "author": "One-Practice Samādhi",
+  "excerpt": "Composed by Daoxin, the Fourth Patriarch of Chan. Original text from the Records of the Lankavatara Masters. Annotated by Zhanran."
+ },
+ "152sizukaishifarong": {
+  "title": "The Fourth Patriarch's Instruction to Farong",
+  "author": "Annotated by Zhanran",
+  "excerpt": "Guarding: cut off all thinking and deliberation. According: let the mind be free, without love or hate, grasping or rejecting."
+ },
+ "153tongtufamen": {
+  "title": "The Common Path and the Special Path",
+  "author": "Zhanran",
+  "excerpt": "Master Yinguang instructs: “There are two kinds of Dharma paths. Those who rely on their own power to cultivate precepts, samadhi, and wisdom, until they sever delusion (the delusions of views and thoughts), realize the truth, and end birth and death, are called practitioners of the common path. Those who possess true faith and earnest aspiration and invoke the Buddha's name, hoping to rely on the Buddha's compassionate power to be reborn in the West, are called practitioners of the special path.”"
+ },
+ "154yeganxinxian": {
+  "title": "Karma Is Felt, the Mind Manifests",
+  "author": "Annotated by Zhanran",
+  "excerpt": "(Original text from Master Chewu's Collected Works.)"
+ },
+ "155zizaiwangsheng": {
+  "title": "Free and Unhindered Rebirth",
+  "author": "Annotated by Zhanran",
+  "excerpt": "(Original text from Master Chewu's Collected Works.)"
+ },
+ "158xinqiujileyanlisuopo-baihua": {
+  "title": "Yearning for Ultimate Bliss, Renouncing Samsara (Vernacular Edition)",
+  "author": "Zhanran",
+  "excerpt": "(For the original text, see “Yearning for Ultimate Bliss, Renouncing Samsara.”)"
+ },
+ "159yishengzaoe": {
+  "title": "Master Daochuo: Even One Who Has Done Evil All His Life, with Ten Continuous Recitations at Death, Is Reborn",
+  "author": "Zhanran",
+  "excerpt": "On how to be reborn in the Western Land of Ultimate Bliss, Master Daochuo instructs (see Master Daochuo's Pure Land Teachings):"
+ },
+ "160boerenzhengjishuo": {
+  "title": "A Critique of the “Evil Person as the True Object” Doctrine",
+  "author": "Zhanran",
+  "excerpt": "The questioner says: Great as the offenses of ordinary people are, compared with the power of the vow they are like a grain in the vast sea (great as the offenses of ordinary people are, compared with Amitābha Buddha's vow-power they are like a single grain of rice against the ocean, utterly negligible). Therefore breaking the precepts and doing evil do not matter."
+ },
+ "161shoushengzhiyuan": {
+  "title": "The Conditions for Taking Rebirth",
+  "author": "Annotated by Zhanran",
+  "excerpt": "(Original text from Master Chewu's Collected Works.)"
+ },
+ "162duanexingshan": {
+  "title": "Why Refrain from Evil and Do Good",
+  "author": "Mingde",
+  "excerpt": "The Buddha said: “Evil has its evil retribution; good has its good reward.”"
+ },
+ "163shangdaosanduankaishi": {
+  "title": "Three Instructions of Master Shandao",
+  "author": "Zhanran",
+  "excerpt": "Master Shandao is an emanation of Amitābha, and his words are the words of Amitābha Buddha. On the practice of the Pure Land school he gave three supremely important instructions: first, single-minded invocation of the name; second, continuous recitation brings rebirth; third, down to ten recitations."
+ },
+ "165sanwugongfu": {
+  "title": "The Three Non-Abiding Practices: No Thought, No Mark, No Abiding",
+  "excerpt": "The three “non-” — no thought, no mark, no abiding — are the core practices of the Platform Sutra. No thought: amid thoughts, no thought; no mark: amid marks, detach from marks; no abiding: amid objects, no dwelling. Accomplish this and inwardly one is not led by thoughts, outwardly not drawn by objects. No thought is great samadhi, no mark is great precept, no abiding is great wisdom."
+ },
+ "166wangshengtiaojiandakewen": {
+  "title": "The Conditions for Rebirth: Questions and Answers",
+  "author": "Zhanran",
+  "excerpt": "Question: Why must one have right mindfulness at death (ten continuous recitations) to be reborn? Amitābha Buddha's five kalpas of contemplation and measureless kalpas of practice — his entire great vow — was to deliver every living being. With such great compassion, would he not, at the moment of our death, display his majestic vow-power to welcome and guide us?"
+ },
+ "167juezhichuli": {
+  "title": "Firmly Resolving to Transcend",
+  "author": "Annotated by Zhanran",
+  "excerpt": "(Master Hanshan, Dream Roamings: An Admonition to the Chan Practitioner Lusheng of Wusheng.)"
+ },
+ "168shouhubenxin": {
+  "title": "Guarding the Original Mind",
+  "author": "Zhanran",
+  "excerpt": "After perceiving the nature, it is supremely important never to forget to guard the original mind — this is the practice of sustaining realization. The Treatise on Cultivating the Mind says: “One who awakens to this (original mind) and guards it sits in the one-suchness and is unmoved, liberated; one who is deluded and turns from it wanders for long kalpas through the six realms of rebirth.” (See the Detailed Exposition of the Treatise on Cultivating the Mind.)"
+ },
+ "169ergenyuantongfamen": {
+  "title": "The Dharma Gate of Perfect Penetration Through the Ear Faculty",
+  "author": "Zhanran",
+  "excerpt": "“When one faculty returns to the source, the six faculties attain liberation.”"
+ },
+ "170buyuanren": {
+  "title": "Good Man Wang: Bear No Grudge (Audio)",
+  "author": "Wang Fengyi's Record of Good Words",
+  "excerpt": "The nine golden words: bear no grudge, find the good in others, acknowledge your own faults."
+ },
+ "171nianfoshishui": {
+  "title": "Investigative Buddha-Recitation",
+  "author": "Zhanran",
+  "excerpt": "In its cultivation there is a graded entry; in its realization there is the truth attained for oneself."
+ },
+ "172canjiunianfo": {
+  "title": "Instructions on Investigative Buddha-Recitation",
+  "author": "Annotated by Zhanran",
+  "excerpt": "(Dream Roamings: A Reply to the Monk Haiyin of Huzhou.)"
+ },
+ "173kaiwu": {
+  "title": "Awakening",
+  "author": "Annotated by Zhanran",
+  "excerpt": "Awakening has two levels: awakening through understanding and awakening through realization. The awakening of sudden awakening followed by gradual cultivation (perceiving the nature) is awakening through understanding; the awakening of gradual cultivation followed by sudden awakening (seeing the mind and perceiving the nature) is awakening through realization. Sudden-then-gradual and gradual-then-sudden are two paths of cultivation, each with its own merits."
+ },
+ "174dahuichanfa": {
+  "title": "Dahui's Chan Method",
+  "author": "Compiled and narrated by Zhanran",
+  "excerpt": "With the mind nowhere to go, like a mouse entering an ox horn, one sees the matter cut off completely."
+ },
+ "175xuyunchanfa": {
+  "title": "Xuyun's Chan Method",
+  "author": "Compiled and narrated by Zhanran",
+  "excerpt": "The essence of Chan investigation: probe before a single thought has arisen."
+ },
+ "176zhenxiushiwu": {
+  "title": "True Cultivation, Genuine Realization",
+  "author": "Annotated by Zhanran",
+  "excerpt": "In studying Buddhism, what matters is true cultivation and genuine realization, so as to end birth and death. Not letting a single thought slip by is true cultivation; passing through every thought freely is genuine realization."
+ },
+ "177niliujuezhao": {
+  "title": "Turning Against the Stream, Awake and Aware",
+  "author": "Annotated by Zhanran",
+  "excerpt": "Original text from the Treatise on the Fundamental Essence of All Things in the Universe."
+ },
+ "178suiyuanbaoren": {
+  "title": "Sustaining Realization Amid Conditions",
+  "author": "Annotated by Zhanran",
+  "excerpt": "Original text from the Treatise on the Fundamental Essence of All Things in the Universe."
+ },
+ "179huatouchan": {
+  "title": "Huatou Chan",
+  "author": "Zhanran",
+  "excerpt": "Investigation is the vajra king's sword that severs deluded thoughts."
+ },
+ "180jingyuanwuhaochou": {
+  "title": "Objects and Conditions Have No Good or Bad",
+  "author": "Zhanran",
+  "excerpt": "Question: The Fourth Patriarch instructed Farong: “Objects and conditions have no good or bad; good and bad arise from the mind.” But objects and conditions clearly do have good and bad. For example, if your body is healthy, that is good. If you fall ill, or even near death, that is bad. This is objective fact — how can it arise from the mind?"
+ },
+ "181canjiunianfo-dakewen": {
+  "title": "Investigating “Who Is Reciting the Buddha”: Questions and Answers",
+  "author": "Zhanran",
+  "excerpt": "Question: It is said that Master Yinguang opposed investigative Buddha-recitation. Why then do you teach “Who is reciting the Buddha?” in your essay “Investigative Buddha-Recitation”?"
+ },
+ "182fushihuxi": {
+  "title": "Abdominal Breathing",
+  "excerpt": "Appendix 2: The Secrets Revealed by Breathing Rate."
+ },
+ "183canjiunianfo-dayi": {
+  "title": "Investigative Buddha-Recitation: Resolving Doubts",
+  "author": "Zhanran",
+  "excerpt": "Answer: The attainment of Buddha-recitation is reached when one recites without mixed deluded thoughts — when the thoughts of recitation link into one continuous whole. Master Yinguang said: “If your recitation cannot become pure and single, you must control the mind and not let it wander; after long practice it will naturally become pure and single. ‘Becoming a whole’ means pure and single, without mixture.” (Master Yinguang's Collected Writings: Fourth Letter to the Layman Ma Qixi.)"
+ },
+ "184danbanhange": {
+  "title": "The Song of the Plank-Carrying Man (Annotated)",
+  "excerpt": "(From Master Hanshan's Dream Roamings.) Annotated by Zhanran."
+ },
+ "185canchanqieyao": {
+  "title": "The Essentials of Chan Investigation, Annotated",
+  "author": "Annotated by Zhanran",
+  "excerpt": "(Dream Roamings: Showing the Essentials of Chan Investigation.)"
+ },
+ "186hanshandashideyisheng": {
+  "title": "The Life of Master Hanshan (New Edition)",
+  "author": "The Favor of the Prince of Shanyin",
+  "excerpt": "(This book is compiled from the Dream Roamings, the Annotated Chronology of Master Hanshan, and the Records of Pure Land Sages.)"
+ },
+ "187hanshandashinianpushu": {
+  "title": "Annotated Commentary on Master Hanshan's Chronology",
+  "author": "Annotated by Zhanran",
+  "excerpt": "Recorded by the attendant Fushan of the Narayana Cave by the Eastern Sea; the commentary written by the disciple Fuzheng of Kaiyuan in Wuyue."
+ },
+ "187hanshandashinianpushu-old": {
+  "title": "Commentary on Master Hanshan's Chronology",
+  "excerpt": "Recorded by the attendant Fushan of the Narayana Cave by the Eastern Sea; the commentary written by the disciple Fuzheng of Kaiyuan in Wuyue."
+ },
+ "188hanshandashinianfowangsheng": {
+  "title": "Master Hanshan's Buddha-Recitation and Rebirth in the Western Land of Ultimate Bliss",
+  "author": "Zhanran",
+  "excerpt": "6. He strongly urged that all Dharma gates should ultimately point to the Pure Land."
+ },
+ "189sanxinnianfo-dakewen": {
+  "title": "Scattered Buddha-Recitation: Questions and Answers",
+  "author": "Zhanran",
+  "excerpt": "Single-mindedness is the key to correct practice in the Pure Land school."
+ },
+ "190wuliangshoujingwuyiben": {
+  "title": "The Five Original Translations of the Infinite Life Sutra",
+  "excerpt": "The Buddha Speaks of the Sutra of Immeasurable Purity, Equality, and Enlightenment (Han translation)."
+ },
+ "191tuolitongku": {
+  "title": "A Case: Freedom from Suffering",
+  "author": "Zhiyu",
+  "excerpt": "There was no future, no light at the end of the tunnel; it seemed both ends were blocked and I was trapped within."
+ },
+ "192shexinnianfo": {
+  "title": "Gathering the Mind in Buddha-Recitation",
+  "author": "Zhanran",
+  "excerpt": "Answer: Gathering the mind means focusing the mind on a single object, without distraction or dullness. So gathering the mind in Buddha-recitation is single-minded recitation. Master Yinguang instructs: “Gathering the mind in Buddha-recitation is the definite and unchangeable way.” (Master Yinguang's Collected Writings: First Letter to the Layman Liu Guanshan.) Master Yinguang further instructs: “As to...”"
+ },
+ "193guanwuliangshoufojingjijie": {
+  "title": "Collected Commentaries on the Buddha Speaks of the Contemplation Sutra of Amitayus",
+  "author": "The Main Exposition",
+  "excerpt": "In expounding this sutra, I shall first explain the title, then clarify its translation history, and finally explicate the text."
+ },
+ "194kuxinlizhi": {
+  "title": "Gritting One's Teeth and Rousing Determination",
+  "author": "Annotated by Zhanran",
+  "excerpt": "(Dream Roamings: An Admonition to the Student Ou Boyu.)"
+ },
+ "195naizhishinian": {
+  "title": "“Even Ten Recitations”",
+  "author": "Zhanran",
+  "excerpt": "Question: Among Amitābha Buddha's forty-eight great vows, the Eighteenth Vow is: “If, when I attain Buddhahood, living beings of the ten directions who sincerely and joyfully entrust themselves, who wish to be born in my land, even with ten recitations, should not be born there, may I not attain perfect enlightenment — excluding only those who commit the five grave offenses and slander the true Dharma.” (The Buddha Speaks of the Infinite Life Sutra.) In this vow, the four characters “even ten recitations”..."
+ },
+ "196bubeisuoman": {
+  "title": "Not Deceived by Them",
+  "author": "Annotated by Zhanran",
+  "excerpt": "[A saying goes: “All people eat and drink, yet few can taste the flavor.” This says that the Way, though nearest in daily life, is known by few. The ancients said: “Apart from dressing and eating, there is nothing else.” Indeed, in all ages many have been deceived by dressing and eating. If one is not deceived by them, one may be called a hero.]"
+ },
+ "197ruxiangguangshi": {
+  "title": "Entering the Chamber of Fragrance and Light",
+  "author": "Shiwei",
+  "excerpt": "Compiled, edited, and published by the disciple Xu Huijue of Master Liaoran."
+ },
+ "198juedingzhizhi": {
+  "title": "The Resolve of Certainty",
+  "author": "Annotated by Zhanran",
+  "excerpt": "(Excerpted from Dream Roamings: An Admonition to the Scribe Zhihai'an.)"
+ },
+ "199lixinyishican": {
+  "title": "Investigating Apart from Mind, Intellect, and Consciousness",
+  "author": "Zhanran",
+  "excerpt": "The Sixth Patriarch said: “I tell all who study the Way: strive and apply the mind.”"
+ },
+ "200zhenyangyixinbuluan": {
+  "title": "How to Attain One-Pointed Mind, Undisturbed",
+  "author": "Zhanran",
+  "excerpt": "Question: How does one attain single-minded, undisturbed Buddha-recitation?"
+ },
+ "201_42": {
+  "title": "Annotated Sutra of Forty-Two Chapters",
+  "author": "Annotated by Zhanran",
+  "excerpt": "The Buddha Speaks of the Sutra of Forty-Two Chapters is a single volume, jointly translated by Kāśyapa Mātaṅga and Dharmaratna in the Later Han. Because the entire sutra has forty-two chapters, it is called the Sutra of Forty-Two Chapters. Each chapter is brief and to the point; the longest is only a little over a hundred characters, the shortest a little over twenty. These are sayings of Shakyamuni Buddha selected from the Tripitaka's twelve divisions..."
+ },
+ "201linianzhongxiu": {
+  "title": "Cultivating Apart from Thought",
+  "author": "Annotated by Zhanran",
+  "excerpt": "[Chan and Pure Land, as two practices, are originally not two dharmas; Master Yongming demonstrated this long ago. Chan is by nature apart from thought, certainly. Yet the Pure Land has the highest grade of the highest tier of rebirth, which has never not been cultivated apart from thought. If one recites the Buddha's name to single-mindedness without disturbance, is there any thought remaining? But although there is no duality here, when it comes to setting to work there is a difference between the skillful and the clumsy. Using the effort of investigation...]"
+ },
+ "202bada": {
+  "title": "Annotated Sutra of the Eight Realizations of Great Beings",
+  "author": "Annotated by Zhanran",
+  "excerpt": "This sutra sets forth the eight realizations of the bodhisattva (the “great beings” of the title): realization of impermanence and no-self, of few desires and non-action, of contentment with poverty and keeping to the Way, of constant vigor, of broad learning that increases wisdom, of equal regard for friend and foe, of the perils of the five desires, and of the great mind that universally saves — so as to achieve self-awakening and the awakening of others."
+ },
+ "202xindifamen": {
+  "title": "The Dharma Gate of the Mind-Ground",
+  "author": "Annotated by Zhanran",
+  "excerpt": "The ordinary and the sage do not go beyond the one mind; good and evil are both created by the mind."
+ },
+ "203foyj": {
+  "title": "Annotated Sutra of the Buddha's Bequeathed Teachings",
+  "author": "Annotated by Zhanran",
+  "excerpt": "The Sutra of the Buddha's Bequeathed Teachings is the Buddha's final instruction to his disciples before his nirvana, in which he once more, in outline, urges them how to cultivate precepts, samadhi, and wisdom so as to transcend afflictions and birth and death. Master Ouyi said: “When I (Master Ouyi, whose name was Zhixu) had not yet become a monk, reading this bequeathed teaching I knew every word was written in blood and tears...”"
+ },
+ "203xiguanyuchenggong": {
+  "title": "Habit and Success",
+  "excerpt": "The greatest difference between success and failure comes from different habits."
+ },
+ "204danian": {
+  "title": "Annotated Great Discourse on the Foundations of Mindfulness",
+  "author": "Annotated by Zhanran",
+  "excerpt": "In studying Buddhism, what matters is real practice and realization, ending birth and death and transcending the cycle of rebirth. So one must first subdue afflictions and then sever them. In the Great Discourse on the Foundations of Mindfulness, the Buddha explains concretely and in detail how to subdue and sever afflictions: by sustained awareness and observation of the arising and ceasing of body, mind, and world — the most direct path from knowing suffering to ending suffering..."
+ },
+ "204ssydj": {
+  "title": "Annotated Sutra on the Ten Wholesome Ways of Action",
+  "author": "Annotated by Zhanran",
+  "excerpt": "Appendix: An Appeal for the Restoration of the Life-Release Pond at Nanxun Temple of Ultimate Bliss."
+ },
+ "204wangshenghouhuilaibaoxin": {
+  "title": "Returning After Rebirth to Bring Word",
+  "excerpt": "(Honghua Monthly, July 1944, issue 37: “News Reported After Rebirth in the West.”)"
+ },
+ "205jgj-jiangyi": {
+  "title": "Lectures on the Diamond Sutra (by Jiang Weinong)",
+  "author": "By Jiang Weinong",
+  "excerpt": "Reprinted after re-collation against the layman Jiang's own handwritten manuscript."
+ },
+ "206congxinerxiu": {
+  "title": "Cultivating from the Mind",
+  "author": "Zhanran",
+  "excerpt": "Where does one begin to cultivate? This is a great question of deep concern to practitioners. The Treatise on the Essential Gate of Entering the Way by Sudden Awakening discusses it brilliantly:"
+ },
+ "207xinjingqizhongyiben": {
+  "title": "The Seven Translations of the Heart Sutra",
+  "excerpt": "The Heart Sutra has seven important translations, of which two are abridged and five are full. The full versions contain the three main sections — the introduction, the main exposition, and the dissemination — while the abridged versions contain only the main exposition."
+ },
+ "208wubudingshi": {
+  "title": "No Time Without Samadhi",
+  "author": "Annotated by Zhanran",
+  "excerpt": "[The Chan master Zhihuang first studied under the Fifth Patriarch, thinking he had attained correct absorption. He lived in a hut, sitting for twenty years. A disciple of the Master, Xuance, traveling far, came to Heshuo. Hearing of Zhihuang's name, he visited the hut and asked: “What are you doing here?” Zhihuang replied: “Entering samadhi.”]"
+ },
+ "209wunianweizong": {
+  "title": "No-Thought as the Principle",
+  "author": "Zhanran",
+  "excerpt": "The Avatamsaka Sutra, in the chapter on the Tathagata's manifestation, says: “There is no living being who does not possess the wisdom of the Tathagata; it is only because of deluded thoughts and inverted attachments that they do not realize it. If they depart from deluded thoughts, then omniscience, natural wisdom, and unobstructed wisdom will manifest.” (Translation: Every living being possesses the Tathagata's wisdom, but because of deluded thoughts and inverted attachments...)"
+ },
+ "211huangtingchan": {
+  "title": "Yellow Court Chan",
+  "author": "Zhang Defen",
+  "excerpt": "Excerpted from Zhang Defen's Living Out a Whole New Self."
+ },
+ "212frame": {
+  "title": "212frame",
+  "author": "An Elucidation of the Diamond Sutra",
+  "excerpt": "Namo Shakyamuni Buddha, our original teacher (recited three times)."
+ },
+ "213jinggangjing-jingwen": {
+  "title": "The Diamond Sutra (Sutra Text)",
+  "excerpt": "Thus have I heard. At one time the Buddha was dwelling in the Jeta Grove of Anathapindada's park in Sravasti, together with a great assembly of twelve hundred and fifty bhikshus."
+ },
+ "214jieyinyaodian": {
+  "title": "Key Points for Overcoming Addiction",
+  "excerpt": "Excerpted from Overcoming Addiction: Case Studies and a Self-Help Guide to Addiction Treatment."
+ },
+ "217huxinianfoyujingzuo": {
+  "title": "Breath Buddha-Recitation and Sitting Meditation",
+  "author": "Zhiyu",
+  "excerpt": "Question: Sitting meditation can improve the structure and function of the brain, boost immunity, creativity, and quality of life. Moreover, the alpha brain waves produced in sitting meditation are very effective for healing psychological trauma, transforming negativity, and dispelling anxiety, vexation, and depression, so it has attracted more and more attention..."
+ },
+ "219jingluoyangshengfa": {
+  "title": "The 312 Meridian Health Method (Video)",
+  "excerpt": "The theoretical basis of the 312 meridian health method is the meridian theory of traditional Chinese medicine: most diseases of the human body result from blocked meridians, and dysfunction of the meridians is the root cause of illness. Therefore, as long as the meridians are kept clear, the body will be healthy; dredging..."
+ },
+ "221wangshengdebawo": {
+  "title": "Assurance of Rebirth",
+  "author": "Zhanran",
+  "excerpt": "Answer: To be assured of rebirth is to be assured of fulfilling the conditions for rebirth. The condition for rebirth is ten continuous recitations at the moment of death. This condition was taught by Master Shandao, an emanation of Amitābha; Master Yongming, also an emanation of Amitābha; and the realized masters Tanluan and Daochuo. It is..."
+ },
+ "222benyuannianfo": {
+  "title": "Original-Vow Buddha-Recitation",
+  "author": "Zhanran",
+  "excerpt": "Answer: The “original vow” refers to the Eighteenth of Amitābha Buddha's forty-eight great vows (see “Amitābha's Original Vow”). The Eighteenth Vow is: “If, when I attain Buddhahood, living beings of the ten directions who sincerely and joyfully entrust themselves, who wish to be born in my land, even with ten recitations, should not be born there, may I not attain perfect enlightenment — excluding only those who commit the five grave offenses and slander the true Dharma.” (The Buddha Speaks of the Infinite Life Sutra.)"
+ },
+ "223rimianfo": {
+  "title": "The Sun-Faced Buddha, the Moon-Faced Buddha",
+  "author": "Zhiyu",
+  "excerpt": "Question: In the Recorded Sayings of Chan Master Mazu Daoyi, Mazu said: “The sun-faced Buddha, the moon-faced Buddha.” What does this mean?"
+ },
+ "224wumenweifamen": {
+  "title": "The Gateless Gate as the Dharma Gate",
+  "author": "Zhanran",
+  "excerpt": "Only perceive the self-mind's manifestations; deluded thoughts no longer arise, and there is peace and joy, with worldly affairs forever stilled."
+ },
+ "225xuyunlaoheshangshiji": {
+  "title": "The Elder Monk Xuyun at Yunju Mountain",
+  "author": "Master Shaoyun",
+  "excerpt": "Venerable elders, venerable masters, lay practitioners, and all good and faithful friends:"
+ },
+ "227sanshiyuan": {
+  "title": "The Grievance of Three Lifetimes",
+  "author": "Zhanran",
+  "excerpt": "Answer: Because one cultivates in this life, one enjoys the rewards of blessings in the next life, then relies on those blessings to do evil, leading to downfall in the life after that (the third life). Even if one's hell karma is exhausted, one is reborn among hungry ghosts and animals; to regain a human body is harder than ever! So the World-Honored One asked Ananda, holding up earth in his hand: “Is the earth in my hand more...”"
+ },
+ "228zhuanshichengzhi": {
+  "title": "Transforming Consciousness into Wisdom",
+  "author": "Annotated by Zhanran",
+  "excerpt": "(Original text excerpted from Dream Roamings: An Admonition to Zhou Yangru.)"
+ },
+ "229shandaodashilunnianfo": {
+  "title": "Master Shandao on Buddha-Recitation",
+  "author": "Zhanran",
+  "excerpt": "Question: Nowadays some masters publicly teach that Master Shandao taught that invocation of the name guarantees rebirth, and that Master Shandao taught scattered Buddha-recitation. Did Master Shandao really teach this?"
+ },
+ "230guanjingzhu": {
+  "title": "Annotated Buddha Speaks of the Contemplation Sutra of Amitayus",
+  "author": "Annotated by Zhanran",
+  "excerpt": "Translated by the Tripitaka master Kālayaśas of the Western Regions, in the Liu Song dynasty."
+ },
+ "234wuliangshoujingyishu": {
+  "title": "Commentary on the Buddha Speaks of the Infinite Life Sutra",
+  "excerpt": "Translated by the Indian Tripitaka master Saṃghavarman, in the Cao Wei dynasty."
+ },
+ "235╬▐┴┐╩┘╛¡┤≡┐═╬╩-╫╩┴╧2": {
+  "title": "The Compilation of the Infinite Life Sutra: Questions and Answers",
+  "author": "Zhanran",
+  "excerpt": "Master Lianchi said of the compilation: “It renders great service to the Pure Land.”"
+ },
+ "235wuliangshoujinghuijiben-dakewen": {
+  "title": "The Compilation of the Infinite Life Sutra: Questions and Answers",
+  "author": "Zhanran",
+  "excerpt": "Master Lianchi said of the compilation: “It renders great service to the Pure Land.”"
+ },
+ "236kuailedemimi": {
+  "title": "The Secret of Success and Happiness (Audio)",
+  "author": "A New World",
+  "excerpt": "(Excerpted from Eckhart Tolle's A New World.)"
+ },
+ "236yinzhedegushi": {
+  "title": "The Story of the Recluse",
+  "excerpt": "(Original text in Master Hanshan's Self-Narrated Chronology.)"
+ },
+ "238chijingchizhounianfo": {
+  "title": "Reciting Sutras, Holding Mantras, and Buddha-Recitation",
+  "author": "Annotated by Zhanran",
+  "excerpt": "Directly illuminating the mind-ground, dissolving everything back into self-nature, practicing as taught."
+ },
+ "239╬▐┴┐╩┘╛¡╨ú╗ß▒╛-╫╩┴╧": {
+  "title": "Annotated Collated Compilation of the Infinite Life Sutra",
+  "author": "Collated by Zhanran",
+  "excerpt": "Letting body and mind gradually enter, and gradually reach, Ultimate Bliss."
+ },
+ "239wuliangshoujing-huiyi": {
+  "title": "The Compilation of the Infinite Life Sutra",
+  "author": "Zhanran",
+  "excerpt": "True faith and earnest aspiration are the motive force and armor of practice as taught;"
+ },
+ "239wuliangshoujing-huiyi-zhu-╫╩┴╧": {
+  "title": "The Compilation of the Infinite Life Sutra",
+  "author": "Zhanran",
+  "excerpt": "Letting body and mind gradually enter, and gradually reach, Ultimate Bliss."
+ },
+ "239wuliangshoujing-jiaohuibenzhu": {
+  "title": "The Compilation of the Infinite Life Sutra",
+  "author": "Zhanran",
+  "excerpt": "Letting body and mind gradually enter, and gradually reach, Ultimate Bliss."
+ },
+ "240yinguangdashilunhuijiben": {
+  "title": "Master Yinguang on the Compilation",
+  "author": "Zhiyu",
+  "excerpt": "In Master Yinguang's Collected Writings, three passages discuss the compilation of the Infinite Life Sutra, now widely cited as “iron proof” that Master Yinguang opposed compiling the Infinite Life Sutra. Yet the facts are quite the opposite: in these three passages, Master Yinguang not only does not say the Infinite Life Sutra may not be compiled, but..."
+ },
+ "240yinguangdashilunhuijiben-╫╩┴╧": {
+  "title": "Master Yinguang on the Compilation",
+  "author": "Zhiyu",
+  "excerpt": "In Master Yinguang's Collected Writings, three passages discuss the compilation of the Infinite Life Sutra, now widely cited as iron proof that Master Yinguang opposed the compilation. In fact, one can see clearly from these three passages that Master Yinguang did not oppose the compilation at all, still less say that the Infinite Life Sutra may not be..."
+ },
+ "241wuliangshoujing-huiyi-╫╩┴╧": {
+  "title": "The Compilation of the Infinite Life Sutra (Text)",
+  "excerpt": "Thus have I heard: At one time the Buddha was dwelling in the city of Rajagriha, on Mount Gridhrakuta, together with a great assembly of twelve thousand bhikshus."
+ },
+ "241wuliangshoujing-huiyi-wj": {
+  "title": "The Compilation of the Infinite Life Sutra (Text)",
+  "excerpt": "Letting body and mind gradually enter, and gradually reach, Ultimate Bliss."
+ },
+ "242xiuxinduanwang": {
+  "title": "Resting the Mind and Severing Delusion",
+  "author": "Annotated by Zhanran",
+  "excerpt": "[Zhong Mingxing of Chaling, from a family of poetry and propriety, on account of past troubles traveled to Guangdong and visited me at Caoxi. The old man taught him the doctrine of good and evil retribution and cause and effect, settled his mind, and sent him home; his troubles were thereby resolved. That they were resolved was not something recollection could reach — conditions met by chance, and it came about of itself, without intent. Thus the student's possessions were safe, and he entered a state of peace and ease. Yet...]"
+ },
+ "243jiayoulaoren": {
+  "title": "The Inspiration of the Old Gas-Station Attendant",
+  "excerpt": "At the University of California, Berkeley, there was a gymnast named Dan Millman. From a young age he loved gymnastics and enjoyed watching others perform, so he joined a gymnastics team very early. He was very talented and extremely diligent; whenever he was not in class, eating, or sleeping..."
+ },
+ "244guanxin": {
+  "title": "Observing the Mind",
+  "author": "Compiled and narrated by Zhanran",
+  "excerpt": "(Excerpted from The Heart-Essence of the White Cloud (A Treasured Manual on Observing the Mind).)"
+ },
+ "245xiuxinggongfu": {
+  "title": "The Stages of Cultivation",
+  "author": "Zhanran",
+  "excerpt": "Cultivation has three stages: first, thoughts arise but one does not follow them (karma cannot bind); second, love and hate have dissolved (birth and death are ended); third, subtle thoughts have ceased (the Buddha-fruit is perfectly realized)."
+ },
+ "246henghedashouyin": {
+  "title": "The Ganges Mahamudra",
+  "author": "Elder Yuanyin",
+  "excerpt": "The Ganges Mahamudra is a high-level practice of the esoteric school of Buddhism: cultivating without cultivation, cultivation being no-cultivation, where words are cut off and mental activity ceases. In the state where not a single thought arises yet all is clear, clear yet no thought arises, one seeks the message; then one awakens to affliction being bodhi, deluded thoughts being wondrous function, emptiness and existence being non-dual..."
+ },
+ "247lingxinanranzhu": {
+  "title": "Meditation: Letting the Mind Rest at Ease",
+  "author": "Objectless Meditation",
+  "excerpt": "Excerpted from Yongey Mingyur Rinpoche's Ground, Path, and Fruition: The Method and Stages of Meditation."
+ },
+ "248zhixingheyi": {
+  "title": "Wang Yangming: The Unity of Knowledge and Action",
+  "excerpt": "Excerpted from Xu Baoyun's The Sage of the Mind: Wang Yangming."
+ },
+ "249lizhi": {
+  "title": "Wang Yangming: Setting One's Aspiration",
+  "excerpt": "Excerpted from Xu Baoyun's The Sage of the Mind: Wang Yangming."
+ },
+ "250zhizhiyizi": {
+  "title": "The Single Word “Know”",
+  "author": "Zhanran",
+  "excerpt": "Question: Does the original mind (the true mind) know, or is it without knowing?"
+ },
+ "251zhenqiyunxingfa": {
+  "title": "The Five-Step Method of True-Qi Circulation",
+  "excerpt": "The core of life activity — the circulation of true qi."
+ },
+ "253gaojigongfa": {
+  "title": "Advanced Practice After Opening the Governing Vessel",
+  "author": "Li Shaobo",
+  "excerpt": "Most people who study the true-qi circulation method on their own think they have completed the five-step method when they “open the governing vessel,” but in fact they have only completed the first four steps of the elementary stage; very few master the fifth step. Some, whose stillness is good, encounter advanced states in stillness but instead..."
+ },
+ "254zhoutiangong": {
+  "title": "The Microcosmic Orbit Practice",
+  "author": "Mingde",
+  "excerpt": "The microcosmic orbit practice makes true qi circulate through the body along the orbit, thereby moving qi and activating blood, dispersing stagnation and dissolving stasis, and restoring essence to nourish the brain — achieving resistance to disease and immunity, health and longevity."
+ },
+ "255haorenge": {
+  "title": "The Song of a Good Man (Annotated)",
+  "author": "Lü Xinwu",
+  "excerpt": "Original note: His name was Kun, courtesy name Shujian, a native of Ningling, a jinshi of the Jiajing era of the Ming dynasty, who rose to the post of Junior Minister of Justice (vice-minister of the Ministry of Justice)."
+ },
+ "256chengxinxingshan": {
+  "title": "Doing Good with a Sincere Heart",
+  "excerpt": "Translation: The coming of calamity and fortune has no other cause; all are summoned by one's own thoughts and actions. The retribution for good and evil in thought and deed follows like a shadow following its form — doing evil brings calamity, doing good brings fortune."
+ },
+ "257nizhuanshuailao": {
+  "title": "Reversing Aging Through the Practice of the Jiaji Point",
+  "author": "Zhang Xingchun",
+  "excerpt": "Constantly hold this mind, withdrawing it to conceal it in the jiaji point, and guard it without leaving."
+ },
+ "258quanzhenqizizhuan": {
+  "title": "Biographies of the Seven Disciples of Quanzhen",
+  "excerpt": "In this world there is nothing truly difficult, only those whose hearts are set on it."
+ },
+ "259jingzongrumen": {
+  "title": "An Introduction to the Pure Land School",
+  "author": "Zhanran",
+  "excerpt": "The purpose of studying Buddhism is to become a Buddha and deliver living beings. For ordinary people to cultivate and realize Buddhahood, there are two great stages: first, transcending the cycle of rebirth; second, perfectly realizing the Buddha-fruit. The goal of the Buddhist practitioner in this life is to transcend the six realms of rebirth."
+ },
+ "260jinianjiguan": {
+  "title": "Observing the Mind in Buddha-Recitation",
+  "author": "Zhanran",
+  "excerpt": "Observing the mind in Buddha-recitation means that while reciting, one observes the present thought (reciting and observing at once). This is an exceedingly incisive and wondrous method that can steadily achieve: the moment the Buddha's name is raised, deluded thoughts entirely vanish."
+ },
+ "261lengqiejing": {
+  "title": "The Lankavatara Sutra",
+  "excerpt": "Composed by Jiang Zhiqi, Grand Master for Court Discussion, Direct Scholar of the Dragon Diagram Pavilion, Commissioner for Salt and Alum Regulation and Deputy Transport Commissioner of the Jianghuai, Jing, and Zhe Circuits, Senior Guardian, and recipient of the Purple and Gold Fish Pouch."
+ },
+ "262dachengrulengqiejing": {
+  "title": "The Mahayana Lankavatara Sutra",
+  "author": "By Imperial Order",
+  "excerpt": "Translated by imperial command by the Tripitaka master Śikṣānanda of Khotan, in the Great Zhou."
+ },
+ "264gongtongyifashen": {
+  "title": "One Shared Dharmakaya?",
+  "author": "Zhanran",
+  "excerpt": "Question: What does “the Buddhas of the ten directions and three times share one dharmakaya” mean? Is it from the Avatamsaka Sutra? Is it the Buddha's teaching?"
+ },
+ "265weishiyifanshen": {
+  "title": "The Bodies of All Buddhas Are but One Dharmakaya",
+  "author": "Annotated by Zhanran",
+  "excerpt": "(Original text from the Avatamsaka Sutra (80 fascicles), Chapter Ten: The Bodhisattva's Inquiries.)"
+ },
+ "266baochijuezhi": {
+  "title": "Sustaining Awareness",
+  "excerpt": "How, then, does one cultivate awareness and sustain it at all times and in all places? How does one turn daily life into practice and take joy in it? The Collected Writings of Thich Nhat Hanh says:"
+ },
+ "267renshengrumeng": {
+  "title": "Life Is Like a Dream",
+  "author": "Annotated by Zhanran",
+  "excerpt": "(Dream Roamings: A Reply to the General Yang Yuanru.)"
+ },
+ "268zenyangkandaiyezhang": {
+  "title": "How to Deal with Karmic Obstacles",
+  "author": "Elder Mengcan",
+  "excerpt": "True merit and wisdom then manifest."
+ },
+ "269yigenianforendezishu": {
+  "title": "The Dual Cultivation of Nature and Life",
+  "author": "The Essentials of Buddha-Recitation with the Breath",
+  "excerpt": "[Dual cultivation of nature and life] Cultivating nature: liberation of self-nature (transcending the six realms of rebirth); cultivating life: health and longevity."
+ },
+ "272nianfojingju": {
+  "title": "Maxims on Buddha-Recitation (Four Items)",
+  "author": "Venerable Huxi",
+  "excerpt": "All who practice the Pure Land must clearly aim to defeat birth and death, not merely talk and let it go. One should reflect that impermanence is swift and time waits for no one; one must treat this as the one thing to do. If one advances and retreats by halves, half believing and half doubting, what will that accomplish when the end comes? How can one transcend the cycle of rebirth?"
+ },
+ "273wumingmeng": {
+  "title": "The Dream of Ignorance",
+  "author": "Zhanran",
+  "excerpt": "Question: Why is it said that “all dharmas are illusions”?"
+ },
+ "274baizhangyehu": {
+  "title": "Baizhang's Wild Fox",
+  "author": "Annotated by Zhiyu",
+  "excerpt": "Whenever the master (Chan Master Baizhang) ascended the hall, an old man followed the assembly to hear the Dharma. One day, after the assembly had dispersed, only the old man remained. The master asked: “Who are you?” The old man said: “I am not a human being. In the time of Kasyapa Buddha I once lived on this mountain. A student asked me: ‘Does a great practitioner still fall into cause and effect or not?’...”"
+ },
+ "275zhengdaogezhu": {
+  "title": "Annotated Song of Enlightenment",
+  "author": "Annotated by Zhanran",
+  "excerpt": "The Song of Enlightenment is the state of awakening from the dream of ignorance. For example, the song says: “When the dharmakaya awakens, there is not a single thing,” and “In the dream there are clearly the six realms; after awakening there is nothing, not even the great chiliocosm.” Like the Diamond Sutra, the Heart Sutra, and the Platform Sutra, its core is the realization of the patience of the unborn..."
+ },
+ "276sanshixinian": {
+  "title": "Annotated Three-Period Remembrance Ceremony of Zhongfeng",
+  "author": "Annotated by Zhanran",
+  "excerpt": "Note: The headings of each passage of instruction were added for ease of reading and are not part of the original text."
+ },
+ "277linianyizhuo": {
+  "title": "The Single Move of Departing from Thought",
+  "author": "Annotated by Zhanran",
+  "excerpt": "(Dream Roamings: An Admonition to the Chan Practitioner Liaoxin Hai.)"
+ },
+ "278-1jianxingshixing": {
+  "title": "Perceiving the Nature: It Is the Mind",
+  "author": "Annotated by Mingde",
+  "excerpt": "[Ananda, answer me first: you saw the radiant fist. What causes this fist to be radiant? How does it become a fist? With what do you see it? Ananda said: The Buddha's whole body is born of the gold of the Jambu river, brilliant as a jewel mountain, born of purity, hence its radiance. In truth, my eyes see the five fingers, curled and clenched, shown to people, hence the form of a fist.]"
+ },
+ "278-2jianxingbudong": {
+  "title": "Perceiving the Nature: It Is Unmoving",
+  "author": "Annotated by Mingde",
+  "excerpt": "[At that time the World-Honored One extended his radiant hand, with its web-like marks of the Tushita cotton, opened his five fingers, and admonished Ananda and the assembly: “When I first attained the Way, in the Deer Park I said to the five bhikshus such as Ajnata-kaundinya and to your fourfold assembly: All living beings fail to attain bodhi and arhatship because they are misled by the defilements of adventitious dust. What did you awaken to at that time, that you now...”]"
+ },
+ "278-3jianxingbumie": {
+  "title": "Perceiving the Nature: It Is Unceasing",
+  "author": "Annotated by Mingde",
+  "excerpt": "[At that time King Prasenajit rose and addressed the Buddha: “In the past, before I had received the Buddha's admonitions, I met Kaccayana and Vairatiputra, who both said this body is annihilated after death and called that nirvana. Though I have now met the Buddha, I still harbor doubts. How can one demonstrate and know this mind's state of non-arising and non-ceasing? Now in this assembly, those with outflows...”]"
+ },
+ "279wajietongkuzhishen": {
+  "title": "Dissolving the Pain-Body",
+  "excerpt": "By Eckhart Tolle; translated by Zhang Defen."
+ },
+ "280kuoranwusheng": {
+  "title": "Vast Emptiness, No Sage",
+  "author": "Zhiyu",
+  "excerpt": "[Emperor Wu of Liang asked Master Bodhidharma: “What is the first principle of the holy truth?” Bodhidharma said: “Vast emptiness, no sage!” The emperor said: “Who then is facing me?” Bodhidharma said: “I do not know.” The emperor did not understand, and Bodhidharma crossed the river to Wei.]"
+ },
+ "281yinianbusheng": {
+  "title": "Not a Single Thought Arises, Yet All Is Clear",
+  "author": "Zhanran",
+  "excerpt": "Question: Is “not a single thought arises, yet all is clear” a good state or a bad state? Why do some Chan masters severely scold this state?"
+ },
+ "282qishianxin": {
+  "title": "Begging the Master to Pacify the Mind",
+  "author": "Annotated by Zhiyu",
+  "excerpt": "[On the night of the ninth day of the twelfth month of that year, it snowed heavily. Huike stood firm and unmoving, and by dawn the snow had piled past his knees. The patriarch, moved to pity, asked: “You have stood long in the snow; what do you seek?” Huike wept: “I only beg the master, in his compassion, to open the gate of sweet dew and widely deliver all beings.” The patriarch said: “The unsurpassed wondrous Way of the Buddhas requires striving through long kalpas, doing what is hard to do...”]"
+ },
+ "283kongjudeyuantou": {
+  "title": "The Source of Fear",
+  "excerpt": "By Eckhart Tolle; translated by Zhang Defen."
+ },
+ "284erzhonggenben": {
+  "title": "The Two Roots",
+  "author": "Annotated by Zhiyu",
+  "excerpt": "[All living beings, since time without beginning, continue in birth and death because they do not know the permanent true mind, the pure, luminous essence of nature, and use instead deluded thoughts; because these thoughts are not true, there is the cycle of transmigration.]"
+ },
+ "285jingzhongjie": {
+  "title": "Samantabhadra Bodhisattva's Verse Admonishing the Assembly",
+  "excerpt": "Time flies swiftly, and human life is impermanent. Buddhist practitioners must be vigilant at all times; never be careless, frolic and play, and waste time, only to regret it endlessly."
+ },
+ "286yonggongdeliangzhongnanyi": {
+  "title": "Two Kinds of Difficulty and Ease in Practice",
+  "author": "Annotated by Zhanran",
+  "excerpt": "(Original text from the Elder Monk Xuyun's Expedient Instructions.)"
+ },
+ "287qinqingfalv": {
+  "title": "Family and Dharma Companions",
+  "author": "Annotated by Zhanran",
+  "excerpt": "(Original text excerpted from the Elder Monk Xuyun's Self-Narrated Chronology.)"
+ },
+ "288youtanbohuaji": {
+  "title": "The Record of the Udumbara Flower",
+  "author": "Annotated by Zhanran",
+  "excerpt": "(Original text from the Elder Monk Xuyun's Self-Narrated Chronology: The Record of the Udumbara Flower.)"
+ },
+ "289fenbiezhufaxiang": {
+  "title": "Skillfully Discerning the Marks of All Dharmas",
+  "author": "Zhanran",
+  "excerpt": "Question: Please explain “skillfully discerning the marks of all dharmas, yet unmoving in the ultimate truth” (the Vimalakirti Sutra)."
+ },
+ "290zixingsanyi": {
+  "title": "The Three Meanings of Self-Nature",
+  "author": "Zhanran",
+  "excerpt": "Question: Many sutras and treatises say all dharmas lack self-nature. Why then does the Lankavatara Sutra say “just as an ox lacks horse-nature and a horse lacks ox-nature, it is not that they lack self-nature”?"
+ },
+ "291xiuxingdezhendi": {
+  "title": "The True Meaning of Practice",
+  "excerpt": "The mind is like a continuous river. If you cannot use your practice to seize hold of each present moment, then your mantra recitation, visualization, chanting, meditation, and even the lofty view you profess and the lofty conduct you display are all a waste of time."
+ },
+ "292wuzhongzuiqiangdadeliliang": {
+  "title": "The Five Most Powerful Forces",
+  "author": "The True Meaning of Practice",
+  "excerpt": "For practice to become a way of life, one should cultivate the five forces. If we possess the five forces, bodhicitta will naturally arise in the mind."
+ },
+ "293jgj-zhu": {
+  "title": "Annotated Diamond Sutra",
+  "author": "Annotated by Zhanran",
+  "excerpt": "All that has marks is illusory; grasping at no mark, one is thus unmoving."
+ },
+ "301jgj": {
+  "title": "An Elucidation of the Diamond Sutra",
+  "author": "Annotated by Zhanran",
+  "excerpt": "All that has marks is illusory; grasping at no mark, one is thus unmoving."
+ },
+ "302xinj": {
+  "title": "An Elucidation of the Heart Sutra",
+  "author": "An Elucidation of the Heart Sutra",
+  "excerpt": "The Buddha preached the Dharma for forty-nine years, twenty-two of which were devoted to the Prajñā scriptures. One may say the Prajñā scriptures are the soul of the entire Buddhadharma, the Diamond Sutra is the essence of the Prajñā scriptures, and the Heart Sutra is the essence of the Diamond Sutra. Hence for a thousand years the Heart Sutra has been known in every household and loved by all..."
+ },
+ "303liuzutanjing": {
+  "title": "An Elucidation of the Platform Sutra of the Sixth Patriarch",
+  "author": "Annotated by Zhanran",
+  "excerpt": "The Platform Sutra is the only work of indigenous Chinese Buddhism honored with the title “sutra.” It gives a systematic and comprehensive exposition of the theory and practice of the sudden teaching of “perceiving one's original nature and becoming a Buddha by seeing the nature,” and its appearance marks the formal establishment of Chinese Chan, radiant with glory."
+ },
+ "304fozangj": {
+  "title": "Selected Passages from the Buddha Repository Sutra, Annotated",
+  "author": "Selected and annotated by Zhanran",
+  "excerpt": "The Buddha Repository Sutra, in three fascicles, was translated by Master Kumārajīva on the twelfth day of the sixth month of the seventh year of Hongshi (405) in the Later Qin. The sutra has ten chapters, discussing the true mark of all dharmas as unborn and unceasing, markless and unconditioned. The true mark of all dharmas, ultimately empty and quiescent, is itself the Buddha Way. It says that precept-breaking bhikshus have ten arrows of sorrow, and..."
+ },
+ "401amtj": {
+  "title": "Annotated Essential Explanation of the Amitabha Sutra",
+  "author": "Annotated by Zhanran",
+  "excerpt": "Translated by the Tripitaka master Kumārajīva, in the Later Qin."
+ },
+ "402nianfolun": {
+  "title": "A Discourse on Buddha-Recitation (Annotated Sayings of Master Chewu)",
+  "author": "Compiled and annotated by Zhanran",
+  "excerpt": "With one utterance of the Buddha's name, unmixed with other concerns, ten recitations achieve the work and instantly transcend many kalpas."
+ },
+ "403chanjing": {
+  "title": "The Essential Principles of Chan and Pure Land (Annotated Instructions of Master Hanshan)",
+  "author": "Compiled and annotated by Zhanran",
+  "excerpt": "Looking over Master Hanshan's entire life, like Master Yongming (the sixth Pure Land patriarch) and Master Chewu (the twelfth), he was outstanding in both the cultivation and propagation of Chan and Pure Land, and he is listed in the Records of Pure Land Sages. So he is a patriarch of both the Chan school and the Pure Land school..."
+ },
+ "404nianfosanmei": {
+  "title": "A Detailed Exposition of “Feeling the Elephant: On the Samadhi of Buddha-Recitation”",
+  "author": "Annotated by Zhanran",
+  "excerpt": "“Feeling the Elephant: On the Samadhi of Buddha-Recitation” appears in volume four of Master Yinguang's Collected Writings. It is the original draft of Master Liaoyu, published after revision by Master Yinguang, so it also embodies Master Yinguang's own experience and insight in cultivating the samadhi of Buddha-recitation — a rare and precious document of the Buddha-recitation method. This essay..."
+ },
+ "502xiuxinjue": {
+  "title": "A Detailed Exposition of the Essentials of Cultivating the Mind",
+  "author": "Introduction to National Master Puzhao",
+  "excerpt": "Composed by the Korean National Master Puzhao (Jinul); annotated by Zhanran."
+ },
+ "502yuanjuejingjj": {
+  "title": "An Elucidation of the Sutra of Perfect Enlightenment",
+  "author": "Annotated by Zhanran",
+  "excerpt": "The full title of the Sutra of Perfect Enlightenment is “The Great and Vast Sutra of Perfect Enlightenment,” in twelve chapters. In it Shakyamuni Buddha, through dialogues with twelve great bodhisattvas, expounds the wondrous principle of the Tathagata's perfect enlightenment (the perfectly awakened self-nature) and the methods of practice."
+ },
+ "502zhenxinzhishuojingjie": {
+  "title": "A Detailed Exposition of the Straightforward Talk on the True Mind",
+  "author": "Annotated by Zhanran",
+  "excerpt": "Do not seek the Buddha far off on Vulture Peak; Vulture Peak is right here in your own mind;"
+ }
 }
