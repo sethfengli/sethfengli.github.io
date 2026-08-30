@@ -1,0 +1,482 @@
+{
+  "title": "Annotated Essentials of the Amitābha Sūtra",
+  "author": "Annotated by Zhanran",
+  "excerpt": "Translated by the Tripitaka Master Kumārajīva of the Yao Qin",
+  "firstBlock": 0,
+  "blocks": [
+    {
+      "t": "p",
+      "inline": [
+        { "s": "Yao Qin" },
+        { "s": "\u00b7" },
+        { "s": "Translated by the Tripitaka Master Kumārajīva" }
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        { "s": "Qing" },
+        { "s": "\u00b7" },
+        { "s": "Explained by the Western-realm Monk Ōuyi Zhixu" }
+      ]
+    },
+    {
+      "t": "quote",
+      "inline": [
+        { "s": "The Essentials on the Amitābha Sūtra is an extremely important treatise in the study and practice of the Pure Land. Master Yinguang held it in the highest esteem and taught:" },
+        { "s": "\u201cThe Great Collection Sūtra says: \u2018In the Dharma-ending age, of the countless millions who cultivate, rarely one attains the Way; only by relying on the recitation of the Buddha's name can one be released from birth and death.\u2019 From this it is known that the single practice of Buddha-recitation is the way cultivated alike by the highest sages and the humblest mortals, the practice walked by the wise and the foolish alike. It is easy to take up yet leads to high attainment; little effort is spent yet results come quickly. Because it relies wholly on the Buddha's power, its benefit is surpassing, going beyond the ordinary paths of teaching. The ancients said: \u2018To seek the Way through other gates is like an ant climbing a high mountain; to be reborn through Buddha-recitation is like a sail boat running before a fair wind.\u2019 This may be called the finest description of it. If you wish to investigate it, the Amitābha Sūtra has the Essentials composed by Master Ōuyi, in which both principle and practice reach their utmost — it is the foremost commentary since the Buddha spoke this scripture, wonderful beyond measure and accurate beyond measure. Even if an ancient Buddha appeared in the world again to re-comment on this sūtra, he could not surpass it.\u201d" }
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        { "s": "The annotation follows. The headings in the text are added by the annotator and do not belong to the original Essentials." }
+      ]
+    },
+    { "t": "h2", "text": "The Title of the Sūtra" },
+    {
+      "t": "p",
+      "inline": [
+        { "s": "The Amitābha Sūtra Spoken by the Buddha" }
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        { "s": "[Note] The Amitābha Sūtra Spoken by the Buddha is the essential teaching the World-Honored One spoke of His own accord without being asked, a profound scripture praised by all the Buddhas of the ten directions, the supreme expedient of ultimate means, and the final destination of the most complete and sudden teaching." }
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        { "s": "In this scripture the World-Honored One teaches beings to hold solely the name of Amitābha Buddha, so as to cultivate the practice of the Pure Land, cross beyond the three realms horizontally, be reborn in the Land of Ultimate Bliss, fully realize the three non-regressing stages, and accomplish Buddhahood in a single lifetime. Practice is established upon the vow, and the vow is born of faith. Therefore the scripture first sets forth in detail the sublime adornments of the primary and companion worlds to arouse faith; next it especially urges beings to seek rebirth there, to arouse the vow; and then it directly reveals the practice of holding the Name, to establish practice. In this scripture the World-Honored One especially reveals how to ensure rebirth in the Western Land of Ultimate Bliss: faith, vow, and the holding of the Name, with a mind single and undivided. Thereby the fundamental doctrine of the Pure Land school is established." }
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        { "s": "The ninth patriarch of the Pure Land school, Master Ōuyi, says in the \u2018Clarifying the Aim\u2019 section of this Essentials: \u201cFaith is faith in oneself and faith in the Other, faith in cause and faith in effect, faith in particulars and faith in principle; the vow is to weary of the Sahā world and to long for the Land of Ultimate Bliss; practice is to hold the Name and single-mindedly stay undivided.\u201d" }
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        { "s": "The twelfth patriarch of the Pure Land school, Master Chewu, says: \u201cSingle-mindedness is the final home of pure karma and the great gate of the Pure Land. If one has not entered this gate, in the end he is not secure. How can the student fail to be diligent!\u201d (From the Sayings of Master Chewu)" }
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        { "s": "[The Three Non-regressions] First, non-regression in stage: not falling back from the stage one has reached by cultivation. Second, non-regression in practice: not falling back from the practice one has undertaken. Third, non-regression in mindfulness: not turning back from right mindfulness." }
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        { "s": "There are two Chinese translations of the Amitābha Sūtra. The first is the Amitābha Sūtra Spoken by the Buddha, translated by Master Kumārajīva in the Yao Qin period, commonly called the Qin translation; the second is the Sūtra on the Praise of the Pure Land Buddha's Reception, translated by Master Xuanzang in the Tang dynasty, commonly called the Tang translation. Responding to the inclination of the common people toward economy, Master Kumārajīva translated primarily by meaning, with few words yet rich content, subtle and fluent. Master Xuanzang, by contrast, used a word-for-word direct translation, accurate and complete, preserving the original as far as possible. When one studies the meaning of the scripture closely, comparing the two translations against each other yields a deeper and more accurate understanding." }
+      ]
+    },
+    {
+      "t": "quote",
+      "inline": [
+        { "s": "For example, in the Amitābha Sūtra Spoken by the Buddha:" },
+        { "s": "\u201cŚāriputra! If a good man or good woman hears of Amitābha Buddha and holds fast to His name, for one day, or two days, or three, or four, or five, or six, or seven days, with a mind single and undivided, then when that person approaches the end of life, Amitābha Buddha together with the holy multitude will appear before him; at the moment of death, with a mind unconfused, he will at once be reborn in the Pure Land of Amitābha Buddha's Sukhāvatī.\u201d" }
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        { "s": "In this passage, students of the Pure Land are greatly concerned with one question: what is the state of \u2018single-mindedness\u2019? Over the long years, opinions have been many and the dispute endless." }
+      ]
+    },
+    {
+      "t": "quote",
+      "inline": [
+        { "s": "The wording of the Sūtra on the Praise of the Pure Land Buddha's Reception is:" },
+        { "s": "\u201cŚāriputra! If those good men or good women of pure faith, having heard the name of this Amitāyus Buddha of boundless, measureless, inconceivable merit, and the meritorious adornments of the Land of Ultimate Bliss, ponder it after hearing it, and for one day and night, or two or three, or four or five, or six or seven, maintain their recollection without confusion, then when such good men or good women come to the end of life, Amitāyus Buddha, together with his countless disciples of the Śrāvaka assembly and the multitude of bodhisattvas, will surround and come before him, and with compassionate aid keep his mind undistracted. Once he has relinquished his life, he will follow the Buddha's assembly and be born in the pure Buddha-land of Amitāyus's Land of Ultimate Bliss.\u201d" }
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        { "s": "Set the two side by side and it is clear: \u2018single-mindedness\u2019 is precisely \u2018maintaining recollection without confusion.\u2019" }
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        { "s": "In the Sūtra on the Praise of the Pure Land Buddha's Reception, the World-Honored One taught: \u201cYou beings should all believe and receive the merit of this praised, inconceivable Buddha-land and the Dharma-gate by which all Buddhas take beings under their protection.\u201d Therefore, reciting the Buddha's name is the gate by which all the Buddhas take beings under their protection, and in this scripture the World-Honored One specifically and clearly reveals how to cultivate this Dharma-gate." }
+      ]
+    },
+    {
+      "t": "quote",
+      "inline": [
+        { "s": "After the World-Honored One had spoken the passage \u201cIf those good men or good women of pure faith, having heard the name of this Amitāyus Buddha of boundless, measureless, inconceivable merit, and the meritorious adornments of the Land of Ultimate Bliss, ponder it after hearing it, and for one day and night, or two or three, or four or five, or six or seven, maintain their recollection without confusion, then when such good men or good women come to the end of life, Amitāyus Buddha, together with his countless disciples of the Śrāvaka assembly and the multitude of bodhisattvas, will surround and come before him, and with compassionate aid keep his mind undistracted; once he has relinquished his life, he will follow the Buddha's assembly and be born in the pure Buddha-land of Amitāyus's Land of Ultimate Bliss,\u201d he immediately said: \u201cIf those good men or good women of pure faith, having heard the name of this Amitāyus Buddha of inconceivable merit and the pure Buddha-land of the Land of Ultimate Bliss, should all believe and receive it, make the vow, and " },
+        { "s": "practice as the Buddha has spoken" },
+        { "s": ", they will be born in that Buddha-land.\u201d" }
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        { "s": "Here the World-Honored One sets forth faith, vow, and practice with perfect clarity: faith is \u2018believing and receiving\u2019; the vow is \u2018making the vow\u2019; practice is \u2018cultivating as the Buddha has spoken.\u2019" }
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        { "s": "When faith and vow remain only in the head, they are nothing but an idea. They must be put into practice to be true faith and deep vow. So true faith and deep vow necessarily lead to earnest practice. Without earnest, vigorous cultivation, how can one realize what one believes? How can one fulfill what one vows? Faith and vow without effort are only hollow faith and shallow vow." }
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        { "s": "In the Sūtra on the Praise of the Pure Land Buddha's Reception, the World-Honored One, again and again and a third and fourth time, charged beings to \u2018cultivate as the Buddha has spoken\u2019, and clearly told us that if one merely cultivates as the Buddha has spoken, one is received by all the Buddhas of the ten directions and will surely be reborn in the Western Land of Ultimate Bliss, never regressing and swiftly realizing Buddhahood. His earnest concern overflows in the words. The World-Honored One taught:" }
+      ]
+    },
+    {
+      "t": "quote",
+      "inline": [
+        { "s": "\u201c" },
+        { "s": "If those good men or good women of pure faith, having heard the name of this Amitāyus Buddha of inconceivable merit and the pure Buddha-land of the Land of Ultimate Bliss, should all believe and receive it and make the vow, " },
+        { "s": "cultivating as the Buddha has spoken" },
+        { "s": ", they will be born in that Buddha-land.\u201d" }
+      ]
+    },
+    {
+      "t": "quote",
+      "inline": [
+        { "s": "\u201c" },
+        { "s": "Whoever practices as the Buddha has spoken" },
+        { "s": ", all will surely be irretrievable from anuttara-samyak-saṃbodhi, and all will surely be born in the pure Buddha-land of Amitāyus Buddha's Land of Ultimate Bliss. Therefore, Śāriputra, all you beings, should " },
+        { "s": "believe and receive and understand the words of me and of the Buddhas of the ten directions" },
+        { "s": ", and with diligence, " },
+        { "s": "practice as the Buddha has spoken" },
+        { "s": ", without raising any doubt.\u201d" }
+      ]
+    },
+    {
+      "t": "quote",
+      "inline": [
+        { "s": "\u201c" },
+        { "s": "Whoever practices as the Buddha has spoken" },
+        { "s": ", all will surely be irretrievable from anuttara-samyak-saṃbodhi, and all will surely be born in the pure Buddha-land of Amitāyus Buddha's Land of Ultimate Bliss. Therefore, Śāriputra, if those good men or good women of pure faith, all should with deep faith and understanding aspire to be reborn in the pure Buddha-land of Amitāyus's Land of Ultimate Bliss, and " },
+        { "s": "not act with lax abandon" },
+        { "s": ".\u201d" }
+      ]
+    },
+    {
+      "t": "quote",
+      "inline": [
+        { "s": "\u201c" },
+        { "s": "In this defiled, tolerant, enduring world, in this evil age of the five defilements, if there are good men or good women of pure faith, who hear of this Dharma — a thing extremely hard to believe in all the worlds — and are able to give rise to faith and understanding, accept, uphold, proclaim, and " },
+        { "s": "cultivate in accordance with the teaching" },
+        { "s": ", then know that such persons are exceedingly rare, and that in the presence of measureless Buddhas they have planted good roots. At the end of life such persons will surely be born in the Western Land of Ultimate Bliss, and enjoy the Great Vehicle's Dharma-pleasure of that pure Buddha-land adorned with various meritorious excellencies.\u201d" }
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        { "s": "Question: The Sūtra on the Praise of the Pure Land Buddha's Reception says \u2018after hearing it, ponder it.\u2019 How should one ponder?" }
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        { "s": "Answer: By reciting the Buddha's name (holding fast to the Name). The Prajñā Sūtra of Mañjuśrī says: \u201cGood men and good women who wish to enter the single-practice samādhi should dwell in a quiet place, abandon all distracted thoughts, not seize upon appearances, fasten the mind upon a single Buddha, and single-mindedly call on His name.\u201d" }
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        { "s": "Question: I too know that faith, vow, and the holding of the Name with a mind single and undivided can lead to rebirth at ease, and I admire it endlessly. The problem is, how can an ordinary person attain such a high state?" }
+      ]
+    },
+    {
+      "t": "quote",
+      "inline": [
+        { "s": "Answer: Single-mindedness is in fact maintaining recollection without confusion (see the Tang translation of the Amitābha Sūtra, the Sūtra on the Praise of the Pure Land Buddha's Reception), that is, as Master Ōuyi says: \u201cIt is clear and distinct, neither drowsy nor scattered.\u201d (From the Master Ōuyi Pure Land Collection" },
+        { "s": "\u00b7" },
+        { "s": "Occasional Talks in the Brahma Chamber) Such a state — so long as the method is correct and one works diligently — everyone can attain. This is why it is said that the Pure Land Dharma-gate is a gate at which ten thousand who cultivate, ten thousand are reborn." }
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        { "s": "Question: How does one attain single-mindedness in Buddha-recitation?" }
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        { "s": "Answer: " },
+        { "s": "Aware Buddha-Recitation", "href": "/articles/001jznf" },
+        { "s": " and " },
+        { "s": "Investigating Buddha-Recitation", "href": "/articles/171nianfoshishui" },
+        { "s": " both set forth the concrete methods for attaining single-mindedness in Buddha-recitation." }
+      ]
+    },
+    { "t": "h2", "text": "The Translator" },
+    {
+      "t": "p",
+      "inline": [
+        { "s": "Translated by the Tripitaka Master Kumārajīva of the Yao Qin" }
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        { "s": "[Note] This scripture (the Amitābha Sūtra Spoken by the Buddha) was translated in the Yao Qin period by the Tripitaka Master Kumārajīva." }
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        { "s": "[Yao Qin] There have been three Qin dynasties in history. The first was the Qin state of the Warring States period, down to the Qin dynasty in which Qin Shi Huang unified the world. The second Qin dynasty was in the period of the Sixteen Kingdoms of the Five Barbarians, its ruler being Fu Jian. The third Qin dynasty was that in which Fu Jian's general, Yao Chang, killed Fu Jian and set up on his own; its realm was also called Qin. Later, to distinguish it from Fu Jian's Qin dynasty, people called it the Yao Qin, also known as the Later Qin. [Śāriputra] That is, Śāriputra. [Tripitaka] The word \u2018Tripitaka\u2019 means the canon of sūtras, the canon of vinaya, and the canon of śāstra-s. The sūtra canon is the scriptures spoken by the Buddha; the vinaya canon is the precepts established by the Buddha; the śāstra canon consists of the Abhidharma (meaning the dharma that is incomparable) and other treatises spoken by the Tathāgata, and the various śāstra-s composed by the Buddha's disciples. [Tripitaka Master] A bhikṣu versed in all three divisions of the canon. [Kumārajīva] (" },
+        { "s": "350–413" },
+        { "s": " CE), rendered into Chinese as \u2018Boy of Youth\u2019, originally a man of India, grew up in Kucha (located between Kuqa and Shaya counties of the Xinjiang Uyghur Autonomous Region). After leaving the home life, he mastered the Mahāyāna sūtras and śāstra-s. In the third year of the Hongshi era of Yao Xing of the Later Qin (in the year " },
+        { "s": "401" },
+        { "s": " CE), he arrived at Chang'an and translated scriptures in the Xiaoyao Garden. The sūtras and śāstra-s he translated before and after amount to over three hundred eighty scrolls. In the fifteenth year of the Hongshi era of the Yao Qin (in the year " },
+        { "s": "413" },
+        { "s": " CE), he passed away in Chang'an. After his cremation, his tongue did not burn, showing that the scriptures he translated were absolutely reliable and without error." }
+      ]
+    },
+    { "t": "h2", "text": "The Commentator" },
+    {
+      "t": "p",
+      "inline": [
+        { "s": "Qing" },
+        { "s": "\u00b7" },
+        { "s": "Explained by the Western-realm Monk Ōuyi Zhixu" }
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        { "s": "[Note] The Essentials on the Amitābha Sūtra Spoken by the Buddha was composed by the ninth patriarch of the Pure Land school, the eminent monk of the late Ming and early Qing, Master Ōuyi. This work is terse in words yet rich in meaning, and penetrating in both principle and practice; it is the first among the Ten Essentials of the Pure Land." }
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        { "s": "[Ōuyi Zhixu] (1599–1655), an eminent monk of the Ming dynasty and the ninth patriarch of the Pure Land school. A native of Mudu in Wu County (Jiangsu), he was of the common surname Zhong, his style name being Zhixu and his dharma name Ōuyi, with the additional sobriquet \u2018the man of the eight noes.\u2019 Because in his later years he dwelt on Lingfeng (Hang County, Zhejiang), where he built a temple, founded a society, and wrote books, the world knows him as Master Ōuyi of Lingfeng. In youth he was fond of Confucian learning and vowed to exterminate Buddhism and Daoism. At seventeen, happening to read Great Master Lianchi's Records of Self-Knowledge and Random Notes from the Bamboo Window, he burned the anti-Buddhist treatises he had written and turned to Buddhism. While observing mourning for his father, he heard the Sūtra of the Original Vows of Kṣitigarbha Bodhisattva, and the resolve to leave the home life first arose in him. At twenty-two he devoted himself exclusively to Buddha-recitation. The next year he made the forty-eight vows and called himself the \u2018great layman of the Long.\u2019 At twenty-four he respectfully took tonsure under Master Xueling, a follower of Great Master Hanshan. Master Ōuyi once studied the Huayan, Tiantai, and Consciousness-only teachings, wishing to unify Chan, doctrine, and vinaya, and to synthesize the systems of the various Buddhist schools; yet in practice he inclined chiefly toward Buddha-recitation. He advocated fusing the three teachings of Buddhism, Daoism, and Confucianism. His disciple Master Chengshi compiled his posthumous works, the Collected Treatises of Master Ōuyi of Lingfeng, in ten scrolls (abbreviated as the Lingfeng Collected Treatises)." }
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        { "s": "When the Master was fifty-six he fell ill. He left instructions that after his cremation, his bones should be ground and mixed with flour, and distributed to birds, beasts, and fish, to bind all beings in the joy of the Dharma. Seated cross-legged at the corner of his rope bed, he raised his hand toward the west and passed away. Three years after his nirvāṇa, his disciples cremated him in accordance with the rites. On opening the shrine, they saw that his hair had grown to cover his ears, his face was as in life, and he sat cross-legged majestic. After the cremation, his teeth were all intact. Therefore they did not dare follow his instruction to grind the bones and mix them with flour, but reverently enshrined his relics and built a stūpa to the right of the great hall on Lingfeng." }
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        { "s": "[The Ten Essentials of the Pure Land] These are the ten scrolls of Pure Land essentials selected by Master Ōuyi, including: the Essentials on the Amitābha Sūtra; the Rite of Repentance and Vows for Rebirth in the Pure Land; the Two Gates of Resolving Doubts and Practicing the Vow for Rebirth in the Pure Land; the Gate of the Beginner's Samādhi of the Sūtra of the Contemplation of Amitāyus; the Rite of Practice and Vow for Upholding the Amitābha Sūtra Spoken by the Buddha; the Ten Doubts of the Pure Land; the Treatise on the Jewel-King Samādhi of Buddha-Recitation; the Questions on the Pure Land; the Direct Pointers of the Jewel-King Samādhi of Buddha-Recitation; the Pure Land Poems of the Western Studio; the Treatise on Birth in the Pure Land and Non-Birth; the Dharma Sayings of the Pure Land; and the Combined Treatise on the West." }
+      ]
+    },
+    { "t": "h2", "text": "The Fivefold Profound Meaning" },
+    {
+      "t": "quote",
+      "inline": [
+        { "s": "[Essentials] Now, the Buddhas, out of compassion for the deluded multitudes, teach them in accordance with their capacities. Although returning to the source is not two, the expedient means are many. Yet among all expedients, to seek the most direct and the most complete and sudden, there is none better than Buddha-recitation and seeking rebirth in the Pure Land. Again, among all Buddha-recitation Dharma-gates, to seek the most simple and most secure, there is none better than faith, vow, and the single holding of the Name. Therefore the three Pure Land sūtras circulate together in the world, yet the ancients alone set the Amitābha Sūtra as a daily recitation. Is this not because they saw that the single practice of holding the Name pervades all three roots of capacity, gathers both separate and ultimate truth without leaving anything out, embraces both the Chan school and the doctrinal schools without exception, and is indeed utterly inconceivable?" }
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        { "s": "[Note] The Buddha-recitation Dharma-gate is the most direct, most complete, and most sudden of all Dharma-gates, and faith, vow, and the holding of the Name is again the most simple, most easy, and most secure within the Buddha-recitation Dharma-gates." }
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        { "s": "[Now] A word of opening. [Returning to the source] Returning to the true, still, original source (nirvāṇa). [Although returning to the source is not two, the expedient means are many] Though all cultivation is for returning to the origin and the source (returning to the source), the specific methods of practice (expedient means) are many. [The three Pure Land sūtras] The three scriptures on which the Pure Land school relies: the Amitābha Sūtra, the Sūtra of the Contemplation of Amitāyus, and the Longer Sukhāvatīvyūha Sūtra. [Chan school and doctrinal schools] \u2018The school' refers to the Chan school; apart from the Chan school, the other nine schools (the Kośa school, the Satyasiddhi school, the Tiantai school, the Huayan school, the True Word school, the Dharmalakṣaṇa school, the Three Treatises school, the Pure Land school, and the Vinaya school) are all called \u2018the doctrinal schools.\u2019" }
+      ]
+    },
+    {
+      "t": "quote",
+      "inline": [
+        { "s": "[Essentials] From ancient times, commentaries have never been lacking in writers, but with the passage of time works are lost, and few survive. The Venerable Yunchi composed the Commentary and Sub-commentary, vast, subtle, and refined. Master Youxi wrote the Circle-Completion Commentary, profound, high, and broad. These two, like the sun and moon in mid-heaven, are seen by all who have eyes. But as the words are rich and the meaning elaborate, their bounds are hard to fathom, so that beginners of shallow understanding may find it difficult to reach faith and vow. Therefore, not measuring my own dullness, I have again composed this Essentials. I do not presume to differ from the two elders, nor need I force agreement with them. It is like viewing a peak from the side and seeing a ridge, or from across and seeing a range; though none of these exhausts the true appearance of Mount Lu, yet each may count as seeing Mount Lu for oneself." }
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        { "s": "[Note] This explains the reasons for composing the Essentials." }
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        { "s": "[Writers have never been lacking] In every age those who wrote commentaries were not wanting. [Yunchi] The eminent Ming monk, Great Master Lianchi, the eighth patriarch of the Pure Land school. [Venerable] The sense of \u2018my teacher\u2019; it is the title monks use for their own teacher. [The Venerable Yunchi] Though they had never met, Master Ōuyi honored Great Master Lianchi as his personal teacher. [Commentary and Sub-commentary] The Commentary on the Amitābha Sūtra, with its sub-commentary, composed by Great Master Lianchi. [Youxi] The eminent Ming monk, Master Chuandeng. [Circle-Completion Commentary] The Circle-Completion Commentary on the Brief Explanation of the Amitābha Sūtra, composed by Master Chuandeng. [Now] A word of opening. [Beginner] One who has just begun to study. [Difficult to reach faith and vow] Hard for one to rely upon it to arouse faith and make the vow." }
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        { "s": "[Essentials] Now, to explain the scriptural text, [I set forth] the fivefold profound meaning." }
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        { "s": "[Note] \u2018Profound meaning\u2019 means that, before expounding the scriptural text, one first clarifies the deep and subtle principle this scripture sets forth. This is the outline of the scripture, so that the reader first grasps the whole, then studies the text; when the net is lifted the mesh spreads open, and it is easy to grasp and understand. \u2018The fivefold profound meaning,\u2019 also called the fivefold profound discussion. When Great Master Zhizhe of the Tiantai school preached Buddhist scriptures, he always set up the fivefold profound meaning: one, explaining the title — explaining the scripture's title; two, discerning the essence — discerning the aim of the scripture; three, clarifying the aim — setting forth the purpose of cultivation; four, discussing the function — from the aim, discussing the scripture's function (its fruition); five, judging the teaching — judging whether the doctrinal meaning is great or small, provisional or real." }
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        { "s": "[Great and small] The Great Vehicle and the Small Vehicle. [Provisional and real] A teaching suited to a given time is called \u2018provisional\u2019; an ultimate and unchanging teaching is called \u2018real.\u2019" }
+      ]
+    },
+    { "t": "h3", "text": "(1) Explaining the Name" },
+    {
+      "t": "quote",
+      "inline": [
+        { "s": "[Essentials] First, explaining the name. This scripture takes as its name the speaker and the one spoken of. \u2018Buddha\u2019 is the teaching lord of this world who speaks, namely Śākyamuni, who, mounted on the power of the great compassionate vow, was born in this evil world of the five defilements and, enlightened first, awakens those after him; there is no dharma he does not know, no thing he does not see. \u2018Spoke\u2019 means delight in what he holds within. The Buddha's heart is to deliver beings; when the causes of beings' Buddhahood are ripe, he speaks for them this hard-to-believe Dharma, so that they may be ultimately delivered, and therefore he is delighted. \u2018Amitābha\u2019 is the guide of that land spoken of, who with the forty-eight vows draws in beings of faith, vow, and Buddha-recitation to be reborn in the Land of Ultimate Bliss and ever to abide at the stage of non-regression. The Sanskrit \u2018Amitābha\u2019 is here rendered \u2018Buddha of Measureless Life\u2019, and also \u2018Buddha of Measureless Light.\u2019 In sum, his merit, wisdom, spiritual powers, miraculous abilities, the adornments of his primary and companion worlds, and his teaching and transformation of beings — each and all are measureless. All words that come from the Buddha's golden mouth are generically called \u2018sūtra.\u2019 Set against the preceding five characters, this makes a title combining the general and the particular. Teaching, practice, and principle each, in turn, have their general and particular, as is extensively set forth in the Tiantai canon." }
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        { "s": "[Note] [Explaining the name] To explain the title \u2018The Amitābha Sūtra Spoken by the Buddha.\u2019 [Combining general and particular as the title] In the six characters of the title \u2018The Amitābha Sūtra Spoken by the Buddha,\u2019 there is a distinction of general and particular. The first five characters differ from the titles of other scriptures and are particular; the last character is common to the titles of all scriptures and is general. So the title \u2018The Amitābha Sūtra Spoken by the Buddha\u2019 combines general and particular into a single title. [Teaching, practice, and principle each have their general and particular, as extensively set forth in the Tiantai canon] Besides the title, teaching, practice, and principle also each have general and particular; the meaning is vast, as set forth in the Tiantai Canon. [Tiantai] The name of a mountain in Tiantai County, Taizhou Prefecture, Zhejiang Province; in the Sui dynasty, Great Master Zhizhe dwelt on this mountain and founded a school, and the later age named his school the Tiantai school after it, abbreviated as Tiantai or the Tai school." }
+      ]
+    },
+    { "t": "h3", "text": "(2) Discerning the Essence" },
+    {
+      "t": "quote",
+      "inline": [
+        { "s": "[Essentials] Second, discerning the essence. All Mahāyāna sūtras take the reality of all things as their true substance. The nature of the single thought-mind present before us is not within, not without, not in the middle; it is not past, not present, not future; not blue, yellow, red, or white, not long, short, square, or round; not scent, not taste, not touch, not dharma. Seek it and it cannot be found, yet one cannot say it is nothing. It creates the hundred realms and the thousand suchnesses, yet one cannot say it is something. It is apart from all discrimination, thought, language, and letters, while discrimination, thought, language, and letters are not, apart from this, a self-nature of their own. In sum, apart from all marks, it is at once all dharmas. Being apart, it is without marks; being at once all dharmas, it is not without marks. Being unable to name it, one forcibly calls it the reality of all things." }
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        { "s": "[Note] [Discerning the essence] To discern the aim of the scripture. [The reality of all things] The true appearance; all Mahāyāna sūtras take the reality of all things as the true substance. The Buddha Treasury Sūtra says: \u201cWhat is called the reality of all dharmas? It is that all dharmas are ultimately empty, with nothing existing.\u201d [One thought] \u2018Thought\u2019 means a thought of the mind. If a common person's thought, arising as the sense faculties meet their objects, is born and perished from moment to moment, this is a deluded thought; if it is apart from faculties and objects, a thought that is true, pure, bright, and subtle, empty, transparent, and spiritually penetrating, then it is the thought of the Tathāgata's right knowledge. [Mind-nature] That is, the substance of our own mind — the self-nature. [Not scent, not taste, not touch, not dharma] Here scent, taste, touch, and dharma are the last four of the six sense objects (form, sound, scent, taste, touch, and dharma)." }
+      ]
+    },
+    {
+      "t": "quote",
+      "inline": [
+        { "s": "[Essentials] The substance of the reality of all things is neither still nor luminous, yet again it is still and ever luminous, luminous and ever still. Still while luminous is forcibly named the land of eternal still light; luminous while still is forcibly named the pure dharmakāya. Again, luminous-and-still is forcibly named the dharmakāya, and still-and-luminous is forcibly named the recompense body. Again, the still-and-luminous of the nature-endowed merit is named the dharmakāya, and the still-and-luminous of the cultivated merit is named the recompense body. Again, the luminous-and-still of the cultivated merit is named the enjoyment body, and the still-and-luminous of the cultivated merit is named the transformation body. Stillness and luminosity are not two; body and land are not two; nature and cultivation are not two; the true and the responsive are not two — none is other than the reality of all things. The reality of all things is not two, and again is not not-two. Therefore, with its whole substance it becomes the primary world and the companion world, the Dharma and the recompense, self and other. Even the speaker and the spoken, the deliverer and the delivered, the believer and the believed, the vower and the vowed, the holder and the held, the born and the birth-place, the praiser and the praised — none is other than what is stamped by the true seal of the reality of all things." }
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        { "s": "[Note] The stillness-and-luminosity, body-and-land, nature-and-cultivation, true (dharmakāya) and responsive (transformation body), principle and practice set forth above are all non-dual, because in terms of the reality of all things, they differ not. Master Ōuyi then further clarifies: the reality of all things is not only not-two, but also not not-two." }
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        { "s": "[The reality of all things is not two, and again not not-two] The Buddha Treasury Sūtra says: \u201cWhat is called the reality of all dharmas? It is that all dharmas are ultimately empty, with nothing existing.\u201d Since the reality of all dharmas is ultimately empty with nothing existing, to speak of it as two or as not-two both become idle talk. Hence it is said: \u201cThe reality of all things is not two, and again is not not-two.\u201d [The true seal of the reality of all things] \u2018True seal\u2019 means the seal of the true Dharma. [Dharma seal] The seal and testament of the Buddha's Dharma — this is the seal of truth handed down from Buddha to Buddha, the standard of the Dharma; what does not accord with the Dharma seal is not the Buddha's Dharma. The Small Vehicle uses the \u2018three Dharma seals\u2019 to authenticate: the seal that all conditioning is impermanent, the seal that all dharmas are without self, and the seal of the stillness of nirvāṇa. The Great Vehicle uses the \u2018seal of the reality of all things\u2019 to authenticate, also called the seal of the reality of all dharmas. Because the reality of all dharmas already embraces the impermanence of all conditioning, the selflessness of all dharmas, and the stillness of nirvāṇa, it is called the single Dharma seal or the single seal of the reality of all things. Since the Great Vehicle takes as its basis the teaching of the principle of the reality of all dharmas, whatever teaching is apart from the reality of all dharmas is Mara's teaching. In the Lotus Sūtra, the Buddha says: \u201cI, adorned in body with marks, radiate light over the world, revered by the measureless assembly, and proclaim for them the seal of the reality of all things.\u201d The Numerical Dictionary of the Tripitaka says: \u201cThe Mahāyāna sūtras spoken by the Tathāgata are all authenticated by the principle of the reality of all things. Outsiders cannot mix in, the Māras cannot overthrow. If it has the seal of the reality of all things, it is the Buddha's teaching; if it lacks the seal of the reality of all things, it is Mara's teaching.\u201d Great Master Zhizhe's Profound Meaning of the Lotus Sūtra says: \u201cThe Small Vehicle sūtras which are stamped with the three seals of impermanence, no-self, and nirvāṇa are the Buddha's teaching; cultivating them, one attains the Way; without the three Dharma seals, they are Mara's teaching. The Mahāyāna sūtras have only the single Dharma seal — the reality of all dharmas — and are called the sūtras of ultimate meaning; by them one attains the great Way; without the seal of the reality of all things, they are Mara's teaching.\u201d In the Sentence and Phrase of the Lotus Sūtra, he further says: \u201cThe Buddhas awaken to the mark of reality, and mounted on this real way appear in the world. So that beings may attain this reality — for this sole matter — they appear in the world, and for nothing else. Apart from the reality of all dharmas, all is named Mara's activity.\u201d" }
+      ]
+    },
+    { "t": "h3", "text": "(3) Clarifying the Aim" },
+    {
+      "t": "quote",
+      "inline": [
+        { "s": "[Essentials] Third, clarifying the aim. The aim is the essential path of cultivation, the pivot of attaining the essence, and the guiding principle of the myriad practices. When the net is lifted, the meshes spread open; when the collar is taken, the sleeves and the breast are drawn in. Therefore, after the essence, the aim should be discerned." },
+        { "s": "This sūtra takes faith, vow, and the holding of the Name as the essential method of practice. Without faith, the vow cannot be stirred; without the vow, practice cannot be guided; without the wonderful practice of holding the Name, the vow cannot be fulfilled and the faith cannot be realized." },
+        { "s": "The sūtra first sets forth the primary and companion worlds to give rise to faith; then urges the making of the vow to guide practice; then reveals the holding of the Name to arrive straightway at non-regression. Faith is faith in oneself and faith in the Other, faith in cause and faith in effect, faith in particulars and faith in principle; the vow is to weary of the Sahā world and to long for the Land of Ultimate Bliss; practice is to hold the Name and single-mindedly stay undivided." }
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        { "s": "[Note] \u2018Clarifying the aim\u2019 — to set forth the essential path of cultivation. This sūtra takes faith, vow, holding the Name, and single-mindedness as the essential path of cultivation. Based on the meaning of the scripture, Master Ōuyi gave a clear definition of \u2018faith, vow, and the holding of the Name\u2019: \u201cFaith is faith in oneself and faith in the Other, faith in cause and faith in effect, faith in particulars and faith in principle. The vow is to weary of the Sahā world and long for the Land of Ultimate Bliss. Practice is to hold the Name and single-mindedly stay undivided.\u201d Whenever \u2018faith, vow, and the holding of the Name\u2019 is mentioned in the Essentials, its meaning is: faith — faith in oneself and in the Other, in cause and in effect, in particulars and in principle; vow — wearying of the Sahā world and longing for Sukhāvatī; practice — holding the Name and single-mindedly undivided. Reading \u2018without the wonderful practice of holding the Name, the vow cannot be fulfilled and the faith cannot be realized\u2019 and \u2018practice is to hold the Name, single-mindedly undivided\u2019 continuously together, the concrete meaning is: without the wonderful practice of holding the Name in single-mindedness, the vow cannot be fulfilled and the faith cannot be realized. Therefore the point of landing and the concrete expression of deep faith and firm vow lie in the wonderful practice of holding the Name in single-mindedness." }
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        { "s": "[The pivot of attaining the essence] To carry through the purpose of cultivation is the key (pivot) to comprehending (attaining) the scripture's aim (essence). Here \u2018the essence\u2019 is the true substance of the section on discerning the essence — the reality of all things; Master Ōuyi says: \u201cAll Mahāyāna sūtras take the reality of all things as their true substance.\u201d [Pivot] The opening and closing of a door depend on the pivot (the turning axis on the door); the release of a crossbow depends on the trigger (the release mechanism of the bow, also called the trigger). \u2018Pivot\u2019 refers to the key of a matter." }
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        { "s": "Question: There is a saying: " },
+        { "s": "\u201cIf one has true faith and firm vow, even reciting the Buddha's name with a scattered mind will surely lead to rebirth.\u201d" },
+        { "s": " Is this saying correct?" }
+      ]
+    },
+    {
+      "t": "p",
+      "inline": [
+        { "s": "Answer: \u201cIf one has true faith and firm vow, even reciting the Buddha's name with a scattered mind will surely lead to rebirth\u201d — " },
+        { "s": "this is simply an absurdity!" },
+        { "s": " It is a tearing apart of faith and vow from practice." }
+      ]
+    },
+    {
+      "t": "quote",
+      "inline": [
+        { "s": "Faith, vow, and practice are a single whole, linked ring to ring and inseparable; the relationship among them is: " },
+        { "s": "faith stirs the vow, and the vow guides practice; practice fulfills the vow, and practice verifies faith." },
+        { "s": "Faith and vow without effort are hollow practice and shallow vow." },
+        { "s": "Hence Master Ōuyi taught: " },
+        { "s": "\u201cThis scripture " },
+        { "s": "takes faith, vow, and the holding of the Name as the essential method of practice. Without faith, the vow cannot be stirred; without the vow, practice cannot be guided; " },
+        { "s": "without the wonderful practice of holding the Name, the vow cannot be fulfilled and the faith cannot be realized" },
+        { "s": ".\u201d" },
+        { "s": "Many of the makers of absurdities about how one can be reborn, " },
+        { "s": "the feature common to them all" },
+        { "s": ", is precisely the tearing apart of faith and vow from practice. Some even proclaim: as long as one has faith and vow, one is reborn! Faith itself is rebirth!" }
+      ]
+    },
+    {
+      "t": "quote",
+      "inline": [
+        { "s": "The Buddha and the patriarchs have again and again taught us to " },
+        { "s": "recite the Buddha's name single-mindedly" },
+        { "s": ", and again and again charged us to " },
+        { "s": "cultivate as the Buddha has spoken" },
+        { "s": " (see " },
+        { "s": "The Sūtra on the Praise of the Pure Land Buddha's Reception, Annotated", "href": "/articles/056chengzanjingtujingzhu" },
+        { "s": " ). Therefore, one of true faith and firm vow must certainly cultivate as the Buddha has spoken and recite the Buddha's name single-mindedly (see " },
+        { "s": "Single-Minded Buddha-Recitation, Not Scattered-Mind Buddha-Recitation", "href": "/articles/144yixinnianfo" },
+        { "s": " ). The one who recites with a scattered mind is precisely the one who, dreading difficulty and suffering, acts contrary to the teaching of the Buddha and the patriarchs, " },
+        { "s": "and this is the very concrete expression of faith untrue and vow unreal" },
+        { "s": " (see further the teaching of the great master Yongming, a manifestation of Amitābha Buddha, below). Therefore, " },
+        { "s": "the one who recites with a scattered mind, " },
+        { "s": "is as the great master Yongming says: " },
+        { "s": "\u201cThe power of faith is slight.\u201d" },
+        { "s": "Therefore, in one who recites with a scattered mind, the faith and vow are certainly not true and firm. " },
+        { "s": "The situation of \u2018reciting with a scattered mind and yet having true faith and firm vow\u2019 simply does not exist; " },
+        { "s": "it is a false proposition" },
+        { "s": ", just as a brave warrior who shrinks back before battle does not exist." }
+      ]
+    },
+    {
+      "t": "quote",
+      "inline": [
+        { "s": "\u201c" },
+        { "s": "\u2018If one has true faith and firm vow, even reciting the Buddha's name with a scattered mind can lead to rebirth\u2019 means: reciting with a scattered mind and yet having true faith and firm vow can also lead to rebirth. But since the situation of \u2018reciting with a scattered mind and yet having true faith and firm vow\u2019 does not exist at all, how can the matter of rebirth or non-rebirth even be addressed?" },
+        { "s": "Therefore, " },
+        { "s": "\u201c" },
+        { "s": "\u2018If one has true faith and firm vow, even reciting with a scattered mind will surely lead to rebirth\u2019 is simply an absurdity." }
+      ]
+    },
+    {
+      "t": "quote",
+      "inline": [
+        { "s": "The great master Yongming " },
+        { "s": "in " },
+        { "s": "the Collected Works Returning All Goodness to One" },
+        { "s": " taught: " },
+        { "s": "\u201cIf in words and deeds one does not correspond, " },
+        { "s": "the power of faith being slight" },
+        { "s": ", without a mind of thought after thought continuing, but with an intention of frequent interruption " },
+        { "s": "(that is, scattered-mind Buddha-recitation)" },
+        { "s": ". " },
+        { "s": "Relying on his idleness" },
+        { "s": ", hoping for rebirth at the end of life, but shielded by the obstacles of karma, he fears he will scarcely meet a good friend; urged on by wind and fire, " },
+        { "s": "right mindfulness is not established" },
+        { "s": ". " },
+        { "s": "\u201d" }
+      ]
+    }
+  ]
+}

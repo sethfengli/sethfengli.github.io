@@ -1,0 +1,9 @@
+﻿{
+ "slug": "012liuzutanjing_kp",
+ "title": "六祖坛经（科判本）",
+ "author": "门人法海 录",
+ "school": "xiuxue",
+ "illustration": "sutra",
+ "excerpt": "湛然注：各品之下的小标题是科判，不属于经文。",
+ "chars": 24651,
+ "blocks": [
