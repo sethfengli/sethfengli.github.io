@@ -81,14 +81,19 @@
     0 14px 32px -8px var(--site-shadow-soft, rgb(20 44 37 / 0.18));
   --radius-card: 1rem;
 
-  /* 字体：霞鹜文楷（古意正文）＋ 马善政/龙藏（书法标题） */
+  /* 字体：霞鹜文楷（古意正文）＋ 马善政/龙藏（书法标题）
+     西文字体优先使用 Noto Sans/Noto Serif，保证英文清晰可读；
+     汉字字符不会被这些拉丁字体命中，自动回退到后面的汉字字体。 */
   --font-serif:
-    'LXGW WenKai', 'Kaiti SC', 'STKaiti', 'KaiTi', 'Noto Serif SC', 'Songti SC',
-    SimSun, serif;
+    'Noto Serif', Georgia, 'Times New Roman', 'LXGW WenKai', 'Kaiti SC',
+    'STKaiti', 'KaiTi', 'Noto Serif SC', 'Songti SC', SimSun, serif;
   --font-sans:
-    'LXGW WenKai', 'Noto Sans SC', 'PingFang SC', 'Hiragino Sans GB',
-    'Microsoft YaHei', system-ui, sans-serif;
-  --font-brush: 'Ma Shan Zheng', 'Long Cang', 'LXGW WenKai', 'KaiTi', cursive;
+    'Noto Sans', 'Helvetica Neue', Arial, system-ui, 'LXGW WenKai',
+    'Noto Sans SC', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei',
+    sans-serif;
+  --font-brush:
+    'Noto Serif', Georgia, 'LXGW WenKai', 'Ma Shan Zheng', 'Long Cang', 'KaiTi',
+    cursive;
 
   /* 动画 */
   --animate-smoke-rise: smoke-rise 7s ease-in-out infinite;

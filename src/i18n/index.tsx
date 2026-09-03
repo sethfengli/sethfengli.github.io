@@ -45,14 +45,31 @@ function interpolate(raw: string, vars?: Record<string, string | number>): strin
   )
 }
 
+/** 依据浏览器语言偏好猜测初始语言（无/无效的本地偏好时生效） */
+function detectBrowserLang(): Lang {
+  try {
+    const list = navigator.languages && navigator.languages.length > 0
+      ? navigator.languages
+      : [navigator.language]
+    const primary = (list[0] || navigator.language || '').toLowerCase()
+    // 中文浏览器用中文，其余浏览器默认英文（不再一律回退到中文）
+    return primary.startsWith('zh') ? 'zh' : 'en'
+  } catch {
+    return 'zh'
+  }
+}
+
 export function I18nProvider({ children }: { children: ReactNode }) {
   const [lang, setLangState] = useState<Lang>(() => {
+    // 1. 用户已显式选择过 → 尊重保存值
     try {
       const saved = localStorage.getItem(LANG_KEY)
-      return saved === 'en' ? 'en' : 'zh'
+      if (saved === 'zh' || saved === 'en') return saved
     } catch {
-      return 'zh'
+      /* 隐私模式下忽略 */
     }
+    // 2. 首次访问 → 跟随浏览器语言偏好
+    return detectBrowserLang()
   })
 
   useEffect(() => {
