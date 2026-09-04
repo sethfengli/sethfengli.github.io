@@ -51,13 +51,12 @@ function estSize(file, slice) {
 
 const tasks = []
 for (const f of readdirSync(zhDir).filter((x) => x.endsWith('.json'))) {
-  // 跳过乱码文件名（GBK 残留），另行单独处理
+  // 跳过乱码文件名（GBK 残留）——已重命名，现无对象，保留以防万一
   if (/[\u2500-\u257f]/.test(f)) continue
-  // 111mituoyuanzhongchao 源文已损坏（Big5 乱码，无法恢复正文），不参与英译
-  if (f.startsWith('111mituoyuanzhongchao')) continue
+  // 111mituoyuanzhongchao 已于本周从 CBETA 重建并经 C 项翻译完成；无需再排除
   // 跳过已有（无中文残留）英文覆盖的文章，避免重复翻译
   if (alreadyDone(f)) continue
-  // 本轮优先：只翻译 ≤300KB 的文章；超大经典（>300KB）延后到下周再续
+  // A 阶段：只翻译 ≤300KB 的文章；超大经典（>300KB）留给 B 阶段
   const fileSize = statSync(join(zhDir, f)).size
   if (fileSize > DEFER_BYTES) continue
   const plan = planByFile.get(f)
