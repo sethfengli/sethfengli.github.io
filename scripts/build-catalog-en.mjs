@@ -17,7 +17,8 @@ const map = existsSync(outFile) ? JSON.parse(readFileSync(outFile, 'utf8')) : {}
 
 let updated = 0
 for (const f of readdirSync(enDir).sort()) {
-  if (!f.endsWith('.json') || f.includes('.part')) continue
+  // 只认整篇 en/<slug>.json，跳过分片（.pN.json / .partN.json）与目录预留
+  if (!f.endsWith('.json') || f.includes('.part') || /\.p\d+\.json$/.test(f)) continue
   const slug = f.replace(/\.json$/, '')
   let data
   try {
