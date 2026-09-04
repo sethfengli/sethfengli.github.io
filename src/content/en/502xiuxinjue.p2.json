@@ -185,7 +185,7 @@
                        "t":  "quote",
                        "inline":  [
                                       {
-                                          "s":  "“Moreover, spiritual powers in phenomenal matters, in the eyes of one who has penetrated, are still a matter of wizardry, and are also the marginal concern at the end of sagehood; even if they appear, one should not make use of them. The deluded fools of today falsely suppose that at the instant of a single thought of awakening, innumerable wonderful functions and spiritual powers and transformations at once appear. If one understands it this way, one is said not to know the before and after, and not to distinguish the root from the branches. Not knowing the before and after, and not distinguishing root from branch, yet seeking the Buddha Way — is like trying to fit a square peg into a round hole. Is this not a great error! Not knowing the methods of expedience, one therefore entertains the idea of a precipice, generates shrinking and retreat on one’s own, and cuts off the seeds of Buddhahood — not a few are such people. Since one is oneself unenlightened, and also does not believe in those who have understanding yet show no spiritual powers, one gives rise to contempt, deceiving the worthy and slandering the sages. How pitiable!”"
+                                          "s":  "“Moreover, spiritual powers in phenomenal matters, in the eyes of one who has penetrated, are still a matter of wizardry, and are also the marginal concern at the end of sagehood; even if they appear, one should not make use of them. The deluded fools of today falsely suppose that at the instant of a single thought of awakening, innumerable wonderful functions, spiritual powers and transformations at once appear. If one understands it this way, one is said not to know the before and after, and not to distinguish the root from the branches. Not knowing the before and after, and not distinguishing root from branch, yet seeking the Buddha Way — is like trying to fit a square peg into a round hole. Is this not a great error! Not knowing the methods of expedience, one therefore entertains the idea of a precipice, generates shrinking and retreat on one’s own, and cuts off the seeds of Buddhahood — not a few are such people. Since one is oneself unenlightened, and also does not believe in those who have understanding yet show no spiritual powers, one gives rise to contempt, deceiving the worthy and slandering the sages. How pitiable!”"
                                       }
                                   ]
                    },
@@ -392,13 +392,14 @@
                                           "s":  "’”"
                                       },
                                       {
-                                          "s":  "(The Moon Reflected in a Finger)"
-                                      }
-                                  ]
-                   },
-                   {
-                       "t":  "quote",
-                       "inline":  [
+                                          "s":  "("
+                                      },
+                                      {
+                                          "s":  "The Moon Reflected in a Finger"
+                                      },
+                                      {
+                                          "s":  ")"
+                                      },
                                       {
                                           "s":  "Master Yongjia said:"
                                       },
