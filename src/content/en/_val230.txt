@@ -1,5 +1,0 @@
-firstBlock=87 out_blocks=81 expected=81
-cjk/fullwidth=0
-bom=False
-bytes=45558
-total mismatches=0
