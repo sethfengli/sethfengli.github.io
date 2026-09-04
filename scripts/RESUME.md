@@ -48,6 +48,29 @@ fou 项目（huideng-chanlin）英文模式下的中→英翻译复刻。目标�
 3. `node scripts/merge-parts.mjs` 合并整篇；`node scripts/repair-json.mjs` 清 BOM/控制字符；`node scripts/validate-en.mjs` 校验。
 4. 全部完成后：`node scripts/build-catalog-en.mjs` 刷新目录英文 → `tsc` + `vite build` → `git push`（触发 GitHub Actions 自动发布到 zen.sethfengli.com）。
 
+## A/B 启动明细（下周照做）
+
+**前置修改（本周就改好）**
+- 在 `scripts/make-agent-tasks.mjs` 中**删除** `if (f.startsWith('111mituoyuanzhongchao')) continue`（111 已重建、本应纳入翻译）。乱码文件名过滤 `if (/[\u2500-\u257f]/.test(f)) continue` 已无对象，可保留或删除。
+
+**A（≤300KB 的 90 篇，约 4–5 小时）**
+1. `node scripts/slice-plan.mjs`（确保所有 ≤300KB 文章的切片计划最新）。
+2. `node scripts/make-agent-tasks.mjs`（默认 `DEFER_BYTES=300KB`，自动跳过已完成与已产出分片）→ 生成 `agent-tasks.json`（只含 A 的剩余批次）。
+3. 查看批次：`node -e "const t=require('./scripts/agent-tasks.json'); console.log(t.length, t.reduce((a,b)=>a+b.tasks.length,0))"`。
+4. 每轮派 **5 并行子代理**（每批 = 一个 batch id），按上面的通用流程处理；收工即 `merge-parts` → `repair-json` → `validate-en`。
+5. A 全部完成后 `node scripts/build-catalog-en.mjs` 刷新目录。
+
+**B（>300KB 超大型经典，约 6 小时+）**
+1. 编辑 `scripts/make-agent-tasks.mjs`：把 `DEFER_BYTES` 调大（如 `30*1024*1024`）或去掉阈值，让 >300KB 文件纳入。
+2. `node scripts/slice-plan.mjs` + `node scripts/make-agent-tasks.mjs` → 生成 B 的批次（大经典按 28KB 切片）。
+3. 派发批次翻译；**注意**：大经典分片分散在多个批次，某文件须**所有分片齐了才合并**；`merge-parts.mjs` 会打印 `[gap]`（缺某分片），对缺失切片**单独补派**即可。
+4. 合并 → 校验循环；最后 `build-catalog-en` → `tsc`/`vite build` → `git push`。
+
+**注意点**
+- 大经典或未完成项英文正文先走「中文+右侧机翻」兜底，不影响其余内容。
+- 每个新英文整篇写入后，`build-catalog-en` 会自动汇总其英文标题/摘要到 `catalog-en.json`。
+- 中文源里 `chars` 仅用于阅读时长估算，不必回写。
+
 **质量与兜底**
 - 未完成英文的文章在英文模式下显示「中文原文 + 右侧机翻」（已验证，无空页）。
 - 全部完成后对新增翻译做一轮雅信达 review；选项：跨文件术语微调（如《地藏经》canonical「Original Vows」是否保留）。
