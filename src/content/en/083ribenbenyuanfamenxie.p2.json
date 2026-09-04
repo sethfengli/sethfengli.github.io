@@ -1,1029 +1,422 @@
 {
-    "firstBlock": 42,
-    "blocks": [
-        {
-            "t": "quote",
-            "inline": [
-                {
-                    "s": "Master Ouyi also said:"
-                },
-                {
-                    "s": "\"As for the ten thoughts at the moment of death,"
-                },
-                {
-                    "s": "one must have deeply planted the roots of goodness."
-                },
-                {
-                    "s": "Now, when favorable and adverse circumstances arise, one no longer has right mindfulness, so how much less could one have it at the moment of death? Moreover, when the suffering of death appears, one can only rely upon the admonition of good friends; yet here in the broad daylight one still cannot faithfully accept and practice the true words of a wise teacher and good friend!\""
-                },
-                {
-                    "s": "(From the Lingfeng Collected Treatises,"
-                },
-                {
-                    "s": " the section titled"
-                },
-                {
-                    "s": "'Preface on the Pure Land Repentance and the Society for Releasing Life'.)"
-                }
-            ]
-        },
-        {
-            "t": "p",
-            "inline": [
-                {
-                    "s": "(Translation:"
-                },
-                {
-                    "s": "To accomplish the ten thoughts at the moment of death, one must have deeply planted the roots of goodness. If, when favorable and adverse circumstances come, one no longer has right mindfulness, then how much less could one maintain right mindfulness at the moment of death? Moreover, here in the broad daylight, clearly and plainly, one still cannot faithfully accept and practice the true admonitions of a wise teacher and good friend; how could one expect that, when the suffering of death appears, one could faithfully accept and practice them merely by relying on the reminder of a good friend?)"
-                }
-            ]
-        },
-        {
-            "t": "p",
-            "inline": [
-                {
-                    "s": "\""
-                },
-                {
-                    "s": "The teaching that 'the evil person is the true capacity' is utterly wrong. The basis for studying the Pure Land school rests on the three Pure Land sutras. Let us look at what these three sutras say:"
-                }
-            ]
-        },
-        {
-            "t": "p",
-            "inline": [
-                {
-                    "s": "In the Amitabha Sutra spoken by the Buddha, the Buddha says:"
-                },
-                {
-                    "s": "\""
-                },
-                {
-                    "s": "It is not through a small amount of wholesome roots and merit"
-                },
-                {
-                    "s": "through causes and conditions that one is born in that land"
-                },
-                {
-                    "s": "(the Western Land of Ultimate Bliss)"
-                },
-                {
-                    "s": "."
-                },
-                {
-                    "s": "\""
-                }
-            ]
-        },
-        {
-            "t": "quote",
-            "inline": [
-                {
-                    "s": "In the Contemplation Sutra of the Buddha of Measureless Life, the Buddha says:"
-                },
-                {
-                    "s": "\""
-                },
-                {
-                    "s": "Those who wish to be born in that land"
-                },
-                {
-                    "s": "(the Western Land of Ultimate Bliss)"
-                },
-                {
-                    "s": "should cultivate the three kinds of merit."
-                },
-                {
-                    "s": "First, be filial to parents, serve teachers and elders, be compassionate and refrain from killing,"
-                },
-                {
-                    "s": "and cultivate the ten wholesome deeds."
-                },
-                {
-                    "s": "Second, take refuge in the Three Jewels,"
-                },
-                {
-                    "s": "be fully endowed with all precepts"
-                },
-                {
-                    "s": ", and not violate the rules of dignity. Third, rouse the bodhi mind,"
-                },
-                {
-                    "s": "deeply believe in cause and effect,"
-                },
-                {
-                    "s": "recite the Mahayana scriptures, and encourage fellow practitioners. These three things are called the pure karma.\""
-                }
-            ]
-        },
-        {
-            "t": "quote",
-            "inline": [
-                {
-                    "s": "In the Sutra of the Buddha of Measureless Life spoken by the Buddha, the Buddha used much space to teach about upholding precepts and refraining from evil and doing good. For example:"
-                },
-                {
-                    "s": "\"You should make the resolution yourself,"
-                },
-                {
-                    "s": "uphold right conduct in body and action, and earnestly do good."
-                },
-                {
-                    "s": "."
-                },
-                {
-                    "s": "Cultivate yourself and purify your body, wash away the defilement of the mind."
-                },
-                {
-                    "s": "."
-                },
-                {
-                    "s": "Be loyal and trustworthy in word and deed,"
-                },
-                {
-                    "s": "and let outward and inward accord. One can save oneself, and in turn rescue others; with clear resolve and earnest seeking,"
-                },
-                {
-                    "s": "accumulate the root of goodness."
-                },
-                {
-                    "s": "Though one toils hard for one lifetime, in but an instant"
-                },
-                {
-                    "s": "one will be born in the land of Measureless Life and enjoy boundless happiness."
-                },
-                {
-                    "s": "\""
-                },
-                {
-                    "s": "\"Think it over carefully,"
-                },
-                {
-                    "s": "stay far from all evil, choose what is good and diligently practice it."
-                },
-                {
-                    "s": "\""
-                },
-                {
-                    "s": "\""
-                },
-                {
-                    "s": "You devas and people of the present, and those of later ages, who receive the Buddha's scriptural words, should ponder them well and be able, within them,"
-                },
-                {
-                    "s": "to bring the mind to what is right and practice right conduct."
-                },
-                {
-                    "s": "\""
-                },
-                {
-                    "s": "\""
-                },
-                {
-                    "s": "Each of you should think them over well and exhort one another,"
-                },
-                {
-                    "s": "following the Buddha's scriptures and Dharma, and commit no offense."
-                },
-                {
-                    "s": "\""
-                },
-                {
-                    "s": "\"Such is the world, and the Buddha is compassionate toward it all. With the power of his awesome might he destroys all evil,"
-                },
-                {
-                    "s": "and causes all to turn to good."
-                },
-                {
-                    "s": "Renounce your attachments,"
-                },
-                {
-                    "s": "uphold and observe the scriptures and precepts,"
-                },
-                {
-                    "s": "accept and practice the Way and the Dharma, err in nothing, and in the end attain the way of crossing beyond the world to nirvana.\" \"You devas and people of the present, and those of later ages, who receive the Buddha's scriptural words, should ponder them well and be able, within them,"
-                },
-                {
-                    "s": "to bring the mind to what is right and practice right conduct."
-                },
-                {
-                    "s": "."
-                },
-                {
-                    "s": "The sovereign does good,"
-                },
-                {
-                    "s": "and leads his subjects to follow, passing down command after command,"
-                },
-                {
-                    "s": "each guarding what is right."
-                },
-                {
-                    "s": "."
-                },
-                {
-                    "s": "Honor the sages, respect the good, be kind and loving."
-                },
-                {
-                    "s": "."
-                },
-                {
-                    "s": "Let none dare to betray the Buddha's words and teachings."
-                },
-                {
-                    "s": "Seek to cross beyond the world, cut off the root of all evil in birth and death, and escape the three evil paths of measureless sorrow, fear, and pain. All of you, then,"
-                },
-                {
-                    "s": "broadly plant the root of virtue,"
-                },
-                {
-                    "s": "bestow kindness and give alms,"
-                },
-                {
-                    "s": "do not violate the prohibitions of the Way."
-                },
-                {
-                    "s": "."
-                },
-                {
-                    "s": "Be patient and diligent, single-minded and wise; teach and transform one another, establish virtue and do good; keep the mind right and the intention right; observe the fast and be pure."
-                },
-                {
-                    "s": "\" \""
-                },
-                {
-                    "s": "Do not follow your own desires, betraying the scriptures and precepts, and lag behind others."
-                },
-                {
-                    "s": "\""
-                }
-            ]
-        },
-        {
-            "t": "quote",
-            "inline": [
-                {
-                    "s": "Yet the Original Vow Dharma-gate turns its back on the three Pure Land sutras and, with the teaching that 'the evil person is the true capacity,' instigates the breaking of precepts and the doing of evil, corrupting the four assemblies of monastic and lay disciples, and in particular seeking to destroy the true Sangha, the teacher of humans and devas. This is the annihilation of the Buddha's right Dharma!"
-                },
-                {
-                    "s": "The Buddha said:"
-                },
-                {
-                    "s": "\"The destruction of the right Dharma in the future will come not from the ruin wrought by demons of the outside paths, but precisely from the corruption and collapse of the Sangha.\""
-                },
-                {
-                    "s": "(From the Treatise on the Sangha Jewel)"
-                }
-            ]
-        },
-        {
-            "t": "quote",
-            "inline": [
-                {
-                    "s": "The topsy-turvy teachings of the Original Vow Dharma-gate are everywhere. For example, in the long lecture series by Master Jingzong, 'Master Shandao's Pure Land Thought,' the whole discussion keeps returning to the claim that 'the Gate of the Broad Vow' and 'recitation of the Name surely brings rebirth' are the most core of Master Shandao's Pure Land thought. What are the facts? The facts are:"
-                },
-                {
-                    "s": "Master Shandao never spoke of a 'Gate of the Broad Vow'; this is entirely a fabrication of Master Honen."
-                },
-                {
-                    "s": "(For details, see"
-                },
-                {
-                    "s": "the article 'Master Honen Fabricates the Gate of the Broad Vow'",
-                    "href": "/articles/070hongyuanmen"
-                },
-                {
-                    "s": ")"
-                },
-                {
-                    "s": "."
-                },
-                {
-                    "s": "Master Shandao also never said that 'recitation of the Name surely brings rebirth.' On the contrary, what Master Shandao said is: continuous recitation brings rebirth."
-                },
-                {
-                    "s": "(For details, see"
-                },
-                {
-                    "s": "the article 'Master Shandao's Pure Land Teaching'",
-                    "href": "/articles/072shandaokaishi"
-                },
-                {
-                    "s": "and"
-                },
-                {
-                    "s": "the article 'The Eighteenth Vow'",
-                    "href": "/articles/081di18yuan"
-                },
-                {
-                    "s": ".)"
-                },
-                {
-                    "s": "The 'Gate of the Broad Vow' and 'recitation of the Name surely brings rebirth' that they themselves fabricated are foisted upon Master Shandao, falsely claiming these are Master Shandao's Pure Land thought and calling themselves the 'Shandao lineage.' In fact, they distort and slander Master Shandao."
-                },
-                {
-                    "s": "(For details, see"
-                },
-                {
-                    "s": "the article 'Honen and Others Distort and Slander Master Shandao'",
-                    "href": "/articles/080waiqushandaodashi"
-                },
-                {
-                    "s": ".)"
-                },
-                {
-                    "s": "."
-                }
-            ]
-        },
-        {
-            "t": "quote",
-            "inline": [
-                {
-                    "s": "Moreover, their patriarch Master Honen not only fabricated the Gate of the Broad Vow, but also distorted the Sutra Praised by All Buddhas and Received by the Buddha, which is praised and received by all Buddhas of the ten directions (and of course by Amitabha Buddha of the Western Land of Ultimate Bliss)."
-                },
-                {
-                    "s": "(For details, see"
-                },
-                {
-                    "s": "the article 'Master Honen Distorts the Sutra Praised by All Buddhas and Received by the Buddha'",
-                    "href": "/articles/077faranqujie"
-                },
-                {
-                    "s": ".)"
-                },
-                {
-                    "s": "Not only that, they also slander the patriarchs of the Pure Land school"
-                },
-                {
-                    "s": "(including Master Yongming, the incarnation of Amitabha Buddha)"
-                },
-                {
-                    "s": "as impure and without transmission, seeking to overturn the transmission of the thirteen patriarchs of our Pure Land school and replace them with Honen and Shinran. All such things are wild fabrications that reverse black and white."
-                },
-                {
-                    "s": "]"
-                }
-            ]
-        },
-        {
-            "t": "quote",
-            "inline": [
-                {
-                    "s": "Master Xinyuan, a disciple who took refuge under Master Huijing, says: \""
-                },
-                {
-                    "s": "Amitabha's salvation has the evil person as its true capacity."
-                },
-                {
-                    "s": ". Let us understand the meaning of the evil person."
-                },
-                {
-                    "s": "Let us now see what kind of being Amitabha Buddha's salvation takes as its true capacity: the evil person, the true capacity."
-                },
-                {
-                    "s": "The Tannisho says: 'We who are fully endowed with affliction cannot escape birth and death through any practice. Out of compassion, Amitabha's"
-                },
-                {
-                    "s": "original vow is aimed precisely at making evil people become Buddhas; hence the evil person who entrusts himself to the Other Power is the true cause of rebirth."
-                },
-                {
-                    "s": "' The Tannisho was spoken by Master Shinran."
-                },
-                {
-                    "s": "(Note: One can see that the Original Vow Dharma-gate of China carries on the mantle of Shinran!)"
-                },
-                {
-                    "s": "After Master Shinran passed away, his Dharma-disciple Yuien recorded it. After Master Shinran's passing, there were practitioners of the Original Vow recitation in the religious world who misconstrued the principle he had taught; therefore his Dharma-disciple Yuien recorded what Shinran had taught, and this became the Tannisho, a work that has spread very widely throughout the world. The Tannisho says: We who are fully endowed with affliction cannot escape birth and death through any practice. Amitabha Buddha, in his compassion, made his original vow precisely to save evil people and bring them to rebirth in the West to become Buddhas. Is Amitabha Buddha compassionate? He is most compassionate indeed, and we truly must praise Amitabha Buddha (applause). The evil person who entrusts himself to the Other Power is most truly the cause of rebirth. As long as we single-mindedly entrust ourselves to the salvation of the Name of Amitabha Buddha, even if our minds hold greed, hatred, and delusion"
-                },
-                {
-                    "s": "and we are evil persons,"
-                },
-                {
-                    "s": "we"
-                },
-                {
-                    "s": "can absolutely be reborn."
-                },
-                {
-                    "s": "\""
-                },
-                {
-                    "s": "(Note:"
-                },
-                {
-                    "s": "Our original teacher Shakyamuni Buddha, with his golden mouth, proclaimed that the Sutra Praised by All Buddhas and Received by the Buddha, which is praised and received by Amitabha Buddha of the Western Land of Ultimate Bliss, says:"
-                },
-                {
-                    "s": "\"It is not beings with few wholesome roots who should be reborn in the pure Buddha-land of Amitayus, the Land of Ultimate Bliss.\""
-                },
-                {
-                    "s": "Yet the Original Vow Dharma-gate loudly promotes 'the evil person is the true capacity,' taking evil as right and evil as glory. This is an evil dharma, not the Buddha Dharma!)"
-                }
-            ]
-        },
-        {
-            "t": "h4",
-            "text": "2. Huijing and Master Jingzong Proclaim that 'Master Shandao's Pure Land Thought Is the Most Orthodox': The Real Purpose Is to Promote the Original Vow Dharma-gate"
-        },
-        {
-            "t": "p",
-            "inline": [
-                {
-                    "s": "The logic is:"
-                },
-                {
-                    "s": "Master Shandao's Pure Land thought is the most orthodox; Master Honen's transmission of Shandao's thought is the most orthodox; Shinran's doctrine (the Original Vow Dharma-gate) is the summit"
-                },
-                {
-                    "s": "."
-                }
-            ]
-        },
-        {
-            "t": "quote",
-            "inline": [
-                {
-                    "s": "[Note: Was Master Honen's transmission of Shandao's thought really the most orthodox?"
-                },
-                {
-                    "s": "Master Honen said that 'the Gate of the Broad Vow' and 'recitation of the Name surely brings rebirth' are the core of Shandao's thought. Yet what are the facts? The facts are: Master Shandao never spoke of a 'Gate of the Broad Vow'; this is entirely a fabrication of Master Honen."
-                },
-                {
-                    "s": "(For details, see"
-                },
-                {
-                    "s": "the article 'Master Honen Fabricates the Gate of the Broad Vow'",
-                    "href": "/articles/070hongyuanmen"
-                },
-                {
-                    "s": ".)"
-                },
-                {
-                    "s": "Master Shandao also never said that 'recitation of the Name surely brings rebirth.' On the contrary, what Master Shandao said is: continuous recitation brings rebirth."
-                },
-                {
-                    "s": "(For details, see"
-                },
-                {
-                    "s": "the article 'Master Shandao's Pure Land Teaching'",
-                    "href": "/articles/072shandaokaishi"
-                },
-                {
-                    "s": "and"
-                },
-                {
-                    "s": "the article 'The Eighteenth Vow'",
-                    "href": "/articles/081di18yuan"
-                },
-                {
-                    "s": ".)"
-                },
-                {
-                    "s": "The 'Gate of the Broad Vow' and 'recitation of the Name surely brings rebirth' that they themselves fabricated are foisted upon Master Shandao, falsely claiming these are Master Shandao's Pure Land thought. Is it 'most orthodox' to 'transmit' Shandao's thought in this way?"
-                },
-                {
-                    "s": "Is it the summit? For details, see"
-                },
-                {
-                    "s": "the article 'Honen and Others Distort and Slander Master Shandao'",
-                    "href": "/articles/080waiqushandaodashi"
-                },
-                {
-                    "s": "."
-                },
-                {
-                    "s": "]"
-                }
-            ]
-        },
-        {
-            "t": "quote",
-            "inline": [
-                {
-                    "s": "Master Huijing claims to rely solely on the Pure Land school's patriarch Master Shandao, but in fact, under the banner of the 'Shandao lineage,' he chiefly relies on the doctrines of Japan's Master Honen and fully relies on the doctrine of Japan's Jodo Shinshu (that is, the Original Vow Dharma-gate) of Shinran and others, in order to promote the Original Vow Dharma-gate. Master Jingzong, in 1996, took refuge under Master Huijing of Taiwan and followed Master Huijing in exclusively promoting the Original Vow Dharma-gate."
-                }
-            ]
-        },
-        {
-            "t": "quote",
-            "inline": [
-                {
-                    "s": "Master Huijing's Preface to the Complete Works of Master Honen: \"The Pure Land Dharma-gate takes Master Shandao's thought of Amitabha's Original Vow as the most orthodox; and the one who, with loyalty, reverence, single-mindedness, and devotion, transmitted this thought, and who developed it purely, unmingled, concise, essential, and steady, so that people feel as if the sun shines clearly and the mind opens in understanding, joyfully believing and accepting it, that one is Master Honen. Hence this Complete Works of Master Honen is the essence of Pure Land teaching and the mirror of those who practice it; every piece goes straight to Amitabha's heart, and every sentence reveals the true intent of salvation. Master Shandao and Master Honen are both incarnations of Amitabha and Mahasthamaprapta"
-                },
-                {
-                    "s": "(Note: Master Honen is actually vaunted as an incarnation of Bodhisattva Mahasthamaprapta! Honen's heretical claim that 'the rebirth by scattered-mind recitation is the special Original Vow' is diametrically opposed to Mahasthamaprapta's teaching of"
-                },
-                {
-                    "s": "'gathering the six sense organs, and maintaining pure thought without interruption.'"
-                },
-                {
-                    "s": "How could he be the incarnation of Mahasthamaprapta? Master Honen fabricated the Gate of the Broad Vow and distorted the Sutra Praised by All Buddhas and Received by the Buddha, praised and received by all Buddhas of the ten directions (of course including Amitabha Buddha); his crime cannot be pardoned. How could he be the incarnation of Mahasthamaprapta? These people will fabricate anything!"
-                },
-                {
-                    "s": ")"
-                },
-                {
-                    "s": ", and both, in this life, entered samadhi"
-                },
-                {
-                    "s": "(Note: Master Honen himself admitted that he had not even reached single-minded unconfused thought"
-                },
-                {
-                    "s": "(For details, see"
-                },
-                {
-                    "s": "the article 'Master Honen Distorts the Sutra Praised by All Buddhas and Received by the Buddha'",
-                    "href": "/articles/077faranqujie"
-                },
-                {
-                    "s": ".)"
-                },
-                {
-                    "s": ", yet here he is vaunted as 'having entered samadhi in this life'!"
-                },
-                {
-                    "s": "Thus one can say the Original Vow Dharma-gate is a pack of fabrications."
-                },
-                {
-                    "s": "But to come back to the point: their patriarch Master Honen dared even to fabricate the Gate of the Broad Vow"
-                },
-                {
-                    "s": "(For details, see"
-                },
-                {
-                    "s": "the article 'Master Honen Fabricates the Gate of the Broad Vow'",
-                    "href": "/articles/070hongyuanmen"
-                },
-                {
-                    "s": ".)"
-                },
-                {
-                    "s": ", so what would these disciples and grand-disciples not dare to fabricate?)"
-                },
-                {
-                    "s": ", both of lofty learning and wisdom; both took the Pure Land Dharma-gate as their exclusive lineage, both took Amitabha's Original Vow as their root; therefore their Pure Land thought is the true current of the Pure Land school and the standard of the Pure Land school. If later students, good teachers, or anyone else, in their"
-                },
-                {
-                    "s": "writing books"
-                },
-                {
-                    "s": "and setting forth doctrines, should oppose these two patriarchs, they should be discarded and not followed; because such students and good teachers are still ordinary beings, not having verified samadhi, their wisdom and practice not complete; if their words do not rely wholly on the patriarchs (Shandao and Honen), they will inevitably fall into what is called 'wrong understanding and wrong practice' by setting up new interpretations apart from the patriarchs; hence they should not be followed.\""
-                }
-            ]
-        },
-        {
-            "t": "p",
-            "inline": [
-                {
-                    "s": "Moreover,"
-                },
-                {
-                    "s": "in the book 'The Pure Land Three Sutras: The Class of Rebirth' Master Huijing vaunts the doctrine of Shinran's 'great master and sage' Original Vow Dharma-gate (Jodo Shinshu) as the summit of Pure Land thought, and claims that 'if one does not study and is without knowledge, one loses the great benefit of rebirth.'"
-                },
-                {
-                    "s": "."
-                }
-            ]
-        },
-        {
-            "t": "quote",
-            "inline": [
-                {
-                    "s": "The Pure Land Three Sutras: The Class of Rebirth (authored by Master Shinran"
-                },
-                {
-                    "s": ","
-                },
-                {
-                    "s": "translated by Master Huijing): \"The Pure Land school centers on 'the three Pure Land sutras,' and the six-fascicle Kyogyoshinsho, in which Master Shinran received the commentaries of the three countries and seven patriarchs, brings this to fullness. Therefore the transmission of the scriptures, the oral transmission of lineage, is the life of the school. The meaning of the three Pure Land sutras could not be spoken except by a Tathagata of great and perfect enlightenment; it could not be known except by a bodhisattva who has entered the right and settled stage. The three sutras take Bodhisattva Vasubandhu's Discourse on the Pure Land as the guide of explanation, and that discourse is further clarified by Master Tanluan's Commentary on the Discourse on the Pure Land. To know the Contemplation Sutra, take Master Shandao's Four-Commentary Commentary on the Contemplation Sutra as a mirror; to know the whole meaning of the Pure Land gate, there are Master Daochuo's Collection of Peace and Happiness, Master Genshin's Collection of Essentials for Rebirth, and Master Honen's Collection on the Selection. Having mastered these scriptures, treatises, and commentaries,"
-                },
-                {
-                    "s": "one must read the Kyogyoshinsho (authored by"
-                },
-                {
-                    "s": "Shinran"
-                },
-                {
-                    "s": ")"
-                },
-                {
-                    "s": "."
-                },
-                {
-                    "s": "Reflect on the Shoshinge of the morning and evening liturgy (authored by"
-                },
-                {
-                    "s": "Shinran"
-                },
-                {
-                    "s": ")"
-                },
-                {
-                    "s": ", on the sutra praises and the meaning of other texts, and ask a good teacher to explain their meaning. When the principle is clear and faith deep, then if one does not study and is without knowledge, one loses the great benefit of rebirth.\""
-                }
-            ]
-        },
-        {
-            "t": "p",
-            "inline": [
-                {
-                    "s": "Master Jingzong is a disciple who took refuge under Master Huijing, so naturally he is no exception."
-                }
-            ]
-        },
-        {
-            "t": "p",
-            "inline": [
-                {
-                    "s": "Master Jingzong's Brief Explanation of the Amitabha Sutra: \"Master Shandao is the incarnation of Amitabha Buddha, exclusively practicing and exclusively promoting the Pure Land Dharma-gate; he is the one who brought the Pure Land school to complete fruition, the great patriarch revered alike in China and abroad, the great patriarch able to settle the standard for all ages, and the most orthodox lineage of the Pure Land school.\""
-                }
-            ]
-        },
-        {
-            "t": "p",
-            "inline": [
-                {
-                    "s": "Master Jingzong's Brief Explanation of Master Yinguang's Words: \"Our Chinese Pure Land school has thirteen patriarchs. These thirteen patriarchs were recognized by later generations according to the influence of their promotion of the Pure Land at the time; from the standpoint of lineage transmission there are some differences, but it is universally acknowledged that Master Shandao's thought on Buddha-recitation is the true current of the Chinese Pure Land school..."
-                },
-                {
-                    "s": "."
-                },
-                {
-                    "s": "Our Pure Land gate, relying on Master Shandao's right explanation and the teaching that settles the standard for all ages, will surely never go astray. If you depart from Master Shandao, you will surely not be pure, surely there will be admixture, surely the benefit will not be supreme, and surely some will not attain accomplishment..."
-                },
-                {
-                    "s": "."
-                },
-                {
-                    "s": "What the Pure Land school transmits is precisely Amitabha Buddha's Original Vow.\""
-                }
-            ]
-        },
-        {
-            "t": "quote",
-            "inline": [
-                {
-                    "s": "Master Jingzong's Article and Letters: \"Though there are many teachers who promote the Pure Land, one should rely exclusively on Master Shandao; to place Master Shandao on the same footing as other teachers shows one does not understand the Dharma-gate. Leaving the others aside, it is only Master Shandao who"
-                },
-                {
-                    "s": "classified the Essential and the Broad Gates"
-                },
-                {
-                    "s": "(Where did Master Shandao ever classify 'Essential and Broad Gates'? These are all fabrications of Master Honen!"
-                },
-                {
-                    "s": "(For details, see"
-                },
-                {
-                    "s": "the article 'Master Honen Fabricates the Gate of the Broad Vow'",
-                    "href": "/articles/070hongyuanmen"
-                },
-                {
-                    "s": ".)"
-                },
-                {
-                    "s": ")"
-                },
-                {
-                    "s": "and established the right and the miscellaneous practices, thereby gathering within it everything the various masters have said; how could any one person go beyond it, let alone rise above it? However high and profound the words of the other masters, they are always within the expedient Essential Gate of concentration and scattered-mind good, transferring merit and seeking rebirth; only Master Shandao stands in the Original Vow (the Broad Vow), relying wholly on the Buddha's power, being entirely a fruit-ground Dharma-gate. The Buddha-recitation he speaks of is neither concentration nor scattered-mind, but the Original Vow recitation of 'riding on the Buddha's Original Vow and exclusively invoking the Name.' Those who later promote Buddha-recitation, if they dare to deviate in the least from the track established by Master Shandao, are certainly not pure!\""
-                }
-            ]
-        },
-        {
-            "t": "p",
-            "inline": [
-                {
-                    "s": "Master Jingzong not only inherits this teaching, but even vaunts Master Huijing as 'the foremost eye of humans and devas, the foremost teacher of the Pure Land school.'"
-                }
-            ]
-        },
-        {
-            "t": "quote",
-            "inline": [
-                {
-                    "s": "Master Jingzong's Article and Letters: \"Master Shandao's conclusion in the Commentary on the Contemplation Sutra says: 'Although above I have spoken of the benefit of the two gates of concentration and scattered-mind, looking to the Buddha's Original Vow, the intent is that beings should exclusively invoke the name of Amitabha Buddha.' This is the point of culmination of the Original Vow Dharma-gate, the backbone and summit of the Original Vow Dharma-gate... The Pure Land school's Original Vow Dharma-gate, with exclusive invocation of the Name as its aim, takes up nothing else..."
-                },
-                {
-                    "s": "."
-                },
-                {
-                    "s": "The Original Vow Dharma-gate is the gathering of the Amitabha Original Vow teachings promoted by the bodhisattvas, patriarchs, and good teachers of India, China, and Japan, and it takes Master Shandao's 'exclusive invocation of the Name' as its aim."
-                },
-                {
-                    "s": "The modern Taiwan Pure Land school's Master Huijing is the foremost eye of humans and devas, the foremost teacher of the Pure Land school"
-                },
-                {
-                    "s": "(Note: Master Huijing is actually elevated to be 'the foremost eye of humans and devas, the foremost teacher of the Pure Land school'! Where does this place Master Shandao, the incarnation of Amitabha Buddha, and Master Yongming, and the other eleven patriarchs of the Pure Land school? Thus one can say the Original Vow Dharma-gate is a pack of fabrications."
-                },
-                {
-                    "s": "But to come back to the point: their patriarch Master Honen dared even to fabricate the Gate of the Broad Vow"
-                },
-                {
-                    "s": "(For details, see"
-                },
-                {
-                    "s": "the article 'Master Honen Fabricates the Gate of the Broad Vow'",
-                    "href": "/articles/070hongyuanmen"
-                },
-                {
-                    "s": ".)"
-                },
-                {
-                    "s": ", so what would these disciples and grand-disciples not dare to fabricate?"
-                },
-                {
-                    "s": ")"
-                },
-                {
-                    "s": ", alone receiving the thousand-year solitary lineage, widely drawing from the sources of the three countries, compiling many precious works, and thereby expanding the grand foundation of the Dharma-gate, greatly spreading the net of the Original Vow teaching, and universally benefiting all the sprouts of beings. Those of shallow capacity, hearing the sound of the Original Vow, are like a wild jackal hearing a lion's roar; terrified, they cover their heads and flee; this is only natural. But those who recklessly spew evil words bring ruin upon themselves and obstruct the wisdom-life of others, truly pitiable and lamentable.\""
-                }
-            ]
-        },
-        {
-            "t": "p",
-            "inline": [
-                {
-                    "s": "For the relevant content, please refer to 'Master Yinguang: There Is No 'Orthodox and Unorthodox' Distinction in the Doctrine of the Pure Land Patriarchs'"
-                },
-                {
-                    "s": "."
-                }
-            ]
-        },
-        {
-            "t": "h4",
-            "text": "3. The True Face of the Original Vow Dharma-gate: Destroying All Dharmas, Leaving Only the Recitation of the Buddha's Name"
-        },
-        {
-            "t": "p",
-            "inline": [
-                {
-                    "s": "The article in the magazine Dharma Voice mentions that the Original Vow Dharma-gate \"holds that giving, observing precepts, meditation, vigor, and all the various practices are a distrust of Amitabha Buddha, and advocates abandoning the Sage's Way\" and that refers only to the point of 'abandoning the Sage's Way.' In fact, as Honen himself said, 'Abolish all the vows and practices; only the one vow and one practice of the West should be cultivated.' Apart from the Eighteenth Vow and the single practice of exclusively invoking the Name, the other great vows of Amitabha and the other practices in the Pure Land scriptures and treatises (mainly the practices of transferring merit and seeking rebirth, that is, the nine levels of rebirth in the Contemplation Sutra) should all be abolished and discarded!"
-                }
-            ]
-        },
-        {
-            "t": "p",
-            "inline": [
-                {
-                    "s": "Master Huijing's Compiled and Translated Collected Writings of Master Honen: \"Those who wish to cultivate the karma of the Western Pure Land should be without flaw in the four cultivations and unmixed in the three karmas; abolish all the vows and practices, and only the one vow and one practice of the West should be cultivated.\""
-                }
-            ]
-        },
-        {
-            "t": "p",
-            "inline": [
-                {
-                    "s": "(The one vow and one practice"
-                },
-                {
-                    "s": ":"
-                },
-                {
-                    "s": "the Eighteenth Vow and the single practice of exclusively invoking the Name"
-                },
-                {
-                    "s": "."
-                },
-                {
-                    "s": ")"
-                }
-            ]
-        },
-        {
-            "t": "p",
-            "inline": [
-                {
-                    "s": "Shi Huijing's brief explanation in the Editor's Preface to the Records of Buddha-Recitation Responses: \"Among the eighty-four thousand Dharma-gates, the wondrous Dharma suited to this place, this time, and this capacity is only 'Amitabha's Original Vow, the invocation of the Name.' Although the Buddha Dharma has eighty-four thousand Dharma-gates, the one gate that can suit our Saha world, the Dharma-ending age, and beings who have created offenses is only this one: Amitabha's Original Vow, invocation of the Name. Think for ourselves: apart from this Dharma-gate, what Dharma-gate is there by which one can be saved? Let us suppose that the six-character name were taken away; however you cultivated, could you be liberated? It would be impossible to be liberated.\""
-                }
-            ]
-        },
-        {
-            "t": "p",
-            "inline": [
-                {
-                    "s": "Therefore, for Master Honen and the Original Vow Dharma-gate, as that article in Dharma Voice says, the Original Vow Dharma-gate holds that 'the only hope is to rely on the Eighteenth Vow.' For the relevant content, please refer to the article 'The Chinese Buddhist Association Refutes the Original Vow Dharma-gate: The Only Hope Is to Rely on the Eighteenth Vow.'"
-                }
-            ]
-        },
-        {
-            "t": "quote",
-            "inline": [
-                {
-                    "s": "Master Jingzong's 'Master Shandao's Pure Land Thought': \"Abandon the Sage's Way and return to the Pure Land, lead the Essential Gate into the Broad Vow, abandon the miscellaneous practices and return to the right practice, assist the ancillary karma and concentrate on the right and settled practice.\" According to the account in this book of Master Jingzong, he is no different from Honen and Huijing; abolishing and discarding, until only the one practice of Buddha-recitation and the one vow of the Eighteenth Vow remain."
-                }
-            ]
-        },
-        {
-            "t": "quote",
-            "inline": [
-                {
-                    "s": "Yang Renshan, in his 'Chan-jiao Bian,' criticizes Master Honen's absurd classification of teachings: \"Kurodani (that is, Honen) classifies the bodhi mind and the six perfections and so forth as miscellaneous practices, all of which should be abolished and discarded. If his words were true, then one who does not rouse the bodhi mind would be practicing the right practice; abolishing giving, the miserly would be practicing the right practice; abolishing observing precepts, the indulgent would be practicing the right practice. Pushing this further, the hateful, the lazy, the distracted, and the foolish would all be practicing the right practice:"
-                },
-                {
-                    "s": "the topsy-turvy teaching reaches this extreme! Like a worm in a lion's body eating the lion's flesh. Hence we know the Buddha Dharma cannot be destroyed by outsiders!\""
-                },
-                {
-                    "s": "\""
-                }
-            ]
-        },
-        {
-            "t": "p",
-            "inline": [
-                {
-                    "s": "\"Rousing the bodhi mind and cultivating all merit\" is 'doubting the Buddha's wisdom'; conversely, to abolish and discard rousing the bodhi mind and the six perfections and ten thousand practices and to enter into exclusive invocation of the Name is to be 'deeply believing in the Original Vow.' No wonder Yang Renshan criticized its doctrine as 'secretly hiding the mechanism of the Dharma's destruction'!"
-                }
-            ]
-        },
-        {
-            "t": "p",
-            "inline": [
-                {
-                    "s": "Yang Renshan, in his evaluation of 'The Aims of the True Sect,' also criticized the absurd claims of Jodo Shinshu (the Original Vow Dharma-gate)."
-                }
-            ]
-        },
-        {
-            "t": "quote",
-            "inline": [
-                {
-                    "s": "'The Aims of the True Sect,' Issue 10, says: \"The names of true and conventional have many layers of meaning. This school provisionally takes the gate of the mind of faith as the true truth and the gate of human relations as the conventional truth."
-                },
-                {
-                    "s": "Since this school"
-                },
-                {
-                    "s": "(our Jodo Shinshu)"
-                },
-                {
-                    "s": "already permits"
-                },
-                {
-                    "s": "(monks)"
-                },
-                {
-                    "s": "to keep wives,"
-                },
-                {
-                    "s": "it cannot be without the five human relations. Since there are the five human relations, one cannot but walk in that path; this is the conventional truth. Although the offenses of ordinary beings are great, compared with the power of the vow they are no more than one drop in the boundless sea"
-                },
-                {
-                    "s": "(Although the offenses of ordinary beings are great, compared with the power of Amitabha Buddha's vow, they are like a single grain compared to the great sea, utterly insignificant. The refutation of this fallacy is detailed in"
-                },
-                {
-                    "s": "Appendix Nine:"
-                },
-                {
-                    "s": "Refuting 'Recitation of the Name Surely Brings Rebirth' and the 'Teaching of the Evil Person as the True Capacity'"
-                },
-                {
-                    "s": ")"
-                },
-                {
-                    "s": ","
-                },
-                {
-                    "s": "therefore one does not ask"
-                },
-                {
-                    "s": "(monks)"
-                },
-                {
-                    "s": "whether they eat meat and keep wives."
-                },
-                {
-                    "s": "The good of sentient beings is with outflows; the reward-ground of Amitabha is without outflows."
-                },
-                {
-                    "s": "Good with outflows cannot be born in the land without outflows."
-                },
-                {
-                    "s": "."
-                },
-                {
-                    "s": "("
-                },
-                {
-                    "s": "Note: Then is it only by doing evil that one can be born in the land without outflows?!"
-                },
-                {
-                    "s": ")"
-                },
-                {
-                    "s": "\""
-                },
-                {
-                    "s": "("
-                },
-                {
-                    "s": "Note: This is flagrantly instigating the breaking of precepts and the doing of evil. How could this be the Buddha Dharma?!"
-                },
-                {
-                    "s": ")"
-                }
-            ]
-        },
-        {
-            "t": "quote",
-            "inline": [
-                {
-                    "s": "Yang Renshan's comment: \"What 'Issue 10' says is entirely miscellaneous practice and miscellaneous cultivation. Why then did the preceding passage forcefully sweep away all practices? Could it be that what it swept away were the practices of the world beyond, while what it did not sweep away are the practices of the world"
-                },
-                {
-                    "s": "?"
-                },
-                {
-                    "s": "The practices of the world grow the karma of birth and death, whereas the practices of the world beyond go against the stream of birth and death. Which is right and which is reversed? There must be someone able to distinguish it. The gate of human relations is worldly good. If worldly good is not abolished, why should the good of the world beyond be abolished?"
-                },
-                {
-                    "s": "?"
-                },
-                {
-                    "s": "All worldly good is gathered within the bodhisattva's ten thousand practices. If only one can transfer the merit toward the Pure Land, it becomes the karma of rebirth; otherwise it is merely the retribution of humans and devas."
-                },
-                {
-                    "s": "One who rouses the bodhi mind turns all worldly good into the without-outflow"
-                },
-                {
-                    "s": "; one who does not rouse the bodhi mind, though cultivating the five perfections, is altogether within the with-outflow.\""
-                }
-            ]
-        },
-        {
-            "t": "quote",
-            "inline": [
-                {
-                    "s": "Master Benhuan, 'The Patriarchs of the Pure Land School Have No Orthodox and Unorthodox Distinction': \"Recently I have seen people studying the Pure Land who say that among the patriarchs of the Pure Land school, Master Shandao is the orthodox one,"
-                },
-                {
-                    "s": "and the other twelve patriarchs are all not orthodox."
-                },
-                {
-                    "s": "."
-                },
-                {
-                    "s": "(Note: In the talks of Master Jingzong and others, even Master Yongming, the incarnation of Amitabha Buddha, is attacked as not orthodox and without transmission. What exactly is the Original Vow Dharma-gate made of; is it not perfectly clear?)"
-                },
-                {
-                    "s": "Because they are either connected with the Chan school or with Tiantai"
-                },
-                {
-                    "s": ","
-                },
-                {
-                    "s": "or with the Avatamsaka (Hua-yan) school. For instance, Master Yongming and Master Mengdong are both Chan patriarchs, so the Pure Land teachings they spoke are not orthodox. Master Lianchi is an Avatamsaka patriarch and also a leading light of Chan, so the teachings he spoke are also not orthodox. Additionally, the three patriarchs Zhixu, Jieliu, and Shengan all have connections with Tiantai"
-                },
-                {
-                    "s": ","
-                },
-                {
-                    "s": "and Chan, so the Pure Land teachings they spoke are all not orthodox. And the modern Master Yinguang was also on very good terms with the Tiantai school, so what he said is also difficult to call orthodox. And this so-called not orthodox means that the teachings spoken by the twelve patriarchs do not accord with Amitabha's Original Vow. Now the birthday of Amitabha Buddha: the Buddhist world takes Master Yongming's birthday as the standard, because he is the incarnation of Amitabha."
-                },
-                {
-                    "s": "How could the words of Master Yongming, the incarnation of Amitabha Buddha, on the contrary not be orthodox?"
-                },
-                {
-                    "s": "If one says Yongming's words are not pure, then one is slandering the teachings of Amitabha Buddha as not orthodox. Moreover, the modern thirteenth patriarch Master Yinguang is traditionally regarded as the manifestation of Bodhisattva Mahasthamaprapta; how could Mahasthamaprapta's words also not be relied upon? The foolish view of such a deluded person is directly slandering the Buddha, the Dharma, and the Sangha. Wanting to promote the Pure Land, yet on the contrary destroying the Pure Land.\""
-                }
-            ]
-        },
-        {
-            "t": "h4",
-            "text": "4. The Terror of Honen, the Original Vow Dharma-gate, Huijing, and Master Jingzong"
-        },
-        {
-            "t": "p",
-            "inline": [
-                {
-                    "s": "According to the doctrine of Master Honen, the Original Vow Dharma-gate, and the so-called modern 'Shandao lineage' of Huijing and Master Jingzong, only relying on the Eighteenth Vow (exclusive invocation of the Name) is 'riding on the Buddha's vow, following the Buddha's Original Vow, and being certainly reborn.' If that is so, then the other eighty-four thousand Dharma-gates (other than the exclusive invocation of the Name, that is, transferring merit and seeking rebirth) can and must be wiped out entirely."
-                }
-            ]
-        },
-        {
-            "t": "p",
-            "inline": [
-                {
-                    "s": "The Pure Land school, which is originally the Dharma-gate of final return, 'all dharmas flow out from this Dharma-gate, and all practices return to this Dharma,' has been turned by various wrong views into a state of irreconcilable hostility with the other eighty-four thousand Dharma-gates, a situation of 'it is either you or me.'"
-                }
-            ]
-        },
-        {
-            "t": "p",
-            "inline": [
-                {
-                    "s": "There are still nine thousand years of the Dharma-ending age to come. Because of one wrong doctrine, the grim state of the Dharma-ending age after nine thousand years (the scriptures and teachings destroyed, leaving only the Sutra of Measureless Life and a single Buddha-name in the world) is being brought about prematurely; that is what we who study and promote the Pure Land do not wish to see."
-                }
-            ]
-        },
-        {
-            "t": "p",
-            "inline": [
-                {
-                    "s": "Promoting Buddha-recitation is good, but if one blatantly violates the scriptures and treatises to speak as one pleases, and promotes Buddha-recitation at the cost of destroying all dharmas, then it is truly 'wanting to promote the Pure Land, yet on the contrary destroying the Pure Land'!"
-                }
-            ]
-        }
-    ]
+ "firstBlock": 21,
+ "blocks": [
+  {
+   "t": "quote",
+   "inline": [
+    {
+     "s": "The second side of the impact is"
+    },
+    {
+     "s": "the propagation of Japan’s “Benyuan Dharma Gate,”"
+    },
+    {
+     "s": "which seeks to interfere with and destroy it in spirit and in the direction and path of Buddhist study and practice. The entry of Japanese Buddhism into China has been long-standing;"
+    },
+    {
+     "s": "in the 1930s it served the war of aggression against China."
+    },
+    {
+     "s": ". The essay The Alarm Bell discloses that at that time in Wuhu, Anhui, “in the middle second street there was a Japanese Buddhist temple, with Japanese-style lanterns hung at the gate, bearing the red characters ‘Higashi Honganji,’ and within lived a Japanese monk and his whole family. The Japanese monk often held a leather drum and beat it as he walked along the streets. It is said that in all the other cities occupied by Japan there were such, and that they served with the army, exclusively performing rites for the dead Japanese."
+    },
+    {
+     "s": "At that time when Japan invaded China, they called it the ‘holy war’; to kill for the ‘holy war’ was without guilt, and the dead souls passed beyond to the Buddha-land. The glorious names of those who killed many Chinese and had merit could enter the ‘shrine.’ After the War of Resistance ended, the unpopular Japanese Buddhism vanished from mainland China."
+    },
+    {
+     "s": "Who would have thought that this specter has been resurrected by ‘a group of people"
+    },
+    {
+     "s": "(namely Master Huijing, Master Jingzong, and others)"
+    },
+    {
+     "s": "’ — is not that absurd?"
+    },
+    {
+     "s": "”"
+    }
+   ]
+  },
+  {
+   "t": "quote",
+   "inline": [
+    {
+     "s": "The Shanghai layman Zheng Songying, in the essay Destroying the Heterodox and Revealing the Right, Eliminating the Three Harms published in Taizhou Buddhism, points out: “The Japanese"
+    },
+    {
+     "s": "‘Benyuan Dharma Gate’ has recently already been transmitted to China"
+    },
+    {
+     "s": ", and though it seems a school of the Pure Land Dharma, it is entirely contrary to the Buddha’s Dharma, misleads sentient beings, and does great harm,"
+    },
+    {
+     "s": "and is in fact a heretic within the teaching!"
+    },
+    {
+     "s": "It advocates that so long as one hears the name of Amitābha Buddha and can bring forth faith, one has obtained the ‘identity card’ of the Land of Utmost Bliss, and is certain to be reborn there! No more reciting the Buddha’s name and practicing; no matter how one dies, and without the deathbed assistance of recitation, one is certain to be reborn!” “The ‘Benyuan Dharma Gate’ requires only a single ‘faith’ and no ‘practice’ at all, relying on other-power alone and not self-power — is this still Buddhism?” In fact, in the late Qing and early Republican era, the layman Yang Renshan, through the Japanese Buddhist scholar Nanjō Bun’yū, imported a great many Buddhist scriptures, and with regard to the ‘Benyuan Dharma Gate’ he subjected it to criticism and rejection. (See the Clarification of the Teaching Compilation in the Continued Canon"
+    },
+    {
+     "s": ","
+    },
+    {
+     "s": "the twelfth kind compiled by the layman Yang.) No master of the Pure Land school in China’s modern and contemporary period has ever advocated the ‘Benyuan Dharma Gate.’"
+    }
+   ]
+  },
+  {
+   "t": "quote",
+   "inline": [
+    {
+     "s": "More and more evidence shows that"
+    },
+    {
+     "s": "the impact of this undercurrent is by no means accidental or spontaneous,"
+    },
+    {
+     "s": "but organized and planned,"
+    },
+    {
+     "s": "backed both by"
+    },
+    {
+     "s": "huge sums of money as its support,"
+    },
+    {
+     "s": "and possessing channels and bases for"
+    },
+    {
+     "s": "printing books and recording tapes,"
+    },
+    {
+     "s": "and moreover possessing those who"
+    },
+    {
+     "s": "preach and incite — monks, nuns, and laypersons and so on."
+    },
+    {
+     "s": ". About two years ago,"
+    },
+    {
+     "s": "the Japanese Benyuan Dharma Gate got in touch with temples in Jiangxi; if a large ‘Benyuan Dharma Gate’ center could be established, it could remit ten million yuan."
+    },
+    {
+     "s": ". At that time they also had doubts about the ‘Benyuan Dharma Gate’ claim that only a single ‘faith’ is needed and one may dispense with reciting the Buddha’s name and practicing. But they again thought of using this large fund to build a center and in the future still promote the pure and correct Pure Land school, and wrote to the elder layman Zheng Songying in Shanghai to ask his advice. The elder Zheng’s reply pointed out: “To do so is to set an improper motive-ground, and it should be firmly refused and not accepted.” Only then did they desist."
+    },
+    {
+     "s": "It is now established that the centers propagating the ‘Benyuan Dharma Gate’ are very many, and those with frequent activity number several."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The essay The Alarm Bell says: “In the past two years, Taiwan’s"
+    },
+    {
+     "s": "Japanese Jōdo Shinshū Benyuan Dharma Gate"
+    },
+    {
+     "s": "has repeatedly mailed books, publicity materials, and so on to the various Buddhist institutions of Anhui, and some Buddhists have already come under its influence.”"
+    }
+   ]
+  },
+  {
+   "t": "quote",
+   "inline": [
+    {
+     "s": "“"
+    },
+    {
+     "s": "There are two young and middle-aged home-leavers who call themselves of Mount Jiuhua, propagating Japanese Buddhism in various cities; one of them, eloquent, is called ‘Master Holy Su ("
+    },
+    {
+     "s": "now renamed Master Jingzong, having run off to take refuge with Master Huijing of Taiwan, who advocates the Benyuan Dharma Gate"
+    },
+    {
+     "s": "),’ and using people’s reverence for the sacred ground of Mount Jiuhua and respect for the monks of Mount Jiuhua, they find connections to help them arrange venues to preach,"
+    },
+    {
+     "s": "pleasing the devout good believers of little experience and the home-leavers who do not keep the precepts."
+    },
+    {
+     "s": ".”"
+    }
+   ]
+  },
+  {
+   "t": "quote",
+   "inline": [
+    {
+     "s": "“"
+    },
+    {
+     "s": "During the Spring Festival this year, the two monks Holy Su and another, accompanied by a Taiwanese nun, came down from the mountain again to preach. From Xuancheng to Wuhu they gave one day’s preaching and one day’s discussion,"
+    },
+    {
+     "s": "and afterward were called to account by the municipal Chinese People’s Political Consultative Conference and the Religious Affairs Bureau."
+    },
+    {
+     "s": ".”"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "1999"
+    },
+    {
+     "s": ", in the first half of the year, this undercurrent again penetrated deep into the southwest, and Chongqing Municipality was most heavily affected. Not only did the Cangtangyan "
+    },
+    {
+     "s": "71—9#"
+    },
+    {
+     "s": "of Xuancheng, Anhui, and the “Ciyuan Group Bodhi Monastery Gift Center” of Dezhou, Shandong, send in bulk such books as the Amitābha Calling series, but in the summer they also sent a young monk to the Chongqing urban area, very secretively, without revealing the name of his original monastery or his Dharma name, lodging in the home of a layperson and organizing group after group of faithful to hear him advocate the “Benyuan Dharma Gate”; those deluded grew daily, until the lay practitioners who practiced the Pure Land Dharma Gate in Chongqing split into two factions. Some lay practitioners who upheld the Pure Land “two powers” (Buddha-power and self-power) Dharma Gate put many questions to this monk, but his replies were unclear, and he even said angrily: “You will fall into hell! Fall into hell! Fall into hell!”"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Judging from the above circumstances, if this undercurrent is let to grow and spread, it will severely corrode, and even destroy, the whole of Buddhism."
+    }
+   ]
+  },
+  {
+   "t": "quote",
+   "inline": [
+    {
+     "s": "(Original editor’s note: The Benyuan Dharma Gate distorts the three Pure Land sutras and one treatise, advocating that there is no need to recite sutras, keep the precepts, bring forth bodhicitta, or practice the bodhisattva’s six perfections and ten thousand practices — this altogether contravenes Buddhist doctrine and the Mahāyāna spirit that transcends the world while being in the world,"
+    },
+    {
+     "s": "and is in reality"
+    },
+    {
+     "s": "an outer path attached to Buddhism"
+    },
+    {
+     "s": ", and it should arouse the high regard and resistance of the whole Buddhist community. It is also hoped that the relevant government departments pay attention"
+    },
+    {
+     "s": ".)"
+    }
+   ]
+  },
+  {
+   "t": "h2",
+   "text": "Appendix Two: Guard Against the Harm and the Misleading of the Benyuan Dharma Gate on the Pure Land School"
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "[Original editor’s note]"
+    },
+    {
+     "s": "The essay Guarding Against the Harm and the Misleading of the Benyuan Dharma Gate on the Pure Land School, in the magazine Sound of the Dharma, the journal of the Buddhist Association of China, lists many false teachings of the Benyuan Dharma Gate, and finally warns that “if its theory is allowed to circulate in the Buddhist community, it will have a destructive influence on the abiding of the true Dharma.”"
+    }
+   ]
+  },
+  {
+   "t": "h4",
+   "text": "1. A Brief Account of the Origin and Development of the Benyuan Dharma Gate"
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The theory of the Benyuan Dharma Gate originated with the Japanese Master Hōnen, and reached its peak with his disciple Shinran."
+    }
+   ]
+  },
+  {
+   "t": "quote",
+   "inline": [
+    {
+     "s": "As the essay in Sound of the Dharma says, “its basic theory single-mindedly emphasizes other-power, and is in many places at variance with the sutras and treatises.” Yang Renshan, the father of the restoration of Chinese Buddhism, in his Critique of the Selected Collection of Original Vow Recitation says: “I find that this collection is at variance with the sutras’ meaning in quite a number of places,” and in his Critique of the Shinshu Doctrine says: “I find it is at variance with the sutras’ meaning in quite a number of places,”"
+    },
+    {
+     "s": "and he criticized their false teaching as “"
+    },
+    {
+     "s": "concealing the mechanism of the destruction of the Dharma"
+    },
+    {
+     "s": ".”"
+    }
+   ]
+  },
+  {
+   "t": "quote",
+   "inline": [
+    {
+     "s": "Master Hōnen’s theory had already deviated from Master Shandao, and the Jōdo Shinshū (Benyuan Dharma Gate) established by his disciple Master Shinran ran even more directly counter to Master Shandao."
+    },
+    {
+     "s": "Master Shandao’s thought is “even the evil person is reborn, how much more the good person”; but with the Jōdo Shinshū it became the “evil person is the true capacity” of “"
+    },
+    {
+     "s": "even the good person is reborn, how much more the evil person”!"
+    },
+    {
+     "s": "The “even ten recitations” of the eighteenth vow is also construed by the Benyuan Dharma Gate as “so long as one deeply believes in Amitābha’s original vow (the eighteenth vow),"
+    },
+    {
+     "s": "with a single recitation one is reborn in the reward land"
+    },
+    {
+     "s": ", and immediately attains Buddhahood, transcending the nine grades. Therefore there is no need for many recitations; otherwise it is not trusting Amitābha’s original vow, and so recitation is only an act of gratitude!”"
+    },
+    {
+     "s": "(One of the characteristics of the Benyuan Dharma Gate: topsy-turvy teaching.)"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "For this reason, even Master Hōnen himself rebuked Shinran as “an outer path attached to the Buddha’s Dharma, a confederate of the demon hosts, destroying and extinguishing the Buddha’s Dharma, an outer path beyond the outer paths,” and warned the multitude: “Be careful not to follow that false teaching.”"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Yet up to the present day, these false teachings that even Hōnen rebuked"
+    },
+    {
+     "s": "have been inherited by Master Huijing and others, who promote the Benyuan Dharma Gate under the banner of the “Shandao school.”"
+    },
+    {
+     "s": "."
+    }
+   ]
+  },
+  {
+   "t": "quote",
+   "inline": [
+    {
+     "s": "Master Huijing’s The Essence of Master Shandao says: “One does not know that the purpose of the Contemplation Sutra is to manifest Amitābha’s original vow:"
+    },
+    {
+     "s": "the evil person is the true capacity"
+    },
+    {
+     "s": ". ..."
+    },
+    {
+     "s": "The Benyuan Dharma Gate is that the evil person is the true capacity"
+    },
+    {
+     "s": ", other-power faith and practice, rebirth in the reward land. That is, the most evil and lowest person, relying on the most excellent and highest Dharma, is born in the highest and most wonderful land.”"
+    }
+   ]
+  },
+  {
+   "t": "quote",
+   "inline": [
+    {
+     "s": "["
+    },
+    {
+     "s": "Note: "
+    },
+    {
+     "s": "The Sutra Praised by the Buddha: The Pure Land, which our teacher Śākyamuni Buddha proclaimed with his own golden mouth, and which is praised and received by Amitābha Buddha in the Western Land of Utmost Bliss, says:"
+    },
+    {
+     "s": "“Sentient beings of little root of good are not those who can attain rebirth in the pure Buddhaland of the Land of Utmost Bliss of Amitāyus Buddha."
+    },
+    {
+     "s": "”"
+    },
+    {
+     "s": "(Translation: sentient beings with little root of good (the good of the three karmic actions of body, speech, and mind) cannot attain rebirth in the Western Land of Utmost Bliss. See"
+    },
+    {
+     "s": "Annotation on the Sutra Praised by the Buddha: The Pure Land",
+     "href": "/articles/056chengzanjingtujingzhu"
+    },
+    {
+     "s": ")"
+    },
+    {
+     "s": "Yet the Benyuan Dharma Gate loudly advocates the evil-person-is-the-true-capacity doctrine, making Amitābha Buddha’s great vow into a protective umbrella for the evil person. Its slandering of the Buddha and destruction of the Dharma go this far!"
+    }
+   ]
+  },
+  {
+   "t": "quote",
+   "inline": [
+    {
+     "s": "In the Contemplation Sutra of Infinite Life, the person of the five heinous offenses and ten evil deeds is not one who is reborn merely by reciting the name,"
+    },
+    {
+     "s": "but rather one who has accomplished the ten consecutive recitations at the moment of death and, extinguishing his offenses, is reborn"
+    },
+    {
+     "s": "(see"
+    },
+    {
+     "s": "Annotation on the Lowest Grade and Lowest Birth Section of the Contemplation Sutra",
+     "href": "/articles/086guanjingxiapinxiasheng"
+    },
+    {
+     "s": ")"
+    },
+    {
+     "s": ". Originally, the “lowest grade and lowest birth section” of the Contemplation Sutra is about the grade of the person thus reborn"
+    },
+    {
+     "s": "(the person of the five heinous offenses and ten evil deeds who, having accomplished the ten consecutive recitations at the moment of death and extinguished his offenses, is reborn)"
+    },
+    {
+     "s": ", which is the lowest grade and lowest birth; but the Benyuan Dharma Gate deliberately omits"
+    },
+    {
+     "s": "the key of “ten consecutive recitations at the moment of death”"
+    },
+    {
+     "s": ", exaggerating it into the claim that all persons of the five heinous offenses and ten evil deeds who merely recite the Buddha’s name once are reborn, and even advocating the so-called evil-person-is-the-true-capacity doctrine"
+    },
+    {
+     "s": "(that Amitābha Buddha’s salvation takes the evil person as its true capacity)"
+    },
+    {
+     "s": "."
+    }
+   ]
+  },
+  {
+   "t": "quote",
+   "inline": [
+    {
+     "s": "Moreover, even those in the sutra who are said to attain rebirth despite the five heinous offenses and ten evil deeds did so because in past lives they deeply planted good roots and once sowed the seed of bodhi. Master Ouyi"
+    },
+    {
+     "s": "says"
+    },
+    {
+     "s": ":"
+    },
+    {
+     "s": "“The sutra says that those who attain rebirth despite the ten evil deeds and five heinous offenses"
+    },
+    {
+     "s": "must have planted the seed of bodhi in the past."
+    },
+    {
+     "s": "If there were no seed of bodhi, how could they meet a good friend? Even if they met a good friend who urged them on, how could they at once bring forth faith and vow and recite the great name?”"
+    },
+    {
+     "s": "(The Lingfeng Collected Treatises, General Sermon at the Tianma Monastery of Shepu)"
+    }
+   ]
+  }
+ ]
 }
