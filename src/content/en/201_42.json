@@ -1,0 +1,2275 @@
+{
+ "slug": "201_42",
+ "title": "Commentary on the Sutra of the Forty-Two Chapters Spoken by the Buddha",
+ "author": "Annotated by Zhanran",
+ "excerpt": "The Sutra of the Forty-Two Chapters Spoken by the Buddha, in one fascicle, was jointly translated in the Later Han by Kasyapa Matanga and Dharmaratna (Zhu Falan). The entire sutra contains forty-two chapters, whence its name. Each chapter is concise and to the point: its longest is only a little over a hundred words, its shortest a little over twenty. These are the sayings of Sakyamuni Buddha, selected from the Twelve Divisions of the Tripitaka, and they form an outline for the study and practice of the Dharma.",
+ "blocks": [
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Course"
+    },
+    {
+     "s": "201"
+    },
+    {
+     "s": "teaching material"
+    }
+   ]
+  },
+  {
+   "t": "h3",
+   "text": "Preface"
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The Sutra of the Forty-Two Chapters Spoken by the Buddha is a single fascicle. It was jointly translated in the Later Han by Kasyapa Matanga and Dharmaratna (Zhu Falan). The whole sutra contains forty-two chapters, whence its name. Each chapter is brief and to the point; the longest is only a little over a hundred words, the shortest a little over twenty. These are the sayings of Sakyamuni Buddha, selected from the Twelve Divisions of the Tripitaka, and they form an outline for the study and practice of the Dharma. That is why these two wondrous monks of extraordinary powers chose it as the first Buddhist scripture to be transmitted into this land; its content embraces both shallow and deep, sudden and gradual, partial and perfect, provisional and real, and the lesser and the greater vehicles (Hinayana and Mahayana)."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "As this commentary is the teaching material for the second stage of the online Buddhist Academy of the path of study, “Purity of Precepts as the Foundation,” it does not yet touch upon the fundamental principles such as the reality of all dharmas, the original mind, or the original nature, and so some passages of the sutra have not been annotated. It is suggested that students, after completing the third stage, “Prajna Dispelling Delusion,” and gaining a comparatively deep understanding of such scriptures as the Diamond Sutra, the Heart Sutra, the Platform Sutra of the Sixth Patriarch, the Sutra of the Buddha-Treasure, and the Direct Explanation of the True Mind, return to a deeper study of this sutra. At that time you will understand that this sutra, the Sutra of the Forty-Two Chapters Spoken by the Buddha, is an outline for studying and practicing the Dharma and should be recited and practiced constantly."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Question: The Sutra of the Forty-Two Chapters Spoken by the Buddha is a Hinayana scripture; how then can you say it is sudden, perfect, real, and great?"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Answer: That is not so. Many of its chapters and verses speak of the most ultimate One Vehicle. For example:"
+    }
+   ]
+  },
+  {
+   "t": "quote",
+   "inline": [
+    {
+     "s": "“"
+    },
+    {
+     "s": "When the Blessed One had realized the Way, he reflected thus: to be free of desire and to abide in stillness is the most supreme.”"
+    }
+   ]
+  },
+  {
+   "t": "quote",
+   "inline": [
+    {
+     "s": "“"
+    },
+    {
+     "s": "The Buddha said: Leave home and family, recognize the mind and reach the source, understand the unconditioned Dharma; such a one is called a sramana.”"
+    }
+   ]
+  },
+  {
+   "t": "quote",
+   "inline": [
+    {
+     "s": "“"
+    },
+    {
+     "s": "The Buddha said: A renunciant monk severs desire and abandons love, recognizes the source of his own mind, attains the Buddha’s profound principle, and awakens to the unconditioned Dharma. Within, nothing is attained; without, nothing is sought. The mind is not tied to the Way, nor does it create karma. No thought, no doing; neither practice nor realization. Without passing through the stages, it is itself the supreme; this is called the Way.”"
+    }
+   ]
+  },
+  {
+   "t": "quote",
+   "inline": [
+    {
+     "s": "“"
+    },
+    {
+     "s": "The Buddha said: My Dharma is this: in thought, to think the thought of no-thought; in practice, to practice the practice of no-practice; in speech, to speak the speech of no-speech; in cultivation, to cultivate the cultivation of no-cultivation.”"
+    }
+   ]
+  },
+  {
+   "t": "quote",
+   "inline": [
+    {
+     "s": "“"
+    },
+    {
+     "s": "The Buddha said: Feeding a hundred evil men is not equal to feeding one good man. Feeding a thousand good men is not equal to feeding one who upholds the five precepts. Feeding ten thousand who uphold the five precepts is not equal to feeding one stream-enterer. Feeding a million stream-enterers is not equal to feeding one once-returner. Feeding ten million once-returners is not equal to feeding one non-returner. Feeding a hundred million non-returners is not equal to feeding one arhat. Feeding a billion arhats is not equal to feeding one pratyekabuddha. Feeding a hundred billion pratyekabuddhas is not equal to feeding one of the Buddhas of the three times. Feeding a thousand billion Buddhas of the three times is not equal to feeding one who is without thought, without abiding, without practice, and without realization.”"
+    }
+   ]
+  },
+  {
+   "t": "quote",
+   "inline": [
+    {
+     "s": "“"
+    },
+    {
+     "s": "The Buddha said: My Dharma is this: in thought, to think the thought of no-thought; in practice, to practice the practice of no-practice; in speech, to speak the speech of no-speech; in cultivation, to cultivate the cultivation of no-cultivation. Those who comprehend are near; those who are deluded are far indeed! The path of words is cut off, and it is not confined by anything; a hair’s breadth of deviation, and it is lost in an instant.”"
+    }
+   ]
+  },
+  {
+   "t": "quote",
+   "inline": [
+    {
+     "s": "“"
+    },
+    {
+     "s": "The Buddha said: Contemplate heaven and earth and reflect on impermanence. Contemplate the world and reflect on impermanence. Contemplate the spiritual awareness, and that is precisely bodhi. Knowing thus, one attains the Way quickly!”"
+    }
+   ]
+  },
+  {
+   "t": "quote",
+   "inline": [
+    {
+     "s": "“"
+    },
+    {
+     "s": "The Buddha said: One who practices the Way is like a log floating on the water, moving along with the stream. If it does not touch either bank, is not seized by men, is not obstructed by ghosts and spirits, is not held fast by a whirlpool, and does not rot, I guarantee that this log will surely reach the sea. So too, a person who studies the Way and is not confused by emotions and desires, not disturbed by the many wrong views, and is vigorous in the unconditioned — I guarantee that such a person will surely attain the Way.”"
+    }
+   ]
+  },
+  {
+   "t": "quote",
+   "inline": [
+    {
+     "s": "“"
+    },
+    {
+     "s": "The Buddha said: I look upon the rank of kings and princes as upon dust passing through a crevice. I look upon treasures of gold and jade as upon broken tiles and pebbles. I look upon robes of finest silk as upon worn-out rags. I look upon the great thousand-world as upon a single myrobalan fruit. I look upon the waters of Lake Anavatapta as upon the oil used to anoint the feet. I look upon the gates of expedient means as upon a heap of conjured jewels. I look upon the unsurpassed vehicle as upon gold and silk seen in a dream. I look upon the Buddha’s Way as upon a flower before the eyes. I look upon meditative absorption as upon Mount Sumeru standing firm. I look upon nirvana as upon waking from the slumber of day-night. I look upon the inverted and the upright as upon the dance of six dragons. I look upon equality as upon the one true ground. I look upon the flourishing guidance of beings as upon the trees of the four seasons.”"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Concerning the sudden and gradual aspects of this sutra, Peng Jiqing, the most famous lay bodhisattva of the Qing dynasty, offers a penetrating discussion:"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "“"
+    },
+    {
+     "s": "This sutra embraces both the sudden and the gradual. First it proclaims, ‘Recognize the mind and reach the source, understand the unconditioned Dharma; such a one is called a sramana.’ Again it says, ‘The mind is not tied to the Way, nor does it create karma. No thought, no doing; neither practice nor realization. Without passing through the stages, it is itself the supreme; this is called the Way.’ The purport of non-abiding in the Diamond Sutra and the door of non-duality in the Vimalakirti Sutra do not go beyond this!"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "“"
+    },
+    {
+     "s": "Again it says, ‘Feeding a thousand billion Buddhas of the three times is not equal to feeding one who is without thought, without abiding, without practice, and without realization.’ Now one who is without thought, without abiding, without practice, and without realization is what is called the Buddha of the innate, natural nature. The Buddhas of the three times merely awaken to this; there is nothing added to them. Among all offerings, the offering of the Dharma is supreme. The offering of the Dharma is to recognize one’s own original mind and to understand that dharmas are empty and still, that in every thought the Buddha appears and in every thought the Buddha passes into extinction. This is to feed one who is without thought, without abiding, without practice, and without realization. How could this be sought outside oneself? This is the sudden teaching."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "“"
+    },
+    {
+     "s": "Within it, it also arrays the four noble truths and the ten wholesome deeds, rebukes the defilement of desire, encourages the pure karma, warns the world of impermanence, and awakens it to illusion. This is the gradual teaching. If the defilement of desire is not removed, then pure conduct is hard to accomplish. If pure conduct is not accomplished, then the original brightness does not shine forth. Therefore it dwells repeatedly on the practice of cutting off love and removing desire, as an aid to walking the Way and guarding the truth, and it returns finally to non-self. Once non-self is understood, the mind’s defilement of itself is exhausted and the constant light manifests. This is what is called understanding the unconditioned Dharma."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "[The four noble truths] These are the four true truths, also called the four holy truths: the four truths of suffering, accumulation, cessation, and the path. Their principle is true and real, hence they are called the true truths; because they are seen by the noble ones, they are called the holy truths. [The constant light] One of the thirty-two marks of a Buddha: the radiance that constantly surrounds the Buddha’s body, shining throughout day and night."
+    }
+   ]
+  },
+  {
+   "t": "quote",
+   "inline": [
+    {
+     "s": "“"
+    },
+    {
+     "s": "Yet the people of the world so often cling to the conditioned and cannot give up love and desire. Why is this? It is because they do not know that human life is impermanent and the world is an illusion, and so with a moment’s pleasure they call down the calamity of a long kalpa. “Honey on a blade, a torch in the wind” — these words are most piercing. If one has the resolve of a great man, how can he not wake and reflect deeply? The scripture says, ‘The words of the Buddha are like honey: sweet both at the middle and at the edge.’ If students devote their whole minds here, then they can gain entrance to the many scriptures even of the five divisions!”"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "[Honey on a blade, a torch in the wind] Love and desire are like honey upon the edge of a knife, and like a wind that extinguishes a torch."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Concerning the introduction of the Buddha’s Dharma into this land and the translation of this sutra, Master Ouyi’s Explanation of the Sutra of the Forty-Two Chapters documents the following:"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "In the Later Han (that is, the Eastern Han), in the third year of the Yongping era of Emperor Xiaoming. The emperor (Emperor Ming of the Han, also called Emperor Xiaoming) dreamed of a golden man with a light about his neck that shone like the sun, who flew through the palace courtyard. When he asked his ministers, the Grand Astrologer Fu Yi replied: “I have heard that in the Western Regions there is a divine being called the Buddha. What Your Majesty dreamed must surely be he!” The erudite Wang Zun also submitted: “According to the Record of Strange Events in the Book of Zhou, the Buddha was born in the twenty-sixth year of King Zhao of Zhou, in the year jiayin. At that time the rivers overflowed, the great earth moved, and a five-colored light pierced the constellation Taiwei. The Grand Astrologer Su You divined it and obtained the Hexagram Qian, line five: ‘The flying dragon is in the heavens’ — this is a great sage of the West. After a thousand years his teachings will reach this land. The king (King Zhao of Zhou) ordered a stone inscription to be made and buried in the southern suburb. Later, in the time of King Mu of Zhou, heaven and earth shook and twelve white rainbows pierced the sun and crossed the sky. The Grand Astrologer Hu Du divined them and said they were the sign of the great sage of the West entering cessation.”"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "So in the seventh year of the Yongping era, Emperor Xiaoming commanded the Gentleman of the Interior Cai Yin, the General of the Household Qin Jing, the erudite Wang Zun, and seventeen others — eighteen in all — to go west in search of the Buddha’s Dharma. When they reached India they invited Kasyapa Matanga and Dharmaratna (Zhu Falan), both natives of central India, who carried the scriptures on a white horse and also brought relics and a portrait of the Buddha. In the tenth year of the Yongping era (the year "
+    },
+    {
+     "s": "67"
+    },
+    {
+     "s": "), they arrived at Luoyang. The emperor was delighted and had the White Horse Monastery built, where the Sutra of the Forty-Two Chapters was translated."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "In the first year of the fourteenth year of the Yongping era, on the first day of the first month, Chu Shanxin of the five sacred mountains and other Daoist masters, resentful (acting out of envy contrary to the truth), were displeased and submitted a memorial to the court requesting a contest. Emperor Xiaoming therefore, on the fifteenth day of the first month, assembled the hundred officials, monks and Daoists, scholars and laypeople in great numbers at the southern gate of the White Horse Monastery. Chu Shanxin and his followers placed the Lingbao scriptures upon the Dharma altar on the eastern side of the road, while Emperor Xiaoming placed the sutras, the images, and the relics upon the seven-treasure traveling palace on the western side. Chu Shanxin and the others circled the altar weeping, praying to the Heavenly Venerable with earnest words, and burned the scriptures with sandalwood and other firewood, hoping that the text would remain intact — but they all turned to ashes. The arts they had earlier performed, of ascending to heaven, entering fire, walking on water, and becoming invisible, likewise none of them took effect. But the Buddha’s relics emitted a five-colored light that shot straight up into the sky, revolving like a canopy over the assembly, casting a brilliance that eclipsed the sun. Matanga, through his supernatural power of spiritual faculties, flew and sat and lay down in the sky, transforming freely. Heaven rained precious flowers and played many kinds of music. At that time the whole assembly rejoiced, receiving what they had never had before."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "This was the beginning of the Buddha’s Dharma entering China."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "[Traveling palace] A traveling residence. [Supernatural power of spiritual faculties] Also called the power of spiritual mastery: one transforms freely at will, flies at ease, and whatever one does is without obstruction. [China] In ancient times India called China China (Cinasthana)."
+    }
+   ]
+  },
+  {
+   "t": "h3",
+   "text": "The Title of the Sutra"
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The Sutra of the Forty-Two Chapters Spoken by the Buddha"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "This sutra is the first Buddhist scripture translated into Chinese in this land. Drawn from the whole teaching delivered by the Blessed One in his lifetime, it selects the most essential and most concise passages — forty-two chapters in all — gathered into a single volume, setting forth the essential meaning of leaving home and studying the Way."
+    }
+   ]
+  },
+  {
+   "t": "h3",
+   "text": "The Translators"
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Jointly translated in the Later Han by Kasyapa Matanga and Dharmaratna (Zhu Falan)"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "[Kasyapa Matanga] He was the first to introduce Buddhism into this land. A native of central India, he was born in a Brahman family. Endowed in youth with keen intelligence and a handsome bearing, broadly learned and widely read, he was especially versed in the sutras and the precepts. He once went to a small kingdom in western India and expounded the Sutra of Golden Light, thereby sparing that kingdom the calamity of war. In the tenth year of the Yongping era of the Later Han (the year "
+    },
+    {
+     "s": "67"
+    },
+    {
+     "s": "), Emperor Ming of the Han sent Cai Yin and others to India in search of the Dharma. They met him, and together with Dharmaratna he carried the scriptures and a Buddha image to Luoyang, dwelling in the White Horse Monastery that the emperor had built for them. The two translated the Sutra of the Forty-Two Chapters together, which was the beginning of scripture translation in this land; from that time the Dharma existed in the East. On the first day of the first month of the fourteenth year of the Yongping era, Chu Shanxin of the five sacred mountains and the eight famous mountains and other Daoists, six hundred ninety in all, submitted a memorial asking Emperor Ming to test by fire the superiority and inferiority of Buddhism and Daoism. On the fifteenth day of the same month the emperor assembled the crowd upon the altar and tested the scriptures of the two teachings by burning them: the Daoist books all turned to ashes, while the Buddhist scriptures were entirely undamaged. Matanga and Falan then came forward to proclaim the Buddha’s virtue, and all who saw or heard of it one after another took refuge in the Buddha’s gate. In the sixteenth year of the Yongping era he passed into stillness at Luoyang. [Tianzhu] That is present-day India."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "[Dharmaratna (Zhu Falan)] A native of central India. He could chant tens of thousands of sections of the sutras and treatises, and was the teacher of the scholars of India. When Emperor Ming of the Later Han sent the emissary Cai Yin and others to the Western Regions to seek the Buddhist scriptures, the master went with Kasyapa Matanga to Luoyang and stayed with Matanga at the White Horse Monastery. The master had understood the Chinese language even in his youth, whereupon he translated five scriptures — the Sutra of the Ten Stages Severing Bonds, the Sutra of the Buddha’s Past Lives, the Sutra of the Dharma-Sea Treasury, the Sutra of the Buddha’s Former Conduct, and the Sutra of the Forty-Two Chapters. Later he passed into stillness at Luoyang."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Note: "
+    },
+    {
+     "s": "For ease of understanding and reference, the headings below, such as “Preface to the Sutra,” as well as the heading of each chapter, were all added by the annotator and do not belong to the sutra."
+    }
+   ]
+  },
+  {
+   "t": "h3",
+   "text": "Preface to the Sutra"
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "This long passage is the preface of this sutra."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "When the Blessed One had realized the Way, he reflected thus: to be free of desire and to abide in stillness is the most supreme."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "After the Blessed One attained the Way and became a Buddha, he looked back over the whole course of his practice and summed up the most important, the most crucial, and the most supreme point: the relinquishment of desire and stillness. Stillness refers to the stillness of the mind. Therefore the essential point of studying and practicing the Buddha’s Dharma is: relinquish desire and still the thoughts."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "[Blessed One] An honorific title of the Buddha, because the Buddha is one revered by all the world; here it refers to Sakyamuni Buddha. [Realized the Way] Attained the way of Buddhahood."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "As for the relinquishment of desire, there are many chapters in this sutra that emphasize it again and again. For example: “Sever desire and end seeking,” “Cut off love and rid oneself of greed,” “Realize the ultimate Way,” “Abandon love and see the Way,” “Chase fame and lose the root,” “Wealth and sex bring suffering,” “Lustful desire obstructs the Way,” “The fire of desire burns the body,” “Do not give rein to the mind-horse,” “Right contemplation confronts the object of desire,” “Keep far from the fire of desire,” “When the mind is still, desire is removed,” “Sever desire and abandon love,” and even “With an upright mind, emerge from desire,” and so on. Of the forty-two chapters, fourteen in all (one-third) repeatedly emphasize the relinquishment of desire, in particular keeping far from wealth and sex, fame and profit. From this one can see how important the relinquishment of desire is to cultivating the Way and attaining it."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "“"
+    },
+    {
+     "s": "The evil karma wrought in the past, all arises from beginningless greed, hatred, and delusion, and is born of body, speech, and mind.” Evil karma is wrought by body, speech, and mind, and body, speech, and mind are in turn driven by greed, hatred, and delusion. Among greed, hatred, and delusion, greed is the root. When greed is not satisfied it becomes hatred; greed and hatred obscure reason, so that one thinks, speaks, and acts against reason — this is delusion. From this it can be seen that greed is the source of all evil, and desire is the driving force of greed. Therefore, if one would cultivate the Way, one must first relinquish desire."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Stillness is being without thought and without ideation. The Sutra of the Buddha-Treasure says: “The anuttara-samyak-sambodhi of all Buddhas is all without thought and without ideation.” It further says: “The anuttara-samyak-sambodhi of all Buddhas is but a single meaning, which is called separation. What is separation? It is separation from all desires and all views. Desire is itself ignorance, and view is itself remembrance. Why? Because all dharmas have remembrance as their root; every thought and ideation is a view, and view is wrong.” The Lankavatara Sutra says: “The Muni’s contemplation of stillness, this is to be far from arising; this is called non-apprehension, and is pure in this life and the next.”"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "[Anuttara-samyak-sambodhi] The complete and unsurpassed wisdom — the wisdom of a Buddha. In Chinese it is translated “Unsurpassed, Right and Equal Enlightenment.”"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "All sentient beings are originally completely the same as the Buddha; the reason they now differ is that the Buddha is awake while sentient beings are deluded. Delusion is to be deluded in the arising of mind toward objects. When desire arises, the inner mind is agitated and disturbed; drawn along by thoughts and stirred by objects, under the drive of desire one creates karma and undergoes retribution, revolving endlessly through birth and death. Therefore the path to returning to the source is: separate from all desires and let the mind be still and unmoving."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The relinquishment of desire — the cause that extinguishes suffering. The Three Sessions of Mind-Recollection of Master Zhongfeng says: “All suffering arises entirely from greed and desire.” Stillness — the fruit of attaining the Way. The Sutra of the Buddha-Treasure says: “The anuttara-samyak-sambodhi of all Buddhas is all without thought and without ideation.”"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "“"
+    },
+    {
+     "s": "The relinquishment of desire and stillness” — this is the guiding principle of the whole sutra, and likewise the general guiding principle of studying and practicing the Buddha’s Dharma; the eighty-four thousand Dharma-doors are all established in dependence upon it. Therefore you must keep these four words, “relinquish desire and abide in stillness,” firmly in mind, ever vigilant and examining yourself."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Dwelling in the great meditation-concentration, he subdued all the demonic paths. In the Deer Park he turned the wheel of the Dharma of the four truths, liberating Kaundinya and the other four, who realized the fruit of the Way."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "[Deer Park] A place name, in the kingdom of Varanasi in central India; the place where the Buddha first taught the Dharma of the four truths and liberated the five monks, who realized the fruit of the Way. [The four truths] Also called the four holy truths, namely the truth of suffering, the truth of accumulation, the truth of cessation, and the truth of the path (abbreviated as suffering, accumulation, cessation, and path). “Truth” means the principle of truth. The truth of suffering sets forth the truth that life is full of suffering; the “accumulation” of the truth of accumulation means arising, setting forth the truth of how the suffering of life comes about; the truth of cessation sets forth the truth that the realm of nirvana is what ultimately ends suffering; and the truth of the path sets forth the truth of how one must cultivate in order to realize nirvana. These four holy truths exhaust the twofold causality of the mundane and the supramundane: accumulation is the cause and suffering the fruit, which is the causality of the deluded realm; the path is the cause and cessation the fruit, which is the causality of the awakened realm. [The wheel of the Dharma] A metaphor for the Dharma spoken by the Buddha, which can crush all the afflictions of sentient beings just as a great wheel can crush all rocks and gravel; and it is handed on and on from person to person, like the turning of a wheel, reaching without distance."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "While the Blessed One was at home his family name was Gautama and his given name Siddhartha. He was the eldest son of King Suddhodana of the kingdom of Kapilavastu in central India; his mother’s name was Maya, and he was of the Sakya clan. After realizing the Way he was honored as Sakyamuni, meaning the sage of the Sakya clan. Muni is a transliteration of Sanskrit and means still."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "I shall now recount the course of the Blessed One’s experience from his leaving home to his becoming a Buddha:"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "After Sakyamuni left home, he sought out many wise teachers in quest of the great Way. He saw many cultivators who clothed themselves with grass, or starved themselves by not eating, or stood on one foot, or lay among dust and thorns, or worshiped the sun and moon, or served fire and water. In his heart he greatly disapproved of all these, knowing that they were all followers of external paths."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Later, Sakyamuni studied meditation-concentration under Alara Kalama and Udraka Ramaputra, who dwelt in mountain caves. The former taught him that by “following the steps of contemplation and reflection” he could obtain the “kingdom of emptiness and stillness”; the latter recited to him the “state that is neither a mental function nor a non-mental function.” So Sakyamuni sat alone in a mountain cave, crossed his legs and sat in meditation, facing the wall and stilling his mind, to seek enlightenment. Springs came and autumns went, yet in the end he obtained nothing. He realized that here he could not obtain insight, and so he changed his plan and resolved to experience the ascetic practice of forsaking desires, in order to seek liberation."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Sakyamuni came to the ascetic grove on Mount Gaya by the river Nairanjana, and sat alone beneath a tree in the full lotus posture. His body had no covering; he did not avoid wind or rain; his eyes did not blink; his mind was without fear. He rejected everything, letting go entirely. Sometimes he restrained his breathing until his head throbbed as if needles were piercing his bones; sometimes he pressed his teeth and tongue against his palate, forcibly suppressing the inner mind until sweat gushed like a spring. Because he purified his mind and kept the precepts, he neither lay down nor rose, and even when a great vulture built a nest and fed its young upon his head, he let its droppings soil his body without concern."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Sakyamuni practiced asceticism alone, and in the twinkling of an eye it was six years. From at first eating one sesame seed and one grain of wheat a day, he gradually came to eat one sesame seed and one grain of wheat in seven days, and at length to neither drinking nor eating. In the end his body became extremely emaciated, like a withered tree, so that when he rubbed his chest and belly with his hand he could touch his back and spine."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "One day he suddenly realized that, while excessive indulgence is surely not easy to reach the great Way of liberation, to practice only asceticism is likewise no way to advance toward great, thorough enlightenment. So he resolved to eat again and to investigate the mysterious Way once more."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "By the bank of the Nairanjana there were two cowherd girls, one named Nanda and the other Bala, who often drove their cattle to graze at the edge of the ascetic grove. That day, seeing the cows enter the river and wash themselves clean, they drew off the milk, steamed it into milk-porridge, filled a bowl full, held it up before him, and offered it with reverence."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Sakyamuni accepted the offering and made a vow, saying: “Now I take this food and drink so that my strength may be replenished, to preserve my wisdom and my years, and to liberate sentient beings.” He then partook of it."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "From then on, Sakyamuni received the milk-porridge offered by the cowherd girls every day. After a month his strength was robust, and he had recovered the vigor of former days. He went again to bathe and wash his clothes in the river Nairanjana, and felt his whole body cool and refreshed, his complexion radiant."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "After Sakyamuni gave up the ascetic life, he came to the place now called Bodhgaya and sat down beneath a tall, luxuriant pippala tree (also translated as the bodhi tree). He made a vow: “If I do not perfect the Buddha-fruit of right and equal enlightenment, I would rather shatter this body than ever rise from this seat!”"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "He readjusted his method of practice, upright in body and focused in mind, and sat in the full lotus posture beneath the bodhi tree, thinking in stillness and silent contemplation. His mind traced over his past experiences, and with great wisdom he contemplated the dependent-arising of the universe and human life and the original mind. After a long period of reflection he entered a state of “awakening,” reaching a condition of “knowing neither satisfaction nor disappointment,” as if errors vanished, wisdom welled up, darkness passed, and light arrived."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The sutras say that after Sakyamuni took his seat beneath the bodhi tree, he immediately perfected the fruit of the bodhi Way, and an auspicious light illuminated heaven and earth. The fruit of the bodhi Way is the supramundane holy fruit of Mahayana Buddhism; one who at once saves himself to attain Buddhahood and universally liberates sentient beings from the sea of suffering is called a bodhisattva."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "As Sakyamuni was about to become a Buddha, the auspicious light shot up to the palace of the demon of death and desire. The demon king wished to obstruct him from perfecting the Buddha-fruit, and so he commanded three demon maidens to go and bewitch him."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The three demon maidens were named Trishna (the love of craving), Rati (the love of pleasure), and Raga (the love of greed). Adorned in their finery, their garments fluttering in the breeze, their fragrance of orchid and musk wafting about, they came with graceful steps before Sakyamuni, offering their favors with smiling, peach-like faces. But Sakyamuni, deeply still at heart, looked and did not see them, just as the lotus emerges from the mud unstained."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The three demon maidens would not give up. They exhausted every seductive posture and wanton appearance. Sakyamuni admonished them, saying: “Your bodies may be fair, but your minds are not upright. You are like a fine crystal bottle filled with excrement — knowing no shame — and you still dare to come and delude people?” He then exercised his spiritual power, causing the demon maidens to see their own foul forms: only skeletons and joints, skin wrapped over sinews, bladders of pus, mucus and spittle, hideous and filthy. After the demon maidens saw this, their minds turned, and filled with shame and remorse they crawled away."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "When the demon king saw that the demon maidens had accomplished nothing, he was greatly enraged. Relying on his supernatural powers, he mustered all his demon generals, demon soldiers, poisonous insects, and strange beasts, and armed with poisonous thunder and poisonous arrows, they surged toward Sakyamuni like bees and ants."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Sakyamuni sat upright on the diamond throne, utterly without fear or agitation. The demon king’s poisonous thunder and poisonous arrows, as they came near, all scattered and fell. He said to the demon king: “The reason I have been able to attain the bodhisattva’s Way is that, from the countless kalpas of the three asamkhyeyas, I have amassed immeasurable merit and wisdom and fulfilled the six perfections and the myriad practices. Your coming to attack me — is this not like flinging an egg against a rock, bringing ruin upon yourself?”"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The demon king, refusing to heed the admonition and acting with sheer willfulness, led his host forward. Sakyamuni’s body emitted a pure light, and all the demon host fell down. The lord of heaven then asked the bodhisattva to assist; the bodhisattva exercised his power, and a flood surged forth, raging and swelling, drowning the evil demons and strange beasts, which retreated in confusion and defeat."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Sakyamuni sat in meditation beneath the bodhi tree for forty-eight days, and it was now the seventh day of the twelfth month. That night the sky was clear and the air serene, a gentle breeze blowing. He sat in silence on the diamond throne, manifesting the various realms of meditation-concentration, everywhere contemplating the immeasurable worlds of the ten directions and all things of past, present, and future, and seeing clearly the causes and effects of the three realms. In the early dawn of the eighth day of the twelfth month, the morning star appeared in the sky, and he was suddenly, greatly enlightened, attaining the unsurpassed Way and becoming the Buddha of complete, right and equal enlightenment."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The sutras say that when Sakyamuni became a Buddha, the great earth shook and all the gods, devas, and humans united in praise; the many afflictions and calamities of the three realms of hell, hungry ghosts, and animals were for a time stilled. The heavenly drums resounded together, producing wonderful sounds, and heaven rained mandarava flowers, manjushaka flowers, gold flowers, silver flowers, lapis lazuli flowers, jewel flowers, and lotus flowers of the seven treasures, and so on."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "At this point Sakyamuni had perfected the fruit of the bodhi Way, and so he began to propagate the teaching and gather disciples, transmitting the true principle of the universe he had realized."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "After Sakyamuni became a Buddha, he immediately set about teaching the Dharma and spreading the religion. He knew that the five attendants who had once followed and served him were at that time practicing asceticism earnestly in the Deer Park at Varanasi, and being ripe for conversion, he went to the Deer Park."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "In the Deer Park, Sakyamuni taught the Dharma to Kaundinya and the other four, saying: In seeking the great Way, one should avert two extremes. One is the life of pleasure and indulgence, which is a fall; the other is the ascetic life of forsaking desire, which is torment. Avoiding these two extremes and walking the middle way, relinquishing desire and abiding in stillness, one can bring about wisdom and enlightenment, and then may cultivate the “Eightfold Noble Path” and escape from the sea of suffering of birth and death. When the five heard this, they bowed their heads in homage and submitted. He also told them of the Dharma of the four truths of arising and ceasing, and Kaundinya and the other four took refuge in Sakyamuni and were at the same time ordained as monks, becoming his earliest followers."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Following the right path advocated by Sakyamuni, before long they cultivated and attained the fruit of the arhat."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "[The Eightfold Noble Path] Also called the eight holy paths, namely the eight kinds of dharma of the noble ones:"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "1. Right view, that is, correct knowledge and views."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "2. Right intention, that is, correct thinking."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "3. Right speech, that is, proper words."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "4. Right action, that is, proper conduct."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "5. Right livelihood, that is, a proper occupation or way of living."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "6. Right effort, that is, proper exertion."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "7. Right mindfulness, that is, correct recollection."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "8. Right concentration, that is, correct meditation. By cultivating this Eightfold Noble Path, one can realize the fruit of the arhat."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Again, there were monks who told of their various doubts and asked the Buddha to determine what to do and what to refrain from. When the Blessed One instructed and admonished them, each of them awakened. Pressing their palms together and respectfully agreeing, they followed the Blessed One’s command."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "After the Buddha had liberated these five monks, there were also Yashas, Kasyapa, Shariputra, Maudgalyayana, and others, twelve hundred in all, who came with their various doubts to ask the Buddha, and also begged the Buddha to teach them how to cultivate. After the Blessed One gave his instruction, they each awakened. Thereupon, pressing their palms together and respectfully agreeing, they cultivated as taught."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "[Command] To admonish and to instruct."
+    }
+   ]
+  },
+  {
+   "t": "h3",
+   "text": "Chapter 1: Leaving Home and Realizing the Fruit"
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Note: For ease of understanding and reference, each chapter is furnished with a heading as a doctrinal division; these do not belong to the sutra."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The Buddha said: Leave home and family, recognize the mind and reach the source, understand the unconditioned Dharma; such a one is called a sramana."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Opening the chapter and clarifying its meaning, it sets forth in general the essential point of cultivating the Way."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "[Recognize the mind and reach the source] Recognize one’s own original mind and thoroughly awaken to one’s original face. [The unconditioned Dharma] This is the reaching of the Buddha’s profound principle and awakening to the unconditioned Dharma spoken of in the next chapter — “Within, nothing is attained; without, nothing is sought. The mind is not tied to the Way, nor does it create karma. No thought, no doing; neither practice nor realization.” This is the most ultimate method of “cultivation.” (The word “cultivation” is here put in quotation marks because this method is neither practice nor realization.) It is the ultimate way spoken of in the eighteenth chapter — “The Buddha said: My Dharma is this: in thought, to think the thought of no-thought; in practice, to practice the practice of no-practice; in speech, to speak the speech of no-speech; in cultivation, to cultivate the cultivation of no-cultivation” — and the “vigorous in the unconditioned” spoken of in the twenty-seventh chapter. The Buddha said: “One who practices the Way is like a log floating on the water, moving along with the stream. If it does not touch either bank, is not seized by men, is not obstructed by ghosts and spirits, is not held fast by a whirlpool, and does not rot, I guarantee that this log will surely reach the sea. So too, a person who studies the Way and is not confused by emotions and desires, not disturbed by the many wrong views, and is vigorous in the unconditioned — I guarantee that such a person will surely attain the Way.” The Diamond Sutra says: “All sages and saints differ by reason of the unconditioned Dharma.” [Sramana] Translated into Chinese as “diligent and ceasing,” meaning diligently cultivating the Buddhist Way and stilling all afflictions; it is the general term for one who leaves home to cultivate the Way."
+    }
+   ]
+  },
+  {
+   "t": "quote",
+   "inline": [
+    {
+     "s": "Constantly observe the two hundred and fifty precepts, and in advancing and resting be pure, practicing the four noble truths as the way, and attain the arhat. An arhat can fly and transform, lives for vast kalpas, and dwells moving heaven and earth. Next is the non-returner. The non-returner, when his life ends, ascends to the nineteenth heaven and realizes the arhat. Next is the once-returner. The once-returner goes up once and returns once, and thereupon attains the arhat. Next is the stream-enterer. The stream-enterer, after seven deaths and seven births, realizes the arhat. One who has severed love and desire is like one whose four limbs are cut off, never to be used again."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "This passage speaks of realizing the four fruits of the shravaka vehicle: the fruit of the stream-enterer (the first fruit), the fruit of the once-returner (the second fruit), the fruit of the non-returner (the third fruit), and the fruit of the arhat (the fourth fruit)."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "[The two hundred and fifty precepts] The complete precepts of a monk. [The four noble truths] These are the four holy truths spoken of earlier. Cultivating the four holy truths yields four fruits: the fruit of the stream-enterer (the first fruit), the fruit of the once-returner (the second fruit), the fruit of the non-returner (the third fruit), and the fruit of the arhat (the fourth fruit). The stream-enterer, rendered into Chinese as “entering the stream,” means first entering the stream of the noble ones; at most, he must return only seven times between the human and heavenly realms before certainly realizing the fruit of the arhat. The once-returner, rendered as “one who comes once,” means one who has cultivated to this fruit, and after death ascends to heaven to live one life as a heavenly being, then is born again once into this world, and thereupon realizes the fruit of the arhat. The non-returner, rendered as “no return,” means one who has cultivated to this fruit realizes the fruit of the arhat in the fourth meditation heaven of the form realm (the “nineteenth heaven” of the scripture), no longer returning to the realm of desire. The fourth fruit, the arhat, rendered as “no birth,” means one who has cultivated to this fruit has already cut off the afflictions of views and thought, and, liberated from birth and death, has left the three realms."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "[The three realms] The realm of desire, the realm of form, and the realm of formlessness. The realm of desire is the world in which sentient beings with the two desires of lust and appetite dwell, from the six heavens of desire above, through humans and animals in the middle, down to the hells below. The realm of form is the world in which sentient beings without the two desires of lust and appetite, but still possessing material bodies, dwell, comprising the eighteen heavens of the four meditations. The realm of formlessness is the world in which sentient beings who no longer have material bodies dwell, abiding in mind and consciousness in deep, subtle meditation-concentration, comprising the four heavens of formlessness (the heaven of boundless space, the heaven of boundless consciousness, the heaven of nothingness, and the heaven of neither thinking nor not-thinking). These three realms are all the realms of the birth-and-death transmigration of ordinary beings. [One who has severed love and desire is like one whose four limbs are cut off, never to be used again] Although the afflictions of views and thought in the three realms are of many kinds, they all take love and desire as their root. Once love and desire are severed, one emerges from the wheel of suffering. Hence the comparison: once the four limbs are cut off, they will never function again."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "[Immeasurable eons of life] The lifespan is vast and without bound (an arhat has already transcended birth and death). “Kuang” means extremely far-reaching. [Dwelling and moving through heaven and earth] Whether in the heavens or in the human world, one dwells and moves freely as one pleases."
+    }
+   ]
+  },
+  {
+   "t": "h3",
+   "text": "Chapter 2: Severing Desire and Ending Pursuit"
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The Buddha said: “A renunciant monk severs desire and abandons love, recognizes the source of his own mind, penetrates the profound principle of the Buddha, and awakens to the unconditioned Dharma. Within, there is nothing attained; without, nothing sought. The mind is not tied to the Way, nor does it create karma. No thought, no doing; neither practice nor realization. Without passing through the stages, it is itself the supreme; this is called the Way.”"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "[Source of the mind] The mind is the root of all dharmas, hence “source of the mind.” The Treatise on the Bodhi Mind says: “When a deluded thought arises, know it and do not follow it. When delusion subsides, the source of the mind is empty and still; all virtues are complete and its wondrous functions are inexhaustible.” The Calming and Contemplation (Zhiguan) says: “Sitting cross-legged with hands folded, sealing the lips and stilling the tongue, contemplating reality, when the source of the mind rests in a single point, the dharma-realm is equally still.” It also says: “If you wish to contemplate and know, you must know the source of the mind; the source of the mind is non-dual, and then all dharmas are the same as empty space.”"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "[Awakening to the unconditioned Dharma] The unconditioned Dharma spoken of here is exactly: “Within, there is nothing attained; without, nothing sought. The mind is not tied to the Way, nor does it create karma. No thought, no doing; neither practice nor realization. Without passing through the stages, it is itself the supreme; this is called the Way.” It is the unconditioned Dharma of which the Diamond Sutra says, “All sages and saints differ through the unconditioned Dharma.” This is to “cultivate” in accordance with the ultimate truth — the reality of all dharmas. Although one cultivates the Way, one does not cling to the marks of the Way; therefore “within, there is nothing attained; without, nothing sought; the mind is not tied to the Way, nor does it create karma; no thought, no doing; neither practice nor realization.” It is the sudden teaching that need not pass through the fifty-two stages but directly attains Buddhahood; hence it is said: “Without passing through the stages, it is itself the supreme; this is called the Way.” The Qing scholar Peng Jiqing praised: “This sutra embraces both the sudden and the gradual. First it declares, ‘Recognize the mind, reach the source, and understand the unconditioned Dharma, and be called a monk.’ Then it says, ‘The mind is not tied to the Way, nor does it create karma; no thought, no doing; neither practice nor realization; without passing through the stages, it is itself the supreme; this is called the Way.’ The purport of non-dwelling in the Diamond Sutra and the door of non-duality in the Vimalakirti Sutra do not go beyond this!”"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "[The fifty-two stages] From a common person to Buddhahood, the Great Vehicle has fifty-two stages: the ten faiths (the “ten” indicates that it contains ten stages; likewise below), the ten abidings, the ten practices, the ten dedications, the ten grounds, equal enlightenment, and wondrous enlightenment (the Buddha fruit). [The mind is not tied to the Way, nor does it create karma] The mind does not cling to the marks of cultivation, nor does it create karma."
+    }
+   ]
+  },
+  {
+   "t": "h3",
+   "text": "Chapter 3: Cutting Off Love and Renouncing Greed"
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The Buddha said: “One who shaves head and beard to become a monk and receives the Dharma of the Way renounces worldly wealth and asks only for enough alms. One meal a day, one night under a tree — take care not to seek more! What makes people deluded and dull are love and desire.”"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Love and desire are the coarsest afflictions and obstacles of a cultivator. Greed, hatred, and delusion begin here; hence one creates karma, hence one receives retribution, hence one revolves in birth and death. To renounce love and desire and receive the Way — this is the crux of whether one can practice accordingly. Master Ouyi said: He praises the superior ascetic practices as the essential means of realizing the Way."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Cultivators of course all know the six realms of transmigration and the law of cause and effect, and that they themselves are on the bodhi path. But when they encounter circumstances and conditions, they are either deluded by external objects or drawn along by karmic bonds, and so they go against the Way. This is exactly what is meant by “What makes people deluded and dull are love and desire.”"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The Lu Shi Chunqiu (The Spring and Autumn Annals of Mr. Lu) tells the story of “A man of Qi seizing gold”: A man of Qi desired to get gold. Early in the morning he put on his clothes and cap and went to the place where gold was sold. Seeing someone holding gold, he snatched it and seized it. The constable caught him, bound him, and asked: “Everyone is present here; why did you seize that man’s gold?” He replied: “I truly did not see the people — I only saw the gold.”"
+    }
+   ]
+  },
+  {
+   "t": "h3",
+   "text": "Chapter 4: Good and Evil Made Clear"
+  },
+  {
+   "t": "quote",
+   "inline": [
+    {
+     "s": "The Buddha said: “Living beings accomplish good through ten things, and likewise accomplish evil through ten things. What are the ten? Three of body, four of speech, three of mind. The three of the body are killing, stealing, and sexual misconduct. The four of speech are divisive speech, harsh speech, false speech, and idle talk. The three of the mind are envy, anger, and delusion. These ten things, not following the holy path, are called the ten evil deeds. If these evils are stopped, they are called the ten good deeds.”"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Practicing the ten wholesome courses of action is the basic virtue of a Buddhist, able to sever the suffering of the three evil realms (the animal realm, the hungry ghost realm, and the hell realm), and is the foundation for accomplishing a human body, a celestial body, and all holy fruits (arhat, pratyekabuddha, bodhisattva, buddha)."
+    }
+   ]
+  },
+  {
+   "t": "h3",
+   "text": "Chapter 5: The Turning Point of Rise and Fall"
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The Buddha said: “When a person has many faults and does not repent of them, but abruptly stills his mind, the offenses come upon his body, as water returns to the sea, gradually growing deep and vast. If a person has faults, understands them and recognizes his error, reforms evil and practices good, the offenses naturally vanish, as a sick person who sweats gradually recovers.”"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "A person has all kinds of faults yet does not know enough to repent, so as to abruptly still the mind that does evil — then his body becomes the place where offenses gather, as water returns to the sea, gradually growing deep and vast. If a person has faults and immediately knows that they are wrong, and so reforms evil and practices good, the offenses naturally vanish, as a sick person sweats and gradually recovers."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Whether one repents or not — this is the turning point of ascent and fall, the watershed between the common and the holy. We should always be vigilant, courageous in correcting faults, and skillful in correcting faults!"
+    }
+   ]
+  },
+  {
+   "t": "h3",
+   "text": "Chapter 6: Enduring Evil without Anger"
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The Buddha said: “When an evil person hears of goodness and deliberately comes to disturb you, you should restrain yourself and have no anger or reproach; the one who comes to do evil brings evil upon himself.”"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "When an evil person hears that you are practicing goodness, he deliberately comes to disrupt and cause trouble. Against such unreasonable provocation, you should still the discontent in your mind, neither angering nor reproaching him. In this way, he seeks to defile you, but what is defiled is himself."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "This is the wondrous method of overcoming evil with goodness."
+    }
+   ]
+  },
+  {
+   "t": "h3",
+   "text": "Chapter 7: Evil Returns to Its Own Body"
+  },
+  {
+   "t": "quote",
+   "inline": [
+    {
+     "s": "The Buddha said: “There was a person who heard that I uphold the Way and practice great loving-kindness, so he came and reviled the Buddha. The Buddha was silent and did not respond. When the reviling ceased, the Buddha asked: ‘If you offer a gift to a man and he does not accept it, does the gift return to you?’ He replied: ‘It returns!’ The Buddha said: ‘Now you revile me, and I do not accept it; you bear the misfortune yourself and it returns upon your own body! Like an echo answering a sound, like a shadow following a form, one can never escape it. Take care not to do evil.’”"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "There was a person who heard that the Buddha firmly upheld the bodhi path and practiced great loving-kindness to save living beings, so he came to revile the Buddha. The Buddha remained silent and did not respond. When the man had exhausted his abuse and stopped, the Buddha asked him: “You give a gift to a man, and he does not accept it — does the gift return to you?” The man answered: “Yes, it returns.” Then the Buddha said: “Now you revile me, and I do not accept it; all these curses will be manifested upon your own body!” All curses against others return to oneself, just as an echo answers a sound and a shadow follows a form, without the slightest error. So do not curse others."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "When ordinary people are reviled, they all glare back in anger, and even repay abuse with more abuse. But the Buddha not only remained calm and composed; he also explained the principle that “those who do evil to others only harm themselves” and admonished him to beware of bringing harm upon himself, so as to remove the source of his calamity. How incomparable is the Buddha’s compassion!"
+    }
+   ]
+  },
+  {
+   "t": "h3",
+   "text": "Chapter 8: Dust and Spittle Defile Only Oneself"
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The Buddha said: “An evil person harming a sage is like spitting upward at the sky — the spittle does not reach the sky but falls back upon himself; or like casting dust against the wind — the dust does not reach the other but falls back and covers his own body. The sage cannot be defamed; the calamity will surely destroy oneself.”"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "An evil person harming a sage is like looking up and spitting — the spittle cannot reach heaven but falls back on his own face; or like raising dust against the wind — the dust cannot reach ahead but stains his own body. One must not slander sages and saints, because the calamity brought by slandering them will inevitably destroy oneself."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "[Ben ("
+    },
+    {
+     "s": "bèn"
+    },
+    {
+     "s": ")] dust; used here as a verb."
+    }
+   ]
+  },
+  {
+   "t": "h3",
+   "text": "Chapter 9: Guarding the Resolve and Fulfilling the Way"
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The Buddha said: “One who is broadly learned and loves the Way will find the Way difficult to comprehend; but one who guards his resolve and practices the Way will find the Way great indeed.”"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "One who reads widely in the sutras and commentaries and loves the Way cannot comprehend the Way; only by single-mindedly and steadfastly practicing the Way can one understand that this is the great Way!"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The Buddha’s Dharma is the great Way that severs afflictions, destroys ignorance, and realizes nirvana. If one merely reads, writes, and lectures about it without practicing as it teaches, then one is necessarily working among names and forms and making essays out of subtle words — how could one ever comprehend what the Buddha’s Dharma is (“the Way is difficult to comprehend”)?"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "[Names and marks] The Buddhist terms and expressions are called “names and marks.”"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "To love the Way through broad learning yet not guard one’s resolve and practice it — this is the most regrettable thing. For “loving the Way” has already taken the most valuable first step, and “broad learning” shows that one already has the ability to choose the Dharma. Now one need only select the method most suited to oneself and practice it steadfastly and single-mindedly (guarding the resolve and fulfilling the Way), and one has set foot on the golden path."
+    }
+   ]
+  },
+  {
+   "t": "h3",
+   "text": "Chapter 10: Rejoicing in Giving Attains Blessings"
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The Buddha said: “When one sees a person give of the Way and rejoices in helping him, the merit gained is very great. A monk asked: ‘Is this merit exhausted?’ The Buddha said: ‘It is like the flame of one torch — when thousands and hundreds of people each come with their torches to take a share of the fire, to cook food and dispel darkness, this torch remains as before; so too is the merit.’”"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Seeing another person spread the Dharma and rejoicing with him — this rejoicing (anumodana) brings very great merit. A monk asked: “If many rejoice, and each person gains great merit, will the merit of spreading the Dharma not be exhausted by them?” The Buddha answered: “No. The merit of spreading the Dharma is like the fire of a single torch. When thousands and hundreds of people come with torches to light their own flames and use this fire to cook food and dispel darkness, the fire that has lit thousands and hundreds of torches remains just as before. So too is the merit of spreading the Dharma.”"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "[Du] An archaic form of the character “du” (to see)."
+    }
+   ]
+  },
+  {
+   "t": "h3",
+   "text": "Chapter 11: The Unconditioned Is Supreme"
+  },
+  {
+   "t": "quote",
+   "inline": [
+    {
+     "s": "The Buddha said: “Feeding a hundred evil persons is not equal to feeding one good person; feeding a thousand good persons is not equal to feeding one who upholds the five precepts; feeding ten thousand precept-holders is not equal to feeding one stream-enterer; feeding a million stream-enterers is not equal to feeding one once-returner; feeding ten million once-returners is not equal to feeding one non-returner; feeding a hundred million non-returners is not equal to feeding one arhat; feeding a billion arhats is not equal to feeding one pratyekabuddha; feeding ten billion pratyekabuddhas is not equal to feeding one of the Buddhas of the three times; feeding a hundred billion Buddhas of the three times is not equal to feeding one who has no thought, no abiding, no practice, and no realization.”"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Offering food to a hundred evil persons is not as good as offering to one good person; offering food to a thousand good persons is not as good as offering to one precept-holder; offering food to ten thousand precept-holders is not as good as offering to one stream-enterer; offering food to a million stream-enterers is not as good as offering to one once-returner; offering food to ten million once-returners is not as good as offering to one non-returner; offering food to a hundred million non-returners is not as good as offering to one arhat; offering food to a billion arhats is not as good as offering to one pratyekabuddha; offering food to ten billion pratyekabuddhas is not as good as offering to one of the Buddhas of the three times; offering food to a hundred billion Buddhas of the three times is not as good as offering to one who has no thought, no abiding, no practice, and no realization."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Here the Buddha especially emphasizes the supremacy of no-thought, no-abiding, no-practice, no-realization (the unconditioned Dharma)."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "[Feed] To offer with food and drink."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "To make the text easier to understand, some terms need explanation. Readers familiar with these terms may pass over them."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "[Small Vehicle] The method of the shravaka (voice-hearer) and the pratyekabuddha, with the aim of self-cultivation and self-benefit. [Two Vehicles] The Shravaka Vehicle and the Pratyekabuddha Vehicle. [Three Vehicles] The Small, Middle, and Great Vehicles. The Small Vehicle is the Shravaka Vehicle, the Middle Vehicle is the Pratyekabuddha Vehicle, and the Great Vehicle is the Bodhisattva Vehicle. [Great Vehicle] The method of the bodhisattva, aimed at saving the world and benefiting others; its highest fruit is Buddhahood. The Great Vehicle, from a common person to Buddhahood, must pass through fifty-two stages. “Vehicle” means conveyance; it is a metaphor that the Dharma is like a ferry-boat that carries living beings from this shore of birth and death to the other shore of nirvana. The Bodhisattva Vehicle ferries many living beings, hence it is called the Great Vehicle; the Shravaka Vehicle and Pratyekabuddha Vehicle ferry few, hence they are called the Small Vehicle. [Shravaka Vehicle] One who hears the Buddha’s voice and cultivates the method of the four truths and thereby realizes the Way. The Shravaka Vehicle has four fruits: stream-enterer (first fruit), once-returner (second fruit), non-returner (third fruit), and arhat (fourth fruit). Attaining arhatship, one transcends birth and death and leaves the three realms. [Pratyekabuddha Vehicle] One who cultivates the twelve links of dependent origination; its highest fruit is the pratyekabuddha fruit. From a common person to a pratyekabuddha, the practice emphasizes awakening and realization; wherever one awakens is wherever one realizes, so there are no evident stages to be spoken of."
+    }
+   ]
+  },
+  {
+   "t": "h3",
+   "text": "Chapter 12: Enumerating the Difficulties to Urge Practice"
+  },
+  {
+   "t": "quote",
+   "inline": [
+    {
+     "s": "The Buddha said: “For people there are twenty difficulties. To give when poor is difficult; to study the Way when noble and wealthy is difficult; to cast off one’s life and face death is difficult; to see the Buddha’s scriptures is difficult; to be born in an age when the Buddha appears is difficult; to withstand the temptations of beauty and desire is difficult; to see what is desirable and not seek it is difficult; to be insulted without anger is difficult; to have power and not misuse it is difficult; to be unmoved by matters one encounters is difficult; to study broadly and investigate deeply is difficult; to destroy pride and self-conceit is difficult; not to slight the unlearned is difficult; to practice the mind with equal regard is difficult; not to speak of right and wrong is difficult; to meet a good spiritual friend is difficult; to see one’s nature and study the Way is difficult; to save and transform living beings according to circumstances is difficult; to see states without the mind being moved is difficult; to be skilled in expedient means is difficult.”"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "There are twenty things very hard for people to do, called the twenty difficulties: for the poor to give alms; for the noble and wealthy to study the Way; to sacrifice one’s life to face death; to see the Buddha’s scriptures; to live in an age when the Buddha is present; to resist the temptation of beauty and desire; to see what one likes and not pursue it; to be insulted without anger; to have power and not abuse it; to encounter matters with an unmoved mind; to study widely and investigate deeply; to destroy pride and arrogance; not to look down on the unlearned; to practice the mind with equal regard and without discrimination; not to speak of right and wrong; to meet a good spiritual friend; to see one’s own nature and study the Way; to teach and save living beings according to conditions and one’s share; to see states without the mind being moved; to be skilled in the expedient means of teaching each person accordingly."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Here the Buddha enumerates the twenty difficulties as an exhortation."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "[Good spiritual friend] One who can teach living beings to stay away from evil dharmas and practice the right Dharma. [To see one’s nature and study the Way is difficult] It is easy to study and practice on the level of phenomena and marks, but hard to see one’s own nature and study the Way. Yet to see one’s nature and study the Way is in truth the perfect and sudden method. Master Ouyi said: “Without seeing the true nature of the present single thought of mind, one can never learn the supreme Way” (from the Explanation of the Sutra of the Forty-Two Chapters). [Original nature] That is what the Chan school calls one’s original face."
+    }
+   ]
+  },
+  {
+   "t": "h3",
+   "text": "Chapter 13: Comprehending the Ultimate Way"
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "A monk asked the Buddha: “By what causes and conditions can one know past lives and comprehend the ultimate Way?” The Buddha said: “Purify the mind and guard the resolve, and you can comprehend the ultimate Way. It is like polishing a mirror: when the dust is gone, clarity remains. Sever desire and seek nothing, and you will obtain the knowledge of past lives.”"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "A monk asked the Buddha: “By what kind of causes and conditions can one obtain the spiritual power of knowing past lives, and come to understand and penetrate the supreme Way?” The Buddha answered: “Purify the mind and guard the resolve, and you can comprehend the ultimate Way. It is like polishing a mirror: when the dust is gone, clarity remains. Sever desire and seek nothing, remove the dust of the mind, and the innate spiritual powers will naturally manifest; you will obtain the knowledge of past lives.”"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "[Knowledge of past lives] The spiritual power that knows the lives of past existences and what one did in them; it is one of the six spiritual powers. [Ultimate Way] The supreme Way, that is, the One Buddha Vehicle. [One Buddha Vehicle] The single teaching that can lead one to Buddhahood. [Purify the mind] To remove the distinctions of emotion and consciousness."
+    }
+   ]
+  },
+  {
+   "t": "h3",
+   "text": "Chapter 14: What Is Good, What Is Great"
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "A monk asked the Buddha: “What is good? What is greatest?” The Buddha said: “One who attains the Way and guards the true is good; one whose resolve accords with the Way is greatest.”"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "A monk asked the Buddha: “What is good? What is greatest?” The Buddha answered: “One who attains the Way and guards the true self is most good; one whose resolve accords with the Way is greatest.”"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "[Attaining the Way] The wisdom by which each of the three vehicles severs delusion and realizes the principle is called the Way; practicing the three studies and producing this wisdom is called attaining the Way. [Three studies] Precepts, samadhi (concentration), and wisdom. Precepts are the prohibitions, set forth in the Vinaya collection, which prevent people from committing all evil deeds of body, speech, and mind. Samadhi is concentration, set forth in the Sutra collection, which enables people to quiet thought and clarify the mind. Wisdom is wisdom, set forth in the Abhidharma collection, which enables people to discover truth and sever ignorance. Practicing these three studies, one can attain concentration from precepts, and from concentration produce wisdom, and finally obtain the undefiled fruit of the Way; hence the three studies are also called the “three studies of no-outflow.”"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "[Guarding the true] The Record of the Mirror of the School says: “The gate of destroying the false self and revealing the true self.”"
+    }
+   ]
+  },
+  {
+   "t": "h3",
+   "text": "Chapter 15: What Is Power, What Is Clarity"
+  },
+  {
+   "t": "quote",
+   "inline": [
+    {
+     "s": "A monk asked the Buddha: “What has the most power? What is most clear?” The Buddha said: “Forbearance has the most power, because it harbors no evil, and is moreover peaceful and healthy. The one who is patient harbors no evil and must be honored by others. When the dust of the mind is entirely extinguished, and it is pure and without stain or blemish, this is the most clear. From before heaven and earth arose, down to the present day, all that is in the ten directions, there is nothing unseen, nothing unknown, nothing unheard; having attained omniscient wisdom, this can be called clear indeed!”"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "A monk asked the Buddha: “What is most powerful? What is most clear?” The Buddha answered: “Forbearance is most powerful, because it harbors no evil, and moreover brings peace and health. The patient one harbors no evil and is sure to be honored by people. When the dust of the mind is entirely extinguished, and it is pure and without stain, this is the most clear. For one whose mind-dust is extinguished, from before heaven and earth arose to the present day, all that exists in the ten directions is nothing unseen, nothing unknown, nothing unheard; having attained omniscient wisdom, this may be called the most clear!”"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "[Peace and health] Peace and good health. [Down to the present day] Until today. [Omniscient wisdom] The wisdom that knows all inner and outer marks of dharmas."
+    }
+   ]
+  },
+  {
+   "t": "h3",
+   "text": "Chapter 16: Abandoning Love to See the Way"
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The Buddha said: “When a person harbors love and desire and does not see the Way, it is like clear water stirred by hand — though many come to gaze, none can see their reflection. Because people’s love and desire intermingle, turbidity arises in the mind, and so they do not see the Way. You monks should abandon love and desire. When the defilement of love and desire is exhausted, the Way can be seen!”"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "A person harbors love and desire and therefore does not see the Way, like clear water stirred by hand — many come to be reflected, yet none can see their image in the water. It is precisely because love and desire rise and fall interwoven that the mind becomes turbid, and so one does not see the Way. You monks should abandon love and desire. When the defilement of love and desire is entirely removed, then the Way can be seen!"
+    }
+   ]
+  },
+  {
+   "t": "h3",
+   "text": "Chapter 17: When Light Comes, Darkness Departs"
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The Buddha said: “One who sees the Way is like one holding a torch and entering a dark room: the darkness immediately vanishes, and the light alone remains. When one who studies the Way sees the truth, ignorance immediately vanishes, and the light remains forever!”"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "One who sees the Way is like holding a torch and entering a dark room: the darkness immediately vanishes, and only the light remains. When one who studies the Way realizes the truth (sees the truth), his ignorance is extinguished, and the light of his own nature remains forever!"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "[Seeing the truth] Realizing truth. The Shravaka Vehicle must be at least a stream-enterer before it can see the truth; a bodhisattva must be at least at the first ground before it can see the truth. [First ground] The first of the ten grounds among the fifty-two stages of the Bodhisattva Vehicle."
+    }
+   ]
+  },
+  {
+   "t": "h3",
+   "text": "Chapter 18: Thoughts Are Equally Empty in Origin"
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The Buddha said: “My Dharma is: in thought, to think the thought of no-thought; in action, to act the action of no-action; in speech, to speak the speech of no-speech; in cultivation, to cultivate the cultivation of no-cultivation. Those who comprehend are near; those who are deluded are far! The Way is cut off from words, not bound by things; a hair’s breadth of difference, and it is lost in an instant.”"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The Buddha said: “My Dharma is this: to think this thought of no-thought, to practice this action of no-action, to speak this speech of no-speech, to cultivate this cultivation of no-cultivation. Those who comprehend are near the Way; those who are deluded are far from it! The ultimate truth (the Way) cannot be spoken (the Way is cut off from words), and transcends all things (not bound by things). As soon as one touches being or non-being, it is separated by heaven and earth; as soon as one enters into thought, it is no longer the Way.”"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The World-Honored One revealed: thought, action, speech, and cultivation must all be free of marks and transcend being and non-being — this is the Dharma I have taught."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "[Comprehend] The sense of grasping, being able to understand and penetrate the principle. [The Way cut off from words] The ultimate truth (the Way) cannot be spoken. [Not bound by things] The ultimate truth (the Way) transcends all things. [Instant] A moment; an instant."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "This chapter and the second chapter’s “Within, there is nothing attained; without, nothing sought; the mind is not tied to the Way, nor does it create karma; no thought, no doing; neither practice nor realization; without passing through the stages, it is itself the supreme; this is called the Way” are both discussing the ultimate Dharma — the supreme Way."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The Essentials of the Transmission of Mind says: “Apart from all marks, living beings and Buddhas are no different; only be without thought, and that is the ultimate. If a practitioner does not directly become without thought, he may cultivate for countless kalpas and never accomplish the Way, bound by the achievements of the three vehicles and unable to gain liberation. Yet the realization of this mind has speed and slowness: some, upon hearing the Dharma in a single thought, attain no-thought; some reach the ten faiths, the ten abidings, the ten practices, the ten dedications and then attain no-thought; some reach the ten grounds and then attain no-thought. Whether long or short, when no-thought is attained, one rests; there is nothing further to cultivate or realize. In truth there is nothing attained; this is real and not false. To attain it in a single thought and to attain it at the ten grounds are exactly equal in function, with no deeper or shallower — only through the kalpas, one has vainly endured toil.”"
+    }
+   ]
+  },
+  {
+   "t": "h3",
+   "text": "Chapter 19: Contemplating the False and the True Together"
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The Buddha said: “Contemplate heaven and earth and think of impermanence. Contemplate the world and think of impermanence. Contemplate the spiritual awareness, and that is bodhi. Knowing and recognizing thus, one attains the Way swiftly!”"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Contemplate heaven and earth, understanding that these are a dream, an illusion, a bubble, a shadow. Contemplate the world, understanding that it too is a dream, an illusion, a bubble, a shadow. Contemplate your own nature — this is enlightenment (bodhi). Knowing thus, recognizing thus, one swiftly attains the Way!"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "This is the contemplation that sets aside marks and returns to nature. Contemplating thus constantly, one attains the Way swiftly!"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "[Impermanent] That is, impermanence. [Impermanence] All dharmas are illusory and unreal, arising and ceasing in flux, not abiding even for an instant; this is called impermanence. [Spiritual awareness] That is, one’s original nature. [Bodhi] Rendered into Chinese as “enlightenment.”"
+    }
+   ]
+  },
+  {
+   "t": "h3",
+   "text": "Chapter 20: Investigating That the Self Is Empty in Origin"
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The Buddha said: “One should reflect that the four great elements in the body each have their own name, and in all of them there is no self. Since there is no self at all, it is all just like an illusion!”"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "One should constantly reflect: the body’s flesh, skin, bones, and the five viscera and six organs, though each has its own name, once a person dies and the four elements separate, seeking a self within them one can find nothing at all. Since there is no self, what about anything else! Therefore everything is illusory."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The four great elements are the earth element, the water element, the fire element, and the wind element. Earth has hardness as its nature, water has wetness as its nature, fire has warmth as its nature, and wind has movement as its nature. All tangible matter in the world possesses the four natures of solidity, wetness, warmth, and movement, hence they are called the “great” elements. For example: the body’s hair, nails, teeth, skin, bones, sinews, and flesh are the earth element of solidity; saliva, tears, pus, blood, phlegm, and other fluids are the water element of wetness; warmth and heat are the fire element of warmth; each inhalation and exhalation is the wind element of movement. Likewise, the branches and trunks of plants are the earth element of solidity; the moisture within them is the water element of wetness; absorbing nutrients from the soil to develop is the fire element of warmth; and absorbing carbon dioxide and giving out oxygen is the wind element of movement."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Once a person dies, the body rots away and is no more: bones and flesh return to earth, wetness returns to water, warmth returns to fire, and breath returns to wind. Where then is the body! So the body is not you. The Gist of Cultivating the Mind says: “When the hundred bones disintegrate, they return to fire and wind; the one thing that forever is aware (one’s own nature) covers heaven and covers earth.” That awareness which covers heaven and earth is what you truly are. Since the body is not you, what is there in the body, mind, and world built upon it to covet? What is there to resent? Life is nothing but a dream of transmigration. The first step of practice is to wake up from this dream."
+    }
+   ]
+  },
+  {
+   "t": "h3",
+   "text": "Chapter 21: Chasing Fame and Losing the Fundamental"
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The Buddha said: “People follow their emotions and desires in seeking reputation; when the reputation becomes prominent, the body is already dead! Coveting the world’s enduring fame without studying the Way, one wastes effort and exhausts the body. It is like burning incense — though people smell the fragrance, the incense has already become ashes; and the fire that endangers the body follows behind.”"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "People follow their own emotions and desires in pursuing fame; by the time the fame becomes prominent, the body is already dead! Coveting the world’s enduring fame without studying the Way, one wastes effort and exhausts the body in vain. Pursuing fame is like burning incense — though people smell the fragrance, the incense itself has burned to ashes! And the evil consequences of chasing fame do not end here: as you press forward in pursuit of fame, the fire that endangers this life and lives to come is burning fiercely behind you."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "“"
+    },
+    {
+     "s": "Where are the generals and ministers of the past and present? A heap of wild graves buried in grass” — this speaks of the emptiness of fame and rank; “to lead the yellow hound and go out the east gate — how could that ever be possible?” — this speaks of how high rank and great renown endanger the body."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "[Enduring fame] The worldly name and power that people deludedly cling to, thinking it will last forever. [The fire that endangers the body] This has two meanings: first, the troubles brought by contending for fame and profit in this life; second, the troubles brought to lives to come by the karma created thereby. In truth, the greatest calamity lies in this: because one wastes energy and time pursuing fame, one delays studying the Way and realizing the Way; and by the time one can hear the Buddha’s Dharma again, who knows in what life and what world it will be! [Leading the yellow hound out the east gate] Under the Second Qin emperor, the chancellor Li Si was envied by Zhao Gao and framed, and was executed by mid-section severing at the marketplace of Xianyang, and his three clans were exterminated. Before his execution he said to his son: “I wish to join you in leading the yellow hound and going out the east gate of Shangcai to chase the cunning hare — how could that be possible!” [Three clans] The father’s clan, the mother’s clan, and the wife’s clan."
+    }
+   ]
+  },
+  {
+   "t": "h3",
+   "text": "Chapter 22: Wealth and Beauty Bring Suffering"
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The Buddha said: “As for wealth and beauty, people do not forsake them. It is like honey upon the edge of a blade — not enough for the pleasure of a single meal; yet a child licking it brings upon himself the calamity of a cut tongue.”"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "As for wealth and beauty, people always pursue them unceasingly. This is like the honey on a blade’s edge: there is only a little, not enough to make one meal delightful; yet a child who licks it brings upon himself the calamity of a cut tongue."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "“"
+    },
+    {
+     "s": "The honey on the blade” is a metaphor for wealth and beauty; the “child” is a metaphor for the foolish person who does not know what is at stake; and “the calamity of a cut tongue” is a metaphor for the evil fruits that reach to this life and the next."
+    }
+   ]
+  },
+  {
+   "t": "h3",
+   "text": "Chapter 23: Wife and Children Are Worse Than Prison"
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The Buddha said: “People are bound by wife, children, and dwellings even more than by prison. Prison has a time of release, but for wife and children one has no thought of staying far away. In passionate love for beauty, what fear is there of running about! Even with the peril of a tiger’s mouth, the mind gladly submits, casting itself into the mud and drowning itself. Therefore they are called common people. One who sees through this gate is an arhat who has left the dust of the world.”"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "People are bound by their wives, children, and dwellings even more cruelly than by chains and shackles in prison. Prison still has a day when the sentence is served and one is released, but one’s wife and children are never out of one’s heart. As long as there is passionate love for the opposite sex, what fear is there of toil and danger! Even at the peril of being devoured by a tiger, one gladly submits; it is like casting oneself into a bog and drowning oneself. Such a person is called a common person. If one can see through this gate, one is an arhat who has left the dust of the world."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Wife, children, and dwellings are worse than prison; the peril is the same as a tiger’s mouth, and one should quickly keep away from them."
+    }
+   ]
+  },
+  {
+   "t": "h3",
+   "text": "Chapter 24: Lust Obstructs the Way"
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The Buddha said: “There is no craving greater than lust. Lust as a desire has no magnitude beyond itself. Fortunately there is only this one; if there were two of the same kind, then no one under heaven could cultivate the Way.”"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "There is no craving of love more powerful than the craving for feminine beauty. The desire of lust is incomparably great. Fortunately this powerful desire is only one — lust; if besides it there were another desire of equally immeasurable magnitude, then no one in the world could attain the Way. (This strongly states how fierce the harm of lust is.)"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "In the Surangama Sutra, the Buddha said: “You cultivate samadhi, which is originally meant to transcend the dust of the world; if the mind of lust is not removed, the dust cannot be transcended. Even with much wisdom, when samadhi appears, if you do not sever lust, you must surely fall into the demonic path.”"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Western Direct Pointing"
+    },
+    {
+     "s": "·"
+    },
+    {
+     "s": "Yongjia Collection on the Precepts against Lust” says: “Better to approach a venomous snake than to be intimate with a woman’s beauty. Why? A venomous snake kills a person — one death and it is over; but a woman’s beauty binds one for a hundred thousand kalpas. Every kind of torture and torment, pain without end; contemplate this deeply and reflect — it is hard to draw near. The sutra says: ‘If there were another delusion as strong as lust, no living being in all the earth would attain the Way.’”"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "[Torture and torment] The ancient punishment of burning at the stake. It generally refers to severe punishments, and is also used as a metaphor for unbearable suffering."
+    }
+   ]
+  },
+  {
+   "t": "h3",
+   "text": "Chapter 25: The Fire of Desire Burns the Body"
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The Buddha said: “As to love and desire for people, they are like holding a torch and walking against the wind — one is sure to suffer the calamity of burning one’s hand.”"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "As to people, the desire of passionate love is like holding a torch and walking against the wind — one is sure to suffer the calamity of burning one’s hand."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Western Direct Pointing"
+    },
+    {
+     "s": "·"
+    },
+    {
+     "s": "Yongjia Collection on the Precepts against Lust” says: “(A woman’s beauty) corrupts virtue and obstructs the Way; the offense is most grave. One should keep far from it, as one would avoid an enemy. Therefore the wise regard it in the thought of a venomous snake, and would rather come near a venomous snake than be intimate with a woman’s beauty.”"
+    }
+   ]
+  },
+  {
+   "t": "h3",
+   "text": "Chapter 26. Mara Tempts the Buddha"
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The heavenly beings offered celestial maidens to the Buddha, seeking to corrupt his mind of the Way. The Buddha said: “You are but skin-bags stuffed with filth. Why have you come here? Begone! I have no use for you.” The heavenly beings revered him the more, and asked him about the Way. The Buddha expounded it for them, and at once they attained the fruit of stream-entry."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The heavenly beings offered fairies to the Buddha, hoping to destroy his aspiration. The Buddha said to them: “You are nothing but foul leather bags crammed with impurities. Why have you come here? Be off at once — do not make me sick.” Thereupon the heavenly beings respected the Buddha even more, and begged him for the Dharma. The Buddha then explained it for them, and the heavenly beings realized the fruit of stream-entry."
+    }
+   ]
+  },
+  {
+   "t": "h3",
+   "text": "Chapter 27. Non-Attachment Attains the Way"
+  },
+  {
+   "t": "quote",
+   "inline": [
+    {
+     "s": "The Buddha said: One who practices the Way is like a log in the river, borne along by the current. If it does not run aground on either bank, is not seized by men, is not hindered by ghosts and spirits, is not caught in a whirlpool, and does not rot, I guarantee it will reach the sea. The student of the Way who is not deluded by passion and desire, not harassed by the many false views, and presses on with diligence and without contrivance — I guarantee that such a one will surely attain the Way."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "One who studies the Way is like a piece of wood floating in the river, drifting with the current. So long as it is not snagged on either bank, not carried off by someone, not blocked by ghosts and spirits, not held fast in a whirlpool, and does not rot, I assure you it will surely reach the sea. Likewise, a student of the Way, so long as he is not deluded by passion and desire, not disturbed by the many false views, and advances with vigor without contrived striving — I assure you that such a person will certainly attain the Way."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "[xun] along; following."
+    },
+    {
+     "s": "[rao] to disturb; to harass."
+    }
+   ]
+  },
+  {
+   "t": "h3",
+   "text": "Chapter 28. Do Not Give Rein to the Mind-Horse"
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The Buddha said: Trust not your mind, for your mind is not to be trusted. Above all, beware of dalliance with the opposite sex, for such dalliance breeds calamity. Only when you have attained arhatship may you trust your own mind."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Above all, do not trust your own thoughts (the mind), for your thoughts cannot be trusted. Be most careful not to associate with the opposite sex, for such contact gives rise to misfortune. Only after attaining the fruit of arhatship may you trust your own mind."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "[yi] the mind; that which the heart schemes and ponders."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The thoughts of an ordinary person are ever deluded and turned upside down — like a moth that hurls itself upon the flame. One pities it and drives it away, yet the instant one is heedless it flings itself back, until it is burnt to death. The moth dies not because of the fire but because of the error of its own mind. So too a person who meets the opposite sex and casts himself into the fire of ruin: the fault lies in himself, not in the thing. From beginningless eons, sentient beings have wandered in the round of birth and death solely because they indulged their passions and followed their thoughts. How great indeed is the harm that the mind does to us!"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "“"
+    },
+    {
+     "s": "Only after attaining the fruit of arhatship may you trust your own mind.” For the arhat has already severed the delusion of false views and the delusion of false thought, so that he is no longer swayed by mistaken minds and habitual tendencies."
+    }
+   ]
+  },
+  {
+   "t": "h3",
+   "text": "Chapter 29. Contemplating Sensuality Aright"
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The Buddha said: Beware of gazing upon women, and do not converse with them. If you must speak with them, set your mind aright and reflect: “As a renunciant dwelling in this defiled world, I should be as a lotus, unstained by the mud.” Think of the aged as your mother, those a little older as your elder sister, those younger as your younger sister, and the young as your daughter. Rouse the mind that longs to free them, and let evil thoughts be extinguished."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Take the greatest care not to look at women, and do not speak with them. If circumstances oblige you to do so, compose your mind and think aright: “I am a renunciant dwelling now in a defiled age; I should be like the lotus, unstained by the mud.” For the aged, reflect: this is my mother; for those somewhat older, this is my elder sister; for those younger, my younger sister; for the young, my daughter. Thus a compassionate heart to carry them beyond this world is born, and with it evil thoughts are stilled."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "This is the method of keeping far from women, guarding against transgression, nurturing goodness, and extinguishing evil."
+    }
+   ]
+  },
+  {
+   "t": "h3",
+   "text": "Chapter 30. Fleeing the Fire of Desire"
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The Buddha said: One who practices the Way is like a man wrapped in dry grass — when the fire comes, he must flee. A seeker, seeing desire, must always keep far from it."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "One who studies the Way is like a man wrapped in dry grass; when the fire comes he must swiftly take refuge from it. So when a student of the Way sees the things that kindle desire within him, he should flee far away, as grass avoids fire."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Toward desire, the student of the Way should practice the virtue of withdrawal, and never let himself be burned by the fire of craving. The Sutra of Perfect Enlightenment says: “To know the illusory is at once to be released from it, with no need of expedient means; released from the illusory, at once you are awakened, with no gradual stages.”"
+    }
+   ]
+  },
+  {
+   "t": "h3",
+   "text": "Chapter 31. When the Mind Is Still, Desire Is Eradicated"
+  },
+  {
+   "t": "quote",
+   "inline": [
+    {
+     "s": "The Buddha said: There was a man distressed by unceasing lust who wished to sever his own organ. The Buddha told him: Better than cutting away the organ is cutting away the mind. The mind is the magistrate; if the magistrate comes to rest, all his attendants are still. If the evil mind does not cease, what is the good of severing the organ? The Buddha then spoke this gatha for him: Desire is born within the mind, and mind of thought is wrought; when both are still and left behind, no form, no act is brought. The Buddha said: This gatha was spoken by the Buddha Kashyapa."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "There was a man who gave way to lust and could not stop, and wished to cut away his own organ. The Buddha said to him: Far better than cutting away the organ is cutting away the mind. The mind is the magistrate; if the magistrate commands a halt, all his underlings come to rest as well. If the evil mind does not cease, of what use is cutting away the organ? The Buddha spoke this gatha for him: Desire is born within the mind, and mind of thought is wrought; when both are still and left behind, no form, no act is brought. The Buddha said: This gatha was spoken by the Buddha Kashyapa."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "This is to say: to cut off desire, one must cut it off from the mind."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "[gongcao] An official title. In the Han dynasty a commandery governor kept a recorder of merit (gongcao shi), shortened to gongcao, who, besides handling personnel, could take part in the administration of the whole commandery. [sixiang] Si and xiang. Here si (sī) means longing or remembrance, and xiang (xiǎng) means wishing or wanting. [Neither form nor act] When the two minds are each at rest, one awakens to the truth that sensual forms and evil conduct are both illusions; this is spoken with regard to the real nature of all dharmas."
+    }
+   ]
+  },
+  {
+   "t": "h3",
+   "text": "Chapter 32. Severing Desire and Casting Off Attachment"
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The Buddha said: From love and desire arise anxiety, and from anxiety arise fear. If one is free of love, what anxiety is there? What fear?"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Because of love and desire, people give rise to anxiety; from anxiety they give rise to fear. If one abandons love and desire, what anxiety is there? What fear?"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Therefore, to escape the restless unease within, one must sever desire and cast off attachment."
+    }
+   ]
+  },
+  {
+   "t": "h3",
+   "text": "Chapter 33. Vanquishing Mara and Attaining the Way"
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The Buddha said: One who practices the Way is like a single man at war with ten thousand. Donning his armor and going out from the gate, his will is sometimes faint; some turn back halfway, some fall in battle, some return in victory. So the renunciant who studies the Way should hold his mind firm, advance with diligence and valor, fear no prospect before him, destroy the many demons, and so attain the fruit of the Way."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "One who studies the Way is like a single man joining battle with ten thousand. In war the warrior buckles on his armor and goes out from the city gate to meet the foe — or his will is faint, or he retreats halfway, or he dies fighting, or he returns in triumph. So too the renunciant’s study of the Way is like going to war: he should hold his mind firm (not be faint of will), press forward with diligence and valor (not retreat halfway), have no dread of what lies ahead (setting aside life and death), destroy the many demons, and so attain the fruit of the Way (return in triumph)."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The liturgy of the Threefold Contemplation by Master Zhongfeng says: “All suffering is born of greed and craving, yet who can say where greed and craving rise? Because one forgets the Amitabha of one’s own nature, and all the scattered, racing thoughts are Mara’s work.”"
+    }
+   ]
+  },
+  {
+   "t": "h3",
+   "text": "Chapter 34. Attaining the Way by the Middle Course"
+  },
+  {
+   "t": "quote",
+   "inline": [
+    {
+     "s": "A renunciant was reciting at night the Bequeathed Teachings of the Buddha Kashyapa, his voice mournful and strained, and he began to think of retreating from the path. The Buddha asked him: When you dwelt at home, what was your occupation? He replied: I loved to play the lute. The Buddha asked: If the strings are too loose, how is it? He replied: They give forth no sound. The Buddha asked: If too taut? He replied: The note breaks off. The Buddha asked: If, neither loose nor taut, the strings are tuned aright? He replied: Then all the notes are harmonious. The Buddha said: Even so is the renunciant who studies the Way — if the mind is tuned aright, the Way is attained. If one is violent in the Way, violence wearies the body; when the body is weary, the mind grows vexed; when the mind is vexed, the practice recedes; and when the practice recedes, guilt increases all the more. Only in purity and serene ease is the Way not lost."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "A renunciant recited at night the Bequeathed Teachings of the Buddha Kashyapa, his voice mournful and strained, feeling that the study of the Way was too hard and too wearying, and wishing to give up. The Buddha asked him: When you were at home, what was your trade? He answered: I loved to play the lute; playing the lute was my trade. The Buddha asked: If the strings are loosened too far, what happens? He answered: No note comes forth. The Buddha asked: If they are drawn too tight? He answered: They snap at a touch. The Buddha asked: If they are tuned just right, loose and tight in measure? He answered: Every note is true and sweet. The Buddha then taught: Studying the Way is like this — if body and mind are tuned aright, in just proportion, then as you practice you may attain the Way. If you are too fierce and urgent, then a person grows weary; weary, the mind grows vexed; vexed, you think of retreating and giving up; and once you give up, guilt and evil accumulate until you fall. Only by tuning body and mind aright, in purity and ease, can you advance steadily, practice long and with effect, and so never turn back."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "[Buddha Kashyapa] The Buddha who came before Shakyamuni Buddha."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Confucius, too, had a word on tension and relaxation, saying: “To be always strained and never relaxed — even Kings Wen and Wu of the Zhou could not sustain it; to be always relaxed and never strained — that is something Kings Wen and Wu would never do. Let tension and relaxation alternate, and that is the way of Wen and Wu.”"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "This passage means: to keep straining without ever relaxing is beyond the power even of King Wen and King Wu, who governed the realm so well; and conversely, to remain forever at ease without ever straining is something Wen and Wu would never consent to. Only by joining labor and rest, severity and leniency, so that work and life move forward in their proper rhythm — this is how King Wen and King Wu governed the land."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Therefore the practice of the Way should be continuous and unbroken — water dripping slowly wears through stone."
+    }
+   ]
+  },
+  {
+   "t": "h3",
+   "text": "Chapter 35. When the Defilements Are Cleansed, the Brightness Remains"
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The Buddha said: Just as a man forges iron and, casting off the dross, makes a vessel, so the vessel at last proves fine and excellent — in the same way one who studies the Way, by removing the defilements of the heart, becomes pure in conduct."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Just as by forging iron into a vessel — hammering out the dross within — the vessel becomes fine and durable, so the student of the Way, by removing the defilements of the heart, becomes pure in conduct."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Therefore, practice is the cultivating of the mind: remove the heart’s defilements."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "[Just as a man forges iron, casting off dross to make a vessel] Today steelmaking removes the impurities from molten iron by chemical means to obtain steel, which is then forged into tools. In ancient times the iron was heated red-hot and hammered again and again, each time driving out the dross, until steel was won — the proverb “a hundred refinements make steel.” For tools and weapons, steel is far sharper and more lasting than iron. Hence in olden days, to forge a vessel meant not only beating it into the desired shape but, in the very process, casting out the dross within — what is called “casting off the dross to make a vessel.”"
+    }
+   ]
+  },
+  {
+   "t": "h3",
+   "text": "Chapter 36. Winning the Goal Through Every Hardship"
+  },
+  {
+   "t": "quote",
+   "inline": [
+    {
+     "s": "The Buddha said: Having escaped the evil destinies, it is hard to be born a human. Becoming a human, it is hard to be born a man and not a woman. Being born a man, it is hard to be born with the six faculties whole. With the six faculties whole, it is hard to be born in the central kingdom. Born in the central kingdom, it is hard to meet a Buddha in the world. Meeting a Buddha, it is hard to encounter one who walks the Way. Encountering such a one, it is hard to arouse a heart of faith. Having aroused faith, it is hard to set forth the bodhi mind. Having set forth the bodhi mind, it is hard to be without practice and without attainment."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "It is hard, having left the three evil destinies, to be born a human. Born a human, it is hard to be a man and not a woman. Born a man, it is hard to have the six faculties whole. Having the six faculties, it is hard to be born in the central kingdom. Born in the central kingdom, it is hard to meet a Buddha alive in the world. Meeting a Buddha, it is hard to encounter the Dharma. Encountering the Dharma, it is hard to arouse a heart of faith. Having aroused faith, it is hard to develop the aspiration to enlightenment. Having developed the bodhisattva resolve (the bodhi mind), it is hard to be without practice and without attainment."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "[Three evil destinies] The hells, the realm of hungry ghosts, the animal world. [Six faculties whole] The six faculties are the eye, ear, nose, tongue, body, and mind. To be whole in the six faculties means to lack the defects of blindness, deafness, dumbness, and maimed limbs. [Central kingdom] The “central kingdom” of ancient India, lying in the middle reaches of the Ganges, the heart of its civilization. [Bodhi mind] The resolve to attain Buddhahood above and deliver sentient beings below. [Without practice and without attainment] What was described earlier: the one ultimate vehicle, the most consummate path. [One vehicle] The way to Buddhahood."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "This chapter means: good conditions are met by the student of the Way only after a hundred hardships and a thousand trials; and now, having struggled through to the step of setting forth the bodhisattva resolve, he should cultivate the most ultimate path."
+    }
+   ]
+  },
+  {
+   "t": "h3",
+   "text": "Chapter 37. Keeping the Precepts Draws One Near the Way"
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The Buddha said: Though a disciple be thousands of miles from me, if he keeps my precepts in mind, he shall surely attain the fruit of the Way. One who stands at my side, though he see me every day, if he does not follow my precepts, shall never attain the Way."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Though a disciple of the Buddha be thousands of miles from me, if he bears my precepts in mind, he shall surely attain the fruit of the Way. One who is at my side, though he sees me constantly, if he does not keep my precepts, shall never attain the Way."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Even to wait upon the Buddha on his left and right, without strictly keeping the precepts, one still cannot attain the Way — how much the more so in this latter age of the Dharma. From this we may know how essential it is to observe the precepts with strict severity."
+    }
+   ]
+  },
+  {
+   "t": "h3",
+   "text": "Chapter 38. Human Life Is Impermanent"
+  },
+  {
+   "t": "quote",
+   "inline": [
+    {
+     "s": "The Buddha asked a renunciant: In how many intervals does a human life consist? He answered: Within a few days. The Buddha said: You do not yet know the Way. He asked another renunciant: In how many intervals does a human life consist? He answered: Within the space of a single meal. The Buddha said: You do not yet know the Way. He asked a third: In how many intervals does a human life consist? He answered: Within a single breath. The Buddha praised him: Well said — now you know the Way!"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The Buddha asked one renunciant: In how many intervals does a human life consist? He answered: Within a few days. The Buddha said: You have not yet understood the Way. He asked another: In how many intervals does a human life consist? He answered: Within the space of one meal. The Buddha said: You have not yet understood the Way. He asked yet another: In how many intervals does a human life consist? He answered: Within one breath. The Buddha praised him: Excellent — now you understand the Way!"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "[Within a single breath] In the space of one in-and-out breath life may come to an end — what is meant by “the out-breath does not guarantee the in-breath.”"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "This chapter makes it clear: human life is impermanent, the out-breath does not guarantee the in-breath, and so the student of the Way must be alert and diligent, completing his task before death arrives."
+    }
+   ]
+  },
+  {
+   "t": "h3",
+   "text": "Chapter 39. Sweet in the Midst and Sweet at the Edge"
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The Buddha said: Those who study the Buddha’s Way should believe and follow all that the Buddha has spoken. It is like tasting honey — sweet in the midst and sweet at the edge; such likewise are my scriptures."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "One who studies the Buddha’s Way should believe and follow everything the Buddha has spoken. As with the taste of honey, sweet at the heart and sweet at the rim, so too are the scriptures I have spoken."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Here the Buddha admonishes with heartfelt earnestness: those who study the Buddha’s Way should believe and follow all the Buddha’s words. Now there are those who, clinging to the small (the Hinayana), slander the great (the Mahayana), or clinging to the great, slander the small; those who cling to phenomena and reject principle, or cling to principle and reject phenomena — all of these run against the Buddha’s intent."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "It is like studying mathematics. Someone judges arithmetic too elementary and would go straight to algebra; another finds algebra not lofty enough and would leap straight to calculus. And what is the result? After great effort they memorize a handful of terms and formulas from algebra or calculus and grow pleased with themselves, saying “I know algebra, I know calculus.” But can they solve a single problem with it? Since they cannot, of what use is their learning?"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Studying the Buddha’s Dharma means subduing afflictions, severing afflictions, breaking through ignorance piece by piece, and realizing the fruit of Buddhahood in its fullness, so as to be done with the two deaths (the death born of segments and the death born of transformation). The Buddha’s teachings are set down for this very end. “Medicine is neither dear nor common; what suits the ailment is good. The Dharma is neither high nor low; what suits the capacity is excellent.” Therefore the student of the Way must take the medicine that suits his ailment, and learn so as to put it to use. If your own afflictions are not yet subdued, not yet cut off, and yet you scoff at the Buddha’s repeated admonition to “sever desire and cast off attachment” as mere Hinayana, refusing even to consider it, while you prattle on about the nature and the principle — is this not like one who, never having studied arithmetic or algebra, would go straight to calculus? When the last day of the twelfth month — the day of reckoning — arrives, will such learning stand you in good stead?"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "[Death born of segments] Among sentient beings within the three realms and six paths, because of the retribution of good and evil karma, the lifespan has its fixed limits and the body its divisions; hence their birth and death is called “death born of segments.” One who is done with this death is freed from the wheel of rebirth and passes beyond the three realms. [Death born of transformation] The noble ones of the three vehicles, having already severed the delusions of views and of thought and passed beyond the death of segments, find in the course of practice that delusive thoughts gradually die away and realization gradually grows. This shifting of delusion and awakening differs at each stage; the passage from one stage into the next is like a death, and the change is subtle, mysterious, and inconceivable — whence the name “death born of transformation.” One who is done with this realizes the fruit of Buddhahood in its fullness. [Three vehicles] The vehicle of the Hearer (Shravaka), the vehicle of the Solitary Realizer (Pratyekabuddha), and the vehicle of the Bodhisattva."
+    }
+   ]
+  },
+  {
+   "t": "h3",
+   "text": "Chapter 40. Practicing the Way Lies in the Mind"
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The Buddha said: In walking the Way, a renunciant should not be like the ox at the mill — though the body plods the path, the mind within does not. If the mind walks the Way, what need is there to move the body?"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "A renunciant walking the Way should not be like the ox that turns the mill: though the body treads the path, the mind has not. If the mind walks the Way, what need is there for the body to walk it?"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Therefore, in practice the precious thing is to cultivate the mind; walking the Way lies in the mind, not in the outward form."
+    }
+   ]
+  },
+  {
+   "t": "quote",
+   "inline": [
+    {
+     "s": "“"
+    },
+    {
+     "s": "If the mind walks the Way, what need to move the body?” This is spoken for those who are “without thought, without abiding, without practice, without attainment.” If one has not yet reached the emptiness of both mind and states, then let the practice of the mind take the lead, body and mind advancing together. To take the correcting of faults as an example: there is correction by affairs, correction by principle, and correction by mind. On the relation and use of these three, Liao-Fan’s Four Lessons says: “On the whole, what is most excellent corrects the mind, and purity arises on the spot; the moment a thought stirs it is perceived, and being perceived it vanishes. If one cannot yet do this, one must comprehend principle so as to dispel it; and if still one cannot, one must restrain it together with the affair at hand. To practice the higher work while still carrying out the lower is no strategy at fault; but to cling to the lower and be blind to the higher is clumsy indeed.”"
+    }
+   ]
+  },
+  {
+   "t": "h3",
+   "text": "Chapter 41. An Upright Mind Escapes Desire"
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The Buddha said: One who practices the Way is like an ox laden with a heavy load, trudging through deep mire — utterly spent, not daring to glance left or right, until he comes out of the mud and may at last rest. So too a renunciant should see that passion and desire are more perilous than mud, and, with an upright mind, think only of the Way, and so be free of suffering."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The practicer of the Way is like an ox burdened and walking through deep mud: though utterly exhausted, he dares not relax in the least — he will not even glance left or right until he has left the mire, and only then may he stop and take his rest. A renunciant should see that the peril of passion and desire is greater than that of mud, and only by fixing his whole mind on the Way, his eyes never turning aside, going bravely forward, can he emerge from desire and so be freed from suffering!"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "[suxi] To rest; to stop and catch one’s breath."
+    }
+   ]
+  },
+  {
+   "t": "h3",
+   "text": "Chapter 42. All Dharmas Are Like an Illusion"
+  },
+  {
+   "t": "quote",
+   "inline": [
+    {
+     "s": "The Buddha said: I look upon the throne of kings and princes as upon grains of dust through a crevice. I look upon treasures of gold and jade as upon broken tiles. I look upon robes of finest white silk as upon tattered cloth. I look upon the great thousand-world as upon a single myrobalan. I look upon the waters of Lake Anavatapta as upon the oil used to anoint the feet. I look upon the gates of expedient means as upon a heap of conjured jewels. I look upon the supreme vehicle as upon gold and silk in a dream. I look upon the Way of the Buddha as upon flowers before the eyes. I look upon meditative absorption as upon Mount Sumeru standing firm. I look upon nirvana as upon awaking from a day-and-night slumber. I look upon the inverted and the upright as upon the dance of six dragons. I look upon equality as upon the one true ground. I look upon the flourishing guidance of beings as upon the trees of the four seasons."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "I regard the rank of kings and princes as dust drifting through a crevice. I regard the treasures of gold and jade as broken tiles. I regard robes of pure white silk as rotten rags. I regard the great thousand-world as a single myrobalan (the chebula fruit, wrinkled like an olive). I regard the waters of Lake Anavatapta as the oil for anointing the feet. I regard the many gates of expedient means as a heap of conjured jewels. I regard the supreme vehicle as the gold and silver of a dream. I regard the Way of the Buddha as empty flowers before the eyes. I regard meditative absorption as Mount Sumeru, towering immovably. I regard nirvana as a man awaking from sleep. I regard the inverted and the upright as the dance of six dragons (a figure for the six faculties), head and tail merely exchanging place. I regard equality as the real ground of the one true realm. I regard the flourishing guidance of beings by the Dharma as the trees of the four seasons: budding in spring, luxuriant in summer, bearing fruit in autumn, dropping leaves in winter, in endless cycle."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Set at the close of the sutra, this chapter reveals the Buddha’s eye of equality beholding all things alike, in order to destroy beings’ clinging to dharmas."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "[Clinging to dharmas] To cling wrongly to dharmas as real. The Buddha says: “Know that all dharmas are empty, illusory and without reality, having no root.” (The Sutra of Sustaining the World) [Dust through a crevice] Dust passing through a narrow crack — a figure for what is utterly trifling and fleeting, like a mote drifting before a tiny opening. [Broken tiles] Fragments of brick and stone. [Fine white silk] Exquisite, spotless white silk. [Tattered cloth] Worn-out, torn rags."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "[Great thousand-world] That is, the great chiliocosm. One great thousand-world is the region in which a single Buddha teaches. Mount Sumeru together with the four great continents forms one small world; a thousand such small worlds form one small thousand-world; a thousand small thousand-worlds form one middle thousand-world; a thousand middle thousand-worlds form one great thousand-world. Since it is counted in thousands three times over, one great thousand-world is also called the “three-thousand great thousand-world.” [Mount Sumeru] Rendered in Chinese as “the lofty and wonderful mountain”; it is the center of one small world. This mountain is made of the four jewels — gold, silver, lapis lazuli, and crystal. Its form is broad above and broad below but narrow in the middle, exceeding tall and exceeding great, beyond comparison with any other mountain, the king of mountains. [Four great continents] About Mount Sumeru lie four great continents: in the east, East Videha; in the south, Jambudvipa (the world in which we dwell is on this continent); in the west, Godaniya; in the north, Uttarakuru. [Myrobalan] That is, the chebula fruit. The Compendium of Materia Medica says: “The Terminalia chebula tree is like the cork-tree; its flowers are white, its fruit like gardenia. Chiefly it disperses phlegm and sends the qi downward. It arrives on ships from beyond the southern seas, and is also found in Guangzhou.”"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "[Regarding the waters of Lake Anavatapta as like the oil for anointing the feet] To regard the dear waters of Lake Anavatapta as the cheap oil with which one anoints the feet — between them no difference at all. [Lake Anavatapta] That is, Lake Anavatapta, called “the lake without heat and vexation,” some eight hundred li in circuit. Its banks are adorned with the four jewels — gold, silver, lapis lazuli, and “beautiful crystal” (answering to this world’s crystal, which bears the four tints of purple, white, red, and green). Its bed is spread with golden sand, and its clear waves mirror like burnished glass. [Regarding the supreme vehicle as like the gold and silk of a dream] To regard the supreme vehicle as but the gold and silk seen in a dream. [Gold and silk] Gold and fine silk — in general, money and precious things. [Supreme vehicle] The Dharma of the utmost preeminence. Master Ouyi says: “Though the supreme vehicle is said to be the most real, yet it is all the principle inherent in the nature of sentient beings; outside the mind there is no Dharma. Hence it is said: perfect enlightenment returns to having nothing attained. Like the gold and silk of a dream — how could any real thing be gotten from it?”"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "[Regarding the Way of the Buddha as like flowers before the eyes] The many forms of the Buddha’s Way are set up to counter the deluded mind; if the deluded mind does not arise, how can there be any Way of the Buddha? The saying runs: “Unconditioned, neither arising nor ceasing, unreal as flowers in the sky.” [Flowers in the sky] Flowers in the open sky (the ancient word for blossom being the same as that for flower); a figure for illusion. One with a diseased eye sees flowers in the sky, yet in the sky there are no flowers at all — only the wrong perception of a diseased eye. The Sutra of Perfect Enlightenment says: “Mistakenly taking the four elements for one’s own body and the reflected images of the six dusts for the mark of one’s own mind — like the diseased eye seeing flowers in the sky and a second moon.”"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "[Regarding meditative absorption as like the pillar of Sumeru] Sumeru rises from the sea and wind and wave cannot move it; so too absorption holds the mind, and states and perceptions cannot sway it. Yet Sumeru is illusory, and absorption is illusory as well. [Pillar of Sumeru] That is, Mount Sumeru; the word “pillar” describes that mountain’s immeasurable mass, answering to the earlier “I look upon the great thousand-world as a single myrobalan.” [Regarding nirvana as like awaking from a day-and-night slumber] Birth and death are as a long night, bound by ignorance, so by day and by night all are asleep; nirvana is as the everlasting day, with wisdom opened wide, so by day and by night all are awake. [Regarding the inverted and the upright as like the dance of six dragons] In wheeling through birth and death there is only the six faculties; in the peace of nirvana there is also only the six faculties. To turn away from enlightenment and mingle with the dusts is called “inverted,” yet in truth there is no decrease; to turn away from the dusts and join with enlightenment is called “upright,” yet in truth there is no increase. Hence it is but like the dance of six dragons (a figure for the six faculties), head and tail merely exchanging places — nothing more."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "[Regarding equality as like the one true ground] To regard all dharmas as equal is like the one true ground. [One true ground] The real ground realized in the awakening to the one true realm. [One true realm] The single real dharma-realm, the only true realm — that is, the realm of the Buddha. The dharmakaya, equal for all Buddhas, from the very beginning neither arising nor ceasing, neither existing nor empty, beyond name and beyond mark, without within and without without, solely real and inconceivable — this is called “the one true realm.”"
+    }
+   ]
+  }
+ ]
+}
