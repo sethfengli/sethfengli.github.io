@@ -6,3 +6,6 @@ dist
 _decoded
 
 .media-jobs.json
+
+# prep-slices temp output
+build/
