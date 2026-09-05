@@ -1,0 +1,861 @@
+{
+    "firstBlock":  0,
+    "title":  "Selected Annotations on the Laṅkāvatāra Sūtra",
+    "author":  "Annotated by Zhanran",
+    "excerpt":  "1. No Gate Is the Dharma Gate 2. The Five Dharmas and the Three Self-Natures",
+    "blocks":  [
+                   {
+                       "t":  "p",
+                       "inline":  [
+                                      {
+                                          "s":  "1.  No Gate Is the Dharma Gate"
+                                      },
+                                      {
+                                          "s":  "2.  The Five Dharmas and the Three Self-Natures"
+                                      }
+                                  ]
+                   },
+                   {
+                       "t":  "p",
+                       "inline":  [
+                                      {
+                                          "s":  "3.  The King of Laṅkā’s Request"
+                                      },
+                                      {
+                                          "s":  "4.  The Meaning of the One Hundred Eight Phrases"
+                                      }
+                                  ]
+                   },
+                   {
+                       "t":  "p",
+                       "inline":  [
+                                      {
+                                          "s":  "The Laṅkāvatāra Sūtra is devoted to expounding the essential gate of the Tathāgata’s mind-ground; this is an extremely important treasure of practice. This sutra has three Chinese translations:"
+                                      }
+                                  ]
+                   },
+                   {
+                       "t":  "p",
+                       "inline":  [
+                                      {
+                                          "s":  "1.  The Liu Song"
+                                      },
+                                      {
+                                          "s":  "·"
+                                      },
+                                      {
+                                          "s":  "translation by Guṇabhadra ("
+                                      },
+                                      {
+                                          "s":  "394-468"
+                                      },
+                                      {
+                                          "s":  "), the Laṅkāvatāra Sūtra in four scrolls. Also called the four-scroll Laṅkāvatāra Sūtra, or the Song Translation, abbreviated as “Song Translation.”"
+                                      }
+                                  ]
+                   },
+                   {
+                       "t":  "p",
+                       "inline":  [
+                                      {
+                                          "s":  "[Liu Song (420–479)] The first dynasty of the Southern Dynasties — the Song. Because its ruler’s surname was Liu, and to distinguish it from the Song dynasty established later by Zhao Kuangyin, it is called the Liu Song."
+                                      }
+                                  ]
+                   },
+                   {
+                       "t":  "p",
+                       "inline":  [
+                                      {
+                                          "s":  "2.  The Northern Wei"
+                                      },
+                                      {
+                                          "s":  "·"
+                                      },
+                                      {
+                                          "s":  "translation by Bodhiruci (?"
+                                      },
+                                      {
+                                          "s":  "-527"
+                                      },
+                                      {
+                                          "s":  "), the Laṅkāvatāra Sūtra Enters in ten scrolls. Also called the ten-scroll Laṅkāvatāra Sūtra, or the Wei Translation, abbreviated as “Wei Translation.”"
+                                      }
+                                  ]
+                   },
+                   {
+                       "t":  "p",
+                       "inline":  [
+                                      {
+                                          "s":  "[Northern Wei (386–534)] The first dynasty of the Northern Dynasties — the Wei."
+                                      }
+                                  ]
+                   },
+                   {
+                       "t":  "p",
+                       "inline":  [
+                                      {
+                                          "s":  "3.  The Tang"
+                                      },
+                                      {
+                                          "s":  "·"
+                                      },
+                                      {
+                                          "s":  "translation by Śikṣānanda ("
+                                      },
+                                      {
+                                          "s":  "700-704"
+                                      },
+                                      {
+                                          "s":  "), the Mahāyāna Laṅkāvatāra Sūtra in seven scrolls. Also called the seven-scroll Laṅkāvatāra Sūtra, or the Tang Translation, abbreviated as “Tang Translation.”"
+                                      }
+                                  ]
+                   },
+                   {
+                       "t":  "p",
+                       "inline":  [
+                                      {
+                                          "s":  "This Tang Translation was rendered by Śikṣānanda by command of Empress Wu Zetian. At the time, Empress Wu, recognizing that the Laṅkāvatāra Sūtra was “the profound pivot of the Buddha’s mind-measurement and the wondrous key to the treasury of all doctrinal meanings,” and that Guṇabhadra’s translation, through the antiquity and brevity of its wording, had not spread widely, while Bodhiruci’s translation was largely erroneous ("
+                                      },
+                                      {
+                                          "s":  "chuǎn"
+                                      },
+                                      {
+                                          "s":  ", mistaken). So she took the Sanskrit original from the palace and required Śikṣānanda, following the original text and referring to the two previous translations, to “investigate the essential meaning of the three versions” and retranslate it. In this way the seven-scroll Mahāyāna Laṅkāvatāra Sūtra was accomplished. Compared with the two earlier translations, the Tang Translation’s phrasing is smooth and flowing, and its meaning is bright and clear."
+                                      }
+                                  ]
+                   },
+                   {
+                       "t":  "quote",
+                       "inline":  [
+                                      {
+                                          "s":  "[Mind-measurement] When the mind gives rise to deluded thought, it measures and reckons in various ways with regard to external objects — this is the mind-measurement of ordinary beings. The mind-measurement of the Tathāgata’s true realization, on the other hand, is far from both the perceived and the perceiving, and abides in no-mind. This sutra says:"
+                                      },
+                                      {
+                                          "s":  "“Observe all conditioned dharmas, free from the perceived and the perceiving; the mind-measurement of the mind that is no-mind — this I call mind-measurement.”"
+                                      },
+                                      {
+                                          "s":  "[Profound pivot] The pivot that grasps the profound meaning of the Way. [Wondrous key] The wondrous key to achieving the Way. “Key” means a key to a lock. [Investigate the essential meaning of the three versions] To study in detail the essential meaning as set forth in the three versions (two Chinese translations and the Sanskrit original)."
+                                      }
+                                  ]
+                   },
+                   {
+                       "t":  "quote",
+                       "inline":  [
+                                      {
+                                          "s":  "Among these three Chinese translations, the four-scroll Laṅkāvatāra Sūtra was entrusted by the First Chan Patriarch Bodhidharma to the Second Patriarch Huike, and he said:"
+                                      },
+                                      {
+                                          "s":  "“I observe that in the land of China there is only this sutra; if the worthy practice according to it, one will naturally cross over the world.”"
+                                      },
+                                      {
+                                          "s":  "This is the supreme treasure for transmitting the lamp and sealing the mind; the patriarchs handed it down to one another as the mind-Dharma. It possesses great power to gather in and to transform, and it has been the most widely circulated. In these annotations, except for the first chapter, “The King of Laṅkā’s Request,” which is taken from the Mahāyāna Laṅkāvatāra Sūtra, the text of all the other chapters (“No Gate Is the Dharma Gate,” “The Five Dharmas and the Three Self-Natures,” “The Meaning of the One Hundred Eight Phrases,” “The Store Consciousness and the Evolving Consciousness,” “The Realm of the Store Consciousness,” “The Selfless Tathāgatagarbha,” “Awakening to the Presently Manifest Magnitude of One’s Own Mind,” “The Gate of Great Expedient Means,” and “The Mark of Self-Realized Sage Wisdom”) is taken from this version. When citing the text of the other two translations, the Laṅkāvatāra Sūtra Enters is abbreviated as the Wei Translation, and the Mahāyāna Laṅkāvatāra Sūtra as the Tang Translation."
+                                      }
+                                  ]
+                   },
+                   {
+                       "t":  "quote",
+                       "inline":  [
+                                      {
+                                          "s":  "The Laṅkāvatāra Sūtra is the method by which Śākyamuni Buddha personally proclaimed the perfect realization of the Buddha-fruit that he himself had attained ("
+                                      },
+                                      {
+                                          "s":  "“the Dharma of self-attained realization of sage wisdom”"
+                                      },
+                                      {
+                                          "s":  "). However, the text is profound and difficult to read. To use Su Dongpo’s words (see the Preface to the Laṅkāvatāra Sūtra):"
+                                      },
+                                      {
+                                          "s":  "“The meaning of the Laṅkā is ever"
+                                      },
+                                      {
+                                          "s":  "(zhé, then)"
+                                      },
+                                      {
+                                          "s":  "profound and subtle, and the wording is brief and archaic. A reader may not even be able to punctuate it — much less abandon the words to grasp the meaning, and abandon the meaning to fathom the mind.”"
+                                      },
+                                      {
+                                          "s":  "(Translation: The Laṅkā Sūtra is profound and subtle in meaning, while its wording is brief and archaic. A reader may not even be able to divide its sentences — how much less abandon the words to attain the meaning, and abandon the meaning to comprehend the mind?)"
+                                      }
+                                  ]
+                   },
+                   {
+                       "t":  "p",
+                       "inline":  [
+                                      {
+                                          "s":  "[Profound and subtle (miǎo)] Exceedingly profound and subtle. [Divide the sentences] In ancient times books had no punctuation marks. When reading aloud, one made pauses by oneself according to the meaning, or added circles and dots on the book to mark the pauses; this is called dividing the sentences. Such a “sentence” is often shorter than the sentence spoken of in modern grammar."
+                                      }
+                                  ]
+                   },
+                   {
+                       "t":  "p",
+                       "inline":  [
+                                      {
+                                          "s":  "In order to understand the text more easily and more deeply, it is recommended to first read"
+                                      },
+                                      {
+                                          "s":  "Mind, Self-Nature, and Tathāgatagarbha",
+                                          "href":  "/articles/018xinyzx"
+                                      },
+                                      {
+                                          "s":  "and"
+                                      },
+                                      {
+                                          "s":  "The True Mark of All Dharmas",
+                                          "href":  "/articles/013zhufasx"
+                                      },
+                                      {
+                                          "s":  "so as to have a comprehensive understanding of mind, self-nature, the Tathāgatagarbha and the true mark of all dharmas."
+                                      }
+                                  ]
+                   },
+                   {
+                       "t":  "h2",
+                       "text":  "1.  No Gate Is the Dharma Gate"
+                   },
+                   {
+                       "t":  "p",
+                       "inline":  [
+                                      {
+                                          "s":  "Question: Master Mazu said that the Laṅkāvatāra Sūtra teaches:"
+                                      },
+                                      {
+                                          "s":  "“The Buddha’s words take mind as the universal principle, and no gate is the Dharma gate.”"
+                                      },
+                                      {
+                                          "s":  "What does this sentence mean?"
+                                      }
+                                  ]
+                   },
+                   {
+                       "t":  "quote",
+                       "inline":  [
+                                      {
+                                          "s":  "Answer: “The Buddha’s words take mind as the universal principle” means: the Laṅkāvatāra Sūtra takes mind as its essential principle. The Laṅkāvatāra Sūtra in its entirety consists of only one chapter, whose title is: The Buddha-Words of All Buddhas Being Mind. “The Buddha-Words of All Buddhas Being Mind”: the words of all Buddhas teach only this mind. That is to say, all Buddhas are expounding this mind. Because,"
+                                      },
+                                      {
+                                          "s":  "one’s own mind is Buddha; all realms are only created by karma and only manifested by mind; whether it is birth and death or nirvāṇa, all lies in the transformation of the one mind, and there is no other Dharma."
+                                      },
+                                      {
+                                          "s":  "Mind is so important that all the Buddhas are expounding mind. Master Hanshan says:"
+                                      },
+                                      {
+                                          "s":  "“Because"
+                                      },
+                                      {
+                                          "s":  "(since)"
+                                      },
+                                      {
+                                          "s":  "this sutra directly points out that the store consciousness of sentient beings is the Tathāgatagarbha, and reveals the realm that appears before one in daily life,"
+                                      },
+                                      {
+                                          "s":  "it causes them to accord with and observe the presently manifest magnitude of their own mind, and to suddenly realize the self-realized sage wisdom of all the Buddhas"
+                                      },
+                                      {
+                                          "s":  "; therefore it is called ‘the Buddha-Words Being Mind.’”"
+                                      },
+                                      {
+                                          "s":  "(Notes on Observing the Precious Laṅkāvatāra Sūtra Pavilion)"
+                                      }
+                                  ]
+                   },
+                   {
+                       "t":  "quote",
+                       "inline":  [
+                                      {
+                                          "s":  "[The whole work consists of only one chapter] According to Master Hanshan’s Record of Observing the Laṅkāvatāra Sūtra:"
+                                      },
+                                      {
+                                          "s":  "“This sutra has forty scrolls. This"
+                                      },
+                                      {
+                                          "s":  "(the Laṅkāvatāra Sūtra transmitted to our land)"
+                                      },
+                                      {
+                                          "s":  "is only one tenth of it.”"
+                                      },
+                                      {
+                                          "s":  "[The Buddha-Words of All Buddhas Being Mind] The Tang Translation says:"
+                                      },
+                                      {
+                                          "s":  "“The teaching mind of all Buddhas.”"
+                                      },
+                                      {
+                                          "s":  "[The store consciousness is the Tathāgatagarbha] This means: the store consciousness and the Tathāgatagarbha are two states of a single essence. See further the chapter “The Store Consciousness and the Evolving Consciousness.”"
+                                      },
+                                      {
+                                          "s":  "[The presently manifest magnitude of one’s own mind] “Directly manifest magnitude” is that which can be intuited directly without the use of conscious deliberation — that is, direct knowing. (What is known through inference is the comparated magnitude.) To awaken to the presently manifest magnitude of one’s own mind is like a mirror reflecting objects, knowing without deliberation or reckoning the realm manifested by one’s own mind. This sutra says:"
+                                      },
+                                      {
+                                          "s":  "“Only awaken to the presently manifest magnitude of one’s own mind; then deluded thought does not arise, and one is"
+                                      },
+                                      {
+                                          "s":  "(the same as “steadfast”)"
+                                      },
+                                      {
+                                          "s":  "at ease and happy, and worldly affairs are forever stilled.”"
+                                      },
+                                      {
+                                          "s":  "The Record of the Mirror of the Source says:"
+                                      },
+                                      {
+                                          "s":  "“The Buddha said: ‘Only awaken to the presently manifest magnitude of one’s own mind; then deluded thought does not arise, and one is at ease and happy, and worldly affairs are forever stilled.’ Being at ease and happy is still and wondrously constant; worldly affairs forever stilled means that clinging to conditions has already been cut off. It may be said that having met the full treasury of jewels, one suddenly ceases all seeking, and reaches the eternal bliss of nirvāṇa, with nothing further to attain. It is at the boundary between the ordinary and the sage, as if one has arrived at one’s hometown; it is the support for delusion and awakening, and has already exhausted the root. The Mahāparinirvāṇa Sūtra says: ‘The vajra treasure is without any lack or diminution.’”"
+                                      },
+                                      {
+                                          "s":  "Master Hanshan’s Record of Observing the Laṅkāvatāra Sūtra says:"
+                                      },
+                                      {
+                                          "s":  "“Because"
+                                      },
+                                      {
+                                          "s":  "(since)"
+                                      },
+                                      {
+                                          "s":  "the presently manifest magnitude of one’s own mind, with neither sage nor ordinary established and all things negated, manifests"
+                                      },
+                                      {
+                                          "s":  "(thereby displaying)"
+                                      },
+                                      {
+                                          "s":  "the meaning of ultimate awakening within arising and ceasing.”"
+                                      },
+                                      {
+                                          "s":  "Bodhidharma’s Dharma Gate of Pacifying the Mind says:"
+                                      },
+                                      {
+                                          "s":  "“Whosoever has a mind that discriminates and reckons over the presently manifest magnitude of one’s own mind is all in a dream; if one knows the mind to be still and extinct, with no place of thought at all — this is called right awakening.”"
+                                      }
+                                  ]
+                   },
+                   {
+                       "t":  "p",
+                       "inline":  [
+                                      {
+                                          "s":  "Master Hanshan also says:"
+                                      },
+                                      {
+                                          "s":  "“The chapter on the Buddha-Words Being Mind —"
+                                      },
+                                      {
+                                          "s":  "this sutra directly points to the still and extinct one mind as the universal principle, and takes the realization through self-realized sage wisdom as the aim"
+                                      },
+                                      {
+                                          "s":  ".”"
+                                      },
+                                      {
+                                          "s":  "(Supplement to the Laṅkāvatāra Sūtra)"
+                                      }
+                                  ]
+                   },
+                   {
+                       "t":  "quote",
+                       "inline":  [
+                                      {
+                                          "s":  "[The Buddha’s words take mind as the universal principle, and no gate is the Dharma gate] The Record of the Transmission of the Lamp of the Jingde Era records:"
+                                      },
+                                      {
+                                          "s":  "“"
+                                      },
+                                      {
+                                          "s":  "(Master Mazu)"
+                                      },
+                                      {
+                                          "s":  "one day said to the assembly: All of you, each of you, trust that your own mind is Buddha; this mind is the Buddha-mind. The great master Bodhidharma came from the Southern Land of India, personally arriving in China, transmitting the one-mind Dharma of the supreme vehicle so as to cause you all to awaken. He further cited the text of the Laṅkāvatāra Sūtra to seal the mind-ground of sentient beings, fearing that you might be inverted and not trust this mind-Dharma, which each of you already possesses. Therefore the Laṅkāvatāra Sūtra says:"
+                                      },
+                                      {
+                                          "s":  "The Buddha’s words take mind as the universal principle, and the ‘no’ gate is the Dharma gate."
+                                      },
+                                      {
+                                          "s":  "It also says: Those who seek the Dharma should seek for nothing; apart from the mind there is no other Buddha, apart from the Buddha there is no other mind. Do not grasp the good, do not reject the evil; do not rely upon either the pure or the defiled side"
+                                      },
+                                      {
+                                          "s":  "(hù)"
+                                      },
+                                      {
+                                          "s":  ", and realize that the nature of offense is empty, that in every thought nothing is obtainable, because it is without self-nature. Therefore the three realms are only mind, and the entire forest of phenomena is sealed by the one Dharma.”"
+                                      }
+                                  ]
+                   },
+                   {
+                       "t":  "quote",
+                       "inline":  [
+                                      {
+                                          "s":  "[The entire forest of phenomena is sealed by the one Dharma]"
+                                      },
+                                      {
+                                          "s":  "The entire forest of phenomena is all sealed by the one Dharma. [The one Dharma seal] Also called the one seal of true reality, or the seal of the true mark of all dharmas. The Dharma seal is the seal of the Dharma; this is the seal of truth handed down from Buddha to Buddha, and it is the standard of the Dharma. Whatever does not accord with the Dharma seal is not the Dharma. The Mahāyāna teaching takes the true mark of all dharmas as its foundation; apart from this, it belongs to demonic talk. [The true mark of all dharmas] What is called “true mark” is the actual situation; “the true mark of all dharmas” is the actual situation of all dharmas. The Buddha Treasury Sūtra says:"
+                                      },
+                                      {
+                                          "s":  "“What is called the true mark of all dharmas? It is that all dharmas are ultimately empty, with nothing at all.”"
+                                      },
+                                      {
+                                          "s":  "The Mahāparinirvāṇa Sūtra says:"
+                                      },
+                                      {
+                                          "s":  "“All dharmas are all like illusory marks, and in their midst the Tathāgata, by the power of expedient means, is without any clinging.”"
+                                      },
+                                      {
+                                          "s":  "The Lotus Sūtra says:"
+                                      },
+                                      {
+                                          "s":  "“The bodhisattva mahāsattva observes that all dharmas are empty and accord with the true mark, without inversion, without agitation, without regression, without turning.”"
+                                      },
+                                      {
+                                          "s":  "(See further"
+                                      },
+                                      {
+                                          "s":  "The True Mark of All Dharmas",
+                                          "href":  "/articles/013zhufasx"
+                                      },
+                                      {
+                                          "s":  ".)"
+                                      }
+                                  ]
+                   },
+                   {
+                       "t":  "quote",
+                       "inline":  [
+                                      {
+                                          "s":  "[Sage wisdom] The Tathāgata’s wisdom of the essential nature of the Dharma realm, that is, the wisdom that realizes that “all dharmas are originally unborn”; also called the pure wisdom of the Dharma realm. This sutra says:"
+                                      },
+                                      {
+                                          "s":  "“Mahāmati! The mark of the ultimate realization of self-realized sage wisdom is to have no reckoning grasping in the marks of all dharmas, to attain the body of the samādhi of illusion, and to advance and practice toward the stage of the Buddhas.”"
+                                      },
+                                      {
+                                          "s":  "It also says:"
+                                      },
+                                      {
+                                          "s":  "“The Buddha told Mahāmati: What the former sages knew, handed down from one to another, is that deluded thought is without nature. The bodhisattva mahāsattva, dwelling alone in a quiet place, observes by his own realization, depending on no other, free from views and deluded thought, advancing upward and upward, enters the Tathāgata ground — this is called the mark of self-realized sage wisdom.”"
+                                      }
+                                  ]
+                   },
+                   {
+                       "t":  "quote",
+                       "inline":  [
+                                      {
+                                          "s":  "“"
+                                      },
+                                      {
+                                          "s":  "No gate is the Dharma gate.” “No gate” does not mean that there is no gate. Here “no” is not the no of existence and non-existence; it is the true mark of all dharmas that transcends existence and non-existence — originally there is not a single thing. Here “gate” means a path, a key. “No gate is the Dharma gate” means:"
+                                      },
+                                      {
+                                          "s":  "take “no” as the doorway of practice."
+                                      },
+                                      {
+                                          "s":  "That is to say: by the principle of the true mark of all dharmas, break through the dream of ignorance and perfectly accomplish the Buddha Way. Then with what does one break through? One breaks through with mind. Hence it is said: “The Buddha’s words take mind as the universal principle.” In the Laṅkāvatāra Sūtra, the method of cultivating “no” appears everywhere; summed up, it is:"
+                                      },
+                                      {
+                                          "s":  "The five dharmas and the three natures are all empty; the eight consciousnesses and the two selves are both discarded; the two dharmas of existence and non-existence are both left behind; one realizes self-realized sage wisdom and enters the Tathāgata ground."
+                                      },
+                                      {
+                                          "s":  "— this is the main content of the Laṅkāvatāra Sūtra."
+                                      }
+                                  ]
+                   },
+                   {
+                       "t":  "h2",
+                       "text":  "2.  The Five Dharmas and the Three Self-Natures"
+                   },
+                   {
+                       "t":  "p",
+                       "inline":  [
+                                      {
+                                          "s":  "The main content of the Laṅkāvatāra Sūtra is:"
+                                      },
+                                      {
+                                          "s":  "The five dharmas and the three natures are all empty; the eight consciousnesses and the two selves are both discarded; the two dharmas of existence and non-existence are both left behind; one realizes self-realized sage wisdom and enters the Tathāgata ground."
+                                      },
+                                      {
+                                          "s":  "This sutra says:"
+                                      },
+                                      {
+                                          "s":  "“The five dharmas and the three self-natures, together with the eight kinds of consciousness and the two kinds of selflessness, all embrace the Mahāyāna"
+                                      },
+                                      {
+                                          "s":  "(covering all the Great Vehicle)"
+                                      },
+                                      {
+                                          "s":  ".”"
+                                      }
+                                  ]
+                   },
+                   {
+                       "t":  "p",
+                       "inline":  [
+                                      {
+                                          "s":  "[Mahāyāna] An abbreviation of Mahāyāna, translated into Chinese as the Great Vehicle."
+                                      }
+                                  ]
+                   },
+                   {
+                       "t":  "quote",
+                       "inline":  [
+                                      {
+                                          "s":  "[Five dharmas]"
+                                      },
+                                      {
+                                          "s":  "All dharmas can be summarized into five dharmas: marks, names, discrimination, right wisdom, and thusness. First, marks: the things in the entire forest of phenomena, whose forms are each different. Second, names: relying on those various marks, one sets up various names to express them. Third, discrimination: one deliberates over and discriminates the marks and names of the myriad things, so that size, height, beauty, ugliness, right and wrong and so on appear. Fourth, right wisdom: the undefiled mind and mental factors, far from discrimination, observing that name and mark are each other’s guests, free from permanence and from annihilation, known in accordance with principle. Fifth, thusness: the realm realized by right wisdom, the true mark of reality in which both mind and objects are still."
+                                      }
+                                  ]
+                   },
+                   {
+                       "t":  "quote",
+                       "inline":  [
+                                      {
+                                          "s":  "The relationship among the five dharmas is: relying on “marks” one establishes “names”; relying on “names” one deliberates and reckons (“discrimination”); with “right wisdom” one leaves “discrimination” and realizes “thusness.” Among these, “discrimination” goes from delusion into delusion, sinking lower and lower; “right wisdom” goes from awakening into awakening, advancing upward and upward, entering the Tathāgata ground. In the Mahāyāna Laṅkāvatāra Sūtra,"
+                                      },
+                                      {
+                                          "s":  "“The Buddha said: Mahāmati, the bodhisattva mahāsattva, relying on the sacred teachings, has no discrimination. Dwelling alone in quiet stillness, he observes his own realization, not awakening through another, free from the views of discrimination, advancing upward and upward, entering the Tathāgata ground. Practicing thus is called the mark of the practice of self-realized wisdom.”"
+                                      }
+                                  ]
+                   },
+                   {
+                       "t":  "quote",
+                       "inline":  [
+                                      {
+                                          "s":  "[Three natures]"
+                                      },
+                                      {
+                                          "s":  "That is, the three self-natures. First, the dependent-origination self-nature: all dharmas arise depending on many conditions, all without substance, only illusory; therefore it is called the dependent-origination self-nature. Second, the imagined self-nature: sentient beings, deluded, do not realize that all dharmas are originally empty, and falsely, over their own body and all dharmas, recklessly discriminate everywhere, grasping each as really existing; therefore it is called the imagined self-nature. Third, the consummated self-nature: the Tathāgatagarbha mind (the mind in the state of the Tathāgatagarbha), serene, still and eternal, perfectly fulfilled — therefore it is called the consummated self-nature."
+                                      }
+                                  ]
+                   },
+                   {
+                       "t":  "quote",
+                       "inline":  [
+                                      {
+                                          "s":  "The Tang Translation says:"
+                                      },
+                                      {
+                                          "s":  "“Ignorance, craving and karma, and the various minds arise depending on them; thus I know this to be the dependent-origination self-nature"
+                                      },
+                                      {
+                                          "s":  "(the dependent-origination self-nature)"
+                                      },
+                                      {
+                                          "s":  ". The false discrimination that there are things is what the deluded mind moves in; this discrimination is all empty, and the delusion reckons it as existing"
+                                      },
+                                      {
+                                          "s":  "(the imagined self-nature)"
+                                      },
+                                      {
+                                          "s":  ". The mind is bound by the various conditions, and arises in sentient beings; if the various conditions are far away, I say there is nothing seen. Having already left the various conditions, the self-mark that is discriminated no longer arises in the body; this I"
+                                      },
+                                      {
+                                          "s":  "(that is)"
+                                      },
+                                      {
+                                          "s":  "call no movement. What arises in the mind of sentient beings, the perceiving and the perceived, what is seen is all without mark; the foolish falsely discriminate, and display the ālaya"
+                                      },
+                                      {
+                                          "s":  "(the store consciousness)"
+                                      },
+                                      {
+                                          "s":  ". The supreme store consciousness, free from the perceiving and the perceived, this I call suchness"
+                                      },
+                                      {
+                                          "s":  "(the consummated self-nature — the Tathāgatagarbha)"
+                                      },
+                                      {
+                                          "s":  ".”"
+                                      },
+                                      {
+                                          "s":  "(Translation: The craving of ignorance and karma — the various minds arise depending on them; thus I know this is the dependent-origination self-nature. To falsely discriminate that dharmas exist is what the deluded mind moves in; in reality, in this forest of phenomena there is no difference (the true mark of all dharmas), and the mind falsely reckons it as existing — this is the imagined self-nature. The mind is bound by the various conditions, and arises in sentient beings; if the various conditions are far away, I say there is nothing seen. Having already left the various conditions, the self-mark that is discriminated no longer arises in the body; this I call no movement. What arises in the mind of sentient beings, then there is the perceiving and the perceived, and what is seen is in reality all without mark; but the foolish falsely discriminate various marks, and so the one mind becomes the evolving consciousness (the store consciousness). The supreme store consciousness, free from the perceiving and the perceived, this I call the consummated self-nature — the Tathāgatagarbha.)"
+                                      }
+                                  ]
+                   },
+                   {
+                       "t":  "p",
+                       "inline":  [
+                                      {
+                                          "s":  "[Displaying the ālaya] Among the eight consciousnesses (eye, ear, nose, tongue, body, mind, manas, and ālaya), the ālaya consciousness is the principal one; the other seven are all derived from it, so in the scriptures and treatises it is often used to represent the totality of the eight — the store consciousness."
+                                      }
+                                  ]
+                   },
+                   {
+                       "t":  "quote",
+                       "inline":  [
+                                      {
+                                          "s":  "[The consummated self-nature] The Tathāgatagarbha. This sutra says:"
+                                      },
+                                      {
+                                          "s":  "“Mahāmati! The bodhisattva mahāsattva should be skilled in the three self-natures. What are the three self-natures? They are the imagined self-nature"
+                                      },
+                                      {
+                                          "s":  "(the imagined self-nature)"
+                                      },
+                                      {
+                                          "s":  ", the dependent-origination self-nature, and the consummated self-nature"
+                                      },
+                                      {
+                                          "s":  "(the consummated self-nature)"
+                                      },
+                                      {
+                                          "s":  ". Mahāmati! The imagined self-nature arises from marks. Mahāmati said to the Buddha: ‘World-Honored One! How does the imagined self-nature arise from marks?’ The Buddha told Mahāmati: ‘The dependent-origination self-nature as the mark of phenomenal events, and the practice that manifests the mark of phenomenal events, give rise, through grasping, to two kinds of imagined self-nature. What is established by the Tathāgata, the Arhat, the Fully Awakened One, is the mark of grasping name-and-mark, and the mark of grasping phenomenal events. The mark of grasping name-and-mark is grasping inner and outer dharmas. The mark of grasping phenomenal events is grasping the self-mark and the common mark within those very inner and outer dharmas. These are called the two kinds of marks of imagined self-nature. If born depending on what is relied upon and what is depended upon, this is called dependent origination. What is the consummated self-nature? It is: free from the deluded thought of name-mark and phenomenal events, attained by sage wisdom, and the realm of practice going toward self-realized sage wisdom — this is called the consummated self-nature,"
+                                      },
+                                      {
+                                          "s":  "the Tathāgatagarbha mind"
+                                      },
+                                      {
+                                          "s":  ".’”"
+                                      },
+                                      {
+                                          "s":  "The Tang Translation says:"
+                                      },
+                                      {
+                                          "s":  "“Mahāmati! The bodhisattva mahāsattva should be skilled in the marks of the three self-natures. What are the three? Namely: the imagined self-nature, the dependent-origination self-nature, and the consummated self-nature. Mahāmati! The imagined self-nature arises from marks. How does it arise from marks? It means that, due to the various kinds of phenomenal marks of dependent origination appearing, one gives rise to grasping. Mahāmati! That grasping of phenomenal events gives rise to two kinds of imagined natures, as is expounded by the Tathāgatas: namely, the mark of grasping name-and-mark and the mark of grasping phenomenal events. Mahāmati! The mark of grasping phenomenal events is grasping inner and outer dharmas; the mark of grasping marks is grasping the self-mark and the common mark within those very inner and outer dharmas. These are called the two kinds of marks of imagined self-nature. Mahāmati! What arises from what is relied upon and what is depended upon is the dependent-origination nature. What is the consummated self-nature? It is: free from name-mark, phenomenal events and all discrimination, the thusness practiced by self-realized sage wisdom. Mahāmati!"
+                                      },
+                                      {
+                                          "s":  "this is the consummated self-nature, the Tathāgatagarbha mind"
+                                      },
+                                      {
+                                          "s":  ".”"
+                                      }
+                                  ]
+                   },
+                   {
+                       "t":  "p",
+                       "inline":  [
+                                      {
+                                          "s":  "The relationship among the three self-natures is: the one mind deluded about the dependent-origination self-nature of all dharmas falsely grasps all dharmas as really existing, and so turns the Tathāgatagarbha into the eight consciousnesses (the store consciousness) — this is the imagined self-nature (the store consciousness), and thus one falls from Buddha to an ordinary being. The one mind awakening to this dependent-origination self-nature and realizing the Dharma of non-arising, then restores the eight consciousnesses (the store consciousness) to the Tathāgatagarbha — this is the consummated self-nature (the Tathāgatagarbha), and thus one goes from an ordinary being to Buddhahood."
+                                      }
+                                  ]
+                   },
+                   {
+                       "t":  "p",
+                       "inline":  [
+                                      {
+                                          "s":  "Consciousness (the one mind) has these two states, delusion and awakening. The state of delusion is the ordinary being (in the ten Dharma realms, apart from the Buddha, all are called sentient beings); the state of awakening is the Buddha. Awakening is the original state of consciousness, called the store consciousness, also named the Tathāgatagarbha; delusion is the state of ignorance in which consciousness flows through birth and death, called the evolving consciousness, also named the store consciousness. Practice is precisely to return to the source and restore the evolving consciousness (the store consciousness) to the store consciousness (the Tathāgatagarbha)."
+                                      }
+                                  ]
+                   },
+                   {
+                       "t":  "p",
+                       "inline":  [
+                                      {
+                                          "s":  "[The ten Dharma realms] The hells, hungry ghosts, animals, asuras, humans, gods, voice-hearers, condition-realizers, bodhisattvas, and Buddhas. The first six are the six ordinary beings, and the last four are the four sages."
+                                      }
+                                  ]
+                   },
+                   {
+                       "t":  "p",
+                       "inline":  [
+                                      {
+                                          "s":  "[The eight consciousnesses]"
+                                      },
+                                      {
+                                          "s":  "The eye, ear, nose, tongue, body, mind, manas, and ālaya consciousnesses. (See further"
+                                      },
+                                      {
+                                          "s":  "Mind, Self-Nature, and Tathāgatagarbha",
+                                          "href":  "/articles/018xinyzx"
+                                      },
+                                      {
+                                          "s":  ".)"
+                                      }
+                                  ]
+                   },
+                   {
+                       "t":  "quote",
+                       "inline":  [
+                                      {
+                                          "s":  "[The two selves]"
+                                      },
+                                      {
+                                          "s":  "“The person-self” and “the Dharma-self,” also called the two graspings, the self-grasping and the Dharma-grasping. The person-self (self-grasping): a person is a temporary union of the five aggregates; when conditions gather it arises, and when conditions disperse it ceases; there is no real self-essence existing, yet sentient beings falsely grasp this as a real self-essence. To break the person-self is to end the segmented birth-and-death and escape the wheel of rebirth. The Dharma-self (Dharma-grasping): whether the Dharma of Buddhism or the dharmas of the world, all are provisionally established depending on conditions, existing in relation to one another, without an independently existing essence; yet sentient beings falsely grasp that all dharmas have a real essence and function. To break the Dharma-self is to end the birth-and-death of transformation and perfectly realize the Buddha-fruit. The Diamond Sūtra says:"
+                                      },
+                                      {
+                                          "s":  "“If a bodhisattva is through-and-through in the Dharma of selflessness, the Tathāgata calls him truly a bodhisattva.”"
+                                      }
+                                  ]
+                   },
+                   {
+                       "t":  "quote",
+                       "inline":  [
+                                      {
+                                          "s":  "[The five aggregates] Also called the “five skandhas.” The five aggregates are: the aggregate of form, the aggregate of feeling, the aggregate of perception, the aggregate of mental formations, and the aggregate of consciousness; these are the five great elements that constitute body and mind. Among them, the aggregate of form refers to matter, called the “Dharma of form”; the four aggregates of feeling, perception, mental formations and consciousness belong to the spiritual, called the “Dharma of mind.” The aggregate of form is the body, and the other four aggregates (feeling, perception, mental formations, consciousness) are the mind. Master Yinguang says:"
+                                      },
+                                      {
+                                          "s":  "“The five skandhas are form, feeling, perception, mental formations and consciousness. Form is the body that is the karmic reward one experiences; feeling, perception, mental formations and consciousness are the illusory and false mind that arises upon contact with objects. Through these false body-and-mind dharmas, with respect to the six sense-objects, one gives rise to delusion and creates karma.”"
+                                      },
+                                      {
+                                          "s":  "(The Essential Record of the Dharma Sayings of Master Yinguang) The Nirvāṇa Sūtra says:"
+                                      },
+                                      {
+                                          "s":  "“At the moment of death, one’s family weep. The person, in terror, cannot control himself. The good and evil of a whole life all appear before his eyes. After the vital warmth is exhausted, the five aggregates of the past cease, and the intermediate state of the present is born. After entering the womb, the present intermediate state ceases, and the five aggregates of the future are born. It is like a lamp: when it is lit the darkness ceases, and when it is extinguished the darkness returns, continuing without interruption.”"
+                                      },
+                                      {
+                                          "s":  "The Heart Sūtra says:"
+                                      },
+                                      {
+                                          "s":  "“The noble Avalokiteśvara, while practicing the profound pāramitā of prajñā, illuminated that the five aggregates are all empty, and passed beyond all suffering and calamity.”"
+                                      }
+                                  ]
+                   },
+                   {
+                       "t":  "p",
+                       "inline":  [
+                                      {
+                                          "s":  "[Segmented birth-and-death] Sentient beings in the three realms and six paths, because of the karmic rewards of their good and evil deeds, all have limited lifespans and segregated forms, so their birth-and-death is called “segmented birth-and-death.” One who ends segmented birth-and-death is freed from the wheel of rebirth and leaves the three realms. [Birth-and-death of transformation] The sages of the two vehicles have already cut off the delusions of views and thoughts and ended their segmented birth-and-death. In the process of practice, as deluded thought gradually ceases and realization gradually increases, this transition of delusion and awakening differs at each stage; the move from an earlier stage to a later one is precisely like one cycle of birth-and-death, hence it is called “birth-and-death of transformation.” One who ends the birth-and-death of transformation perfectly realizes the Buddha-fruit."
+                                      }
+                                  ]
+                   },
+                   {
+                       "t":  "quote",
+                       "inline":  [
+                                      {
+                                          "s":  "[The two dharmas of existence and non-existence]"
+                                      },
+                                      {
+                                          "s":  "The Dharma of existence and the Dharma of non-existence. The Dharma of existence refers to the entire forest of phenomena, all things. The Dharma of non-existence refers to nonexistent things, such as a tortoise’s hair or a rabbit’s horn. Here “existence” refers to existence of marks, and “non-existence” refers to non-existence of marks. Existence and non-existence are both relative: speaking of existence in relation to non-existence, and of non-existence in relation to existence. Because all dharmas have no existence at all, and originally there is not a single thing, therefore to speak of existence or non-existence is all a false view. (See further"
+                                      },
+                                      {
+                                          "s":  "The True Mark of All Dharmas",
+                                          "href":  "/articles/013zhufasx"
+                                      },
+                                      {
+                                          "s":  ".) The Wei Translation says:"
+                                      },
+                                      {
+                                          "s":  "“Wrong views discuss the arising of dharmas, and deluded thought reckons existence and non-existence. If one knows that nothing is born, one also knows that nothing ceases. Observing the world as all empty and still, one does not fall into existence or non-existence.”"
+                                      },
+                                      {
+                                          "s":  "Master Hanshan’s Record of Observing the Laṅkāvatāra Sūtra says:"
+                                      },
+                                      {
+                                          "s":  "“Therefore this verse praises the Buddha as ‘free from both existence and non-existence.’ How extreme! The two views of existence and non-existence are the thorns in the Dharma body. What is called self-realized sage wisdom is nothing else but to know this taking leave and this leaving behind; there is no further real Dharma to obtain — this truly is the ultimate principle of this sutra. A practitioner who knows this may be said to practice without practice, and to realize without realization. If one has not yet forgotten even a single thought of practice and realization, then one falls back into this; how much more if one takes discriminating words and phrases as attainment! If a contemplator contemplates in this way, he may be said to know the true mark of the Dharma.”"
+                                      }
+                                  ]
+                   },
+                   {
+                       "t":  "p",
+                       "inline":  [
+                                      {
+                                          "s":  "[A tortoise’s hair and a rabbit’s horn] This is only using an analogy to illustrate the principle; one should not grasp it one-sidedly. In the regions where the Buddha preached, there are no such things as green-haired tortoises. Moreover, what is called the “green-haired tortoise” is actually that algae plants grow on the tortoise’s back, appearing as green threads, so in water they merely look like tortoise hairs. [“Non-existence” refers to non-existence of marks] The “marks” spoken of here refer to the representations of things within the dream of ignorance; this is different from the “marks” spoken of in daily life and in the natural sciences. For example, air is considered colorless and markless in daily life and in the natural sciences; but according to the Buddha’s Dharma, it has marks, because through various means one can determine its existence (its existence within the dream of ignorance), only the naked eye cannot see it. In fact it has density, it has weight, it has cold and heat, it has motion and stillness — all of these are marks."
+                                      }
+                                  ]
+                   },
+                   {
+                       "t":  "quote",
+                       "inline":  [
+                                      {
+                                          "s":  "[Self-realized sage wisdom]"
+                                      },
+                                      {
+                                          "s":  "The Tathāgata’s wisdom of the essential nature of the Dharma realm, that is, the wisdom that realizes that “all dharmas are originally unborn”; also called the pure wisdom of the Dharma realm. This sutra says:"
+                                      },
+                                      {
+                                          "s":  "“Mahāmati! The mark of the ultimate realization of self-realized sage wisdom is to have no reckoning grasping in the marks of all dharmas, to attain the body of the samādhi of illusion, and to advance and practice toward the stage of the Buddhas.”"
+                                      },
+                                      {
+                                          "s":  "It also says:"
+                                      },
+                                      {
+                                          "s":  "“The Buddha told Mahāmati: What the former sages knew, handed down from one to another, is that deluded thought is without nature. The bodhisattva mahāsattva, dwelling alone in a quiet place, observes by his own realization, depending on no other, free from views and deluded thought, advancing upward and upward, enters the Tathāgata ground — this is called the mark of self-realized sage wisdom.”"
+                                      }
+                                  ]
+                   },
+                   {
+                       "t":  "p",
+                       "inline":  [
+                                      {
+                                          "s":  "[The Tathāgata ground]"
+                                      },
+                                      {
+                                          "s":  "The stage of the Buddha."
+                                      }
+                                  ]
+                   },
+                   {
+                       "t":  "h2",
+                       "text":  "3.  The King of Laṅkā’s Request"
+                   },
+                   {
+                       "t":  "p",
+                       "inline":  [
+                                      {
+                                          "s":  "("
+                                      },
+                                      {
+                                          "s":  "The text is taken from the Mahāyāna Laṅkāvatāra Sūtra.)"
+                                      }
+                                  ]
+                   },
+                   {
+                       "t":  "h3",
+                       "text":  "Assembly of Holy Beings"
+                   },
+                   {
+                       "t":  "p",
+                       "inline":  [
+                                      {
+                                          "s":  "【Thus have I heard: at one time the Buddha dwelt on Mount Malaya by the great sea, in the city of Laṅkā, together with the great assembly of bhikṣus and the great assembly of bodhisattvas.】"
+                                      }
+                                  ]
+                   },
+                   {
+                       "t":  "p",
+                       "inline":  [
+                                      {
+                                          "s":  "This is what I (Ānanda) personally heard. At that time the Buddha dwelt on Mount Malaya by the great sea, in the city of Laṅkā, together with the great assembly of bhikṣus and the great assembly of bodhisattvas."
+                                      }
+                                  ]
+                   },
+                   {
+                       "t":  "quote",
+                       "inline":  [
+                                      {
+                                          "s":  "[Thus have I heard] This is what I (Ānanda) personally heard. “Thus have I heard” is to inspire trust, to prove that this sutra is indeed spoken by the Buddha and that the recorded text is correct and accurate. When the Buddha was about to enter parinirvāṇa, he exhorted the Venerable Ānanda: when the scriptures are compiled in the future, the words “Thus have I heard” should be placed at the head of every sutra, to prove that it was indeed spoken by the Buddha and to distinguish it from the scriptures of non-Buddhist sects. The “I” in the sentence is the compiler Ānanda referring to himself. Ānanda was the Buddha’s paternal cousin, born on the night of the Buddha’s enlightenment. Later he followed the Buddha in going forth and served as the Buddha’s attendant, being known for “never forgetting what passed his ears, the foremost in much hearing.” When Ānanda went forth, the Buddha had already preached for twenty years, so he asked the Buddha to repeat for him the sermons previously given; at the same time Ānanda also attained the Dharma-nature-awakening freedom samādhi, and could thoroughly comprehend all dharmas within samādhi. Therefore, after the Buddha’s passing, when the Venerable Mahākāśyapa compiled the scriptures in the great stone cave of Magadha, the five hundred great arhats gathered together, and the assembly unanimously put Ānanda forward to ascend the dais and recite the scriptures. In the Lotus Sūtra, the Buddha said:"
+                                      },
+                                      {
+                                          "s":  "“I, together with Ānanda and others, in the presence of Buddha Kōṅkāśa, simultaneously resolved on the mind of supreme right awakening. Ānanda delighting always in much hearing, and I always diligent and vigorous, therefore I have already attained supreme right awakening, while Ānanda guards my Dharma and also guards the Dharma treasury of the future Buddhas, teaching and accomplishing the assemblies of bodhisattvas.”"
+                                      }
+                                  ]
+                   },
+                   {
+                       "t":  "p",
+                       "inline":  [
+                                      {
+                                          "s":  "[At one time] At that time. This refers to the time when the Buddha preached this sutra, that is, the time when teacher and student met in accord and the faculties and the teaching joined. When the Tathāgata preaches, it extends to gods and men; when the scriptures were compiled and circulated, they reached the whole world. Because the records of year, month and day are hard to reconcile, the phrase “at one time” is used to record it. [Teacher and student] Teacher, student. [The faculties and the teaching join] “Faculties” are the faculties of the audience; “teaching” is the Buddha’s instruction. The faculties of sentient beings differ, so the Buddha, following their faculties, imparts teachings of deeper or shallower nature. “The faculties and the teaching join” means that at the Dharma assembly the faculties of the audience and the Buddha’s instruction respond and accord with one another. [Buddha] An abbreviation of Buddha, here referring to Śākyamuni Buddha. “Buddha” is a Sanskrit sound, translated into Chinese as “the Awakened One.” Within, one is awakened and free from all false thoughts; without, one is awakened and not defiled by the six sense-objects."
+                                      }
+                                  ]
+                   },
+                   {
+                       "t":  "p",
+                       "inline":  [
+                                      {
+                                          "s":  "[Great bhikṣu] “Bhikṣu” is the general term for one who has gone forth and received the full precepts; a man is called a “bhikṣu,” a woman a “bhikṣuṇī.” A “great bhikṣu” is a bhikṣu of high virtue and advanced age. [Great bodhisattva] Those above the first ground are great bodhisattvas. [Great bhikṣu] “Bhikṣu” is the general term for one who has gone forth and received the full precepts; a man is called a “bhikṣu,” a woman a “bhikṣuṇī.” A “great bhikṣu” is a bhikṣu of high virtue and advanced age. [Great bodhisattva] Those above the first ground are great bodhisattvas."
+                                      }
+                                  ]
+                   },
+                   {
+                       "t":  "quote",
+                       "inline":  [
+                                      {
+                                          "s":  "【The bodhisattva mahāsattvas, all having already penetrated the five dharmas, the three natures, the various consciousnesses and selflessness, and being well versed in the meaning that realms are the manifestation of their own mind, sport in immeasurable and self-existent samādhis, spiritual powers and powers, and, according to the minds of sentient beings, manifest various forms and skillfully subdue them. All the Buddhas have poured the anointment upon their heads. They have all come to this assembly from various Buddha lands. The bodhisattva mahāsattva Mahāmati was at their head.】"
+                                      }
+                                  ]
+                   },
+                   {
+                       "t":  "p",
+                       "inline":  [
+                                      {
+                                          "s":  "These great bodhisattvas had all already penetrated the five dharmas, the three self-natures, the eight consciousnesses and the two selflessnesses, and understood the principle that realms are the manifestation of their own mind. Sport in immeasurable and self-existent samādhis, spiritual powers and powers, they play through the three realms and, following the minds of sentient beings, manifest appropriate forms to skillfully subdue and transform them. All the Buddhas have personally poured the anointment upon their heads. They have all come to this assembly from various Buddha lands, with the bodhisattva mahāsattva Mahāmati at their head."
+                                      }
+                                  ]
+                   },
+                   {
+                       "t":  "quote",
+                       "inline":  [
+                                      {
+                                          "s":  "[Sport] Buddhas and bodhisattvas roam through spiritual powers, transforming beings to delight themselves; this is called “sport.” [Expedient means] The means, methods or words used to guide and transform sentient beings. [Manifest various forms] To manifest various forms. As the Chapter of Universal Gateway says:"
+                                      },
+                                      {
+                                          "s":  "“This Avalokiteśvara bodhisattva, having accomplished such merits, roams through the various lands in various forms, delivering sentient beings.”"
+                                      },
+                                      {
+                                          "s":  "[At their head] The chief seat among the great assembly is called “at their head.” Either one person is at the head, or a number of people are at the head."
+                                      }
+                                  ]
+                   }
+               ]
+}
