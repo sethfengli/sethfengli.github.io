@@ -54,7 +54,7 @@
    ]
   },
   {
-   "t": "quote",
+   "t": "p",
    "inline": [
     {
      "s": "["
@@ -389,7 +389,19 @@
    "t": "p",
    "inline": [
     {
-     "s": "Every sentence in this section is a logical sentence of 'A (the mark as existing), not-A (the essence as non-existent),' proclaiming the real nature of all dharmas."
+     "s": "Every sentence in this section is the logical sentence “"
+    },
+    {
+     "s": "A"
+    },
+    {
+     "s": "(the mark as existing), not"
+    },
+    {
+     "s": "A"
+    },
+    {
+     "s": "(the essence as non-existent),” proclaiming the real nature of all dharmas."
     }
    ]
   },
