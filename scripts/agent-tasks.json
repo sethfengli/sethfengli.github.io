@@ -1,90 +1,6 @@
 [
  {
   "id": "B001",
-  "size": 86877,
-  "tasks": [
-   {
-    "file": "068xiangxujs.json",
-    "slice": {
-     "lineStart": 10,
-     "lineEnd": 1150,
-     "firstBlock": 0,
-     "lastBlock": 49
-    },
-    "partName": "068xiangxujs.p1.json",
-    "includeMeta": true,
-    "est": 28950
-   },
-   {
-    "file": "234wuliangshoujingyishu.json",
-    "slice": {
-     "lineStart": 3422,
-     "lineEnd": 4154,
-     "firstBlock": 388,
-     "lastBlock": 469
-    },
-    "partName": "234wuliangshoujingyishu.p6.json",
-    "includeMeta": false,
-    "est": 28957
-   },
-   {
-    "file": "115xifangquezhi.json",
-    "slice": {
-     "lineStart": 1725,
-     "lineEnd": 2500,
-     "firstBlock": 131,
-     "lastBlock": 198
-    },
-    "partName": "115xifangquezhi.p3.json",
-    "includeMeta": false,
-    "est": 28970
-   }
-  ]
- },
- {
-  "id": "B002",
-  "size": 86919,
-  "tasks": [
-   {
-    "file": "175xuyunchanfa.json",
-    "slice": {
-     "lineStart": 807,
-     "lineEnd": 1778,
-     "firstBlock": 64,
-     "lastBlock": 149
-    },
-    "partName": "175xuyunchanfa.p2.json",
-    "includeMeta": false,
-    "est": 28972
-   },
-   {
-    "file": "171nianfoshishui.json",
-    "slice": {
-     "lineStart": 4559,
-     "lineEnd": 5752,
-     "firstBlock": 251,
-     "lastBlock": 318
-    },
-    "partName": "171nianfoshishui.p5.json",
-    "includeMeta": false,
-    "est": 28973
-   },
-   {
-    "file": "402nianfolun.json",
-    "slice": {
-     "lineStart": 10,
-     "lineEnd": 747,
-     "firstBlock": 0,
-     "lastBlock": 80
-    },
-    "partName": "402nianfolun.p1.json",
-    "includeMeta": true,
-    "est": 28974
-   }
-  ]
- },
- {
-  "id": "B003",
   "size": 86939,
   "tasks": [
    {
@@ -126,7 +42,7 @@
   ]
  },
  {
-  "id": "B004",
+  "id": "B002",
   "size": 86968,
   "tasks": [
    {
@@ -168,7 +84,7 @@
   ]
  },
  {
-  "id": "B005",
+  "id": "B003",
   "size": 87010,
   "tasks": [
    {
@@ -210,7 +126,7 @@
   ]
  },
  {
-  "id": "B006",
+  "id": "B004",
   "size": 87046,
   "tasks": [
    {
@@ -252,7 +168,7 @@
   ]
  },
  {
-  "id": "B007",
+  "id": "B005",
   "size": 87072,
   "tasks": [
    {
@@ -294,7 +210,7 @@
   ]
  },
  {
-  "id": "B008",
+  "id": "B006",
   "size": 87086,
   "tasks": [
    {
@@ -336,7 +252,7 @@
   ]
  },
  {
-  "id": "B009",
+  "id": "B007",
   "size": 87141,
   "tasks": [
    {
@@ -378,7 +294,7 @@
   ]
  },
  {
-  "id": "B010",
+  "id": "B008",
   "size": 87211,
   "tasks": [
    {
@@ -420,7 +336,7 @@
   ]
  },
  {
-  "id": "B011",
+  "id": "B009",
   "size": 87235,
   "tasks": [
    {
@@ -462,7 +378,7 @@
   ]
  },
  {
-  "id": "B012",
+  "id": "B010",
   "size": 87292,
   "tasks": [
    {
@@ -504,7 +420,7 @@
   ]
  },
  {
-  "id": "B013",
+  "id": "B011",
   "size": 87360,
   "tasks": [
    {
@@ -546,7 +462,7 @@
   ]
  },
  {
-  "id": "B014",
+  "id": "B012",
   "size": 87385,
   "tasks": [
    {
@@ -588,7 +504,7 @@
   ]
  },
  {
-  "id": "B015",
+  "id": "B013",
   "size": 87412,
   "tasks": [
    {
@@ -630,7 +546,7 @@
   ]
  },
  {
-  "id": "B016",
+  "id": "B014",
   "size": 87438,
   "tasks": [
    {
@@ -672,7 +588,7 @@
   ]
  },
  {
-  "id": "B017",
+  "id": "B015",
   "size": 87465,
   "tasks": [
    {
@@ -714,7 +630,7 @@
   ]
  },
  {
-  "id": "B018",
+  "id": "B016",
   "size": 87498,
   "tasks": [
    {
@@ -756,7 +672,7 @@
   ]
  },
  {
-  "id": "B019",
+  "id": "B017",
   "size": 87554,
   "tasks": [
    {
@@ -798,7 +714,7 @@
   ]
  },
  {
-  "id": "B020",
+  "id": "B018",
   "size": 87639,
   "tasks": [
    {
@@ -840,7 +756,7 @@
   ]
  },
  {
-  "id": "B021",
+  "id": "B019",
   "size": 87674,
   "tasks": [
    {
@@ -882,7 +798,7 @@
   ]
  },
  {
-  "id": "B022",
+  "id": "B020",
   "size": 87719,
   "tasks": [
    {
@@ -924,7 +840,7 @@
   ]
  },
  {
-  "id": "B023",
+  "id": "B021",
   "size": 87762,
   "tasks": [
    {
@@ -966,7 +882,7 @@
   ]
  },
  {
-  "id": "B024",
+  "id": "B022",
   "size": 87780,
   "tasks": [
    {
@@ -1008,7 +924,7 @@
   ]
  },
  {
-  "id": "B025",
+  "id": "B023",
   "size": 87805,
   "tasks": [
    {
@@ -1050,7 +966,7 @@
   ]
  },
  {
-  "id": "B026",
+  "id": "B024",
   "size": 87839,
   "tasks": [
    {
@@ -1092,7 +1008,7 @@
   ]
  },
  {
-  "id": "B027",
+  "id": "B025",
   "size": 87905,
   "tasks": [
    {
@@ -1134,7 +1050,7 @@
   ]
  },
  {
-  "id": "B028",
+  "id": "B026",
   "size": 87949,
   "tasks": [
    {
@@ -1176,7 +1092,7 @@
   ]
  },
  {
-  "id": "B029",
+  "id": "B027",
   "size": 87997,
   "tasks": [
    {
@@ -1218,7 +1134,7 @@
   ]
  },
  {
-  "id": "B030",
+  "id": "B028",
   "size": 88069,
   "tasks": [
    {
@@ -1260,7 +1176,7 @@
   ]
  },
  {
-  "id": "B031",
+  "id": "B029",
   "size": 88146,
   "tasks": [
    {
@@ -1302,7 +1218,7 @@
   ]
  },
  {
-  "id": "B032",
+  "id": "B030",
   "size": 88189,
   "tasks": [
    {
@@ -1344,7 +1260,7 @@
   ]
  },
  {
-  "id": "B033",
+  "id": "B031",
   "size": 88213,
   "tasks": [
    {
@@ -1386,7 +1302,7 @@
   ]
  },
  {
-  "id": "B034",
+  "id": "B032",
   "size": 88322,
   "tasks": [
    {
@@ -1428,7 +1344,7 @@
   ]
  },
  {
-  "id": "B035",
+  "id": "B033",
   "size": 88389,
   "tasks": [
    {
@@ -1470,7 +1386,7 @@
   ]
  },
  {
-  "id": "B036",
+  "id": "B034",
   "size": 88479,
   "tasks": [
    {
@@ -1512,7 +1428,7 @@
   ]
  },
  {
-  "id": "B037",
+  "id": "B035",
   "size": 88591,
   "tasks": [
    {
@@ -1554,7 +1470,7 @@
   ]
  },
  {
-  "id": "B038",
+  "id": "B036",
   "size": 88652,
   "tasks": [
    {
@@ -1596,7 +1512,7 @@
   ]
  },
  {
-  "id": "B039",
+  "id": "B037",
   "size": 88683,
   "tasks": [
    {
@@ -1638,7 +1554,7 @@
   ]
  },
  {
-  "id": "B040",
+  "id": "B038",
   "size": 88758,
   "tasks": [
    {
@@ -1680,7 +1596,7 @@
   ]
  },
  {
-  "id": "B041",
+  "id": "B039",
   "size": 88954,
   "tasks": [
    {
@@ -1722,7 +1638,7 @@
   ]
  },
  {
-  "id": "B042",
+  "id": "B040",
   "size": 89114,
   "tasks": [
    {
@@ -1764,7 +1680,7 @@
   ]
  },
  {
-  "id": "B043",
+  "id": "B041",
   "size": 89347,
   "tasks": [
    {
@@ -1806,7 +1722,7 @@
   ]
  },
  {
-  "id": "B044",
+  "id": "B042",
   "size": 89633,
   "tasks": [
    {
@@ -1848,7 +1764,7 @@
   ]
  },
  {
-  "id": "B045",
+  "id": "B043",
   "size": 89787,
   "tasks": [
    {
@@ -1890,7 +1806,7 @@
   ]
  },
  {
-  "id": "B046",
+  "id": "B044",
   "size": 90015,
   "tasks": [
    {
@@ -1932,7 +1848,7 @@
   ]
  },
  {
-  "id": "B047",
+  "id": "B045",
   "size": 90159,
   "tasks": [
    {
@@ -1974,7 +1890,7 @@
   ]
  },
  {
-  "id": "B048",
+  "id": "B046",
   "size": 91034,
   "tasks": [
    {
@@ -2016,7 +1932,7 @@
   ]
  },
  {
-  "id": "B049",
+  "id": "B047",
   "size": 92611,
   "tasks": [
    {
@@ -2058,7 +1974,7 @@
   ]
  },
  {
-  "id": "B050",
+  "id": "B048",
   "size": 97019,
   "tasks": [
    {
