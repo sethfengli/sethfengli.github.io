@@ -1,5 +1,15 @@
 # 英文翻译续作指南（下星期继续）
 
+> **当前检查点（本次会话末）**
+> - 工作目录 `D:\FengLi\Web\fou\huideng-chanlin`；已提交，工作区干净。
+> - 状态：`ok≈188` 篇完整英文、`crit≈5`、`parts≈99`；catalog **294 条、0 重复标题**（已删 5 篇重复）。
+> - 已完成：`303`《六祖坛经》整篇、`111` 中文源重建+整篇、5 篇重命名、术语统一、两轮雅信达 review、catalog-en 清理、构建通过。
+> - A 已派/完批次 **B001–B023**；`scripts/agent-tasks.json` 记录剩余 **A：50 批 / 150 任务**；B（>300KB）延后。
+> - 省 token 措施：**精简派发提示、惰性合并（攒批再合并/校验/提交）、去重**。
+>
+> **下一会话第一步（第一句给代理）**：
+> “读 `scripts/RESUME.md` 并按 C→A→B 继续：先 A（`node scripts/make-agent-tasks.mjs` 生成 → 5 并行子代理按 `TRANSLATION-BRIEF.md` 翻译 → `merge-parts.mjs`+`repair-json.mjs`+`validate-en.mjs` → 惰性合并提交），A 完成后调 `DEFER_BYTES` 再切 B（>300KB）。随时 `git push` 上线。
+
 ## 目的
 fou 项目（huideng-chanlin）英文模式下的中→英翻译复刻。目标：英文模式下文章/签文/主页无中文残留。
 
