@@ -1,14 +1,23 @@
 # 英文翻译续作指南（下星期继续）
 
-> **当前检查点（本次会话末）**
-> - 工作目录 `D:\FengLi\Web\fou\huideng-chanlin`；已提交，工作区干净。
-> - 状态：`ok≈188` 篇完整英文、`crit≈5`、`parts≈99`；catalog **294 条、0 重复标题**（已删 5 篇重复）。
-> - 已完成：`303`《六祖坛经》整篇、`111` 中文源重建+整篇、5 篇重命名、术语统一、两轮雅信达 review、catalog-en 清理、构建通过。
-> - A 已派/完批次 **B001–B023**；`scripts/agent-tasks.json` 记录剩余 **A：50 批 / 150 任务**；B（>300KB）延后。
-> - 省 token 措施：**精简派发提示、惰性合并（攒批再合并/校验/提交）、去重**。
+> **当前检查点（2026-09-10 一小时会话末）**
+> - 工作目录 `D:\FengLi\Web\fou\huideng-chanlin`；已提交，工作区仅 `scripts/agent-tasks.json` 为再生成产物。
+> - 本次一小时：3 轮 × 5 并行子代理 = **15 片**新英文分片，全部核验通过并提交（`d68d5f0`、`741701f`、`55353c4`、`a7bd013`）。
+>   新增：`102lengqiejingxuanzhu.p1`（上次因全角括号失败，本次通过）、`074chimingnf48.p1`、`175xuyunchanfa.p3`、`186hanshandashideyisheng.p3`、`110yimengmanyan.p3`、
+>   `002baiyunxy.p4`、`187hanshandashinianpushu-old.p4`、`022taishanggy-3.p4`、`022taishanggy-3.p10`、`258quanzhenqizizhuan.p3`、
+>   `177niliujuezhao.p1`、`026yjy-baihua.p1`、`230guanjingzhu.p1`、`401amtj.p6`、`234wuliangshoujingyishu.p3`。
+> - 状态：`validate-en` = **ok=188 crit=6 warn=2 parts=98**；`en/` 目录 199 个整篇文件 + 281 个分片文件；`agent-tasks.json` 剩余 **137 任务（磁盘上尚缺 123）**。
+> - 新增两个辅助脚本（已提交）：
+>   - `scripts/verify-slices.mjs <partName...>|--all`：核验分片（JSON/无 CJK/块数/结构/href/元信息）。
+>   - `scripts/audit-slices.mjs`：对账「分片计划 ↔ en 产出 ↔ 任务清单」，打印缺口与未排队项。
+> - **重要发现（周末注意）**：
+>   1. `make-agent-tasks.mjs` 只为部分文章登记了部分切片（如 `074chimingnf48` 只登记 p1，而计划是 2 片），历史分片编号与当前 `slice-plan.json` 的编号体系不一致；派发前务必用 `node scripts/verify-slices.mjs --all` + `node scripts/audit-slices.mjs` 交叉核对，**只派"清单内且磁盘上无产出"的切片**。
+>   2. `303liuzutanjing`（《六祖坛经》）英文整篇在 **块 555–822 区间整体错位**（89 块 `t`/inline 数不匹配，块 671 还丢了一个 href `/articles/152sizukaishifarong`）——译文内容本身存在，但块边界与中文源不齐，英文模式下这一段会串行。周末需**重译该区间或重新对齐**（该文 1530 块）。
+>   3. 其余 crit：`043mengyouji`、`187hanshandashinianpushu`、`239wuliangshoujing-jiaohuibenzhu-zhu` 缺整篇（分片未齐）；`068xiangxujs`、`101yebunengxi` 仍有 CJK 残留。
+>   - A 剩余任务按 `agent-tasks.json` 继续派发即可；B（>300KB）仍延后。
 >
 > **下一会话第一步（第一句给代理）**：
-> “读 `scripts/RESUME.md` 并按 C→A→B 继续：先 A（`node scripts/make-agent-tasks.mjs` 生成 → 5 并行子代理按 `TRANSLATION-BRIEF.md` 翻译 → `merge-parts.mjs`+`repair-json.mjs`+`validate-en.mjs` → 惰性合并提交），A 完成后调 `DEFER_BYTES` 再切 B（>300KB）。随时 `git push` 上线。
+> “读 `scripts/RESUME.md` 与 `scripts/NEXT.md`，按其中步骤继续 A 期：先 `node scripts/make-agent-tasks.mjs` + `node scripts/prep-slices.mjs`，用 `node scripts/audit-slices.mjs` 挑‘清单内且磁盘无产出’的切片，每轮 5 个并行子代理、一片一个；收到通知后 `node scripts/verify-slices.mjs <part>` 核验，合格就 `git commit`（不要 push）；某文章分片齐了再 `merge-parts.mjs`→`repair-json.mjs`→`validate-en.mjs`。”
 
 ## 目的
 fou 项目（huideng-chanlin）英文模式下的中→英翻译复刻。目标：英文模式下文章/签文/主页无中文残留。
