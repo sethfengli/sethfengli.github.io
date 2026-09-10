@@ -1,23 +1,24 @@
 # 英文翻译续作指南（下星期继续）
 
-> **当前检查点（2026-09-10 一小时会话末）**
-> - 工作目录 `D:\FengLi\Web\fou\huideng-chanlin`；已提交，工作区仅 `scripts/agent-tasks.json` 为再生成产物。
-> - 本次一小时：3 轮 × 5 并行子代理 = **15 片**新英文分片，全部核验通过并提交（`d68d5f0`、`741701f`、`55353c4`、`a7bd013`）。
->   新增：`102lengqiejingxuanzhu.p1`（上次因全角括号失败，本次通过）、`074chimingnf48.p1`、`175xuyunchanfa.p3`、`186hanshandashideyisheng.p3`、`110yimengmanyan.p3`、
->   `002baiyunxy.p4`、`187hanshandashinianpushu-old.p4`、`022taishanggy-3.p4`、`022taishanggy-3.p10`、`258quanzhenqizizhuan.p3`、
->   `177niliujuezhao.p1`、`026yjy-baihua.p1`、`230guanjingzhu.p1`、`401amtj.p6`、`234wuliangshoujingyishu.p3`。
-> - 状态：`validate-en` = **ok=188 crit=6 warn=2 parts=98**；`en/` 目录 199 个整篇文件 + 281 个分片文件；`agent-tasks.json` 剩余 **137 任务（磁盘上尚缺 123）**。
-> - 新增两个辅助脚本（已提交）：
->   - `scripts/verify-slices.mjs <partName...>|--all`：核验分片（JSON/无 CJK/块数/结构/href/元信息）。
->   - `scripts/audit-slices.mjs`：对账「分片计划 ↔ en 产出 ↔ 任务清单」，打印缺口与未排队项。
+> **当前检查点（2026-09-10 两小时会话末）**
+> - 工作目录 `D:\FengLi\Web\fou\huideng-chanlin`；已提交，工作区干净。
+> - 本次共 **6 轮 × 5 并行子代理 = 30 片**新英文分片（第 1–3 轮见下），全部核验通过并提交：
+>   `d68d5f0`、`741701f`、`55353c4`、`a7bd013`、`7929528`、`8f7bc2d`、`a8ce246`。
+>   第 4–6 轮 15 片：`000jxdg-chan.p1`、`003xffayuanw.p1`、`006linzhongzn.p1`、`009xiuwfayao.p1`、`013zhufasx.p1`、
+>   `018xinyzx.p3`、`027lfsx-baihua.p3`、`028baofufa.p1`、`048wangshengfl.p1`、`066xinliliaobing.p1`、
+>   `077faranqujie.p1`、`080waiqushandaodashi.p1`、`081di18yuan.p1`、`114huxinianfojingyi.p1`、`115xifangquezhi.p4`。
+> - 因这 30 片，`merge-parts` **新合并出 17 篇完整英文文章**（000jxdg-chan / 003xffayuanw / 006linzhongzn / 009xiuwfayao / 018xinyzx / 026yjy-baihua / 027lfsx-baihua / 028baofufa / 048wangshengfl / 066xinliliaobing / 074chimingnf48 / 077faranqujie / 080waiqushandaodashi / 081di18yuan / 114huxinianfojingyi / 115xifangquezhi / 177niliujuezhao）。
+> - 状态：`validate-en` = **ok=205 crit=6 warn=2 parts=81**；`plan-slices` = 61 篇有缺口 / 缺 156 片 / **可立即派发 72 片**（plan 一致性问题 0）。
+> - 工具（均已提交）：`scripts/plan-slices.mjs`（体检 + `--next N` 挑可安全派发切片 + `--fix` 修补空 slices）、`scripts/verify-slices.mjs`（单/多片核验）、`scripts/prep-slices.mjs`。旧的 `audit-slices.mjs` 已删除（被 plan-slices 取代）。
 > - **重要发现（周末注意）**：
->   1. `make-agent-tasks.mjs` 只为部分文章登记了部分切片（如 `074chimingnf48` 只登记 p1，而计划是 2 片），历史分片编号与当前 `slice-plan.json` 的编号体系不一致；派发前务必用 `node scripts/verify-slices.mjs --all` + `node scripts/audit-slices.mjs` 交叉核对，**只派"清单内且磁盘上无产出"的切片**。
->   2. `303liuzutanjing`（《六祖坛经》）英文整篇在 **块 555–822 区间整体错位**（89 块 `t`/inline 数不匹配，块 671 还丢了一个 href `/articles/152sizukaishifarong`）——译文内容本身存在，但块边界与中文源不齐，英文模式下这一段会串行。周末需**重译该区间或重新对齐**（该文 1530 块）。
->   3. 其余 crit：`043mengyouji`、`187hanshandashinianpushu`、`239wuliangshoujing-jiaohuibenzhu-zhu` 缺整篇（分片未齐）；`068xiangxujs`、`101yebunengxi` 仍有 CJK 残留。
->   - A 剩余任务按 `agent-tasks.json` 继续派发即可；B（>300KB）仍延后。
+>   1. `make-agent-tasks.mjs` 的清单**不再作为派发依据**（它只登记部分切片）——请改用 `plan-slices.mjs --next N` 选片：它会跳过历史 partial、保证"计划内 + 无同名产出 + 前一片已齐"。
+>   2. `slice-plan.json` 已重新生成（`111mituoyuanzhongchao` 补 4 片、3 篇重命名的 239 系列恢复），并已 `--fix`，plan 一致性问题为 0。
+>   3. `303liuzutanjing` 英文整篇 **块 555–822 错位**（89 块 `t`/inline 不匹配，块 671 丢 href `/articles/152sizukaishifarong`）——内容在但边界不齐，英文模式该段会串行，周末需重译/重对齐。
+>   4. 其余 crit：`043mengyouji`、`187hanshandashinianpushu`、`239wuliangshoujing-jiaohuibenzhu-zhu` 分片未齐；`068xiangxujs`、`101yebunengxi` 仍有 CJK 残留。
+>   - B（>300KB）仍延后（`make-agent-tasks.mjs` 里 `DEFER_BYTES`）。
 >
 > **下一会话第一步（第一句给代理）**：
-> “读 `scripts/RESUME.md` 与 `scripts/NEXT.md`，按其中步骤继续 A 期：先 `node scripts/make-agent-tasks.mjs` + `node scripts/prep-slices.mjs`，用 `node scripts/audit-slices.mjs` 挑‘清单内且磁盘无产出’的切片，每轮 5 个并行子代理、一片一个；收到通知后 `node scripts/verify-slices.mjs <part>` 核验，合格就 `git commit`（不要 push）；某文章分片齐了再 `merge-parts.mjs`→`repair-json.mjs`→`validate-en.mjs`。”
+> “读 `scripts/RESUME.md` 与 `scripts/NEXT.md`，按其中步骤继续 A 期：`node scripts/plan-slices.mjs --next 15` 取可派切片 → 每轮 5 个并行子代理（一片一个）按 `scripts/TRANSLATION-BRIEF.md` 翻译 → `node scripts/verify-slices.mjs <part>` 核验 → `git commit`（不要 push）；某文章分片齐了再 `merge-parts.mjs`→`repair-json.mjs`→`validate-en.mjs`。”
 
 ## 目的
 fou 项目（huideng-chanlin）英文模式下的中→英翻译复刻。目标：英文模式下文章/签文/主页无中文残留。
