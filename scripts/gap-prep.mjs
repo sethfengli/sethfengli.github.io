@@ -53,6 +53,14 @@ for (const raw of process.argv.slice(2)) {
       /* ignore */
     }
   }
+  // Also reserve part indices already prepared (but not yet written) under build/slices,
+  // so two calls for the same slug (splitting one gap) do not collide on the same name.
+  if (existsSync(outDir)) {
+    for (const f of readdirSync(outDir)) {
+      const m = f.match(new RegExp(`^${s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\.p(\\d+)\\.src\\.json$`))
+      if (m) usedIdx.add(Number(m[1]))
+    }
+  }
   const gaps = []
   let i = 0
   while (i < total) {
