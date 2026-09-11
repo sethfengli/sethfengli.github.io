@@ -1,0 +1,983 @@
+{
+ "slug": "126lianchidashi-taming",
+ "title": "The Stupa Inscription of Master Lianchi (Annotated)",
+ "author": "Composed by Master Hanshan",
+ "excerpt": "[The Master's taboo name was Zhuhong; his courtesy name was Fohui, and his alternate style Lianchi, which declared where his aspiration lay. His secular surname was Shen, and he was a man of Renhe in ancient Hangzhou. His family had for generations been one of distinction; his father Dejian was styled Mr. Mingzhai, and his mother was of the Zhou clan. The Master was keen and extraordinary from birth, and the flavors of the world were flat to him. At seventeen he entered the county school, and in the examinations he repeatedly headed all the candidates, so that for a time he was esteemed for learning and conduct, and the examination degrees lay within his grasp.]",
+ "blocks": [
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "("
+    },
+    {
+     "s": "The original text is recorded in The Dream Roaming Collection"
+    },
+    {
+     "s": ")"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Annotated by Zhanran"
+    }
+   ]
+  },
+  {
+   "t": "quote",
+   "inline": [
+    {
+     "s": "[The Master's taboo name was Zhuhong, his courtesy name Fohui, and his alternate style Lianchi, the name that declared where his aspiration lay. His secular surname was Shen; he was a man of Renhe in ancient Hangzhou. His family had for generations been one of note: his father, Dejian, was styled Mr. Mingzhai, and his mother was of the Zhou clan. The Master was keen and extraordinary from birth, and the flavors of the world were flat to him. At seventeen he entered the county school, and in the examinations he repeatedly ranked above all the candidates; for a time he was esteemed for learning and conduct, and the examination degrees lay within his grasp. Yet his aspiration was to leave the world behind: he would often write the four words 'the matter of birth and death is grave' and set them on his desk. Whenever he discoursed on the arts with his companions, he would always bend the discussion back to Buddhist principle; already his mind rested in the Pure Land. His family observed the precept against killing, and their offerings were always vegetarian. He would often sigh deeply and say: 'A human life passes like a white horse glimpsed through a crack; how much is there to this floating life? If by thirty I have not passed the examinations, I shall certainly go forth beyond the world — why should I spend my whole life amid such sordid squalor?']"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The Master's name was Zhuhong, his courtesy name Fohui, and his alternate style Lianchi, meaning Lotus Pond, which declared the direction his aspiration took. His secular surname was Shen, and he was a native of Renhe in Hangzhou. Generation after generation his family had been one of rank; his father Dejian was styled Mr. Mingzhai, and his mother was of the Zhou family. The Master was wise and outstanding from birth, and indifferent to the world's flavors. At seventeen he was admitted to the county school (bu yi xiang), and in every examination he ranked first, so that he was for a time renowned both for learning and for conduct; the examination degrees were as easy for him as picking something up. Yet his aspiration was to leave the world, and he often wrote the four words 'the matter of birth and death is grave' on his desk. When he lectured on learning with others, he always led the talk back to Buddhist principle; by this time his mind already rested in the Pure Land. At home killing was prohibited, and the ancestral offerings were always vegetarian. He often sighed deeply and said: 'Human life passes like a white horse through a crack — how long can this floating life last? If by thirty I have not passed the examinations, I will certainly go forth beyond the world; why should I spend my whole life rolling about in that sordid field of fame and profit?'"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "[Hui: in former times, the name of a deceased emperor or of an honored elder.] [Gu Hang: that is, Hangzhou.] [Yi xiang: the county school of the Ming and Qing dynasties; those admitted to it were called shengyuan or xiucai — hence 'to be enrolled as a county school student.' Yi means county; xiang means school.] [Ke di: under the examination system, when candidates for the reserve of officials were selected, they were admitted by subject and ranked by grade in each subject according to results; this was called ke di.] [Duo"
+    },
+    {
+     "s": "duō"
+    },
+    {
+     "s": ": to pick up; to pluck.] [Bu shou: to fail the civil examinations.] [Chang wang: to go and not return.]"
+    }
+   ]
+  },
+  {
+   "t": "quote",
+   "inline": [
+    {
+     "s": "[His first wife, of the Zhang clan, bore a son who died in infancy. When his wife passed away, he had no wish to marry again. His mother forced the matter, and a match was discussed with the Tang family; the Tang daughter was a poor girl who ate only vegetables. A wealthy man, wishing to have the Master as his fine son-in-law, secretly sowed discord between them. The Master nonetheless took the Tang daughter as his wife, though in his heart he had no wish to consummate the marriage. At twenty-seven his father died; at thirty-one his mother died. Then, weeping, he said: 'My parents' kindness is boundless; now is the very time for me to repay it.' From this point his resolve to go forth beyond the world was fixed.]"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "His former wife, of the Zhang clan, bore a son and then died. After her death the Master had no wish to marry. His mother forced him to take a second wife, and a match was arranged with the Tang family; the Tang daughter was a poor girl who ate vegetarian food. A certain wealthy man, hoping to secure the Master as his excellent son-in-law, sent someone to secretly sow discord. The Master paid no heed to the slander and resolved to marry the Tang daughter, but in his heart he did not wish to consummate the marriage. At twenty-seven his father died; at thirty-one his mother died. Therefore, weeping, he said: 'The kindness of my parents is inexhaustible; now is precisely the time for me to repay it.' By this time he had firmly resolved to leave the householder's life and practice."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "[Now is the very time for me to repay it: to save one's parents and deliver them out of the suffering sea of birth and death — this alone is true filial piety, true repayment.]"
+    }
+   ]
+  },
+  {
+   "t": "quote",
+   "inline": [
+    {
+     "s": "[In the yichou year of the Jiajing era, on New Year's Eve, the Master asked Tang to prepare tea. She carried it to the desk, and the cup cracked. The Master smiled and said: 'There is no condition that does not come to an end.' The following year, bingyin, he took leave of Tang, saying: 'Affection and love do not endure, and birth and death cannot be borne for one another. I am going. Arrange your own life as you will.' Tang too answered, light of heart: 'You go first; I shall follow at a slower pace.' The Master then composed the verse A Single Hook, and at last went to Master Xingtian Li to have his head shaved; he asked the Vinaya Master Wuchen Yu of Zhaoqing Monastery to administer the full precepts to him at the ordination platform.]"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "In the yichou year of the Jiajing era of Emperor Shizong of the Ming ("
+    },
+    {
+     "s": "1565"
+    },
+    {
+     "s": "), on New Year's Eve, the Master asked Tang to prepare tea. Tang carried the tea to the desk and let it fall to the ground. Seeing his beloved jade cup shattered, the Master smiled and said: 'There is no condition that does not come to an end.' The next year (the bingyin year, when the Master was "
+    },
+    {
+     "s": "32"
+    },
+    {
+     "s": "), he bade farewell to Tang, saying: 'Love and affection cannot last forever, and no one can take another's place in birth and death. I am going to leave the householder's life; settle your own affairs well.' Tang too said with easy grace: 'You go first; I will come once I have arranged things' (meaning: once I have settled the household, I too will leave home). The Master then composed the verse A Single Hook (see "
+    },
+    {
+     "s": "Master Lianchi's Poem A Single Hook",
+     "href": "/articles/098yibigou"
+    },
+    {
+     "s": "), and so he was shaved and entered monastic life under Master Xingtian Li, and asked the Vinaya Master Wuchen Yu of Zhaoqing Monastery to confer the full precepts upon him."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "[Jiajing: the reign title of Emperor Shizong of the Ming (Zhu Houcong), "
+    },
+    {
+     "s": "1522"
+    },
+    {
+     "s": "-"
+    },
+    {
+     "s": "1566"
+    },
+    {
+     "s": ".] [Juzu jie, the full precepts:"
+    },
+    {
+     "s": " the precepts that are complete and perfect, namely the two hundred and fifty precepts of the bhiksu and the three hundred and forty-eight precepts of the bhiksuni.]"
+    }
+   ]
+  },
+  {
+   "t": "quote",
+   "inline": [
+    {
+     "s": "[Not long after, the Master wandered the world alone with a single bowl and a staff, visiting good spiritual friends everywhere. He traveled north to Mount Wutai, where he was moved by a sign of light radiating from Manjusri. He went to Mount Funiu and joined the assembly in austerities, tempering the demons of his mind. Entering the capital, he paid respects to the two great elders Bianrong and Xiaoyan, and from both he gained an opening. Passing through Dongchang, he suddenly had an awakening, and wrote a verse: 'For twenty years the matter lay in doubt; three thousand li away, what wonder came about? Incense and brandished halberd — all a dream; demon and Buddha wrangle, both an empty name.']"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Not long afterward the Master wandered the world alone with a single bowl and staff, visiting good spiritual friends everywhere. He traveled north to Mount Wutai, where he was moved by a sign of light radiating from Manjusri Bodhisattva. He then went to Mount Funiu and joined the assembly in austerities, tempering the demons of his mind. Entering the capital, he paid respects to the two great masters Bianrong and Xiaoyan, and from both he gained an opening. Passing through Dongchang, he suddenly had an awakening, and wrote a verse: 'For twenty years the matter lay in doubt (for twenty years I had been doubting: who am I?), three thousand li away, what wonder came about (the great awakening), incense and brandished halberd — all a dream, demon and Buddha wrangle, both an empty name.'"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "[Burning incense and brandishing halberds, all as in a dream: to burn incense in offering to the Buddha and to brandish a halberd against evil are alike matters within a dream.] [Zhi ji: to hurl a hand-halberd. The hand-halberd was a kind of halberd in antiquity made to be held and thrown at a target. The Book of the Later Han, Biography of Lu Bu, records: at the end of the Eastern Han, Lu Bu, the adopted son of Dong Zhuo, once incurred Dong Zhuo's displeasure over a small matter; Dong Zhuo drew a hand-halberd and hurled it at him, and Lu Bu fled and escaped, thereafter secretly resenting Dong Zhuo.] [Demon and Buddha vainly strive over right and wrong: vainly contending as to which of Buddha and demon is right and which wrong. As for the true nature of all dharmas, neither Buddha nor demon exists at all, so where could right and wrong be? Hence it is said to be 'vain striving.' This is the realm of the great awakening. One who has not awakened must not recklessly cling to this and so incur immeasurable offense.] [The true nature of all dharmas: what is called 'true nature' is the actual state of affairs; 'the true nature of all dharmas' is the actual state of affairs of all dharmas. The Sutra on the Buddha's Treasury says: 'What is called the true nature of all dharmas? It is that all dharmas are ultimately empty and nonexistent.' The Mahaparinirvana Sutra says: 'All dharmas are like illusions; the Tathagata abides within them by the power of skillful means, unstained and unattached.']"
+    }
+   ]
+  },
+  {
+   "t": "quote",
+   "inline": [
+    {
+     "s": "[Because the mourning period for his mother was not yet complete, the Master carried her wooden tablet with him as he wandered. At every meal he made offering, and wherever he stayed he honored it — such was his grief and longing. When he reached Waguang Monastery in Jinling, he fell so ill that he was nearly gone; at the time they were about to cremate him, when the Master faintly said: 'I still have a breath left in me.' So they stopped. When his illness eased he returned. In Yue there were many Chan retreats. The Master joined five of them, and to the very end he did not know the names of those who sat beside him.]"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Because the Master had not yet completed the three years of mourning for his mother, he carried her spirit tablet (mu zhu) with him as he traveled on foot. At every meal he made an offering, at every lodging he honored it — so deep was his grief and longing for his mother. When he came to Waguang Monastery in Jinling, he nearly died of illness. At the time everyone thought he was already dead and prepared to cremate him. The Master said in a faint voice: 'I am not dead yet.' Only then did they refrain. As soon as his illness first improved he immediately returned. In Yue there were many Chan retreats. The Master took part in five of them, single-mindedly investigating, and from beginning to end he did not know the names of those to his left and right."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "[Chapi: that is, cremation, the burning of the body.] [Lin dan: in the monks' hall and the various quarters, those seated immediately to one's left and right.]"
+    }
+   ]
+  },
+  {
+   "t": "quote",
+   "inline": [
+    {
+     "s": "[In the xinwei year of the Longqing era, the Master was begging for food at Fancun when he saw how secluded and still were the mountains and waters of Yunqi, and thereupon resolved to end his days there. The mountain had formerly been the monastery of Chan Master Fuhu. Yang Guozhu, Chen Ruyu, and others built him three thatched rooms to dwell in. The Master, a lone shadow on the cold cliff, once went seven days without food, doing no more than sitting upright propped against the wall. The village had many tigers; for forty li around the mountain they injured no fewer than several dozen people each year, and the inhabitants suffered most bitterly from them. The Master aroused a compassionate and earnest vow, recited sutras for them and offered them food, and the tiger scourge was pacified.]"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "In the xinwei year of the Longqing era of Emperor Muzong of the Ming (when the Master was "
+    },
+    {
+     "s": "37"
+    },
+    {
+     "s": "), the Master begged for food at Fancun and saw how secluded and still were the mountains and waters of Yunqi, and so he made up his mind to dwell there for life in pure practice. This mountain had originally been the site of Chan Master Fuhu's precious monastery. Yang Guozhu, Chen Ruyu, and others built three thatched huts for the Master to live in. The Master dwelt alone on the cold cliff, body and shadow consoling one another, and once went seven days without food, doing no more than sitting upright against the wall. Fancun had many tigers, and for forty li around the mountain they injured no fewer than several dozen people a year, and the inhabitants suffered most bitterly from them. The Master earnestly made a compassionate vow and recited sutras and offered food for the tigers, and the tiger scourge came to an end."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "[Xing ying xiang diao, body and shadow consoling one another: alone, with only one's own shadow for company; it describes one who has no support and is utterly solitary. Diao means to console.] [Chan Master Fuhu: a monk of the early Song. His name was Zhifeng and his style was Monk Dashan. In the fifth year of the Qiande era of the Song ("
+    },
+    {
+     "s": "967"
+    },
+    {
+     "s": "), he dwelt on Mount Yunqi. There were tigers in the mountain, and when the monk arrived the tigers became tame and submitted; the world called him Chan Master Fuhu, the Tiger-Taming Master.]"
+    }
+   ]
+  },
+  {
+   "t": "quote",
+   "inline": [
+    {
+     "s": "[In a year of severe drought, the villagers begged the Master to pray for rain. The Master smiled and said: 'I know only how to recite the Buddha's name; I have no other art.' The people pressed him insistently, and the Master had no choice but to come out. He struck the wooden fish and recited the Buddha's name along the field ridges, and rain poured down as he went, over all the ground he covered. The people marveled, and in throngs they brought timber and shouldered hoes and mattocks, vying to break the ground. Finding a pillar base, they pointed to it and said: 'This is an old relic of Yunqi Monastery. The Master has blessed our village; we wish to rebuild it anew, that our blessing may endure.' In a few days an aranya was completed: outside there was no lofty gate, within no great hall; only a Chan hall to house the monks and a Dharma hall enshrining the sutras and images, the rest serving merely to keep off wind and rain. From this time the Dharma way flourished greatly, and monks from throughout the land turned their hearts to him, and it became a great monastic community.]"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "In a certain year of great drought the villagers begged the Master to pray for rain. The Master said with a smile: 'I only know how to recite the Buddha's name; I have no other skill.' The crowd insisted, and the Master had no choice but to come out and pray. He struck the wooden fish and recited the Buddha's name along the field paths, and at once rain poured down wherever he passed. The villagers were greatly astonished, and one after another, in long strings, they carried timber and shouldered hoes and mattocks, competing to dig up the ground to build. Digging, they found pillar bases buried below, and pointed to them, saying: 'These are old relics of Yunqi Monastery. The Master has blessed our village, and we are willing to rebuild this temple, so that we may be blessed forever.' Before long it was built: outside there was no lofty gate and inside no great hall; only a Chan hall to settle the monks and a Dharma hall to enshrine the sutras and images, the rest able only to shelter from wind and rain. From then on the Master's Dharma way flourished greatly, and monks from throughout the land turned their hearts to him and came to rely on him, and it gradually became a great monastery."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "[Jue"
+    },
+    {
+     "s": "jué"
+    },
+    {
+     "s": ":"
+    },
+    {
+     "s": " a farming tool for digging earth, shaped like a pickaxe.] [Zhu chu: the base stone beneath a pillar.] [Lanre: short for aranya, a place where monks practice in stillness.] [Conglin: a great monastery.]"
+    }
+   ]
+  },
+  {
+   "t": "quote",
+   "inline": [
+    {
+     "s": "[The Master grieved that in the age of the Dharma's decline the net of the teaching was torn, the way of Chan was unclear, and living beings' karma was deep and their defilement heavy, so that the sweet cream of the Dharma was stored in filthy vessels — this was what he feared. Moreover, the Buddha established the three studies to transform living beings, and the precepts are the foundation; if the foundation is not laid, on what shall samadhi and prajna rest? Thinking to act for their benefit and guide them, he saw that the root must first be made firm. But by the regulations of the state, the ordination platforms of north and south had long been banned and out of use. Even if I wish to raise up the fallen discipline, how dare I defy the statutes? He therefore had the assembly recite the Brahma Net Precepts Sutra and the various precept chapters for bhiksus every half month, and from this those near and far all came to take refuge. The Master made strict and refined observance of the Vinaya his foremost practice, and he wrote the Essential Outline for Novices, the Easy Introduction to the Full Precepts, and the Hidden Meaning Revealed: A Commentary on the Brahma Net Sutra, to make it clear.]"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The Master thought with compassion: 'In the age of the Dharma's decline, the teaching is torn apart, the way of Chan is unclear, and living beings have deep karma and heavy defilement. To store the sweet cream of the Buddha-Dharma in a filthy vessel — this is what I fear most! Moreover, the Buddha established the three studies of precepts, samadhi, and wisdom to teach living beings; the precepts are the foundation, and if the foundation is not laid, on what do samadhi and wisdom depend? If I mean to guide people according to circumstances and revive the Dharma, I must first make firm the root, which is the precepts. Yet by the regulations of the court, the ordination platforms of north and south have long been forbidden. Even if I wish to raise up the fallen discipline, how dare I violate the law?' He therefore decreed that the assembly recite the Brahma Net Precepts Sutra and the various precept chapters for bhiksus every half month, and so people near and far all came to take refuge. The Master made strict observance of the Vinaya his foremost practice, and wrote the Essential Outline for Novices, the Easy Introduction to the Full Precepts, and the Hidden Meaning Revealed: A Commentary on the Brahma Net Sutra, to set it forth clearly."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "[Jiao wang, the net of the teaching: the Buddha's teaching and transformation. Living beings are likened to fish and the Buddha's teaching to a net, scooping living beings out of the suffering sea of birth and death. The Avatamsaka Sutra says: 'Spreading the net of the Buddha's teaching throughout the sea of the Dharma realm, scooping up the fish of gods and humans and setting them on the shore of nirvana.'] [Ti hu, sweet cream: the purest cream refined from cow's milk through curds, fresh butter, and clarified butter; it is a supreme medicine.] [The Brahma Net Precepts Sutra: that is, the Brahma Net Sutra. The sutra sets forth the stages of a bodhisattva's cultivation and the precepts to be observed, the ten major and forty-eight minor precepts. Sengzhao's preface says: 'The Brahma Net Sutra is the mysterious source of all dharmas, the essential purport of all sutras, the true model by which the great sage opens the minds of beings, the true road by which practitioners ascend the path. Therefore, though the Tathagata's provisional teachings are immeasurable, whenever their essential purport is spoken of, none fail to take this as their guide.']"
+    }
+   ]
+  },
+  {
+   "t": "quote",
+   "inline": [
+    {
+     "s": "[At first, when the Master set out to travel and study under teachers, he gained strength from investigating Buddha-recitation, and by this time he opened the single gate of the Pure Land, universally gathering those of the three capacities, and advocated it with all his might. He then wrote the Commentary and Sub-commentary on the Amitabha Sutra, more than a hundred thousand words, reconciling the phenomenal and the noumenal and pointing them back to mind-only. He also recalled having formerly seen the Recorded Sayings of Gaofeng, and held that of all who from ancient times had investigated this matter, none was more keen and sharp, none surpassed this master forged of pure steel. He had long carried it with him on his travels, ever pondering Master Gaofeng's intent, and he joined it together with Yongming of Mount Kuang into one. He further selected the crucial words from the karmic circumstances of the ancient worthies and compiled them as Advancing Through the Chan Gate, and had it printed to show the essential secret of investigation. This was to make plain that Chan and Pure Land are cultivated together and do not depart from the single mind; from this we know how subtle was the Master's power to transform.]"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "At first, when the Master set out on foot to study under teachers in all directions, he gained strength from investigating Buddha-recitation, and by this time he had opened the one gate of the Pure Land to gather universally those of the three capacities, and he advocated it with all his strength. He then wrote the Commentary and Sub-commentary on the Amitabha Sutra, over a hundred thousand words, harmonizing the phenomenal and the noumenal and pointing everything back to mind-only. He also recalled the Recorded Sayings of Gaofeng that he had seen in former days, holding it to be the keenest and sharpest of all investigations of this matter from ancient times, surpassed by none, forged as it was of pure steel. Formerly, when he traveled on foot, he always carried this book with him, constantly pondering and realizing Master Gaofeng's intent. He then combined these sayings with those of Master Yongming, and further excerpted the crucial words from the karmic circumstances of the ancient worthies, compiling them as Advancing Through the Chan Gate. He had it cut in woodblocks and circulated, to show the essential secret of investigation. This was to make manifest that Chan and Pure Land are cultivated together and never depart from the one mind; from this we know how profound and subtle was the Master's power to teach and transform."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "[San gen, the three capacities: the superior, the middling, and the inferior capacity.] [Chan Master Gaofeng: his taboo name was Yuanmiao. He was born in the wuxu year of the Jiaxi era of the Song. He studied under Yunyan Qin at Beijian and received the Dharma. In the jimao year of the Zhiyuan era of Emperor Shizu of the Yuan, he went up the West Peak of Tianmu and entered Zhanggong Cave, inscribing it Death Pass; for fifteen years he did not go out of doors. His Recorded Sayings of Gaofeng circulated widely in the world.] [Master Yongming: that is, Chan Master Zhijue of Yongming Monastery on Mount Huiri in Hangzhou, named Yanshou, the sixth patriarch of the Pure Land school. He studied under National Master Tiantai Shao and awakened to the mysterious purport. Qian Chu, the Zhongyi King of Wuyue, deeply took refuge in him. He moved to the great Yongming practice place, where the assembly numbered three thousand. In the eighth year of the Kaibao era of Emperor Taizu of the Song, at the age of seventy-two, he passed into stillness. He wrote the Record of the Source Mirror in a hundred fascicles and the Collection of the Myriad Good Deeds Returning to One in six fascicles, both widely current in the world.]"
+    }
+   ]
+  },
+  {
+   "t": "quote",
+   "inline": [
+    {
+     "s": "[In the wuzi year of the Wanli era there was a great epidemic, and a thousand people died each day. Prefect Yu Liangshu asked the Master to go to Lingzhi Monastery to avert it, and the epidemic ceased. At Fancun there had formerly been a bridge named Zhu Bridge; the tides had washed it away, and travelers suffered in fording the water, so Prefect Yu asked the Master to take the lead in rebuilding it. The Master said: 'If you wish me to do this, then regardless of rich or poor, noble or base, let each person give no more than eight fen of silver.' That he used eight alone meant to take kun, the earth trigram, in order to master the water. Someone said: 'The work is great and the donations small; I fear it will be hard to finish.' The Master said: 'Where the power of mind is abundant, the merit will of itself be imperishable.' In a few days a thousand pieces of gold had accumulated, and artisans were gathered and the foundation laid. For every pile driven he recited a dharani a hundred times, and for several days the tide did not come; the bridge was completed. In former times the King of Qian shot at the tide with ten thousand crossbows; the Master matched it with the power of his single mind — what art was this!]"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "In the wuzi year of the Wanli era of Emperor Shenzong of the Ming (when the Master was "
+    },
+    {
+     "s": "54"
+    },
+    {
+     "s": "), the plague raged and more than a thousand people died each day. Prefect Yu Liangshu asked the Master to come to Lingzhi Monastery to pray and avert the disaster, and the epidemic stopped. At Fancun there had originally been a bridge called Zhu Bridge, which the tides had washed away, so that travelers had to wade through the water, which they found very hard; the prefect therefore asked the Master to take the lead in rebuilding it. The Master said: 'If you want me to initiate this matter, then whether rich or poor, noble or base, it is enough for each person to donate eight fen of silver. The reason for using eight in particular is to take kun, the earth, in order to subdue the water.' Someone worried: 'The project is vast and the donations are very small; I fear it will be hard to complete.' The Master said: 'It is precisely because the donation is small (only eight fen of silver) that everyone can afford it. Then everyone will contribute to building this bridge, and with a united will the work is sure to succeed.' And so it proved: before long a thousand pieces of gold had accumulated, and artisans were gathered to build the bridge foundation. For every pile driven the Master recited a dharani a hundred times, and for several days the tide did not come, and the bridge was actually completed. In former days the King of Wuyue, Qian Liu, had to shoot back the tide with ten thousand crossbows before he could build the seawall of the Qiantang River; the Master matched it with the power of a single mind — how inconceivable!"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "[Kun"
+    },
+    {
+     "s": "kūn"
+    },
+    {
+     "s": ": one of the eight trigrams, it symbolizes earth. The Yi"
+    },
+    {
+     "s": "jing's "
+    },
+    {
+     "s": "Shuogua chapter says: 'Kun is earth.' [Jiu gong: to gather artisans.]"
+    }
+   ]
+  },
+  {
+   "t": "quote",
+   "inline": [
+    {
+     "s": "[The Master's standing in the Way rose day by day, and monks from the ten directions came to him as if returning home; he received them all with compassion. Disciples gathered daily and the dwellings grew daily more cramped. The Master's mind was not set on making the buildings magnificent, but only on comfort and suitability, erecting modest quarters. The pure regulations he established were all the more strict: the assembly had a common hall, while those who were diligent, the aged and sick, and visiting monks from the ten directions each had their own hall. The hundred officers of the monastery each had their own quarters, each with lock and key, opened and closed at the appointed times. Each had its own words of admonition, proclaimed at set times. At night there were patrols, striking the board and reciting the Buddha's name, the sound carrying through the valleys, so that even the weary could not sleep at ease nor dream in their sleep. At the posadha and karma ceremonies, merits and faults were reviewed and rewards and penalties carried out, austere as ice and frost. Even when the Buddha dwelt in Jetavana, there were still the six groups of monks who disturbed the assembly; yet among these none dared to quarrel and deliberately transgress. He did not confine himself wholly to the measuring line of Baizhang's rules, but suited them to the times and remedied abuses; among the monastic communities of past and present there was none like Yunqi in those days. All this is set out in the monks' regulations and the various admonitions, shining clear.]"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The Master's reputation for the Way grew daily, and monks from the ten directions all came to take refuge with him; the Master received each of them with compassion. His disciples increased daily and the living quarters grew ever more cramped. In his expansion the Master's intention was not to make the buildings magnificent; he sought only comfort and suitability, and simple wooden quarters were enough. The pure regulations he established were extremely strict: the assembly had a common hall, while the diligent, the aged and sick, and monks coming and going were each given their own hall. The more than one hundred officers of the monastery each had a separate room, each with lock and key, opened and closed on time. Each had words of admonition, proclaimed on schedule. At night there were patrols striking the board and reciting the Buddha's name, the sound carrying through the valleys, so that even the weary were not lax in sleep and did not dream at night. At the posadha and karma rites, merits and faults were reviewed and rewards and punishments carried out, austere as ice and frost. Even when the Buddha dwelt in the Jetavana Grove there were still six wicked bhiksus who formed a faction and broke the precepts; yet in Yunqi Monastery not one dared to dispute and deliberately transgress. The monastery's regulations were not wholly limited to the Baizhang Pure Rules, but suited the present time and remedied its abuses; among monastic communities ancient and modern there was none like Yunqi in those days. All the rules and ordinances were complete, such as the monks' regulations and the various admonitions, all full of dignity."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "[Posadha and karma: every half month the monastic order held a full assembly, at which a bhiksu versed in the Vinaya recited the precepts, offenders confessed before the assembly, and the order deliberated and dealt with the matter.] [The six groups disturbing the assembly: during the Buddha's lifetime there were six wicked bhiksus who formed a faction and broke the precepts, known as the six-group bhiksus.] [The Baizhang Pure Rules: the pure rules established by Chan Master Baizhang. In early Chan there were no separate monasteries, and monks mostly dwelt in Vinaya monasteries, where practice was inconvenient. After Mazu founded the monastic community and Baizhang established the pure rules, Chan monks thenceforth lived together in numbers and a system took shape, and the Chan school flourished greatly.] [Weiyi, dignity: majestic virtue and deportment.]"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "[Mazu ("
+    },
+    {
+     "s": "709-788"
+    },
+    {
+     "s": " CE): a Chan monk of the Tang dynasty and a Dharma heir of Chan Master Huairang of Nanyue. He was a man of Hanzhou (Guanghan in Sichuan); his secular surname was Ma and his name was Daoyi, and the world called him Master Ma or Mazu. His appearance was extraordinary: he walked like an ox and glared like a tiger, could draw his tongue past his nose, and bore two wheel-marks on the soles of his feet. He was shaved and dyed under the Tang monk of Zizhou (Chan Master Chuji), and received the full precepts from Vinaya Master Yuan of Yuzhou. In the Kaiyuan era he studied the Caoxi Chan method under Huairang, grasped the purport at once beneath his words, and secretly received the mind-Dharma. He first stayed at the Buddha's Trace Ridge in Jianyang, and before long moved to the two mountains of Nankang and Gonggong in Linchuan. In the fourth year of the Dali era ("
+    },
+    {
+     "s": "769"
+    },
+    {
+     "s": "), he took up residence at Kaiyuan Monastery in Zhongling (Jinxian in Jiangxi), where students gathered in clouds and his teaching flourished greatly. Mazu greatly spread the Chan wind through 'the ordinary mind is the Way' and"
+    },
+    {
+     "s": " '"
+    },
+    {
+     "s": "mind itself is Buddha.' His Dharma heirs who entered the inner room numbered one hundred and thirty-nine, among them Baizhang Huaihai, Nanquan Puyuan, and Damei Fachang. When the Chan gate first opened, Chan monks all lodged in Vinaya monasteries, where the rules were limited, so that they could not reside separately and friction constantly arose, and all found it a hardship. Mazu therefore founded the monastic community to settle the Chan companions, and from this the school flourished ever more and transformed beings without end. In the first month of the fourth year of the Zhenyuan era he climbed Shimen Mountain in Jianchang, walked in meditation through the grove, entrusted his affairs for after his death, and on the fourth day of the second month entered stillness, aged eighty. The Record of the Transmission of the Lamp says: 'The Sixth Patriarch, Monk Neng, said to Huairang: Hereafter the Buddha-Dharma will come forth from your side; a horse's colt will trample to death all under heaven. Thereafter the Dharma heirs of Jiangxi spread throughout the world, and he was styled Mazu, the Patriarch Ma.']"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "[Chan Master Baizhang ("
+    },
+    {
+     "s": "720-814"
+    },
+    {
+     "s": " CE): a monk of the Tang dynasty, a man of Changle in Fuzhou. From childhood he delighted in visiting monasteries; at twenty he left home under Huizhao of Xishan, and later received the full precepts from Vinaya Master Fachao of Nanyue. Before long he went to Lujiang (in Sichuan) to study the sutras. It happened that Mazu Daoyi was spreading the Dharma in Nankang, and he turned his heart to him and attached himself, and so received Daoyi's seal of approval. Because he entered the inner room together with Xitang Zhizang and Nanquan Puyuan, they were called the three great masters of the time. Later he went out to preside over Baizhang Mountain in Xinwu (Fengxin in Jiangxi), where he established an independent Chan monastery, drew up the pure rules, and led the assembly in practice, carrying out the farming-and-Chan life of the monastic order. He once said: 'A day without work is a day without eating.' He entered stillness in the ninth year of the Yuanhe era at the age of ninety-five. The pure rules drawn up by the Master are known to the world as the Baizhang Pure Rules, and no monastery under heaven failed to follow them; this was an epoch-making achievement in the history of Chan. [Ru shi, to enter the inner room: to obtain the true essence of a teacher's learning and skill, as in 'a disciple of the inner room,' 'ascending the hall and entering the inner chamber.']"
+    }
+   ]
+  },
+  {
+   "t": "quote",
+   "inline": [
+    {
+     "s": "[He set his heart wholly on the precept against killing and on honoring the release of living beings; the essays he wrote circulated in the world for a long time, and many within the seas paid them reverence. He once lectured on the Sutra of Perfect Enlightenment at Jingci Monastery, where the listeners numbered ten thousand fingers a day, surrounding him like a screen on four sides. He therefore redeemed the Wan'gong Pond before the monastery as a life-release pond. On the Master's eightieth birthday he enlarged it further. Today the two ponds of Shangfang and Changshou in the city cost more than a hundred pieces of gold each year. In the mountains he established a life-release house, where the flying and running creatures he redeemed filled the enclosure; the monks reduced their own portions to feed them, at a yearly cost of about two hundred piculs of grain. There were also admonitions for the keepers, to be proclaimed there at set times. Even among the feathered tribes, those skilled at chirping and clamor, when they heard the sound of the wooden fish, all fell silent and listened. When the recitation ended, they flapped their wings and sang in chorus — is this not Buddha-nature! Ah, the Buddha said: 'Filial piety is called the precepts.' The Confucians censure those who provide for parents but do not respect them. The Master both provided for and respected living creatures, and did so with propriety — was this not consummate filial piety!]"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The Master did all he could to promote the precept against killing and to honor the release of living beings. He wrote an essay on releasing life, which circulated in the world for a long time, and many within the seas honored and revered it. He once lectured on the Sutra of Perfect Enlightenment at Jingci Monastery, where the listeners numbered several thousand each day, surrounding him like a screen on four sides. He therefore redeemed the Wan'gong Pond in front of the monastery as a life-release pond. On the Master's eightieth birthday he enlarged it again. Today the two life-release ponds of Shangfang and Changshou in the city cost as much as a hundred-odd pieces of gold each year. In the mountains he set up a life-release house; the birds and beasts of every kind that were redeemed filled it, and the monks cut down their own food to feed them, spending about two hundred piculs of grain a year. There were also admonitions for the keepers, to be read aloud there on schedule. When they were read, even those birds that love to chirp and clamor, on hearing the wooden fish, all fell quiet and listened. When the reading was done, they all flapped their wings and sang joyfully. Does this not show that they all have Buddha-nature? Ah, the Buddha said: 'Filial piety is called the precepts.' The Confucians censured those who provide for their parents but do not respect them. The Master both provided for and respected animals, and did so with propriety — was this not the perfect fulfillment of filial piety?"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "[Wan zhi, ten thousand fingers: ten thousand fingers, that is, a thousand people. It is often used to describe a great multitude.]"
+    }
+   ]
+  },
+  {
+   "t": "quote",
+   "inline": [
+    {
+     "s": "[The Master's way-wind spread day by day, and the worthies and heroes within the seas, whether at court or in the wilds, all turned their hearts to him and were transformed. Such men as the Grand Marshal Song Yingchang, the Chief Minister Lu Guangzu, the Court Diarist Zhang Yuanbian, and the Director of Studies Feng Mengzhen and Tao Wangling: those who came in turn to his gate to ask after the Way numbered in the hundreds, and all knocked at the gate and beat time in admiration; in investigating the great matter, none failed to be convinced at heart, and all were molded and forged by him. Governors and prefects and ministers alighted from their carriages and bowed in homage. As for the worthies and heroes who waited to pay their respects, he gave them no special courtesy, nor did he set out any feast. All were content with coarse rice and lay on worn mats, letting lizards crawl over them and mosquitoes bite them, without changing countenance. All forgot their bearing and bent their power; when they arrived they emptied themselves of all they had. Had the Master's sincerity not moved them, how could it have come to this!]"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The Master's way-wind spread further and further each day, and the worthies and heroes within the seas, whether at court or in the wilds, all turned their hearts to him and were transformed. For example, the Grand Marshal Song Yingchang, the Chief Minister Lu Guangzu, the Court Diarist Zhang Yuanbian, the Director of Studies Feng Mengzhen, and Tao Wangling: those who came one after another to ask after the Way numbered in the hundreds, and all knocked at his door for instruction and beat time in admiration at Master Lianchi's teachings. Those who investigated the great matter of illuminating the mind and seeing the nature were all convinced by Master Lianchi's guidance and were brought to accomplishment. The governors and inspectors (officials such as the prefects who oversaw the prefectures and counties), and the prefects and chancellors (the administrators of commanderies and the chancellors of princes), alighted from their carriages and bowed in homage (bowing to the ground to give their names before a venerable one). As for the famous worthies and the wealthy who waited their turn to pay respects, there was no special courtesy and no exceptional entertainment. All were content to eat coarse food and sleep on worn mats, letting lizards crawl and mosquitoes bite, without the least complaint. All forgot that they were high officials and were glad to be in such a mean environment; when they arrived they laid down all their power, fame, and status, emptying themselves of all they had. Had it not been for the Master's sincerity moving them, how could it have been so!"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "[Tao zhu, to mold and cast: originally it meant to make and use molds for casting metal implements; it is often used as a metaphor for forming and nurturing people.] [Tao fan: a clay model used for casting bronze vessels.]"
+    }
+   ]
+  },
+  {
+   "t": "quote",
+   "inline": [
+    {
+     "s": "[The Vice Minister Wang Zongmu asked: 'Last night the rats squeaked and squeaked, and spoke out the whole Avatamsaka Sutra.' The Master said: 'What when the cat suddenly appears?' Wang had no answer. The Master answered in his place: 'The Dharma master has run off, but the lecture seat remains.' He also wrote a verse: 'The rats squeak and squeak, the Avatamsaka shines clear — how strange, Vice Minister Wang, to be deluded by a beast! The cat bursts out before the painted hall, and the preaching at the bedside leaves no word, no word: the Great and Vast Buddha's Avatamsaka Sutra, the First Chapter, The Wonderful Adornments of the World Ruler.']"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Vice Minister Wang Zongmu asked: 'Last night the rats squeaked and squeaked, and spoke out the whole Avatamsaka Sutra.' The Master asked: 'When the cat suddenly appears, what then?' Wang could not answer. The Master answered on his behalf: 'The Dharma master has run off, but the lecture seat is left behind.' He also wrote a verse: 'The rats squeak and squeak, the Avatamsaka shines clear; how strange is Vice Minister Wang, to be deluded by a beast. The cat bursts out before the painted hall, and the preaching at the bedside leaves no word, no word: the Great and Vast Buddha's Avatamsaka Sutra, the First Chapter, The Wonderful Adornments of the World Ruler.'"
+    }
+   ]
+  },
+  {
+   "t": "quote",
+   "inline": [
+    {
+     "s": "[The Censor Zuo Zongying asked: 'Can one awaken through Buddha-recitation?' The Master said: 'Turn the hearing to hear the self-nature; when the nature is accomplished, the unexcelled Way is attained. Why then doubt that turning the recitation back to reciting the self-nature will do the same?' The Magistrate of Renhe, Fan Liangshu, asked: 'When the mind is scattered, how can one attain stillness?' The Master said: 'Set it on one place, and there is nothing that cannot be accomplished.' A scholar in the assembly said: 'To concentrate on investigating one thing is to set it on one place — but what does that accomplish?' The Master said: 'As for investigating things, one should follow Zhu Xi and penetrate through suddenly — then what cannot be accomplished?' Someone asked the Master: 'Why do you not value foreknowledge?' The Master said: 'Suppose two people watch The Story of the Pipa. One has never seen it; the other has seen it and tells in advance what will come. After all, they watch together — can the last act add or drop a single scene?']"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The Censor Zuo Zongying asked: 'Can one awaken through reciting the Buddha's name?' The Master answered: 'The Surangama Sutra says: Turn the hearing to hear the self-nature; when the nature is accomplished, the unexcelled Way is attained. Why then doubt that turning the recitation back to reciting the self-nature will accomplish it?' (meaning: turn the recitation back to reciting the self-nature, and when the nature is accomplished, the unexcelled Way is attained.) The Magistrate of Renhe, Fan Liangshu, asked: 'When the mind is scattered, how can one attain stillness?' The Master answered: 'Set it on one place, and there is nothing that cannot be accomplished.' Someone seated in the assembly said: 'To concentrate on investigating one thing is to set it on one place — but what does that accomplish?' The Master said: 'As for investigating things, one should follow Zhu Xi and penetrate through suddenly; then what cannot be accomplished?' Someone else asked the Master: 'Why do you not prize the supernormal power of foreknowledge?' The Master answered: 'Suppose two people watch The Story of the Pipa: one has never seen the play, the other has seen it and can tell the plot in advance. After all, they are watching the play together — is there any difference of one scene more or one scene less in what they see?'"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "[Zhuan ge yi wu, to concentrate on investigating one thing: that is, the investigation of things and extension of knowledge advocated by Zhu Xi and other Neo-Confucian philosophers.]"
+    }
+   ]
+  },
+  {
+   "t": "quote",
+   "inline": [
+    {
+     "s": "[The present Empress Dowager Cisheng reverenced the Three Jewels. Chancing to see the Master's essay on releasing life, she greatly praised and sighed over it. She sent a palace attendant bearing "
+    },
+    {
+     "s": "("
+    },
+    {
+     "s": "jī"
+    },
+    {
+     "s": ")"
+    },
+    {
+     "s": " a purple kasa robe and the offerings for a vegetarian feast to present to him, and asked about the essentials of the Dharma. The Master bowed and received them, and answered with a verse. The Master's heart was wholly moved with compassion for the suffering destinies of the dark realm; he himself learned the flaming-mouth rite and often performed it in person. There were those who saw the Tathagata's marks appear upon the Master as he sat on the seat — this was the working of his power of contemplation.]"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Today's Empress Dowager Cisheng reverenced the Three Jewels. Chancing to see the Master's essay on releasing life, she greatly praised and sighed over it. She sent a palace attendant bearing a purple kasa robe and the wherewithal for a vegetarian feast as offerings, and asked about the essentials of the Dharma. The Master bowed and received them, and answered with a verse. The Master was deeply compassionate toward the beings in the suffering destinies of the dark realm; he learned the flaming-mouth rite himself and constantly performed it in person. Some once saw the Tathagata's marks appear upon the Master as he sat on the seat — this was because his power of contemplation had reached that point."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "[Yan kou, flaming mouth: the name of a hungry ghost, so called because it craves food and drink and flames pour from its mouth. To offer food to hungry ghosts is called releasing the flaming mouth.]"
+    }
+   ]
+  },
+  {
+   "t": "quote",
+   "inline": [
+    {
+     "s": "[The Master was by nature plain and simple, without ornament. He responded to things with an empty heart, and his countenance was gentle and pure. He was so frail that his clothes seemed to overpower him, yet his voice was like a great bell. His breast had no cliffs or banks, yet he guarded himself like a stern fortress and defended like solid troops. He was skilled at concealing his capacities; his letters and principles were close and searching, and in ordering affairs great and small he let not a needle or a mustard seed slip by. In managing the daily life of the monastery, measuring the distribution of benefits, weighing what was generous and what was meager, verifying cause and effect, making clear offense and blessing, caring for the aged and sick, and providing for the common monks, he let not a drop of water seep away. Since the founding of the monastic community, in fifty years he never once spent a coin recklessly. Dwelling constantly among several thousand fingers, he appointed no fundraiser but let them come of themselves. Whenever there was a little surplus he would scatter it as gifts to the various mountains, and the storeroom kept no savings. Beyond the regular feasts, whatever gold and silver were offered him he scattered as soon as it came to hand. He gave clothing and medicine and rescued the poor and sick, scarcely a day passing without it. Once, looking over his private records, he found that in the past seven years he had actually spent more than five thousand pieces of gold that did not belong to the permanent holdings — from which one may know what every earlier year was like.]"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The Master was by nature simple and plain, free of all adornment. With an empty heart he responded to all beings, and his countenance was gentle and upright. Though frail and so thin he could scarcely bear his own clothes, his voice was as resonant as a great bell. His mind harbored no proud aloofness, yet he held himself in check as if within a closely guarded city manned by stalwart soldiers. He excelled at concealing his own talents and keeping them from outward show, and yet his ordering of affairs was rigorous and keenly discerning, from the greatest to the smallest, leaving nothing neglected. When planning the daily necessities of the community, weighing offerings, measuring the mean between lavish and sparing, examining causes and effects, distinguishing merit from transgression, providing for the aged and the sick, and dealing impartially with the monks, he never let fall a single drop. In all the fifty years since the founding of this monastery, he never once spent a coin carelessly. Though the temple housed several hundred permanent residents, he never went begging, letting the provisions of food and wealth arrive on their own. Whatever surplus there was, he would always distribute it to other monasteries, so that the storehouse held nothing in reserve. Apart from the regular offerings of the refectory, whenever anyone brought gold or silver as an offering, the Master would give it away to others at once. He gave clothing and medicine, and rescued the poor and the sick, without a single idle day. I once happened to read a record in the Master’s private notebook: within the past seven years alone he had actually spent more than five thousand pieces of silver in healing the sick and relieving the poor—and this money did not belong to the monastery. From this we may know how immense were the sums he gave away year after year in earlier times."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Huazhu (alms collector): the person who manages the collection of alms. Changzhu (permanent residents): refers to the monastery, for the monastery is the practice-place where monks dwell permanently."
+    }
+   ]
+  },
+  {
+   "t": "quote",
+   "inline": [
+    {
+     "s": "In his lifetime the Master cherished blessings, once composing thirty-two articles of self-admonition. Even in advanced old age he washed himself by his own hands and emptied the chamber pot, never troubling his attendants. Throughout his life he wore plain cotton; the one hemp-cloth mosquito net he used was an object from the time of his mother’s mourning, and it is preserved to this day—from this the rest may be inferred. To sum up the Master’s practice: he gathered and transformed all beings through the great compassion of equality. He did not speak what the Buddha did not speak, did not do what the Buddha did not do, and did not undertake what the Buddha did not undertake. The Buddha exhorted those who would uphold the true Dharma in the Latter Age to rely upon the Four Peaceful Practices—and the Master in truth carried them out."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "In his lifetime the Master cherished blessings, once writing thirty-two articles of self-admonition. Even as he approached old age he still washed these things himself and emptied the chamber pot, never troubling his attendants. All his life he wore garments of plain cotton; the hemp-cloth mosquito net he used had been an object from the time of his mother’s death, and it is preserved to this day—from this the rest may be inferred. Surveying the Master’s conduct as a whole, he gathered and transformed all beings through the great compassion of equality. He did not speak what the Buddha did not speak, did not practice what the Buddha did not practice, and did not do what the Buddha did not do. The Buddha exhorted those who would uphold the true Dharma in the Latter Age to rely upon the Four Peaceful Practices, and the Master earnestly carried them out."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The Four Peaceful Practices (si anle xing): set forth in the Dharma Flower Sutra"
+    },
+    {
+     "s": " · "
+    },
+    {
+     "s": "chapter on the Peaceful Practices, which sets forth the four kinds of peaceful practice: (1) The peaceful practice of body. The body should keep far away from ten things: first, the powerful and influential; second, heterodox gods and perverse practices; third, wanton and dangerous amusements; fourth, the candala (in the language of Han, “butcher”; it means a butcher’s household, whose murderous mind is great and who troubles sentient beings, so that whoever sees it is wounded in compassion and destroys the root of goodness—when a bhikshu goes on his alms-round, he must not go there); fifth, the followers of the two vehicles; sixth, thoughts of desire; seventh, the five kinds of those who are not fully male; eighth, places of danger; ninth, matters of blame and suspicion; tenth, keeping and nurturing young disciples, novices, and small"
+    },
+    {
+     "s": "children. Once the body has kept away from these ten things, one is able constantly to sit in meditation and to train and gather the mind—therefore it is called the peaceful practice of body. (2) The peaceful practice of speech. One should keep away from four kinds of speech: first, finding no delight in speaking of the faults of others or of the scriptures; second, not slighting others; third, neither praising nor defaming others; fourth, not giving rise to a mind of hatred and resentment. If speech can be like this, one obtains peace and happiness and trains and gathers the mind—therefore it is called the peaceful practice of speech. (3) The peaceful practice of mind. The mind keeps away from four faults: first, envy and flattery; second, contemptuous scolding; third, rebuking and reviling those of lesser practice on account of one’s own greater practice; fourth, contention and rivalry. When the mind keeps away from these four, one is able constantly to dwell in peace and happiness and to cultivate the mind—therefore it is called the peaceful practice of mind. (4) The peaceful practice of vows and aspirations. Within this Dharma Flower Sutra, toward those beings who have not heard, do not know, and do not perceive it, one should arouse a mind of compassion, saying: “I wish to attain anuttara-samyak-sambodhi, and with the power of spiritual powers and the power of wisdom draw them to enter into this Dharma.” Having raised this vow, one constantly trains and gathers one’s own practice—therefore it is called the peaceful practice of vows and aspirations."
+    }
+   ]
+  },
+  {
+   "t": "quote",
+   "inline": [
+    {
+     "s": "Surveying the patriarchs of successive generations, when they lifted aloft the single genuine imperative they did not necessarily perfect all the myriad practices. But as for one who, through the myriad practices, manifests the single mind, and through the dust and toil sees the Buddha-nature—apart from Yongming of old, there has been only this Master alone. The earlier Confucians called the Venerable Ji’yin a Ban and Ma among monks; I, for my part, would call the Master a Zhou Gong and Confucius of the Dharma gate, for to bear the Dharma is to take up the Way. The Master’s talent alone sufficed to order the world; his awakening, to transmit the mind; his teaching, to accord with beings’ capacities; his precepts, to protect the Dharma; his conduct, to encourage the age; his regulations, to remedy abuses. As for his compassion bestowing joy, his sorrow drawing forth suffering, and his broadly employing the six perfections—what of these was not a wondrous practice? From his first leaving the world to his very end, there was nothing that could be faulted; he may be called one who attained the Buddha’s complete substance and great function within the Dharma gate. If he were not a great being of the Response Body, one who illumines the deep darkness of the Latter Age, how could he have reached such a state!"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Surveying the patriarchs from the past down to the present, when they lifted aloft the single genuine imperative they did not necessarily perfect all the myriad practices. But as for one who, through the myriad practices, manifests the single mind, and through the dust and toil sees the Buddha-nature—apart from Master Yongming of old, there has been only this Master alone. The earlier Confucians called the Venerable Ji’yin a Ban and Ma among monks; I, for my part, call the Master a Zhou Gong and Confucius of the Dharma gate, for by propagating the Dharma and cultivating the myriad practices he universally saves sentient beings. Take the Master alone: his talent was enough to order the world; his awakening, enough to transmit the mind; his teaching, enough to accord with capacities; his precepts, enough to protect the Dharma; his conduct (his moral bearing), enough to encourage the age; his regulations, enough to remedy abuses. (And the Master gathered all these—talent, awakening, teaching, precepts, conduct, and regulations—into his single person.) As for the Master’s compassion giving joy and his sorrow pulling forth suffering, and his broadly employing the six perfections, which of these was not a wondrous practice? From his leaving home to his very end, there was nothing that could be faulted; he may indeed be called one who attained the Buddha’s complete substance and great function within the Dharma gate. If he were not a great being of the Response Body, come to illumine the pitch-black long night of the Latter Age, how could he have reached such a state!"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Zhengling (the genuine imperative): the fundamental command of the Chan school’s special transmission outside the teachings; beyond shout and stick it establishes no single dharma—this is called the genuine imperative. The preface to the Biyan Record says: “Lifting up the genuine imperative.” The Tongzhong dianchao says: “The genuine imperative is the fundamental command; shout and stick operate together, establishing not a single dharma—this is what is called the genuine imperative.” Ban Ma: the Han-dynasty historians and men of letters Sima Qian and Ban Gu. Zhou Kong: the Duke of Zhou and Confucius. Yingshen (the Response Body): from the bodhisattva at the first abiding stage up to the ultimate fruit of wondrous awakening (the Buddha), when the accumulation of merit and Dharma is brought to fullness, one is able to respond to beings’ capacities and manifest accordingly, speaking various dharmas to save all beings—therefore it is called the Response Body. Caoshou (moral conduct): the tenor of one’s resolve and the quality of one’s character."
+    }
+   ]
+  },
+  {
+   "t": "quote",
+   "inline": [
+    {
+     "s": "At the end, half a month beforehand he entered the city to take leave of his disciples and old friends. He merely said: “I am going elsewhere.” Returning to the mountain, he came down from the hall again and again, prepared tea and broth, set out offerings, and bade the assembly farewell, saying: “I no longer stay in this place; I am going elsewhere.” When the time came for the mid-year feast and the Ullambana offerings, each made offering for his own ancestors. The Master said: “This year I will not attend.” There was an accounts register, and the Master secretly inscribed: “The resident monk of the direct courtyard of Yunqi Temple, on behalf of the Venerable Lianchi of the Hall, makes offering for the ancestral kin of the Shen clan.” Afterward people came to understand that this was an offering he had made in advance for himself. On the night of the first day of the seventh month he entered the hall and sat down, and exhorted the assembly, saying: “I have spoken and you have not heeded me. I am now like a candle in the wind, a lamp burned dry of oil. Only after a collision and a fall will you then believe me. Tomorrow I must set out on a distant journey.” The assembly urged him to stay. The Master composed the “Three Regrets” and the “Ten Sighs” to warn the assembly. The layman Xu Lin of Songjiang and four others were at the temple, and the Master had his attendant deliver five copies of his testament. The next night he entered the abbot’s quarters, showed a slight illness, closed his eyes, and was left speechless. The disciples from the city arrived and gathered round him, and the Master opened his eyes again and said: “All of you, earnestly recite the Buddha’s name. Do not contrive strange wonders, do not break my rules.” The assembly asked: “Who may govern the monastery?” The Master said: “One perfect in both precepts and practice.” They asked again: “At present?” The Master said: “For now, follow the order of the precept-age.” When he finished speaking, he faced west, recited the Buddha’s name, and passed away upright. It was the noontime of the fourth day of the seventh month in the forty-third year of the Wanli reign."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "When the Master was about to die, half a month beforehand he entered the city to take leave of his disciples and of his friends and relatives, merely saying: “I am going to another place.” Returning to Yunqi Mountain, he came down from the hall, prepared tea and broth and set out offerings, and bade the assembly farewell, saying: “I no longer dwell in this place; I am going elsewhere.” While arranging the mid-year festival and the Ullambana feast to make offering for the ancestral kin of the various families, the Master said: “This year I will not take part.” The temple had an accounts register, and the Master secretly wrote: “The resident monk of the direct courtyard of Yunqi Temple, on behalf of the Venerable Lianchi of the Hall, makes offering for the ancestral kin of the Shen clan…” After the Master passed away, people realized that this had been the Master’s offering made in advance. On the night of the first day of the seventh month, the Master entered the hall and sat, and exhorted the assembly, saying: “I have said I must go, but none of you believe me. Now I am already like a candle in the wind, the lamp burned dry of oil, the season come. You will wait until a single collision and a fall before you believe my words. Tomorrow I must set out on a distant journey.” The assembly urged him to stay. The Master composed the “Three Regrets” and the “Ten Sighs” to awaken the assembly. The layman Xu Lin of Songjiang and four others were at the temple, and the Master had his attendant deliver five copies of his testament. The next night he entered the abbot’s quarters, showed a slight illness, closed his eyes, and was left speechless. When the disciples from the city arrived and gathered about the Master, he opened his eyes again and said: “All of you, earnestly recite the Buddha’s name. Do not harbor a crooked mind and do things that break the rules, and do not break my rules.” The assembly asked: “Who may govern the monastery?” The Master said: “One perfect in both precepts and practice.” They asked again: “Who will presently take charge?” The Master said: “For now, follow the order of the precept-age.” When he finished, he faced west, recited the Buddha’s name, and passed away upright. This was in the forty-third year of the Wanli reign ("
+    },
+    {
+     "s": "1615"
+    },
+    {
+     "s": "), at noon on the fourth day of the seventh month."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Zhongyuan (the mid-year festival): the festival on the fifteenth day of the seventh lunar month. Monasteries hold an Ullambana feast, and by popular custom people make offering to their deceased relatives. Yulanpen hui (the Ullambana feast): the ceremony held each year on the fifteenth day of the seventh lunar month for the deliverance of the spirits of one’s ancestors, including such activities as feeding the monks, performing repentance, and releasing the hungry ghosts. Jiela (precept-age): the number of years since receiving the precepts. The seating order of bhikshus is fixed according to the number of one’s precept-years."
+    }
+   ]
+  },
+  {
+   "t": "quote",
+   "inline": [
+    {
+     "s": "The Master was born in the yi-wei year of the Jiajing reign; his age in the world was eighty-one, and his monastic age fifty. The Master himself chose the site below the eastern ridge of the monastery, and there his whole-body reliquary tower was erected. His former spouse, the Lady Tang, later shaved her head after the Master, founded the Xiaoyi Nunnery, and served as its abbess; she passed away a year before the Master, and a tower was also built for her on the right mountain outside the monastery. The Master’s disciples Guangxiao and others, who gained deliverance under him, were his earliest and foremost followers. Those who came to his door, received the precepts, and gained deliverance numbered no fewer than several thousand; lay householders are not counted among them. Officials, gentlemen, and scholars who came to his door likewise numbered in the thousands; those who privately revered him [without studying directly under him] are not included. As for his writings, apart from scriptural commentaries, his other jottings, such as the Three Strokes of the Bamboo Window and the rest, amount to more than twenty kinds and circulate in the world, and they are all words that awaken and rouse. The Master always admonished his disciples to value true practice and not to display the extraordinary; therefore many of his spiritual marvels are not recorded here."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The Master was born in the yi-wei year of the Jiajing reign ("
+    },
+    {
+     "s": "1535"
+    },
+    {
+     "s": "), his age in the world eighty-one and his monastic age fifty. The tower site was chosen by the Master himself, below the eastern ridge of the monastery, and so his whole-body reliquary tower was built there. His former wife, the Lady Tang, later shaved her head and left home after the Master, founded the Xiaoyi Nunnery, and served as its abbess; she passed away a year before the Master, and her tower stands on the right mountain outside the monastery. The Master’s disciples Guangxiao and others, who gained deliverance under his guidance, were his earliest and foremost followers. Those who came to his door, received the precepts, and gained deliverance numbered no fewer than several thousand; lay householders are not within this number. Officials, gentlemen, and scholars who came to his door likewise numbered in the thousands; those who privately revered him are not included. As for his works, apart from scriptural commentaries, his other jottings, such as the Three Strokes of the Bamboo Window (the Bamboo Window Jottings, the Second Jottings of the Bamboo Window, and the Third Jottings of the Bamboo Window) and the rest, amount to more than twenty kinds, circulating in the world, and they are all words that warn and awaken. The Master always admonished his disciples to value true practice and not to display the extraordinary, and therefore his many spiritual marvels are not set down here."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Sengla (monastic age): the number of years since leaving home. Jinshen (officials and gentry): in ancient times a term for those who held office or had held office. Sishu (private reverence): secretly admiring and emulating someone without having directly studied under him."
+    }
+   ]
+  },
+  {
+   "t": "quote",
+   "inline": [
+    {
+     "s": "Alas! I have heard that the World-Honored One, deeply mindful that the beings of the Latter Age are hard to deliver and fearing that their life of wisdom would be cut off, at the gathering on Vulture Peak sought those who would protect the true Dharma—yet even those who had personally received the prophecy dared not enter. Only the host that welled up from the earth took it upon itself with all its might, saying: “When we uphold the sutra in the Latter Age, we shall be endowed with great power of endurance and great power of zealous effort. Even if we appear in this age, we shall not speak of our own origins or disclose the Buddha’s hidden cause, but only make it secretly known at the moment of death.” Looking at the Master’s conduct—his spirit hidden and his workings secret, his power of peaceful endurance and zealous effort—was he not one of those who welled up from the earth? Or did he come from the Pure Land? If not so, then from the ground of an ordinary man, seeking benefit for oneself is still insufficient—how could one broadly practice benefiting others and guard and uphold the true Dharma to the very end without ever failing? Moved by this, I have come to gather up roughly the Master’s deeds, that I may make them clear to future generations; the rest are set forth in his separate biography."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Alas! I have heard that the World-Honored One, deeply mindful that the beings of the Latter Age are hard to deliver and that those who came to deliver them feared to cut off their own life of wisdom, at the gathering on Vulture Peak sought those who would protect the true Dharma—yet even those who had personally received the prophecy dared not enter the Latter Age. Only the bodhisattvas who welled up from the earth were able to take it upon themselves with all their might, and they said: “When we uphold the sutra in the Latter Age, we shall be endowed with great power of endurance and great power of zealous effort. Even if we appear in this age, we shall not speak of our own origins or disclose the Buddha’s hidden cause, but only make it secretly known at the moment of death.” Looking at the Master’s conduct—his spirit hidden and his workings secret, his power of peaceful endurance and zealous effort—was he not one of those bodhisattvas who welled up from the earth? Or did he come from the Pure Land? If not so, then coming from the ground of an ordinary man, seeking benefit for oneself is still insufficient—how could one broadly practice benefiting others and guard and uphold the true Dharma to the very end without ever failing? Moved by this, I have come to take up roughly the Master’s deeds, to make them clear to future generations; the rest are fully recorded in his separate biography."
+    }
+   ]
+  },
+  {
+   "t": "quote",
+   "inline": [
+    {
+     "s": "("
+    },
+    {
+     "s": "the bodhisattvas who welled up from the earth) When the Buddha Shakyamuni was about to expound the essential Dharma, the countless great bodhisattva host who had originally been taught and transformed by the Tathagata Shakyamuni welled up from beneath the earth and dwelt in the empty sky. The Dharma Flower Sutra"
+    },
+    {
+     "s": " · "
+    },
+    {
+     "s": "chapter on Welling Up from the Earth says: “While the Buddha was speaking these words, the lands of the three-thousand great-thousand world system of the Saha world all split and rent, and within them countless kotis of bodhisattva-mahasattvas welled up at the same time.”"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Thereupon he made an inscription for him, saying:"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Thereupon he made an inscription, saying:"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Ming (inscription): writing cast, engraved, or written on an object to record a life or deeds, or to admonish oneself. For example: an inscribed engraving, an inscription, an epitaph, or a motto."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The three poisons blaze in a raging fire, the five heats whirl in panic—who can administer the healing draught and in an instant bring coolness?"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The three poisons (greed, hatred, delusion) blaze, the five heats throw one into panic; who can administer the medicine and instantly bring coolness?"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Wu re (the five heats): fierce fire blazes above the head and all around, searing. Zhouzhang (panic): the appearance of being startled and terrified. For example: zhouzhang shicuo (panic-stricken and at a loss)."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The sea of desire pours across in flood, its waves mount to the sky—who can ferry beings across by steering the great Dharma ship?"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The sea of desire floods crosswise, its waves tower to the heavens; who can save and ferry [beings] across by steering the great Dharma ship?"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Only our Master, truly riding the power of his vows, cast his body into the midst of it, adapting himself as circumstances required."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Only our Master, truly riding the power of his vows, cast his body into the midst of the poisonous flames and the sea of desire, and delivered beings as circumstances required."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Early he severed the root of attachment, like a lion snapping its bonds; no sooner had he left the dust and toil than his mettle showed."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "He severed the root of craving early (zao, here for zao, meaning “early”), like a lion breaking free of its tether; no sooner had he left the dust and toil of the world than his mettle came to light."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "He opened the gate of the Pure Land and spread wide the net of the dharma realm, drawing up beings of the three faculties; his coming to them was swift as an echo."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "He opened the gate of the Pure Land and spread wide the net of the dharma realm, fishing up beings of the superior, middling, and inferior faculties from the sea of birth-and-death and suffering; to every appeal he made a response."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Qi fu ru xiang (his coming was as an echo): when sentient beings cry out for help, the Master comes at once to save and ferry them, just as an echo answers the sound of the call."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "With the vajra probe he scraped away the film over the clouded eye; once the root is no longer born, the branches and leaves fall of themselves."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "With the vajra probe he scraped away the film over the dimmed eye; once the root ceases to arise, the branches and leaves fall away of themselves."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Jin bi ("
+    },
+    {
+     "s": "bī"
+    },
+    {
+     "s": ") — “scraping the film.” The jinbi is an ancient instrument used to treat eye disease; scraped across the film on the surface of the eyeball, it restores a person’s sight. “The jinbi scrapes the film” is often used to describe superlative medical skill. What is meant here is that sentient beings have a film over their eyes, mistakenly take flowers of emptiness for real, and, confounded and inverted, fall into the round of birth-and-death. Master Lianchi’s instruction is just like using the vajra probe to scrape away the film over their eyes—the very root of their confusion—so that the branch-and-leaf afflictions fall away by themselves."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The great forge burns red-hot, with compassion and the power of patience for its fire; all who enter this casting are at once freed of folly and frenzy."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The Master is like a great red-hot furnace, using compassion and the power of patience for his coals; sentient beings who enter it are molded and refined, and their folly and frenzy instantly subside."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Da ye (the great foundry): a metaphor for the creative shaping power of nature. Tao rong (molding and melting): casting and smelting."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Light streams from every pore, hands and eyes fill the whole body; from the midst of that which seems of no use, the wheel of Dharma turns forever."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Light radiates from his pores, and his whole body is [made of] hands and eyes; from within seeming uselessness, the wheel of Dharma forever turns."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "If he was not entrusted by the Buddha, then assuredly he was one of those who welled from the earth—how could he be an ordinary being, endowed with such valor and daring?"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "If the Buddha did not entrust him personally, then assuredly he was one of the bodhisattvas who welled from the earth—how could he be an ordinary being, possessed of such courage and vigor?"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The Master came from the void and to the void returned; though he was adept at hiding his [true] form, the more he concealed, the more he was revealed."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The Master came of himself from emptiness and likewise returned to emptiness; though he was adept at concealing his true identity, the more he wished to hide, the more he was made manifest."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Bells and drums ring out in turn, clouds and radiant mist interweave; the tower’s shadow rises high as a landmark, and the Dharma body abides forever."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Bells and drums alternate, clouds and radiant mist interweave; the tower’s shadow rises high, and the Master’s Dharma body abides forever."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Jiaocan (interweaving): crossing and intermingling."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "For further reading:"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Master Lianchi: Admonitions to the Assembly",
+     "href": "/articles/126lianchidashi-jingzhong"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Master Lianchi: “A Single Stroke Sets All Aside”",
+     "href": "/articles/098yibigou"
+    }
+   ]
+  }
+ ]
+}
