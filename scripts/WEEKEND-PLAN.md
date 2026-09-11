@@ -205,14 +205,24 @@ B 期启动时注意：`043mengyouji` 中文源 **2146KB / 74 片**、`187hansha
 
 ## 8. 【新增·源数据缺陷】中文源的元数据本身有错
 
-| 文章 | 中文源字段 | 实际值 | 问题 |
-| --- | --- | --- | --- |
-| `247lingxinanranzhu` | `author` | `无所缘的禅修`（"Objectless Meditation"，那是**小节标题**） | 真作者应是 `咏给·明就仁波切`（Yongey Mingyur Rinpoche，见其 `excerpt`「摘自 咏给·明就仁波切《根道果——禅修的方法与次第》」） |
+`node scripts/meta-scan.mjs`（本会话新增，只读）扫全部 **294 篇**中文文章，只发现 **3 处可疑 `author`**；
+加上两名子代理在翻译时各自独立发现的 `247lingxinanranzhu`，共 **4 处**：
 
-**本会话的临时处理**：英文侧 `247lingxinanranzhu` 的 `author` 已改为 `Yongey Mingyur Rinpoche`（否则英文模式会把小节标题当作者显示）。
-**周末建议**：顺手核对 `src/content/articles/*.json` 的 `title/author/excerpt` 是否有同类「把小节标题/栏目名当作者」的情况
-（`author` 字段在本站确实是作者名，如 `132pingsanxinnianfo`=湛然、`244guanxin`=湛然），并决定是否同步修正中文源与 `catalog.json`
-（注意：改中文源会同时影响中文模式与 `chars` 阅读时长估算之外的一切展示，建议单独一次提交并逐一核对）。
+| 文章 | `title` | 中文源 `author` | 问题 | 英文侧处理 |
+| --- | --- | --- | --- | --- |
+| `110yimengmanyan` | 一梦漫言 | `一梦漫言` | **作者被填成书名** | 已改为 `Jianyue`（据 excerpt「千华寺继任主持见月老人自述」） |
+| `302xinj` | 心经精解 | `心经精解` | **作者被填成书名** | ⚠️ 头片尚未派发；派发时**必须在提示词里指定正确作者**，否则子代理会照抄书名 |
+| `010dzjcy` | 《地藏菩萨本愿经》词语简释 | `词语简释` | 作者被填成**栏目名** | 该篇已整篇完成，属回头修 |
+| `247lingxinanranzhu` | 禅修：令心安然住 | `无所缘的禅修` | 作者被填成**小节标题** | 已改为 `Yongey Mingyur Rinpoche`（据 excerpt） |
+
+**为什么值得单独处理**：本站 `author` 字段确实是作者名（如 `132pingsanxinnianfo`/`244guanxin` 均为「湛然」），
+所以这 4 处是**中文源本身的错误**，会让英文模式显示「作者 = 书名/栏目名/小节标题」。
+
+**周末建议**：
+1. `node scripts/meta-scan.mjs` 复查（应仍为 3 处机器命中 + `247` 人工确认）；
+2. 决定是否修正**中文源** `src/content/articles/*.json` 与 `catalog.json` —— 会同时影响中文模式展示，
+   建议单独一次提交、逐篇核对；
+3. **派发 `302xinj` 头片时务必在提示词写明**「`zhAuthor` 是书名，作者应为 …」。
 
 ### 7.3 专名/术语「带音标 vs 不带音标」在同一文件内混用
 
