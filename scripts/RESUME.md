@@ -7,8 +7,11 @@
 >   `002baiyunxy` / `017jdwsswl` / `021taishanggy-2` / `023taishanggy-4` / `104ganyingp`（第 1–4 轮）
 >   + 第 5 轮 `103yjy` / `171nianfoshishui` / `186hanshandashideyisheng` / `193guanwuliangshoufojingjijie` /
 >   `258quanzhenqizizhuan`（共 14 篇，见下「本轮实际合并清单」）。`crit` 始终为 6，无一上升。
-> - **A 期「可派任务」已用尽**：`task-plan.mjs 120` 现为 **6 篇有缺口 / 890 未覆盖块 / 14 个任务，其中可派 0 个**
->   （14 个全部被既有分片的乱码/CJK 挡住）。**下一步必须先在周末专项里修乱码/CJK，才能继续派发**。
+> - **★ 后期更新（乱码已清零，A 期全部解锁）**：`scan-mojibake` 333 文件 → **乱码 0**（原 12 文件 / 971 处），
+>   新增 `scripts/fix-mojibake.mjs`（反转 CP1252 误码，写前强制校验 JSON/U+FFFD/残留，幂等）。
+>   现 `task-plan.mjs 120` = **6 篇有缺口 / 890 块 / 14 任务，可派 14、被挡 0**（修复前为可派 0 / 被挡 14），
+>   `validate-en` 仍为 `ok=251 crit=6 warn=11 parts=26`（零回归）。**下一步只剩纯翻译：8 并行 ≈ 2 轮 ≈ 16–20 分钟。**
+> - **A 期「可派任务」曾用尽（已由上面的乱码修复解除）**：当时为 6 篇有缺口 / 890 未覆盖块 / 14 个任务全部被挡。
 >   剩余 6 篇：`261lengqiejing` 310b、`187hanshandashinianpushu-old` 224b、`204ssydj` 118b、
 >   `502zhenxinzhishuojingjie` 109b、`502xiuxinjue` 89b、`251zhenqiyunxingfa` 40b。
 > - **修订预计时间**：修完这 6 篇的乱码/CJK 后，890 块 ≈ 8 个任务 ≈ **1 轮（8 并行，约 8–10 分钟）**；
