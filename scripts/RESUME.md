@@ -80,6 +80,12 @@
 >    一旦合并就会把乱码**锁进整篇**（之后再按分片修就更麻烦）。派发前应先跑 `scan-mojibake` 交叉检查：
 >    受影响而应暂缓合并的篇有 `251zhenqiyunxingfa`、`204ssydj`、`502xiuxinjue`、`502zhenxinzhishuojingjie`、
 >    `261lengqiejing`、`187hanshandashinianpushu-old`、`303liuzutanjing`。先修乱码（§7.1 两步法）再合并。
+> 19. **【本会话第五类隐性缺陷】旧分片里的 CJK/全角残留会在合并时变成新的 `crit`**。实测 `095luelunmxjx`
+>    合并后 `crit` 由 6 升到 7，原因是两个**旧分片**的块首留着 `〔`（U+3014）——被新译的 `p7/p8`（各自 `verify ok`）
+>    掩盖，只有拼成整篇才被 `validate-en` 看见。修法：结构化遍历把 `〔〕` → `[]`（2 处），`crit` 立即回到 6。
+>    **由此得到的通用规则**：合并前不仅要看 `coverage.mjs` 的 `bad`（结构），还要扫**旧分片自身的 CJK 与乱码**；
+>    `scripts/pick-next.mjs` 已加入这两道过滤（`excluded (CJK residue in existing parts)`）。
+>    换句话说：**一篇的「缺口质量」和「既有部分质量」是两回事，后者不查就会在合并时炸出来**。
 
 > **上一会话检查点（2026-09-10 两小时会话末 · 历史）**
 > - 工作目录 `D:\FengLi\Web\fou\huideng-chanlin`；已提交，工作区干净。
