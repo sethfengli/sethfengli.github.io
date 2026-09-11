@@ -52,6 +52,14 @@
 > 13. **ETA 分母应改用「未覆盖块数」**：`node scripts/coverage.mjs` 实测 A 期（≤300KB、未合并）共 **6152 块未覆盖**
 >    ≈ 100+ 片量（每片约 60 块）。用「缺片数」会低估，因为旧 partial 既不算缺片也不算完成（`analyze-eta.mjs`
 >    已修正为显式统计 partial，不再静默跳过）。
+> 14. **「嵌在已覆盖区间里的孤儿分片」会让 merge-parts 失败**：`304fozangj` 的 `p10` 覆盖 [599-649]，而孤儿
+>    `p11`[615-629]、`p12`[630-632] 完全落在其中 → 拼接走到 next=650 后又遇到 fb=615 → 报
+>    `[fail] merged 650/650 blocks (next=650)`（**块数看似相等但仍失败**，因为 `broken` 标记已置位）。
+>    修法：先删掉被完全包含的孤儿分片，再 merge（本次删 p11/p12 后立即 `[merged] 304fozangj: 650 blocks`）。
+>    判断依据：`scripts/coverage.mjs` 里「异常」为 0 且「覆盖 100%」即可放心删孤儿。
+> 15. **缺口级派发（比整片派发划算得多）**：`node build/gap-prep.mjs <slug>` 会找出未覆盖区间并只备好缺口源文
+>    （例：`212frame` 只差 9 块、`013zhufasx` 17、`088linzhongshinianxiangxu` 17、`032xyxing` 30、`401amtj` 36），
+>    输出文件名取该篇最小空闲 `pN`。因为 merge-parts 只看 firstBlock 连续性，缺口分片用任意空闲编号即可。
 
 > **上一会话检查点（2026-09-10 两小时会话末 · 历史）**
 > - 工作目录 `D:\FengLi\Web\fou\huideng-chanlin`；已提交，工作区干净。
