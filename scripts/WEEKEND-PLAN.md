@@ -203,6 +203,17 @@ B 期启动时注意：`043mengyouji` 中文源 **2146KB / 74 片**、`187hansha
 4. 这类修复**适合 1 个子代理一次处理多篇**（每处只是增删一个片段边界），不必一篇一个代理。
 
 
+## 8. 【新增·源数据缺陷】中文源的元数据本身有错
+
+| 文章 | 中文源字段 | 实际值 | 问题 |
+| --- | --- | --- | --- |
+| `247lingxinanranzhu` | `author` | `无所缘的禅修`（"Objectless Meditation"，那是**小节标题**） | 真作者应是 `咏给·明就仁波切`（Yongey Mingyur Rinpoche，见其 `excerpt`「摘自 咏给·明就仁波切《根道果——禅修的方法与次第》」） |
+
+**本会话的临时处理**：英文侧 `247lingxinanranzhu` 的 `author` 已改为 `Yongey Mingyur Rinpoche`（否则英文模式会把小节标题当作者显示）。
+**周末建议**：顺手核对 `src/content/articles/*.json` 的 `title/author/excerpt` 是否有同类「把小节标题/栏目名当作者」的情况
+（`author` 字段在本站确实是作者名，如 `132pingsanxinnianfo`=湛然、`244guanxin`=湛然），并决定是否同步修正中文源与 `catalog.json`
+（注意：改中文源会同时影响中文模式与 `chars` 阅读时长估算之外的一切展示，建议单独一次提交并逐一核对）。
+
 ## 附：诊断命令（可复现）
 
 ```bash
