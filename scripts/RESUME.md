@@ -1,6 +1,60 @@
 # 英文翻译续作指南（下星期继续）
 
-> **最新检查点（2026-09-12 · 5 轮 × 8 并行 · 本轮会话末）**
+> **★ 最新检查点（2026-09-13 · A 期收尾完成 · 本会话末）**
+> - **成果：`validate-en` 由 `ok=251 crit=6 warn=11 parts=26` → `ok=257 crit=6 warn=11 parts=20`**，
+>   本会话**新合并 6 篇完整英文文章**（14 个并行任务，分 2 批 × 8/6，零 crit 新增、零孤儿分片）：
+>   `204ssydj`(234b) / `251zhenqiyunxingfa`(130b) / `502xiuxinjue`(271b)（批次 1）
+>   + `187hanshandashinianpushu-old`(449b) / `261lengqiejing`(1050b) / `502zhenxinzhishuojingjie`(315b)（批次 2）。
+>   提交：`b3e9c12`、`2afcf09`（未 push）。
+> - **★ A 期队列已归零**：`task-plan.mjs 120` = **0 篇有缺口 / 0 未覆盖块 / 0 任务（可派 0、被挡 0）**。
+>   `scan-mojibake` = **0/307**（乱码保持清零）。**A 期主体（≤300KB）翻译工作全部完成**，
+>   剩余 890 → 0 块（本次实译 886 块，原报告 890 为估算）。
+> - **修订预计时间**：A 期已无剩余翻译任务（0 分钟）。**接下来只剩周末专项**（见下「本会话新增的坑」4）：
+>   303 的 ±1 错位（272 块）、068（25 块）/101（8 块）的 CJK、warn 11 项、音标统一、
+>   `author` 源数据缺陷（meta-scan 21 处）、**以及本会话新发现的「片段拼接丢空格」语料级问题**。
+>   预计 **周末 1 个工作段（约 2–3 小时）**可清完非 B 期项目。**B 期（>300KB）仍需单独排期 ≥6 小时。**
+> - **本会话新增的坑 / 待办（务必遵守）**
+>   1. **【新·最危险】`merge-parts` 会删除它合并掉的分片，所以「先合并、后提交」会永久丢失分片文件**。
+>      **本会话照做**：批次 1/2 都是「先 `git add` 全部新分片 → 再 `merge-parts <slug>` → 再提交」，
+>      提交里同时含「新增整篇」与「删除分片」，无丢失。这是已验证的正确顺序，照抄即可。
+>   2. **【新】`p8` 分片「多 1 块」会把 `merge-parts` 卡在 100% 前一块**：实测
+>      `261lengqiejing.p8` 覆盖 [919-1042]（124 块）而 `p9` 从 1042 起，**边界重叠 1 块**，
+>      `merge-parts` 报 `[gap] expect block 1043, got 1042` → `[fail] merged 1043/1050`。
+>      **块数看似只差 7 块，根因是重叠**。判定方法：列各分片 `firstBlock+块数` 找重复块（脚本见
+>      `scripts/fix-261-boundary.mjs`）。修法：按**官方 `slice-plan` 边界**删掉重复块
+>      （`p8` 该为 123 块 = [919-1041]），再 merge → `[merged] 261lengqiejing: 1050 blocks`。
+>      **注意**：两个文件在重叠块上译文不同（`p8`「abides in the kind mind…feels disgust」vs
+>      `p9`「dwells in loving-kindness…turns away」），**以对齐 `zh[1042]` 原文者为准**（此例是 `p9`）。
+>   3. **【新】`gap-prep` 的「重复源」不是 bug，不要删**（延续上会话 #3）：本会话实测
+>      `502xiuxinjue.p7/p8`、`187…-old.p12/p13`、`204ssydj.p2/p5`、`261lengqiejing.p4/p12`、
+>      `502zhenxinzhishuojingjie.p2/p7` 各自 byte-identical，均为「本轮未派发的备用源」，可后续复用；
+>      **派发前按 `firstBlock+块数` 去重**。
+>   4. **【新·语料级发现，未修，留周末】片段边界「丢空格」是源数据属性，不是翻译缺陷**：
+>      `ArticleBody.tsx` 的 `InlineSegs` 是无分隔符拼接，但**中文源本身**就把
+>      `["一、无门为法门"]["二、五法三自性"]` 存成两个 inline 片段，拼接后即
+>      `一、无门为法门二、五法三自性`（中文无需空格，故源数据无感）。EN 照抄结构后变成
+>      `"…Is the Dharma Gate" + "2. The Five Dharmas…"` → 渲染为 `Gate2. The Five…`。
+>      实测 **253/277 篇**（41584 个接头）存在此类接头，**绝大多数源自既有分片，非本会话引入**
+>      （本会话 6 篇的接头经 `doubleSpace`/`orphanPunct` 检查均为 0–1 处）。
+>      **修法建议**：要么在 `InlineSegs` 渲染层对「段首为字母数字而前段尾非空格」补空格（改 1 处代码），
+>      要么写 `fix-joins.mjs` 逐块给 EN 段首补空格（253 篇，风险中等）。**先决定策略再动手。**
+>   5. **`meta-scan` 命中的是「源文章 `author` 字段」，且必须改 `src/content/articles/*.json`**：
+>      上会话记录的「已预先删除 502xiuxinjue 的 zhAuthor」**实际未落地**（源文件仍含
+>      `author:"普照国师简介"`），本会话已用 `scripts/fix-502-author.mjs` 删除并重新 `gap-prep`
+>      生成 head 分片（`zhAuthor` 消失、`includeMeta` 仍为 true → 只写 title/excerpt，不写 author）。
+>      **纪律：派 head 分片前，先 `node -e` 读该篇 `src/content/articles/<slug>.json` 确认无 `author`。**
+>   6. **子代理会踩到的两个真陷阱（本会话实测）**：
+>      - `write` 工具在「字符串以弯引号 `”` 结尾」时**可能静默吞掉收尾的 JSON 双引号**，
+>        产出 `Bad control character in string literal`；**读回渲染正常、肉眼看不出**。
+>        子代理用字符码 diff 才定位到。**故 `verify-slices` 必须真的 `JSON.parse`（它会），不能只看渲染。**
+>      - 大 `write` 可能**静默少写/多写数组元素**（两例子代理报告「我写了 57 项，回来 90 项」/「漏了第 16、17 块」）。
+>        对策：**分小批写 + 每步跑 `verify-slices`**，不要最后一次性自检。
+>   7. **`p8` 译文风格分叉（供周末统一时参考）**：`502zhenxinzhishuojingjie` 同篇内
+>      `p5/p7/p9` 用 **ASCII 直引号**，而 `p8` 自己归一化成 **U+2019 弯引号**；`261lengqiejing`
+>      同理（`p2` 直引号 vs `p10/p12` 弯引号）。本轮 `verify`/`validate` 不查引号风格，
+>      但周末统一音标/标点时必须把这两篇算进 `quote-scan.mjs` 复查范围。
+>
+> **上一检查点（2026-09-12 · 5 轮 × 8 并行 · 历史）**
 > - **成果：`validate-en` 由 `ok=242 crit=6 warn=6 parts=40` → `ok=251 crit=6 warn=11 parts=26`**，
 >   即本会话**新合并 9 篇完整英文文章**（40 个并行任务，零 crit 新增、零孤儿分片）：
 >   `022taishanggy-3` / `102lengqiejingxuanzhu` / `105wangfengyijiayanlu` / `204danian` /
