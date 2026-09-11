@@ -60,6 +60,13 @@
 > 15. **缺口级派发（比整片派发划算得多）**：`node build/gap-prep.mjs <slug>` 会找出未覆盖区间并只备好缺口源文
 >    （例：`212frame` 只差 9 块、`013zhufasx` 17、`088linzhongshinianxiangxu` 17、`032xyxing` 30、`401amtj` 36），
 >    输出文件名取该篇最小空闲 `pN`。因为 merge-parts 只看 firstBlock 连续性，缺口分片用任意空闲编号即可。
+> 16. **【自己犯过的错】派发提示里的「禁用字符」清单不要把 em dash `—` 算进去**。某一轮提示词写成
+>    「禁止 … ；·…— 以及全角引号」，把 brief 明确**要求**的 em dash 也列进了禁用集，导致子代理改用 ASCII `--`。
+>    实测 5 个文件共 78 处 ` -- `（其中 `244guanxin.p1` 20 处就是这次造成的）。已用结构化 JSON 遍历把
+>    ` -- ` → ` — `（`build/fix-dashes.mjs`，dry-run 先看，再 `--apply`），复查 ` -- ` 为 0、`validate-en` 不变。
+>    **正确写法**：禁用清单只列全角/CJK（【】〔〕《》（）「」、。，！？：；·… 与全角引号），并明确「破折号用 em dash `—`」。
+> 17. **合并顺序与提交纪律**：`git add -A src/content/en` 会把**正在写入**的分片一起提交（且 `git add` 遇到
+>    已不存在的 pathspec 会整体失败、静默漏掉后面的文件）。**只用显式路径 add**，在飞文件用 pathspec 排除。
 
 > **上一会话检查点（2026-09-10 两小时会话末 · 历史）**
 > - 工作目录 `D:\FengLi\Web\fou\huideng-chanlin`；已提交，工作区干净。
