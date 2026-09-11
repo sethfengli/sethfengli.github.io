@@ -188,11 +188,20 @@ B 期启动时注意：`043mengyouji` 中文源 **2146KB / 74 片**、`187hansha
 | `032xyxing` | 28 | 14 / 13 | **多 1 个片段** |
 | `088linzhongshinianxiangxu` | 96 | 10 / 11 | **少 1 个片段** |
 | `088linzhongshinianxiangxu` | 112 | 7 / 9 | **少 2 个片段** |
+| `052wangshengyuanli` | 38 | 3 / 4 | **少 1 个片段** |
 
-（本会话合并这三篇后 `warn` 由 2 升到 5；另两个既有 warn 为 `151sizuanxingyaomen`、`240yinguangdashilunhuijiben`。）
-**注意**：`coverage.mjs` 的「异常(bad)」列正是指这类分片——凡是 `bad>0` 的篇，合并后必定贡献 `warn`，
-派发缺口前可先用它预判。此外 `088` 的 `bad=1` 却贡献了 2 个坏块，说明「一个分片内可能有多处偏差」。
-**修法**：按中文该块的片段边界，把英文多出的那个片段合并回去 / 把漏掉的补出来；改完 `validate-en` 应回到 `warn=2`。
+（本会话合并这四篇后 `warn` 由 2 升到 6；另两个既有 warn 为 `151sizuanxingyaomen`、`240yinguangdashilunhuijiben`。）
+
+**这是系统性现象，不是偶发**：旧网格分片从未经过 `verify-slices` 校验，译者当时把空的/纯标点片段并掉了，
+于是每合并一篇这样的文章就 +1 个 warn。**用 `coverage.mjs` 的 `bad` 列可提前预判**（`bad>0` 的篇合并后必贡献 warn，
+且一个 bad 分片可能含多处偏差，如 `088` 的 `bad=1` 对应 2 个坏块）。
+
+**建议集中做一轮「warn 修复」**（本会话未做，留到周末）：
+1. `node scripts/validate-en.mjs` 取 `WARN(ine seg count)` 名单；
+2. 对每篇逐块比对中文片段边界，把并掉的空/标点片段拆回来（或把多出的并回去）；
+3. 每篇修完 `validate-en` 复查，目标 `warn` 回到 2（只剩两个既有项）。
+4. 这类修复**适合 1 个子代理一次处理多篇**（每处只是增删一个片段边界），不必一篇一个代理。
+
 
 ## 附：诊断命令（可复现）
 
