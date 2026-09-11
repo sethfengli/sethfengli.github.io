@@ -186,8 +186,12 @@ B 期启动时注意：`043mengyouji` 中文源 **2146KB / 74 片**、`187hansha
 | --- | --- | --- | --- |
 | `013zhufasx` | 66 | 10 / 11 | **少 1 个片段** |
 | `032xyxing` | 28 | 14 / 13 | **多 1 个片段** |
+| `088linzhongshinianxiangxu` | 96 | 10 / 11 | **少 1 个片段** |
+| `088linzhongshinianxiangxu` | 112 | 7 / 9 | **少 2 个片段** |
 
-（本会话合并这两篇后 `warn` 由 2 升到 4；另两个既有 warn 为 `151sizuanxingyaomen`、`240yinguangdashilunhuijiben`。）
+（本会话合并这三篇后 `warn` 由 2 升到 5；另两个既有 warn 为 `151sizuanxingyaomen`、`240yinguangdashilunhuijiben`。）
+**注意**：`coverage.mjs` 的「异常(bad)」列正是指这类分片——凡是 `bad>0` 的篇，合并后必定贡献 `warn`，
+派发缺口前可先用它预判。此外 `088` 的 `bad=1` 却贡献了 2 个坏块，说明「一个分片内可能有多处偏差」。
 **修法**：按中文该块的片段边界，把英文多出的那个片段合并回去 / 把漏掉的补出来；改完 `validate-en` 应回到 `warn=2`。
 
 ## 附：诊断命令（可复现）
