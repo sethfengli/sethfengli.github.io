@@ -151,6 +151,45 @@ B 期启动时注意：`043mengyouji` 中文源 **2146KB / 74 片**、`187hansha
 「缺片数」会低估，因为旧 partial 既不算缺片也不算完成 —— `analyze-eta.mjs` 已修正为显式列出 partial（51 片、需补 1849 块）
 与 plan 之外的多余分片（22 个）。
 
+## 7. 【新增·质量缺陷】两类 validate-en 查不出来的问题
+
+### 7.1 乱码（mojibake）：12 个文件，`303liuzutanjing` 一个文件 371 处
+
+**成因**：这些英文 JSON 里的文字曾被「UTF-8 字节按 CP1252 解码后又存成 UTF-8」，于是
+`“` 变成 `â€œ`、`—` 变成 `â€”`，中文更会变成 `Ã¥ÂÃ¥Â©` 这种双重编码。
+**为什么一直没被发现**：`validate-en.mjs` 只查 CJK/全角字符，而 `â`、`€`、`œ` 都不是 CJK，
+所以这些文件一直是 `ok`/`warn`，但**英文模式下用户会看到一串乱码**。
+
+**扫描**：`node scripts/scan-mojibake.mjs`（本次新增，只读）实测 **12 个文件**：
+
+| 文件 | 命中数 |
+| --- | --- |
+| `303liuzutanjing.json` | **371** |
+| `204ssydj.p3.json` / `.p4.json` | 78 / 43 |
+| `502xiuxinjue.p4.json` / `.p5.json` | 64 / 6 |
+| `251zhenqiyunxingfa.p1.json` / `.p2.json` | 17 / 17 |
+| `187hanshandashinianpushu-old.p1.json` / `.p11.json` | 10 / 10 |
+| `502zhenxinzhishuo…p6.json` / `030gonggg.json` / `261lengqiejing.p3.json` | 6 / 1 / 1 |
+
+**修法（分两步，别只做第一步）**：
+1. **还原**：把字符串按 `latin1` 编回字节、再按 `utf8` 解码，可恢复原本的 `“”—` 与中文；
+2. **重译**：还原出来的如果是中文（如 `303` 里的 `参助`），那部分**仍需翻译**——
+   也就是说乱码文件里可能同时藏着「符号乱码」和「未翻译中文」两种问题。
+3. 还原+重译后必须 `repair-json` → `validate-en` → `scan-mojibake` 三重确认（乱码数应为 0）。
+
+### 7.2 旧网格分片合并后会暴露「隐性 inline 片段数偏差」
+
+旧网格分片从未经过 `verify-slices` 校验（它们的文件名在 `build/slices/` 里没有对应 `.src.json`），
+所以**片段数与中文不符的缺陷一直被掩盖**，直到合并成整篇才被 `validate-en` 记为 `warn`：
+
+| 文章 | 块 | 英文片段数/中文片段数 | 偏差 |
+| --- | --- | --- | --- |
+| `013zhufasx` | 66 | 10 / 11 | **少 1 个片段** |
+| `032xyxing` | 28 | 14 / 13 | **多 1 个片段** |
+
+（本会话合并这两篇后 `warn` 由 2 升到 4；另两个既有 warn 为 `151sizuanxingyaomen`、`240yinguangdashilunhuijiben`。）
+**修法**：按中文该块的片段边界，把英文多出的那个片段合并回去 / 把漏掉的补出来；改完 `validate-en` 应回到 `warn=2`。
+
 ## 附：诊断命令（可复现）
 
 ```bash
