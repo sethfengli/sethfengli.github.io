@@ -1,26 +1,29 @@
 # 英文翻译续作指南（下星期继续）
 
-> **本次会话检查点（进行中，滚动更新）**
-> - 工作目录 `D:\FengLi\Web\fou\huideng-chanlin`；已提交（除正在写入的分片外工作区干净）。
-> - **第 1 轮 5 片全部 `ok` 并各自合并成整篇**：`124tanluandashikaishi`(105 块)、`126lianchidashi-taming`(102)、
->   `127feixiange`(59)、`132pingsanxinnianfo`(82)、`133huiyuandashizhuan`(77)。提交：`51fccbe`、`5af055e`。
-> - 状态：`validate-en` = **ok=210 crit=6 warn=2 parts=76**（会话初为 ok=205 crit=6 parts=81）。
-> - 第 2 轮已派发（5 并行）：`148pingjingtuzongjiaozhang.p1`、`158xinqiujileyanlisuopo-baihua.p1`、
->   `160boerenzhengjishuo.p1`、`169ergenyuantongfamen.p1`、`172canjiunianfo.p1`（五篇 p2 均已 `ok`，预期再出 5 篇整篇）。
-> - **修订后的预计完成时间（数据版，取代旧估法）**：A 期（≤300KB）真实缺口由 `scripts/analyze-eta.mjs` 实测为
->   **102 片 / 48 篇**，其中 **20 篇只差 1 片**、12 篇只差 2 片；按 5 片/轮、15–20 分钟/轮，A 期约 **20 轮 ≈ 5–6.5 小时**，
->   前 20 片约 4 轮 ≈ 1.2 小时即可兑现 20 篇整篇。`plan-slices` 报的「缺 156 片」含 B 期与零产出篇，**不能当 A 期分母**。
-> - **本次新增工具（已提交）**：`scripts/check-parts.mjs`（合并前预检已有分片：区间/块数/`t`/inline/href/CJK）、
->   `scripts/analyze-eta.mjs`（只读统计 A 期缺口与「只差 1 片」的篇）。
-> - **本次新增文档（已提交）**：`scripts/WEEKEND-PLAN.md` —— 周末专项的**修正版**任务与工时，含 303 的精确修法、
->   068/101 的 CJK 块索引、crit 归属纠正、STALE_PARTIAL 处理策略、在飞去重规则。
+> **本次会话检查点（已完成 10 轮，滚动更新）**
+> - 工作目录 `D:\FengLi\Web\fou\huideng-chanlin`；工作区干净，全部已提交（**未 push**）。
+> - **成果：`validate-en` 由 `ok=205 crit=6 warn=2 parts=81` → `ok=242 crit=6 warn=6 parts=40`**，
+>   即本会话**新合并 37 篇完整英文文章**（10 轮 × 5 个并行子代理 = 50 个任务，**零返工、零孤儿分片**）。
+>   A 期未覆盖块由 **6152 → 3692**，涉及文章由 **50 篇 → 20 篇**（`node scripts/coverage.mjs` 实测）。
+> - **每轮选片与派发的标准流程（照做即可）**：
+>   1. `node scripts/coverage.mjs` 看缺口；`node scripts/pick-next.mjs 12` 取「单一缺口 + `bad=0` + 无乱码 + 无 CJK」候选（能一任务补齐一篇）；
+>   2. 多缺口篇用 `node scripts/gap-prep.mjs <slug>`（或 `slug:start-end` 拆超大缺口）预提取源文；
+>   3. **派发前**必须：`meta-scan.mjs` 过一遍作者缺陷清单、`scan-mojibake.mjs` 排除乱码篇、减去在飞清单；
+>   4. 5 个并行子代理，一片一个，提示词含「结构 1:1 / href 原样 / 禁用清单 / 分阶段写入 / 自跑 `verify-slices` 到 `ok`」；
+>   5. 等 **finished 通知**后：`merge-parts <slug>` → `repair-json` → `validate-en` → `git add <slug>.json`（单独一条）
+>      → `git add -u src/content/en -- ':!<在写分片>'` → commit → **`git show --stat HEAD` 核对含新增整篇**。
+> - **修订后的预计完成时间**：A 期（≤300KB）未覆盖 **3692 块 / 20 篇**（约 60–65 片量）；「单一缺口即出整篇」的候选已基本用尽，
+>   此后每篇需 2–4 个任务。按每轮 ~250 块、每任务 12–15 分钟，**剩余约 15 轮 ≈ 3.5–4 小时**（多会话推进）。
+> - **本次新增工具（均已提交）**：`check-parts`、`analyze-eta`、`coverage`、`overlap`、`gap-prep`、
+>   `pick-next`、`scan-mojibake`、`fix-dashes`、`quote-scan`、`meta-scan`（全部只读或幂等，见各自头部注释）。
+> - **本次新增文档（已提交）**：`scripts/WEEKEND-PLAN.md` —— 周末专项修正版（303 精确修法、068/101 块索引、
+>   五类隐性缺陷、源数据作者缺陷、STALE_PARTIAL 策略、诊断命令）。
 >
 > **本次会话新增的坑（务必遵守）**
 > 1. **在飞去重**：`plan-slices --next N` 会把「已派出但尚未落盘」的片**继续列为可派**（实测 `127feixiange.p1`）。
 >    每轮必须先 `--next N`、再**减去当前在飞的 partName**，然后取前 5；同一片绝不能让两个子代理同时写。
 >    （反之，已落盘但没写完的片会被算作旧 partial 而不列出，两种状态要分开处理。）
-> 2. **派发优先级**：优先派「只差 1 片」的篇（用 `scripts/analyze-eta.mjs` 列出），每片直接兑现 1 篇整篇，
->    比 `plan-slices` 默认顺序更划算。
+> 2. **派发优先级**：优先派「只差 1 片」的篇（用 `scripts/analyze-eta.mjs`/`pick-next.mjs` 列出），每片直接兑现 1 篇整篇。
 > 3. **303liuzutanjing 不是「重译 555–822」**：实测是 ±1 错位（`en[i] === zh[i-1]` 在 i=551..822 **272/272 成立**，
 >    `en[551]` 多余、`zh[822]` 译文缺失，href 症状随之自愈）。修法见 `scripts/WEEKEND-PLAN.md` §1，约 15 分钟。
 > 4. **`187hanshandashinianpushu-old` 是独立且已进 catalog 的文章**，其 `-old.pN.json` 是合法分片，**不要改名或删除**；
