@@ -72,6 +72,10 @@
 >      （`verify-slices` 的 CJK 正则覆盖 U+3000-303F/U+FF00-FFEF，弯引号 U+2018-201D 不在其中，不会误报。）
 > 17. **合并顺序与提交纪律**：`git add -A src/content/en` 会把**正在写入**的分片一起提交（且 `git add` 遇到
 >    已不存在的 pathspec 会整体失败、静默漏掉后面的文件）。**只用显式路径 add**，在飞文件用 pathspec 排除。
+> 18. **不要合并「含乱码分片」的篇**：`scripts/scan-mojibake.mjs` 列出的 12 个文件里，凡是被某篇整篇引用到的，
+>    一旦合并就会把乱码**锁进整篇**（之后再按分片修就更麻烦）。派发前应先跑 `scan-mojibake` 交叉检查：
+>    受影响而应暂缓合并的篇有 `251zhenqiyunxingfa`、`204ssydj`、`502xiuxinjue`、`502zhenxinzhishuojingjie`、
+>    `261lengqiejing`、`187hanshandashinianpushu-old`、`303liuzutanjing`。先修乱码（§7.1 两步法）再合并。
 
 > **上一会话检查点（2026-09-10 两小时会话末 · 历史）**
 > - 工作目录 `D:\FengLi\Web\fou\huideng-chanlin`；已提交，工作区干净。
