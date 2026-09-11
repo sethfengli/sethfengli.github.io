@@ -1,6 +1,54 @@
 # 英文翻译续作指南（下星期继续）
 
-> **本次会话检查点（已完成 10 轮，滚动更新）**
+> **最新检查点（2026-09-12 · 5 轮 × 8 并行 · 本轮会话末）**
+> - **成果：`validate-en` 由 `ok=242 crit=6 warn=6 parts=40` → `ok=251 crit=6 warn=11 parts=26`**，
+>   即本会话**新合并 9 篇完整英文文章**（40 个并行任务，零 crit 新增、零孤儿分片）：
+>   `022taishanggy-3` / `102lengqiejingxuanzhu` / `105wangfengyijiayanlu` / `204danian` /
+>   `002baiyunxy` / `017jdwsswl` / `021taishanggy-2` / `023taishanggy-4` / `104ganyingp`（第 1–4 轮）
+>   + 第 5 轮 `103yjy` / `171nianfoshishui` / `186hanshandashideyisheng` / `193guanwuliangshoufojingjijie` /
+>   `258quanzhenqizizhuan`（共 14 篇，见下「本轮实际合并清单」）。`crit` 始终为 6，无一上升。
+> - **A 期「可派任务」已用尽**：`task-plan.mjs 120` 现为 **6 篇有缺口 / 890 未覆盖块 / 14 个任务，其中可派 0 个**
+>   （14 个全部被既有分片的乱码/CJK 挡住）。**下一步必须先在周末专项里修乱码/CJK，才能继续派发**。
+>   剩余 6 篇：`261lengqiejing` 310b、`187hanshandashinianpushu-old` 224b、`204ssydj` 118b、
+>   `502zhenxinzhishuojingjie` 109b、`502xiuxinjue` 89b、`251zhenqiyunxingfa` 40b。
+> - **修订预计时间**：修完这 6 篇的乱码/CJK 后，890 块 ≈ 8 个任务 ≈ **1 轮（8 并行，约 8–10 分钟）**；
+>   若按 5 并行则 2 轮 ≈ 20 分钟。即 **A 期主体只剩「周末修乱码 + 1 轮派发」**，不再是 3–4 小时。
+> - **本轮实测**：8 并行下每轮（派发→核验→合并→提交）约 **3–6 分钟**，比 PLAYBOOK 的 8 分钟/轮更快；
+>   40 个任务/5 轮总耗时约 25 分钟。
+>
+> **本会话新增的坑（务必遵守 + 两条已有坑的修正）**
+> 1. **【新·最危险】`merge-parts` 会删除它合并掉的分片，所以「先合并、后提交」会永久丢失分片文件**。
+>    本会话第 4 轮把 3 篇合并后才提交，`021taishanggy-2.p8/p9`、`023taishanggy-4.p14/p15`、
+>    `104ganyingp.p8/p9` 等**未提交的分片被 merge-parts 直接删除**（内容已在整篇里，故无质量损失，
+>    但那 6 个分片文件不在提交历史中）。**新规则：写完一片就 `git add` 一片，或至少在 `merge-parts` 之前先提交分片。**
+> 2. **`git add -u` 只暂存「已跟踪」文件**，新建分片（untracked）不会被它带走；且一条 `git add A B` 里只要有
+>    一个 pathspec 不存在（例如已被 merge-parts 删掉的分片），**整条 add 失败、A 也不暂存**（RESUME #17 的复现）。
+>    本会话第 1、3、4 轮各中一次，都靠 `git commit --amend --no-edit` 补回。**每次提交后必须
+>    `git status --porcelain` + `git show --stat` 双向核对**（不要只看 stat，stat 被 `Select-Object` 截断会误判）。
+> 3. **【新】`gap-prep` 的「重复源」不是 bug，不要删**：`slice-plan` 的旧网格分片与新切片会指向同一块区间
+>    （实测 `002baiyunxy.p3/p9/p10`、`023taishanggy-4.p8/p14`、`193….p4/p9`、`186….p2/p5/p10/p11` 等同源）。
+>    这是「本轮未被派发」的备用源，可留到后续复用；但**派发前要按 `firstBlock+块数` 去重**，否则会重复翻译。
+> 4. **`gap-prep` 一次调用内不会看到自己刚写出的 `build/slices/*.src.json`**（`enFiles` 在进程启动时读取），
+>    所以**同一个 slug 的多次调用会撞同一个 part 号**（实测 `017jdwsswl` 三次调用都写 p9）。
+>    **规则：同一 slug 的多个区间必须分多次进程调用，或每次调用后检查文件名。**
+> 5. **`verify-slices` 要求 `<输出名>.src.json` 存在**，而 `gap-prep` 可能给出非规范 part 号
+>    （如 `258quanzhenqizizhuan.p15`，源却是 `p1.src.json`）；此时子代理会报 `missing-src`，
+>    复制一份同名 src 即可（本会话已为 p15/p16 建立同名 src）。
+> 6. **`task-plan` 的「可派 0」= A 期收工信号**：不要再自己想新任务；剩余 890 块全部在乱码/CJK 篇里。
+> 7. **子代理沿用的标点风格可能与仓库主流不同**：`021taishanggy-2` 既有分片用 ASCII `--` 而非 em dash，
+>    子代理为「与同篇一致」而保留 `--`（本会话新增 4 处此类文件）。这不影响 `verify`/`validate`，
+>    但周末统一音标/标点时要把这批算进 `scripts/quote-scan.mjs` / `fix-dashes.mjs` 的复查范围。
+> 8. **`ArticleBody.tsx` 的 `InlineSegs` 是无分隔符拼接**：英文片段的片段边界必须自带空格。
+>    本会话 3 个子代理独立发现并修正了这个问题（`171nianfoshishui.p9` 补了 171 处、`103yjy.p6` 逐块核对）。
+>    **派发提示词里值得加一句**「片段拼接无分隔符，片段边界要自带空格」——但 DISPATCH.md 已含 1:1 要求，
+>    是否加由下轮决定。
+> - **本轮实际合并清单（14 篇）**：`022taishanggy-3`(560b)、`102lengqiejingxuanzhu`(747b)、
+>   `105wangfengyijiayanlu`(409b)、`204danian`(408b)、`002baiyunxy`(495b)、`017jdwsswl`(390b)、
+>   `021taishanggy-2`(299b)、`023taishanggy-4`(565b)、`104ganyingp`(408b)、`103yjy`(118b)、
+>   `171nianfoshishui`(334b)、`186hanshandashideyisheng`(552b)、`193guanwuliangshoufojingjijie`(736b)、
+>   `258quanzhenqizizhuan`(700b)。提交：`2b59f3f`、`4069fe6`、`478e771`、`b2358bd`、`fb0f6ef`、`4db6b2c`（未 push）。
+>
+> **上一会话检查点（已完成 10 轮，历史）**
 > - 工作目录 `D:\FengLi\Web\fou\huideng-chanlin`；工作区干净，全部已提交（**未 push**）。
 > - **成果：`validate-en` 由 `ok=205 crit=6 warn=2 parts=81` → `ok=242 crit=6 warn=6 parts=40`**，
 >   即本会话**新合并 37 篇完整英文文章**（10 轮 × 5 个并行子代理 = 50 个任务，**零返工、零孤儿分片**）。
