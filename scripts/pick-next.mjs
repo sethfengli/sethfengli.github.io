@@ -17,10 +17,15 @@ const plan = JSON.parse(readFileSync(join(root, 'scripts/slice-plan.json'), 'utf
 const enFiles = readdirSync(enDir)
 
 const BAD = [/\u00e2\u20ac/, /\u00c3[\u0080-\u00bf]/, /\u00c2[\u00a0-\u00bf]/, /\u00ef\u00bc/, /\u00e3\u20ac/, /\ufffd/]
+// Existing parts can carry latent CJK/fullwidth residue (e.g. a stray U+3014 bracket).
+// Merging such an article EXPOSES it as a new `crit` in validate-en, so exclude those slugs.
+const CJK = /[\u3000-\u303f\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff\ufe30-\ufe4f\uff00-\uffef]/
 const mojibakeSlugs = new Set()
+const cjkSlugs = new Set()
 for (const f of enFiles.filter((x) => /\.p\d+\.json$/.test(x))) {
   const raw = readFileSync(join(enDir, f), 'utf8')
   if (BAD.some((p) => p.test(raw))) mojibakeSlugs.add(f.split('.p')[0])
+  if (CJK.test(raw)) cjkSlugs.add(f.split('.p')[0])
 }
 
 const N = Number(process.argv[2]) || 10
@@ -76,6 +81,7 @@ for (const p of plan) {
   if (gaps.length !== 1) continue
   if (bad !== 0) continue
   if (mojibakeSlugs.has(s)) continue
+  if (cjkSlugs.has(s)) continue
   const [a, b] = gaps[0]
   rows.push({ s, gap: a === 0 ? `[0-${b}]` : `[${a}-${b}]`, blocks: b - a + 1, head: a === 0, total })
 }
@@ -84,4 +90,5 @@ console.log('single-gap + bad=0 + no-mojibake candidates (one task completes the
 for (const r of rows.slice(0, N))
   console.log(`  ${r.s.padEnd(36)} gap=${r.gap.padEnd(12)} blocks=${String(r.blocks).padStart(4)}  head(meta)=${r.head ? 'yes' : 'no '}  article=${r.total}`)
 console.log(`\ntotal such candidates: ${rows.length}`)
+if (cjkSlugs.size) console.log(`excluded (CJK residue in existing parts): ${[...cjkSlugs].join(' ')}`)
 if (mojibakeSlugs.size) console.log(`excluded (mojibake parts): ${[...mojibakeSlugs].join(' ')}`)
