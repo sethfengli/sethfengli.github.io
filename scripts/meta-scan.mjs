@@ -32,10 +32,19 @@ for (const f of files) {
   if (/[《》「」【】]/.test(a)) reasons.push('author contains title brackets')
   if (a.length > 20) reasons.push('author unusually long')
   if (/^(摘自|选自|节选)/.test(a)) reasons.push('author looks like a source note')
+  // Extraction artifact: the "author" string is the OPENING text of a body block
+  // (e.g. zhAuthor "时维" = first words of a dateline the extractor sliced off into
+  // its own block). A legitimate author name may appear in prose, so only a
+  // block-initial occurrence counts as suspicious.
+  const blockStarts = (d.blocks || []).map((b) => {
+    const first = (b.inline || [])[0]
+    return (first && first.s) || b.text || ''
+  })
+  if (a.length >= 2 && blockStarts.some((s) => s.startsWith(a))) reasons.push('author is the opening text of a body block')
   if (reasons.length) suspects.push({ f, t, a, ex: ex.slice(0, 50), reasons })
 }
 
-console.log(`articles=${files.length}  suspicious author values=${suspects.length}`)
+console.log(`articles=${files.length}  suspicious author values=${suspects.length} (REVIEW LIST - may contain false positives such as a legitimate byline block)`)
 for (const s of suspects) {
   console.log(`  ${s.f}`)
   console.log(`      title  = ${s.t}`)
