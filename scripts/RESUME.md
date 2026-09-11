@@ -1,6 +1,39 @@
 # 英文翻译续作指南（下星期继续）
 
-> **当前检查点（2026-09-10 两小时会话末）**
+> **本次会话检查点（进行中，滚动更新）**
+> - 工作目录 `D:\FengLi\Web\fou\huideng-chanlin`；已提交（除正在写入的分片外工作区干净）。
+> - **第 1 轮 5 片全部 `ok` 并各自合并成整篇**：`124tanluandashikaishi`(105 块)、`126lianchidashi-taming`(102)、
+>   `127feixiange`(59)、`132pingsanxinnianfo`(82)、`133huiyuandashizhuan`(77)。提交：`51fccbe`、`5af055e`。
+> - 状态：`validate-en` = **ok=210 crit=6 warn=2 parts=76**（会话初为 ok=205 crit=6 parts=81）。
+> - 第 2 轮已派发（5 并行）：`148pingjingtuzongjiaozhang.p1`、`158xinqiujileyanlisuopo-baihua.p1`、
+>   `160boerenzhengjishuo.p1`、`169ergenyuantongfamen.p1`、`172canjiunianfo.p1`（五篇 p2 均已 `ok`，预期再出 5 篇整篇）。
+> - **修订后的预计完成时间（数据版，取代旧估法）**：A 期（≤300KB）真实缺口由 `scripts/analyze-eta.mjs` 实测为
+>   **102 片 / 48 篇**，其中 **20 篇只差 1 片**、12 篇只差 2 片；按 5 片/轮、15–20 分钟/轮，A 期约 **20 轮 ≈ 5–6.5 小时**，
+>   前 20 片约 4 轮 ≈ 1.2 小时即可兑现 20 篇整篇。`plan-slices` 报的「缺 156 片」含 B 期与零产出篇，**不能当 A 期分母**。
+> - **本次新增工具（已提交）**：`scripts/check-parts.mjs`（合并前预检已有分片：区间/块数/`t`/inline/href/CJK）、
+>   `scripts/analyze-eta.mjs`（只读统计 A 期缺口与「只差 1 片」的篇）。
+> - **本次新增文档（已提交）**：`scripts/WEEKEND-PLAN.md` —— 周末专项的**修正版**任务与工时，含 303 的精确修法、
+>   068/101 的 CJK 块索引、crit 归属纠正、STALE_PARTIAL 处理策略、在飞去重规则。
+>
+> **本次会话新增的坑（务必遵守）**
+> 1. **在飞去重**：`plan-slices --next N` 会把「已派出但尚未落盘」的片**继续列为可派**（实测 `127feixiange.p1`）。
+>    每轮必须先 `--next N`、再**减去当前在飞的 partName**，然后取前 5；同一片绝不能让两个子代理同时写。
+>    （反之，已落盘但没写完的片会被算作旧 partial 而不列出，两种状态要分开处理。）
+> 2. **派发优先级**：优先派「只差 1 片」的篇（用 `scripts/analyze-eta.mjs` 列出），每片直接兑现 1 篇整篇，
+>    比 `plan-slices` 默认顺序更划算。
+> 3. **303liuzutanjing 不是「重译 555–822」**：实测是 ±1 错位（`en[i] === zh[i-1]` 在 i=551..822 **272/272 成立**，
+>    `en[551]` 多余、`zh[822]` 译文缺失，href 症状随之自愈）。修法见 `scripts/WEEKEND-PLAN.md` §1，约 15 分钟。
+> 4. **`187hanshandashinianpushu-old` 是独立且已进 catalog 的文章**，其 `-old.pN.json` 是合法分片，**不要改名或删除**；
+>    主篇 `187hanshandashinianpushu`（365KB）才是 B 期未译。
+> 5. **crit 归属**：`043mengyouji`(2146KB)、`187hanshandashinianpushu`(365KB)、`239wuliangshoujing-jiaohuibenzhu-zhu`(341KB)
+>    全是 **B 期**；A 期翻完后 A 期 crit 只剩 303（±1）、068（25 块）、101（8 块）三项。
+> 6. `merge-parts` 合并后会**删除**该篇的 `.pN` 分片文件（这是设计行为），只留整篇 `<slug>.json`。
+> 7. **不要在子代理还在跑的时候合并它负责的那篇**：实测 `127feixiange` 合并后，仍在收尾的子代理又「修复」出
+>    `127feixiange.p1.json`，于是整篇 + 孤儿分片并存，`validate-en` 立刻从 `ok=210 parts=76` 退化为
+>    `ok=209 parts=77`（孤儿分片被计为不合格）。**正确做法**：等该篇全部分片的子代理都发完成通知后再 merge；
+>    一旦出现整篇与同名分片并存，**删掉分片**（内容已在整篇里），不要保留。
+
+> **上一会话检查点（2026-09-10 两小时会话末 · 历史）**
 > - 工作目录 `D:\FengLi\Web\fou\huideng-chanlin`；已提交，工作区干净。
 > - 本次共 **6 轮 × 5 并行子代理 = 30 片**新英文分片（第 1–3 轮见下），全部核验通过并提交：
 >   `d68d5f0`、`741701f`、`55353c4`、`a7bd013`、`7929528`、`8f7bc2d`、`a8ce246`。
