@@ -70,8 +70,12 @@
 >    - **正确写法**：禁用清单**只写**「任何 CJK 汉字 + 全角字符（【】〔〕《》（）「」、。，！？：；·…）与全角引号」，
 >      并明确一句「英文弯引号 “ ” ‘ ’ 与 em dash — 都是**允许且推荐**的，直接用」。
 >      （`verify-slices` 的 CJK 正则覆盖 U+3000-303F/U+FF00-FFEF，弯引号 U+2018-201D 不在其中，不会误报。）
-> 17. **合并顺序与提交纪律**：`git add -A src/content/en` 会把**正在写入**的分片一起提交（且 `git add` 遇到
->    已不存在的 pathspec 会整体失败、静默漏掉后面的文件）。**只用显式路径 add**，在飞文件用 pathspec 排除。
+> 17. **合并顺序与提交纪律**：`git add -A src/content/en` 会把**正在写入**的分片一起提交。更隐蔽的是：
+>    `git add A B` 里只要**有一个 pathspec 不存在**（例如已被 `merge-parts` 删除的分片），**整条 add 会失败，
+>    A 也不会被暂存**，随后 `git add -u` 只暂存删除，于是提交里**只有删除、没有新合并的整篇**（本会话中了两次）。
+>    **正确顺序**：先 `git add <slug>.json`（只加合并产物，单独一条命令），再
+>    `git add -u src/content/en -- ':!<在写分片>' …` 暂存删除；提交后用 `git show --stat --oneline HEAD` 核对
+>    统计里**确实包含新增的整篇文件**。若漏了，用 `git add <slug>.json && git commit --amend --no-edit` 补回。
 > 18. **不要合并「含乱码分片」的篇**：`scripts/scan-mojibake.mjs` 列出的 12 个文件里，凡是被某篇整篇引用到的，
 >    一旦合并就会把乱码**锁进整篇**（之后再按分片修就更麻烦）。派发前应先跑 `scan-mojibake` 交叉检查：
 >    受影响而应暂缓合并的篇有 `251zhenqiyunxingfa`、`204ssydj`、`502xiuxinjue`、`502zhenxinzhishuojingjie`、
