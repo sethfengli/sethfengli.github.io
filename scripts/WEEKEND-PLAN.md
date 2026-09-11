@@ -214,6 +214,24 @@ B 期启动时注意：`043mengyouji` 中文源 **2146KB / 74 片**、`187hansha
 （`author` 字段在本站确实是作者名，如 `132pingsanxinnianfo`=湛然、`244guanxin`=湛然），并决定是否同步修正中文源与 `catalog.json`
 （注意：改中文源会同时影响中文模式与 `chars` 阅读时长估算之外的一切展示，建议单独一次提交并逐一核对）。
 
+### 7.3 专名/术语「带音标 vs 不带音标」在同一文件内混用
+
+`node build/name-scan.mjs`（本会话新增，只读）实测：**411 个英文文件里有 33 个同文件内混用**，例如
+`Amitabha/Amitābha`、`nirvana/nirvāṇa`、`samadhi/samādhi`、`prajna/prajñā`、`Sakyamuni/Śākyamuni/Shakyamuni`、
+`Vaidehi/Vaidehī`、`Saha world/Sahā world`。典型文件：`115xifangquezhi`、`012liuzutanjing_kp`、`013zhufasx`、
+`071shandaosixiang`、`080waiqushandaodashi`、`083ribenbenyuanfamenxie`、`114huxinianfojingyi`、`131chanjingzongshi` …
+另外 `230guanjingzhu` 内部也不一致（`p1/p6` 用 `Ānanda/Vaidehī`，`p51` 及其后不用）。
+
+**为什么一直没被发现**：`validate-en` 只查 CJK/全角，音标字符（ā ī ū ṛ ṃ ñ ś）完全不在检查范围。
+
+**建议做法**（周末，且**不要盲目全局替换**）：
+1. 先定规范形（brief 明确列的是带音标：`prajñā`、`samādhi`、`nirvāṇa`、`Amitābha`），把它写进 `TRANSLATION-BRIEF.md`；
+2. 按**文件**做 dry-run 替换（先打印每处上下文），人工扫一眼：
+   - 散文里的专名 → 统一为规范形；
+   - **引文/经文原句**里若已有通行英译写法（如某些译本写 `nirvana`），可保留，但需在同文件内保持一致；
+3. 用 `node build/name-scan.mjs` 复查「混用文件数」应显著下降；
+4. 改完跑 `validate-en` + `scan-mojibake` 确认没有连带破坏。
+
 ## 附：诊断命令（可复现）
 
 ```bash
