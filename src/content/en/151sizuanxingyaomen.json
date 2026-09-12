@@ -313,7 +313,10 @@
    "t": "quote",
    "inline": [
     {
-     "s": "“In the first year of Dazu ("
+     "s": "“In the first year of Dazu "
+    },
+    {
+     "s": "("
     },
     {
      "s": "701"
@@ -331,7 +334,13 @@
      "s": " was summoned to the Eastern Capital and, accompanying the imperial carriage, went back and forth between the two capitals in teaching, personally serving as teacher to the emperor. Empress Zetian of the Great Sage asked Chan Master Shenxiu: ‘The Dharma you transmit — of whose school is the teaching?’ He replied: ‘I inherit the Dongshan Dharma-gate of"
     },
     {
-     "s": "Qizhou"
+     "s": ""
+    },
+    {
+     "s": " Qizhou"
+    },
+    {
+     "s": ""
     },
     {
      "s": ".’ She asked: ‘Which text does it rely upon?’ He replied: ‘It relies upon the One-Practice Samadhi of the Sutra of the Prajna Spoken by Manjushri.’ Zetian said: ‘If we speak of cultivating the Way, nothing surpasses the Dongshan Dharma-gate.’”"
@@ -613,11 +622,13 @@
    "t": "p",
    "inline": [
     {
-     "s": "[The ocean of all karmic hindrances is born of delusive thought; if one wishes to repent, sit upright and contemplate reality] All karmic hindrances, as deep and vast as the sea, are born of delusive thought; if one wishes to repent, sit upright and contemplate reality. Therefore, sitting upright and contemplating reality can wipe away all karmic hindrances. [Contemplating reality] the mind that has no object (without thought, without ideation) — this is contemplating reality. (See in detail the section “the sun of wisdom wipes away offenses” in the"
+     "s": "[The ocean of all karmic hindrances is born of delusive thought; if one wishes to repent, sit upright and contemplate reality] All karmic hindrances, as deep and vast as the sea, are born of delusive thought; if one wishes to repent, sit upright and contemplate reality. Therefore, sitting upright and contemplating reality can wipe away all karmic hindrances. [Contemplating reality] the mind that has no object (without thought, without ideation) — this is contemplating reality. (See in detail"
     },
     {
-     "s": "Essentials of Chan and Pure Land",
-     "href": "/articles/403chanjing"
+     "s": " the section “the sun of wisdom wipes away offenses” in the"
+    },
+    {
+     "s": " Essentials of Chan and Pure Land", "href": "/articles/403chanjing"
     },
     {
      "s": ")"
