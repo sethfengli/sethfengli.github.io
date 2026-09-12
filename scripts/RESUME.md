@@ -1,148 +1,132 @@
 # 英文翻译续作指南
 
-> 工作目录 `D:\FengLi\Web\fou\huideng-chanlin`。**A 期已完成**，本文件只保留 B 期所需内容。
+> 工作目录 `D:\FengLi\Web\fou\huideng-chanlin`。**A 期 + B 期翻译全部完成**（2026-09-12）。
+> 本文件 = 状态 + 目录 + 流水线 + 坑；**下一轮要做什么见 `scripts/NEXT-PLAN.md`**；翻译轮实测细节见 `scripts/B-PHASE-HANDOFF.md`。
 
-## 1. 当前状态（2026-09-13 实测）
+## 1. 当前状态（2026-09-12 实测）
 
 | 指标 | 值 |
 | --- | --- |
-| `validate-en` | **ok=257 crit=6 warn=11 parts=20** |
-| `scan-mojibake` | **0 / 307** |
-| A 期队列 `task-plan.mjs 120` | **0 篇 / 0 块 / 0 任务**（可派 0、被挡 0）→ **A 期收工** |
-| 工作区 | 干净，全部已提交，**未 push** |
-| 提交 | `88450c0`（303 汉字）、`b3e9c12`、`2afcf09`（A 期 6 篇）、`c309795` |
+| `validate-en` | **ok=274 crit=3 warn=11 parts=6** |
+| `scan-mojibake` | **0 / 300** |
+| 翻译队列 `task-plan.mjs 120` | **0 篇 / 0 块 / 0 任务 / 0 被挡 → 翻译收工** |
+| `plan-slices.mjs`（审计） | 0 篇有缺口 / 缺 0 片 / 可派 0 片 / 一致性问题 0 条 |
+| 工作区 | 干净，全部已提交，**未 push**（用户手动） |
+| 规模 | A 期 11 篇 + B 期 18 篇 = **29 篇**英文整篇；B 期 24,491 块 / 205 任务，实测 **395 min ≈ 6.6 h** |
 
-**crit 6 项归属**（全部非 A 期，勿在翻译轮里顺手改）：
-`043mengyouji:missing`、`187hanshandashinianpushu:missing`、`239wuliangshoujing-jiaohuibenzhu-zhu:missing`（以上 B 期）、
-`068xiangxujs:cjk`、`101yebunengxi:cjk`、`303liuzutanjing:block555-822`（±1 错位）→ 后三项见 §5 周末专项。
+**crit 3 项（全部是「修缺陷」而非「缺翻译」，勿当未完工）**
 
-## 2. B 期范围（实测 18 篇 >300KB）
-
-共 **10.5MB / 24,491 块**。**这些篇目前没有 `en/` 分片、也不在 `slice-plan.json` 里**。
-
-| 大小 | 块数 | slug |
+| slug | 症状 | 处置 |
 | --- | --- | --- |
-| 2146KB | 4480 | `043mengyouji` |
-| 1218KB | 2224 | `205jgj-jiangyi` |
-| 739KB | 1627 | `025taishanggy-yw` |
-| 709KB | 371 | `102lfsx` |
-| 598KB | 695 | `246henghedashouyin` |
-| 514KB | 1530 | `303liuzutanjing`（±1 错位待修，见 §5） |
-| 440KB | 1184 | `301jgj` |
-| 432KB | 952 | `403chanjing` |
-| 424KB | 1129 | `293jgj-zhu` |
-| 421KB | 1124 | `190wuliangshoujingwuyiben` |
-| 389KB | 889 | `016xdwsjwl` |
-| 367KB | 2442 | `262dachengrulengqiejing` |
-| 366KB | 859 | `001jznf` |
-| 365KB | 880 | `187hanshandashinianpushu` |
-| 359KB | 1035 | `239wuliangshoujing-huiyi` |
-| 344KB | 814 | `001juezhichan` |
-| 341KB | 1010 | `239wuliangshoujing-jiaohuibenzhu-zhu` |
-| 309KB | 1246 | `047shengmingdcj` |
+| `303liuzutanjing` | 块 551 多余 / 块 822 缺译，551-822 区间 `en[i]=zh[i-1]`（272/272 成立），href 症状自愈 | **删 1 块 + 补译 1 块**，见 `NEXT-PLAN.md` §1 |
+| `068xiangxujs` | 84 块里 **25 块**仍含中文（部分翻译） | 只补这 25 块，见 `NEXT-PLAN.md` §2 |
+| `101yebunengxi` | 64 块里 **8 块**仍含中文 | 只补这 8 块，见 `NEXT-PLAN.md` §2 |
 
-> **规模提示（务必先认账）**：24,491 块 ÷ 每任务 120 块 = **约 205 个任务**。
-> 即使每轮 8 并行也要 **26 轮**；按 8 分钟/轮 ≈ **3.5 小时纯执行**，加核验/合并/提交约 **4–6 小时**。
-> **B 期无法在一次对话里翻完**；「一轮」只能指「解锁 + 生成队列 + 跑完第一轮」。
+## 2. 目录与产出（哪些是内容、哪些是工具）
 
-## 3. B 期启动（照抄，顺序不可换）
+```
+src/content/articles/*.json     中文源（权威；meta 缺陷也改这里，不要改 en）
+src/content/en/*.json           英文覆盖（整篇；分片在 merge 前是 *.pN.json）
+src/content/catalog-en.json     slug → {title,author,excerpt}（英文界面用；build-catalog-en.mjs 生成）
+src/content/{catalog,lingqi,lingqi-en,…}.json   其它内容数据
+dist/                           vite 构建产物（gitignore）
+build/                          临时工作区（gitignore）：只留 5 个复用脚本，见 §5
+```
+
+**`build/` 里的 5 个复用脚本（翻译/补片必用）**
+
+| 脚本 | 用途 |
+| --- | --- |
+| `mksrc.mjs <slug.pN>` | 编号源 → `build/<slug.pN>.src.txt`（每行 `<n>\t<源文>`，非 `p` 块带 `[t=..]`/`[segs=N]`/`[HREF]` 标记） |
+| `recover-r9-dispatch.mjs <slug.pN>` | 打印首/末块 `src8` 与 `multiSegBlocks`/`tableBlocks` 计数（派发前给子代理对照锚点） |
+| `recover-r9-assemble.mjs <slug.pN> <out.jsonl>` | **按源结构确定性组装** → `src/content/en/<slug.pN>.json`；锚点/块数/片段数/href/CJK/空译/占位符全校验，失败**拒收且不留文件** |
+| `recover-r9-scan.mjs <slug> [pN…]` | 占位符 / 空块 / 无字母块扫描 |
+| `audit-slices-runtime.mjs <slug> <pN…> [--dump=abs]` | 缺陷类 E 判据入口：结构 + 重复 + **逐块长度比离群** |
+
+## 3. 翻译流水线（B 期验证：51 片零结构错位）
 
 ```bash
-# 1) 抬高 300KB 上限（4 个文件里的硬编码）
-#    scripts/coverage.mjs:31        > 300*1024  →  > 30*1024*1024
-#    scripts/plan-slices.mjs:63     DEFER_BYTES = 300*1024  →  30*1024*1024
-#    scripts/make-agent-tasks.mjs:22 DEFER_BYTES = 300*1024  →  30*1024*1024
-#    scripts/analyze-eta.mjs:25     > 300*1024  →  > 30*1024*1024
-node scripts/slice-plan.mjs            # 2) 重新切片，B 期篇才会进入计划
-node scripts/coverage.mjs              # 3) 确认 B 期篇出现、覆盖 0%
-node scripts/task-plan.mjs 120         # 4) 生成 B 期任务队列（应约 205 个任务）
+# 1) 确认队列（唯一权威）
+node scripts/task-plan.mjs 120
 
-# 5) 每轮：同 slug 分多次进程调用预提取（否则撞 part 号）
-node scripts/gap-prep.mjs <slug>              # 或 <slug>:<start>-<end>
-node scripts/gap-prep.mjs <slug>:<start2>-<end2>
-# 6) 一条消息并行派 8 个子代理（提示词 6 行，见 §4）
-# 7) 最后一个任务结束后一条消息收尾（见 §4）
-```
+# 2) 生成缺口源（同一 slug 多个区间必须分多次进程调用，否则撞 part 号）
+node scripts/gap-prep.mjs "<slug>:<a>-<b>"      # → build/slices/<slug>.pN.src.json
 
-## 4. 标准操作（A 期已验证，照抄）
+# 3) 编号源 + 锚点清单
+node build/mksrc.mjs <slug.pN>
+node build/recover-r9-dispatch.mjs <slug.pN>
 
-**派发提示词模板（只替换变量，6 行）**
-```
-读 scripts/DISPATCH.md 与 scripts/TRANSLATION-BRIEF.md。源 build/slices/<part>.src.json
- -> 输出 src/content/en/<part>.json。firstBlock=<n> blocks=<m> meta=<yes/no>。
- 片段边界要自带空格（InlineSegs 无分隔符拼接）。写完自跑
- node scripts/verify-slices.mjs <part>.json 并迭代到 ok 为止。不要碰其它文件、不要跑 git。
-```
-- `meta` 规则：源里有 `zhAuthor` 才写 author，没有就不写。`head=Y` 的片若被 `scripts/meta-scan.mjs`
-  命中，**先从 `src/content/articles/<slug>.json` 删掉 `author`** 再 `gap-prep`（改源文件，不是改分片）。
-- 子代理另有 `scripts/DISPATCH.md`（硬性交付格式）与 `scripts/TRANSLATION-BRIEF.md`（质量规范）可读，
-  提示词不必重复其中的要求。
+# 4) 一条消息并行派 8 个子代理：每个只写 build/<slug.pN>-out.jsonl
+#    每行 {"n":<0..N-1>,"src8":"<源块去空白前8字>","en":"<英文>"}；n 不重不漏
+#    提示词模板见 scripts/DISPATCH.md（+ B-PHASE-HANDOFF §5 的防漂移三行）
 
-**收尾（最后一个任务结束后，一条消息内）**
-```
-node scripts/verify-slices.mjs <本轮全部分片>
-git add <各新分片，显式文件名>          # 必须在 merge 之前！见 §5.1
-node scripts/merge-parts.mjs <本轮 100% 覆盖的 slug>
+# 5) 父代理组装（结构一律取自源，错位在构造上不可能发生）
+node build/recover-r9-assemble.mjs <slug.pN> build/<slug.pN>-out.jsonl
+
+# 6) 收尾（顺序不可换）
+node scripts/verify-slices.mjs <本轮全部分片>            # 必须全 ok / ok(big)
+node scripts/coverage.mjs <slug>                          # uncovered_blocks=0 且 bad=0
+node build/audit-slices-runtime.mjs <slug> <pN...>        # 必须 all clean
+node build/recover-r9-scan.mjs <slug>                     # 必须 clean
+git add <各分片，显式文件名> && git commit -m "EN: … shards"
+node scripts/merge-parts.mjs <slug>                       # 会删掉它合并的分片 → 必须在提交之后
 node scripts/repair-json.mjs ; node scripts/validate-en.mjs
-git add <slug>.json ; git add -u src/content/en
-git commit -m "EN: B round N - ..."
-git show --stat --oneline HEAD ; git status --porcelain    # 双向核对
+git add <slug>.json ; git add -u src/content/en && git commit -m "EN: … merge"
+git show --stat --oneline HEAD ; git status --porcelain   # 双向核对
 ```
-不要 push。有子代理在飞时只用 `merge-parts <slug>`（指定与在飞无关的篇），不要跑无参数版本。
 
-## 5. 必须遵守的坑（精简版，全部实测）
+**`meta` 规则**：源切片里有 `zhAuthor` 才写 `author`。`head=Y` 的片若被 `scripts/meta-scan.mjs` 命中，
+**先删 `src/content/articles/<slug>.json` 的 `author`**（改源，不是改 en）再 `gap-prep`。
 
-1. **〔最危险〕`merge-parts` 会删除它合并掉的分片** → 「先合并、后提交」会永久丢文件。
-   **固定顺序：先 `git add` 全部分片 → 再 `merge-parts` → 再提交。**
-   另：`git add A B` 里只要有一个 path 不存在，**整条 add 失败**，随后 `git add -u` 只暂存删除，
-   提交里就**只有删除、没有新增整篇**。每次提交后必须 `git show --stat` + `git status --porcelain` 双向核对。
-2. **分片「多 1 块」会把 merge 卡在 100% 前一块**：实测 `261lengqiejing.p8` 覆盖 [919-1042]（124 块）
-   而 `p9` 从 1042 起，报 `[gap] expect block 1043, got 1042` → `[fail] merged 1043/1050`。
-   **块数看似只差几块，根因是重叠。** 列各分片 `firstBlock+块数` 找重复块（见 `scripts/fix-261-boundary.mjs`），
-   按官方 `slice-plan` 边界删重复块；两文件译文不同时**以对齐 `zh[abs]` 原文者为准**。
-3. **`gap-prep` 的「重复源」不是 bug，不要删**：`p7/p8`、`p12/p13`、`p2/p5`、`p4/p12`、`p2/p7` 等
-   常见 byte-identical，是未派发的备用源。**派发前按 `firstBlock+块数` 去重。**
-4. **同一 slug 的多个区间必须分多次进程调用**（`gap-prep` 一次调用内看不到自己刚写的 src，会撞 part 号）。
-5. **子代理的两个真陷阱**：
-   - `write` 工具在「字符串以弯引号 `”` 结尾」时**可能静默吞掉收尾的 JSON 双引号**，产出
-     `Bad control character in string literal`，**读回渲染正常、肉眼看不出**。故必须真的 `JSON.parse`
-     （`verify-slices` 会），不能只看渲染。
-   - 大 `write` 可能**静默少写/多写数组元素**。对策：**分小批写 + 每步跑 `verify-slices`**。
-6. **禁用字符只限 CJK 汉字 + 全角**（【】〔〕《》（）「」、。，！？：；）。
-   `“ ” ‘ ’ — · …` **允许且推荐**，不要禁（历史提示词 bug：误禁导致 ASCII `--` 满天飞）。
-7. **`InlineSegs` 是无分隔符拼接**，英文片段边界必须自带空格。**注意**：中文源本身也把
-   `["一、无门为法门"]["二、五法三自性"]` 存成两片段（中文无需空格故无感），EN 照抄后渲染成
-   `Gate2. The Five…` —— 实测 **253/277 篇**有此类接头，**多数源自既有分片，非本轮引入**。
-   修法二选一（渲染层补空格 / 写 `fix-joins.mjs` 改 253 篇），**先定策略再动手**。
-8. **`merge-parts` 只看 `firstBlock` 连续性，不看文件名**：旧网格孤儿分片（`p10/p20/p70`）只要区间连续就能并。
-   但**完全嵌套的孤儿**会让 merge 失败（`[fail] merged N/N`）→ 先删被包含的孤儿再 merge。
-9. **不要把「中文+机翻兜底」当已翻译**：`validate-en` 只认 `en/` 文件。
+## 4. 必须遵守的坑（全部实测；细节见 `B-PHASE-HANDOFF.md` §3）
 
-## 6. 周末专项（非 B 期，单独排期）
+1. **〔最危险〕`merge-parts` 会删除它合并的分片** → 固定顺序：先 `git add` 全部分片 → 再 merge → 再提交。
+   `git add A B` 只要有一个路径不存在，**整条 add 失败**，随后 `git add -u` 只暂存删除 → 提交里只有删除没有新增。
+   每次提交后 `git show --stat` + `git status --porcelain` 双向核对。
+2. **`plan-slices.mjs` 与 `slice-plan.mjs` 同名互覆**：`slice-plan.mjs` 是生成器（会覆盖 `slice-plan.json`）；
+   日常只跑审计器 `plan-slices.mjs`。（R10 会话已删除生成器，若两条命令都提示不存在＝正常，翻译已完成。）
+3. **取回历史分片只能用 `Set-Content -Encoding utf8` + Node 去 BOM**；`git show > file` 在 PowerShell 里写 UTF-16，JSON 非法。
+4. **`merge-parts` 只看 `firstBlock` 连续性，不看文件名**：完全嵌套的孤儿分片会被静默跳过（`[merged] N blocks` 却漏块）。
+5. **子代理自报不可信**：必须逐块核对 `n` 覆盖（`lines/min/max/uniq` **不够**，要查 missing 集合）。
+   实测子代理会「只写了一部分就正常结束回合」（B 期 `043 p27` 只写了 16/120）。补写要让它写**新文件**（`-tail.jsonl`），
+   父代理按 `n` 合并去重后再组装。**同一分片绝不允许两个代理同时写。**
+6. **`verify-slices` + `coverage` 全绿 ≠ 译完**：块内截断、占位符、空块只有 `audit-slices-runtime` 的**逐块长度比**能抓
+   （B 期 `205 p6` n=24、`043 p37` n=106 各 1 处）。判据：`EN/ZH` 超出同片中位 2.5×/0.4×；
+   **报警必须回看 ZH 块**——源文自身重复/叠句/偈颂重出/源文损坏都会合法离群。
+7. **禁用字符只限 CJK 汉字 + 全角**（`【】〔〕《》（）「」、。，！？：；`）。
+   `“ ” ‘ ’ — · …` **允许且推荐**（历史 bug：误禁导致 ASCII `--` 满天飞）。
+8. **`InlineSegs` 是无分隔符拼接**：英文片段边界必须自带空格。中文源本身也把
+   `["一、无门为法门"]["二、五法三自性"]` 存成两片段（中文无感），EN 照抄会渲染成 `Gate2. The Five…`。
+   **实测 253/277 篇有此类接头，多数源自既有分片** → 见 `NEXT-PLAN.md` §4（先定策略再动手）。
+9. **子代理两个真陷阱**：`write` 在「字符串以 `”` 结尾」时可能静默吞掉收尾双引号（读回渲染正常，肉眼看不出）→
+   必须真的 `JSON.parse`；大 `write` 可能静默少写/多写数组元素 → 分小批写 + 每步核验。
+10. **不要把「中文+机翻兜底」当已翻译**：`validate-en` 只认 `en/` 文件。
 
-- **303liuzutanjing ±1 错位**：`en[i] === zh[i-1]` 在 i=551..822 **272/272 成立**，`en[551]` 多余、
-  `zh[822]` 译文缺失，href 症状自愈。修法见 `scripts/WEEKEND-PLAN.md` §1，约 15 分钟。**不要顺手改。**
-- **068xiangxujs（25 块）/ 101yebunengxi（8 块）的 CJK 残留**。
-- **warn 11 项**（行内片段数，展示层无影响）：`013zhufasx`、`032xyxing`、`052wangshengyuanli`、
-  `088linzhongshinianxiangxu`、`103yjy`、`105wangfengyijiayanlu`、`151sizuanxingyaomen`、
-  `186hanshandashideyisheng`、`193guanwuliangshoufojingjijie`、`204danian`、`240yinguangdashilunhuijiben`。
-- **音标统一 + 引号风格**：`scripts/quote-scan.mjs`、`scripts/fix-dashes.mjs`。
-  已知分叉：`502zhenxinzhishuojingjie` 的 `p8` 用弯引号而 `p5/p7/p9` 用直引号；`261lengqiejing` 同理。
-- **`author` 源数据缺陷**：`scripts/meta-scan.mjs` 报 21 处（多为「块首文字被当作者」，如 `105wangfengyijiayanlu`
-  的 `author="前 言"`）。**改 `src/content/articles/*.json`，不是改 en。**
-- **片段丢空格**（见 §5.7，253 篇）。
-
-## 7. 脚本速查
+## 5. 脚本速查
 
 | 脚本 | 用途 |
 | --- | --- |
 | `task-plan.mjs [maxBlocks]` | 生成任务队列（唯一权威的「还剩多少」） |
-| `coverage.mjs [slug]` | 每篇覆盖% / 缺口区间 / 孤儿分片 |
+| `plan-slices.mjs` | 切片计划**审计**（不要跑生成器，已删除） |
+| `coverage.mjs [slug]` | 每篇覆盖% / 缺口区间 / 孤儿分片（merge 后整篇不再计分片，显示 0% 属正常） |
 | `gap-prep.mjs <slug>[:a-b]` | 预提取缺口源文 → `build/slices/<part>.src.json` |
-| `verify-slices.mjs <part...>` | 分片核验（含 `JSON.parse`），必须 `ok` |
-| `merge-parts.mjs <slug...>` | 按 firstBlock 连续拼接为整篇，**并删除分片** |
+| `verify-slices.mjs <part…>` | 分片核验（含 `JSON.parse`），必须 `ok` |
+| `merge-parts.mjs <slug…>` | 按 firstBlock 连续拼接为整篇，**并删除分片** |
 | `validate-en.mjs` | 全库校验：`ok` / `crit` / `warn` / `parts` |
 | `repair-json.mjs` | 清 BOM 与字符串内裸控制字符 |
 | `scan-mojibake.mjs` | 乱码扫描（现状 0） |
-| `meta-scan.mjs` | 作者/元数据缺陷清单 |
-| `overlap.mjs <slug>` | 某区间已被其它分片覆盖多少块 |
+| `meta-scan.mjs` | 作者/元数据缺陷清单（改中文源） |
+| `name-scan.mjs` | 人名/译名一致性扫描 |
+| `build-catalog-en.mjs` | 由 `en/*.json` 汇总 `catalog-en.json` |
+| `fix-mojibake.mjs` | CP1252→UTF-8 乱码修复 |
+| `migrate.mjs` | 旧站 HTML 迁移（历史，一般不动） |
+| `fetch-*.mjs` / `merge-lingqi.mjs` | 媒体与灵棋经抓取/合并（内容侧，按需） |
+
+**常用校验**：`npm run typecheck`（tsc）可跑；`npm run build`（vite）在受限沙箱会因 `spawn EPERM` 失败，本地可跑。
+
+## 6. 历史
+
+- A 期（R1-R10 等，5 片/轮）与 B 期（R1-R12，8 片/轮）的完整实测、时间台账、每轮缺陷与处置，
+  全部归档在 `scripts/B-PHASE-HANDOFF.md`（含 §6 时间台账：B 期 395 min / 18 篇）。
+- 已删除的过期文档（`NEXT.md`、`PLAYBOOK.md`、`WEEKEND-PLAN.md`）仍在 git 历史里；
+  其中仍有效的条目已并入本文件与 `NEXT-PLAN.md`。

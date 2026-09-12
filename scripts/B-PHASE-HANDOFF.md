@@ -1,7 +1,7 @@
 # B 期交接（精简版）
 
-> 启动/收尾流程照 `scripts/RESUME.md`；本文件只保留**后续轮次用得上的**实测事实。
-> **每轮派发前必跑**：`node scripts/task-plan.mjs 120`（唯一权威队列）与 `node scripts/coverage.mjs <slug>`。
+> 启动/收尾流程照 `scripts/RESUME.md`；本文件是**翻译轮实测手册**（B 期 12 轮的缺陷、判据、时间台账）。
+> **下一轮要做什么见 `scripts/NEXT-PLAN.md`**（翻译已完成，剩下 crit 3 / warn 11 的修复与一致性打磨）。
 > 更新时间：2026-09-12（R10-R12 收尾后，**B 期全部完成**）。工作区干净、全部已提交、**未 push**。
 
 ## 1. 当前状态
@@ -45,6 +45,7 @@ node build/recover-r9-assemble.mjs <slug.pN> build/<slug.pN>-out.jsonl [--anchor
 ## 3. 必须遵守的坑（只留后续还会踩的）
 
 **3.1 `slice-plan.mjs` 与 `plan-slices.mjs` 同名互覆。** `slice-plan.mjs` 是**生成器**（会覆盖 `slice-plan.json`）；日常要跑的是审计器 `node scripts/plan-slices.mjs`（应输出「0 篇有缺口 / 一致性问题 0 条」）。误跑生成器会把审计器覆盖掉，需 `git checkout -- scripts/plan-slices.mjs`。
+**（B 期收尾后：生成器 `slice-plan.mjs` 与 `slice-plan.json` 已随翻译完工删除，本条仅作历史教训保留——审计器 `plan-slices.mjs` 仍在，仍应报 0 缺口。）**
 
 **3.2 取回历史分片只能用 `Set-Content -Encoding utf8` + Node 去 BOM。** `git show <sha>:<path> > file` 在 PowerShell 里写 UTF-16，产出的 JSON 非法。
 
@@ -172,8 +173,9 @@ git show --stat --oneline HEAD ; git status --porcelain
   - `build/recover-r9-scan.mjs <slug> [pN...]` → 占位符/空块/无字母块扫描；
   - `build/audit-slices-runtime.mjs <slug> <pN...> [--dump=abs]` → §3.7 判据入口（长度比离群 + 重复 + 结构）。
 - **R10 会话末清理**：删除本轮全部 `205*-out.jsonl`、`205*.src.txt`、`build/slices/205*.src.json`（已 merge），以及子代理遗留的 `_tmp_*`/`_p*`/`tmp-*` 脚手架；`build/` 前缀只保留 `recover-*`/`audit-*` 与 `mksrc.mjs`。
-- **R10-R12 会话末清理（实测）**：删除本轮全部 `205*-out.jsonl`/`205*.src.txt`/`205*.p*.src.json`、`043mengyouji.*-out.jsonl`/`.src.txt`/`build/slices/043mengyouji.p*.src.json`（均已 merge），以及子代理遗留的 `_*`/`tmp*`/`p*-*.mjs` 脚手架。**清理后 `build/` = 260 文件 / 7.36 MB**（余量为前几轮 A/B 期已 merge 的 `build/slices/*.src.json`；`build/` 在 `.gitignore` 第 11 行，不进版本库）。
-- **保留**：`mksrc.mjs`、`audit-slices-runtime.mjs`、`recover-r9-dispatch.mjs`、`recover-r9-assemble.mjs`、`recover-r9-scan.mjs`（§7 第 1 条）。**B 期已全部 merge，若要复跑任一篇，先 `gap-prep` 重新生成源。**
+- **R10-R12 会话末清理（实测）**：删除本轮全部 `205*-out.jsonl`/`205*.src.txt`/`205*.p*.src.json`、`043mengyouji.*-out.jsonl`/`.src.txt`/`build/slices/043mengyouji.p*.src.json`（均已 merge），以及子代理遗留的 `_*`/`tmp*`/`p*-*.mjs` 脚手架。
+- **B 期收尾后的二次清理**：`build/slices/` 已整体删除（A/B 期分片全部 merge，只剩 5 个复用脚本）；同时删除了 `scripts/NEXT.md`、`PLAYBOOK.md`、`WEEKEND-PLAN.md` 与 21 个失效脚本（清单见 `NEXT-PLAN.md` §5）。`build/` 在 `.gitignore` 第 11 行，不进版本库。
+- **保留**：`mksrc.mjs`、`audit-slices-runtime.mjs`、`recover-r9-dispatch.mjs`、`recover-r9-assemble.mjs`、`recover-r9-scan.mjs`。**B 期已全部 merge，若要复跑任一篇，先 `gap-prep` 重新生成源。**
 - 诊断脚本一律写 `build/` 前缀 `recover-*`/`audit-*`，会话末清理；**不要再累积历史**。
 
 **R9 收尾后提交**（不含 push）：`4a3e15d`(r9 分片 15 片) `778f811`(262 p15 补跑) `2b02183`(262 整篇 2442 块) + 本台账提交。
