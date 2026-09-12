@@ -2,13 +2,13 @@
  "slug": "212frame",
  "title": "212frame",
  "author": "Diamond Sutra Detailed Explanation",
- "excerpt": "Homage to Shakyamuni Buddha, our original teacher (recited three times)",
+ "excerpt": "Homage to Śākyamuni Buddha, our original teacher (recited three times)",
  "blocks": [
   {
    "t": "p",
    "inline": [
     {
-     "s": "Homage to Shakyamuni Buddha, our original teacher"
+     "s": "Homage to Śākyamuni Buddha, our original teacher"
     },
     {
      "s": "(recited three times)"
@@ -699,7 +699,7 @@
    "t": "quote",
    "inline": [
     {
-     "s": "The Buddha said: Even so, even so. Subhuti, in truth there is no dharma by which the Tathagata attains anuttara-samyak-sambodhi. Subhuti, if there were a dharma by which the Tathagata attained anuttara-samyak-sambodhi, then Dipankara Buddha would not have bestowed upon me the prophecy: ‘In a future life you shall become a Buddha, named Shakyamuni.’ Because in truth there is no dharma by which anuttara-samyak-sambodhi is attained, therefore Dipankara Buddha bestowed upon me the prophecy, saying: ‘In a life to come you shall become a Buddha, named Shakyamuni.’"
+     "s": "The Buddha said: Even so, even so. Subhuti, in truth there is no dharma by which the Tathagata attains anuttara-samyak-sambodhi. Subhuti, if there were a dharma by which the Tathagata attained anuttara-samyak-sambodhi, then Dipankara Buddha would not have bestowed upon me the prophecy: ‘In a future life you shall become a Buddha, named Śākyamuni.’ Because in truth there is no dharma by which anuttara-samyak-sambodhi is attained, therefore Dipankara Buddha bestowed upon me the prophecy, saying: ‘In a life to come you shall become a Buddha, named Śākyamuni.’"
     }
    ]
   },
