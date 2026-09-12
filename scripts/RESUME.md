@@ -1,16 +1,17 @@
 # 英文翻译续作指南
 
 > 工作目录 `D:\FengLi\Web\fou\huideng-chanlin`。**A 期 + B 期翻译全部完成**（2026-09-12），
-> **缺陷修复轮 1、2 也已完成**（§1 = 轮 1 的 crit/warn，§1.1 = 轮 2 的 catalog/孤儿/author/音标）。本文件 = 状态 + 目录 + 流水线 + 坑；
+> **缺陷修复轮 1、2、3 也已完成**（§1 = 轮 1 的 crit/warn，§1.1 = 轮 2 的 catalog/孤儿/author/音标，
+> §1.2 = 轮 3 的 18 篇可疑署名 + 生成器 prune）。本文件 = 状态 + 目录 + 流水线 + 坑；
 > 下一轮要做什么见 `scripts/NEXT-PLAN.md`；翻译轮实测细节见 `scripts/B-PHASE-HANDOFF.md`。
 
-## 1. 当前状态（缺陷修复轮后实测）
+## 1. 当前状态（缺陷修复轮 3 后实测）
 
 | 指标 | 值 |
 | --- | --- |
 | `validate-en` | **ok=294 crit=0 warn=0 parts=0** |
 | `scan-mojibake` | **0 / 294**（缺陷修复轮 2 起含 C4/C5/E1 前导字节指纹，见 §1.1、§4.13） |
-| `meta-scan` | 命中 **5**，全部是「author == 正文块开头」的**真实署名**（见 §1.1）→ **期望值是 5，不是 0** |
+| `meta-scan` | 命中 **13**，全部是「author == 正文块开头」的**真实署名**（见 §1.1、§1.2）→ **期望值是 13，不是 0** |
 | `name-scan` | ASCII 变体已归零，仅剩 3 篇 4 处**子串假阳性**（`Anandatta`/`Sakyamunindra`/`Vajrasamadhi`/`Mahaprajna`，见 §4.14） |
 | `catalog-en` 与 `en/*` 差异 | **0**（294 条全等；生成器是合并式、不删旧键，见 §4.12） |
 | 孤儿分片 `en/*.pN.json` | **0**（原 6 个已删，见 §1.1） |
@@ -43,6 +44,57 @@
 | ① 收尾重建 catalog | 「清掉 en.author 变空的旧值」 | **实测是 no-op**：catalog 只由 `en/*` 派生，改 `articles/` 的 author **完全不影响 catalog**；真正受影响的是 en 侧署名，已按用户确认单独一个提交同步 10 篇 |
 | ④ 音标统一 | 10 组、63 篇混用 | 口径定为**统一带变音符**；实测替换 **7,956 处**（`en/*` 7,952 处 / 185 篇互有重叠 + `verses.ts` 4 处），含同词族扩展：`parinirvana`/`Mahaparinirvana`、`samadhis` 复数、`prajnaparamita` 复合词 → `name-scan` ASCII 侧归零 |
 | 计划外发现 | — | `scan-mojibake` 有**假阴性**：指纹缺 C4/C5/E1 前导字节，漏掉 en 里 5 处双重编码（`AvÄ«ci`→`Avīci` 等）。已修检测器 + 修数据（见 §4.13） |
+
+
+### 1.2 缺陷修复轮 3（author 类：18 篇可疑署名）实测
+
+范围经用户确认 = `NEXT-PLAN.md` §6.1 **(b) + (e)**；**(c)(d) 音标第二轮本轮未做**。共 **18 个提交**（1 个工具 + 17 个逐 slug）。
+
+| 指标 | 轮 2 后 | 轮 3 后 |
+| --- | --- | --- |
+| `validate-en` | ok=294 crit=0 warn=0 parts=0 | **不变** |
+| `scan-mojibake` | 0 / 294 | **不变** |
+| `meta-scan` | 5 | **13**（见下，**不是回归**） |
+| `name-scan` | 3 篇混合（全是子串假阳性） | **不变** |
+| `catalog-en` 与 `en/*` 差异 | 0 | **0**（且生成器已能自愈，见 §4.12） |
+| 工作区 | 干净 | 干净，全部已提交，**未 push** |
+
+**18 篇的判定与处置**（判据：逐篇读源，找「真实署名块 / 作者自述 / 来源书名」三者之一）：
+
+| slug | 原 `author`（错） | 症状类型 | 改为 | en 侧 |
+| --- | --- | --- | --- | --- |
+| `002baiyunxy` | 但看自心 | 正文短语 | **刘洙源** | Liu Zhuyuan |
+| `019xinnzy` | 业不能系 | 正文短语 | **彻悟大师** | Master Chewu |
+| `082renshibenyuanfamen` | 第十八愿 | 品名 | **（置空）** | 删键 |
+| `088linzhongshinianxiangxu` | 要以深信切愿 | 正文短语 | **湛然** | Zhanran |
+| `092shangdaochuan` | 第十八愿 | 品名 | **湛然** | Zhanran |
+| `109chenggong` | 就像溺水的人 | 正文短语 | **（置空）** | 删键 |
+| `269yigenianforendezishu` | 呼吸念佛精要 | 书名 | **（置空）** | 删键 |
+| `170buyuanren` | 王凤仪嘉言录 | 书名 | **王凤仪** | Wang Fengyi |
+| `193guanwuliangshoufojingjijie` | 正宗分 | 品名 | **会性法师** | Master Huixing |
+| `212frame` | 金刚经精解 | 标签语 | **鸠摩罗什** | Kumarajiva |
+| `091wuyalishenghuo` | 宁静在说话 | 书名 | **艾克哈特·托勒** | Eckhart Tolle |
+| `236kuailedemimi` | 一个新世界 | 书名 | **艾克哈特·托勒** | Eckhart Tolle |
+| `292wuzhongzuiqiangdadeliliang` | 修行的真谛 | 书名 | **顶果钦哲仁波切** | Dilgo Khyentse Rinpoche |
+| `011errusx` | 达摩祖师亲传 | 描述语 | **湛然** | Zhanran |
+| `012liuzutanjing_kp` | 门人法海 录 | 角色语 | **法海** | Fahai |
+| `239wuliangshoujing-jiaohuibenzhu-zhu` | 湛然 校会 | 角色语 | **湛然** | Zhanran |
+| `056chengzanjingtujing` | 湛然 分科 | 角色语 | **湛然** | Zhanran |
+| `049kulianyiwan` | 同人于野 | —— | **不改（真人笔名）** | 不改 |
+
+- **`049kulianyiwan` 是唯一「看着像短语、实为真人」的**：`同人于野` 是《怎样练习一万小时》原作者的笔名，因此**保留**。
+- **4 篇置空**（`082`/`109`/`269` 无作者可考；`082` 是《禅刊》未署名「编者小语」）。置空写法循两侧既有惯例：
+  **中文源 `author: ""`（库内已有 50 例）、英文侧删键（库内已有 61 例）**，故 catalog 也随之删掉该字段。
+- **英文侧命名一律取自库内既有英文**，不新造：`Master Huixing`（`193` 自身首个正文块）、`Master Chewu`（48 篇）、
+  `Liu Zhuyuan`（6 篇）、`Kumarajiva`（31 篇）、`Wang Fengyi`（6 篇）、`Dilgo Khyentse Rinpoche`（`291`/`292` 正文块 0）、
+  `Eckhart Tolle`、`Fahai`、`Zhanran`。
+- **`meta-scan` 5 → 13 是扫描器的假阳性副作用，不是新缺陷**（见 §4.17）：该扫描器唯一判据是「`author` 恰是某正文块开头」，
+  而**真人名（如 `湛然`、`法海`、`会性法师`）恰好总是自己署名块的开头**。轮 2 把「书名/短语」换成真人名后，命中数自然上升。
+  逐条复核：**13 条全部是真署名**，**没有一条需要再改**。
+- **方法可复用（父代理须独立复验）**：不要用 `blocks[].text` 取正文——本库正文在 `inline[].s`（`text` 多为空串），
+  用错会把「正文短语」误判成「正文里没有」（假阴性）。逐 slug 改动一律用**行级外科编辑**保留原缩进/行尾
+  （`articles/*` 是 1 空格缩进，`en/*` 缩进与行尾**不统一**：1 空格 LF / 2 空格 LF / 2 空格 CRLF 都有，
+  整文件重序列化会污染 diff）。
 
 
 ## 2. 目录与产出（哪些是内容、哪些是工具）
@@ -142,9 +194,13 @@ git show --stat --oneline HEAD ; git status --porcelain   # 双向核对
 12. **`build-catalog-en.mjs` 是「合并式」更新，不会删键**（缺陷修复轮 2 实测）：
     `map[slug] = { ...(map[slug] ?? {}), ...entry }`，所以当 `en/<slug>.json` 的 `author` 被清空或整行删除后，
     重建只会**跳过**该字段、**不会移除** catalog 里的旧值。「跑一次生成器就完成对账」是错的。
-    本轮手工删了 8 条陈旧 `author`（全是把小节名/标题写进 author 的旧值）。
-    **建议（待批准）**：给生成器加一步 prune——合并后删掉「en 侧无值」的 `title`/`author`/`excerpt`，
-    否则 §1 的一行对账只能靠手工维持。
+    轮 2 手工删了 8 条陈旧 `author`（全是把小节名/标题写进 author 的旧值）。
+    **〔轮 3 已批准并实现〕生成器已加 prune**（`PRUNED_FIELDS = ['title','author','excerpt']`）：
+    对**本次扫描到的** slug，先删「en 侧无值」的陈旧字段、再合并；若某 slug 三字段全空则整条删除。
+    输出改为 `… entries (N updated from overlays, M stale fields pruned)`，**`M` 应恒为 0**；
+    `M > 0` 就说明上一次改 en 后没重建 catalog。实测：对已对账的库是 **no-op（0 pruned）**；
+    把 `en/170buyuanren.json` 的 author 行临时删掉后重建 → `1 stale field pruned` 且 catalog 该键消失，
+    还原后重建 → 恢复原值、键序不变（**只删整行、不要 `delete` 后再补**，那会把键序改成 `title,excerpt,author`）。
 13. **`scan-mojibake` 的指纹不全，会漏 C4/C5/E1 前导字节**（本轮实测的假阴性）：
     原指纹只覆盖 `â€` / `Ã?` / `Â?` / `ï¼` / `ã€` / `U+FFFD`，因此
     `ī`(C4 AB→`Ä«`)、`ū`(C5 AB→`Å«`)、`ṇ`(E1 B9 87→`á¹‡`)、`ṣ`(E1 B9 A3→`á¹£`) 全部漏检——
@@ -160,6 +216,25 @@ git show --stat --oneline HEAD ; git status --porcelain   # 双向核对
     `Siksananda`/`Shikshananda`/`Anandatta`/`Sakyamunindra`/`Samadhisvara`/`Prajnaruci`/`Prajnatara` 等长专名**不可**被替换；
     替换前先测 `href`（本轮实测目标词在 href 中出现 **0** 次，脚本已加硬守卫），并逐组合跑 `validate-en`。
     仍未统一的同类混合对见 `NEXT-PLAN.md`（`paramita`、`Mahayana`、`Sariputra`、`Subhuti`、`Manjusri` 等）。
+17. **`meta-scan` 的命中数会随「改成真名」而上升，别把它当回归**（缺陷修复轮 3 实测）：
+    它唯一的判据是「`author` 恰是某个正文块的开头」，而**真人署名天然满足这条**——
+    署名块 `湛然 注释`/`会性法师 敬集`/`艾克哈特·托勒` 的开头就是那个名字本身。
+    于是轮 3 把 12 篇「书名/短语/品名」换成真名后，命中数 **5 → 13**（新增 8 条全是真署名）。
+    **判据（逐条复核用）**：取该 `author` 值，在正文里找「与它**相等的短块**」或「以它**开头的署名块**」；
+    若是（如 `010dzjcy` 的 `明德 编`、`302xinj` 的 `湛然 注`、`193` 的 `会性法师 敬集`），就是真署名，**不要删**。
+    反之轮 2 命中的是「`author` == 标题**或**正文块开头**且值本身是书名/品名**」——那类才是缺陷。
+    换言之：**`meta-scan` 是「待复核清单」不是「缺陷清单」，其绝对值不构成验收指标**。
+18. **本库正文不在 `blocks[].text` 里**（轮 3 实测的取文陷阱）：正文实际在 `blocks[].inline[].s`
+    （`text` 多数是**空串**）。用 `b.text` 拼正文会把每篇读成空文，从而把「正文短语型 author」误判为
+    「正文里根本没有这个词」——一轮下来会把 18 篇全判成「查无实据」。
+    正确取法：`Array.isArray(b.inline) ? b.inline.map(s => s.s ?? '').join('') : (b.text ?? '')`。
+19. **`en/*.json` 的缩进与行尾不统一，禁止整文件重序列化**（轮 3 实测）：同目录内 `1 空格 + LF`、
+    `2 空格 + LF`、`2 空格 + CRLF` 三种并存；`JSON.stringify(j, null, 1)` 只对其中一部分是恒等变换，
+    整体重写会把一篇变成「全文重排」的巨型 diff。**改 `author` 这类单字段一律用行级外科编辑**
+    （定位 `^(\s*)"author"\s*:` 行，保留原缩进与 `\r`），改完 `JSON.parse` 回验并要求 diff 恰为 1 行。
+    另：`git status --porcelain` 在本仓库有 **CRLF 统计噪声**（工作区 LF、blob CRLF、`core.autocrlf=true`），
+    会偶发报 ` M` 但 `git diff --numstat` 为空；**双向核对的判据用 `git hash-object <f>` == `git rev-parse HEAD:<f>`**，
+    或直接看 `git diff --numstat` 行数，不要只看 `git status`。
 
 
 ## 5. 脚本速查
@@ -174,8 +249,8 @@ git show --stat --oneline HEAD ; git status --porcelain   # 双向核对
 | `merge-parts.mjs <slug…>` | 按 firstBlock 连续拼接为整篇，**并删除分片** |
 | `validate-en.mjs` | 全库校验：`ok` / `crit` / `warn` / `parts` |
 | `repair-json.mjs` | 清 BOM 与字符串内裸控制字符 |
-| `scan-mojibake.mjs` | 乱码扫描（现状 0） |
-| `meta-scan.mjs` | 作者/元数据缺陷清单（改中文源） |
+| `scan-mojibake.mjs` | 乱码扫描（现状 0 / 294） |
+| `meta-scan.mjs` | 作者/元数据**待复核清单**（改中文源）；命中数**不是**验收指标，见 §4.17 |
 | `name-scan.mjs` | 人名/译名一致性扫描 |
 | `build-catalog-en.mjs` | 由 `en/*.json` 汇总 `catalog-en.json` |
 | `fix-mojibake.mjs` | CP1252→UTF-8 乱码修复 |
