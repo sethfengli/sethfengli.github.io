@@ -238,13 +238,30 @@
     {
       "t": "quote",
       "inline": [
-        {"s": "“"},
-        {"s": "One teaches by observing the capacities of beings, and prescribes the medicine according to the illness. Teaching that does not suit the capacity is just like medicine that does not match the illness. How dare one take the one or two worthwhile points"},
-        {"s": " (the “one or two worthwhile points” refers to the Buddha-name recitation, retreat recitation, and realization of the buddhānusmṛti samādhi taught in The Essence of Amitabha)"},
-        {"s": " and then circulate it everywhere"},
-        {"s": " (this means: The Essence of Amitabha should not be circulated everywhere)"},
-        {"s": ", thereby bequeathing fault and transgression to persons of inferior capacity (this refers to the fact that if a true cultivator of superior capacity reads The Essence of Amitabha, it is of great benefit; but if a person of inferior capacity reads it, he will be misled by its altering the sutra and denouncing the ancients)"},
-        {"s": "?”"}
+        {
+         "s": "“"
+        },
+        {
+         "s": "One teaches by observing the capacities of beings, and prescribes the medicine according to the illness. Teaching that does not suit the capacity is just like medicine that does not match the illness. How dare one take the one or two worthwhile points"
+        },
+        {
+         "s": " (the “one or two worthwhile points” refers to the Buddha-name recitation, retreat recitation, and realization of the buddhānusmṛti samādhi taught in The Essence of Amitabha)"
+        },
+        {
+         "s": " and then circulate it everywhere"
+        },
+        {
+         "s": " (this means: The Essence of Amitabha should not be circulated everywhere)"
+        },
+        {
+         "s": ", thereby bequeathing fault and transgression to persons of inferior capacity"
+        },
+        {
+         "s": " (this refers to the fact that if a true cultivator of superior capacity reads The Essence of Amitabha, it is of great benefit; but if a person of inferior capacity reads it, he will be misled by its altering the sutra and denouncing the ancients)"
+        },
+        {
+         "s": "?”"
+        }
       ]
     },
     {
@@ -271,10 +288,15 @@
     {
       "t": "p",
       "inline": [
-        {"s": "(From "},
-        {"s": "the Collected Writings of Master Yinguang"},
-        {"s": "·"},
-        {"s": ", the third letter in reply to the layman Wang Zili)"}
+        {
+         "s": "(From the Collected Writings of Master Yinguang"
+        },
+        {
+         "s": "·"
+        },
+        {
+         "s": ", the third letter in reply to the layman Wang Zili)"
+        }
       ]
     },
     {
