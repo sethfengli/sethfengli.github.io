@@ -260,7 +260,7 @@ export function LotCylinder3D({ shaking, revealed, onShake, fallback }: Props) {
   return (
     <div className="relative h-[300px] w-full max-w-[400px] sm:h-[340px]">
       <canvas ref={canvasRef} className="h-full w-full" aria-label={t('common.cylinderAlt')} />
-      <p className="pointer-events-none absolute bottom-1 left-1/2 -translate-x-1/2 rounded-full bg-sandalwood-950/60 px-3 py-1 text-[11px] text-paper/80 backdrop-blur-sm">
+      <p className="pointer-events-none absolute bottom-1 left-1/2 -translate-x-1/2 rounded-xs border border-paper/15 bg-sandalwood-950/85 px-3 py-1 font-sans text-[11px] tracking-wider text-paper/75">
         {t('common.lotHint')}
       </p>
     </div>

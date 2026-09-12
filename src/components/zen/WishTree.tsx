@@ -95,7 +95,7 @@ export function WishTree({ wishes, onRibbonClick }: Props) {
   return (
     <div className="relative">
       {/* 古树 */}
-      <svg viewBox="0 0 900 640" className="w-full drop-shadow-sm" aria-hidden="true">
+      <svg viewBox="0 0 900 640" className="w-full" aria-hidden="true">
         {/* 地面 */}
         <path d="M40 600c140-18 280-18 420-6s280 12 400 4" fill="none" stroke="#8a6a4a" strokeWidth={4} opacity={0.5} strokeLinecap="round" />
         {/* 树冠细枝 */}
@@ -167,7 +167,7 @@ export function WishTree({ wishes, onRibbonClick }: Props) {
               type="button"
               onClick={() => onRibbonClick(w)}
               title={w.text}
-              className="wish-ribbon pointer-events-auto absolute cursor-pointer focus-visible:ring-2 focus-visible:ring-gold-400 focus-visible:outline-none"
+              className="wish-ribbon pointer-events-auto absolute cursor-pointer"
               style={
                 {
                   left: `${a.x}%`,
@@ -177,10 +177,10 @@ export function WishTree({ wishes, onRibbonClick }: Props) {
               }
             >
               {/* 结 */}
-              <span className="block h-2.5 w-2.5 rounded-full bg-gold-400 shadow-sm" />
+              <span className="block h-2.5 w-2.5 rounded-full bg-tibetan-600" />
               {/* 绸身 */}
               <span
-                className="ribbon-strip mt-0.5 block rounded-b-md rounded-t-sm px-1 pt-2 pb-1 font-serif text-[13px] leading-snug text-amber-50 shadow-md"
+                className="ribbon-strip mt-0.5 block px-1 pt-2 pb-1 font-serif text-[13px] leading-snug text-paper"
                 style={{ background: RIBBON_BG[a.shade] }}
               >
                 {w.text.slice(0, 12)}

@@ -39,7 +39,7 @@ interface Props {
 export function LotCylinder({ shaking, revealed }: Props) {
   return (
     <div className={shaking ? 'lot-shaking' : ''}>
-      <svg viewBox="0 0 220 300" className="h-64 w-48 drop-shadow-xl sm:h-72">
+      <svg viewBox="0 0 220 300" className="h-64 w-48 sm:h-72">
         {/* 签支（出筒部分） */}
         {STICKS.map((s, i) => (
           <g

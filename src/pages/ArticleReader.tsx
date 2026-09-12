@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef, useState, type CSSProperties } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState, type CSSProperties, type ReactNode } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { useI18n } from '../i18n'
 import {
@@ -27,18 +27,22 @@ import { ArticleBody } from '../components/reader/ArticleBody'
 import { TranslateWidget } from '../components/reader/TranslateWidget'
 import { ZenIllustration } from '../components/zen/ZenIllustration'
 import { CoverImage } from '../components/zen/CoverImage'
+import { Ornament } from '../components/ui/PageBanner'
 
 const THEMES: Array<{
   id: ReaderTheme
   labelKey: 'reader.themeLight' | 'reader.themeDark' | 'reader.themeSepia' | 'reader.themeParchment' | 'reader.themeMoon'
   swatch: string
 }> = [
-  { id: 'light', labelKey: 'reader.themeLight', swatch: '#ffffff' },
-  { id: 'dark', labelKey: 'reader.themeDark', swatch: '#211d18' },
-  { id: 'sepia', labelKey: 'reader.themeSepia', swatch: '#f5ecd7' },
-  { id: 'parchment', labelKey: 'reader.themeParchment', swatch: '#f4ecd8' },
-  { id: 'moon', labelKey: 'reader.themeMoon', swatch: '#e9f0f8' },
+  { id: 'light', labelKey: 'reader.themeLight', swatch: '#fbfaf7' },
+  { id: 'dark', labelKey: 'reader.themeDark', swatch: '#17191c' },
+  { id: 'sepia', labelKey: 'reader.themeSepia', swatch: '#f6f1e6' },
+  { id: 'parchment', labelKey: 'reader.themeParchment', swatch: '#f3ecdc' },
+  { id: 'moon', labelKey: 'reader.themeMoon', swatch: '#eef3f7' },
 ]
+
+/** 阅读器内的发丝色：随阅读主题取用，保证 5 种底色下都克制且可辨 */
+const READER_TOOLBAR_BG = 'color-mix(in srgb, var(--reader-bg) 86%, var(--reader-ink))'
 
 export function ArticleReader() {
   const { slug = '' } = useParams()
@@ -160,8 +164,8 @@ export function ArticleReader() {
   if (loading) {
     return (
       <div className="flex min-h-[60vh] items-center justify-center">
-        <div className="flex flex-col items-center gap-4 text-sandalwood-500">
-          <div className="h-8 w-8 animate-spin rounded-full border-2 border-sandalwood-300 border-t-tibetan-600" />
+        <div className="flex flex-col items-center gap-4 text-ink-500">
+          <div className="h-6 w-6 animate-spin rounded-full border border-hairline border-t-tibetan-600" />
           <p className="font-serif text-sm">{t('common.loading')}</p>
         </div>
       </div>
@@ -170,13 +174,13 @@ export function ArticleReader() {
 
   if (!doc) {
     return (
-      <div className="mx-auto flex min-h-[60vh] max-w-xl flex-col items-center justify-center px-4 text-center">
-        <ZenIllustration variant="enso" className="h-40 w-72 rounded-2xl" animated={false} />
-        <p className="mt-6 font-serif text-xl font-bold text-sandalwood-800">{t('reader.notFound')}</p>
-        <Link to="/articles" className="btn-secondary mt-6">
+      <div className="mx-auto flex min-h-[60vh] max-w-xl flex-col items-center justify-center px-5 text-center">
+        <ZenIllustration variant="enso" className="h-32 w-64 rounded-xs" animated={false} />
+        <p className="mt-8 font-serif text-xl text-ink-900">{t('reader.notFound')}</p>
+        <Link to="/articles" className="btn-secondary mt-8">
           {t('reader.backToList')}
         </Link>
-        <Link to="/" className="mt-3 text-sm text-sandalwood-500 underline underline-offset-4 hover:text-tibetan-600">
+        <Link to="/" className="mt-4 text-sm text-ink-500 underline underline-offset-4 transition-colors hover:text-tibetan-600">
           {t('reader.backHome')}
         </Link>
       </div>
@@ -187,49 +191,51 @@ export function ArticleReader() {
     '--reader-font-size': `${prefs.fontSize}px`,
     '--reader-line-height': prefs.lineHeight,
     background: 'var(--reader-bg)',
+    color: 'var(--reader-ink)',
   } as CSSProperties
 
-  return (
-    <div className={`reader-theme-${prefs.theme}`} style={{ background: 'var(--reader-bg)' }}>
+  return (    <div className={`reader-theme-${prefs.theme}`} style={{ background: 'var(--reader-bg)' }}>
       {/* 顶部阅读进度条 */}
       <div className="reader-progress" style={{ width: `${progress}%` }} role="progressbar" aria-label={t('reader.progressLabel')} aria-valuenow={Math.round(progress)} aria-valuemin={0} aria-valuemax={100} />
 
-      <div className="mx-auto max-w-7xl px-4 pt-6 pb-20 sm:px-6">
+      <div className="container-page pt-8 pb-24">
         {/* 面包屑 */}
-        <nav className="flex items-center gap-2 text-sm text-sandalwood-500">
-          <Link to="/articles" className="transition hover:text-tibetan-600">
-            ← {t('reader.backToList')}
+        <nav className="flex items-center gap-2 font-sans text-xs tracking-wider text-sandalwood-500">
+          <Link to="/articles" className="inline-flex items-center gap-1.5 transition-colors hover:text-tibetan-600">
+            <svg viewBox="0 0 24 24" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+              <path d="M19 12H5M11 18l-6-6 6-6" />
+            </svg>
+            {t('reader.backToList')}
           </Link>
-          <span aria-hidden>/</span>
+          <span aria-hidden className="h-3 w-px bg-hairline" />
           <span className="truncate">{doc.title}</span>
         </nav>
 
-        <div className="mt-8 lg:grid lg:grid-cols-[232px_minmax(0,1fr)] lg:gap-10">
+        <div className="mt-10 lg:grid lg:grid-cols-[15rem_minmax(0,1fr)] lg:gap-16">
           {/* ---------- 目录（桌面） ---------- */}
-          <aside className="sticky top-20 hidden max-h-[calc(100vh-7rem)] self-start overflow-y-auto pb-6 lg:block">
-            <h2 className="flex items-center gap-2 font-serif text-sm font-bold tracking-widest text-sandalwood-700">
-              <span className="h-4 w-1 rounded-full bg-tibetan-600" />
+          <aside className="sticky top-20 hidden max-h-[calc(100vh-7rem)] self-start overflow-y-auto pb-6 xl:block">
+            <h2 className="font-sans text-[11px] tracking-[0.28em] text-sandalwood-500 uppercase">
               {t('reader.toc')}
             </h2>
             {toc.length === 0 ? (
-              <p className="mt-3 text-xs text-sandalwood-400">{t('reader.tocEmpty')}</p>
+              <p className="mt-4 text-xs text-ink-300">{t('reader.tocEmpty')}</p>
             ) : (
-              <ul className="mt-4 space-y-0.5 border-l border-sandalwood-200 text-[13px] leading-relaxed">
+              <ul className="mt-5 space-y-px border-l border-hairline text-[13px] leading-relaxed">
                 {toc.map((item) => (
                   <li key={item.id}>
                     <button
                       type="button"
                       onClick={() => scrollToHeading(item.id)}
-                      className={`block w-full cursor-pointer py-1 pr-2 text-left transition hover:text-tibetan-600 ${
+                      className={`block w-full cursor-pointer py-1.5 pr-2 text-left transition-colors hover:text-tibetan-600 ${
                         item.level === 2
-                          ? 'pl-3 font-semibold text-ink-900'
+                          ? 'pl-3 text-ink-700'
                           : item.level === 3
-                            ? 'pl-6 font-medium text-ink-700'
-                            : 'pl-9 text-ink-500'
+                            ? 'pl-6 text-ink-500'
+                            : 'pl-9 text-ink-300'
                       } ${activeToc === item.id ? 'toc-active' : ''}`}
                     >
                       {item.num && (
-                        <span className={`mr-1 ${item.level === 2 ? 'text-tibetan-600' : 'text-sandalwood-400'}`}>
+                        <span className={`mr-1 ${item.level === 2 ? 'text-tibetan-600' : 'text-ink-300'}`}>
                           {item.num}
                         </span>
                       )}
@@ -242,59 +248,56 @@ export function ArticleReader() {
           </aside>
 
           {/* ---------- 正文 ---------- */}
-          <div ref={articleRef} className="min-w-0">
-            {/* 封面插画 */}
-            <div className="overflow-hidden rounded-3xl shadow-md shadow-sandalwood-900/10">
-              <CoverImage src={photoForSlug(doc.slug)} alt={t('reader.coverAlt', { t: doc.title })} fallbackVariant={doc.illustration} className="h-44 w-full sm:h-56" />
+          <div ref={articleRef} className="flex min-w-0 flex-col xl:max-w-4xl">
+            {/* 封面照片 */}
+            <div className="relative aspect-21/9 overflow-hidden rounded-xs border border-hairline bg-rice-100">
+              <CoverImage src={photoForSlug(doc.slug)} alt={t('reader.coverAlt', { t: doc.title })} fallbackVariant={doc.illustration} className="absolute inset-0 h-full w-full object-cover" />
             </div>
 
-            {/* 题头 */}
-            <header className="mt-8 text-center">
-              <p className="font-serif text-xs tracking-[0.4em] text-sandalwood-500">{schoolLabel(doc.school, lang)}</p>
-              <h1 className="mt-3 font-brush text-4xl leading-snug text-sandalwood-900 sm:text-5xl">
-                {t('reader.titleWithQuotes', { title: doc.title })}
-              </h1>
-              <div className="mt-4 flex flex-wrap items-center justify-center gap-x-5 gap-y-1 text-sm text-sandalwood-500">
+            {/* 题头：左对齐 + 朱砂印点题 */}
+            <header className="mt-10 border-b border-hairline pb-8">
+              <div className="flex flex-wrap items-center gap-3">
+                <span className="seal">{schoolLabel(doc.school, lang)}</span>
                 {doc.author && (
-                  <span>
+                  <span className="font-sans text-xs tracking-wider text-ink-300">
                     {t('common.authorBy', { name: doc.author })}
                   </span>
                 )}
-                <span>
-                  {t('articles.readingTime', { n: readingMinutes(doc.chars) })}
-                </span>
-                <span className="hidden sm:inline">{t('reader.wordCount', { n: doc.chars.toLocaleString() })}</span>
+              </div>
+              <h1 className="mt-6 font-serif text-3xl leading-[1.25] font-normal tracking-tight text-ink-900 text-balance sm:text-4xl lg:text-[2.6rem]">
+                {t('reader.titleWithQuotes', { title: doc.title })}
+              </h1>
+              <div className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2 font-sans text-xs tracking-wider text-ink-300">
+                <span>{t('articles.readingTime', { n: readingMinutes(doc.chars) })}</span>
+                <span aria-hidden className="h-3 w-px bg-hairline" />
+                <span>{t('reader.wordCount', { n: doc.chars.toLocaleString() })}</span>
               </div>
               {lang === 'en' && !nativeEn && (
-                <p className="mx-auto mt-4 max-w-xl rounded-xl border border-gold-400/50 bg-gold-50/60 px-4 py-2.5 font-serif text-xs leading-relaxed text-sandalwood-600">
+                <p className="mt-6 border-l-2 border-tibetan-500 bg-rice-100/70 px-5 py-3.5 font-serif text-xs leading-relaxed text-ink-500">
                   {t('reader.untranslatedFallback')}
                 </p>
               )}
-              <div className="zen-divider mt-5">
-                <span>❖</span>
-              </div>
             </header>
 
-            {/* 阅读工具栏（吸附） */}
-            <div className="sticky top-16 z-30 mt-6 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-sandalwood-200/70 bg-rice-50/95 px-4 py-2.5 shadow-sm backdrop-blur">
-              <div className="flex items-center gap-2">
-                <button
-                  type="button"
-                  className="btn-secondary !px-3.5 !py-1.5 text-xs lg:hidden"
-                  onClick={() => setTocOpen(true)}
-                  aria-label={t('reader.toc')}
-                >
-                  ☰ {t('reader.toc')}
-                </button>
-                <button
-                  type="button"
-                  className="btn-secondary !px-3.5 !py-1.5 text-xs"
+            {/* 阅读工具栏（吸附）：实底 + 发丝线，取代毛玻璃胶囊 */}
+            <div
+              className="sticky top-16 z-30 mt-6 flex flex-wrap items-center justify-between gap-3 border border-hairline px-4 py-2.5"
+              style={{ background: READER_TOOLBAR_BG }}
+            >
+              <div className="flex items-center gap-3">
+                <IconButton className="lg:hidden" label={t('reader.toc')} onClick={() => setTocOpen(true)}>
+                  <path d="M4 7h16M4 12h16M4 17h16" />
+                </IconButton>
+                <IconButton
+                  label={t('reader.settings')}
                   onClick={() => setSettingsOpen((v) => !v)}
-                  aria-expanded={settingsOpen}
+                  expanded={settingsOpen}
                 >
-                  ⚙ {t('reader.settings')}
-                </button>
-                <span className="hidden text-xs text-sandalwood-400 sm:inline">
+                  <path d="M4 8h10M18 8h2M4 16h4M12 16h8" />
+                  <circle cx={16} cy={8} r={2} />
+                  <circle cx={10} cy={16} r={2} />
+                </IconButton>
+                <span className="hidden font-sans text-xs tabular-nums text-ink-300 sm:inline">
                   {Math.round(progress)}%
                 </span>
               </div>
@@ -315,32 +318,30 @@ export function ArticleReader() {
             )}
 
             {/* 正文 */}
-            <div className="mt-8 rounded-2xl px-1 py-6 sm:px-6" style={readerStyle}>
+            <div className="mt-10" style={readerStyle}>
               <ArticleBody doc={doc} />
-              <div className="zen-divider mt-12">
-                <span>❖</span>
-              </div>
-              <p className="mt-6 text-center font-serif text-sm text-sandalwood-500">
+              <Ornament className="mt-14 flex justify-center" />
+              <p className="mt-6 text-center font-serif text-sm text-ink-500">
                 {t('reader.likeNote')}
               </p>
             </div>
 
             {/* 上一篇 / 下一篇 */}
-            <nav className="mt-10 grid gap-4 sm:grid-cols-2">
+            <nav className="mt-14 grid gap-4 sm:grid-cols-2">
               {prev ? (
-                <Link to={`/articles/${prev.slug}`} className="card group p-5">
-                  <p className="text-xs text-sandalwood-400">← {t('reader.prevArticle')}</p>
-                  <p className="mt-2 font-serif font-bold text-sandalwood-800 transition group-hover:text-tibetan-700">
+                <Link to={`/articles/${prev.slug}`} viewTransition className="group rounded-card border border-hairline bg-surface p-6 transition-colors duration-200 hover:border-sandalwood-500">
+                  <p className="font-sans text-[11px] tracking-[0.2em] text-ink-300 uppercase">{t('reader.prevArticle')}</p>
+                  <p className="mt-3 font-serif text-base leading-snug text-ink-900 transition-colors duration-200 group-hover:text-tibetan-600">
                     {t('reader.titleWithQuotes', { title: localizedMeta(prev, lang).title })}
                   </p>
                 </Link>
               ) : (
-                <span />
+                <span className="hidden sm:block" />
               )}
               {next && (
-                <Link to={`/articles/${next.slug}`} className="card group p-5 text-right">
-                  <p className="text-xs text-sandalwood-400">{t('reader.nextArticle')} →</p>
-                  <p className="mt-2 font-serif font-bold text-sandalwood-800 transition group-hover:text-tibetan-700">
+                <Link to={`/articles/${next.slug}`} viewTransition className="group rounded-card border border-hairline bg-surface p-6 transition-colors duration-200 hover:border-sandalwood-500 sm:text-right">
+                  <p className="font-sans text-[11px] tracking-[0.2em] text-ink-300 uppercase">{t('reader.nextArticle')}</p>
+                  <p className="mt-3 font-serif text-base leading-snug text-ink-900 transition-colors duration-200 group-hover:text-tibetan-600">
                     {t('reader.titleWithQuotes', { title: localizedMeta(next, lang).title })}
                   </p>
                 </Link>
@@ -355,7 +356,7 @@ export function ArticleReader() {
         <button
           type="button"
           onClick={restoreReading}
-          className="fixed bottom-6 left-1/2 z-40 -translate-x-1/2 cursor-pointer rounded-full border border-gold-400/70 bg-rice-50/95 px-5 py-2.5 text-sm text-sandalwood-700 shadow-lg shadow-sandalwood-900/20 transition hover:bg-gold-50"
+          className="fixed bottom-6 left-1/2 z-40 -translate-x-1/2 cursor-pointer rounded-xs border border-hairline bg-surface px-5 py-2.5 font-sans text-sm text-ink-700 transition-colors duration-200 hover:border-tibetan-500 hover:text-tibetan-600"
         >
           {t('reader.restore', { p: restorePct })}
         </button>
@@ -365,34 +366,29 @@ export function ArticleReader() {
       {tocOpen && (
         <div className="fixed inset-0 z-50 lg:hidden" role="dialog" aria-modal="true" aria-label={t('reader.toc')}>
           <div className="absolute inset-0 bg-sandalwood-950/50" onClick={() => setTocOpen(false)} />
-          <div className="absolute inset-y-0 left-0 w-80 max-w-[85vw] overflow-y-auto bg-rice-50 p-5 shadow-2xl">
+          <div className="absolute inset-y-0 left-0 w-80 max-w-[85vw] overflow-y-auto border-r border-hairline bg-rice-50 p-5">
             <div className="flex items-center justify-between">
-              <h2 className="font-serif text-base font-bold text-sandalwood-800">{t('reader.toc')}</h2>
-              <button
-                type="button"
-                onClick={() => setTocOpen(false)}
-                className="cursor-pointer rounded-full p-2 text-sandalwood-500 hover:bg-sandalwood-100"
-                aria-label={t('nav.closeMenu')}
-              >
-                ✕
-              </button>
+              <h2 className="font-sans text-[11px] tracking-[0.28em] text-sandalwood-500 uppercase">{t('reader.toc')}</h2>
+              <IconButton label={t('nav.closeMenu')} onClick={() => setTocOpen(false)}>
+                <path d="M6 6l12 12M18 6L6 18" />
+              </IconButton>
             </div>
-            <ul className="mt-4 space-y-1 text-sm">
+            <ul className="mt-5 space-y-px text-sm">
               {toc.map((item) => (
                 <li key={item.id}>
                   <button
                     type="button"
                     onClick={() => scrollToHeading(item.id)}
-                    className={`block w-full cursor-pointer rounded-lg px-3 py-2 text-left transition hover:bg-sandalwood-100 ${
+                    className={`block w-full cursor-pointer border-l py-2 pl-3 text-left transition-colors hover:text-tibetan-600 ${
                       item.level === 2
-                        ? 'font-semibold text-ink-900'
+                        ? 'text-ink-700'
                         : item.level === 3
-                          ? 'pl-7 font-medium text-ink-700'
-                          : 'pl-10 text-ink-500'
-                    } ${activeToc === item.id ? 'bg-sandalwood-100 text-tibetan-700' : ''}`}
+                          ? 'pl-7 text-ink-500'
+                          : 'pl-10 text-ink-300'
+                    } ${activeToc === item.id ? 'border-l-2 border-tibetan-600 font-medium text-tibetan-600' : 'border-hairline'}`}
                   >
                     {item.num && (
-                      <span className={`mr-1 ${item.level === 2 ? 'text-tibetan-600' : 'text-sandalwood-400'}`}>
+                      <span className={`mr-1 ${item.level === 2 ? 'text-tibetan-600' : 'text-ink-300'}`}>
                         {item.num}
                       </span>
                     )}
@@ -405,6 +401,36 @@ export function ArticleReader() {
         </div>
       )}
     </div>
+  )
+}
+
+/** 极简图标按钮（细边方角，取代 ☰ / ⚙ / ✕ 字符） */
+function IconButton({
+  children,
+  label,
+  onClick,
+  expanded,
+  className = '',
+}: {
+  children: ReactNode
+  label: string
+  onClick: () => void
+  expanded?: boolean
+  className?: string
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      aria-label={label}
+      title={label}
+      aria-expanded={expanded}
+      className={`cursor-pointer rounded-xs border border-hairline p-1.5 text-ink-500 transition-colors duration-200 hover:border-sandalwood-500 hover:text-tibetan-600 ${className}`}
+    >
+      <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+        {children}
+      </svg>
+    </button>
   )
 }
 
@@ -423,29 +449,24 @@ function ReaderSettings({
   const { t } = useI18n()
 
   return (
-    <div className="mt-3 rounded-2xl border border-sandalwood-200/70 bg-rice-50/95 p-5 shadow-md">
-      <div className="flex items-center justify-between">
-        <h3 className="font-serif text-sm font-bold text-sandalwood-800">{t('reader.settings')}</h3>
-        <button
-          type="button"
-          onClick={onClose}
-          className="cursor-pointer rounded-full p-1.5 text-sandalwood-400 hover:bg-sandalwood-100"
-          aria-label={t('nav.closeMenu')}
-        >
-          ✕
-        </button>
+    <div className="mt-4 rounded-card border border-hairline bg-surface p-6">
+      <div className="flex items-center justify-between border-b border-hairline pb-4">
+        <h3 className="font-sans text-[11px] tracking-[0.28em] text-sandalwood-500 uppercase">{t('reader.settings')}</h3>
+        <IconButton label={t('nav.closeMenu')} onClick={onClose}>
+          <path d="M6 6l12 12M18 6L6 18" />
+        </IconButton>
       </div>
 
-      <div className="mt-5 grid gap-6 sm:grid-cols-3">
+      <div className="mt-6 grid gap-8 sm:grid-cols-3">
         {/* 字号 */}
         <div>
-          <p className="text-xs font-medium text-sandalwood-600">
-            {t('reader.fontSize')} <span className="ml-1 text-gold-600">{prefs.fontSize}px</span>
+          <p className="font-sans text-xs text-ink-500">
+            {t('reader.fontSize')} <span className="ml-1 tabular-nums text-tibetan-600">{prefs.fontSize}px</span>
           </p>
-          <div className="mt-2 flex items-center gap-3">
+          <div className="mt-3 flex items-center gap-3">
             <button
               type="button"
-              className="btn-secondary !h-8 !w-8 !rounded-lg !px-0 !py-0 text-base"
+              className="flex h-8 w-8 shrink-0 cursor-pointer items-center justify-center rounded-xs border border-hairline font-sans text-sm text-ink-700 transition-colors hover:border-sandalwood-500"
               onClick={() => onChange({ fontSize: Math.max(FONT_SIZE_RANGE.min, prefs.fontSize - 1) })}
               aria-label="A-"
             >
@@ -458,11 +479,11 @@ function ReaderSettings({
               step={FONT_SIZE_RANGE.step}
               value={prefs.fontSize}
               onChange={(e) => onChange({ fontSize: Number(e.target.value) })}
-              className="w-full accent-gold-500"
+              className="w-full accent-tibetan-600"
             />
             <button
               type="button"
-              className="btn-secondary !h-8 !w-8 !rounded-lg !px-0 !py-0 text-base"
+              className="flex h-8 w-8 shrink-0 cursor-pointer items-center justify-center rounded-xs border border-hairline font-sans text-sm text-ink-700 transition-colors hover:border-sandalwood-500"
               onClick={() => onChange({ fontSize: Math.min(FONT_SIZE_RANGE.max, prefs.fontSize + 1) })}
               aria-label="A+"
             >
@@ -473,8 +494,8 @@ function ReaderSettings({
 
         {/* 行距 */}
         <div>
-          <p className="text-xs font-medium text-sandalwood-600">
-            {t('reader.lineHeight')} <span className="ml-1 text-gold-600">{prefs.lineHeight.toFixed(1)}</span>
+          <p className="font-sans text-xs text-ink-500">
+            {t('reader.lineHeight')} <span className="ml-1 tabular-nums text-tibetan-600">{prefs.lineHeight.toFixed(1)}</span>
           </p>
           <input
             type="range"
@@ -483,46 +504,50 @@ function ReaderSettings({
             step={LINE_HEIGHT_RANGE.step}
             value={prefs.lineHeight}
             onChange={(e) => onChange({ lineHeight: Number(e.target.value) })}
-            className="mt-3.5 w-full accent-gold-500"
+            className="mt-5 w-full accent-tibetan-600"
             aria-label={t('reader.lineHeight')}
           />
         </div>
 
         {/* 背景主题 */}
         <div>
-          <p className="text-xs font-medium text-sandalwood-600">{t('reader.theme')}</p>
-          <div className="mt-2 flex flex-wrap gap-2">
+          <p className="font-sans text-xs text-ink-500">{t('reader.theme')}</p>
+          <div className="mt-3 flex flex-wrap gap-2">
             {THEMES.map((th) => (
               <button
                 key={th.id}
                 type="button"
                 onClick={() => onChange({ theme: th.id })}
                 title={t(th.labelKey)}
-                className={`flex h-9 w-9 cursor-pointer items-center justify-center rounded-full border-2 transition ${
-                  prefs.theme === th.id ? 'scale-110 border-tibetan-600' : 'border-sandalwood-300 hover:border-gold-500'
+                className={`flex h-9 w-9 cursor-pointer items-center justify-center rounded-xs border transition-colors duration-200 ${
+                  prefs.theme === th.id ? 'border-tibetan-600' : 'border-hairline hover:border-sandalwood-500'
                 }`}
                 style={{ background: th.swatch }}
                 aria-label={t(th.labelKey)}
                 aria-pressed={prefs.theme === th.id}
               >
-                {prefs.theme === th.id && <span className="text-xs text-tibetan-700">✓</span>}
+                {prefs.theme === th.id && (
+                  <svg viewBox="0 0 24 24" className="h-3.5 w-3.5 text-tibetan-600" fill="none" stroke="currentColor" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                    <path d="M4 12.5l5.5 5.5L20 6.5" />
+                  </svg>
+                )}
               </button>
             ))}
           </div>
-          <p className="mt-1.5 text-[11px] text-sandalwood-500">
+          <p className="mt-2 font-sans text-[11px] text-ink-300">
             {t(THEMES.find((x) => x.id === prefs.theme)?.labelKey ?? 'reader.themeLight')}
           </p>
         </div>
       </div>
 
-      <div className="mt-5 border-t border-sandalwood-200/60 pt-3 text-right">
+      <div className="mt-6 border-t border-hairline pt-4 text-right">
         <button
           type="button"
           onClick={() => {
             onReset()
             onClose()
           }}
-          className="cursor-pointer text-xs text-sandalwood-500 underline underline-offset-4 transition hover:text-tibetan-600"
+          className="cursor-pointer font-sans text-xs text-ink-500 underline underline-offset-4 transition-colors hover:text-tibetan-600"
         >
           {t('common.themeReset')}
         </button>

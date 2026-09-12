@@ -61,7 +61,7 @@ export function TranslateWidget() {
   if (state === 'ready') {
     return (
       <div className="flex items-center gap-2">
-        <span className="text-xs text-sandalwood-400">{t('reader.translate')}:</span>
+        <span className="font-sans text-xs text-ink-300">{t('reader.translate')}:</span>
         <div id="hdc-translate-element" />
       </div>
     )
@@ -72,12 +72,12 @@ export function TranslateWidget() {
       <button
         type="button"
         onClick={load}
-        className="btn-secondary !px-4 !py-1.5 text-xs"
+        className="cursor-pointer rounded-xs border border-hairline px-4 py-1.5 font-sans text-xs text-ink-700 transition-colors duration-200 hover:border-tibetan-500 hover:text-tibetan-600"
         title={t('reader.translateHint')}
       >
         {state === 'loading' ? t('reader.translateLoading') : `${t('reader.translate')} · EN`}
       </button>
-      {state === 'error' && <span className="text-xs text-tibetan-500">{t('common.offlineNotice')}</span>}
+      {state === 'error' && <span className="font-sans text-xs text-tibetan-500">{t('common.offlineNotice')}</span>}
     </div>
   )
 }

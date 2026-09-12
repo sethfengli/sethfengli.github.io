@@ -70,7 +70,7 @@ export function IncenseBurner({ bare = false }: { bare?: boolean }) {
         type="button"
         onClick={light}
         aria-label={t('incense.aria')}
-        className="block cursor-pointer rounded-2xl p-2 text-left transition hover:opacity-90 focus-visible:ring-2 focus-visible:ring-gold-400 focus-visible:outline-none"
+        className="block cursor-pointer rounded-xs p-2 text-left transition-opacity hover:opacity-90"
       >
         {inner}
       </button>
@@ -82,7 +82,7 @@ export function IncenseBurner({ bare = false }: { bare?: boolean }) {
       type="button"
       onClick={light}
       aria-label={t('incense.aria')}
-      className="group relative block cursor-pointer rounded-2xl border border-sandalwood-200/60 bg-rice-100/60 p-4 text-left transition hover:border-gold-400 hover:bg-rice-100 focus-visible:ring-2 focus-visible:ring-gold-400 focus-visible:outline-none"
+      className="group relative block cursor-pointer rounded-xs border border-hairline bg-rice-100/60 p-4 text-left transition-colors duration-200 hover:border-sandalwood-500 hover:bg-rice-100"
     >
       {inner}
     </button>

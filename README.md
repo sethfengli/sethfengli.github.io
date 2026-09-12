@@ -69,7 +69,11 @@ npm run migrate    # 重新执行旧站 HTML → JSON/Markdown 迁移（含自�
 - **封面用真实照片**：64 张 Wikimedia Commons 免版权照片（按类别交错分配 + 步长取图，同屏相邻卡片不重复；`public/photos/` + CREDITS 署名），12 种水墨风 SVG 插画作回退与装饰。
 - **钟声**：真实梵钟录音（長命寺，CC BY 2.1 JP）本地托管，未就绪时回退 Web Audio 多泛音合成；钟声播完前禁止再次撞钟。
 - **Three.js 3D（v2）**：法音/祈福/灵签三页为可鼠标操控的 3D 场景，three 按需分包（约 185KB gzip），无 WebGL 自动回退 SVG。场景公共设施（`stage.ts`）统一提供轨道操控/点击拾取/软阴影接地/自适应 DPR/`prefers-reduced-motion` 降级；梵钟以冠钮为轴晃荡、香炉青烟加色混合 + 炭火闪烁、许愿树飘落松针、签筒底座接地阴影。
-- **设计系统（2026 精修）**：统一 PageBanner/SectionHeading/Reveal 组件，卡片分层阴影令牌、全局焦点环、View Transitions 页面切换动画（渐进增强）、滚动进度条、移动菜单滑下动画、`fetchpriority=high` 首屏关键图。
+- **设计系统（2026 v3 · 新中式极简）**：宣纸底 + 焦墨字 + 青瓷灰绿 + 朱砂印章红的水墨双色骨架；
+  发丝描边 + 大留白 + 非对称栅格取代圆角卡片与投影堆叠，清除装饰性渐变、毛玻璃与 emoji/字符装饰；
+  书法体收敛为点睛用途。统一 PageBanner（图文并置题头）/PageIntro/SectionHeading/Ornament/Reveal 组件、
+  卡片分层阴影令牌、全局朱砂焦点环、View Transitions 页面切换动画（渐进增强）、滚动进度条、
+  移动菜单滑下动画、`fetchpriority=high` 首屏关键图。详见 [docs/DESIGN.md](docs/DESIGN.md) 第 10 节。
 - **古意字体**：霞鹜文楷正文 + 马善政/龙藏书法标题，本地托管 unicode-range 子集。
 
 ## 许可

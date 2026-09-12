@@ -1,13 +1,22 @@
 @import 'tailwindcss';
 
 /* ============================================================
-   慧灯禅院 · 设计系统
-   配色：晴空 · 青檀绿 · 朱砂 · 鎏金
+   慧灯禅院 · 设计系统 v3 —— 新中式极简
+   ------------------------------------------------------------
+   原则：
+   1. 少即是多：去掉满屏圆角卡片、投影堆叠、毛玻璃与渐变堆栈；
+      改用「发丝描边 + 大留白 + 非对称栅格」建立秩序。
+   2. 水墨基调：宣纸底（rice）+ 焦墨字（ink）+ 青瓷灰绿（sandalwood）
+      + 朱砂印章红（tibetan）；鎏金（gold）只作极少量点缀。
+   3. 字体分级：书法体仅用于 Hero/区块主标题，正文与 UI 全部用宋/黑，
+      避免「处处书法」造成的装饰疲劳。
+   4. 装饰克制：不再使用 emoji 与 ❖/✦ 字符做装饰，改用细线、
+      朱砂印（.seal）、单点（.ornament）等中式极简符号。
    ============================================================ */
 @theme {
   /* ============================================================
      色板令牌：全部指向 --site-* 运行时变量，
-     由 :root[data-site-theme=...] 切换整套佛教配色主题。
+     由 :root[data-site-theme=...] 切换整套配色。
      ============================================================ */
   --color-rice-50: var(--site-rice-50);
   --color-rice-100: var(--site-rice-100);
@@ -62,37 +71,39 @@
   --color-ink-500: var(--site-ink-500);
   --color-ink-300: var(--site-ink-300);
   --color-ink-100: var(--site-ink-100);
-  /* 恒定深墨：金色按钮文字等需全主题可读 */
-  --color-ink-950: #171512;
+  /* 恒定焦墨：印章红/鎏金按钮上的文字需全主题可读 */
+  --color-ink-950: #14110e;
 
-  /* 恒定“纸色”：深色区块（页脚/主按钮/横幅）上的浅色文字 */
-  --color-paper: #fbf8f0;
+  /* 恒定「宣纸白」：深底区块（页脚/深色横幅）上的浅色文字 */
+  --color-paper: #fbfaf7;
 
   /* 强调底色上的文字（暗色主题下反转为深字） */
   --color-on-accent: var(--site-on-accent);
 
-  /* 卡片表面色（随主题） */
+  /* 区块表面色（随主题） */
   --color-surface: var(--site-surface);
 
-  /* 阴影与圆角令牌 */
-  --shadow-card: 0 1px 2px var(--site-shadow-base, rgb(20 44 37 / 0.06)),
-    0 6px 20px -6px var(--site-shadow-soft, rgb(20 44 37 / 0.12));
-  --shadow-card-hover: 0 2px 4px var(--site-shadow-base, rgb(20 44 37 / 0.08)),
-    0 14px 32px -8px var(--site-shadow-soft, rgb(20 44 37 / 0.18));
-  --radius-card: 1rem;
+  /* ---------- 描边与圆角：新中式用「发丝线 + 小圆角」 ---------- */
+  --color-hairline: var(--site-hairline);
 
-  /* 字体：霞鹜文楷（古意正文）＋ 马善政/龙藏（书法标题）
-     西文字体优先使用 Noto Sans/Noto Serif，保证英文清晰可读；
-     汉字字符不会被这些拉丁字体命中，自动回退到后面的汉字字体。 */
+  /* 阴影令牌刻意压到几乎不可见：只做纸面微浮，不做卡片投影 */
+  --shadow-card: 0 1px 2px var(--site-shadow-base, rgb(24 22 18 / 0.03));
+  --shadow-card-hover: 0 2px 12px -4px var(--site-shadow-soft, rgb(24 22 18 / 0.1));
+  --shadow-lift: 0 18px 48px -24px var(--site-shadow-soft, rgb(24 22 18 / 0.28));
+
+  --radius-xs: 2px;
+  --radius-card: 4px;
+
+  /* 字体：正文用霞鹜文楷/宋体，UI 用思源黑，书法体仅作标题点缀。
+     西文字体优先 Noto Sans/Serif，汉字自动回退到后面的汉字字体。 */
   --font-serif:
     'Noto Serif', Georgia, 'Times New Roman', 'LXGW WenKai', 'Kaiti SC',
     'STKaiti', 'KaiTi', 'Noto Serif SC', 'Songti SC', SimSun, serif;
   --font-sans:
-    'Noto Sans', 'Helvetica Neue', Arial, system-ui, 'LXGW WenKai',
-    'Noto Sans SC', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei',
-    sans-serif;
+    'Noto Sans', 'Helvetica Neue', Arial, system-ui, 'Noto Sans SC',
+    'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
   --font-brush:
-    'Noto Serif', Georgia, 'LXGW WenKai', 'Ma Shan Zheng', 'Long Cang', 'KaiTi',
+    'Ma Shan Zheng', 'Long Cang', 'LXGW WenKai', 'Noto Serif', Georgia, 'KaiTi',
     cursive;
 
   /* 动画 */
@@ -217,256 +228,272 @@
 }
 
 /* ============================================================
-   佛教配色主题（4 套，由 Header 切换并记忆）
-   素白·清净（默认，晴空白底青绿） / 藏红·庄严 / 青瓷·琉璃 / 黛青·禅夜
-   —— 2026 修订：整体告别土黄，改为轻快、积极的正能量色系。
+   配色主题（4 套，由 Header 切换并记忆）
+   宣纸·青瓷（默认） / 素笺·朱印 / 冷瓷·新绿 / 焦墨·禅夜
+   —— 2026 v3：建立「青瓷灰绿 + 朱砂」的水墨双色骨架，
+      取消一切土黄与甜腻粉橘，整体转为冷静、克制、清透。
    ============================================================ */
 :root,
 :root[data-site-theme='rice'] {
-  --site-rice-50: #f3f9fb;
-  --site-rice-100: #e6f2f6;
-  --site-rice-200: #d0e6ee;
-  --site-rice-300: #b3d6e2;
-  --site-sandalwood-50: #edf8f3;
-  --site-sandalwood-100: #d9f0e6;
-  --site-sandalwood-200: #b8e2d0;
-  --site-sandalwood-300: #8fcdb2;
-  --site-sandalwood-400: #64b393;
-  --site-sandalwood-500: #479a7c;
-  --site-sandalwood-600: #367e66;
-  --site-sandalwood-700: #2d6553;
-  --site-sandalwood-800: #255144;
-  --site-sandalwood-900: #1c3d33;
-  --site-sandalwood-950: #142c25;
-  --site-tibetan-50: #fdf2f0;
-  --site-tibetan-100: #fbe3df;
-  --site-tibetan-200: #f6c6be;
-  --site-tibetan-300: #efa093;
-  --site-tibetan-400: #e67a6a;
-  --site-tibetan-500: #d95a48;
-  --site-tibetan-600: #c24538;
-  --site-tibetan-700: #a13a30;
-  --site-tibetan-800: #7f2e27;
-  --site-tibetan-900: #63231d;
-  --site-tibetan-950: #461713;
-  --site-gold-50: #fdfaeb;
-  --site-gold-100: #faf2cd;
-  --site-gold-200: #f6e69b;
-  --site-gold-300: #efd464;
-  --site-gold-400: #e7c23e;
-  --site-gold-500: #d4a92c;
-  --site-gold-600: #b38620;
-  --site-gold-700: #8c6619;
-  --site-gold-800: #6d4e13;
-  --site-gold-900: #52390e;
-  --site-moon-50: #f1f8fc;
-  --site-moon-100: #e2f1f8;
-  --site-moon-200: #c5e3f0;
-  --site-moon-300: #9ccee3;
-  --site-moon-500: #5b9fc0;
-  --site-moon-700: #3a6e8c;
-  --site-moon-900: #1f3a4c;
-  --site-ink-900: #20333c;
-  --site-ink-700: #3d4f58;
-  --site-ink-500: #5f727c;
-  --site-ink-300: #9fb0b8;
-  --site-ink-100: #d3dee3;
+  --site-rice-50: #fbfaf7;
+  --site-rice-100: #f5f3ee;
+  --site-rice-200: #eae6de;
+  --site-rice-300: #dcd6ca;
+  --site-sandalwood-50: #f2f6f4;
+  --site-sandalwood-100: #e6ede9;
+  --site-sandalwood-200: #d2ddd7;
+  --site-sandalwood-300: #b3c3bb;
+  --site-sandalwood-400: #93a89e;
+  --site-sandalwood-500: #789085;
+  --site-sandalwood-600: #5f7a6f;
+  --site-sandalwood-700: #4c6459;
+  --site-sandalwood-800: #3c5049;
+  --site-sandalwood-900: #2a3a34;
+  --site-sandalwood-950: #1d2723;
+  --site-tibetan-50: #fdf5f4;
+  --site-tibetan-100: #fae7e4;
+  --site-tibetan-200: #f4cbc5;
+  --site-tibetan-300: #e7a79e;
+  --site-tibetan-400: #d67f74;
+  --site-tibetan-500: #c25a4f;
+  --site-tibetan-600: #b8382e;
+  --site-tibetan-700: #9b3028;
+  --site-tibetan-800: #7c2822;
+  --site-tibetan-900: #61201b;
+  --site-tibetan-950: #400f0c;
+  --site-gold-50: #faf7ef;
+  --site-gold-100: #f3ecd9;
+  --site-gold-200: #e7dab3;
+  --site-gold-300: #d5c085;
+  --site-gold-400: #c2a25c;
+  --site-gold-500: #ab8940;
+  --site-gold-600: #8d6f33;
+  --site-gold-700: #6f5729;
+  --site-gold-800: #554220;
+  --site-gold-900: #3d2f17;
+  --site-moon-50: #f4f6f7;
+  --site-moon-100: #e8edef;
+  --site-moon-200: #d3dde1;
+  --site-moon-300: #b0c2c9;
+  --site-moon-500: #7b96a1;
+  --site-moon-700: #54707c;
+  --site-moon-900: #2e4450;
+  --site-ink-900: #1f1d1a;
+  --site-ink-700: #403c37;
+  --site-ink-500: #6b655d;
+  --site-ink-300: #a49c91;
+  --site-ink-100: #d9d3c9;
   --site-surface: #ffffff;
   --site-on-accent: #ffffff;
+  --site-hairline: #e2ddd3;
 }
 
-/* —— 藏红 · 庄严（朱砂喜庆） —— */
+/* —— 素笺 · 朱印（宣纸暖调，印章最重） —— */
 :root[data-site-theme='vermilion'] {
-  --site-rice-50: #fff8f5;
-  --site-rice-100: #feefe8;
-  --site-rice-200: #fcded2;
-  --site-rice-300: #f7c7b4;
-  --site-sandalwood-50: #fdf3ef;
-  --site-sandalwood-100: #fae5dc;
-  --site-sandalwood-200: #f4cabb;
-  --site-sandalwood-300: #e8a893;
-  --site-sandalwood-400: #d9856c;
-  --site-sandalwood-500: #c46850;
-  --site-sandalwood-600: #a8523d;
-  --site-sandalwood-700: #8a4232;
-  --site-sandalwood-800: #6d3427;
-  --site-sandalwood-900: #52271d;
-  --site-sandalwood-950: #3a1b14;
-  --site-tibetan-50: #fdf1ef;
-  --site-tibetan-100: #fbe0db;
-  --site-tibetan-200: #f6c0b7;
-  --site-tibetan-300: #ef9a8e;
-  --site-tibetan-400: #e77265;
-  --site-tibetan-500: #de4f41;
-  --site-tibetan-600: #d63a35;
-  --site-tibetan-700: #b0302d;
-  --site-tibetan-800: #8c2625;
-  --site-tibetan-900: #6b1d1d;
-  --site-tibetan-950: #4a1313;
-  --site-gold-50: #fdfaeb;
-  --site-gold-100: #faf2cd;
-  --site-gold-200: #f6e69b;
-  --site-gold-300: #efd464;
-  --site-gold-400: #e7c23e;
-  --site-gold-500: #d4a92c;
-  --site-gold-600: #b38620;
-  --site-gold-700: #8c6619;
-  --site-gold-800: #6d4e13;
-  --site-gold-900: #52390e;
-  --site-moon-50: #fdf4f4;
-  --site-moon-100: #fbe9e9;
-  --site-moon-200: #f6d5d5;
-  --site-moon-300: #eab3b3;
-  --site-moon-500: #c57575;
-  --site-moon-700: #9c5050;
-  --site-moon-900: #572b2b;
-  --site-ink-900: #33282a;
-  --site-ink-700: #534446;
-  --site-ink-500: #756264;
-  --site-ink-300: #ac9b9d;
-  --site-ink-100: #dcd2d3;
+  --site-rice-50: #faf6f2;
+  --site-rice-100: #f4ede6;
+  --site-rice-200: #e8ded4;
+  --site-rice-300: #d8c9bb;
+  --site-sandalwood-50: #f6f2ee;
+  --site-sandalwood-100: #ece3dc;
+  --site-sandalwood-200: #dbcbc0;
+  --site-sandalwood-300: #c0a898;
+  --site-sandalwood-400: #a28674;
+  --site-sandalwood-500: #8a6e5e;
+  --site-sandalwood-600: #71584b;
+  --site-sandalwood-700: #5b473d;
+  --site-sandalwood-800: #46372f;
+  --site-sandalwood-900: #322723;
+  --site-sandalwood-950: #221a17;
+  --site-tibetan-50: #fdf4f3;
+  --site-tibetan-100: #fae4e1;
+  --site-tibetan-200: #f4c6c0;
+  --site-tibetan-300: #e89f96;
+  --site-tibetan-400: #d97568;
+  --site-tibetan-500: #c94f42;
+  --site-tibetan-600: #c1362b;
+  --site-tibetan-700: #a02d24;
+  --site-tibetan-800: #7f251e;
+  --site-tibetan-900: #631d18;
+  --site-tibetan-950: #420e0b;
+  --site-gold-50: #faf6ea;
+  --site-gold-100: #f3e9cf;
+  --site-gold-200: #e6d4a2;
+  --site-gold-300: #d3b771;
+  --site-gold-400: #bf9a48;
+  --site-gold-500: #a78233;
+  --site-gold-600: #886a29;
+  --site-gold-700: #6a5221;
+  --site-gold-800: #513f1a;
+  --site-gold-900: #3a2d13;
+  --site-moon-50: #f6f4f2;
+  --site-moon-100: #ece7e3;
+  --site-moon-200: #dbd2cc;
+  --site-moon-300: #c0b2a9;
+  --site-moon-500: #96837a;
+  --site-moon-700: #6e5d55;
+  --site-moon-900: #463a35;
+  --site-ink-900: #241f1c;
+  --site-ink-700: #453d38;
+  --site-ink-500: #6f645c;
+  --site-ink-300: #a89b91;
+  --site-ink-100: #dcd2c9;
   --site-surface: #fffdfb;
   --site-on-accent: #ffffff;
+  --site-hairline: #e4dbd1;
 }
 
-/* —— 青瓷 · 琉璃（翡翠琉璃瓦） —— */
+/* —— 冷瓷 · 新绿（青瓷清爽，绿意更显） —— */
 :root[data-site-theme='celadon'] {
-  --site-rice-50: #f2faf7;
-  --site-rice-100: #e4f4ee;
-  --site-rice-200: #cde9df;
-  --site-rice-300: #aed8c8;
-  --site-sandalwood-50: #ecf8f2;
-  --site-sandalwood-100: #d6f0e4;
-  --site-sandalwood-200: #b2e2cd;
-  --site-sandalwood-300: #86cdb0;
-  --site-sandalwood-400: #5bb392;
-  --site-sandalwood-500: #419a7b;
-  --site-sandalwood-600: #317e64;
-  --site-sandalwood-700: #2a6752;
-  --site-sandalwood-800: #225242;
-  --site-sandalwood-900: #1a3e32;
-  --site-sandalwood-950: #122c24;
-  --site-tibetan-50: #fdf2f0;
-  --site-tibetan-100: #fbe3df;
-  --site-tibetan-200: #f6c6be;
-  --site-tibetan-300: #efa093;
-  --site-tibetan-400: #e67a6a;
-  --site-tibetan-500: #d95a48;
-  --site-tibetan-600: #c24538;
-  --site-tibetan-700: #a13a30;
-  --site-tibetan-800: #7f2e27;
-  --site-tibetan-900: #63231d;
-  --site-tibetan-950: #461713;
-  --site-gold-50: #fdfaeb;
-  --site-gold-100: #faf2cd;
-  --site-gold-200: #f6e69b;
-  --site-gold-300: #efd464;
-  --site-gold-400: #e7c23e;
-  --site-gold-500: #d4a92c;
-  --site-gold-600: #b38620;
-  --site-gold-700: #8c6619;
-  --site-gold-800: #6d4e13;
-  --site-gold-900: #52390e;
-  --site-moon-50: #f0f8fa;
-  --site-moon-100: #e0f1f4;
-  --site-moon-200: #c3e3e9;
-  --site-moon-300: #97cdd7;
-  --site-moon-500: #56a2b0;
-  --site-moon-700: #3a7280;
-  --site-moon-900: #20404a;
-  --site-ink-900: #203833;
-  --site-ink-700: #3d514c;
-  --site-ink-500: #5f736e;
-  --site-ink-300: #9fb0ab;
-  --site-ink-100: #d3deDA;
+  --site-rice-50: #f8fbf9;
+  --site-rice-100: #eff5f2;
+  --site-rice-200: #e0ebe5;
+  --site-rice-300: #ccddd4;
+  --site-sandalwood-50: #eef7f2;
+  --site-sandalwood-100: #ddeee5;
+  --site-sandalwood-200: #c2dfd0;
+  --site-sandalwood-300: #9cc8b3;
+  --site-sandalwood-400: #74ad94;
+  --site-sandalwood-500: #559278;
+  --site-sandalwood-600: #3f7862;
+  --site-sandalwood-700: #33604f;
+  --site-sandalwood-800: #2a4d40;
+  --site-sandalwood-900: #1f3a30;
+  --site-sandalwood-950: #152720;
+  --site-tibetan-50: #fdf5f4;
+  --site-tibetan-100: #fae7e4;
+  --site-tibetan-200: #f4cbc5;
+  --site-tibetan-300: #e7a79e;
+  --site-tibetan-400: #d67f74;
+  --site-tibetan-500: #c25a4f;
+  --site-tibetan-600: #b8382e;
+  --site-tibetan-700: #9b3028;
+  --site-tibetan-800: #7c2822;
+  --site-tibetan-900: #61201b;
+  --site-tibetan-950: #400f0c;
+  --site-gold-50: #faf7ef;
+  --site-gold-100: #f3ecd9;
+  --site-gold-200: #e7dab3;
+  --site-gold-300: #d5c085;
+  --site-gold-400: #c2a25c;
+  --site-gold-500: #ab8940;
+  --site-gold-600: #8d6f33;
+  --site-gold-700: #6f5729;
+  --site-gold-800: #554220;
+  --site-gold-900: #3d2f17;
+  --site-moon-50: #f2f7f9;
+  --site-moon-100: #e5eff3;
+  --site-moon-200: #cde0e7;
+  --site-moon-300: #a8c7d3;
+  --site-moon-500: #6f9cad;
+  --site-moon-700: #4a7486;
+  --site-moon-900: #26414e;
+  --site-ink-900: #1c211f;
+  --site-ink-700: #3c4642;
+  --site-ink-500: #67736d;
+  --site-ink-300: #a1ada6;
+  --site-ink-100: #d5dfd9;
   --site-surface: #ffffff;
   --site-on-accent: #ffffff;
+  --site-hairline: #dbe6e0;
 }
 
-/* —— 黛青 · 禅夜（清凉暗夜，按用途映射保证对比度） —— */
+/* —— 焦墨 · 禅夜（深夜禅堂，按用途映射保证对比度） —— */
 :root[data-site-theme='night'] {
-  --site-rice-50: #1b2530;
-  --site-rice-100: #232f3d;
-  --site-rice-200: #2d3b4b;
-  --site-rice-300: #3d4e62;
-  --site-sandalwood-50: #242f2b;
-  --site-sandalwood-100: #2c3a35;
-  --site-sandalwood-200: #3b4c45;
-  --site-sandalwood-300: #556b60;
-  --site-sandalwood-400: #749086;
-  --site-sandalwood-500: #93b0a3;
-  --site-sandalwood-600: #b2ccbf;
-  --site-sandalwood-700: #cfe3d8;
-  --site-sandalwood-800: #e3f0ea;
-  --site-sandalwood-900: #16212b;
-  --site-sandalwood-950: #101a23;
-  --site-tibetan-50: #3b2424;
-  --site-tibetan-100: #4a2d2d;
-  --site-tibetan-200: #5f3a3a;
-  --site-tibetan-300: #7b4a4a;
-  --site-tibetan-400: #9d5d5d;
-  --site-tibetan-500: #bd6f6f;
-  --site-tibetan-600: #d48d88;
-  --site-tibetan-700: #e6b9b5;
-  --site-tibetan-800: #5b1c26;
-  --site-tibetan-900: #45151d;
-  --site-tibetan-950: #2e0c12;
-  --site-gold-50: #3a3425;
-  --site-gold-100: #463e29;
-  --site-gold-200: #ecdc9f;
-  --site-gold-300: #e0c76c;
-  --site-gold-400: #d4b24a;
-  --site-gold-500: #c9a227;
-  --site-gold-600: #d4b24a;
-  --site-gold-700: #e0c76c;
-  --site-gold-800: #ecdc9f;
-  --site-gold-900: #f5edcc;
-  --site-moon-50: #26303f;
-  --site-moon-100: #2e3a4e;
-  --site-moon-200: #3d4d68;
-  --site-moon-300: #557194;
-  --site-moon-500: #7fa0c8;
-  --site-moon-700: #a3bfdc;
-  --site-moon-900: #16222e;
-  --site-ink-900: #e9f0f4;
-  --site-ink-700: #c8d3da;
-  --site-ink-500: #99a6ae;
-  --site-ink-300: #6b7880;
-  --site-ink-100: #454f56;
-  --site-surface: #1b242e;
-  --site-on-accent: #171512;
+  --site-rice-50: #14161a;
+  --site-rice-100: #1b1e23;
+  --site-rice-200: #23272e;
+  --site-rice-300: #31363f;
+  --site-sandalwood-50: #1b201f;
+  --site-sandalwood-100: #232a28;
+  --site-sandalwood-200: #2f3836;
+  --site-sandalwood-300: #43514d;
+  --site-sandalwood-400: #5e716a;
+  --site-sandalwood-500: #7e928a;
+  --site-sandalwood-600: #9fb2a8;
+  --site-sandalwood-700: #c0cfc6;
+  --site-sandalwood-800: #d8e2db;
+  --site-sandalwood-900: #1a1f22;
+  --site-sandalwood-950: #101316;
+  --site-tibetan-50: #341a18;
+  --site-tibetan-100: #43211e;
+  --site-tibetan-200: #5a2c27;
+  --site-tibetan-300: #7a3a33;
+  --site-tibetan-400: #9c4a40;
+  --site-tibetan-500: #bd5f52;
+  --site-tibetan-600: #d4776a;
+  --site-tibetan-700: #e5a196;
+  --site-tibetan-800: #5c1f1a;
+  --site-tibetan-900: #451612;
+  --site-tibetan-950: #2e0d0a;
+  --site-gold-50: #2a2519;
+  --site-gold-100: #38311f;
+  --site-gold-200: #e6d4a2;
+  --site-gold-300: #d5c085;
+  --site-gold-400: #c2a25c;
+  --site-gold-500: #ab8940;
+  --site-gold-600: #c2a25c;
+  --site-gold-700: #d5c085;
+  --site-gold-800: #e6d4a2;
+  --site-gold-900: #f3ecd9;
+  --site-moon-50: #1a2026;
+  --site-moon-100: #222a33;
+  --site-moon-200: #2e3a45;
+  --site-moon-300: #455666;
+  --site-moon-500: #6d8497;
+  --site-moon-700: #9db0c0;
+  --site-moon-900: #131a20;
+  --site-ink-900: #ebe9e4;
+  --site-ink-700: #cbc7c0;
+  --site-ink-500: #9a958d;
+  --site-ink-300: #716c65;
+  --site-ink-100: #45413b;
+  --site-surface: #191c20;
+  --site-on-accent: #14110e;
+  --site-hairline: #31363c;
 }
-/* ---------- 基础 ---------- */
+
+/* ============================================================
+   基础
+   ============================================================ */
 html {
   scroll-behavior: smooth;
   /* 粘性页头下的锚点定位留白 */
   scroll-padding-top: 5rem;
 }
+
 body {
   @apply bg-rice-50 font-sans text-ink-900 antialiased;
   text-rendering: optimizeLegibility;
   overflow-wrap: break-word;
+  /* 宣纸微颗粒：极轻的斜向纹理，避免大面积纯色的平板感 */
+  background-image: radial-gradient(
+    circle at 1px 1px,
+    color-mix(in srgb, var(--color-ink-900) 4%, transparent) 1px,
+    transparent 0
+  );
+  background-size: 22px 22px;
 }
+
 ::selection {
-  background: var(--color-gold-200);
-  color: var(--color-ink-900);
+  background: var(--color-tibetan-200);
+  color: var(--color-ink-950);
 }
 
 /* 键盘可达性：全局焦点环 */
 :focus-visible {
-  outline: 2px solid var(--color-gold-500);
+  outline: 2px solid var(--color-tibetan-600);
   outline-offset: 2px;
-  border-radius: 0.25rem;
+  border-radius: 2px;
 }
 
 /* 细滚动条 */
 *::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
 }
 *::-webkit-scrollbar-thumb {
   background: var(--color-sandalwood-300);
-  border-radius: 8px;
 }
 *::-webkit-scrollbar-thumb:hover {
   background: var(--color-sandalwood-400);
@@ -475,48 +502,98 @@ body {
   background: transparent;
 }
 
-/* ---------- 组件样式 ---------- */
+/* ============================================================
+   组件样式（新中式极简）
+   ------------------------------------------------------------
+   通用语汇：
+   .btn-primary / .btn-secondary / .btn-gold —— 直角小圆角，无阴影，靠描边与实底区分层级
+   .card / .card-link —— 发丝描边纸面，hover 只换描边与极轻浮起
+   .chip —— 细边小签
+   .hairline —— 横向发丝线
+   .seal —— 朱砂印章（中式点题，全站唯一的「红」）
+   .ornament —— 单点装饰（替代 ❖/✦ 字符）
+   .section-title / .section-sub —— 区块标题层级
+   ============================================================ */
 @layer components {
+  /* 全站容器：内容为主、留白为辅。
+     超宽屏（≥1920）改用随视口增长的内边距，而不是继续居中留大块空白——
+     旧版固定 max-w-6xl 居中，在 2293px 屏上两侧各空 576px，导致整站显得又窄又散。 */
+  .container-page {
+    @apply mx-auto w-full max-w-screen-2xl px-5 sm:px-6 md:px-8 xl:px-12 2xl:px-[8vw];
+  }
+  /* 窄容器：正文/表单等需要控制行宽的内容 */
+  .container-narrow {
+    @apply mx-auto w-full max-w-4xl px-5 sm:px-6 md:px-8;
+  }
+
   .btn-primary {
-    @apply inline-flex cursor-pointer items-center justify-center gap-2 rounded-full bg-tibetan-600 px-6 py-2.5 font-sans text-sm font-medium text-on-accent transition duration-200 hover:bg-tibetan-700 hover:shadow-lg focus-visible:ring-2 focus-visible:ring-gold-400 focus-visible:outline-none active:scale-[0.97];
+    @apply inline-flex cursor-pointer items-center justify-center gap-2 rounded-xs bg-tibetan-600 px-7 py-2.5 font-sans text-sm font-medium text-on-accent transition-colors duration-200 hover:bg-tibetan-700 focus-visible:ring-2 focus-visible:ring-tibetan-400 focus-visible:ring-offset-2 focus-visible:ring-offset-rice-50 focus-visible:outline-none;
   }
   .btn-secondary {
-    @apply inline-flex cursor-pointer items-center justify-center gap-2 rounded-full border border-sandalwood-400/60 bg-transparent px-6 py-2.5 font-sans text-sm font-medium text-sandalwood-700 transition duration-200 hover:border-sandalwood-600 hover:bg-sandalwood-50 focus-visible:ring-2 focus-visible:ring-gold-400 focus-visible:outline-none active:scale-[0.97];
+    @apply inline-flex cursor-pointer items-center justify-center gap-2 rounded-xs border border-sandalwood-300 bg-transparent px-7 py-2.5 font-sans text-sm font-medium text-sandalwood-800 transition-colors duration-200 hover:border-sandalwood-600 hover:bg-sandalwood-50 focus-visible:ring-2 focus-visible:ring-tibetan-400 focus-visible:ring-offset-2 focus-visible:ring-offset-rice-50 focus-visible:outline-none;
   }
   .btn-gold {
-    @apply inline-flex cursor-pointer items-center justify-center gap-2 rounded-full bg-gold-500 px-6 py-2.5 font-sans text-sm font-semibold text-ink-950 shadow-md shadow-gold-600/25 transition duration-200 hover:bg-gold-400 hover:shadow-lg hover:shadow-gold-600/30 focus-visible:ring-2 focus-visible:ring-gold-600 focus-visible:outline-none active:scale-[0.97];
+    @apply inline-flex cursor-pointer items-center justify-center gap-2 rounded-xs border border-ink-900/85 bg-ink-900 px-7 py-2.5 font-sans text-sm font-medium text-paper transition-colors duration-200 hover:bg-ink-700 focus-visible:ring-2 focus-visible:ring-tibetan-400 focus-visible:ring-offset-2 focus-visible:ring-offset-rice-50 focus-visible:outline-none;
   }
+  .btn-ghost {
+    @apply inline-flex cursor-pointer items-center gap-1.5 font-sans text-sm text-sandalwood-700 transition-colors duration-200 hover:text-tibetan-600;
+  }
+
+  /* 纸面卡片：发丝描边，无投影 */
   .card {
-    @apply rounded-2xl border border-sandalwood-200/70 bg-surface transition duration-300;
-    box-shadow: var(--shadow-card);
-  }
-  .card:hover {
-    box-shadow: var(--shadow-card-hover);
+    @apply rounded-card border border-hairline bg-surface;
   }
   .card-link {
-    @apply cursor-pointer overflow-hidden rounded-2xl border border-sandalwood-200/70 bg-surface transition duration-300 hover:-translate-y-1 hover:border-gold-400/70;
-    box-shadow: var(--shadow-card);
+    @apply rounded-card relative block border border-hairline bg-surface transition-colors duration-300 hover:border-sandalwood-400;
   }
-  .card-link:hover {
-    box-shadow: var(--shadow-card-hover);
+  .card-link:hover .card-media img {
+    transform: scale(1.03);
   }
+
   .chip {
-    @apply inline-flex items-center gap-1 rounded-full border border-sandalwood-300/70 bg-sandalwood-50 px-3 py-1 text-xs text-sandalwood-700;
+    @apply inline-flex items-center gap-1 rounded-xs border border-hairline px-2.5 py-1 font-sans text-xs text-ink-500;
   }
-  .zen-divider {
-    @apply mx-auto flex items-center gap-3 text-gold-500;
+
+  /* 横向发丝线（区块分隔） */
+  .hairline {
+    @apply block h-px w-full border-0 bg-hairline;
   }
-  .zen-divider::before,
-  .zen-divider::after {
+
+  /* 朱砂印章：全站唯一的高饱和红点，用于栏目/标签点题 */
+  .seal {
+    @apply inline-flex items-center justify-center rounded-xs bg-tibetan-600 px-1.5 py-1 font-serif text-xs leading-none font-normal text-paper;
+  }
+
+  /* 单点装饰：以细线与圆点取代 ❖/✦ 字符 */
+  .ornament {
+    @apply inline-flex items-center gap-2.5 text-sandalwood-400;
+  }
+  .ornament::before,
+  .ornament::after {
     content: '';
-    @apply h-px w-16 bg-gradient-to-r from-transparent via-sandalwood-300 to-transparent;
+    @apply h-px w-10 bg-hairline;
   }
+
+  /* 竖排小标（中式标签，如 Hero 上的 kicker） */
+  .vertical-label {
+    writing-mode: vertical-rl;
+    letter-spacing: 0.3em;
+  }
+
   .section-title {
-    @apply font-brush text-3xl text-sandalwood-800 sm:text-4xl;
+    @apply font-serif text-2xl font-normal tracking-tight text-ink-900 sm:text-3xl;
     text-wrap: balance;
   }
   .section-sub {
-    @apply font-serif text-sm text-sandalwood-500;
+    @apply font-serif text-sm leading-relaxed text-ink-500;
+  }
+  /* 区块小标：细字距 + 短朱砂线 */
+  .section-kicker {
+    @apply inline-flex items-center gap-2.5 font-sans text-xs tracking-[0.3em] text-tibetan-600 uppercase;
+  }
+  .section-kicker::before {
+    content: '';
+    @apply h-px w-8 bg-tibetan-600;
   }
 }
 
@@ -572,9 +649,9 @@ body {
 }
 .article-body h2 {
   font-family: var(--font-serif);
-  font-size: 1.45em;
+  font-size: 1.4em;
   font-weight: 700;
-  margin: 1.6em 0 0.8em;
+  margin: 2em 0 0.9em;
   padding-bottom: 0.35em;
   border-bottom: 1px solid var(--reader-rule);
   color: var(--reader-heading);
@@ -582,18 +659,17 @@ body {
 }
 .article-body h3 {
   font-family: var(--font-serif);
-  font-size: 1.2em;
+  font-size: 1.18em;
   font-weight: 700;
-  margin: 1.4em 0 0.6em;
+  margin: 1.5em 0 0.6em;
   color: var(--reader-heading);
   scroll-margin-top: 5.5rem;
 }
 .article-body blockquote {
-  margin: 1.2em 0;
-  padding: 0.9em 1.2em;
-  border-left: 3px solid var(--reader-accent);
+  margin: 1.4em 0;
+  padding: 0.9em 1.3em;
+  border-left: 2px solid var(--reader-accent);
   background: var(--reader-quote-bg);
-  border-radius: 0 0.75rem 0.75rem 0;
   color: var(--reader-quote-ink);
   font-style: normal;
 }
@@ -604,6 +680,7 @@ body {
 .article-body a {
   color: var(--reader-link);
   text-decoration: underline;
+  text-decoration-thickness: 1px;
   text-underline-offset: 3px;
 }
 .article-body table {
@@ -639,90 +716,81 @@ body {
 }
 .article-body hr {
   border: none;
-  margin: 2em auto;
-  text-align: center;
-}
-.article-body hr::after {
-  content: '❖';
-  color: var(--reader-accent);
-  font-size: 1em;
+  margin: 2.4em auto;
+  height: 1px;
+  width: 4rem;
+  background: var(--reader-accent);
+  opacity: 0.55;
 }
 
-/* —— 主题一：明亮（默认） —— */
+/* —— 主题一：宣纸（默认，与站点新中式主调一致） —— */
 .reader-theme-light {
-  --reader-bg: #ffffff;
-  --reader-ink: #2b2620;
-  --reader-heading: #6b4425;
-  --reader-accent: #a06f40;
-  --reader-link: #8c2f39;
-  --reader-rule: #e3d5b8;
-  --reader-quote-bg: #f6f0e2;
-  --reader-quote-ink: #4a443c;
+  --reader-bg: #fbfaf7;
+  --reader-ink: #26241f;
+  --reader-heading: #2f3d37;
+  --reader-accent: #b8382e;
+  --reader-link: #9b3028;
+  --reader-rule: #e2ddd3;
+  --reader-quote-bg: #f4f2ec;
+  --reader-quote-ink: #45413a;
 }
 
-/* —— 主题二：暗色 —— */
+/* —— 主题二：焦墨（暗色） —— */
 .reader-theme-dark {
-  --reader-bg: #211d18;
-  --reader-ink: #d9d2c4;
-  --reader-heading: #e0c76c;
-  --reader-accent: #c9a227;
-  --reader-link: #d48d88;
-  --reader-rule: #3a332a;
-  --reader-quote-bg: #2c2721;
-  --reader-quote-ink: #cfc7b8;
+  --reader-bg: #17191c;
+  --reader-ink: #d8d5cf;
+  --reader-heading: #e6d4a2;
+  --reader-accent: #bd5f52;
+  --reader-link: #d4776a;
+  --reader-rule: #2e3236;
+  --reader-quote-bg: #1f2226;
+  --reader-quote-ink: #c6c2bb;
 }
 
 /* —— 主题三：护眼米黄 —— */
 .reader-theme-sepia {
-  --reader-bg: #f5ecd7;
-  --reader-ink: #453820;
-  --reader-heading: #7a5a25;
-  --reader-accent: #a06f40;
-  --reader-link: #8c2f39;
-  --reader-rule: #dcc9a2;
-  --reader-quote-bg: #ecdfc0;
-  --reader-quote-ink: #5a4b2e;
+  --reader-bg: #f6f1e6;
+  --reader-ink: #3a3428;
+  --reader-heading: #4a3f2c;
+  --reader-accent: #a2673a;
+  --reader-link: #96342a;
+  --reader-rule: #ddd3bd;
+  --reader-quote-bg: #ece5d4;
+  --reader-quote-ink: #4e4636;
 }
 
 /* —— 主题四：羊皮纸 —— */
 .reader-theme-parchment {
-  --reader-bg: #f4ecd8;
-  --reader-ink: #4a3b26;
-  --reader-heading: #6b4425;
-  --reader-accent: #a8871f;
-  --reader-link: #7d272c;
-  --reader-rule: #d9c9a4;
-  --reader-quote-bg: #ead9b4;
-  --reader-quote-ink: #57462c;
-  background-image: radial-gradient(
-      ellipse at 20% 10%,
-      rgba(160, 111, 64, 0.05),
-      transparent 55%
-    ),
-    radial-gradient(ellipse at 80% 90%, rgba(160, 111, 64, 0.06), transparent 50%);
+  --reader-bg: #f3ecdc;
+  --reader-ink: #443a26;
+  --reader-heading: #52452b;
+  --reader-accent: #9a7a2c;
+  --reader-link: #8c2f26;
+  --reader-rule: #d8cbaf;
+  --reader-quote-bg: #e9dfc8;
+  --reader-quote-ink: #514631;
 }
 
 /* —— 主题五：月光蓝 —— */
 .reader-theme-moon {
-  --reader-bg: #e9f0f8;
-  --reader-ink: #2b3a4e;
-  --reader-heading: #3a5a82;
-  --reader-accent: #5f87b5;
-  --reader-link: #72242e;
-  --reader-rule: #c3d4e6;
-  --reader-quote-bg: #dde8f3;
-  --reader-quote-ink: #3d4f66;
+  --reader-bg: #eef3f7;
+  --reader-ink: #26313d;
+  --reader-heading: #33465c;
+  --reader-accent: #5c7f9c;
+  --reader-link: #96342a;
+  --reader-rule: #cddae4;
+  --reader-quote-bg: #e2eaf1;
+  --reader-quote-ink: #37465a;
 }
 
-/* 阅读进度条 */
+/* 阅读进度条：细线 + 朱砂 */
 .reader-progress {
-  @apply fixed top-0 left-0 z-50 h-[3px] rounded-r-full bg-gradient-to-r from-gold-400 via-gold-500 to-tibetan-500;
-  box-shadow: 0 0 8px rgba(201, 162, 39, 0.55);
+  @apply fixed top-0 left-0 z-50 h-[2px] bg-tibetan-600;
 }
 
 /* 目录当前项 */
 .toc-active {
-  @apply border-l-2 border-tibetan-600 pl-3 font-semibold text-tibetan-700;
+  @apply border-l-2 border-tibetan-600 pl-3 font-medium text-tibetan-700;
 }
 
 /* 签筒摇动 */
@@ -784,7 +852,7 @@ body {
   100% { transform: rotate(0deg); }
 }
 
-/* “嗡”字余韵 *//* 签支飞升出筒 */
+/* 签支飞升出筒 */
 .stick-fly {
   animation: stick-fly 1.15s cubic-bezier(0.3, 0.7, 0.4, 1) both;
 }
@@ -792,6 +860,7 @@ body {
   0% { transform: translate(0, 0) rotate(0deg); opacity: 1; }
   100% { transform: translate(-46px, -190px) rotate(16deg); opacity: 0; }
 }
+
 /* 许愿树红绸飘带 */
 .wish-ribbon {
   transform-origin: top center;
@@ -809,7 +878,7 @@ body {
   letter-spacing: 0.12em;
   max-height: 96px;
   overflow: hidden;
-  border: 1px solid rgba(201, 162, 39, 0.55);
+  border: 1px solid rgba(184, 56, 46, 0.35);
 }
 .ribbon-tail {
   width: 14px;
@@ -826,9 +895,10 @@ body {
   18% { opacity: 1; }
   100% { opacity: 0; transform: translate(-50%, -110px) scale(1.35); }
 }
-/* Banner 文字投影（明亮照片上保持可读） */
+
+/* 深色横幅文字：改用底部墨色渐变托底，取消重投影 */
 .banner-text {
-  text-shadow: 0 2px 10px rgba(12, 20, 26, 0.6), 0 1px 3px rgba(12, 20, 26, 0.5);
+  text-shadow: 0 1px 24px rgba(10, 12, 10, 0.45);
 }
 
 /* 签文浮动弹窗 */
@@ -842,13 +912,13 @@ body {
 .lot-rays {
   background: conic-gradient(
     from 0deg,
-    rgba(239, 212, 100, 0.16) 0deg, rgba(239, 212, 100, 0.02) 30deg,
-    rgba(239, 212, 100, 0.14) 60deg, rgba(239, 212, 100, 0.02) 90deg,
-    rgba(239, 212, 100, 0.16) 120deg, rgba(239, 212, 100, 0.02) 150deg,
-    rgba(239, 212, 100, 0.14) 180deg, rgba(239, 212, 100, 0.02) 210deg,
-    rgba(239, 212, 100, 0.16) 240deg, rgba(239, 212, 100, 0.02) 270deg,
-    rgba(239, 212, 100, 0.14) 300deg, rgba(239, 212, 100, 0.02) 330deg,
-    rgba(239, 212, 100, 0.16) 360deg
+    rgba(184, 56, 46, 0.14) 0deg, rgba(184, 56, 46, 0.01) 30deg,
+    rgba(184, 56, 46, 0.12) 60deg, rgba(184, 56, 46, 0.01) 90deg,
+    rgba(184, 56, 46, 0.14) 120deg, rgba(184, 56, 46, 0.01) 150deg,
+    rgba(184, 56, 46, 0.12) 180deg, rgba(184, 56, 46, 0.01) 210deg,
+    rgba(184, 56, 46, 0.14) 240deg, rgba(184, 56, 46, 0.01) 270deg,
+    rgba(184, 56, 46, 0.12) 300deg, rgba(184, 56, 46, 0.01) 330deg,
+    rgba(184, 56, 46, 0.14) 360deg
   );
   animation: lot-rays 14s linear infinite;
   filter: blur(8px);
@@ -859,6 +929,7 @@ body {
 .lot-fade-in {
   animation: fade-up 0.45s ease-out both;
 }
+
 /* Google 翻译工具条美化 */
 .goog-te-banner-frame,
 .goog-logo-link {

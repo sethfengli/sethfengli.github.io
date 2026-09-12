@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState, type ReactNode } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { useI18n } from '../i18n'
 import {
@@ -17,11 +17,48 @@ import { LotCylinder3D } from '../components/zen3d/LotCylinder3D'
 import { IncenseBurner } from '../components/zen/IncenseBurner'
 import { Incense3D } from '../components/zen3d/Incense3D'
 import { LingQiBoard } from '../components/zen/LingQiBoard'
-import { PageBanner } from '../components/ui/PageBanner'
+import { PageBanner, Section } from '../components/ui/PageBanner'
 import { Reveal } from '../components/ui/Reveal'
 
 type Phase = 'idle' | 'shaking' | 'revealed'
 type Tab = 'lots' | 'lingqi'
+
+/** 法门切换图标：内联发丝线 SVG，取代旧版 emoji */
+const TAB_ICONS: Record<Tab, ReactNode> = {
+  lots: (
+    <svg
+      viewBox="0 0 24 24"
+      className="h-4 w-4"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={1.5}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden
+    >
+      <path d="M12 3.5c1.9 2 3 4 3 5.8a3 3 0 0 1-6 0c0-1.8 1.1-3.8 3-5.8Z" />
+      <path d="M5.5 12.5c2.6 1 4.3 2.4 5 4.2M18.5 12.5c-2.6 1-4.3 2.4-5 4.2" />
+      <path d="M3.5 18.5c5 2 12 2 17 0" />
+    </svg>
+  ),
+  lingqi: (
+    <svg
+      viewBox="0 0 24 24"
+      className="h-4 w-4"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={1.5}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden
+    >
+      <rect x="3.5" y="3.5" width="17" height="17" rx="1" />
+      <circle cx="8.5" cy="8.5" r="1.2" />
+      <circle cx="15.5" cy="15.5" r="1.2" />
+      <circle cx="12" cy="12" r="1.2" />
+    </svg>
+  ),
+}
 
 export function Lots() {
   const { t, lang } = useI18n()
@@ -81,7 +118,7 @@ export function Lots() {
 
   return (
     <div>
-      {/* 页头：观音法门（明亮浅色调） */}
+      {/* 页头：观音法门（并置式题头，照片全明） */}
       <PageBanner
         image="/photos/guanyin.jpg"
         kicker={t('lots.kicker')}
@@ -89,14 +126,14 @@ export function Lots() {
         subtitle={t('lots.subtitle')}
       />
 
-      <div className="mx-auto max-w-5xl px-4 py-12 sm:px-6">
-        {/* 法门切换 */}
-        <div className="mx-auto flex w-fit items-center gap-1 rounded-full border border-sandalwood-200/80 bg-surface p-1 shadow-sm">
+      <Section width="tight">
+        {/* 法门切换：方角细边分段器（无胶囊、无投影） */}
+        <div className="mx-auto flex w-fit items-center gap-1 rounded-xs border border-hairline bg-surface p-1">
           {(
             [
-              { id: 'lots', label: t('lots.tabLots'), icon: '🪷' },
-              { id: 'lingqi', label: t('lots.tabLingqi'), icon: '🎲' },
-            ] as Array<{ id: Tab; label: string; icon: string }>
+              { id: 'lots', label: t('lots.tabLots') },
+              { id: 'lingqi', label: t('lots.tabLingqi') },
+            ] as Array<{ id: Tab; label: string }>
           ).map((x) => (
             <button
               key={x.id}
@@ -106,13 +143,11 @@ export function Lots() {
                 setParams(x.id === 'lingqi' ? { tab: 'lingqi' } : {})
               }}
               aria-pressed={tab === x.id}
-              className={`flex cursor-pointer items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium transition-all duration-200 ${
-                tab === x.id
-                  ? 'bg-tibetan-600 text-paper shadow-md shadow-tibetan-900/25'
-                  : 'text-ink-700 hover:bg-rice-100'
+              className={`flex cursor-pointer items-center gap-2 rounded-xs px-5 py-2.5 text-sm transition-colors duration-200 ${
+                tab === x.id ? 'bg-tibetan-600 text-paper' : 'text-ink-700 hover:text-tibetan-600'
               }`}
             >
-              <span aria-hidden>{x.icon}</span>
+              <span aria-hidden>{TAB_ICONS[x.id]}</span>
               {x.label}
             </button>
           ))}
@@ -120,18 +155,16 @@ export function Lots() {
 
         {/* ---------- 观音灵签 ---------- */}
         {tab === 'lots' ? (
-          <div className="mt-12 space-y-14">
+          <div className="mt-14 space-y-16">
             <Reveal>
-              <p className="mx-auto max-w-2xl text-center font-serif text-[15px] leading-loose text-ink-700">
-                {t('lots.intro')}
-              </p>
+              <p className="section-sub mx-auto max-w-2xl text-center leading-loose">{t('lots.intro')}</p>
             </Reveal>
 
-            {/* 抽签区：两栏卡片，不再拥挤 */}
-            <div className="grid gap-6 md:grid-cols-2">
+            {/* 抽签区：造像与签筒并置，发丝描边纸卡 */}
+            <div className="grid gap-8 md:grid-cols-2">
               <Reveal>
-                <div className="card-link flex h-full flex-col items-center gap-3 p-6 text-center">
-                  <div className="overflow-hidden rounded-2xl ring-4 ring-gold-400/50 shadow-md">
+                <div className="card flex h-full flex-col items-center gap-5 p-8 text-center">
+                  <div className="overflow-hidden rounded-xs border border-hairline">
                     <img
                       src="/photos/guanyin.jpg"
                       alt={t('lots.guanyinName')}
@@ -140,13 +173,13 @@ export function Lots() {
                       className="h-72 w-52 object-cover sm:h-80 sm:w-56"
                     />
                   </div>
-                  <p className="font-serif text-xs tracking-[0.3em] text-sandalwood-400">{t('lots.guanyinName')}</p>
+                  <p className="section-kicker">{t('lots.guanyinName')}</p>
                   <p className="max-w-xs font-serif text-[13px] leading-relaxed text-ink-700">{t('lots.guanyinDesc')}</p>
                 </div>
               </Reveal>
 
               <Reveal delay={100}>
-                <div className="card-link flex h-full flex-col items-center justify-center gap-4 p-6">
+                <div className="card flex h-full flex-col items-center justify-center gap-5 p-8">
                   <LotCylinder3D
                     shaking={phase === 'shaking'}
                     revealed={phase === 'revealed'}
@@ -161,7 +194,7 @@ export function Lots() {
                   >
                     {phase === 'shaking' ? t('lots.drawing') : phase === 'revealed' ? t('lots.again') : t('lots.draw')}
                   </button>
-                  {phase !== 'shaking' && <p className="font-serif text-xs text-sandalwood-400">{t('lots.shakeHint')}</p>}
+                  {phase !== 'shaking' && <p className="font-serif text-xs text-sandalwood-500">{t('lots.shakeHint')}</p>}
                 </div>
               </Reveal>
             </div>
@@ -176,22 +209,23 @@ export function Lots() {
             {/* 我的签文 */}
             <Reveal>
               <section>
-                <div className="flex flex-wrap items-center justify-between gap-3">
-                  <h2 className="font-serif text-xl font-bold text-sandalwood-800">{t('lots.historyTitle')}</h2>
+                <hr className="hairline" />
+                <div className="mt-8 flex flex-wrap items-center justify-between gap-3">
+                  <h2 className="font-serif text-xl font-normal tracking-tight text-sandalwood-800">{t('lots.historyTitle')}</h2>
                   {saved.length > 0 && (
-                    <button type="button" onClick={clear} className="cursor-pointer text-xs text-tibetan-500 underline underline-offset-4 transition hover:text-tibetan-700">
+                    <button type="button" onClick={clear} className="btn-ghost text-xs underline underline-offset-4">
                       {t('lots.clearHistory')}
                     </button>
                   )}
                 </div>
-                <p className="mt-1 text-xs text-sandalwood-400">{t('lots.historyHint')}</p>
+                <p className="mt-2 text-xs text-sandalwood-500">{t('lots.historyHint')}</p>
 
                 {saved.length === 0 ? (
-                  <p className="mt-6 rounded-2xl border-2 border-dashed border-sandalwood-200 bg-rice-100/50 p-10 text-center font-serif text-sandalwood-500">
+                  <p className="mt-8 rounded-card border border-dashed border-hairline bg-rice-100/50 p-10 text-center font-serif text-sandalwood-500">
                     {t('lots.historyEmpty')}
                   </p>
                 ) : (
-                  <ul className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                  <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                     {saved.map((s) => {
                       const l = LOTS.find((x) => x.id === s.lotId)
                       if (!l) return null
@@ -203,14 +237,14 @@ export function Lots() {
                             onClick={() => openHistory(l.id)}
                             className="card-link flex w-full cursor-pointer items-center gap-4 p-4 text-left"
                           >
-                            <span className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-sm font-bold ${levelClass(l.level)}`}>
+                            <span className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xs font-serif text-sm ${levelClass(l.level)}`}>
                               {l.id}
                             </span>
                             <span className="min-w-0">
-                              <span className="block truncate font-serif font-bold text-sandalwood-800">
+                              <span className="block truncate font-serif text-sandalwood-800">
                                 {t('lots.lotNumber', { n: l.id })} · {lx.title}
                               </span>
-                              <span className="mt-0.5 block text-xs text-sandalwood-400">
+                              <span className="mt-1 block text-xs text-sandalwood-500">
                                 {new Date(s.drawnAt).toLocaleString()}
                               </span>
                             </span>
@@ -223,32 +257,46 @@ export function Lots() {
               </section>
             </Reveal>
 
-            <p className="text-center font-serif text-xs leading-relaxed text-sandalwood-400">{t('lots.disclaimer')}</p>
+            <p className="text-center font-serif text-xs leading-relaxed text-sandalwood-500">{t('lots.disclaimer')}</p>
           </div>
         ) : (
           /* ---------- 灵棋经 ---------- */
           <Reveal>
-            <div className="mt-12 space-y-10">
-              <p className="mx-auto max-w-2xl text-center font-serif text-[15px] leading-loose text-ink-700">
-                {t('lingqi.subtitle')}
-              </p>
+            <div className="mt-14 space-y-10">
+              <p className="section-sub mx-auto max-w-2xl text-center leading-loose">{t('lingqi.subtitle')}</p>
               <LingQiBoard />
               <a
                 href="https://github.com/seth2000/linqijing"
                 target="_blank"
                 rel="noreferrer"
-                className="card-link mx-auto flex max-w-xl items-center gap-4 p-5 text-center"
+                className="card-link mx-auto flex max-w-xl items-center gap-5 p-6"
               >
-                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-gold-100 text-2xl" aria-hidden>📖</span>
+                <span
+                  className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xs border border-hairline text-tibetan-600"
+                  aria-hidden
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    className="h-5 w-5"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth={1.5}
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H19v16H6.5A2.5 2.5 0 0 0 4 21.5V5.5Z" />
+                    <path d="M8 7.5h7M8 11h5" />
+                  </svg>
+                </span>
                 <span className="text-left">
-                  <span className="block font-serif font-bold text-sandalwood-800">{t('lingqi.fullText')}</span>
-                  <span className="mt-0.5 block text-xs text-sandalwood-500">{t('lingqi.fullTextDesc')}</span>
+                  <span className="block font-serif text-sandalwood-800">{t('lingqi.fullText')}</span>
+                  <span className="mt-1 block text-xs text-sandalwood-500">{t('lingqi.fullTextDesc')}</span>
                 </span>
               </a>
             </div>
           </Reveal>
         )}
-      </div>
+      </Section>
 
       {/* ---------- 签文浮动弹窗 ---------- */}
       {lot && modalOpen && (
@@ -261,7 +309,7 @@ export function Lots() {
       )}
 
       {toast && (
-        <div className="fixed bottom-6 left-1/2 z-50 -translate-x-1/2 animate-fade-up rounded-full bg-sandalwood-900/95 px-6 py-3 font-serif text-sm text-gold-200 shadow-xl">
+        <div className="fixed bottom-6 left-1/2 z-50 -translate-x-1/2 animate-fade-up rounded-xs border border-sandalwood-700 bg-sandalwood-900 px-6 py-3 font-serif text-sm text-paper">
           {toast}
         </div>
       )}
@@ -301,29 +349,41 @@ function LotModal({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-label={t('lots.lotNumber', { n: lot.id })}>
-      <div className="absolute inset-0 bg-sandalwood-950/60 backdrop-blur-sm" onClick={onClose} />
-      {/* 光晕 */}
+      {/* 遮罩：不透明压暗，不再毛玻璃 */}
+      <div className="absolute inset-0 bg-sandalwood-950/80" onClick={onClose} />
+      {/* 光晕（装饰性圆形，保留圆） */}
       <div className="lot-rays pointer-events-none absolute h-[560px] w-[560px] rounded-full" aria-hidden />
-      <div className="lot-modal-in relative max-h-[88vh] w-full max-w-xl overflow-y-auto rounded-3xl border-2 border-gold-400/70 bg-rice-50 p-7 shadow-2xl sm:p-9">
+      <div className="lot-modal-in relative max-h-[88vh] w-full max-w-xl overflow-y-auto rounded-card border border-hairline bg-rice-50 p-7 shadow-lift sm:p-9">
         <button
           type="button"
           onClick={onClose}
           aria-label={t('nav.closeMenu')}
-          className="absolute top-3 right-3 flex h-9 w-9 cursor-pointer items-center justify-center rounded-full text-sandalwood-500 transition hover:bg-sandalwood-100"
+          className="absolute top-4 right-4 flex h-9 w-9 cursor-pointer items-center justify-center rounded-xs border border-hairline text-sandalwood-500 transition-colors duration-200 hover:border-sandalwood-500 hover:text-tibetan-600"
         >
-          ✕
+          <svg
+            viewBox="0 0 24 24"
+            className="h-4 w-4"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth={1.5}
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            aria-hidden
+          >
+            <path d="M6 6l12 12M18 6L6 18" />
+          </svg>
         </button>
 
-        <div className="flex flex-wrap items-center justify-center gap-2">
-          <span className={`rounded-full px-3 py-1 text-xs font-bold ${levelClass(lot.level)}`}>{lx.level}</span>
-          <h3 className="font-brush text-3xl text-sandalwood-900">{lx.title}</h3>
-          <span className="text-sm text-sandalwood-400">{t('lots.lotNumber', { n: lot.id })}</span>
+        <div className="flex flex-wrap items-center justify-center gap-3">
+          <span className={`rounded-xs px-3 py-1 text-xs ${levelClass(lot.level)}`}>{lx.level}</span>
+          <h3 className="font-serif text-2xl font-normal tracking-tight text-sandalwood-900 sm:text-3xl">{lx.title}</h3>
+          <span className="text-sm text-sandalwood-500">{t('lots.lotNumber', { n: lot.id })}</span>
         </div>
 
         {/* 签诗 */}
-        <div className="mt-6 rounded-2xl border border-gold-400/50 bg-gradient-to-b from-rice-100 to-rice-50 px-6 py-6">
-          <p className="font-serif text-xs tracking-[0.4em] text-gold-600">{t('lots.poemLabel')}</p>
-          <p className="mt-4 space-y-2 font-brush text-xl leading-relaxed text-ink-900 sm:text-2xl">
+        <div className="mt-8 rounded-card border border-hairline bg-surface px-6 py-7">
+          <p className="section-kicker">{t('lots.poemLabel')}</p>
+          <p className="mt-5 space-y-2 font-brush text-xl leading-relaxed text-ink-900 sm:text-2xl">
             {lx.poem.map((line, i) => (
               <span key={i} className="block">
                 {line}
@@ -334,26 +394,39 @@ function LotModal({
 
         {/* 解签按钮 → 解签与禅语祝福一体展开 */}
         {!showMeaning ? (
-          <div className="mt-6 text-center">
+          <div className="mt-8 text-center">
             <button type="button" onClick={() => setShowMeaning(true)} className="btn-gold !px-8">
-              🔎 {t('lots.interpretationLabel')}
+              <svg
+                viewBox="0 0 24 24"
+                className="h-4 w-4"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth={1.5}
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden
+              >
+                <circle cx="10.5" cy="10.5" r="6" />
+                <path d="m15 15 4.5 4.5" />
+              </svg>
+              {t('lots.interpretationLabel')}
             </button>
           </div>
         ) : (
-          <div className="lot-fade-in mt-6 rounded-2xl bg-tibetan-50 px-6 py-5">
-            <p className="font-serif text-sm font-bold tracking-widest text-tibetan-600">{t('lots.interpretationLabel')}</p>
-            <p className="mt-2 font-serif text-[15px] leading-loose text-ink-700">{lx.meaning}</p>
+          <div className="lot-fade-in mt-8 rounded-card border border-hairline bg-surface px-6 py-6">
+            <p className="section-kicker">{t('lots.interpretationLabel')}</p>
+            <p className="mt-4 font-serif text-[15px] leading-loose text-ink-700">{lx.meaning}</p>
             {/* 禅语祝福：与解签一体 */}
-            <div className="mt-5 border-t border-tibetan-200/70 pt-4">
-              <p className="font-serif text-sm font-bold tracking-widest text-tibetan-600">{t('lots.blessingLabel')}</p>
-              <p className="mt-2 font-brush text-lg leading-relaxed text-tibetan-600">{lx.blessing}</p>
+            <div className="mt-6 border-t border-hairline pt-5">
+              <p className="section-kicker">{t('lots.blessingLabel')}</p>
+              <p className="mt-4 font-brush text-lg leading-relaxed text-tibetan-600">{lx.blessing}</p>
             </div>
           </div>
         )}
 
-        <div className="mt-6 flex items-center justify-center gap-3">
+        <div className="mt-8 flex items-center justify-center gap-3">
           <button type="button" onClick={onSave} disabled={saved} className={saved ? 'btn-secondary !cursor-default opacity-60' : 'btn-primary'}>
-            {saved ? `✓ ${t('lots.savedLot')}` : `✧ ${t('lots.saveLot')}`}
+            {saved ? t('lots.savedLot') : t('lots.saveLot')}
           </button>
         </div>
       </div>

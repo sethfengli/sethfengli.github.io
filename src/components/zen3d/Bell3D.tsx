@@ -448,7 +448,7 @@ export function Bell3D({ fallback }: { fallback?: ReactNode }) {
       <div className="relative h-[380px] w-full max-w-[560px] sm:h-[430px]">
         <canvas ref={canvasRef} className="h-full w-full" aria-label={t('common.bellAlt')} />
         {ringing && (
-          <span className="pointer-events-none absolute top-6 left-1/2 -translate-x-1/2 font-brush text-2xl text-gold-600">
+          <span className="pointer-events-none absolute top-6 left-1/2 -translate-x-1/2 font-serif text-lg tracking-[0.3em] text-tibetan-600">
             {t('dharma.ringing')}
           </span>
         )}
@@ -459,11 +459,15 @@ export function Bell3D({ fallback }: { fallback?: ReactNode }) {
         disabled={ringing}
         className={`btn-primary ${ringing ? 'cursor-wait opacity-70' : ''}`}
       >
-        🔔 {ringing ? t('dharma.ringing') : count > 0 ? t('dharma.ringAgain') : t('dharma.ringBell')}
+        <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+          <path d="M12 3a6 6 0 0 0-6 6v3.5L4.5 15h15L18 12.5V9a6 6 0 0 0-6-6Z" />
+          <path d="M10 18a2 2 0 0 0 4 0" />
+        </svg>
+        {ringing ? t('dharma.ringing') : count > 0 ? t('dharma.ringAgain') : t('dharma.ringBell')}
       </button>
-      <div className="text-center font-serif text-sm text-sandalwood-500" aria-live="polite">
+      <div className="text-center font-serif text-sm text-ink-500" aria-live="polite">
         {count > 0 ? t('dharma.bellCount', { n: count }) : '\u00a0'}
-        <p className="mt-1 text-[11px] text-sandalwood-400">{t('common.bellHint')}</p>
+        <p className="mt-1.5 font-sans text-[11px] text-ink-300">{t('common.bellHint')}</p>
       </div>
     </div>
   )

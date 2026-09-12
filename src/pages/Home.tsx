@@ -5,8 +5,7 @@ import { verseOfTheMoment } from '../data/verses'
 import type { IllustrationVariant } from '../components/zen/ZenIllustration'
 import { CoverImage } from '../components/zen/CoverImage'
 import { Incense3D } from '../components/zen3d/Incense3D'
-import { PhotoLogo } from '../components/zen/PhotoLogo'
-import { PageBanner, SectionHeading } from '../components/ui/PageBanner'
+import { PageBanner, Section, SectionHeading, Ornament } from '../components/ui/PageBanner'
 import { Reveal } from '../components/ui/Reveal'
 
 const FEATURED_SLUGS = ['301jgj', '302xinj', '303liuzutanjing', '102lfsx', '001jznf', '001zyxuefo', '402nianfolun', '202bada']
@@ -21,182 +20,261 @@ export function Home() {
     (a): a is NonNullable<typeof a> => Boolean(a),
   )
 
+  const [lead, ...rest] = featured
+  const leadMeta = lead ? localizedMeta(lead, lang) : null
+
   return (
     <div>
-      {/* ---------- Hero（明快浅色调） ---------- */}
+      {/* ---------- Hero：图文并置题头 ---------- */}
       <PageBanner
         image="/photos/blossom.jpg"
         kicker={t('home.heroKicker')}
         title={t('home.heroTitle')}
         subtitle={t('home.heroSubtitle')}
-        decor={
-          <>
-            {/* 飘浮莲花 */}
-            <div className="pointer-events-none absolute top-24 right-[8%] hidden animate-float md:block" aria-hidden>
-              <PhotoLogo className="h-20 w-20 opacity-70" />
-            </div>
-            <div className="pointer-events-none absolute bottom-24 left-[6%] hidden animate-float-slow md:block" aria-hidden>
-              <PhotoLogo className="h-14 w-14 opacity-45" />
-            </div>
-          </>
-        }
       >
-        <div className="flex flex-col items-center pt-6 pb-2">
-          <div className="zen-divider mt-4 animate-fade-up" style={{ animationDelay: '0.15s' }}>
-            <span className="text-lg">✦</span>
-          </div>
-          <div className="mt-8 flex animate-fade-up flex-wrap items-center justify-center gap-4" style={{ animationDelay: '0.25s' }}>
-            <Link to="/articles" viewTransition className="btn-gold">
-              {t('home.ctaArticles')}
-            </Link>
-            <Link to="/lots" viewTransition className="btn-secondary border-sandalwood-500/50 bg-rice-50/70 text-sandalwood-800 hover:border-tibetan-500 hover:bg-rice-50 hover:text-tibetan-700">
-              {t('home.ctaLots')}
-            </Link>
-          </div>
-
-          {/* 每日法语 */}
-          <blockquote
-            className="mt-12 max-w-2xl animate-fade-up rounded-2xl border border-gold-500/40 bg-paper/80 px-6 py-5 shadow-lg shadow-sandalwood-900/5 backdrop-blur-sm sm:px-8"
-            style={{ animationDelay: '0.35s' }}
-          >
-            <p className="font-serif text-sm tracking-widest text-tibetan-600">{t('home.dailyVerseTitle')}</p>
-            <p className="mt-3 font-brush text-xl leading-relaxed text-ink-900">
-              {lang === 'zh' ? `「${verseText}」` : `“${verseText}”`}
-            </p>
-            <footer className="mt-2 text-right font-serif text-xs text-ink-500">—— {verseSource}</footer>
-          </blockquote>
-
-          {/* 滚动提示 */}
-          <div className="mt-10 animate-fade-up" style={{ animationDelay: '0.45s' }} aria-hidden>
-            <div className="mx-auto flex h-9 w-5 items-start justify-center rounded-full border border-sandalwood-600/50 p-1">
-              <div className="h-2 w-1 animate-bounce rounded-full bg-tibetan-500" />
-            </div>
-          </div>
+        <div className="mt-9 flex flex-wrap items-center gap-4">
+          <Link to="/articles" viewTransition className="btn-primary">
+            {t('home.ctaArticles')}
+          </Link>
+          <Link to="/lots" viewTransition className="btn-secondary">
+            {t('home.ctaLots')}
+          </Link>
         </div>
       </PageBanner>
 
-      {/* ---------- 从这里开始（导览卡片） ---------- */}
-      <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+      {/* ---------- 每日法语：单栏左对齐，小标在上、引文在下（不再左右拉扯） ---------- */}
+      <section className="border-b border-hairline">
+        <div className="container-page py-16 lg:py-20">
+          <div className="max-w-3xl">
+            <p className="section-kicker">{t('home.dailyVerseTitle')}</p>
+            <blockquote className="mt-7 font-serif text-xl leading-[2] text-ink-900 text-balance sm:text-2xl">
+              {lang === 'zh' ? `「${verseText}」` : `“${verseText}”`}
+            </blockquote>
+            <footer className="mt-6 flex items-center gap-3 font-sans text-xs tracking-wider text-ink-500">
+              <span className="h-px w-6 bg-hairline" />
+              {verseSource}
+            </footer>
+          </div>
+        </div>
+      </section>
+
+      {/* ---------- 从这里开始（导览） ---------- */}
+      <Section>
         <Reveal>
-          <SectionHeading title={t('home.quickTitle')} subtitle={t('home.quickSubtitle')} />
+          <SectionHeading
+            align="left"
+            kicker={t('nav.home')}
+            title={t('home.quickTitle')}
+            subtitle={t('home.quickSubtitle')}
+          />
         </Reveal>
-        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {[
             { to: '/articles', variant: 'sutra' as const, photo: '/photos/gate.jpg', title: t('nav.articles'), desc: t('home.quickArticlesDesc') },
             { to: '/dharma', variant: 'bell' as const, photo: '/photos/bell.jpg', title: t('nav.dharma'), desc: t('home.quickDharmaDesc') },
             { to: '/prayer', variant: 'incense' as const, photo: '/photos/lantern.jpg', title: t('nav.prayer'), desc: t('home.quickPrayerDesc') },
             { to: '/lots', variant: 'koi' as const, photo: '/photos/guanyin.jpg', title: t('nav.lots'), desc: t('home.quickLotsDesc') },
           ].map((card, i) => (
-            <Reveal key={card.to} delay={i * 90}>
-              <QuickCard {...card} />
+            <Reveal key={card.to} delay={i * 90} className="h-full">
+              <QuickCard {...card} index={i} />
             </Reveal>
           ))}
         </div>
-      </section>
+      </Section>
 
-      {/* ---------- 读一部经典 ---------- */}
-      <section className="bg-rice-100/70 py-16">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <Reveal>
-            <SectionHeading title={t('home.featuredTitle')} subtitle={t('home.featuredSubtitle')} />
+      {/* ---------- 读一部经典：主推 + 次级列表 ---------- */}
+      <Section tone="muted" className="border-y border-hairline">
+        <Reveal>
+          <SectionHeading
+            align="left"
+            kicker={t('nav.articles')}
+            title={t('home.featuredTitle')}
+            subtitle={t('home.featuredSubtitle')}
+          />
+        </Reveal>
+
+        {lead && leadMeta && (
+          <Reveal className="mt-10">
+            <ArticleLead
+              slug={lead.slug}
+              title={leadMeta.title}
+              excerpt={leadMeta.excerpt}
+              author={leadMeta.author}
+              illustration={lead.illustration}
+            />
           </Reveal>
-          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {featured.map((a, i) => {
-              const m = localizedMeta(a, lang)
-              return (
-                <Reveal key={a.slug} delay={(i % 3) * 90}>
-                  <ArticleCard slug={a.slug} title={m.title} excerpt={m.excerpt} illustration={a.illustration} author={m.author} />
-                </Reveal>
-              )
-            })}
-          </div>
-          <div className="mt-10 text-center">
-            <Link to="/articles" viewTransition className="btn-secondary">
-              {t('home.featuredAll')}
-            </Link>
-          </div>
+        )}
+
+        <ul className="mt-12 border-t border-hairline">
+          {rest.map((a, i) => {
+            const m = localizedMeta(a, lang)
+            return (
+              <Reveal key={a.slug} delay={(i % 4) * 70}>
+                <ArticleRow slug={a.slug} title={m.title} excerpt={m.excerpt} author={m.author} />
+              </Reveal>
+            )
+          })}
+        </ul>
+
+        <div className="mt-10">
+          <Link to="/articles" viewTransition className="btn-secondary">
+            {t('home.featuredAll')}
+          </Link>
         </div>
-      </section>
+      </Section>
 
       {/* ---------- 小憩：一炷心香 ---------- */}
-      <section className="bg-gradient-to-b from-transparent to-rice-100/60 pb-20">
-        <div className="mx-auto flex max-w-3xl flex-col items-center gap-6 px-4 text-center sm:px-6">
+      <Section width="narrow" rhythm="loose">
+        <div className="flex flex-col items-center gap-8 text-center">
           <Reveal>
-            <p className="font-serif text-sm text-sandalwood-500">{t('home.incenseHint')}</p>
+            <Ornament />
           </Reveal>
-          {/* 起始即全景（最小缩放），用户可自行拉近 */}
-          <Incense3D variant="sticks" distance={16} maxDistance={16} heightClass="h-[440px] w-[440px] max-w-full" />
+          <Reveal delay={80}>
+            <p className="max-w-md font-serif text-sm leading-relaxed text-ink-500">{t('home.incenseHint')}</p>
+          </Reveal>
+          <Reveal delay={140}>
+            {/* 起始即全景（最小缩放），用户可自行拉近 */}
+            <Incense3D variant="sticks" distance={16} maxDistance={16} heightClass="h-[420px] w-[420px] max-w-full" />
+          </Reveal>
         </div>
-      </section>
+      </Section>
     </div>
   )
 }
 
+/** 导览卡：统一高度，以序号 + 发丝描边建立层级 */
 function QuickCard({
   to,
   variant,
   photo,
   title,
   desc,
+  index,
 }: {
   to: string
   variant: IllustrationVariant
   photo: string
   title: string
   desc: string
+  index: number
 }) {
   return (
-    <Link to={to} viewTransition className="card-link group overflow-hidden">
-      <div className="overflow-hidden">
+    <Link
+      to={to}
+      viewTransition
+      className="card-link group flex h-full flex-col overflow-hidden"
+    >
+      <div className="card-media relative h-32 shrink-0 overflow-hidden border-b border-hairline bg-rice-100">
         <CoverImage
           src={photo}
           alt={title}
           fallbackVariant={variant}
-          className="h-32 w-full transition-transform duration-500 group-hover:scale-105"
+          className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
         />
       </div>
-      <div className="p-5">
-        <h3 className="font-serif text-lg font-bold text-sandalwood-800">{title}</h3>
-        <p className="mt-2 font-serif text-sm leading-relaxed text-ink-700">{desc}</p>
+      <div className="flex flex-1 flex-col p-6">
+        <span className="font-sans text-[11px] tracking-[0.2em] text-ink-300">
+          {String(index + 1).padStart(2, '0')}
+        </span>
+        <h3 className="mt-3 font-serif text-lg font-normal text-ink-900 transition-colors duration-200 group-hover:text-tibetan-600">
+          {title}
+        </h3>
+        <p className="mt-3 font-serif text-sm leading-[1.9] text-ink-500">{desc}</p>
       </div>
     </Link>
   )
 }
 
-function ArticleCard({
+/** 主推经典：左图右文的大幅非对称编排 */
+function ArticleLead({
   slug,
   title,
   excerpt,
+  author,
   illustration,
+}: {
+  slug: string
+  title: string
+  excerpt: string
+  author: string
+  illustration: IllustrationVariant
+}) {
+  const { t, lang } = useI18n()
+  const quoted = lang === 'en' ? title : `《${title}》`
+  return (
+    <Link
+      to={`/articles/${slug}`}
+      viewTransition
+      className="group grid items-stretch border border-hairline bg-surface lg:grid-cols-12"
+    >
+      <div className="card-media relative h-56 overflow-hidden bg-rice-100 sm:h-64 lg:col-span-6 lg:h-auto lg:min-h-[22rem]">
+        <CoverImage
+          src={photoForSlug(slug)}
+          alt={t('home.coverAlt', { t: title })}
+          fallbackVariant={illustration}
+          className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+        />
+      </div>
+      <div className="flex flex-col justify-center border-t border-hairline p-8 lg:col-span-6 lg:border-t-0 lg:border-l lg:p-12">
+        <span className="seal self-start">{t('home.badge')}</span>
+        <h3 className="mt-6 font-serif text-2xl leading-snug font-normal text-ink-900 transition-colors duration-200 group-hover:text-tibetan-600 sm:text-3xl">
+          {quoted}
+        </h3>
+        {author && (
+          <p className="mt-3 font-sans text-xs tracking-wider text-ink-300">
+            {t('common.authorBy', { name: author })}
+          </p>
+        )}
+        <p className="mt-6 line-clamp-4 font-serif text-sm leading-[1.95] text-ink-500">{excerpt}</p>
+        <span className="mt-8 inline-flex items-center gap-2 font-sans text-xs tracking-wider text-tibetan-600">
+          {t('home.readFull')}
+          <svg viewBox="0 0 24 24" className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+            <path d="M5 12h14M13 6l6 6-6 6" />
+          </svg>
+        </span>
+      </div>
+    </Link>
+  )
+}
+
+/** 次级经典：发丝线分隔的文字条目（替代卡片网格） */
+function ArticleRow({
+  slug,
+  title,
+  excerpt,
   author,
 }: {
   slug: string
   title: string
   excerpt: string
-  illustration: IllustrationVariant
   author: string
 }) {
   const { t, lang } = useI18n()
   const quoted = lang === 'en' ? title : `《${title}》`
   return (
-    <Link to={`/articles/${slug}`} viewTransition className="card-link group flex flex-col overflow-hidden">
-      <div className="relative overflow-hidden">
-        <CoverImage src={photoForSlug(slug)} alt={t('home.coverAlt', { t: title })} fallbackVariant={illustration} className="h-36 w-full transition-transform duration-500 group-hover:scale-105" />
-        <span className="absolute right-3 bottom-3 rounded-full bg-sandalwood-950/70 px-2.5 py-1 text-[10px] tracking-wider text-gold-200">
-          {t('home.badge')}
-        </span>
-      </div>
-      <div className="flex flex-1 flex-col p-5">
-        <h3 className="font-serif text-lg font-bold text-sandalwood-800 transition group-hover:text-tibetan-700">
-          {quoted}
-        </h3>
-        {author && <p className="mt-1 text-xs text-sandalwood-400">{t('common.authorBy', { name: author })}</p>}
-        <p className="mt-3 line-clamp-3 flex-1 font-serif text-sm leading-relaxed text-ink-700">{excerpt}</p>
-        <span className="mt-4 inline-flex items-center gap-1 text-xs font-medium text-gold-600">
-          <span className="h-px w-6 bg-gold-400" />
-          {t('home.readFull')}
-        </span>
-      </div>
-    </Link>
+    <li className="border-b border-hairline">
+      <Link
+        to={`/articles/${slug}`}
+        viewTransition
+        className="group grid gap-3 py-7 transition-colors duration-200 lg:grid-cols-12 lg:items-start lg:gap-8"
+      >
+        <div className="lg:col-span-4">
+          <h3 className="font-serif text-lg leading-snug font-normal text-ink-900 transition-colors duration-200 group-hover:text-tibetan-600">
+            {quoted}
+          </h3>
+          {author && (
+            <p className="mt-2 font-sans text-xs tracking-wider text-ink-300">
+              {t('common.authorBy', { name: author })}
+            </p>
+          )}
+        </div>
+        <p className="line-clamp-2 font-serif text-sm leading-[1.9] text-ink-500 lg:col-span-7">{excerpt}</p>
+        <div className="flex items-start lg:col-span-1 lg:justify-end lg:pt-1">
+          <svg viewBox="0 0 24 24" className="h-4 w-4 text-ink-300 transition-all duration-300 group-hover:translate-x-1 group-hover:text-tibetan-600" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+            <path d="M5 12h14M13 6l6 6-6 6" />
+          </svg>
+        </div>
+      </Link>
+    </li>
   )
 }

@@ -111,26 +111,26 @@ export function LingQiBoard() {
   return (
     <div className="space-y-10">
       {/* 玩法说明 + 棋子 */}
-      <div className="grid gap-8 lg:grid-cols-[1.2fr_1fr] lg:items-center">
-        <div className="card-link p-7 sm:p-9">
-          <p className="font-serif text-sm tracking-[0.3em] text-tibetan-600">{t('lingqi.howTitle')}</p>
-          <p className="mt-4 font-serif text-[15px] leading-loose text-ink-700">{t('lingqi.howDesc')}</p>
-          <ul className="mt-5 space-y-2 font-serif text-sm leading-relaxed text-ink-700">
+      <div className="grid gap-8 lg:grid-cols-[1.2fr_1fr] lg:items-start">
+        <div className="card p-7 sm:p-9">
+          <p className="section-kicker">{t('lingqi.howTitle')}</p>
+          <p className="mt-5 font-serif text-[15px] leading-loose text-ink-700">{t('lingqi.howDesc')}</p>
+          <ul className="mt-6 space-y-3 font-serif text-sm leading-relaxed text-ink-700">
             {[t('lingqi.how1'), t('lingqi.how2'), t('lingqi.how3')].map((s, i) => (
-              <li key={i} className="flex items-start gap-2.5">
-                <span className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-gold-100 text-[10px] font-bold text-gold-700">
+              <li key={i} className="flex items-start gap-3">
+                <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-xs bg-tibetan-600 font-sans text-[10px] text-paper">
                   {i + 1}
                 </span>
                 <span>{s}</span>
               </li>
             ))}
           </ul>
-          <div className="mt-6 flex flex-wrap items-center gap-3">
-            <button type="button" onClick={cast} disabled={rolling} className="btn-primary !px-8 disabled:cursor-wait disabled:opacity-70">
+          <div className="mt-8 flex flex-wrap items-center gap-4">
+            <button type="button" onClick={cast} disabled={rolling} className="btn-primary disabled:cursor-wait disabled:opacity-70">
               {rolling ? t('lingqi.casting') : result ? t('lingqi.castAgain') : t('lingqi.castBtn')}
             </button>
             {result && (
-              <button type="button" onClick={clearHistory} className="cursor-pointer text-xs text-sandalwood-500 underline underline-offset-4 transition hover:text-tibetan-600">
+              <button type="button" onClick={clearHistory} className="btn-ghost text-xs underline underline-offset-4">
                 {t('lingqi.clearHistory')}
               </button>
             )}
@@ -138,9 +138,9 @@ export function LingQiBoard() {
         </div>
 
         {/* 十二棋子 */}
-        <div className="card-link p-7">
-          <p className="text-center font-serif text-sm text-sandalwood-500">{t('lingqi.chessTitle')}</p>
-          <div className="mt-5 grid grid-cols-4 gap-3">
+        <div className="card p-7">
+          <p className="font-sans text-[11px] tracking-[0.28em] text-sandalwood-500 uppercase text-center">{t('lingqi.chessTitle')}</p>
+          <div className="mt-6 grid grid-cols-4 gap-3">
             {Array.from({ length: 12 }, (_, i) => {
               const level = Math.floor(i / 4)
               const shown = faces[i] === level
@@ -148,12 +148,12 @@ export function LingQiBoard() {
               return (
                 <div
                   key={i}
-                  className={`relative flex aspect-square items-center justify-center rounded-full border-2 font-serif text-2xl font-bold transition-all duration-300 ${
+                  className={`relative flex aspect-square items-center justify-center rounded-xs border font-serif text-2xl transition-colors duration-300 ${
                     rolling
-                      ? 'border-gold-400 bg-gold-100 text-gold-600'
+                      ? 'border-sandalwood-300 bg-rice-100 text-ink-300'
                       : shown
-                        ? 'border-tibetan-500 bg-tibetan-600 text-paper shadow-md shadow-tibetan-900/25'
-                        : 'border-sandalwood-300 bg-surface text-sandalwood-400/70'
+                        ? 'border-tibetan-600 bg-tibetan-600 text-paper'
+                        : 'border-hairline bg-surface text-ink-300/70'
                   }`}
                 >
                   <span className={rolling ? 'animate-bounce' : ''}>{showChar ? t(LVL_KEYS[Math.min(level, 2)]) : '·'}</span>
@@ -161,7 +161,7 @@ export function LingQiBoard() {
               )
             })}
           </div>
-          <div className="mt-4 flex justify-center gap-5 text-xs text-sandalwood-400">
+          <div className="mt-5 flex justify-center gap-5 font-sans text-xs text-ink-300">
             <span>{t('lingqi.level0')} ×4</span>
             <span>{t('lingqi.level1')} ×4</span>
             <span>{t('lingqi.level2')} ×4</span>
@@ -171,16 +171,14 @@ export function LingQiBoard() {
 
       {/* 卦象结果 */}
       {item && result && (
-        <div className="card-link relative overflow-hidden p-7 sm:p-9">
-          {/* 光晕装饰 */}
-          <div className="pointer-events-none absolute -top-24 -right-24 h-64 w-64 rounded-full bg-gold-200/40 blur-3xl" aria-hidden />
-          <div className="relative flex flex-wrap items-center gap-8">
+        <div className="card relative overflow-hidden p-7 sm:p-9">
+          <div className="relative flex flex-wrap items-center gap-10">
             <div className="mx-auto text-center sm:mx-0">
-              <p className="font-serif text-xs tracking-[0.35em] text-gold-600">{t('lingqi.resultLabel')}</p>
-              <p className="mt-3 font-brush text-5xl text-tibetan-600">{view?.name}</p>
-              <p className="mt-2 font-serif text-sm tracking-[0.25em] text-sandalwood-600">{view?.image}</p>
+              <p className="section-kicker justify-center">{t('lingqi.resultLabel')}</p>
+              <p className="mt-4 font-serif text-4xl font-normal tracking-tight text-tibetan-600">{view?.name}</p>
+              <p className="mt-2 font-serif text-sm tracking-[0.25em] text-ink-500">{view?.image}</p>
               {/* 层级计数徽章 */}
-              <div className="mt-4 flex justify-center gap-2">
+              <div className="mt-5 flex justify-center gap-2">
                 {counts.map((c, i) => (
                   <span key={i} className="chip tabular-nums">
                     {t(LVL_KEYS[i] ?? LVL_KEYS[0])} · {c}
@@ -188,31 +186,31 @@ export function LingQiBoard() {
                 ))}
               </div>
             </div>
-            <div className="min-w-0 flex-1 rounded-2xl border border-gold-400/40 bg-gradient-to-b from-rice-100/70 to-rice-50 px-6 py-5">
-              <p className="font-serif text-xs tracking-[0.3em] text-tibetan-600">{t('lingqi.xiang')}</p>
-              <p className="mt-3 font-brush text-lg leading-relaxed text-ink-900 sm:text-xl">{view?.xiang}</p>
+            <div className="min-w-0 flex-1 border-l-2 border-tibetan-600 bg-rice-100/60 px-6 py-5">
+              <p className="section-kicker">{t('lingqi.xiang')}</p>
+              <p className="mt-3 font-serif text-lg leading-relaxed text-ink-900">{view?.xiang}</p>
               {view?.shi && (
                 <>
-                  <p className="mt-5 border-t border-gold-400/30 pt-4 font-serif text-xs tracking-[0.3em] text-gold-700">{t('lingqi.shi')}</p>
-                  <p className="mt-2 font-brush text-base leading-relaxed text-sandalwood-800">{view.shi}</p>
+                  <p className="mt-6 border-t border-hairline pt-4 font-sans text-[11px] tracking-[0.28em] text-sandalwood-500 uppercase">{t('lingqi.shi')}</p>
+                  <p className="mt-2 font-serif text-base leading-relaxed text-ink-700">{view.shi}</p>
                 </>
               )}
             </div>
           </div>
 
           {/* 历代注疏（折叠） */}
-          <div className="relative mt-6">
+          <div className="relative mt-8">
             <button
               type="button"
               onClick={() => setExpanded((v) => !v)}
-              className="flex w-full cursor-pointer items-center justify-between rounded-xl border border-sandalwood-200/70 bg-surface px-4 py-3 text-sm font-medium text-sandalwood-700 transition hover:border-gold-400/70"
+              className="flex w-full cursor-pointer items-center justify-between rounded-xs border border-hairline bg-surface px-4 py-3 font-sans text-sm text-ink-700 transition-colors duration-200 hover:border-sandalwood-500"
               aria-expanded={expanded}
             >
               {t('lingqi.notes')}
-              <span className={`text-gold-600 transition-transform ${expanded ? 'rotate-45' : ''}`} aria-hidden>＋</span>
+              <span className={`text-tibetan-600 transition-transform duration-200 ${expanded ? 'rotate-45' : ''}`} aria-hidden>＋</span>
             </button>
             {expanded && (
-              <div className="mt-3 grid gap-3 sm:grid-cols-2">
+              <div className="mt-4 grid gap-3 sm:grid-cols-2">
                 {[
                   ['yan', t('lingqi.yan'), view?.yan],
                   ['he', t('lingqi.he'), view?.he],
@@ -220,9 +218,9 @@ export function LingQiBoard() {
                   ['liu', t('lingqi.liu'), view?.liu],
                 ].map(([k, label, text]) =>
                   text ? (
-                    <div key={k} className="rounded-xl bg-rice-100/70 px-4 py-3">
-                      <p className="font-serif text-xs font-bold tracking-widest text-tibetan-600">{label}</p>
-                      <p className="mt-1.5 font-serif text-[13px] leading-relaxed text-ink-700">{text}</p>
+                    <div key={k} className="border-l border-hairline bg-rice-100/60 px-4 py-3">
+                      <p className="font-sans text-[11px] tracking-[0.24em] text-tibetan-600">{label}</p>
+                      <p className="mt-2 font-serif text-[13px] leading-relaxed text-ink-700">{text}</p>
                     </div>
                   ) : null,
                 )}
@@ -234,20 +232,20 @@ export function LingQiBoard() {
 
       {/* 卦历 */}
       <section>
-        <div className="flex flex-wrap items-center justify-between gap-3">
-          <h2 className="font-serif text-xl font-bold text-sandalwood-800">{t('lingqi.historyTitle')}</h2>
+        <div className="flex flex-wrap items-baseline justify-between gap-3 border-b border-hairline pb-4">
+          <h2 className="section-title">{t('lingqi.historyTitle')}</h2>
           {history.length > 0 && (
-            <button type="button" onClick={clearHistory} className="cursor-pointer text-xs text-tibetan-500 underline underline-offset-4 transition hover:text-tibetan-700">
+            <button type="button" onClick={clearHistory} className="btn-ghost text-xs underline underline-offset-4">
               {t('lingqi.clearHistory')}
             </button>
           )}
         </div>
         {history.length === 0 ? (
-          <p className="mt-5 rounded-2xl border-2 border-dashed border-sandalwood-200 bg-rice-100/50 p-10 text-center font-serif text-sandalwood-500">
+          <p className="mt-6 border border-hairline bg-rice-100/50 px-6 py-12 text-center font-serif text-sm text-ink-500">
             {t('lingqi.historyEmpty')}
           </p>
         ) : (
-          <ul className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          <ul className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {history.map((h) => {
               const q = LINGQI.find((x) => x.code === h.code)
               if (!q) return null
@@ -263,16 +261,16 @@ export function LingQiBoard() {
                       setExpanded(false)
                       window.scrollTo({ top: 0, behavior: 'smooth' })
                     }}
-                    className="card-link flex w-full cursor-pointer items-center gap-4 p-4 text-left"
+                    className="flex w-full cursor-pointer items-center gap-4 rounded-card border border-hairline bg-surface p-4 text-left transition-colors duration-200 hover:border-sandalwood-500"
                   >
-                    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-tibetan-50 font-brush text-lg text-tibetan-600">
+                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xs border border-hairline font-serif text-base text-tibetan-600">
                       {q.code}
                     </span>
                     <span className="min-w-0">
-                      <span className="block truncate font-serif font-bold text-sandalwood-800">
+                      <span className="block truncate font-serif text-ink-900">
                         {name} · {image}
                       </span>
-                      <span className="mt-0.5 block text-xs text-sandalwood-400">
+                      <span className="mt-1 block font-sans text-xs text-ink-300">
                         {new Date(h.at).toLocaleString()}
                       </span>
                     </span>

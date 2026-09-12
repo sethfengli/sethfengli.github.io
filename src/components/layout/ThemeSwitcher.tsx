@@ -7,13 +7,13 @@ const OPTIONS: Array<{
   labelKey: 'theme.rice' | 'theme.vermilion' | 'theme.celadon' | 'theme.night'
   swatches: string[]
 }> = [
-  { id: 'rice', labelKey: 'theme.rice', swatches: ['#fbf8f0', '#c9a227', '#6b4425'] },
-  { id: 'vermilion', labelKey: 'theme.vermilion', swatches: ['#f5e9d8', '#93363a', '#c9a227'] },
-  { id: 'celadon', labelKey: 'theme.celadon', swatches: ['#e6efea', '#47705d', '#8c2f39'] },
-  { id: 'night', labelKey: 'theme.night', swatches: ['#22252d', '#c9a227', '#ecd9b8'] },
+  { id: 'rice', labelKey: 'theme.rice', swatches: ['#fbfaf7', '#789085', '#b8382e'] },
+  { id: 'vermilion', labelKey: 'theme.vermilion', swatches: ['#faf6f2', '#8a6e5e', '#c1362b'] },
+  { id: 'celadon', labelKey: 'theme.celadon', swatches: ['#f8fbf9', '#559278', '#b8382e'] },
+  { id: 'night', labelKey: 'theme.night', swatches: ['#14161a', '#ab8940', '#ebe9e4'] },
 ]
 
-/** 佛教配色主题切换器（Header 内使用） */
+/** 配色主题切换器（Header 内使用）：细边小签 + 方形色块，无胶囊、无投影 */
 export function ThemeSwitcher() {
   const { t } = useI18n()
   const [open, setOpen] = useState(false)
@@ -25,6 +25,8 @@ export function ThemeSwitcher() {
     setOpen(false)
   }
 
+  const currentOption = OPTIONS.find((o) => o.id === current)!
+
   return (
     <div className="relative">
       <button
@@ -33,16 +35,16 @@ export function ThemeSwitcher() {
         aria-expanded={open}
         aria-label={t('theme.label')}
         title={t('theme.label')}
-        className="cursor-pointer rounded-full border border-sandalwood-300/70 px-3 py-1.5 text-xs font-medium text-sandalwood-700 transition hover:border-gold-500 hover:bg-gold-50"
+        className="flex cursor-pointer items-center gap-1.5 rounded-xs border border-hairline px-2.5 py-1.5 transition-colors duration-200 hover:border-sandalwood-500"
       >
-        <span className="inline-flex items-center gap-1.5">
-          <span className="flex -space-x-1" aria-hidden>
-            {OPTIONS.find((o) => o.id === current)!.swatches.map((s) => (
-              <span key={s} className="h-3 w-3 rounded-full border border-ink-100/60" style={{ background: s }} />
-            ))}
-          </span>
-          <span className="hidden sm:inline">🎨</span>
+        <span className="flex gap-0.5" aria-hidden>
+          {currentOption.swatches.map((s) => (
+            <span key={s} className="h-3 w-1.5 rounded-xs border border-ink-900/10" style={{ background: s }} />
+          ))}
         </span>
+        <svg viewBox="0 0 24 24" className="h-3 w-3 text-ink-300" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+          <path d="M6 9l6 6 6-6" />
+        </svg>
       </button>
 
       {open && (
@@ -51,9 +53,8 @@ export function ThemeSwitcher() {
           <div
             role="menu"
             aria-label={t('theme.label')}
-            className="absolute right-0 z-50 mt-2 w-48 rounded-2xl border border-sandalwood-200/70 bg-surface p-2 shadow-xl"
+            className="absolute right-0 z-50 mt-2 w-44 rounded-card border border-hairline bg-surface p-1"
           >
-            <p className="px-3 pt-1 pb-2 text-[11px] tracking-wider text-sandalwood-400 uppercase">{t('theme.label')}</p>
             {OPTIONS.map((o) => (
               <button
                 key={o.id}
@@ -61,17 +62,21 @@ export function ThemeSwitcher() {
                 role="menuitemradio"
                 aria-checked={current === o.id}
                 onClick={() => pick(o.id)}
-                className={`flex w-full cursor-pointer items-center gap-2.5 rounded-xl px-3 py-2 text-left text-sm transition hover:bg-rice-100 ${
-                  current === o.id ? 'font-semibold text-tibetan-600' : 'text-ink-700'
+                className={`flex w-full cursor-pointer items-center gap-2.5 px-3 py-2 text-left font-sans text-sm transition-colors ${
+                  current === o.id ? 'text-tibetan-600' : 'text-ink-700 hover:bg-rice-100'
                 }`}
               >
-                <span className="flex -space-x-1" aria-hidden>
+                <span className="flex gap-0.5" aria-hidden>
                   {o.swatches.map((s) => (
-                    <span key={s} className="h-4 w-4 rounded-full border border-ink-100/50" style={{ background: s }} />
+                    <span key={s} className="h-4 w-1.5 rounded-xs border border-ink-900/10" style={{ background: s }} />
                   ))}
                 </span>
                 {t(o.labelKey)}
-                {current === o.id && <span className="ml-auto text-tibetan-600">✓</span>}
+                {current === o.id && (
+                  <svg viewBox="0 0 24 24" className="ml-auto h-3.5 w-3.5 text-tibetan-600" fill="none" stroke="currentColor" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                    <path d="M4 12.5l5.5 5.5L20 6.5" />
+                  </svg>
+                )}
               </button>
             ))}
           </div>

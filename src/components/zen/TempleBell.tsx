@@ -160,11 +160,11 @@ export function TempleBell() {
         disabled={ringing}
         aria-label={t('dharma.ringBell')}
         title={t('dharma.ringBell')}
-        className={`group relative block cursor-pointer rounded-full focus-visible:ring-2 focus-visible:ring-gold-400 focus-visible:outline-none ${
+        className={`group relative block cursor-pointer ${
           ringing ? 'cursor-wait opacity-90' : ''
         }`}
       >
-        <svg viewBox="0 0 420 340" className="h-72 w-[420px] max-w-full drop-shadow-xl sm:h-80">
+        <svg viewBox="0 0 420 340" className="h-72 w-[420px] max-w-full sm:h-80">
           {/* 木架 */}
           <path d="M120 60v190M300 60v190" stroke="#5a3d22" strokeWidth="14" strokeLinecap="round" />
           <path d="M96 60h228" stroke="#5a3d22" strokeWidth="18" strokeLinecap="round" />

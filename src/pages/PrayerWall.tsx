@@ -9,6 +9,75 @@ import { PageBanner } from '../components/ui/PageBanner'
 const MAX_WISH = 120
 const TREE_CAPACITY = 24
 
+/** 供灯图形：灯盏 + 火苗，细线内联 SVG（取代旧版 emoji） */
+function LampIcon({ className = 'h-5 w-5' }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      className={className}
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={1.5}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden
+    >
+      <path d="M12 10.5c-1.9 1.8-2.6 3.1-2.6 4.3a2.6 2.6 0 0 0 5.2 0c0-1.2-.7-2.5-2.6-4.3Z" />
+      <path d="M3.5 18c2.4-1.1 5.3-1.7 8.5-1.7s6.1.6 8.5 1.7" />
+      <path d="M12 10.5V7.5" />
+      <path d="M9.5 4.5c0-1 .8-2 2.5-2s2.5 1 2.5 2" />
+    </svg>
+  )
+}
+
+/** 下载 / 上传图形：细线内联 SVG（取代旧版箭头字符） */
+function ArrowIcon({ up = false, className = 'h-3.5 w-3.5' }: { up?: boolean; className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      className={className}
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={1.5}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden
+    >
+      {up ? (
+        <>
+          <path d="M12 19V5" />
+          <path d="M6 11l6-6 6 6" />
+        </>
+      ) : (
+        <>
+          <path d="M12 5v14" />
+          <path d="M18 13l-6 6-6-6" />
+        </>
+      )}
+    </svg>
+  )
+}
+
+/** 锁形图形：细线内联 SVG，用于隐私说明（取代旧版 emoji） */
+function LockIcon({ className = 'h-5 w-5' }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      className={className}
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={1.5}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden
+    >
+      <rect x="4.5" y="10.5" width="15" height="9.5" rx="1" />
+      <path d="M8 10.5V8a4 4 0 0 1 8 0v2.5" />
+      <path d="M12 14.5v2" />
+    </svg>
+  )
+}
+
 export function PrayerWall() {
   const { t } = useI18n()
   const repoRef = useRef(createWishRepository())
@@ -101,46 +170,33 @@ export function PrayerWall() {
   const onTree = shown.slice(0, TREE_CAPACITY)
   const rest = shown.slice(TREE_CAPACITY)
 
+  const fieldClass =
+    'w-full rounded-xs border border-hairline bg-rice-50 px-4 py-2.5 font-serif text-sm text-ink-900 placeholder:text-ink-300 focus:border-tibetan-500 focus:outline-none'
+
   return (
     <div>
-      {/* 页头（明亮浅色调 + 漂浮灯火） */}
+      {/* 页头（图文并置，无漂浮灯火装饰） */}
       <PageBanner
         image="/photos/lantern.jpg"
         kicker={t('prayer.kicker')}
         title={t('prayer.title')}
         subtitle={t('prayer.subtitle')}
-        decor={
-          <div className="pointer-events-none absolute inset-0" aria-hidden>
-            {Array.from({ length: 18 }).map((_, i) => (
-              <span
-                key={i}
-                className="absolute animate-glow rounded-full bg-gold-400"
-                style={{
-                  width: `${3 + (i % 4)}px`,
-                  height: `${3 + (i % 4)}px`,
-                  left: `${(i * 53) % 100}%`,
-                  top: `${(i * 31) % 100}%`,
-                  animationDelay: `${(i % 6) * 0.6}s`,
-                  opacity: 0.55,
-                }}
-              />
-            ))}
-          </div>
-        }
       />
 
-      <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
-        <div className="space-y-10">
-          {/* ---------- 供灯表单（居中，树在上方通栏展示） ---------- */}
-          <aside className="mx-auto w-full max-w-2xl">
-            <div className="rounded-3xl border border-sandalwood-200/70 bg-surface p-6 shadow-md">
-              <h2 className="flex items-center gap-2 font-serif text-lg font-bold text-sandalwood-800">
-                <span aria-hidden>🪔</span>
+      <div className="container-page py-16 sm:py-20">
+        {/* 桌面：左「供灯」表单吸附 / 右许愿树；移动端：先表单后树 */}
+        <div className="lg:grid lg:grid-cols-[minmax(0,22rem)_minmax(0,1fr)] lg:items-start lg:gap-14">
+          <aside className="lg:sticky lg:top-24">
+            <div className="card p-7 sm:p-8">
+              <h2 className="flex items-center gap-3 font-serif text-lg font-normal tracking-tight text-ink-900">
+                <span aria-hidden className="seal px-1 py-0.5 leading-none">
+                  <LampIcon className="h-3.5 w-3.5" />
+                </span>
                 {t('prayer.formTitle')}
               </h2>
-              <form onSubmit={submit} className="mt-5 space-y-4">
+              <form onSubmit={submit} className="mt-7 space-y-6">
                 <div>
-                  <label htmlFor="wish-name" className="mb-1.5 block text-sm text-sandalwood-700">
+                  <label htmlFor="wish-name" className="mb-2 block font-sans text-xs tracking-wider text-ink-500">
                     {t('prayer.nameLabel')}
                   </label>
                   <input
@@ -149,11 +205,11 @@ export function PrayerWall() {
                     onChange={(e) => setName(e.target.value)}
                     maxLength={40}
                     placeholder={t('prayer.namePlaceholder')}
-                    className="w-full rounded-xl border border-sandalwood-300/70 bg-rice-50 px-4 py-2.5 font-serif text-sm text-ink-900 placeholder:text-ink-300 focus:border-gold-500 focus:ring-2 focus:ring-gold-300 focus:outline-none"
+                    className={fieldClass}
                   />
                 </div>
                 <div>
-                  <label htmlFor="wish-text" className="mb-1.5 block text-sm text-sandalwood-700">
+                  <label htmlFor="wish-text" className="mb-2 block font-sans text-xs tracking-wider text-ink-500">
                     {t('prayer.wishLabel')}
                   </label>
                   <textarea
@@ -163,34 +219,37 @@ export function PrayerWall() {
                     rows={4}
                     maxLength={MAX_WISH}
                     placeholder={t('prayer.wishPlaceholder')}
-                    className="w-full resize-none rounded-xl border border-sandalwood-300/70 bg-rice-50 px-4 py-2.5 font-serif text-sm leading-relaxed text-ink-900 placeholder:text-ink-300 focus:border-gold-500 focus:ring-2 focus:ring-gold-300 focus:outline-none"
+                    className={`${fieldClass} resize-none leading-relaxed`}
                   />
-                  <p className="mt-1 text-right text-xs text-sandalwood-400">
+                  <p className="mt-2 text-right font-sans text-xs text-ink-300">
                     {t('prayer.wishCounter', { n: text.length })}
                   </p>
                 </div>
-                {error && <p className="text-sm text-tibetan-600">{error}</p>}
+                {error && <p className="font-sans text-sm text-tibetan-600">{error}</p>}
                 <button type="submit" className="btn-primary w-full">
-                  <span aria-hidden>🪔</span>
+                  <LampIcon className="h-4 w-4" />
                   {t('prayer.submit')}
                 </button>
               </form>
-              <p className="mt-4 rounded-xl bg-rice-100/80 p-3 text-xs leading-relaxed text-sandalwood-600">
-                🔒 {t('prayer.privacyNote')}
+              <p className="mt-6 flex items-start gap-2.5 border-t border-hairline pt-5 font-sans text-xs leading-relaxed text-ink-500">
+                <LockIcon className="mt-px h-4 w-4 shrink-0 text-sandalwood-500" />
+                <span>{t('prayer.privacyNote')}</span>
               </p>
             </div>
 
             {/* 备份工具 */}
-            <div className="mt-5 flex flex-wrap items-center gap-2 rounded-2xl border border-sandalwood-200/70 bg-surface p-4">
+            <div className="mt-6 flex flex-wrap items-center gap-3 border border-hairline bg-surface p-4">
               <button type="button" onClick={exportJson} className="btn-secondary !px-4 !py-1.5 text-xs">
-                ⤓ {t('prayer.export')}
+                <ArrowIcon />
+                {t('prayer.export')}
               </button>
               <button
                 type="button"
                 onClick={() => fileRef.current?.click()}
                 className="btn-secondary !px-4 !py-1.5 text-xs"
               >
-                ⤒ {t('prayer.import')}
+                <ArrowIcon up />
+                {t('prayer.import')}
               </button>
               <input
                 ref={fileRef}
@@ -203,15 +262,15 @@ export function PrayerWall() {
                   e.target.value = ''
                 }}
               />
-              <span className="text-xs text-sandalwood-400">{t('prayer.wishCount', { n: wishes.length })}</span>
+              <span className="font-sans text-xs text-ink-300">{t('prayer.wishCount', { n: wishes.length })}</span>
             </div>
           </aside>
 
           {/* ---------- 许愿树 ---------- */}
-          <section>
-            <div className="flex flex-wrap items-center justify-between gap-3">
-              <h2 className="font-serif text-xl font-bold text-sandalwood-800">{t('prayer.wallTitle')}</h2>
-              <label className="flex cursor-pointer items-center gap-2 text-sm text-sandalwood-700">
+          <section className="mt-14 lg:mt-0">
+            <div className="flex flex-wrap items-end justify-between gap-4 border-b border-hairline pb-6">
+              <h2 className="section-title">{t('prayer.wallTitle')}</h2>
+              <label className="flex cursor-pointer items-center gap-2.5 font-sans text-sm text-ink-500">
                 <input
                   type="checkbox"
                   checked={mineOnly}
@@ -221,10 +280,10 @@ export function PrayerWall() {
                 {t('prayer.mineOnly')}
               </label>
             </div>
-            <p className="mt-2 font-serif text-xs leading-relaxed text-sandalwood-500">{t('prayer.treeHint')}</p>
+            <p className="mt-4 font-serif text-xs leading-relaxed text-ink-500">{t('prayer.treeHint')}</p>
 
             {/* 许愿树（始终展示，无愿望时以提示语引导） */}
-            <div className="mt-6 rounded-3xl border border-sandalwood-200/70 bg-gradient-to-b from-moon-50 to-rice-100/60 p-3 shadow-inner sm:p-5">
+            <div className="mt-8 rounded-card border border-hairline bg-rice-100/50 p-3 sm:p-5">
               <Tree3D
                 wishes={onTree}
                 onRibbonClick={setSelected}
@@ -232,28 +291,28 @@ export function PrayerWall() {
               />
             </div>
             {shown.length === 0 && (
-              <div className="mt-4 rounded-2xl border-2 border-dashed border-sandalwood-200 bg-rice-100/40 px-6 py-4 text-center">
-                <p className="font-serif text-sm text-sandalwood-600">{t('prayer.wallEmpty')}</p>
+              <div className="mt-6 border border-hairline px-6 py-5 text-center">
+                <p className="font-serif text-sm text-ink-500">{t('prayer.wallEmpty')}</p>
               </div>
             )}
 
             {/* 其余心愿 */}
             {rest.length > 0 && (
-              <div className="mt-8">
-                <h3 className="font-serif text-sm font-bold text-sandalwood-700">
+              <div className="mt-14">
+                <h3 className="font-sans text-xs tracking-[0.3em] text-ink-500 uppercase">
                   {t('prayer.moreWishes')}（{rest.length}）
                 </h3>
-                <ul className="mt-4 space-y-3">
+                <ul className="mt-6 border-t border-hairline">
                   {rest.map((w) => (
-                    <li key={w.id} className="rounded-2xl border border-sandalwood-200/60 bg-surface p-4">
-                      <p className="font-serif text-sm leading-relaxed text-ink-900">{w.text}</p>
-                      <div className="mt-2 flex items-center justify-between text-xs text-sandalwood-500">
+                    <li key={w.id} className="border-b border-hairline py-5">
+                      <p className="font-serif text-sm leading-[1.9] text-ink-900">{w.text}</p>
+                      <div className="mt-3 flex items-center justify-between font-sans text-xs text-ink-500">
                         <span className="font-serif">{w.name} · {formatAgo(w.createdAt, t)}</span>
                         {w.owner === deviceId && (
                           <button
                             type="button"
                             onClick={() => void remove(w.id)}
-                            className="cursor-pointer text-tibetan-500 underline underline-offset-2 transition hover:text-tibetan-700"
+                            className="cursor-pointer text-tibetan-600 underline underline-offset-4 transition-colors duration-200 hover:text-tibetan-700"
                           >
                             {t('prayer.delete')}
                           </button>
@@ -271,15 +330,16 @@ export function PrayerWall() {
       {/* 飘带详情 */}
       {selected && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4" role="dialog" aria-modal="true">
-          <div className="absolute inset-0 bg-sandalwood-950/60 backdrop-blur-sm" onClick={() => setSelected(null)} />
-          <div className="relative w-full max-w-md animate-fade-up rounded-3xl border border-gold-400/40 bg-surface p-7 shadow-2xl">
-            <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-b from-gold-300 to-gold-500 text-2xl shadow-md">
-              🪔
-            </div>
-            <p className="mt-5 text-center font-serif text-lg leading-relaxed text-ink-900">{selected.text}</p>
-            <p className="mt-4 text-center font-serif text-sm text-sandalwood-600">
+          <div className="absolute inset-0 bg-sandalwood-950/75" onClick={() => setSelected(null)} />
+          <div className="relative w-full max-w-md animate-fade-up rounded-card border border-hairline bg-surface p-7 shadow-lift sm:p-8">
+            <span aria-hidden className="mx-auto flex h-12 w-12 items-center justify-center rounded-xs bg-tibetan-600 text-paper">
+              <LampIcon className="h-6 w-6" />
+            </span>
+            <p className="mt-6 text-center font-serif text-lg leading-[1.9] text-ink-900">{selected.text}</p>
+            <p className="mt-4 text-center font-serif text-sm text-ink-500">
               —— {selected.name} · {formatAgo(selected.createdAt, t)}
             </p>
+            <hr className="hairline mt-7" />
             <div className="mt-6 flex items-center justify-center gap-3">
               <button type="button" onClick={() => setSelected(null)} className="btn-secondary !px-5 !py-2 text-sm">
                 {t('nav.closeMenu')}
@@ -296,7 +356,7 @@ export function PrayerWall() {
 
       {/* 轻提示 */}
       {toast && (
-        <div className="fixed bottom-6 left-1/2 z-50 -translate-x-1/2 animate-fade-up rounded-full bg-sandalwood-900/95 px-6 py-3 font-serif text-sm text-gold-200 shadow-xl">
+        <div className="fixed bottom-6 left-1/2 z-50 -translate-x-1/2 animate-fade-up rounded-xs border border-paper/15 bg-sandalwood-950 px-6 py-3 font-serif text-sm text-paper">
           {toast}
         </div>
       )}

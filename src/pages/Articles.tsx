@@ -4,7 +4,8 @@ import { useI18n } from '../i18n'
 import { CATALOG, localizedMeta, photoForSlug, readingMinutes, schoolLabel, type School } from '../lib/content'
 import { ZenIllustration } from '../components/zen/ZenIllustration'
 import { CoverImage } from '../components/zen/CoverImage'
-import { PageIntro } from '../components/ui/PageBanner'
+import { PageIntro, Section } from '../components/ui/PageBanner'
+import { Reveal } from '../components/ui/Reveal'
 
 const PAGE_SIZE = 24
 
@@ -38,113 +39,123 @@ export function Articles() {
   }
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
+    <div>
       {/* 页头 */}
       <PageIntro kicker={t('articles.kicker')} title={t('articles.title')} subtitle={t('articles.subtitle')} />
 
-      {/* 头图横幅（真实照片） */}
-      <div className="mx-auto mt-8 h-40 max-w-3xl overflow-hidden rounded-3xl shadow-md shadow-sandalwood-900/10">
-        <CoverImage src="/photos/gate.jpg" alt="" fallbackVariant="clouds" className="h-full w-full" />
-      </div>
+      <Section rhythm="tight">
+        {/* 筛选与搜索：发丝线工具栏，非胶囊组 */}
+        <div className="flex flex-col gap-6 border-b border-hairline pb-6 lg:flex-row lg:items-center lg:justify-between">
+          <div className="flex flex-wrap gap-x-6 gap-y-3">
+            <FilterLink active={!school} onClick={() => setSchool(null)}>
+              {t('articles.all')}
+            </FilterLink>
+            <FilterLink active={school === 'jing'} onClick={() => setSchool('jing')}>
+              {t('articles.schoolJing')}
+            </FilterLink>
+            <FilterLink active={school === 'chan'} onClick={() => setSchool('chan')}>
+              {t('articles.schoolChan')}
+            </FilterLink>
+            <FilterLink active={school === 'xiuxue'} onClick={() => setSchool('xiuxue')}>
+              {t('articles.schoolXiuxue')}
+            </FilterLink>
+          </div>
 
-      {/* 筛选与搜索 */}
-      <div className="mt-10 flex flex-col items-center gap-4">
-        <div className="flex flex-wrap justify-center gap-2">
-          <FilterChip active={!school} onClick={() => setSchool(null)}>
-            {t('articles.all')}
-          </FilterChip>
-          <FilterChip active={school === 'jing'} onClick={() => setSchool('jing')}>
-            {t('articles.schoolJing')}
-          </FilterChip>
-          <FilterChip active={school === 'chan'} onClick={() => setSchool('chan')}>
-            {t('articles.schoolChan')}
-          </FilterChip>
-          <FilterChip active={school === 'xiuxue'} onClick={() => setSchool('xiuxue')}>
-            {t('articles.schoolXiuxue')}
-          </FilterChip>
+          <div className="flex items-center gap-4">
+            <div className="relative w-full lg:w-64">
+              <svg
+                viewBox="0 0 24 24"
+                className="pointer-events-none absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 text-ink-300"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth={1.5}
+                strokeLinecap="round"
+              >
+                <circle cx={11} cy={11} r={7} />
+                <path d="m20 20-3.5-3.5" />
+              </svg>
+              <input
+                type="search"
+                value={query}
+                onChange={(e) => {
+                  setQuery(e.target.value)
+                  setVisible(PAGE_SIZE)
+                }}
+                placeholder={t('articles.searchPlaceholder')}
+                aria-label={t('articles.searchPlaceholder')}
+                className="w-full rounded-xs border border-hairline bg-surface py-2 pr-3 pl-9 font-sans text-sm text-ink-900 transition-colors placeholder:text-ink-300 focus:border-tibetan-500 focus:outline-none"
+              />
+            </div>
+            <p className="shrink-0 font-sans text-xs tabular-nums text-ink-300">
+              {t('articles.count', { n: filtered.length })}
+            </p>
+          </div>
         </div>
-        <div className="relative w-full max-w-md">
-          <svg
-            viewBox="0 0 24 24"
-            className="pointer-events-none absolute top-1/2 left-4 h-4 w-4 -translate-y-1/2 text-sandalwood-400"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth={2}
-            strokeLinecap="round"
-          >
-            <circle cx={11} cy={11} r={7} />
-            <path d="m20 20-3.5-3.5" />
-          </svg>
-          <input
-            type="search"
-            value={query}
-            onChange={(e) => {
-              setQuery(e.target.value)
-              setVisible(PAGE_SIZE)
-            }}
-            placeholder={t('articles.searchPlaceholder')}
-            aria-label={t('articles.searchPlaceholder')}
-            className="w-full rounded-full border border-sandalwood-300/70 bg-surface py-2.5 pr-4 pl-11 font-sans text-sm text-ink-900 transition-colors placeholder:text-ink-300 focus:border-gold-500 focus:ring-2 focus:ring-gold-300 focus:outline-none"
-          />
-        </div>
-        <p className="text-xs tabular-nums text-sandalwood-400">
-          {t('articles.count', { n: filtered.length })}
-        </p>
-      </div>
 
-      {/* 列表 */}
-      {shown.length === 0 ? (
-        <div className="mt-16 text-center">
-          <ZenIllustration variant="clouds" className="mx-auto h-40 w-72 rounded-2xl" animated={false} />
-          <p className="mt-6 font-serif text-sandalwood-500">{t('articles.noResults')}</p>
-        </div>
-      ) : (
-        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {shown.map((a) => {
-            const m = localizedMeta(a, lang)
-            const quoted = lang === 'zh' ? `《${m.title}》` : m.title
-            return (
-              <Link key={a.slug} to={`/articles/${a.slug}`} viewTransition className="card-link group flex flex-col overflow-hidden">
-                <div className="relative overflow-hidden">
-                  <CoverImage
-                    src={photoForSlug(a.slug)}
-                    alt={t('home.coverAlt', { t: m.title })}
-                    fallbackVariant={a.illustration}
-                    className="h-32 w-full transition-transform duration-500 group-hover:scale-105"
-                  />
-                  <span className="absolute top-3 left-3 rounded-full bg-sandalwood-950/70 px-2.5 py-1 text-[10px] tracking-wider text-gold-200 backdrop-blur-sm">
-                    {schoolLabel(a.school, lang)}
-                  </span>
-                </div>
-                <div className="flex flex-1 flex-col p-5">
-                  <h2 className="font-serif text-base font-bold text-sandalwood-800 transition group-hover:text-tibetan-700">
-                    {quoted}
-                  </h2>
-                  <p className="mt-2 line-clamp-2 flex-1 font-serif text-sm leading-relaxed text-ink-700">{m.excerpt}</p>
-                  <div className="mt-4 flex items-center justify-between text-xs text-sandalwood-400">
-                    <span>{m.author ? t('common.authorBy', { name: m.author }) : t('reader.authorLabel')}</span>
-                    <span>{t('articles.readingTime', { n: readingMinutes(a.chars) })}</span>
-                  </div>
-                </div>
-              </Link>
-            )
-          })}
-        </div>
-      )}
+        {/* 列表：发丝线分隔的条目式列表（替代卡片网格） */}
+        {shown.length === 0 ? (
+          <div className="py-24 text-center">
+            <ZenIllustration variant="clouds" className="mx-auto h-32 w-64 rounded-xs" animated={false} />
+            <p className="mt-8 font-serif text-ink-500">{t('articles.noResults')}</p>
+          </div>
+        ) : (
+          <ul className="mt-2">
+            {shown.map((a, i) => {
+              const m = localizedMeta(a, lang)
+              const quoted = lang === 'zh' ? `《${m.title}》` : m.title
+              return (
+                <Reveal key={a.slug} as="li" delay={(i % 6) * 50} className="border-b border-hairline">
+                  <Link
+                    to={`/articles/${a.slug}`}
+                    viewTransition
+                    className="group grid grid-cols-[5rem_1fr] items-start gap-5 py-6 transition-colors duration-200 sm:grid-cols-[7rem_1fr] sm:gap-7"
+                  >
+                    <div className="card-media relative aspect-4/3 overflow-hidden rounded-xs border border-hairline bg-rice-100">
+                      <CoverImage
+                        src={photoForSlug(a.slug)}
+                        alt={t('home.coverAlt', { t: m.title })}
+                        fallbackVariant={a.illustration}
+                        className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.05]"
+                      />
+                    </div>
+                    <div className="min-w-0">
+                      <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                        <h2 className="font-serif text-base leading-snug font-normal text-ink-900 transition-colors duration-200 group-hover:text-tibetan-600 sm:text-lg">
+                          {quoted}
+                        </h2>
+                        <span className="font-sans text-[10px] tracking-[0.18em] text-ink-300 uppercase">
+                          {schoolLabel(a.school, lang)}
+                        </span>
+                      </div>
+                      <p className="mt-2 line-clamp-2 font-serif text-sm leading-[1.9] text-ink-500">{m.excerpt}</p>
+                      <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1 font-sans text-xs text-ink-300">
+                        <span>{m.author ? t('common.authorBy', { name: m.author }) : t('reader.authorLabel')}</span>
+                        <span aria-hidden className="h-3 w-px bg-hairline" />
+                        <span>{t('articles.readingTime', { n: readingMinutes(a.chars) })}</span>
+                      </div>
+                    </div>
+                  </Link>
+                </Reveal>
+              )
+            })}
+          </ul>
+        )}
 
-      {/* 加载更多 */}
-      {visible < filtered.length && (
-        <div className="mt-10 text-center">
-          <button type="button" onClick={() => setVisible((v) => v + PAGE_SIZE)} className="btn-secondary">
-            {t('articles.loadMore')}（{shown.length} / {filtered.length}）
-          </button>
-        </div>
-      )}
+        {/* 加载更多 */}
+        {visible < filtered.length && (
+          <div className="mt-12 text-center">
+            <button type="button" onClick={() => setVisible((v) => v + PAGE_SIZE)} className="btn-secondary">
+              {t('articles.loadMore')}（{shown.length} / {filtered.length}）
+            </button>
+          </div>
+        )}
+      </Section>
     </div>
   )
 }
 
-function FilterChip({
+/** 院系筛选：文字标签 + 朱砂下划线（替代胶囊按钮组） */
+function FilterLink({
   active,
   onClick,
   children,
@@ -157,10 +168,11 @@ function FilterChip({
     <button
       type="button"
       onClick={onClick}
-      className={`cursor-pointer rounded-full px-4 py-1.5 text-sm transition ${
+      aria-pressed={active}
+      className={`relative cursor-pointer py-1 font-sans text-sm transition-colors duration-200 after:absolute after:inset-x-0 after:-bottom-px after:h-px after:origin-left after:bg-tibetan-600 after:transition-transform after:duration-300 ${
         active
-          ? 'bg-tibetan-600 font-medium text-paper shadow-md shadow-tibetan-900/20'
-          : 'border border-sandalwood-300/70 bg-surface text-ink-700 hover:border-tibetan-400 hover:text-tibetan-600'
+          ? 'text-ink-900 after:scale-x-100'
+          : 'text-ink-500 after:scale-x-0 hover:text-ink-900 hover:after:scale-x-100'
       }`}
     >
       {children}
