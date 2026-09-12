@@ -84,7 +84,8 @@ git show --stat --oneline HEAD ; git status --porcelain   # 双向核对
    `git add A B` 只要有一个路径不存在，**整条 add 失败**，随后 `git add -u` 只暂存删除 → 提交里只有删除没有新增。
    每次提交后 `git show --stat` + `git status --porcelain` 双向核对。
 2. **`plan-slices.mjs` 与 `slice-plan.mjs` 同名互覆**：`slice-plan.mjs` 是生成器（会覆盖 `slice-plan.json`）；
-   日常只跑审计器 `plan-slices.mjs`。（R10 会话已删除生成器，若两条命令都提示不存在＝正常，翻译已完成。）
+   日常只跑审计器 `plan-slices.mjs`。**两者都必须保留**——`task-plan`/`coverage`/`merge-parts`/`plan-slices`
+   四个脚本都读 `slice-plan.json`，删掉它就是本轮实测的 ENOENT。
 3. **取回历史分片只能用 `Set-Content -Encoding utf8` + Node 去 BOM**；`git show > file` 在 PowerShell 里写 UTF-16，JSON 非法。
 4. **`merge-parts` 只看 `firstBlock` 连续性，不看文件名**：完全嵌套的孤儿分片会被静默跳过（`[merged] N blocks` 却漏块）。
 5. **子代理自报不可信**：必须逐块核对 `n` 覆盖（`lines/min/max/uniq` **不够**，要查 missing 集合）。
@@ -107,7 +108,7 @@ git show --stat --oneline HEAD ; git status --porcelain   # 双向核对
 | 脚本 | 用途 |
 | --- | --- |
 | `task-plan.mjs [maxBlocks]` | 生成任务队列（唯一权威的「还剩多少」） |
-| `plan-slices.mjs` | 切片计划**审计**（不要跑生成器，已删除） |
+| `plan-slices.mjs` | 切片计划**审计**（只跑这个，不要跑生成器 `slice-plan.mjs`） |
 | `coverage.mjs [slug]` | 每篇覆盖% / 缺口区间 / 孤儿分片（merge 后整篇不再计分片，显示 0% 属正常） |
 | `gap-prep.mjs <slug>[:a-b]` | 预提取缺口源文 → `build/slices/<part>.src.json` |
 | `verify-slices.mjs <part…>` | 分片核验（含 `JSON.parse`），必须 `ok` |

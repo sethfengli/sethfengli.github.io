@@ -83,10 +83,12 @@ node -e "const fs=require('fs');for(const s of ['013zhufasx','032xyxing','052wan
   已删除 A/B 期全部已 merge 的 `slices/*.src.json` 与编号源/JSONL 脚手架（`build/` 现 5 文件）。
 - 删除过期文档 `scripts/NEXT.md`、`scripts/PLAYBOOK.md`、`scripts/WEEKEND-PLAN.md`（git 历史仍可追）；
   仍有效的条目已并入 `RESUME.md` / 本文件。
-- 删除失效脚本 21 个：`audit-slices`、`make-agent-tasks`（+`agent-tasks.json`）、`pick-next`、`prep-slices`、
-  `slice-plan`（+`slice-plan.json`，生成器，会覆盖审计器）、`analyze-eta`、`fix-261-boundary`、`fix-303-hanzi`、
-  `fix-502-author`、`diag-303`、`check-parts`、`check-assets`、`smoke`、`serve-dist`、`overlap`、`normalize-fw`、
-  `quote-scan`、`fix-dashes`、`reorder-photos`。
+- 删除失效脚本 19 个：`audit-slices`、`make-agent-tasks`（+`agent-tasks.json`）、`pick-next`、`prep-slices`、
+  `analyze-eta`、`fix-261-boundary`、`fix-303-hanzi`、`fix-502-author`、`diag-303`、`check-parts`、`check-assets`、
+  `smoke`、`serve-dist`、`overlap`、`normalize-fw`、`quote-scan`、`fix-dashes`、`reorder-photos`（共 18 个脚本 + 1 个 json）。
+- ⚠ **保留 `slice-plan.json` + `slice-plan.mjs`**（虽然它们是「生成器 + 计划快照」）：
+  `task-plan.mjs` / `plan-slices.mjs` / `coverage.mjs` / `merge-parts.mjs` **四个脚本都读 `slice-plan.json`**，
+  删掉会让整条队列/覆盖链路报 ENOENT（本轮已实测并回滚）。**只跑审计器 `plan-slices.mjs`，不要跑生成器 `slice-plan.mjs`。**
 - 删除仓库里的 `x.json`（0 字节空文件）并 untrack 误入库的 `.npm-cache/`（13.6 MB）。
 
 ## 6. 其它待办（低优先，实测定量后再说）
