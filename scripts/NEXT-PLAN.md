@@ -1,6 +1,8 @@
 # 下一轮计划（翻译已完成，剩下的是「修缺陷 + 一致性」）
 
-> 生成于 2026-09-12（B 期收尾后）；**§1-§4 已于同日的「缺陷修复轮」完成**（见下表与各节末的「已完成」）。
+> 生成于 2026-09-12（B 期收尾后）；**§1-§4 已于同日的「缺陷修复轮 1」完成**；
+> **§6 的 ②③①④ 已于「缺陷修复轮 2」完成**（计划 `scripts/DEFECT-ROUND-2-PLAN.md`，32 个提交；
+> 实测回填见 `RESUME.md` §1.1）。**§6.1 是下一轮候选。**
 > 背景见 `RESUME.md`，翻译轮实测见 `B-PHASE-HANDOFF.md`。
 > **本文件末尾有一段可直接复制给新对话的启动提示词。**
 > 所有数字均为本仓库实测；命令可直接复制执行。
@@ -8,7 +10,7 @@
 ## 0. 一句话结论
 
 **翻译已经全部做完**（`task-plan` 0 篇 / 0 任务），**已交付内容的硬缺陷也全部修完**：
-`validate-en` 现为 **ok=288 crit=0 warn=0**。下表 1-4 项已完成并逐篇提交；5-9 项为可选打磨。
+`validate-en` 现为 **ok=294 crit=0 warn=0 parts=0**。下表 1-11 项均已完成并逐条提交；§6.1 为下一轮候选。
 
 | # | 事项 | 类型 | 规模 | 风险 | 状态 |
 | --- | --- | --- | --- | --- | --- |
@@ -17,10 +19,12 @@
 | 3 | `101yebunengxi` 8 块残留 | crit | 8 块 | 低 | ✅ 完成 `aae8c16` |
 | 4 | 11 篇 `warn` 行内片段数不符 | warn | 实测 **42 块** | 低 | ✅ 完成（13 个提交） |
 | 5 | 248 篇「片段接头丢空格」 | 显示层 | 全库 | 中 | ✅ 完成（渲染层，`55d448c`+`aa5017d`） |
-| 6 | `author` 源数据缺陷残留 | 数据 | ? 处 | 低 | 未做（meta-scan 实测后再定） |
-| 7 | 音标/引号风格分叉 | 一致性 | 63 篇混合 | 中 | 未做（先定口径） |
-| 8 | `catalog-en.json` 与 `en/*` 对账 | 数据 | 1 次 | 低 | 未做 |
+| 6 | `author` 源数据缺陷残留 | 数据 | 实测 **16 条** | 低 | ✅ 轮 2 完成（14 篇改 + 2 篇保留 + en 侧同步；meta-scan 16→**5**，见 §6.1(a)） |
+| 7 | 音标/专名风格分叉 | 一致性 | 实测 185 篇 | 中 | ✅ 轮 2 完成（口径 = **统一带变音符**，7,956 处） |
+| 8 | `catalog-en.json` 与 `en/*` 对账 | 数据 | 294 条 | 低 | ✅ 轮 2 完成（差异 **0**；生成器不删键，见 `RESUME.md` §4.12） |
 | 9 | `build/` 与 npm cache 残留 | 卫生 | — | 无 | ✅ 已完成（见 §5） |
+| 10 | 6 个孤儿 `en/*.pN.json` | 卫生 | 6 文件 | 低 | ✅ 轮 2 完成（`parts` 6→**0**，`ok` 288→294） |
+| 11 | `scan-mojibake` 漏检 C4/C5/E1 | crit（隐蔽） | en 里 5 处 | 低 | ✅ 轮 2 完成（修检测器 + 修数据，见 `RESUME.md` §4.13） |
 
 ---
 
@@ -102,34 +106,83 @@
   删掉会让整条队列/覆盖链路报 ENOENT（本轮已实测并回滚）。**只跑审计器 `plan-slices.mjs`，不要跑生成器 `slice-plan.mjs`。**
 - 删除仓库里的 `x.json`（0 字节空文件）并 untrack 误入库的 `.npm-cache/`（13.6 MB）。
 
-## 6. 其它待办（低优先，实测定量后再说）
+## 6. 其它待办 —— ✅ 轮 2 已全部完成
 
-> **这些剩余项的完整执行计划（含命令、预期输出、回退、逐篇 author 判定表）已单独写在
-> `scripts/DEFECT-ROUND-2-PLAN.md`**，按 ② catalog → ③ 孤儿文件 → ① author → ④ 音标 的顺序执行。
-> 下表仅为索引。
+> 完整执行计划（含命令、预期输出、回退、逐篇 author 判定表）在 `scripts/DEFECT-ROUND-2-PLAN.md`，
+> 已按 ② catalog → ③ 孤儿文件 → ① author → ④ 音标 执行完毕（32 个提交，实测回填见 `RESUME.md` §1.1）。
+> 下表仅为结果索引；**下一轮候选见 §6.1**。
 
-| 事项 | 现状 | 建议口径 |
+| 事项 | 轮 2 后现状 | 结论 |
 | --- | --- | --- |
-| `author` 源数据缺陷 | `meta-scan.mjs` 报出的清单需**重跑确认**（B 期已修 `187`/`025`/`043`） | 命中就删 `src/content/articles/<slug>.json` 的 `author`（不要改 en） |
-| 音标/引号风格 | `name-scan.mjs`：**63 篇有混合变体**（如 `nirvana/nirvāṇa` 同篇并存） | 先定「带变音符」为唯一口径，再按篇批量替换 |
-| `catalog-en.json` 对账 | 由 `en/*.json` 汇总 | 跑一次 `node scripts/build-catalog-en.mjs` 并核对差异 |
-| 6 个孤儿 `en/*.pN.json` | `011errusx.p1`、`087benyuanfamen.p1`、`121foshuoemituojingzhu.p2`、`131chanjingzongshi.p2`、`145zhengdingzhiye.p1`、`257nizhuanshuailao.p2` 在 `articles/` 里没有同 slug 源，`loadArticleForSlug` 返回 null，故永不渲染 | 确认无用后删除（本轮未动，`validate-en` 的 `parts=6` 即指它们） |
+| `author` 源数据缺陷 | meta-scan **16 → 5**（5 条全是真实署名，见 §6.1(a)） | 14 篇已改（逐篇 1 个提交）；另有 10 篇 en 署名同步 |
+| 音标/专名风格 | 已统一**带变音符**（`en/*` 7,952 处 + `verses.ts` 4 处） | 计划里的 10 组全部归零；同类剩余见 §6.1(c)(d) |
+| `catalog-en.json` 对账 | 与 `en/*` 差异 **0**（294 条） | 生成器是合并式、不删键 → 建议加 prune，见 §6.1(e) |
+| 6 个孤儿 `en/*.pN.json` | **已删净**（0） | 删除前已验证其块都含在整篇里（3 个逐字节相同，3 个整篇是修过的后续版本） |
 | 站点侧 | `npm run typecheck` 通过；`npm run build` 在受限沙箱 `spawn EPERM` | 本地跑 `npm run build` 出 `dist/` 后发布 |
+
+### 6.1 下一轮候选（轮 2 实测残留，**全部未做**）
+
+**(a) meta-scan 的 5 条「已知合法」误报**（判据：`author` 恰好等于某个正文块开头，而那个块就是署名块本身 → `RESUME.md` §4.14）：
+
+`010dzjcy 明德 编`、`028baofufa 聂云台`、`186hanshandashideyisheng 宋智明 原编述`、`246henghedashouyin 元音老人`、`302xinj 湛然 注`。
+→ **不要再删**（都是真署名）；若要让扫描报 0，需给扫描器加「纯署名块」白名单（改 `scripts/`，需批准）。
+
+**(b) meta-scan 抓不到、但同类的可疑 `author`**（形态=书名/品名/正文短语；扫描器只查「== 标题」「是块开头」，这类抓不到。**需逐篇读源判定**）：
+
+`002baiyunxy 但看自心`、`019xinnzy 业不能系`、`049kulianyiwan 同人于野`、`082renshibenyuanfamen 第十八愿`、
+`088linzhongshinianxiangxu 要以深信切愿`、`092shangdaochuan 第十八愿`、`109chenggong 就像溺水的人`、
+`170buyuanren 王凤仪嘉言录`、`193guanwuliangshoufojingjijie 正宗分`、`212frame 金刚经精解`、
+`091wuyalishenghuo 宁静在说话`、`236kuailedemimi 一个新世界`。
+
+**(c) 音标第二轮：同类混合对**（轮 2 只做了计划里的 10 组 + 同词族；下表为轮 2 后的 file 计数）：
+
+| 词 | 实测 |
+| --- | --- |
+| `pāramitā` 系 | `pāramitā`=657 `paramita`=422 `Paramita`=123 `Pāramitā`=38 `pāramita`=1（共 1,241，最大宗） |
+| `Subhuti` 系 | `Subhuti`=1251 / `Subhūti`=327（共 1,578） |
+| `Śāriputra` 系 | `Śāriputra`=515 / `Sariputra`=447 / `Sāriputra`=36 |
+| `Mahayana` 系 | `Mahayana`=305 / `Mahāyāna`=270 / `mahayana`=2 |
+| `Avalokiteśvara` | `Avalokiteśvara`=137 / `Avalokitesvara`=99 |
+| `Mañjuśrī` | `Mañjuśrī`=166 / `Manjusri`=40 / `Mañjusri`=13 |
+| `saṃsāra` | `samsara`=70 / `saṃsāra`=59 / `Saṃsāra`=8 / `Samsara`=7 |
+| `Kṣitigarbha` | `Ksitigarbha`=99 / `Kṣitigarbha`=36 |
+| `Tripiṭaka` | `Tripitaka`=137 / `Tripiṭaka`=56 / `tripiṭaka`=1 |
+| `Nāgārjuna` | `Nāgārjuna`=53 / `Nagarjuna`=30 |
+| `prajñāpāramitā` 残留 | `Prajñāpāramita`=**1**（少一个 `ā`，**真错字**，可单独修） |
+
+**(d) 长专名规范化**（`\b` 刻意跳过，与 (c) 属同一类但改的是专名本身）：
+
+`Siksananda`=6 / `Shikshananda`=1（同一人两种拼法）、`Prajnatara`=6 / `Prajnadhara`=1（同为禅宗二十七祖）、
+`Sakyamunindra`=2、`Anandatta`=1、`Vajrasamadhi`=1、`Mahaprajna Paramita`=4（同一经名的另一种写法）。
+
+**(e) `build-catalog-en.mjs` 加 prune**（`RESUME.md` §4.12）：合并后删掉「en 侧无值」的 `title`/`author`/`excerpt`，
+否则 §1 的一行对账每次都要手工补一遍；改 `scripts/` 需批准。
+
+**(f) 站点侧**：`npm run build` 在本机跑出 `dist/` 后发布（受限沙箱里 `spawn EPERM`）。
+
+**(g) 轮 2 用过的转换脚本已按「临时件自删」规则删除**（`build/` 复原为原 5 个复用脚本）：
+做 (c)/(d) 时需要重写一个等价脚本，或先批准把它固化为 `scripts/unify-variants.mjs`。它必须包含三条硬约束：
+① 只按 `\b` 整词替换、长词形优先；② **href 硬守卫**（任何目标词出现在 href 里就中止）；③ 逐文件复核
+「块数 / 块签名 / href 多重集不变 + 不引入乱码」（`validate-en` 已覆盖前两项，仍建议同时跑）。
+替换统计与分组提交的实测数字见 `RESUME.md` §1.1、§4.16。
 
 ---
 
 ## 7. 给新对话的启动提示词（复制这一段）
 
-> 注意：§1-§5 已完成，`validate-en` 已是 `ok=288 crit=0 warn=0`。以下提示词对应「下一轮」，
-> 请按当时 `RESUME.md` §1 的实测数字自行调整；若只想打磨，直接做 §6 的低优先项。
+> 注意：§1-§5 已完成，`validate-en` 已是 `ok=294 crit=0 warn=0 parts=0`（缺陷修复轮 1+2 都已收尾）。
+> 以下提示词对应「下一轮」；候选清单见 §6.1，请按当时 `RESUME.md` §1 的实测数字自行调整。
 
 ```
 继续 huideng-chanlin 项目（D:\FengLi\Web\fou\huideng-chanlin）。翻译已完成（A+B 期 29 篇，task-plan 0 任务），
-上一轮「缺陷修复轮」已把 validate-en 修到 ok=288 crit=0 warn=0（详见 scripts/RESUME.md §1 与提交历史）。
-先读 scripts/RESUME.md（状态/目录/流水线/坑，尤其 §4.3 的编码坑与 §4.11 的片段数对齐判据）、
-scripts/NEXT-PLAN.md（§6 剩余待办）与 scripts/B-PHASE-HANDOFF.md §3-§4。
+前两轮「缺陷修复轮 1/2」已把 validate-en 修到 ok=294 crit=0 warn=0 parts=0、catalog-en 与 en/* 差异 0、
+音标统一为带变音符（详见 scripts/RESUME.md §1、§1.1 与提交历史）。
+先读 scripts/RESUME.md（状态/目录/流水线/坑，尤其 §4.3 的编码坑、§4.11 的片段数对齐判据、
+§4.12 生成器不删键、§4.13 乱码检测器指纹、§4.15 author 两侧独立）、
+scripts/NEXT-PLAN.md §6.1（下一轮候选）与 scripts/B-PHASE-HANDOFF.md §3-§4。
 
-本轮范围请在动手前先跟我确认（候选：§6 的 author 源数据、音标口径、catalog-en 对账、孤儿 pN 文件）。
+本轮范围请在动手前先跟我确认（候选：§6.1(b) 未捕获的可疑 author、§6.1(c)(d) 音标/专名第二轮、
+§6.1(e) 给 build-catalog-en 加 prune）。
 
 纪律：改动后必跑 node scripts/repair-json.mjs && node scripts/validate-en.mjs && node scripts/scan-mojibake.mjs；
 每个 slug 单独提交，提交后 git show --stat --oneline HEAD 与 git status --porcelain 双向核对；不要 push。

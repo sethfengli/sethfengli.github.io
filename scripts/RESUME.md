@@ -1,15 +1,19 @@
 # 英文翻译续作指南
 
 > 工作目录 `D:\FengLi\Web\fou\huideng-chanlin`。**A 期 + B 期翻译全部完成**（2026-09-12），
-> **已交付内容的缺陷修复也已完成**（见 §1）。本文件 = 状态 + 目录 + 流水线 + 坑；
+> **缺陷修复轮 1、2 也已完成**（§1 = 轮 1 的 crit/warn，§1.1 = 轮 2 的 catalog/孤儿/author/音标）。本文件 = 状态 + 目录 + 流水线 + 坑；
 > 下一轮要做什么见 `scripts/NEXT-PLAN.md`；翻译轮实测细节见 `scripts/B-PHASE-HANDOFF.md`。
 
 ## 1. 当前状态（缺陷修复轮后实测）
 
 | 指标 | 值 |
 | --- | --- |
-| `validate-en` | **ok=288 crit=0 warn=0 parts=6** |
-| `scan-mojibake` | **0 / 300** |
+| `validate-en` | **ok=294 crit=0 warn=0 parts=0** |
+| `scan-mojibake` | **0 / 294**（缺陷修复轮 2 起含 C4/C5/E1 前导字节指纹，见 §1.1、§4.13） |
+| `meta-scan` | 命中 **5**，全部是「author == 正文块开头」的**真实署名**（见 §1.1）→ **期望值是 5，不是 0** |
+| `name-scan` | ASCII 变体已归零，仅剩 3 篇 4 处**子串假阳性**（`Anandatta`/`Sakyamunindra`/`Vajrasamadhi`/`Mahaprajna`，见 §4.14） |
+| `catalog-en` 与 `en/*` 差异 | **0**（294 条全等；生成器是合并式、不删旧键，见 §4.12） |
+| 孤儿分片 `en/*.pN.json` | **0**（原 6 个已删，见 §1.1） |
 | 翻译队列 `task-plan.mjs 120` | **0 篇 / 0 块 / 0 任务 / 0 被挡 → 翻译收工** |
 | `plan-slices.mjs`（审计） | 0 篇有缺口 / 缺 0 片 / 可派 0 片 / 一致性问题 0 条 |
 | `npm run typecheck` | 通过（tsc --noEmit） |
@@ -25,6 +29,20 @@
 | `101yebunengxi` | 同上，8 块只有 `〔〕` | 同上（`aae8c16`） |
 | 11 篇 warn 行内片段数不符 | 实测 **42 块**（不是 12）：`103yjy` 一个文件就 22 块（en 存成 1 个片段，zh 2..36 个） | 逐篇把 en 片段数对齐到 zh，`13`/`103` + 其余 9 篇单独提交 |
 | 253 篇片段接头丢空格 | 实测：英文 **248 篇**、按新规则补 **15,548** 处；中文正文 0 处 | 渲染层按需插空格（`ArticleBody.tsx`，仅英文生效），见 §4 |
+
+
+### 1.1 缺陷修复轮 2（数据类：catalog / 孤儿 / author / 音标）实测
+
+计划文件 `scripts/DEFECT-ROUND-2-PLAN.md`，顺序 ②→③→①→④，**共 32 个提交**（② 2 + ③ 1 + ① 15 + 乱码 2 + ④ 12）。
+
+| 步骤 | 计划预期 | **实测结果** |
+| --- | --- | --- |
+| ② `build-catalog-en.mjs` | 差异 8 → 0 | 生成器**只合并不删键**（`{...map[slug], ...entry}`），重建后 **8 条陈旧 `author` 仍在**；需再跑一次「删掉 en 侧没有值的字段」才到 **0**（见 §4.12）。重建本身更新了 **228/222 行**（大量陈旧 title/excerpt 一起刷新，比计划说的「只有 8 条」多得多） |
+| ③ 删 6 个孤儿分片 | `parts` 6→0、`ok` 不变 | `parts` 6→**0**，但 `ok` **288→294**：`validate-en` 对「有分片的 slug」是 `continue` 跳过整篇，分片删掉后这 6 篇整篇才第一次被校验，且全部通过。删除前另行核验：6 个分片的块**都已含在整篇里**（3 个逐字节相同，另 3 个整篇是后来修过的版本：破折号归一 / 术语归一 / 增补夹注） |
+| ① author 源缺陷 | 15 篇 | 实测 meta-scan **16 条**（计划表漏了 `010dzjcy`「词语简释」= 标题片段）；**14 篇改动、2 篇保留**（`028baofufa` 聂云台、`246henghedashouyin` 元音老人 是真作者）→ meta-scan **16→5** |
+| ① 收尾重建 catalog | 「清掉 en.author 变空的旧值」 | **实测是 no-op**：catalog 只由 `en/*` 派生，改 `articles/` 的 author **完全不影响 catalog**；真正受影响的是 en 侧署名，已按用户确认单独一个提交同步 10 篇 |
+| ④ 音标统一 | 10 组、63 篇混用 | 口径定为**统一带变音符**；实测替换 **7,956 处**（`en/*` 7,952 处 / 185 篇互有重叠 + `verses.ts` 4 处），含同词族扩展：`parinirvana`/`Mahaparinirvana`、`samadhis` 复数、`prajnaparamita` 复合词 → `name-scan` ASCII 侧归零 |
+| 计划外发现 | — | `scan-mojibake` 有**假阴性**：指纹缺 C4/C5/E1 前导字节，漏掉 en 里 5 处双重编码（`AvÄ«ci`→`Avīci` 等）。已修检测器 + 修数据（见 §4.13） |
 
 
 ## 2. 目录与产出（哪些是内容、哪些是工具）
@@ -121,6 +139,27 @@ git show --stat --oneline HEAD ; git status --porcelain   # 双向核对
     ③href 多重集不变；④未列入的块逐字节不变；⑤整篇去空白内容不变。
     子代理交回规格后**必须父代理独立复验**（本轮 41 块里子代理自报全绿、父代理复验才发现
     `.”`+`“The` 这类相邻对话接头仍会粘住 → 规则补 `“`/`‘` 到段首集合）。
+12. **`build-catalog-en.mjs` 是「合并式」更新，不会删键**（缺陷修复轮 2 实测）：
+    `map[slug] = { ...(map[slug] ?? {}), ...entry }`，所以当 `en/<slug>.json` 的 `author` 被清空或整行删除后，
+    重建只会**跳过**该字段、**不会移除** catalog 里的旧值。「跑一次生成器就完成对账」是错的。
+    本轮手工删了 8 条陈旧 `author`（全是把小节名/标题写进 author 的旧值）。
+    **建议（待批准）**：给生成器加一步 prune——合并后删掉「en 侧无值」的 `title`/`author`/`excerpt`，
+    否则 §1 的一行对账只能靠手工维持。
+13. **`scan-mojibake` 的指纹不全，会漏 C4/C5/E1 前导字节**（本轮实测的假阴性）：
+    原指纹只覆盖 `â€` / `Ã?` / `Â?` / `ï¼` / `ã€` / `U+FFFD`，因此
+    `ī`(C4 AB→`Ä«`)、`ū`(C5 AB→`Å«`)、`ṇ`(E1 B9 87→`á¹‡`)、`ṣ`(E1 B9 A3→`á¹£`) 全部漏检——
+    报 **0/294** 而 `en/` 里实际有 **5 处**。已补「候选字符按 CP1252 反查回字节 → 严格 UTF-8 回环解码」，
+    只有解码成功且结果不同才判乱码，故 `café` 这类真 latin-1 文本、`dhāraṇī` 这类正确变音符都不会误报。
+14. **`name-scan` 是裸子串计数，长专名会被算成「另一个变体」**：它用 `raw.split(v)`，既不解析 JSON 也不看词边界，
+    于是 `Anandatta` 记成 `Ananda`、`Sakyamunindra` 记成 `Sakyamuni`、`Vajrasamadhi`/`Mahaprajna` 记成 `samadhi`/`prajna`。
+    音标统一后它仍报 3 篇「混合」，**这 4 处全是子串假阳性、不是缺陷**（判据：取整词看，没有一个是词本身）。
+15. **改 `articles/<slug>.json` 的 `author` 不影响英文页署名**：英文页/列表页读 `en/*.json` 的 `author`（再汇总进 `catalog-en.json`），
+    与中文源两边**独立**。只改中文源会让 en 侧留下**错误署名**；本轮按用户确认另用 1 个提交同步了 10 篇 en 署名。
+    下次改 author 请**同时决定 en 侧**。
+16. **音标口径已定为「统一带变音符」**（用户确认；本轮 `en/*` **7,952 处 / 185 篇**互有重叠 + `verses.ts` 4 处 = **7,956 处**）。`\b` 词边界是必须的：
+    `Siksananda`/`Shikshananda`/`Anandatta`/`Sakyamunindra`/`Samadhisvara`/`Prajnaruci`/`Prajnatara` 等长专名**不可**被替换；
+    替换前先测 `href`（本轮实测目标词在 href 中出现 **0** 次，脚本已加硬守卫），并逐组合跑 `validate-en`。
+    仍未统一的同类混合对见 `NEXT-PLAN.md`（`paramita`、`Mahayana`、`Sariputra`、`Subhuti`、`Manjusri` 等）。
 
 
 ## 5. 脚本速查
