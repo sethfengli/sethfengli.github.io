@@ -22,7 +22,7 @@ for (const p of plan) {
   if (enFiles.has(`${slug}.json`)) continue // 整篇已存在
   const zhPath = join(root, 'src/content/articles', p.file)
   if (!existsSync(zhPath)) continue
-  if (readFileSync(zhPath).length > 300 * 1024) continue // B 期
+  if (readFileSync(zhPath).length > 30 * 1024 * 1024) continue // B 期
 
   const parts = new Map()
   for (const f of enFiles) {

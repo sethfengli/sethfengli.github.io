@@ -28,7 +28,7 @@ if (!slugs.length) {
     const s = p.file.replace(/\.json$/, '')
     if (enFiles.includes(`${s}.json`)) continue
     if (!existsSync(join(root, 'src/content/articles', p.file))) continue
-    if (readFileSync(join(root, 'src/content/articles', p.file)).length > 300 * 1024) continue
+    if (readFileSync(join(root, 'src/content/articles', p.file)).length > 30 * 1024 * 1024) continue
     slugs.push(s) // include articles with no parts at all (0% coverage)
   }
 }

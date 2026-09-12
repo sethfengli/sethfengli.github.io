@@ -19,7 +19,7 @@ const SLICE_PLAN = JSON.parse(readFileSync(planPath, 'utf8'))
 const planByFile = new Map(SLICE_PLAN.map((p) => [p.file, p]))
 
 /** 本轮（优先后续）只做 ≤300KB 的文章；更大经典延后 */
-const DEFER_BYTES = 300 * 1024
+const DEFER_BYTES = 30 * 1024 * 1024
 
 const CJK = /[\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff]/
 

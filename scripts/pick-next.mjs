@@ -35,7 +35,7 @@ for (const p of plan) {
   if (enFiles.includes(`${s}.json`)) continue
   const zhPath = join(root, 'src/content/articles', p.file)
   if (!existsSync(zhPath)) continue
-  if (readFileSync(zhPath).length > 300 * 1024) continue
+  if (readFileSync(zhPath).length > 30 * 1024 * 1024) continue
   const zh = JSON.parse(readFileSync(zhPath, 'utf8'))
   const total = zh.blocks.length
   const cover = new Array(total).fill(false)
