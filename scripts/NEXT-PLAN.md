@@ -104,6 +104,10 @@
 
 ## 6. 其它待办（低优先，实测定量后再说）
 
+> **这些剩余项的完整执行计划（含命令、预期输出、回退、逐篇 author 判定表）已单独写在
+> `scripts/DEFECT-ROUND-2-PLAN.md`**，按 ② catalog → ③ 孤儿文件 → ① author → ④ 音标 的顺序执行。
+> 下表仅为索引。
+
 | 事项 | 现状 | 建议口径 |
 | --- | --- | --- |
 | `author` 源数据缺陷 | `meta-scan.mjs` 报出的清单需**重跑确认**（B 期已修 `187`/`025`/`043`） | 命中就删 `src/content/articles/<slug>.json` 的 `author`（不要改 en） |

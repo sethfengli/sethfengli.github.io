@@ -1,0 +1,214 @@
+# 缺陷修复轮 2 计划（数据类缺陷：catalog → 孤儿 → author → 音标）
+
+> 生成于 2026-09-12，接在「缺陷修复轮 1」之后（该轮已把 `validate-en` 修到 **ok=288 crit=0 warn=0**，
+> 见 `RESUME.md` §1 与提交历史 `e9a84bd`…`0414c2f`）。
+> **本文件就是执行清单**：按 §4 的顺序做，每一步都有「命令 + 预期输出 + 回退」。
+> 文件末尾 §8 有一段**可直接复制到新对话**的启动提示词。
+
+## 0. 一句话
+
+四件事，全是数据类、不涉及翻译：**先清 catalog 与孤儿文件（零风险），再逐篇定 author，最后单独一轮统一音标口径**。
+顺序按用户指定：**② catalog → ③ 孤儿 → ① author → ④ 音标**。
+
+> 为什么 ② 在 ① 之前：重建 catalog 会把 `en/*` 的当前值覆盖进去。若先改 author 再重建，
+> `catalog-en.json` 里与该 slug 相关的字段会被一起刷新，容易把「本轮改了什么」搅在一起。
+> 先重建、后改 author，然后**最后再重建一次**（author 只有 `en.author` 有值时才进 catalog，见 §1）。
+
+---
+
+## 1. ② `catalog-en.json` 与 `en/*` 对账（≈10 min，零风险）
+
+**生成器**：`scripts/build-catalog-en.mjs`。它由 `src/content/en/*.json` 汇总
+`slug → {title, author, excerpt}`，**只写这三个字段**，且 `author` 仅当 `en.author` 有值才写入
+（`en.author` 为空则该 slug 在 catalog 里没有 `author` 键）。
+
+**实测差异**：重建后 `286/294` 与 `en/*` 完全一致，**8 条陈旧**，全是「中文源把小节名/标题写进了
+`author`，而 `en/*.json` 里 `author` 为空」造成的旧值残留：
+
+| slug | catalog 里的陈旧 author | `en/*.json` 实际 |
+| --- | --- | --- |
+| `020taishanggy-1` | The Way to Gather Blessings and Avert Disasters | 无 author |
+| `021taishanggy-2` | The Way to Gather Blessings and Avert Disasters | 无 author |
+| `025taishanggy-yw` | In Praise of Lord Yao Duanke | 无 author |
+| `047shengmingdcj` | Preface to the Original Book | 无 author |
+| `105wangfengyijiayanlu` | Foreword | 无 author |
+| `187hanshandashinianpushu` | Annotated by Zhanran | 无 author |
+| `302xinj` | An Elucidation of the Heart Sutra | 无 author |
+| `502xiuxinjue` | Introduction to National Master Puzhao | 无 author |
+
+**做法**
+```bash
+node scripts/build-catalog-en.mjs
+node scripts/validate-en.mjs        # 必须仍为 ok=288 crit=0 warn=0
+```
+**预期**：`catalog-en.json: 294 entries (294 updated from overlays)`；差异从 8 条降到 **0**。
+**独立复验**（不要只看生成器自报）：
+```bash
+node -e "const fs=require('fs');const cat=JSON.parse(fs.readFileSync('src/content/catalog-en.json','utf8'));let bad=0;for(const k of Object.keys(cat)){const e=JSON.parse(fs.readFileSync('src/content/en/'+k+'.json','utf8'));for(const f of ['title','author','excerpt']){if((cat[k][f]||'')!==(e[f]||'')){bad++;console.log('MISMATCH',k,f)}}}console.log('catalog mismatches:',bad)"
+```
+**提交**：`git add src/content/catalog-en.json && git commit -m "data: rebuild catalog-en from en/*.json (clears 8 stale author/title/excerpt entries)"`
+**回退**：`git checkout -- src/content/catalog-en.json`
+
+⚠ **坑（本轮踩过）**：`node scripts/build-catalog-en.mjs --help` 也会**直接重写该文件**（没有 dry-run 参数）。
+所以执行前先 `git status` 确认它是干净的，改完马上核对 `git diff --stat`。
+
+---
+
+## 2. ③ 删除 6 个孤儿 `en/*.pN.json`（≈5 min，零风险）
+
+**实测**：这 6 个文件在 `src/` 内**零字符串引用**，且 `src/content/articles/` 下**没有同名 slug**，
+`loadArticle(slug)` 取不到中文源 → `loadArticleForLang` 返回 null → **永远不会被渲染**：
+
+```
+011errusx.p1  087benyuanfamen.p1  121foshuoemituojingzhu.p2
+131chanjingzongshi.p2  145zhengdingzhiye.p1  257nizhuanshuailao.p2
+```
+
+`validate-en` 输出里的 `parts=6` 指的就是它们。
+
+**做法**（删除前再自己验一遍零引用，别只信本文件）
+```bash
+node -e "const fs=require('fs'),p=require('path');const pats=['011errusx.p1','087benyuanfamen.p1','121foshuoemituojingzhu.p2','131chanjingzongshi.p2','145zhengdingzhiye.p1','257nizhuanshuailao.p2'];const walk=d=>fs.readdirSync(d).flatMap(f=>{const q=p.join(d,f);return fs.statSync(q).isDirectory()?walk(q):[q]});const files=walk('src');for(const x of pats){const hit=files.filter(f=>fs.readFileSync(f,'utf8').includes(x));console.log(x,'refs:',hit.length,hit.join(','))}"
+git rm src/content/en/011errusx.p1.json src/content/en/087benyuanfamen.p1.json \
+       src/content/en/121foshuoemituojingzhu.p2.json src/content/en/131chanjingzongshi.p2.json \
+       src/content/en/145zhengdingzhiye.p1.json src/content/en/257nizhuanshuailao.p2.json
+node scripts/validate-en.mjs
+```
+**预期**：`parts` 从 **6 → 0**（`ok` 数不变，`crit=0 warn=0`）。
+**提交**：`git commit -m "data: remove 6 orphan en/*.pN.json shards (no source article, never rendered)"`
+**回退**：`git revert HEAD`（或 `git checkout HEAD~1 -- src/content/en/`）。
+
+---
+
+## 3. ① `author` 源数据缺陷：15 篇逐篇定（≈30-40 min）
+
+**判据（`meta-scan.mjs`）**：`author` 的值 = 某个正文块的开头文字，或 = 标题。
+**纪律**：改 `src/content/articles/<slug>.json`（**中文源**），**不要改 `en/*`**；
+`en/*` 的 `author` 缺失是正常的（那时 catalog 就不写 `author`）。
+改完必须**再跑一次 §1 的 catalog 重建**，否则 `en.author` 变空的篇会在 catalog 里留着旧值。
+
+### 3.1 逐篇建议（基于本轮只读核对，标 ★ 的必须自己读一遍源再定）
+
+| slug | 现 `author` | 判定 | 依据 / 建议处置 |
+| --- | --- | --- | --- |
+| `003xffayuanw` | `湛然 注` | ★ **可能对但对象错** | 首块 `明·莲池大师 著`，块 8 又是 `莲池大师 著`；`en.author="Annotated by Zhanran"`。真实情况是**莲池大师著 + 湛然注**。建议 `author` 写 `莲池大师 著，湛然 注`（并与 `en.author` 同步改成对应英文），或保守只删 `湛然 注` 改成 `莲池大师`。**必须先读源定** |
+| `024lfsx-yw` | `立命之学` | **删** | 就是正文第一个小节标题（`了凡四训` 的第一篇），不是作者 |
+| `028baofufa` | `聂云台` | **保留** | 真作者：块 5 有「与聂云台居士书」等，`en.author="Nie Yuntai"` 正确。属 meta-scan 误报（人名天然也出现在正文里） |
+| `048wangshengfl` | `编后记` | **删** | 小节名（块 49 是编后记标题）；`en/*` 里应同步清空 |
+| `105wangfengyijiayanlu` | `前 言` | **删** | 小节名（块 0 = `前 言`）；`en.author` 已是 undefined，删完与 §1 的 catalog 修复一致 |
+| `110yimengmanyan` | `一梦漫言` | **改成 `见月老人`** | `一梦漫言` == 标题；块 0 `千华寺继任主持见月老人自述`、块 4 `见月尊师…`。`en.author` 已是 `Jianyue`（即见月），故中文源改成 `见月老人` 即可对齐 |
+| `150youraisemeup` | `是你扬升了我` | **删** | 与标题 `You raise me up（音频）` 同源；正文是歌词，无作者 |
+| `151sizuanxingyaomen` | `一行三昧` | **删** | 是小节名（该词在 22 个块里出现）；真作者是四祖道信（块 1 `禅宗四祖道信撰述…湛然 注`）。建议 `author` 写 `道信 撰，湛然 注`，或保守删除 |
+| `186hanshandashideyisheng` | `山阴王的青睐` | **删** | 是**章节标题**（块 514）；块 1 是 `宋智明 原编述` → 建议 `author="宋智明 原编述"`，或保守删除 |
+| `197ruxiangguangshi` | `时维` | **改成 `了然法师`** | `en.author="Liaoran"`（=了然）已经是对的，中文源却写成 `时维`（正文里的时间用语）。块 0 `了然法师弟子徐慧觉编订刊行`。建议中文源改 `了然法师`（若要更准：`了然法师 著，徐慧觉 编订`） |
+| `246henghedashouyin` | `元音老人` | **保留** | 真作者（块 2 有介绍）。meta-scan 误报 |
+| `247lingxinanranzhu` | `无所缘的禅修` | **删** | 小节名；`en.author="Yongey Mingyur Rinpoche"` 是**外部引用作者**，不是本文作者。建议中文源删，且**考虑同时清掉 `en.author`**（否则英文页署名会指错） |
+| `257nizhuanshuailao` | `张杏春` | ★ **待定** | 块 28 出现该名；需读源判断是作者还是被引用者。若只是文中人物 → 删并清 `en.author="Zhang Xingchun"` |
+| `272nianfojingju` | `虎溪尊者` | ★ **待定** | 首块 `摘自《西方公据》`；`虎溪尊者` 可能是原作者也可能是编者。读源后定；`en.author="Venerable Huxi"` 需同步 |
+| `302xinj` | `心经精解` | **删** | `author == title`（课程教材），纯误填 |
+
+### 3.2 收尾
+```bash
+node scripts/meta-scan.mjs            # 期望：命中 0（误报项若要保留，需在 NEXT-PLAN 记「已知合法」）
+node scripts/build-catalog-en.mjs     # author 变动后必须重建
+node scripts/repair-json.mjs ; node scripts/validate-en.mjs   # ok=288 crit=0 warn=0
+```
+**提交**：每个 slug 单独提交（`data: fix author metadata for <slug> (was a section heading)`），
+catalog 重建单独一个提交。
+**回退**：`git checkout HEAD~1 -- src/content/articles/<slug>.json`
+
+---
+
+## 4. ④ 音标/专名风格统一（**单独一轮**，先定口径）
+
+**实测混合变体（出现篇数）**：
+
+| 变体对 | 计数 |
+| --- | --- |
+| `Sakyamuni` / `Śākyamuni` / `Shakyamuni` | 35 / 64 / 61（**三种并存**） |
+| `Amitabha` / `Amitābha` | 134 / 42 |
+| `nirvana` / `nirvāṇa` | 78 / 82 |
+| `samadhi` / `samādhi` | 76 / 95 |
+| `prajna` / `prajñā` | 48 / 61 |
+| `Saha world` / `Sahā world` | 49 / 38 |
+| `Ananda` / `Ānanda` | 29 / 29 |
+| `Vaidehi` / `Vaidehī` | 7 / 6 |
+| `dharmakaya` / `dharmakāya` | 24 / 31 |
+| `Sukhavati` / `Sukhāvatī` | 5 / 7 |
+
+合计约 **1,100 处**，跨 **60+ 篇**。
+
+**必须先定口径**（三选一，定完再动手）：
+1. **统一带变音符**（建议）：`Śākyamuni / Ānanda / Amitābha / nirvāṇa / samādhi / prajñā / Sahā / Vaidehī / dharmakāya / Sukhāvatī`。
+   学术一致、与既有 61/95/82 篇的多数用法一致；代价是 `Amitabha`（134 篇）与 `Sakyamuni/Shakyamuni`（96 篇）要改的面最大。
+2. **统一不带变音符**（纯 ASCII）：改动面更大（`prajñā=61`、`samādhi=95`、`nirvāṇa=82` 都要回退），但检索/复制最省事。
+3. **按篇统一**（不做全库口径）：只保证单篇内不混用。改动最小，但全库仍不统一。
+
+**执行注意**：
+- 只替换**整个单词**（`\b`），不要动 `ASCII`/`Sahā` 出现在 URL、slug、href 里的情形（href 一律不动）。
+- **必须排除** `nirvana` 出现在**英文书名/曲名/引文**里的情况（例如 `Nirvana Sutra` 是既有译名）——先抽样确认再批量。
+- 词形变化要一起覆盖：`Sakyamuni's`、`Amitabha's`、复数、以及 `Shakyamuni` 与 `Śākyamuni` 的首字母大写/小写。
+- 收尾判据：`node scripts/name-scan.mjs` 的 variant totals 里每个词只剩一种写法；`validate-en` 仍 `crit=0 warn=0`。
+- 单篇提交（或按批次），**不要**和 §1-§3 混在一个提交里。
+
+---
+
+## 5. 每步通用纪律（照抄）
+
+```bash
+node scripts/repair-json.mjs ; node scripts/validate-en.mjs ; node scripts/scan-mojibake.mjs
+git show --stat --oneline HEAD ; git status --porcelain     # 双向核对
+```
+- **不要 push**。
+- 每个 slug / 每个动作单独提交，提交信息用 `data:` / `docs:` 前缀。
+- 临时件只放 `build/` 并自删；**不要写 `scripts/`**（除非用户同意新增）。
+- **含中文的文件绝不要用 PowerShell `Set-Content` 回写**（会双重编码，见 `RESUME.md` §4.3）——
+  用 node `writeFileSync(p, s, 'utf8')` 或 edit 工具。
+- 诊断只在会话末写一次。
+
+---
+
+## 6. 建议的提交序列（预期）
+
+```
+data: rebuild catalog-en from en/*.json (clears 8 stale entries)
+data: remove 6 orphan en/*.pN.json shards (never rendered)
+data: fix author metadata for <slug>            × N（逐篇）
+data: rebuild catalog-en after author fixes
+docs: update RESUME/NEXT-PLAN for round 2
+```
+
+---
+
+## 7. 不要做的事
+
+- 不要把 `meta-scan` 的**全部**命中都当缺陷删：`028baofufa`(`聂云台`)、`246henghedashouyin`(`元音老人`)
+  是真作者，只是人名也出现在正文里。删之前必须读源。
+- 不要只改 `en/*.json` 的 `author` 而不管中文源（项目约定：源是权威，meta 缺陷改 `articles/`）。
+- 不要在 §4 口径未定时顺手批量替换音标（会动 60+ 篇）。
+- 不要跑生成器 `scripts/slice-plan.mjs`（会覆盖审计器 `plan-slices.mjs`）。
+- 不要为了跑 `build-catalog-en.mjs --help` 而触发重写（它没有 dry-run）。
+
+---
+
+## 8. 给新对话的启动提示词（复制这一段）
+
+```
+继续 huideng-chanlin 项目（D:\FengLi\Web\fou\huideng-chanlin）。翻译已完成，
+上一轮「缺陷修复轮 1」已把 validate-en 修到 ok=288 crit=0 warn=0（见 scripts/RESUME.md §1）。
+
+本轮执行 scripts/DEFECT-ROUND-2-PLAN.md，严格按 ② → ③ → ① → ④ 的顺序：
+② 重建 catalog-en：node scripts/build-catalog-en.mjs（注意它没有 dry-run，跑 --help 也会重写文件），
+   跑完用 plan 文件 §1 的一行 node -e 复验 catalog 与 en/* 差异必须为 0，validate-en 仍须 ok=288 crit=0 warn=0。
+③ 删 6 个孤儿 en/*.pN.json：先按 §2 的一行命令确认 src/ 内零引用，再 git rm，期望 validate-en 的 parts 从 6 降到 0。
+① 15 篇 author 源数据缺陷：按 plan 文件 §3.1 的表格逐篇读源判定，标 ★ 的（003xffayuanw、257nizhuanshuailao、
+   272nianfojingju）必须先读原文再定。只改 src/content/articles/<slug>.json，不要改 en/*；每篇单独提交。
+   收尾重跑 meta-scan（期望命中 0）并再重建一次 catalog。
+④ 音标/专名风格统一：先给我口径三选一（推荐统一带变音符），我确认后再动手；不要顺手批量替换。
+
+纪律：每步跑 node scripts/repair-json.mjs && node scripts/validate-en.mjs && node scripts/scan-mojibake.mjs；
+每个动作单独提交，提交后 git show --stat --oneline HEAD 与 git status --porcelain 双向核对；不要 push。
+含中文的文件不要用 PowerShell Set-Content 回写（会双重编码，见 RESUME.md §4.3），用 node writeFileSync 或 edit 工具。
+临时件只放 build/ 并自删，禁止写 scripts/（除非我同意新增）；诊断只在会话末写一次。
+会话末：回填 scripts/RESUME.md §1 的实测数字并更新 scripts/NEXT-PLAN.md，提交 docs: …
+```
