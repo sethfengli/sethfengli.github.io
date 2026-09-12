@@ -1,0 +1,1117 @@
+{
+ "firstBlock": 0,
+ "title": "Lectures on the Diamond Sutra (by Jiang Weinong)",
+ "author": "By Jiang Weinong",
+ "excerpt": "Reprinted after re-collation against the layman Jiang's own handwritten manuscript.",
+ "blocks": [
+  {
+   "t": "h2",
+   "text": "Lectures on the Diamond Sutra"
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "This commentary follows the supplemented second edition"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "together with the Lay Buddhist Jiang's own manuscript, collated once more and reprinted."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Main Text"
+    }
+   ]
+  },
+  {
+   "t": "table",
+   "rows": [
+    [
+     [
+      {
+       "s": "1. The Occasion of the Dharma Assembly"
+      }
+     ],
+     [
+      {
+       "s": "2. The Request of Subhūti"
+      }
+     ],
+     [
+      {
+       "s": "3. The Great Vehicle's True Doctrine"
+      }
+     ],
+     [
+      {
+       "s": "4. Wondrous Practice and Non-Abiding"
+      }
+     ]
+    ],
+    [
+     [
+      {
+       "s": "5. Understanding the Teaching as It Is"
+      }
+     ],
+     [
+      {
+       "s": "6. Right Faith Is Rare"
+      }
+     ],
+     [
+      {
+       "s": "7. No Attainment, No Teaching"
+      }
+     ],
+     [
+      {
+       "s": "8. Born of the Dharma"
+      }
+     ]
+    ],
+    [
+     [
+      {
+       "s": "9. One Mark, No Marks"
+      }
+     ],
+     [
+      {
+       "s": "10. Adorning the Pure Land"
+      }
+     ],
+     [
+      {
+       "s": "11. The Supreme Excellence of Non-Action"
+      }
+     ],
+     [
+      {
+       "s": "12. Reverence for the True Teaching"
+      }
+     ]
+    ],
+    [
+     [
+      {
+       "s": "13. Receiving and Holding the Dharma as Taught"
+      }
+     ],
+     [
+      {
+       "s": "14. Quiescence of Marks"
+      }
+     ],
+     [
+      {
+       "s": "15. The Merit of Holding the Sutra"
+      }
+     ],
+     [
+      {
+       "s": "16. Purifying Karmic Obstacles"
+      }
+     ]
+    ],
+    [
+     [
+      {
+       "s": "17. Ultimately Without Self"
+      }
+     ],
+     [
+      {
+       "s": "18. One Substance, One Contemplation"
+      }
+     ],
+     [
+      {
+       "s": "19. The Universal Transformation of the Dharma Realm"
+      }
+     ],
+     [
+      {
+       "s": "20. Free of Form, Free of Marks"
+      }
+     ]
+    ],
+    [
+     [
+      {
+       "s": "21. Not Spoken, Yet Spoken"
+      }
+     ],
+     [
+      {
+       "s": "22. Nothing to Be Attained"
+      }
+     ],
+     [
+      {
+       "s": "23. Purifying the Mind Through Goodness"
+      }
+     ],
+     [
+      {
+       "s": "24. Incomparable Wisdom and Merit"
+      }
+     ]
+    ],
+    [
+     [
+      {
+       "s": "25. What Is Transformed Is Not Apart from Transformation"
+      }
+     ],
+     [
+      {
+       "s": "26. The Dharma Body Is Not Marks"
+      }
+     ],
+     [
+      {
+       "s": "27. Without Severance, Without Extinction"
+      }
+     ],
+     [
+      {
+       "s": "28. Neither Receiving Nor Greed"
+      }
+     ]
+    ],
+    [
+     [
+      {
+       "s": "29. Dignified Silence"
+      }
+     ],
+     [
+      {
+       "s": "30. The Mark of Unity and Principle"
+      }
+     ],
+     [
+      {
+       "s": "31. No Arising of Views"
+      }
+     ],
+     [
+      {
+       "s": "32. What Is Manifested Is Not Real"
+      }
+     ]
+    ]
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "A Record of Textual Collation of the Diamond Sutra"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Colophon to the Corrected Edition of the Diamond Sutra"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Biography of the Lay Buddhist Jiang Weinong"
+    }
+   ]
+  },
+  {
+   "t": "h2",
+   "text": "Colophon on the Correction of the Diamond Sutra"
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Since ancient times those who have explained this sutra number no less than a hundred. Of those holding peculiar views we need not speak. Among those who grasped the right purport, the three treatises of Asaṅga, Vasubandhu, and Guṇamati, together with the three commentaries of Sengzhao, Zhiyi, and Jizang, stand foremost. Thereafter the treatises of masters such as Zongli, Hanshan, Ouyi, and Xufa each contain their own essential insights, yet on the whole they do not go much beyond the ancient commentaries. Still, none has been so extraordinary and profound as the Diamond Sutra commentary of the aged lay Buddhist Jiang Weinong. His commentary expounds the meaning of prajñā both in detail and exhaustively, and moreover comprehends the other great Mahāyāna sutras as well. In the contemplation methods by which he guides students, he illumines not only the upward path of Chan but also the single mind of the Pure Land school, and more besides. Where his dharma eye is especially keen, revealing what earlier men never revealed, is this: while the Tiantai school judged this sutra to be both shared and distinct, and also perfect, and the Huayan school assigned it to the initial teaching, the layman alone judged it to be the teaching of utmost perfection and utmost suddenness. …As for his reliance on ancient editions, his examination and correction of variant characters, and his establishing of a definitive text, he is truly a devoted servant of this sutra for more than a thousand years. …Once these lectures circulate, I know that readers who open this volume will be reading not less than a hundred other sutras. The sutra says that all buddhas and the enlightenment dharmas of all buddhas issue from this sutra. Is this not made all the more luminously clear? Having finished the collation, I composed this preface out of admiration."
+    }
+   ]
+  },
+  {
+   "t": "h2",
+   "text": "Jiang's Preface"
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The Lectures on the Diamond Sutra is a posthumous work of the lay Buddhist Jiang Weinong. During the layman's lifetime the manuscript could not be brought to completion, troubled as he was from time to time by the demon of illness. After his death, through various obstacles, it came near to being lost. Can it be that this supreme and most profound secret was not to be lightly divulged, or that living beings, their blessings thin, were unable to receive and fathom the great Dharma? Otherwise, why should demonic obstructions have piled up one upon another to such a degree? I had been on intimate terms with the layman for more than twenty years, and knew that he had recited the Diamond Sutra all his life and had gained a unique understanding of it. In the summer of the jiaxu year I asked him to expound its general meaning. I recorded what I could recall and brought it home. The layman sighed and said: “The bamboo is empty-hearted; that is my teacher. Your courtesy name is Zhu, ‘Bamboo,’ and you are empty-hearted to this degree; you may be called true to your name. Rather than speak briefly for you, I would rather speak to you in full.” When the members of the Shengxin Lotus Society heard of this, they asked that it be made public. So the seat was moved to the society and the teaching was formally expounded, fixed at twice a week. Each evening he ascended the seat, and the listeners were usually several tens. I took notes on the spot, and the next day copied them out and presented them to the layman for correction. After some months the layman found the correcting too laborious and said it would be better to write it himself. So the day before each lecture he would compose several thousand characters for me to copy out. Though I continued to take notes, I had no leisure to put them in order. This dharma assembly began in the seventh month of the jiaxu year and was completed in the ninth month of the yihai year. The accumulated manuscripts filled a foot. The layman thought they still needed polishing, and that the portions missing from the first section had to be supplied, before the book could be finished. Because the layman was at home and many came to ask about the Way, his fellows planned a separate quiet room in which to support him, so that he might devote himself wholly to writing. Mr. Li Tuolian, hearing of this plan, vowed to bear the expenses alone; and so in western Shanghai three rooms were rented — the right for a bedroom, the middle for a buddha hall, the left for a lecture room — to house the layman. It was hoped that within a year the commentary would be supplemented and completed. Yet each year in the yellow plum season the layman invariably fell ill, and the illness would last for months. When he recovered, he pitied the dead and suffering of the north and south, and established Great Compassion assemblies, devoutly to release them. So it dragged on, and in the end the manuscript was not freed from draft. When I met him I would occasionally ask about it, but the layman seemed unwilling to be urged. I understood his meaning and did not ask again. In the early summer of the wuyin year the layman fell ill once more, his stomach unable to take food. Every two or three days I went to inquire after him, and seeing his illness heavier than in former years, I was deeply anxious. In the fifth month of that year he passed away in quiescence. The family came to arrange the funeral, and amid the confusion the place of this manuscript was nearly lost. I urgently sent people to search everywhere until it was found, and brought it back to examine. All were loose sheets, and here and there the order was disordered. My fellows, knowing that I had notes, pressed me to complete it. But I was busy with affairs, and from the time the layman began writing the commentary himself I had had no leisure to make a fair copy of my notes; the hasty writing of those days, viewed long after, was more than half illegible. And while the layman lived, my notes still awaited his correction before they could be free of error. To presume now to continue his work with them would also be unwise. Posthumous works of ancient worthies, incomplete and fragmentary, have often been put to press; how much more so a book already six or seven parts finished. Yet to print it, it had to be compiled and assembled, and I had no spare hours in the day, so it was set aside for several months more. Fortunately the layman's disciple Mr. Zhou Qingyuan took up the task in his heart, and so the whole manuscript was handed to him. He searched leaf by leaf and inserted the sutra text as he went. But Qingyuan too, having vowed before the Buddha to bear the suffering of beings in their place, was constantly ailing and could not avoid interruptions. When the transcription was half done, through an unexpected turn it again came near to failing at the last step. Only in the winter of the jimao year was the whole book transcribed. Such were the demonic obstructions; that it was completed in the end may be called fortunate. One day I happened to meet Mr. Li Tuolian on the road, and learned that he had come to Shanghai from Hong Kong and would soon leave. I told him of this manuscript, now ready for the press. Mr. Li was delighted and said to me: “Let the printing costs be mine to bear. If others wish to rejoice with me, I would not monopolize the merit.” And leaving funds with the Shengxin Lotus Society, he departed. Just then the lay Buddhist Fan Gunong, taking refuge in Shanghai, was lodging at the society; his consent was sought, and he took charge of the collation. Thus the book was printed in the sixth month of this year. As for its contents, profound and subtle, revealing what earlier men never revealed, pointing out at every turn where students may apply their effort in earnest — all is the speech of one who has passed this way. Readers will know it when they open the volume; there is no need to say more. I have only recounted the twists and turns of how this book came to be. This is the preface."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Written in the sixth month of the twenty-ninth year of the Republic of China by Jiang Weiqiao, dharma name Xianjue, at Yinshi Studio."
+    }
+   ]
+  },
+  {
+   "t": "h2",
+   "text": "Fan's Preface"
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The Diamond Prajñāpāramitā Sutra is one scroll of the six hundred scrolls of the great Prajñā collection. Its words are few but its meaning is fine; that it is likened to the hardness within gold is well warranted. The six hundred scrolls of text are vast and boundless, and readers find them difficult. This one scroll is recited by every household and known to every mouth, and so the profound meaning of prajñā has been widely transmitted. Since ancient times those who have explained this sutra number no less than a hundred. Of those holding peculiar views we need not speak. Among those who grasped the right purport, the three treatises of Asaṅga, Vasubandhu, and Guṇamati, together with the three commentaries of Sengzhao, Zhiyi, and Jizang, stand foremost. Thereafter the treatises of masters such as Zongli, Hanshan, Ouyi, and Xufa each contain their own essential insights, yet on the whole they do not go much beyond the ancient commentaries. Still, none has been so extraordinary and profound as the Diamond Sutra commentary of the aged lay Buddhist Jiang Weinong. His commentary expounds the meaning of prajñā both in detail and exhaustively, and moreover comprehends the other great Mahāyāna sutras as well. In the contemplation methods by which he guides students, he illumines not only the upward path of Chan but also the single mind of the Pure Land school, and more besides. Where his dharma eye is especially keen, revealing what earlier men never revealed, is this: while the Tiantai school judged this sutra to be both shared and distinct, and also perfect, and the Huayan school assigned it to the initial teaching, the layman alone judged it to be the teaching of utmost perfection and utmost suddenness. In this he surely does not contradict what the sutra calls the Tathāgata's teaching for those of the supreme vehicle. As for such phrases in the sutra as “Tathāgata,” “Buddha,” “World-Honored One,” “Not so,” and “the Buddha told Subhūti” — things ordinary men overlook — the layman was always able to bring out their supreme meaning. Recently the Shengxin Lotus Society printed this commentary, and I assisted in its collation; I was able to read the text, and could not keep from rejoicing and leaping for joy, marvelling at what had never been. As for his reliance on ancient editions, his examination and correction of variant characters, and his establishing of a definitive text, he is truly a devoted servant of this sutra for more than a thousand years. Formerly, reading the lay Buddhist Huang Hanzhi's vernacular explanation of the Amitābha Sutra, I once sighed and said: “One who reads this explanation will know not only the meaning of the Amitābha Sutra but also the dharma of all sutras.” Now I say the same of the lay Buddhist Jiang's Diamond Sutra commentary. Once these lectures circulate, I know that readers who open this volume will be reading not less than a hundred other sutras. The sutra says that all buddhas and the enlightenment dharmas of all buddhas issue from this sutra. Is this not made all the more luminously clear? Having finished the collation, I composed this preface out of admiration."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Reverently prefaced in the early summer of the gengchen year, the twenty-ninth year of the Republic of China, by Fan Gunong."
+    }
+   ]
+  },
+  {
+   "t": "h2",
+   "text": "Explanatory Notes"
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "1. This book is a posthumous work of the layman Jiang, published for the world. In the first edition, because the manuscript was unfinished, the notes of the layman Jiang Xianjue, which the layman Jiang had himself corrected at the time, were used to supply the gaps. In the second edition of the thirty-first year of the Republic of China, the missing lectures were carefully collated by the layman Jiang Xianjue from his old notes and inserted accordingly, and so the work became complete. 2. This book is divided into the four great divisions of faith, understanding, practice, and realization, and the volumes are divided accordingly. The fivefold profound meaning forms the first volume; the rest is divided into four volumes, five in all, with the layman's collation record and colophon appended at the end of the volume. 3. The outline of the divisions is placed at the head of the book, so that readers may conveniently consult it. 4. In the first edition, the compilation was undertaken by the layman Zhou Qingyuan, the collation by the layman Fan Gunong, and the proofreading jointly by the layman Jiang Xianjue and the layman Meng Dingchang. 5. Where passages are supplied in the book, the character bu, “supplement,” is added at the head of the line to keep the entries clear."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Explaining the Sutra's Title"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The Diamond Prajñāpāramitā Sutra"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Before expounding this sutra, one must first set out its divisions. The great divisions are two."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "(A) First, a general explanation of the title. Next, a separate interpretation of the text's meaning."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "(A) First, again two parts: (B) First, explaining the sutra's title; next, explaining the title concerning the person."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "(B) First, again three parts: (C) First, expounding the essentials of prajñā; next, clarifying the merging of the various schools; third, following the fivefold profound meaning in explaining the title."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "(C) First, expounding the essentials of prajñā."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Expounding the Essentials of Prajñā"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The essentials of prajñā contain three meanings. (1) It means that prajñā is the essential outline of the Mahāyāna Buddha-dharma. This meaning is found everywhere in the great Mahāyāna sutras and treatises and in the writings of ancient worthies. Were one to cite them widely, volumes would not exhaust them. Here I set aside the abundant and take the concise, in order to make it clear, and because it is easier to understand. Now the Mahāyāna teaching is deep and vast as the sea. Yet it is wholly grounded in saving oneself and saving others. For saving oneself and saving others there are countless dharma-gates. Yet they are wholly grounded in the six pāramitās. And of giving, precepts, patience, effort, and meditative concentration, the five pāramitās, if they are apart from prajñā, are not pāramitās. So these six pāramitās are wholly grounded in prajñāpāramitā. That prajñā is the essential outline of the Mahāyāna Buddha-dharma is then manifestly clear. Therefore the Mahāprajñāpāramitā Śāstra says: “Prajñāpāramitā is the mother of the buddhas. The buddhas take the Dharma as their teacher. The Dharma is prajñāpāramitā.” The Great Prajñā Sutra says: “Mahāprajñāpāramitā is the mother of all bodhisattvas and mahāsattvas; it can give birth to the buddhas and embraces the bodhisattvas.” From this one may see that what is called the Mahāyāna, the supreme vehicle, is nothing but prajñā alone. Apart from prajñā there is no Buddha-dharma. One should know that all the teachings of the lesser and greater vehicles issue from prajñā. Among all teachings there are occasionally some resembling the highest theories of non-Buddhist schools such as the Confucians and Daoists. Prajñā alone only the Buddha can realize; only the Buddha can teach. The highest theories of non-Buddhist schools, once they meet prajñā, vanish like ice and fire. Therefore at the Huayan assembly the great bodhisattvas praised him, saying: In the heavens above and under heaven none equals the Buddha; in the worlds of the ten directions there is none to compare. All that is in the world I have fully seen; there is nothing at all equal to the Buddha. Knowing this, how can the theory that the three teachings share one source deserve even to be called absurd? Knowing this, one knows that students of Buddhism who do not thoroughly understand prajñā, though they know all the teachings and learn all the dharma-gates, are abandoning the root to chase the branches, seeking among twigs and leaves. How could they reach the other shore? Now prajñā is nothing other than the right wisdom inherent in the principle-body. The principle-body is reality-prajñā. The right wisdom is contemplation-prajñā. Both are called prajñā to show that outside principle there is no wisdom and outside wisdom no principle; principle and wisdom are one suchness. Since one is learning Buddhism, one should first open the Buddha's knowledge and vision. What is the Buddha's knowledge and vision? It is prajñā. Yet from of old few have studied it. Some are frightened at the sight of it; some speak of it ignorantly and wildly. This is why, though many study Buddhism, few realize the Way. Is this not to betray the Buddha's grace, and moreover to betray one's own spirit? Why say so? When our World-Honored One attained the Way, he marvelled, saying: “How strange, how strange! All living beings on earth possess the Tathāgata's wisdom and awakened nature. But because of deluded thoughts they cannot realize it. Were there no deluded thoughts and attachments, then the wisdom without a teacher and the natural wisdom would immediately appear before them.” The Tathāgata's wisdom and awakened nature is reality-prajñā. Deluded thoughts are the discriminating mind, the sixth consciousness. Attachment is the view of self, the seventh consciousness. And contemplation-prajñā is what transforms these two consciousnesses. When these two consciousnesses are transformed, the storehouse consciousness and the first five consciousnesses are all transformed as well. Therefore it is said: were there no deluded thoughts and attachments, the wisdom without a teacher and the natural wisdom would immediately appear before one. These two wisdoms are precisely the Tathāgata's wisdom and awakened nature. Because they do not come from outside and cannot be given to another, they are called “without a teacher.” Because they are inherent to the dharma-nature and must be self-awakened and self-realized, they are called “natural.” They may also be matched with fundamental wisdom and subsequently attained wisdom, or spoken of as the wisdom of the paths and the wisdom of all modes. In sum, ordinary beings are ordinary beings because of beginningless ignorance. Ignorance means, as it were, no wisdom. Therefore to transcend the ordinary and enter the sage, one need only open this right wisdom. People in Buddhist circles have a constant saying: “Seek to open wisdom.” These words rightly mean that one should open the right wisdom of prajñā — that is, open the Buddha's knowledge and vision. Our World-Honored One appeared in the world for one great matter. What is the great matter? It is to open the Buddha's knowledge and vision for all living beings, to reveal the Buddha's knowledge and vision to them, and to enable them to awaken to and enter the Buddha's knowledge and vision. Yet living beings, though they know to seek the opening of wisdom, do not understand why it is so. Teachers and students alike seek branches and pick leaves, never thinking to inquire at the gate of prajñā. Some even warn one another not to speak of it. What pitiable matter could exceed this? What betrayal of the Buddha's intent could exceed this? What misleading of the Dharma and of people could exceed this? From now on, I deeply wish, together with all good friends in the Dharma, to make the right meaning shine and to spread it with all our strength."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "(2) What is called the essentials of prajñā means clarifying the essentials with respect to prajñā itself. As the Mahāprajñāpāramitā Śāstra quoted above says, the Buddha-dharma is prajñā. It is clear that the one gate of prajñā embraces meaning without limit. If its essentials are not understood, one is liable to drift without return. Earlier men had those who took the emptiness of the supreme meaning as their thesis, those who took the two truths as their thesis, and those who took the eight negations as their thesis. Their theories differ greatly. The supreme meaning is the original nature. The nature is the absolute body, hence it is called the supreme meaning. The substance of the nature is empty and quiescent, hence it is called the emptiness of the supreme meaning. This meaning clarifies that the essentials of prajñā lie in breaking self and removing attachment. One must let go of both self and dharmas, until emotional attachment is utterly empty. As it is said, one attains the state of having nothing further to detach from, and so removes all illusions. Only then does reality appear. The two truths are the conventional truth and the ultimate truth. “Conventional” means worldly; “ultimate” means real. “Truth” carries the sense of precise and valid. The appearances of things in the world, which the common view takes as precise and valid, are called the conventional truth. The nature and principle of the real, which the sage's wisdom alone knows to be precise and valid, is called the ultimate truth. Speaking in terms of the Buddha-dharma, whatever clarifies the meaning that all dharmas arise from conditions is the conventional truth. Why? Because worldly people, not yet awakened to the original nature, follow appearances and turn with them; so one tells them that all dharmas are merely conditionally arisen, that the existent is not existent, and the meaning is settled. Whatever clarifies the meaning that conditional arising is itself emptiness is the ultimate truth. Why? Because with the sage's wisdom one sees the real nature in the midst of illusory appearances. Thus it is perfectly clear that all dharmas are not existent yet existent, and in their very substance are all empty, and the meaning is settled. The bodhisattva Nāgārjuna said: “For the sake of the worldly truth, one speaks of living beings. For the sake of the supreme meaning truth, one speaks of living beings as nonexistent.” The worldly truth is the conventional truth; the supreme meaning truth is the ultimate truth. From this we know that the conventional truth clarifies the existent that is empty, and the ultimate truth clarifies the emptiness that is existent. He also said: “The buddhas, relying on the two truths, expound the Dharma for living beings.” Therefore Master Jizang said: The Buddha-dharma does not go beyond the two truths, and the two truths comprise all Buddha-dharma. Now prajñā originally comprises all Buddha-dharma entirely. And since it is said that the Buddha expounds the Dharma relying on the two truths, it is clear that the essentials of prajñā do not go beyond the two truths. The cardinal purport of prajñā is to keep one from abiding in either emptiness or existence, so as to accord with the supreme meaning of the middle way. The two truths, real and conventional, precisely clarify this meaning."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The eight negations are: neither arising nor ceasing, neither annihilated nor permanent, neither coming nor going, neither one nor different. Through the depth or shallowness of one's delusion regarding the eight negations, the six realms come about. Through the depth or shallowness of one's awakening to the eight negations, the three vehicles come about. All living beings calculate and cling to the marks of arising and ceasing, annihilation and permanence, oneness and difference, coming and going, and so abide in existence; hence they are called deluded. Those in the three vehicles, though they do not cling to the marks of arising and ceasing and so forth, still cling to non-arising and non-ceasing and so forth, and so lean toward emptiness. Therefore the Buddha taught the meaning of the eight negations, precisely to make plain the two truths. When the two truths are clear, the middle way appears. And the meaning of the emptiness of the supreme meaning likewise causes both emptiness and existence to be emptied, so that afterward one clings to nothing, and the middle way is perfectly clear. From this we see that the emptiness of the supreme meaning, the two truths, and the eight negations, though their formulations differ, are alike in revealing the middle way. The essentials of prajñā are then nothing other than this: with respect to the two extremes of emptiness and existence, to sweep away emotional clinging and attachment, striving to exhaust it utterly, so as to reveal the perfectly fused middle way. In other words, the Buddha taught prajñā in order to enable all living beings who are caught in deluded thoughts and attachments to open the right wisdom inherent in the principle-body, to make clear their ignorance, to awaken their unawakened state, so that the reality that is neither marked nor unmarked, the Tathāgatagarbha that is neither empty nor non-empty, may appear before them, and they may together realize the Tathāgata's wisdom and awakened nature. This is precisely the great matter for which our original teacher appeared in the world. Thus the prajñā dharma-gate is the supreme vehicle, enabling all living beings to ride it straight to the ground of buddhahood. In this light, rather than citing meanings one by one to clarify its essentials, it would be better to say: the Diamond Prajñā Sutra is in truth the essential outline of the prajñā division — and this is the more succinct way to put it. Why? Because this sutra omits no dharma and reveals no meaning incompletely; the two truths, the eight negations, and the emptiness of the supreme meaning cited above are each and all complete within it. For example: “no mark of self, no mark of dharmas, and no mark of non-dharmas” is the meaning of the emptiness of the supreme meaning. To ferry all living beings to extinction is the conventional truth. That in truth no living being is ferried to extinction is the ultimate truth. To practice giving is the conventional truth. To abide in nothing with respect to dharmas is the ultimate truth. And so with “one should not grasp dharmas, one should not grasp non-dharmas,” “is not, is called,” and the rest. Everything said throughout the sutra is nowhere other than a clarification of the meaning of the two truths. As for causing bodhisattvas to penetrate self and dharmas, it lies in opening the Buddha's knowledge and vision. What is said afterward is all the meaning of neither one nor different, neither annihilated nor permanent, neither coming nor going, neither defiled nor pure, and so on, revealing the empty mark of all dharmas and the equality of all dharmas. Now the empty mark of all dharmas and the equality of all dharmas is precisely what is called not grasping at marks, and being thus without disturbance. And it causes students thus to expound and thus to receive and hold it. Is this not to take such meanings as the essentials of prajñā? Nor is that all. As the Great Prajñā Sutra and the Mahāprajñāpāramitā Śāstra quoted above say: “Prajñā can give birth to the buddhas and embraces the bodhisattvas; the Buddha-dharma is prajñā.” This points out that the essential purport of the Buddha-dharma does not go beyond prajñā. And this sutra says: “All buddhas, and the anuttarā-samyak-saṃbodhi dharmas of all buddhas, all issue from this sutra.” Its pointing out of the essentials of prajñā lies wholly in this sutra — is this not even more luminously clear? The Buddha taught prajñā in sixteen assemblies in all, rich in meaning and abundant in text. It is said that the Tibetan translation runs to a thousand scrolls. The Chinese, being concise, still has six hundred scrolls. Among the Buddhist scriptures the prajñā division has the greatest bulk. Reading and reciting it is already difficult, let alone expounding and upholding it. Therefore in the ninth assembly, proceeding from the broad to the concise, he spoke this sutra in particular. Master Kumārajīva and his disciples translated it into Chinese, and counting also the several lines added from the Wei translation, it comes to only five thousand eight hundred and thirty-seven characters. Not only are the essential points of prajñā all contained here; having this one scroll, one holds all Buddha-dharma in one's grasp. Why? Because this scroll is the essential outline of prajñā, and prajñā is the essential outline of all Buddha-dharma. Therefore one must understand all Buddha-dharma before this sutra can be understood. Why? Because only when there is a net does one get the main cord. Yet equally, only when the purport of this sutra is deeply understood does all Buddha-dharma become clear at every point. Why? Because when the main cord is lifted, the mesh opens. This is how one should understand it. This one scroll, being the main cord of the three baskets, its importance is plain. The profundity of its meaning and the density of its order are likewise plain from this. Moreover, with few words it embraces many meanings; fortunately the translator's brush was fine enough to transmit it. Therefore every phrase and every character in the sutra bears on the great purport. Even a single name, a single word by which the compilers set it forth, contains essential meaning. With the least neglect, the meaning becomes hard to grasp. After its translation and transmission, the fifth and sixth patriarchs of Chan spread it with all their strength. Thus it became known to every household and every mouth, and circulated without cease. Though many did not understand its meaning, among students of Buddhism there were none who did not read this sutra. Among the various Buddhist countries no parallel is seen. From this alone one may see that the living beings of our land are deeply sheltered by the Buddha, which is truly cause for rejoicing. Why? Because as long as this sutra circulates without cease, the buddha-seed is unbroken. From now on, one should give special attention to how it is to be expounded and how it is to be received and held. Only thus can one repay in some small measure the Buddha's grace, and the grace of those who translated and circulated this sutra. Bearing the Tathāgata's burden, one shall attain bodhi. May I be encouraged together with all of you."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "(3) What is called clarifying the essentials with respect to the Diamond Prajñā itself. The essentials of this sutra are nothing other than this: the removal of deluded thoughts and attachments. The Tathāgata's wisdom and awakened nature is possessed by every living being, inherent in each, lacking in none. But it is obstructed by deluded thoughts and attachments, and so cannot be realized. The Buddha appeared in the world for one great matter: for this matter. All Buddha-dharma is nothing but the dharma-gates for breaking attachment and removing obstruction. And what this sutra teaches is especially direct and to the point. It is like a diamond sword: practicing in accordance with it, one may cut through on the spot. Deluded thoughts are the discriminating mind. Attachment is of two kinds: clinging to the five aggregates and the physical body as self is called the attachment to a person, or in brief, self-attachment. Clinging to all dharmas is called the attachment to dharmas, or in brief, dharma-attachment. If self-attachment is not removed, the affliction obstruction arises. If dharma-attachment is not removed, the obstruction of the knowable arises. Together these are called the obstruction of delusion. From delusion one creates karma, which is the karma obstruction. Because of karma one suffers, which is called the suffering obstruction, also called the retribution obstruction. The two attachments, to self and to dharmas, may be further divided into the discriminate and the innate. To arouse the mind in discrimination and thereby cling is the discriminate attachment to self and dharmas; hence it is coarse. To cling with the ordinary affections, without any deliberate discrimination, as thought after thought arises together — this is the innate attachment to self and dharmas; hence it is subtle. This is the seed of habitual tendency from many lives, stored in the field of the eighth consciousness, and so it arises with every thought; it is the hardest to remove. One should know that deluded thoughts and attachments arise from beginningless ignorance. Prajñā, by contrast, is the right wisdom of the principle-body. When wisdom opens, ignorance becomes clear. When ignorance is clear, deluded thoughts and attachments are cut off of themselves. Therefore a student of Buddhism should first open, reveal, awaken to, and enter the Buddha's knowledge and vision. The Buddha's knowledge and vision is precisely the right wisdom of prajñā. Whatever dharma-gate one practices, one must devote effort to this. Hence no dharma can be apart from prajñā. It is the same with the Pure Land practice of reciting the Buddha's name. The sutra says: when the mind is pure, the land is pure. If deluded thoughts and attachments are not removed, how can the mind become pure? The ancients said: where affection is not heavy, one is not born in the Sahā world. Emotional attachment and the view of self are truly the root of affection. Therefore one who seeks birth in the Pure Land must begin here. As for what is called reciting the Buddha's name honestly, the two words “honestly” must be attended to. The world's defiling conditions and restless grasping never cease — how can one be honest? From this we know that prajñā and the Pure Land are from the first not two matters. This sutra is truly the great outline by which all students escape delusion, the pivot of the purified mind. Here I speak only briefly of the main purport; the details are in (C) three, explaining the title according to the fivefold profound meaning. The ancients, when explaining a sutra, first spoke of the profound meaning, also called profound discourse. “Profound” means deep, and also suspended: to draw out the deep meaning of the sutra, grasping the essentials and hooking the mysterious, and speak of it first, so that hearers may grasp the main points and have a thread to follow when they come to the text. Thus profound discourse is, as it were, a summary of the essentials. It is precisely where the essentials of a sutra lie. Now, following the Tiantai precedent, I open it into five layers and explain them. Thus ends the first exposition of the essentials of prajñā."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "(C) Next, clarifying the merging of the various schools."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Among books explaining Buddhist sutras, there is none that has commentaries in every school and all of them still extant as this sutra. There is the hymn of the bodhisattva Maitreya, and the treatises of the three bodhisattvas Asaṅga, Vasubandhu, and Guṇadatta. But their translations are obscure and hard to read, and each expounds what he himself saw. Often a passage, at first glance contrary to the sutra's meaning, in fact completes it. Their subtle excellence later worthies could not reach. One must receive it from the great and deep places. If one dies beneath the phrases and clings to the words, matching them one by one against the sutra text, one only adds obstruction. Guifeng's Essay on the Essential Points of the Treatise and Commentary commits this fault. The very title of Guṇadatta's treatise is excellent: “The Diamond That Breaks Grasping and Attachment, Not Destroying Conventional Names.” The essential purport of the whole sutra is contained therein. The earliest of our land to annotate this sutra was Sengzhao, an intimate disciple of Kumārajīva. He wrote little ink, only briefly explaining one or two essential points. Yet it is an unalterable work. Of the annotations of the Six Dynasties still extant today, there are the commentaries of the two masters Jizang of the Three Treatises school and Zhiyi of the Tiantai school. Jizang's life energy lay in the three treatises; every work he wrote was fine. But his Commentary on the Meaning of the Diamond Sutra was a work of inattention, perhaps recorded at random by his disciples and never revised. For it has much idle text and a tangled brush; it is quite unlike Jizang's other works. Zhiyi's exposition follows Sengzhao's annotation throughout, only occasionally adding a word or two of clarification. Zhiyi used the three truths to expound every sutra; for this sutra alone he took the two truths as his thesis. And in the phrase “is called” he everywhere took it as a conventional name. The patriarch's dharma eye commands our admiration. It is hard to understand why the descendants of the Tiantai house did not follow the patriarch's instruction. Could they not have seen this book? (Zhiyi's commentary was only retrieved from Japan by the lay Buddhist Yang Renshan at the end of the Qing and printed.) In the Tang, Kuiji of the Dharma Characteristics school also wrote an annotation, much of it expounding dharmas and marks. There is also the annotation of Shi Huijing, whose subtlety is not inferior to Sengzhao. Among ancient annotations, those of Sengzhao and Huijing are the best. Guifeng of the Huayan school wrote an Essay on the Essential Points of the Treatise and Commentary. Though carefully composed, unfortunately it is bound to the treatise's text, and the sutra's meaning is obscured instead. In the Song there was Master Changshui, who wrote a Record of Definitive Collation to explain Guifeng's Essay. It follows the text and explains the meaning, and is very detailed. Chan patriarchs also wrote works expounding the sutra, such as the sixth patriarch in the Tang, Zhongfeng in the Yuan, and Hanshan in the Ming. Yet all are brief pieces with little development. At the end of the Ming, Ouyi of the Tiantai school wrote the Treatise on the Diamond Breaking Emptiness. It was written with a purpose, and may serve as one style among others. Besides these, in the Song, Ming, and Qing, among those who left home and those who remained at home, explanations of this sutra are found everywhere. There is not wanting here and there a phrase that hits the mark, but precision and soundness they did not achieve. In the early Qing there was the Tiantai master Puwan's Commentary on the Seal of the Mind, which expounds the sutra by the three truths. Its words are often too literal and greatly contrary to the sutra's purport, yet its divisions here and there have something to recommend them. There is also the Huayan master Datian's Commentary on the New Eye, which here and there is penetrating and can reveal what earlier men never revealed. His division of the sutra by faith, understanding, practice, and realization shows a particularly lofty standpoint. As for the rest, such as the Annotations of Fifty-Three Houses, they are mixed and impure and not worth regarding. In this present exposition of the sutra, the emphasis is on carving out one by one the profound and subtle purports of the sutra. Where earlier men took it as the initial gate of the Mahāyāna, I speak of each point's ultimate meaning and bring it home to perfect fusion. Where earlier men paid no attention, I open up its great purport. Where earlier men called a phrase repetitive, I distinguish its depth and shallowness. At every point where the meanings before and after are linked and hooked together, I state one by one why it is so, and thread them through. In all the gates of contemplation and gates of practice, wherever the work of cultivation is pointed out, I dare not neglect a single character. My aim is that hearers may find a place to begin. I cite many other sutras to corroborate one another, so that they may find where they converge. In the essential places, I moreover bring them home to the Pure Land, to break the long-standing fault of discrimination against it. I am ashamed that my learning is shallow and insufficient to expound this profound sutra. Yet where my great vow lies is truly the wish that everyone may clearly understand the true meaning of prajñā, so that they need not fear to speak of it, speak of it wildly, or speak of it shallowly. As for the essential sayings in the treatises and commentaries of former worthies cited above, I have selected them one by one and taken them in. I need not follow their outward appearance or be bound by their words. Thus ends the next, clarifying the merging of the various schools."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The Fivefold Profound Meaning"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "(C) Third, explaining the title according to the fivefold profound meaning."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Two parts: (D) First, a general explanation of the divisions; next, explaining them in order."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "(D) First, a general explanation of the divisions."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The five layers are name, substance, thesis, function, and aspect. “According to” means that Master Zhiyi of the Tiantai school, expounding the title of the Lotus Sutra, opened it into five layers — name, substance, thesis, function, and aspect — in order to bring out the essential purport of the sutra, which is the clearest and most concise way. One layer fewer will not do; one layer more is also unnecessary. Therefore I follow it here. These five layers give rise to one another in order. Now a sutra must have a name that stands uniquely for it. The name is what marks out a sutra's essential purport, showing how it differs from other sutras. Therefore the first layer is explaining the name. The name is the guest of the reality. Once the name is marked out, there must be a reality behind it; it is not set up in vain. Therefore next the substance is revealed. The substance is the real substance, the principal body of the sutra's name. For the name has been checked against reality. Yet without cultivating contemplation and practice, it remains an empty name. And to cultivate in reliance on the substance, one must clarify the thesis and purport. Therefore third, the thesis is clarified. The thesis is the thesis of practice, the purport of cultivation. Once there is true cultivation, one must obtain its function. Therefore fourth, the function is discussed. “Function” means efficacy. The Buddha, according to the capacities of living beings, great or small, sharp or dull, taught various dharmas to teach and transform them. Therefore the sutra teachings differ as lesser or greater, partial or perfect, gradual or sudden. For example, the Huayan school judges them as the five kinds of teaching — lesser, initial, final, sudden, and perfect; the Tiantai school judges them as the four methods of conversion — the tripiṭaka, shared, distinct, and perfect, and the four manners of conversion — sudden, gradual, secret, and indeterminate. Once the name, substance, thesis, and function of a sutra, the four layers of profound meaning, are clear, then which kind of teaching it belongs to may also be understood. Therefore the fifth layer is judging the aspect of the teaching. Now, following the order of the five layers, I open them into five sections."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "(D) Next, explaining them in order, in five parts: (E) First, explaining the name; next, revealing the substance; third, clarifying the thesis; fourth, discussing the function; fifth, judging the aspect of the teaching. (E) First, again two parts: (F) First, the common name; next, the specific name."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "(F) First, the common name."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The common name is the word “sutra” in the Diamond Prajñāpāramitā Sutra. What the Buddha taught is commonly called sutra; it is not so for this sutra alone. Therefore the word “sutra” is the common name of all Buddha-dharma. In Sanskrit it is sūtra, also written as sūtra in other transcriptions. The original meaning of sūtra is a thread, extended to mean threading through, embracing and holding, and according with. When the dharmas taught by the Buddha were classified, gathered, and made into books, they were accordingly named sūtra. It means threading through the Buddha's words, embracing and holding them without loss, according above with the Buddha's mind and below with the capacities of living beings. When the great Dharma came east, the ancients accordingly translated sūtra with the character jing. The original meaning of jing is warp and woof, weaving and organizing, which exactly corresponds to sūtra's senses of thread, threading through, embracing, and holding. Moreover, by our country's custom, only the words of sages may be called jing, which is extremely solemn. To translate sūtra as jing is most apt. But our character jing does not contain the sense of according with, so compared with sūtra's original meaning it falls somewhat short. Yet apart from jing there is no other character by which to translate it. Therefore the ancients, at a loss, called Buddhist books “accordant sutras,” both to supply the original meaning and to show that these are Buddhist sutras, not the sutras of other teachings. As for explaining jing as “constant” or as “the Way,” this is an extended meaning of the character jing; sūtra originally had no such meaning. Therefore in explaining Buddhist sutras it should not be cited."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "(F) Next, the specific name."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The seven characters of Diamond Prajñāpāramitā are the name set uniquely for this sutra; they cannot be used in common for all sutras, and so are called the specific name. “Diamond” is the simile; “prajñāpāramitā” is the dharma. This is establishing the name by dharma and simile. In the titles of sutras, the ways of setting a name take no more than seven senses, namely person, dharma, simile, single, compound, and complete. For example, the Amitābha Sutra: Amitābha is a buddha's name; taking a person's name as the sutra's title is called establishing the name by person alone. The Pratyutpanna Samādhi Sutra: pratyutpanna-samādhi is a kind of dharma-gate; this is establishing the name by dharma alone. The Rice Stalk Sutra: the rice stalk is a simile for dharmas arising from conditions; this is establishing the name by simile alone. The Lotus Sutra: “Wondrous Dharma” is the dharma, “Lotus” is the simile; having both dharma and simile, it is neither single nor compound, and is called establishing the name by dharma and simile. The Chapter of Samantabhadra's Vows: having both dharma and person, this is called establishing the name by person and dharma. The Tathāgata's Lion's Roar Sutra: the Tathāgata is the person, the lion's roar is the simile; this is called establishing the name by person and simile. The Great Expansive Buddha's Flower Adornment Sutra: “Great Expansive” is the dharma, “Buddha” is the person, “Flower Adornment” is the simile; this is establishing the name with person, dharma, and simile all complete. The single are three, the compound three, the complete one, seven in all. If in one title there are two similes and no person or dharma, it is still single simile and not compound. Where there are two dharmas or two persons, by this example it may be known. Therefore though sutra names are without limit, the senses taken are only these seven."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "In Sanskrit, vajra means diamond; it is the name of a substance. It is the essence of gold, hardest and sharpest. It can destroy all things, which is its sharpness. No thing can destroy it, which is its hardness. The Buddhist scriptures say that Indra has a treasure called the vajra; holding it, he does battle with the asuras. The weapon held by the vajra warriors is called the vajra club. The golden-wheel king has a vajra-wheel treasure, and so is called the golden-wheel king. It was originally a celestial treasure. Though it also exists in the human world, it is very rarely seen. The ancients called it adamantine spar, its color like amethyst, transparent. Some say it grows on stones at the bottom of the water. In the scriptures it is often used as a simile for dharma and for persons, as in vajra-samādhi, vajra warrior, vajra body, vajra net, vajra hand, vajra mind, and so on. All take the sense that it is firm and indestructible, and can destroy all demonic obstructions. Here it is used as a simile for the right wisdom of prajñā. Prajñā is like a great mass of fire: it cannot be touched from any side; touch it, and one loses body and life. Like the diamond, no thing can touch its edge. The right wisdom of prajñā can shatter the heavy obstruction of affliction, as the diamond can destroy all things. Master Kumārajīva said: the diamond treasure is an inch square, and its light can illumine several tens of li. The light of prajñā-wisdom is likewise: it penetrates and sees all ordinary affections and deluded thoughts, and shatters ignorance. The diamond treasure only a vajra warrior can hold. So too with prajñā: one who does not possess the capacity of the Mahāyāna cannot bear it. Therefore it is said: one who delights in the lesser dharma, clinging to the views of self, person, living being, and life span, cannot hear, receive, read, and recite this sutra, or explain it to others. The Tripiṭaka master Paramārtha said the diamond treasure has various colors. The blue one can dispel calamity: like prajñāpāramitā, which can remove the three obstructions, accomplish the three bodies, cross the stream of birth and death, reach the shore of nirvāṇa, and ferry all suffering and distress. The yellow one grants whatever is sought: like prajñā's adorning of the ten thousand practices and its accomplishing of boundless merit. The red one emits fire toward the sun: like prajñā's using initial enlightenment to join original enlightenment, sending forth the fire of wisdom to burn the firewood of affliction, like a thousand suns whose light shines everywhere. The white one clarifies muddy water: like prajñā's turning the back on dust and joining with enlightenment, crossing the five turbid ages and reaching the pool of coolness. The green one subdues poison and harm: like prajñā's removal of the attachments to self and dharmas and its dispelling of the suffering of the three poisons. There is also a colorless diamond, also called the empty-colored one; one who obtains it can walk and stand in empty space. So too with prajñā: the so-called emptiness of the supreme meaning. With the wisdom of these three emptinesses, self is empty, dharmas are empty, and emptiness itself is empty. In emptiness there is no form, no feeling, perception, formation, or consciousness, and even no wisdom and no attainment, and yet one attains supreme bodhi. Still it comes down to no dharma whatever being attainable. Then one is thus without disturbance, and accomplishes the vajra body. In sum, the diamond's hardness is a simile for reality-prajñā, which is unchanging though it follows conditions, and undestroyed though wrapped in defilement. The diamond's sharpness is a simile for contemplation-prajñā, which breaks through every self and cuts off every delusion. The diamond's brightness is a simile for textual prajñā, which can open the wisdom of understanding and make ignorance clear. The diamond is a supreme treasure whose value cannot be measured, a simile for prajñā as the supreme dharma-treasure whose merit cannot be measured. The diamond treasure is rarely seen in the world, a simile for the rarity of the prajñā dharma-treasure: the so-called supreme, most profound, and subtle dharma, hard to encounter in a hundred thousand million kalpas."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "In Sanskrit, prajñā means wisdom. It is not worldly knowledge or petty cleverness. It is the right wisdom inherent in the principle-body, what is called the Buddha's knowledge and vision. The principle-body is the awakened nature, also called reality-prajñā. Right wisdom is contemplation-prajñā. Outside principle there is no wisdom, outside wisdom no principle; principle and wisdom are from the first one suchness, and so both are called prajñā. Because it was feared that people would mistake it for ordinary cleverness, the sutras and treatises mostly use the transliterated sound prajñā. This wisdom is inherent in all living beings, but is obstructed by beginningless ignorance and cannot appear. Moreover, this wisdom is known only by self-verification; it cannot be described by words and letters. Why? Because only when words are cut off and the activity of mind is extinguished can one verify it for oneself. Yet all living beings have been blind to it for so long. Without skillful means, how shall the cloud of obstruction open? And if the obstruction does not open, how can this wisdom appear? Therefore our World-Honored One appeared in the world for this great matter. Having no other way, he still used words and letters to guide them. Whatever speaks of the Buddha's knowledge and vision to reveal it to living beings so that they may awaken and enter — this is called the prajñā dharma-gate, also called textual prajñā. It is meant to enable living beings, by means of words, to arouse contemplation and realize reality. All the other dharma-gates he taught, such as giving and observing precepts and the rest, issue from the Buddha's knowledge and vision, and are meant for living beings to practice in reliance on them as aids to opening the right wisdom of prajñā. Therefore it is said: no dharma is apart from prajñā, and prajñā is the essential outline of all dharmas. In other words, prajñā is the main trunk of all dharmas, dwelling within all dharmas, and not existing apart from all dharmas. In plain terms, our Buddha appeared in the world out of compassion for living beings who all possess the Tathāgata's awakened nature and can all become buddhas, yet do not know it. So he spoke of what the Buddha himself had verified, in order to break the foolishness of living beings. Set against foolishness, it is provisionally called wisdom. In truth wisdom is nothing other than awakening. Reality-prajñā is original enlightenment. Contemplation-prajñā is initial enlightenment. Because all living beings have never been awakened, textual prajñā is provisionally used to awaken them. For this reason, in reading sutras and hearing the Dharma, the essential thing is to be deeply watchful over oneself, taking what the Buddha said as a mirror, and at all times and in all places using it to reflect oneself. Without observing and reflecting, how shall delusion become awakening? This is what is meant by relying on words to arouse contemplation. When the work of contemplation has long continued, then a solemn and watchful mind arises of itself — this is initial enlightenment, and the first opening of the right wisdom inherent in the principle-body. If one does not retreat or slacken, and the work of contemplation grows daily deeper and purer, then what is called initial enlightenment becomes like the new moon, gradually with more light and less darkness, until the moon's disk is full and its radiance brilliant, and the nature-substance appears. This is initial enlightenment joining with original enlightenment, and there is no longer any division of initial and original. One should know that becoming a buddha is nothing other than the perfect clarity of the awakened nature. And the opening of the awakened nature cannot come about without relying on the power of textual prajñā. Therefore it is said that all buddhas issue from this sutra. Furthermore, in the Sanskrit text, jñāna means wisdom-knowledge and prajñā means insight-understanding. To illumine and see is jñāna; to understand and comprehend is prajñā. To decide is jñāna; to discern and choose is prajñā. To know the conventional truth is jñāna; to illumine the ultimate truth is prajñā. To penetrate the wondrous existent is jñāna; to awaken to true emptiness is prajñā. The sutras often speak of the six pāramitās, and sometimes open them into ten. The seventh is skillful means, the eighth is vow, the ninth is power, the tenth is jñāna, set against the sixth, prajñā. Yet emptiness is the emptiness that is the existent, and the existent is the existent that is emptiness. Therefore the two words wisdom and insight are in truth divided yet not divided. This sutra precisely clarifies not abiding in either emptiness or existence. Therefore the word prajñā should be understood as wisdom and insight together; one must not cling to the letter and force a division into two. It is only that sometimes in the sutras, without dividing, a division is made, citing jñāna to clarify the conventional truth and citing prajñā to clarify the ultimate truth. Therefore students must not fail to know this meaning either."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The diamond is originally used as a simile for prajñā. Yet only what was spoken in the ninth assembly is likened to the diamond's ability to cut through. Is this not because the meaning taught in this sutra is especially hard and sharp and clear, and especially able to cut off delusion? What other assemblies spoke of was gold; what this sutra speaks of is the essence within the gold. Therefore this sutra says: the Buddha and the Buddha-dharma issue from this sutra. It also says: the meaning of this sutra is inconceivable, and its karmic reward is also inconceivable. Pointing precisely at this sutra, it shows that the essentials of prajñā lie wholly in this sutra, which is proof enough."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "In Sanskrit, pāramitā means “arrived at the other shore.” Following our language, it should be “reaching the other shore.” Among the ancient customs of India, whatever was brought to its utmost was called “arrived at the other shore,” like our dialect's “arrived home.” Speaking in terms of the Buddha-dharma, it means leaving this shore of birth and death, crossing the midstream of affliction, and reaching the other shore of nirvāṇa. Therefore pāramitā is also a metaphorical term."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Nirvāṇa is non-arising and non-ceasing; it means the original nature. As for the original nature, “original” carries the sense of being inherent. To say it is inherent shows that it is not made. Since it is not made, one can see that it is so from the first, and not something that came to be out of nothing. Therefore it is said to be non-arising from the first. To say it was already present from the first shows it is not newly produced. Since it was not arising from the first, it now also does not cease. That living beings' birth and death continue without end is the mark, not the nature. Why do birth and death continue without end? Because their mind arises and ceases without pause. One should know that the mind whose arising and ceasing never pauses, what is called the mark of consciousness, is also not the nature. Why is it so? Because of affliction. Through affliction the mind comes to have arising and ceasing, and the nature turns into consciousness. From this one creates karma and receives the suffering of transmigration. Living beings do not know to return to the source, but take consciousness as the nature and are deluded by the marks of birth and death; hence transmigration never rests. And so, though face to face with the non-arising and non-ceasing, they are forever separated from it. Therefore affliction is likened to the midstream, birth and death to this shore, and nirvāṇa to the other shore. Originally there is no this shore and other shore; because the midstream separates them, the division of here and there comes about."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Affliction is also called delusion, namely the delusions of view and thought. The delusions of view and thought all arise from the view of self. Therefore to be freed from the marks of birth and death, one must realize the non-arising and non-ceasing nature. And to realize the original nature, one must transform and remove the view of self. Yet the view of self is deep-rooted, and one must use various methods to tame it and open fundamental wisdom to cut it off. As it is said: though the principle is suddenly awakened, the matter must be removed gradually. It is like crossing over: going from this shore to the other shore, one proceeds gradually and cannot hurry. Therefore it is called leaving, crossing, and reaching, to show that it cannot be arrived at in a single step. And the word “stream” is used again to show the danger: the wind of ignorance must never rise, for if it rises one follows the current downward, and may even meet the calamity of drowning — how then could one cross to the other shore? Let practitioners be careful. Yet what has been said above is still spoken solely with respect to ordinary beings. If one distinguishes more finely, birth and death contain two layers, and affliction also includes the delusions of view and thought, of dust and sand, and of ignorance. Ordinary beings abide in existence and cling to a person and a self; hence through the delusions of view and thought they fall into fragmentary birth and death. The two vehicles and one class of bodhisattvas abide in emptiness and cling to dharmas and a self; hence through the delusions of dust and sand and of ignorance they have transformation birth and death. Therefore to realize nirvāṇa without residue, one must empty both emptiness and existence, break the two attachments to self and dharmas, and end the two layers of birth and death. Crossing the midstream of the delusions of view and thought, dust and sand, and ignorance, one then reaches the other shore of nirvāṇa. Therefore the Mahāprajñāpāramitā Śāstra says: “The two views of existence and nonexistence both belong to this shore. Only when the two attachments are both empty does one reach the other shore.” The two attachments are the attachments to self and to dharmas. What is the raft for crossing the stream? The six pāramitās. By these six methods one can reach the other shore. Therefore these six are also called the six crossings. Among the six, giving is essential, and prajñā is especially essential. Giving is letting go. If one does not know how to let go, how can one be willing to leave this and cross over? Yet without the wisdom of contemplation, how can one be willing to let go? Therefore prajñā is the essential outline of the five pāramitās. Apart from it, the five are not pāramitās. Furthermore, the two words wisdom and insight, spoken separately, may also be called insight at the causal stage and wisdom at the fruition stage. Prajñāpāramitā, spoken of the causal stage, means the contemplative insight that reaches the other shore. Spoken of the fruition stage, prajñā itself is pāramitā. Why? Because at the fruition stage prajñā is principle and wisdom as one suchness. Principle and wisdom as one suchness is non-arising and non-ceasing. Spoken of the causal stage, the diamond is a simile for this contemplative insight, hardest, sharpest, and brightest, and so able to reach the other shore. Spoken of the fruition stage, the diamond is a simile for the Tathāgata's dharma body, the so-called vajra indestructible body. Thus ends the explanation of the name."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Revealing the Substance"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "(E) Next, revealing the substance, in three parts: (F) First, clarifying the meaning of substance; next, distinguishing sameness and difference; third, directly revealing the substance."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "(F) First, clarifying the meaning of substance."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Substance means the principal body. Whenever one expounds a sutra, it cannot be finished in a few words; often there are thousands of words and a tangle of threads. Readers and hearers, like people entering the great sea, see only a vast expanse and cannot tell the ford or the shore, and cannot help sighing at the ocean's immensity. One should know that every sutra, however great its bulk and however numerous its divisions, must have a place where it comes home. In other words, every sutra must have its own principal point. Thousands of words all press toward this point; thousands of threads all arise from this point. This point is the principal point of the sutra, what is called the substance. To seek out the one principal point amid thousands of words and thousands of threads, and to point it out — this is called revealing the substance. If readers and hearers understand the principal point of the sutra, then the essential outline is in their grasp, and they will not sigh at the ocean, nor count sand in the sea, nor stray onto wrong roads. Knowing this, one knows how very important the revealing of the substance and the rest really is. Knowing this, one knows the painstaking care with which the ancients spoke of profound discourse before the sutra. In sum, what is called substance here is the substance of the sutra, not the substance of the nature."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "(F) Next, distinguishing sameness and difference."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Distinguishing sameness and difference has two senses. First, with respect to the sutra's substance and the nature's substance, their sameness and difference are distinguished. The sutra's substance is not the nature's substance; that is settled. Yet the Buddha appeared in the world for one great matter. What is called the one great matter is precisely to open and reveal to all living beings that they alike possess the Tathāgata's wisdom and awakened nature, so that they may awaken and enter it and all become buddhas. He taught the Dharma for forty-nine years solely for this matter. In this light, no sutra is other than the revealing of the inherent buddha-nature. Thus the principal body of every sutra is nothing but the unfolding of the nature's substance, as is clear. Then why did the text above say that what is revealed here is the sutra's substance and not the nature's substance, as if a distinction had to be drawn? One should know that although no sutra is other than the revealing of the inherent buddha-nature, each sutra's teaching has a different purport. Some emphasize removing obstruction; some emphasize cultivating merit; some speak of former causes; some speak of later effects. Capacities differ in thousands of ways, and so the teachings differ in thousands of ways accordingly. Not every sutra points directly at the original nature and unfolds it thoroughly. How could one be vague and muddled, and stubbornly insist that the sutra's substance is the nature's substance? And even speaking of directly pointing at the original nature: the nature's substance embraces all things, and one name cannot exhaust its measure. So, at a loss, various names were set up, such as true suchness, thusness, reality, dharma realm, dharma body, the substance of pure and luminous nature, perfect enlightenment, the mind of self-nature purity, and so on; their names are without limit and the meanings revealed are likewise without limit. Sutras that point directly at the original nature cite one of these names, or another, or several at once, according to the differing purport of the sutra. From this one can see that although they are all sutras pointing directly at the original nature, the meanings they reveal each differ, and the place where the sutra comes home likewise differs. Therefore the sutra's substance and the nature's substance — speaking of sutras that thoroughly reveal the nature — are two yet not two, and still not two yet two; they cannot be lumped together as one. This is why their sameness and difference must be clearly distinguished."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Next, with respect to the various schools, their sameness and difference are distinguished. Whatever the school, in explaining a sutra's title one must take in the essential purport of the sutra and unfold it, if one's words are to have substance. As for setting up categories and divisions with a fixed standard, the two houses of Tiantai and Huayan must be reckoned foremost. Yet Huayan's ten divisions are sometimes not very applicable, and are not so clear and to the point as the five layers established by the Tiantai house. Take the revealing of the substance: the two houses also differ considerably in their approach. The substance revealed is the same, but the intent of the revealing differs greatly. The Huayan school mostly reveals the substance from the word “sutra,” the common name — that is, it reveals the substance with respect to the teaching that does the expressing. The great masters of this school often said: all Mahāyāna sutras take all dharmas' reality as their substance. Guifeng's Essay on the Essential Points of the Diamond Sutra says: textual prajñā is the substance. Both speak with respect to the teaching that does the expressing. Now if all Mahāyāna sutras take all dharmas' reality as their substance, then all Mahāyāna sutras are plainly textual prajñā. And if one points precisely at the prajñā division, then what was spoken in all sixteen assemblies is textual prajñā. How could it be so for the ninth assembly alone, or for this sutra alone? Therefore what Guifeng says may be applied to other sutras as well. Hence it is said that he reveals the substance from the word “sutra,” the common name. The Tiantai house, however, in revealing the sutra's substance, points precisely at this one division, and it cannot be transferred. That is, it reveals the principal substance of this sutra from the seven characters of the specific name, Diamond Prajñāpāramitā — that is, it reveals the substance with respect to the principle and the phenomena that are expressed. Therefore it is said that what the Tiantai house establishes is clear and to the point. This is the sameness and difference of the two houses in revealing the substance."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "(F) Third, directly revealing the substance."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Now, since we follow the Tiantai standard and use the sutra title's specific name to reveal the principal body of the meaning clarified by the sutra, we cannot but first know what the great masters of the Tiantai house have said. Of the Tiantai worthies' commentaries on this sutra that have come down to us, in which the man is worth taking as a teacher and the commentary worth transmitting, there are only two. One is Zhiyi's commentary of the Sui. One is Ouyi's Treatise on Breaking Emptiness of the Ming. Zhiyi took “if one sees all marks as no marks, then one sees the Tathāgata” as the sutra's substance. Ouyi took “reality is permanently abiding” as the sutra's substance. Recently the Tiantai master Dīxian wrote a New Commentary on the Diamond Sutra, taking “the emptiness of the supreme meaning” as the sutra's substance. The three masters' formulations differ, and one might fear confusion. Yet there is no need to doubt. One should know that the three accounts differ only in words; in principle they are no different. Reality is precisely the emptiness of the supreme meaning. The Mahāprajñāpāramitā Śāstra says: “What is called the emptiness of the supreme meaning is the reality of all dharmas.” The title Tathāgata reveals the virtue of the nature, that is, it reveals the virtue of the dharma body. And the dharma body is nothing other than reality. From this one may know that the three accounts, though differing, are in fact the same. Yet the emptiness of the supreme meaning in the New Commentary is a phrase not found in this sutra. Zhiyi's commentary is best, and this sutra has an even more concise and essential phrase to offer. “Reality” is apt and essential, but the two words “permanently abiding” seem somewhat forced. If one cited only the two words “reality,” though wonderful, still every Mahāyāna sutra takes all dharmas' reality as its substance, and it would seem too vague and general. Therefore I do not insist on the three accounts, but change it to this: the sutra's substance is “giving rise to reality.” This sutra says: “When faith is pure, reality is then produced.” Reality is neither marked nor unmarked; that is, it is true suchness and the dharma body, and also the Tathāgatagarbha that is neither empty nor non-empty. “Produced” means appearing before one. How does it appear before one? Through purity of mind. How is the mind made pure? Through non-abiding. Non-abiding means being free of all marks. To be free of all marks is to abide in neither emptiness nor existence, which is to be empty through and through. This sutra says: “Free of all marks, one is then called a buddha.” Why? Because when marks are gone, reality appears before one. From this we see that using the three words “giving rise to reality” to reveal this sutra's homecoming leaves no principle uncomprehended and no matter unrevealed. This sutra itself explains the meaning of reality, saying: “Reality is precisely no-mark.” The word “no” here negates them all: not existent, not empty, not both existent and empty, not neither existent nor empty. Since all these marks — empty, existent, both, neither — are all negated, and negation too is not established, this is being free of all marks. The aspect of living beings' own nature is from the first like this, and truly like this. There is no way to name it, so it is forced to be called reality. “Free” means non-abiding. “Non-abiding” means not grasping. Not grasping at marks, one is thus without disturbance. There is no way to name it, so it is forced to be called “produced.” Textual prajñā expresses this reality. Contemplation-prajñā contemplates this reality. And as for reality-prajñā, when it appears in full, one has reached the other shore. Grasping at marks arises from the view of self; when all marks are gone, the view of self is removed and affliction is cut off. And with each portion of affliction cut off, a portion of reality is produced. The reason this sutra's textual prajñā and contemplation-prajñā are likened to a diamond is precisely that it can cut off affliction and give rise to reality. The three words “giving rise to reality” as the principal substance of the Diamond Prajñāpāramitā Sutra — is this not luminously clear?"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Clarifying the Thesis"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "(E) Third, clarifying the thesis. Three parts: (F) First, clarifying the meaning of the thesis; next, distinguishing sameness and difference; third, directly clarifying the thesis."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "(F) First, clarifying the meaning of the thesis."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "What is called clarifying the thesis is clarifying practice. “Thesis” means principal. “Clarifying” means explaining. Now why is clarifying practice called clarifying the thesis? The Tiantai school sets it up in this way, and there are two layers of deep meaning: first the general, second the particular. (1) It warns and spurs students on, because the Buddha-dharma takes actual practice as principal. This is the general meaning. (2) The methods of practice are without limit, and differ according to capacity and purpose, just as in worldly schools, where according to the various categories certain subjects are set as required and others as elective. This sutra has inconceivable merit. It is spoken for those who have aroused the greater and the supreme vehicle. What method of practice is principal for it? This is the particular meaning. That it says clarifying the thesis rather than clarifying practice takes its sense from this."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Clarifying the thesis follows closely upon revealing the substance. For though the principal body of the sutra's meaning has been revealed, without practice it cannot be realized. If one knows only how to reveal the substance, and does not cultivate in reliance on the substance, one is like one who counts another's treasure, having not half a coin of his own. What benefit is the revealing? Therefore whenever our Buddha taught a dharma, before speaking he always exhorted them to listen attentively. To possess the three wisdoms of hearing, reflection, and practice is attentive listening. And at the close of every sutra he always said: “having believed and received it, they practiced accordingly.” This is to say that opening and revealing, reading the sutra, and hearing the Dharma take practice in accordance with the teaching as principal. Now the place where this sutra comes home, the principal body of its meaning, I know to be the giving rise to reality. But how must reality be given rise to? Our Buddha's every phrase speaks of the nature, and so every phrase speaks of practice. Now if one is to practice in accordance with the Dharma, among the countless gates of practice, which dharma does the sutra's purport take as principal? For this reason, after revealing the substance there must follow the clarifying of the thesis."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The word “thesis” in the phrase “clarifying the thesis” as said above, and the “thesis” of the various schools and factions; again the “thesis” of schools and the “thesis” of religion; again the “religion” spoken of in Buddhist circles and the “religion” spoken of in the world — not only do worldly people not understand these, but even people in Buddhist circles are much confused about them. Now I take the occasion to distinguish their points of sameness and difference one by one, which I imagine you would wish to hear. What people today call religion takes its meaning originally from the leavings of Westerners' wit. Such books exist in the world, and I have no leisure here to touch on the details. It may be put briefly thus: within a teaching, one is honored as possessing supreme authority and is taken as lord. This lord can make people live or die; all flourishing and withering lies in his hands, and so he is worshipped. This is the worldly account of religion. Therefore the single word “religion” already carries the sense of superstition and dependence. Worldly people, seeing only that in Buddhist circles the Buddha is honored as the founder, and hearing also that Buddhist circles speak of their “religion,” do not understand what it means, and so confuse it with the Western religion, turning on the heels of others, sneering at it as superstition, slandering it at will, and creating the karma of uninterrupted hell. Truly pitiable. And because Buddhist circles bow to images, they revile it as worshipping wooden puppets, meaning that Buddhism is inferior even to other teachings, than which foolishness nothing could be greater. Here there is no need to discuss the thesis deeply or cite the teachings at length; a single phrase may judge that it is utterly different from the Western religion. One should know that buddha images, sutra scrolls, and those who have left home are called the three gems that abide in the world. The intent is to cause people, by means of images, to contemplate the Buddha; by means of sutra scrolls, to penetrate the principle; and by means of those who have left home, to arouse a mind that transcends dust and leaves defilement. Hence they are called “abiding in the world.” By borrowing the three gems that abide in the world, one contemplates the three gems of one's own nature and realizes the three gems that permanently abide. Birth and death, flourishing and withering, all depend on oneself. Supreme authority is held in one's own hand. Therefore it is said: all dharmas are mind only, and outside the mind there is no dharma. This is why the Buddha-dharma surpasses all worldly morality and philosophy. How could other religions even dream of it? As for what Buddhist circles mean by “religion,” the “thesis” means clarifying the mind and seeing the nature, because the Buddha-dharma takes clarifying the mind and seeing the nature as principal. The “teaching” means all the sutras' meanings, because all the sutras' meanings are what the Buddha revealed as teaching. Therefore if one penetrates the mind and nature, it is called penetration of the thesis. If one penetrates the sutras' meanings, it is called penetration of the teaching. Thesis and teaching are two utterly distinct matters. How could honoring one of supreme authority as the master of a teaching be meant? Thus the name “religion” is the same, but the meaning is utterly different, as is luminously clear."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Therefore the “thesis” in Buddhist circles' “thesis and teaching” does not originally refer to schools. But because the Chan gate alone takes self-awakening to the mind and nature as principal and does not emphasize the sutra teachings, it is called “a separate transmission outside the teachings,” and so is called “under the thesis.” This shows that it accords with the guiding principle of taking the clarification of mind and the seeing of nature as principal. The “teaching” in “thesis and teaching” likewise does not mean the founder. One who deeply penetrates the sutras' meanings, relies on the words, arouses contemplation and practice, and realizes reality, is called “under the teaching.” This shows that one can practice in accordance with the teaching. This is a later meaning, and already contains a sense of schools. Yet the terms “under the thesis” and “under the teaching” were equal in meaning, with no ranking at first. Later, “under the thesis” came to mean not only Chan but also to imply that one can actually practice and grasp the essentials. And “under the teaching” came to refer generally to all schools outside the Chan gate, and to imply seeking only wide learning with no benefit to others. So the one was weighted and the other lightened, with a great difference that cannot be mentioned in the same breath. This meaning is even later, arising when Chan was at its height."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "As for the so-called schools, each has what it principally holds. Some hold to dharmas and marks, such as the Ci'en school, also called the Dharma Characteristics or Consciousness-Only school. Some hold to the dharma-nature, such as the Chan school and the Three Treatises, Tiantai, and Huayan schools. And because some rely on the teachings and some do not, the Chan school is distinguished from the others that speak of the nature. The “under the thesis” and “under the teaching” spoken of above also set up school names according to the different sutra meanings they principally hold, such as the Three Treatises school, the Lotus school, the Huayan school, the Pure Land school, and the Esoteric school; those who principally hold the precepts are called the Precepts school. Distinguishing further within a school gives what is called a faction. For example, the Dharma Characteristics school has the old faction of Paramārtha and the new faction of Xuanzang. The Huayan Sutra clarifies both nature and marks, and so those who take Huayan as their school comprehend both nature and marks in their teaching. Speaking in terms of dharmas and marks, the Huayan house may also be called yet another faction of the Dharma Characteristics. Likewise the Pure Land school has the distinction of visualization and of reciting the name. The Chan school's division into the five houses of Linji, Weiyang, Caodong, Fayan, and Yunmen, though it sets up school names, is in fact the sense of factions. The rest may be inferred. In sum, the “school” of the schools, because their established meanings and their teaching differ one from another, sets up various school names. Nor is it only that their methods of practice differ. As for the “thesis” of clarifying the thesis, it speaks solely of practice. Broadly, the “thesis” of “thesis and teaching” has the widest meaning. The meaning of schools is already narrower. And “clarifying the thesis” is narrower still. This is their difference. Yet the sense of the character for thesis — as assertion, as principal purport — is the same in all. As for what Westerners call religion, it is the sense that one of supreme authority is the master of a teaching. It is utterly different from what we call “thesis and teaching.” All this must be distinguished. Worldly people who do not understand this meaning are not to be blamed. But people in Buddhist circles, because the sameness and difference have not been distinguished, do not know how to set forth clearly and in detail the right meaning of “thesis and teaching” in Buddhist circles. They merely say that the Buddha-dharma is not a religion, in order to contend with the world. Now the Buddha-dharma plainly has a thesis and a teaching — how can it be said not to be a religion? In the writings of the ancients this appears again and again. How can such a formulation win people's hearts? If the right meaning were explained, so that they knew our “thesis and teaching” is not their “religion,” then clear as the Jing and Wei rivers, they would have no way to apply their slander."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Again, the schools other than Tiantai also clarified the thesis. Yet what they clarified is not what the Tiantai school clarified. Their sameness and difference must also be distinguished. For example, the second patriarch Zhiyan of the Huayan school, annotating the Wei translation of the Diamond Sutra, said: the three prajñās of textual, contemplative, and reality are the thesis of the sutra. What is thus called the thesis is neither devoted solely to the work of practice nor pointed precisely at the Diamond Sutra; it can only be called a general discussion of the principal purport of the prajñā sutras. Guifeng's commentary takes reality-prajñā and contemplation-prajñā as neither one nor two as the thesis, which is slightly better than the former account. Yet it too is only a general discussion, not a precise pointing at this sutra. And it speaks of nature and practice together, not solely of practice. The Three Treatises school's Jizang says in his Commentary on the Meaning: cause and effect are the thesis. That is, the practice of non-abiding is the cause, and the attainment of nothing-to-attain is the effect. This account points precisely at this sutra and cannot be transferred to another division; it is much more to the point. Yet it already touches on the fourth layer of the Tiantai house, the discussion of function. Why? Because function belongs to the effect. From this we know that the various houses agree in clarifying the thesis, but the theses they clarify differ. And from this we see all the more how clear and to the point the Tiantai house's five layers are, beyond the reach of other houses."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "(F) Third, directly clarifying the thesis."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "What are the Tiantai worthies' accounts of clarifying the thesis? Zhiyi's commentary marks the thesis as cultivating the giving of no marks with the wisdom of reality. Prajñā is the right wisdom inherent in the principle-body, hence “the wisdom of reality.” “Giving” is dāna; it takes the sutra's meaning that the bodhisattva should practice giving with the mind abiding in nothing with respect to dharmas. Ouyi's Treatise on Breaking Emptiness takes the contemplation that accords with principle as the thesis. “According with principle” means according with the principle-body, which is the same as Zhiyi's “wisdom of reality.” Master Dīxian's New Commentary takes the arousing of the bodhi mind as the thesis. Of the three accounts, Zhiyi's is by itself the finest; the other two are somewhat broad. Here, relying on the sutra's own ready phrases — “one should be free of all marks and arouse the anuttarā-samyak-saṃbodhi mind,” “free of all marks, one is then called a buddha,” and “with no self, no person, no living being, no life span, cultivating all good dharmas, one then attains anuttarā-samyak-saṃbodhi” — I summarize them in two phrases: being free of all marks and cultivating all good is the wondrous thesis of this sutra's cultivating in reliance on the substance. The intent is the same as Zhiyi's, but the phrasing is the sutra's own and is clear and easy to understand, so I have changed it. How is the intent the same as Zhiyi's? This sutra cites giving alone to embrace the six pāramitās and the ten thousand practices. To practice giving is precisely what is called cultivating all good. And being free of all marks is precisely the wisdom of reality. For neither dharmas nor non-dharmas are grasped; this is being free of all marks. It corresponds exactly to the reality that is neither marked nor unmarked. Then is being free of all marks anything other than the wisdom of reality? One should know that this sutra has only one thesis of practice, in the two words “non-abiding.” Just marking out non-abiding to clarify the sutra's thesis, the whole sutra's gates of contemplation and gates of practice are all contained therein. Yet fearing it is not easy to grasp, it is better to clarify it with the two phrases “free of all marks” and “cultivating all good,” and then the sense of non-abiding is perfectly clear. Why say so? Non-abiding is not abiding in either extreme; that is, being empty through and through. The sutra says: one should not grasp dharmas, one should not grasp non-dharmas; non-dharmas are not non-dharmas; and the phrases “is not” and “is called.” It also says: no mark of self, no mark of dharmas, and also no mark of non-dharmas. Whether spoken of the two extremes or of repeated emptiness, all is what is called being free of all marks. That is the true explanation of non-abiding. And immediately after “with respect to dharmas one should abide in nothing” comes “practice giving,” which is the sense of cultivating all good, and also the sense that emptiness too is not abided in. Everything said in the whole sutra about the gates of contemplation and the gates of practice is wholly grounded in being free of all marks and cultivating all good. This is precisely what is called wondrous existence that is not existence, true emptiness that is not empty,concealing and illumining at once, exactly according with the supreme meaning of the middle way. The Mahāprajñāpāramitā Śāstra says: “The essential purport of prajñā lies in being free of all dharmas, which is all dharmas.” Being free of all dharmas is being free of all marks. Being all dharmas is cultivating all good. Having grasped this sutra's two phrases, being free of all marks and cultivating all good, the essential purport of prajñā becomes perfectly clear and one has a place to begin. Therefore this sutra is the essential outline of prajñā. Moreover, only by being free of all marks does one arouse the supreme bodhi; and the attainment of supreme bodhi is likewise nothing but being free of all marks. Why? Because no self, person, living being, or life span precisely means being free of all marks. And being free of all marks must be carried out by cultivating all good. This is precisely the sense that the unreal comes out of the non-unreal, and non-doing comes out of doing. Therefore the two phrases being free of all marks and cultivating all good exhaust without remainder the whole journey of the Diamond Prajñāpāramitā from this shore, across the midstream, to the other shore. Hence it is called the wondrous thesis of cultivating in reliance on the substance. In sum, clarifying the thesis must correspond to revealing the substance. The sutra's substance being the giving rise to reality, and being free of all marks being originally the wisdom of reality, therefore by being free of all marks and cultivating all good, reality is given rise to accordingly. Hence it is said: free of all marks, one is then called a buddha. Hence it is said: with no self, person, living being, or life span, cultivating all good dharmas, one then attains anuttarā-bodhi. For one who is called a buddha is so because he has attained anuttarā-bodhi. Anuttarā-bodhi is reality-prajñā. Being free of all marks and cultivating all good is contemplation-prajñā. Because contemplation realizes reality, citing these two lines of the sutra to clarify the thesis of practice is like grasping the main cord of a net, with no tangle left."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "(E) Fourth, distinguishing the function."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Function means efficacy, power and use — that is, what is called the result. One who practices must attain its thesis, because otherwise no result can be expected. Now that the thesis of practice is clear, what is its result like? Moreover the result is not of one kind; one must distinguish which is greatest. What is greatest? The result that corresponds to the sutra's substance. For where there is this substance, there must be this function. If the function does not accord with the substance, then one's cultivation is not yet complete, and it cannot be called a result. Therefore it says not “revealing the function” or “clarifying the function,” but necessarily “distinguishing the function,” for this reason. Nor is that all. Function issues from the thesis. The thesis of practice belongs to the cause, the function to the effect. As the cause is, so the effect afterward is. And it says “distinguishing” to distinguish whether the effect accords with the sutra's substance, that is, to distinguish whether the cause of practice accords with the sutra's substance. One should know that clarifying practice is called clarifying the thesis because it clarifies the guiding principle of the cause of practice, which must not depart from the sutra's substance. In other words, the principal method of practice takes the sutra's substance as its thesis. Then the method of practice must accord with the sutra's substance — this is clear. And cause and effect are from the first one suchness. Therefore with respect to the student, one should distinguish whether the result he obtains accords with the sutra's substance; then one may know whether his cause of practice accords with the sutra's substance. And with respect to the sutra's meaning, one should distinguish within the sutra which function corresponds to the sutra's substance, for that is the result that is one suchness with the thesis of practice. In sum, substance, thesis, and function must be one continuous thread. And the names substance, thesis, and function are spoken with respect to the object, that is, with respect to the sutra's meaning. For revealing the substance reveals where the sutra's meaning comes home, which is the sutra's principal substance. Clarifying the thesis explains the principal method of practice spoken of in the sutra, which arises in reliance on the substance. Distinguishing the function distinguishes the greatest function spoken of in the sutra, obtained through practice. If spoken with respect to the person who practices, clarifying the thesis clarifies practice at the causal stage, and distinguishing the function distinguishes realization at the fruition stage, while revealing the substance reveals the goal of cause and effect. For clarifying the thesis clarifies that at the causal stage one must practice thus in order to be walking toward the goal. Distinguishing the function distinguishes that what is called realizing the fruit must obtain such a function in order to have reached the goal. This is how one should understand it."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Other schools, on the layer of distinguishing the function, either omit it or put it another way. For example, among the Huayan ten gates there is one called the causes and conditions for the arising of the teaching. The Ci'en school also speaks of what the teaching arose for. Both discuss a sutra's function. Yet their discussions are somewhat too elaborate. Speaking of the Tiantai school, Zhiyi in his commentary on this sutra takes the two words “breaking attachment” as the sutra's great function. The Treatise on Breaking Emptiness says: the sutra's function is cutting off doubt. And the New Commentary says: the sutra's function lies in non-abiding and giving rise to mind. These are again too brief, and do not exhaust the measure of the function spoken of in the sutra. One should know that the reason substance, thesis, and function must be revealed, clarified, and distinguished is chiefly to give those who hear the Dharma a direction and to provide warning and spur. It is by no means only a matter of summing up the sutra's purport in a few phrases so that one may clearly understand where the sutra's essentials lie. Above all it must be clear and easy to understand, so that it startles the eye and alarms the mind, and one has a place to begin. Too elaborate or too brief are both unsuitable. Now, to distinguish in detail this sutra's great function, one must first clarify why living beings come to be and where the root of their inability to escape suffering lies."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The Buddha said: all living beings possess the Tathāgata's wisdom and awakened nature, but because they are obstructed by deluded thoughts and attachments, they cannot realize it. These few words state it with the utmost thoroughness. The meaning is that all living beings can become buddhas. Why? Because they all possess the Tathāgata's wisdom and awakened nature. Yet they cannot become buddhas — why? Because something obstructs the Tathāgata's wisdom and awakened nature that is inherent in them. This clarifies why living beings come to be. Now all living beings possess this nature and do not know it themselves. Even if they know it, if what obstructs it is not removed completely, they still cannot realize it. This clarifies why they cannot escape suffering. What is the obstructing thing? Deluded thoughts and attachments. This clarifies the root of the sickness by which living beings come to be and receive suffering. In a few short words it is all said at once. Deluded thoughts are the discriminating mind. Attachments are the two attachments to self and to dharmas, that is, what is called the view of self. Coarsely, one clings to the physical body; this is the view of a person and a self, and one cannot escape the suffering of fragmentary birth and death. Subtly, one clings to all dharmas; this is the view of dharmas and a self, and one cannot escape the suffering of transformation birth and death. Nor is that all. Because of the attachment of the view of self, the delusion of discrimination arises. Then one is greedy for what accords with oneself and angry at what opposes oneself, not knowing that there is originally no self at all; this is called delusion, also called ignorance, also called unawakened. Thus one creates all kinds of karma and is bound and dragged by it. The more one suffers, the less one can escape. Deluded thoughts and attachments therefore grow deeper and heavier, and the inherent Tathāgata's wisdom and awakened nature grows more deluded and more separated accordingly."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "From what, then, does the view of self arise? From not penetrating the one true dharma realm. The dharma realm is the ten dharma realms of the four sages and six ordinary kinds. Though the marks of the ten dharma realms differ without limit, the nature of the ten dharma realms is the same one true suchness. Not to penetrate is not to know. Therefore the Awakening of Faith says: “Because they do not penetrate the one dharma realm, unawakened thought arises, and there is ignorance.” Because they do not penetrate it, it is called unawakened ignorance. The arising of thought means deluded thoughts and attachments. Not penetrating the one true dharma realm is another way of saying not knowing that one possesses the Tathāgata's wisdom and awakened nature in common with all. For not knowing that the substance of the nature is fundamentally the same, one arouses the thought of discrimination between self and others. Karmic power is created from this, and suffering retribution is summoned from this. To escape suffering retribution, then, one must dissolve karmic deeds. To dissolve karmic deeds, one must remove the view of self — this is clear. It was for this that our Buddha appeared in the world for the one great matter, and for this that he taught the Dharma for forty-nine years. This sutra is the essential outline of all dharmas, likened to the diamond's ability to cut through, and its great function lies precisely here."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The sutra is named Prajñāpāramitā because it can open in living beings the wisdom that reaches the other shore, so that they may all reach the other shore together. This wisdom is inherent in the principle-body of all living beings; it is the Tathāgata's wisdom and awakened nature that all living beings possess, and so it is called the wisdom that reaches the other shore. Therefore when this wisdom opens, one can reach the other shore. Why? Because if this wisdom opens, the unawakened become awakened and the ignorant become clear. One penetrates the one true dharma realm. One breaks the view of self at its root. Then no delusion is left uncut. Therefore it is likened to a diamond. How, then, is this wisdom opened? One should know that arousing the mind of great compassion is opening this wisdom. Why? Knowing that all living beings possess the Tathāgata's wisdom and awakened nature, but have not realized it because of obstruction, one knows that the substance of living beings' nature is the same. Therefore to see living beings suffer is to suffer oneself; to see living beings rejoice is to rejoice oneself. If one living being has not realized the Tathāgata, then the substance of the nature is still impaired. Therefore one resolves in mind to uproot their suffering, to grant them happiness, and to ferry them to buddhahood. This is called the mind of great compassion, what is called the one-substance great compassion. To be able to arouse this mind is called initial enlightenment. Though called initial enlightenment, it is at once the same as perfect enlightenment. Therefore to arouse the one-substance great compassion mind is called arousing the anuttarā-samyak-saṃbodhi mind, whose meaning is supreme, perfect, and universal enlightenment. Hence only by being free of all marks does one arouse this mind."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Being free of all marks clarifies that one converges and returns to the one true suchness nature. How is this said? Seeing that there are living beings who can become buddhas and resolving to ferry them is not grasping non-dharmas, and is also not denying living beings. That there is a supreme bodhi to be attained is being free of the mark of no-mark. And knowing again that living beings inherently possess the Tathāgata's wisdom and awakened nature, so that though one ferries them, in truth nothing is ferried, and though they become buddhas, in truth nothing is accomplished — this is not grasping dharmas, and is not denying living beings. To attain supreme bodhi yet have nothing attained is being free of the mark of a mark. When the marks of existence and nonexistence are both gone, this is called converging and returning to the true suchness nature, because one accords with the reality that is neither marked nor unmarked. Then at the first arousal of the mind, the discriminating mind is already dissolved, and the coarse and subtle views of self are quietly melted away. Therefore this sutra's meaning is likened to a diamond."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Consider this sutra: as soon as it opens its mouth it causes one to arouse the supreme bodhi mind, to ferry all living beings into nirvāṇa without residue, and yet in truth no living being is ferried into extinction. Everything said afterward unfolds this meaning. It further causes one to forget that it is a bodhi mind, and points directly at the source of mind, causing one to enter where not a single thought arises. In the latter half, the chapter opens by dislodging attachment to the arousing of the bodhi mind, until it says: “self-view is not self-view, therefore it is called self-view.” Then not a trace of the view of self remains. Therefore this sutra's greatest function lies first in breaking the self."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "All living beings, because they do not awaken to the fact that the ten dharma realms share one true-suchness dharma body, cling to self and other and give rise to discriminating views. Thus they produce the three poisons, create immeasurable karma, receive the suffering of karmic bondage, and fall into transmigration. The more deluded, the more they suffer; the more they suffer, the more deluded. Even if by former good roots one meets a good teacher who teaches one to arouse the mind and take refuge in the three gems, yet by former karma one's inner and outer obstructive conditions rise in layers and circle round one another, so that one cannot practice, or practicing, finds it hard to succeed. Therefore for practitioners, repentance of karmic obstruction is of the utmost importance. The great bodhisattvas at the Huayan assembly still included this gate among their conduct and vows, let alone ordinary beings. Yet karmic deeds are of two kinds: those that can be repented, and those that admit of no repentance. If the deed is extremely heavy and has become fixed karma, repentance is especially difficult. The sutra says: “Sit upright and contemplate reality; this is called true repentance. Heavy sins are like frost and dew; the sun of wisdom can dissolve them.” This clarifies that to dissolve heavy sins one must contemplate reality, and only then is it possible; no other method can repent them. If one sees this sutra merely as causing one to contemplate emptiness, that is still a shallow account, a one-sided view. One should know that the sutra's text causes one to abide in neither emptiness nor existence, illumining both extremes at once — this is called contemplating reality. Why? Because reality is neither marked nor unmarked. If one only contemplates emptiness, one stops at contemplating no-mark without contemplating the unmarked, and how is that contemplating reality? The sutra uses the wisdom that contemplates reality as a simile for the sun, precisely because the sun travels through the sky without abiding in the sky. Therefore the Chapter of Conduct and Vows says: “Also like the sun and moon that abide not in the sky.” If one only contemplates emptiness, one abides in emptiness; how could that be the meaning of the sun as a simile? One should know that the wisdom of reality is born of great compassion. Because of great compassion, one broadly cultivates the six pāramitās and ten thousand practices and obtains immeasurable merit. Therefore the sutra's wisdom contains merit within it, and only then does it accord with contemplating reality. Cultivating both merit and wisdom, contemplating emptiness without abiding in emptiness, one is like the sun shining brilliantly, able to dispel darkness and to give birth to all things. By such contemplation and practice one can dissolve heavy sins like frost and dew. This is how one should understand it. To understand thus is right understanding. The function of this sutra is likewise. The sutra's substance is the giving rise to reality, which is reality-prajñā. Its thesis of practice is being free of all marks and cultivating all good, which is contemplation-prajñā, that is, contemplating reality. For being free of all marks is contemplating emptiness, cultivating wisdom. Cultivating all good is not abiding in emptiness, cultivating merit. Contemplating reality and cultivating both merit and wisdom is true repentance. Therefore one can dissolve heavy sins and fixed karma. Then inner and outer obstructive conditions are all melted away at once, and what practice will not succeed? As this sutra says: “This person's former-world karmic deeds should have led him to fall into the evil paths; but because in this world he is lightly despised, his former-world karmic deeds are thereby dissolved, and he shall attain anuttarā-samyak-saṃbodhi.” “Evil paths” means heavy sin. “Should have led him to fall” means fixed karma. Fortunately, having good roots, in this life he has not fallen. He is able to hear this sutra and deeply understand its purport. He can know the thesis of practice and advance in merit and wisdom together. Therefore he can receive heavy sins lightly and dissolve former karma. Why? Speaking by way of antidote, merit can dissolve sin; speaking by way of the supreme meaning, wisdom can uproot karma. “He shall attain bodhi” clarifies that what he practices will surely be accomplished. For this reason this sutra has yet another great function, namely the dissolving of karmic deeds."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Those of the two vehicles can contemplate emptiness and awaken themselves, breaking the view of a person and a self, but the view of dharmas and a self remains; because their wisdom is shallow, they cannot break it completely. The ultimate result they can achieve is only arhatship and pratyekabuddhahood. Those of the greater vehicle, though they can abide in neither emptiness nor existence, and not only awaken themselves but practice the six pāramitās to awaken others, yet have not purified ignorance completely. That is, the subtle attachment to dharmas is not yet transformed and removed, because they have not obtained the diamond wisdom. Therefore they only partially realize the dharma body and have not reached the ultimate. What this sutra calls the accomplishment of the foremost and rarest is only the attainment of perfect universal enlightenment, not yet the supreme. If one can, with respect to this sutra, deeply understand its purport, have faith without opposition, and fully receive, hold, read, and recite it and explain it to others, then one bears the Tathāgata's anuttarā-samyak-saṃbodhi. One should know that such a person accomplishes the foremost and rarest dharma, and even gives rise to merit and dissolves sin, and shall attain supreme bodhi. Therefore this sutra has yet another great function: it can ultimately accomplish anuttarā-samyak-saṃbodhi."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Gathering the three points distinguished above, they come to eight characters: breaking the self, dissolving sin, and accomplishing the Tathāgata — this is this sutra's great function. Thus it corresponds reasonably well with the sutra's text about this sutra having inconceivable, immeasurable, boundless merit. The sutra says: “The mad mind does not rest; when it rests, that is bodhi.” The ancients also said: “Only exhaust the ordinary affections; there is no other sage's understanding.” The mad mind and ordinary affections are the view of self of deluded thoughts and attachments. One should know that the Tathāgata's wisdom and awakened nature is inherent in living beings, and is only obstructed by the view of self. If this obstruction is removed, the awakened nature is from the first perfectly accomplished, wisdom is freely and perfectly clear, and the Tathāgata emerges from the shell of ignorance and appears in fullness. Therefore it is said: the mad mind does not rest; when it rests, that is bodhi. Only exhaust the ordinary affections; there is no other sage's understanding. Hence though the dharma-gates of practice are without limit, the one guiding principle is simply the removal of obstruction. The great function of this sutra, to speak exactly, is likewise only the removal of obstruction."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "And when one speaks of obstruction, it naturally has three. What is called accomplishment may likewise be opened into three. The first is the obstruction of delusion, also called the affliction obstruction, namely the delusions of view and thought. View, extremity, perverted, attachment to view, grasping at precepts, greed, anger, delusion, pride, and doubt — these number ten, and all take the view of self as their root. Therefore when the self is broken, the delusion obstruction is removed, and the virtue of prajñā is accomplished. The second is the karma obstruction. This sutra says: former-world karmic deeds are thereby dissolved. Therefore when sin is dissolved, the karma obstruction is removed, and the virtue of liberation is accomplished. The third is the retribution obstruction. Retribution means the body of suffering retribution. When the Tathāgata is accomplished, the retribution obstruction is removed, and the virtue of the dharma body is accomplished. Therefore this sutra's great function is to remove the three obstructions and accomplish the three virtues. That it here cites breaking the self, dissolving sin, and accomplishing the Tathāgata is because these are easy to understand, and the meaning of removing the three obstructions and accomplishing the three virtues is contained within them."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "It was said above that substance, thesis, and function are one continuous meaning. How are they one? Let me now speak of them together. Speaking with respect to the sutra's meaning that is expressed, revealing the principal body of its homecoming is the giving rise to reality. For those who arouse the greater and supreme vehicle, this shows the goal of cultivating the cause and realizing the fruit. As for the thesis of practice, being free of all marks and cultivating all good: speaking with respect to the sutra's meaning, being free of all marks is what is called no-mark, and cultivating all good is what is called the unmarked. Yet good dharmas are not good dharmas, therefore they are called good dharmas. So to speak ultimately, cultivating all good embraces the meaning of neither marked nor unmarked, while being free of all marks is the meaning that marks and the markless are both absent. This corresponds exactly with the substance of giving rise to reality. For the ultimate meaning of giving rise to reality is likewise that marks and the markless are both absent, and that arising is non-arising. Speaking with respect to the person who practices, it is not abiding in either extreme, being empty through and through, and advancing toward the ultimate goal of giving rise to reality. As for distinguishing the function — breaking the self, dissolving sin, and accomplishing the Tathāgata: speaking with respect to the sutra's meaning, breaking the self is the function obtained by being free of all marks, because delusion is exhausted and the mind is emptied. Dissolving sin is the function obtained by cultivating all good, because merit and wisdom increase. It may also be said that breaking the self and dissolving sin are the function obtained jointly by being free of marks and cultivating good, because through the work of contemplation-prajñā, when faith is pure, reality is given rise to. For when one abides in neither extreme and the mind accords with absolute purity, then one breaks one portion of ignorance and realizes one portion of the dharma body. The view of self and karmic deeds arise from ignorance. When ignorance is broken, the two obstructions of delusion and karma gradually dissolve, and one can realize the dharma body. The first realization of the dharma body is the arising of reality. As for accomplishing the Tathāgata, it is when the work of contemplation is pure and reality-prajñā appears in fullness — how could it be only like the first rising of the moon? Speaking with respect to the person who practices, this is the perfection of cause and the fullness of fruit, having reached the goal and arrived at the other shore of nirvāṇa. Thus ends the distinguishing of the function, which also supplies what was not fully said in revealing the substance and clarifying the thesis, and distinguishes substance, thesis, and function according to the object and the person, gathering them into one continuous thread and explaining their meaning."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "(E) Fifth, judging the aspect of the teaching. Two parts: (F) First, a general discussion; next, the direct judgment. (F) First, again two parts: (G) First, explaining the terms; next, a general discussion of the aspects of teaching."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "(G) First, explaining the terms."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The character “judging” here has two senses. One is dividing and judging, the sense of discerning. The other is appraising, the sense of determining. To judge the aspect of the teaching means to discern the purport of the sutra and determine to what category it belongs. “Teaching” means instruction, that is, the sutra itself. The Buddha taught the Dharma to instruct living beings, and the dharma he taught was gathered into books and called sutra; hence the sutra is called the teaching. The Buddha's appearing in the world to give teaching was to cause living beings to remove the obstruction of ignorance and the view of self and realize the inherent Tathāgata's wisdom and awakened nature. In brief, all Buddha-dharma is nothing but clarifying the mind and seeing the nature. And the mind and nature must be self-verified, because they are originally beyond what words can reach. Therefore it is said: the one who teaches the Dharma has no dharma to teach. Yet since living beings do not know it themselves, and one now wishes to teach them, one cannot but speak. And because obstructions are deep or shallow, one's speaking cannot but respond to their capacities. Therefore it is said: one speaks according to capacity. For if one speaks without matching capacity, they cannot understand, and what use is the speaking? Capacity has two senses: root capacity and timely capacity. Root capacity refers to the nature of their faculties, meaning that living beings' faculties differ one from another. Why do they differ? Because their obstructions are shallow or deep, thin or thick. Timely capacity refers to the time, that at one time he taught the Āgamas, at another the Vaipulya sutras, first the lesser then the greater, first the shallow then the deep, leading them on step by step and drawing them into the wonder, as in what is called the three periods and five periods. Therefore the dharma taught in forty-nine years is called the teaching of one age. “One age” means the Buddha's whole life. “Timely teaching” means giving teaching according to the time. Since he spoke according to capacity and gave teaching according to the time, the sutra teachings came to differ as half and full, provisional and real, gradual and sudden, partial and perfect. Therefore the Mahāparinirvāṇa Sutra likens the aspects of the teaching of one age to milk, or cream, or fresh butter, or clarified butter, and finally ghee. This is what is called the aspect of the teaching. For example, milk, cream, and the rest, though their names and marks differ, have one and the same wondrous use of nourishing the body and benefiting the person. So too with the sutra teachings. Though there are differences of name and mark such as half and full, partial and perfect, their guiding purpose is one: clarifying the mind and seeing the nature. This is the deep meaning of speaking in terms of aspect: it clarifies that one must not cling to the differing aspects, but should still converge and return to the non-differing nature. Yet since there are indeed various differing aspects, one should not cling to them, nor should one be muddled about them either. Therefore the ancients, with respect to the aspect of all sutra teachings, did not shrink from toil but discerned them and determined them. Though their views were shallow or deep and their accounts differed according to their standpoint, their intent was to benefit students, so that they might have the guiding principles and entries of the teaching of one age, its depths and shallows and its order, clear before their minds, and could advance in due order. Their painstaking care in benefiting later students is truly admirable. This is what is called judging the aspect of the teaching. Thus ends the explanation of the terms of judging the aspect of the teaching."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "(G) Next, a general discussion of the aspects of teaching."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "After the great Dharma came east, down to the end of the Jin, there were as many as eighteen houses that judged the teaching of one age, yet none of them was transmitted. In the writings of the ancients there are occasional citations of their accounts, a scale or a claw, but their whole was never seen. Judging from what is cited, they mostly discussed the broad outline only. From the Tang onward, what was commonly followed as relatively complete were the judgments of the two houses of Tiantai and Huayan. Tiantai judged the teaching of one age as the four kinds — Tripiṭaka, Shared, Distinct, and Perfect — which students called the four teachings. Huayan judged it as the five kinds — Lesser, Initial, Final, Sudden, and Perfect — which students called the five teachings. What the Huayan school calls Lesser is what the Tiantai school calls Tripiṭaka, meaning the teaching of the lesser vehicle. That it is not called “lesser” is because the lesser vehicle, as to the three baskets of sutra, discipline, and treatise, though its meaning does not reach the fullness of the greater vehicle, yet possesses the three baskets completely. If it were called “lesser,” people might suspect its three baskets to be deficient and incomplete. Therefore it is not called lesser but Tripiṭaka. In the Mahāparinirvāṇa Sutra the Buddha calls the lesser vehicle the teaching of half letters and the greater vehicle the teaching of full letters, because the lesser vehicle clarifies only the emptiness of the person, while the greater clarifies the emptiness of both person and dharmas, and so they are distinguished as half and full."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "What the Tiantai school calls the Shared teaching, the Huayan school calls the Initial teaching. From here onward, all refer to the greater vehicle. It is called “shared” because its sutra meaning can reach down to the lesser vehicle and up to the Distinct and Perfect. In sum, the meaning it clarifies can be practiced in common by the three vehicles, and so it is named shared, which is to say ordinary or common. Whatever clarifies only the principle that person and dharmas are both empty belongs here. Contemplating emptiness is the initial gate of the greater vehicle, and so it is named the Initial teaching."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "What is called the Distinct teaching: “distinct” means special. The Initial teaching only contemplates emptiness, the same as the two vehicles, and so it is called practiced in common by the three vehicles and named shared. Here, however, one does not only contemplate emptiness but also contemplates provisional existence, which the two vehicles do not practice in common; hence it is called distinct. The Huayan school names it the Final teaching, clarifying that one who practices the bodhisattva path, though at first contemplating emptiness, in the end does not abide in emptiness. In sum, the gates of practice of the greater vehicle from beginning to end are never apart from abiding in neither birth and death nor nirvāṇa. Furthermore, one first practices entering emptiness from the provisional, then practices emerging from emptiness into the provisional, each practiced separately, unlike the Perfect teaching's cultivating one and cultivating all. Thus it differs from both the Shared and the Perfect teachings. It is distinct below from the Shared and above from the Perfect, and so is called the Distinct teaching."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The Perfect teaching is what the Tiantai school calls the perfectly fused three truths of emptiness, the provisional, and the middle, and what the Huayan school calls the non-obstruction of principle and phenomena, the non-obstruction of phenomenon and phenomenon, one is all, and all is one. In sum, whatever sutra meaning embraces what are called the Lesser, Initial, Final, and Sudden, and what are called the Tripiṭaka, Shared, and Distinct, is the Perfect teaching."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The Huayan school inserts a Sudden teaching between the Final and the Perfect. Whatever sutra meaning clarifies that not a single thought arises, that one is a buddha in one's very substance, and that no stages are involved, belongs to it. The Tiantai school is not omitting this layer. One should know that the Tiantai judgment of teachings divides into the methods of conversion and the manners of conversion. The methods of conversion are the dharma-gates of instruction, namely the Tripiṭaka, Shared, Distinct, and Perfect; these refer to the purport of what was said in instructing. The manners of conversion are the forms of instruction, namely Sudden, Gradual, Secret, and Indeterminate; these refer to the appearances manifest in instructing. Speaking from the Buddha's side: to say it all at once is sudden. To speak in successive stages is gradual. To emit light to express the Dharma is secret. Not to speak definitively is indeterminate. Speaking from the hearers' side: to hear and immediately penetrate is sudden. Not to do so is gradual. To understand according to one's kind is indeterminate. Not to know one another is secret. Furthermore, when the sudden meaning is taught there is also the gradual meaning, and when the gradual meaning is taught there is also the sudden meaning. One person hears it as sudden, another takes it as gradual. What is originally sudden yields only gradual benefit. Though the Shared teaching is taught, the Distinct and Perfect are contained within it. And so even when the Tripiṭaka teaching is taught. Extending this to the rest, none is otherwise. All are what is called secret and indeterminate. In sum, the Tiantai school holds that among the four teachings of Tripiṭaka, Shared, Distinct, and Perfect there is none without sudden and gradual, and so it does not set up a separate gate. For it judges the teaching of one age by interweaving the methods of conversion and the manners of conversion with the common five periods and the distinct five periods. For this reason, in the fineness and perfect fusion of its judging of teachings, none surpasses Tiantai. Yet as to the principles and appearances of the teaching of one age, there is still something it does not fully gather in. One should know that this matter only a buddha with a buddha can exhaust. The patriarchs of the various schools had not reached the ground of buddhahood; though each had his own standpoint, how could they at once be equal to the Buddha? Later men need only choose the good and follow it. Thus ends the general discussion of the aspects of teaching, which is to say the first general discussion is finished. What follows is the direct judgment of this sutra's aspect of teaching."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "(F) Next, the direct judgment."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The Tiantai school judges this sutra as Shared and Distinct together with Perfect; the Huayan school judges it as belonging to the Initial teaching, and also as reaching to the Perfect. Both inevitably cling to names and words, and do not fully accord with the sutra's purport. If one wishes now to determine what this sutra's aspect of teaching is, one cannot but first clarify this sutra's purport."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The Buddha spoke this sutra in order to open the inherent Tathāgata's wisdom and awakened nature in living beings and restore them to their original face. It is precisely the supreme and most profound dharma-treasure for continuing the Buddha-seed and transmitting the mind-seal. This one point alone is enough to prove that it is the teaching of utmost perfection and utmost suddenness. Being of utmost perfection and utmost suddenness, whatever is called Shared or Distinct, whatever is called Initial or Final, is all gathered in. How can one see that it has meanings such as Shared and Initial, and so cling to the words, inverting the account, and say that it merely includes the Perfect or reaches to the Perfect?"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "This sutra's principal purport lies solely in non-abiding. Non-abiding is not clinging. Not clinging is how the view of self is broken. Why? Because the view of self is deluded thought and attachment. The Tathāgata's wisdom and awakened nature is obstructed by the view of self. If one now wishes to reveal the nature, one must remove its obstruction. Therefore the one principal purport lies in non-abiding, by which the self is broken. Now wisdom and obstruction do not stand together. If one wishes to open and reveal the wisdom and awakened nature, one must indeed break the obstruction of the view of self. Yet opening and breaking are one continuous thread. To be able to break is to be able to open, and to be able to open is to be able to break. How, then, is this wisdom opened? It was said above: by arousing the one-substance great compassion. Compassion and wisdom both present is what is called the anuttarā-samyak-saṃbodhi mind. This mind is one-substance compassion, and so one broadly cultivates giving and the six pāramitās in order to ferry all living beings into extinction and bring them to realize together the Tathāgata's wisdom and awakened nature, without clinging to emptiness. To realize the Tathāgata's wisdom and awakened nature is to enter nirvāṇa without residue. This mind is the wisdom of the principle-body. Therefore though one ferries living beings into nirvāṇa without residue, in truth no living being is ferried into extinction, and one does not cling to existence. Not clinging to existence is the markless. Not clinging to emptiness is the unmarked. Neither marked nor unmarked is precisely the true mark of the Tathāgata's wisdom and awakened nature. Therefore this sutra states this meaning as soon as it opens its mouth. And it plainly shows it, saying: one should not grasp dharmas, one should not grasp non-dharmas. This speaks of not clinging to the two extremes of emptiness and existence. With the least clinging, the view of self remains. With no clinging at all, the view of self is broken. For to ferry immeasurable, countless, boundless living beings into extinction, and yet in truth no living being is ferried into extinction — this is having no mark of self, person, and the rest. In truth no extinction, and so though one broadly practices the six pāramitās, one has no thought of dharmas — this is having no mark of dharmas. Though in truth no extinction, one does not cease ferrying — this is also having no mark of non-dharmas. Having no mark of self, person, and the rest is having no view of a person and a self. Dharmas and non-dharmas both absent is having no view of dharmas and a self. In other words: no mark of self, person, and the rest is what is called the emptiness of self. No mark of dharmas is what is called the emptiness of dharmas. And also no mark of non-dharmas is what is called the emptiness of emptiness, also called repeated emptiness. This speaks of being empty through and through. From this we see that this sutra's emptiness is to empty even emptiness, what is called being empty through and through. Being empty through and through is to conceal both extremes at once and illumine both extremes at once, what is called not abiding in emptiness or existence, perfect to the utmost. How can it be mentioned in the same breath as the Initial teaching that only contemplates emptiness?"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "And if one looks at what the sutra says at its opening, the meaning of the three emptinesses is present all at once. That is also cultivating one and cultivating all. How then could it be the Distinct teaching's meaning of first practicing entering emptiness from the provisional, then practicing emerging from emptiness into the provisional, separated and unfused? Moreover, being empty through and through and not abiding in either extreme is what is called being free of all marks. Only by being free of all marks does one arouse the bodhi mind. And being free of all marks, one is then called a buddha. For when all marks of emptiness and existence are gone, the mind is pure. When the mind is pure, reality is given rise to. The giving rise to reality is the breaking of ignorance and the view of self, and the appearing of the true-suchness dharma body. Therefore it is said: one is then called a buddha. Therefore it is said: if one sees all marks as no marks, then one sees the Tathāgata. Not only perfect to the utmost, but sudden to the utmost as well. Now being free of all marks is the arousing of the supreme bodhi mind, because it conceals and illumines at once and exactly accords with the middle way. And even the bodhi mind is not clung to, so that the middle too is not established. It goes so far as to say: all dharmas are Buddha-dharma. What are called all dharmas are likewise “is not” and yet “is called.” This is precisely what the Tiantai school calls: when one is empty, all is empty; when one is provisional, all is provisional; when one is middle, all is middle — the meaning of utmost perfect fusion. And it says: the Tathāgata means the suchness of all dharmas. It also says: this dharma is equal, with no high or low. This again is what the Huayan school clarifies: the non-obstruction of principle and phenomena, the non-obstruction of phenomenon and phenomenon, one is all and all is one — the meaning of utmost perfect fusion. Everything said in the whole sutra is this meaning of utmost perfection and utmost suddenness. Yet it is judged as merely including the Perfect or reaching to the Perfect, as if the sutra's meaning were not wholly perfect. Why? In sum, the meaning of the whole sutra is nothing but the unfolding of the perfect and sudden non-abiding. But the first half mostly dislodges clinging with respect to the object. The object is all marks: the six dusts, the six faculties, the six consciousnesses, and even emptiness, existence, both, and neither are all included. Therefore the meaning of the first half may be summed up in a phrase: all is not, and no grasping at marks. Because there is no grasping, all is not. All is not and there is no grasping, and so ignorance and the view of self are broken, and the right wisdom of contemplation-prajñā shines out brightly. The latter half dislodges clinging with respect to the mind. The mind is the bodhi mind, the mind of the three periods, the mind that has something aroused and something attained, and all discriminating and clinging minds; all are included. Therefore the meaning of the latter half may be summed up in a phrase: all is, and no arising with respect to marks. Because there is no arising, all is. All is and there is no arising, and so ignorance and the view of self are utterly broken, and the principle-body of reality-prajñā appears in full clarity. Therefore in pointing out how it is to be expounded, it closes with two phrases: not grasping at marks, and thus without disturbance. It seems that because there is no grasping, one afterward is without disturbance; yet in fact one must be able to contemplate the undisturbed before one can be without grasping. This meaning was brought out in the first half. As it says: if the mind grasps at marks, then it clings to self, person, living being, and life span. For when the mind moves it grasps, and grasping it clings to marks. Therefore to be without clinging, one must not grasp. And to not grasp, the mind must be undisturbed. From this one sees that the meanings before and after are fundamentally one. It is only with respect to the outward text that there is a depth and an order, for the convenience of those who hear the Dharma with shallow or deep views."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "It was said above that this sutra is the supreme dharma-treasure for continuing the Buddha-seed and transmitting the mind-seal. This one point alone is enough to prove that it is the teaching of utmost perfection and utmost suddenness. This is not an unfounded statement. This sutra says it repeatedly. For example: all buddhas, and the anuttarā-samyak-saṃbodhi dharmas of all buddhas, all issue from this sutra. It also says: this sutra has inconceivable, immeasurable, boundless merit. The Tathāgata speaks it for those who have aroused the greater vehicle, for those who have aroused the supreme vehicle. If someone can receive, hold, read, and recite it and widely explain it to others, the Tathāgata fully knows such a person and fully sees such a person, and all accomplish immeasurable, inexpressible, boundless, inconceivable merit. Such persons bear the Tathāgata's anuttarā-samyak-saṃbodhi. It also says: former-world karmic deeds are thereby dissolved, and one shall attain anuttarā-samyak-saṃbodhi. It also says: one should know that such a person accomplishes the foremost and rarest dharma. It also says: the meaning of this sutra is inconceivable, and its karmic reward is also inconceivable."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Now to say that all buddhas issue from this sutra, and that one bears the Tathāgata's burden and shall attain bodhi — is this not continuing the Buddha-seed? To say that the Tathāgata speaks it for those who have aroused the greater and the supreme vehicle — is this not transmitting the mind-seal? To say that the sutra's meaning, karmic reward, merit, and accomplishment are all inconceivable — is this not the supreme dharma-treasure? Were it not the teaching of utmost perfection and utmost suddenness, how could it deserve such words? And it plainly says: all buddhas' anuttarā-samyak-saṃbodhi dharmas all issue from this sutra. Then all perfect and sudden sutra teachings are gathered in by this sutra. This sutra can gather in all sutra teachings, while all sutra teachings cannot gather in this sutra's teaching. Then as to utmost perfection and utmost suddenness, who could surpass this sutra? The Buddha's words are to be believed and must not be misrepresented. Therefore, reverently following the Buddha's intent, I judge this sutra to be the great teaching in which object and mind are both quiescent, concealing and illumining at once, wisdom penetrating the three emptinesses, and merit perfecting the ten thousand practices — utmost perfect and utmost sudden. All the various teachings of Tripiṭaka, Shared, Distinct, and Perfect, and of Lesser, Initial, Final, Sudden, and Perfect, are gathered in at once. Its aspect is precisely like the supreme ghee, beyond the reach of milk, cream, fresh butter, and clarified butter."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Explaining the Title Concerning the Person"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "(B) Next, explaining the title concerning the person."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Translated by the Tripiṭaka Master Kumārajīva of the Yao Qin"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "In the Jin period, within there were princes contending for power, and without the five barbarian peoples troubled China. Thus the various heroes partitioned the land and the whole country was thrown into disorder. Declining to the end of the Eastern Jin, the north had long since become a foreign domain, never enjoying a day of peace. There were in succession sixteen states, and the Yao Qin was one of the sixteen. Later Liu Yu destroyed the Jin and proclaimed the Song. The Qi, Liang, and Chen followed, and these were called the Southern Dynasties. In the north were the Yuan Wei, Zhou, and Qi, called the Northern Dynasties. Only afterward were they unified under the Sui, and then came to belong to the Tang, and the people were able to revive somewhat."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The Yao Qin established its capital at Chang'an, and its state was named Qin. To distinguish it from the former Qin of the Fu clan, it is called the Later Qin, and also the Yao Qin, because the ruler's surname was Yao. In the ninth year of the jianyuan era of Fu Jian of the former Qin (some say the thirteenth), a strange star appeared in the division of the western regions. The grand astrologer reported: a great and wise man of virtue will enter and assist China. Jian said: I have heard that in Kucha there is Kumārajīva, and in Xiangyang there is Dao'an — could it be these two? So he first sent courteous invitation to Master Dao'an. Then he dispatched the brave cavalry general Lü Guang with seventy thousand troops to attack Kucha, his intention being to obtain Kumārajīva. The Kucha army was defeated. Lü Guang obtained Kumārajīva, and on returning reached Xiliang. Hearing that Fu Jian had been murdered by Yao Chang, Lü Guang took possession of the Liang territory himself and called himself King of the Three Rivers, and detained Kumārajīva. When Yao Chang had murdered Fu Jian and proclaimed himself emperor, he repeatedly requested Master Kumārajīva, but Lü Guang would not consent. When Chang died, his son Yao Xing succeeded to the throne. He requested again, and again there was no consent. After Lü Guang's death, the succession passed to Lü Long. Yao Xing attacked him, and so welcomed Master Kumārajīva to Chang'an, honoring him as the state's teacher. He caused the monks Sengzhi, Sengrui, Sengzhao, and more than eight hundred others to gather under Master Kumārajīva's gate and greatly promote the work of translation. This was in the third year of the hongshi era of the Yao Qin. Our country's dharma destiny flourished from this. In Buddhism, nothing has been of greater consequence than this. During the Xiliang period, Lü Guang valued Kumārajīva only for his many stratagems, and did not at first promote the Way. Yao Chang likewise requested him only because he had heard the fame of his schemes. Yao Xing, however, was one who believed in the three gems."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Whoever can spread and promote the Buddha-dharma is called a dharma master. One who penetrates all three baskets of sutra, discipline, and treatise is called a Tripiṭaka master, a title even more solemn."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Kumārajīva in full Sanskrit is Kumārajīvapāda, and “jīva” is also written “Jīva.” His father was named Kumārāyaṇa, a man of India. His family had for generations been ministers of state; when he was about to succeed to the chancellorship he declined, withdrew, and left home, and journeyed east to Kucha. The king of Kucha, hearing that he had renounced honor, went out to the outskirts to welcome him and begged him to be the state's teacher. He forced him to take as wife his younger sister, named Jīva, and she bore Kumārajīva. Taking the names of both father and mother, he was named Kumārajīva. Such were the customs of India. His mother afterward bore another son, named Puṣyadeva. Then, longing for the Way and for austerities, she left home. Kumārajīva was then seven years old and left home with her. Kumārajīva means “youthful longevity,” meaning that in childhood he had the virtue of an elder. Daily he recited a thousand verses, in all thirty-two thousand words (thirty-eight words to each verse), and understood their meaning of himself. With his mother he went to Kashmir and took Bandhudatta as his teacher. He attacked and refuted the non-Buddhists and was able to subdue them. The king daily supplied him with the finest offerings. The monks of the monastery where he stayed appointed five senior monks and ten novices to sweep and sprinkle for him, as though they were his disciples. Such was the honor in which he was held. At twelve he returned with his mother to Kucha and traveled to Shale. The lesser vehicle teachings he penetrated completely. The king of Shale asked him to ascend the seat and teach. In his leisure he broadly read the non-Buddhist scriptures and treatises; the four Vedas, the five sciences, yin-yang, and astrology and calculation he exhausted entirely. He wondrously comprehended good and ill fortune, and his words matched like tally and seal. His nature was free and easy, and he did not sharpen himself in small restraints. Practitioners rather doubted him. Yet Kumārajīva was at ease in his own mind and never took it to heart. At that time there was Suryasoma, who devoted himself to spreading the greater vehicle. Kumārajīva also took him as his school and revered him. So he devoted himself wholly to the Vaipulya teachings. He recited the Madhyamaka and Śataśāstra and the Twelve Gates and others. The king of Kucha welcomed him back to the state to expound the sutras. At twenty he received the precepts. From Vimalākṣa he studied the Sarvāstivāda Vinaya. At that time his mother took leave of the king of Kucha and departed for India, having already reached the third fruit. As she was leaving she said to Kumārajīva: “The profound teachings of the Vaipulya should be greatly unfolded in China; to transmit them to the eastern land depends on your strength alone. But it will bring you no benefit yourself — what is to be done?” Kumārajīva said: “The way of the great being is to benefit the many and forget the body. If only the great transformation may spread and wash awake the deluded and ordinary, though I should lie in a furnace or cauldron, suffering without regret.” So he remained in Kucha. Later, in the old palace beside the monastery, he first obtained the Sutra of Emitting Light and read it. A demon came and obscured the text, so that he saw only blank tablets. Kumārajīva's mind grew firmer, the demon departed, and the characters appeared. Then he widely recited the greater vehicle sutras and treatises and penetrated their secret depths. The king of Kucha built him a golden lion throne and spread it with a brocade cushion of Greater Qin, and caused Kumārajīva to ascend it and teach. Bandhudatta came from no great distance. Kumārajīva was just then wishing to seek him out, and told him of the greater vehicle. So he debated with Datta over the meanings of the greater and lesser vehicles, back and forth with great effort. Only after more than a month did Datta believe and submit. He reversed his reverence and took him as teacher, saying: “I am the reverend's teacher in the lesser vehicle; the reverend is my teacher in the greater vehicle.” Whenever Kumārajīva went to various states to lecture, the kings would kneel long at the side of the seat and have Kumārajīva step over them to ascend the seat. Such was the esteem in which he was held. Since Kumārajīva's Way flowed through the western regions and his fame covered the eastern land, the former Qin's Fu Jian was determined to obtain him. Yet Lü Guang did not believe in the Buddha at all; though he obtained Master Kumārajīva, he subjected him to every kind of abuse, all of which the master endured. Later, because his words were never unfulfilled, Lü Guang began to regard him as extraordinary. Yao Xing had from youth revered the three gems, and having welcomed him to Chang'an, asked him to translate sutras in the Xiaoyao Garden. He also caused the famous monks Sengrui, Sengzhao, and others to consult and receive Kumārajīva's intent. From the time of Emperor Ming of the Han through the Wei and Jin, the sutras and treatises produced had often been clogged in wording and stilted in meaning. Kumārajīva read them and found much that did not correspond to the Sanskrit originals. So with Sengzhi, Sengqian, Daoheng, Daobiao, Sengrui, Sengzhao, and others, he first produced the Great Series. Yao Xing himself also held the sutra and collated it. Wherever the new text differed from the old, the meaning was perfectly coherent. The hearts of the multitude were satisfied and bowed, and none failed to rejoice and praise. Yao Xing also composed a Treatise on Penetrating the Three Ages to show the principle of cause and effect. Princes and dukes and all below praised the trend. He repeatedly asked Kumārajīva to lecture on the new sutras in the great monastery of Chang'an. Master Kumārajīva could speak Chinese. The sutras and treatises he translated amount to more than three hundred scrolls. The famous monk Daosheng penetrated the meaning of the scriptures subtly. He came specially through the pass to seek Master Kumārajīva's decision. The eminent monk Huiyuan of Mount Lu also often wrote to Kumārajīva to consult him on doubtful points in the sutras. Kumārajīva often told Sengrui that in the west they value literary form, and that in music and verse the melody is best when it fits the strings. Whenever one has an audience with a king, one must praise his virtue. In the ceremony of seeing the Buddha, chanting praise is held most noble. The verses in the sutras are all of this pattern. To change Sanskrit into Chinese loses its richness. Though one gets the general meaning, the literary form is quite sundered. It is like chewing food and giving it to someone: not only does it lose the flavor, it makes one vomit. Yao Xing worried that the seed of the Dharma would have no heir. He forced on him ten courtesans. From then on he did not dwell in the monks' quarters but set up a separate residence. Whenever he lectured, he often first said of himself: it is like a lotus growing from stinking mud. Pluck the lotus only; do not take the stinking mud. Some who saw the master in the company of women could not fathom his depths. The master took a handful of needles and said to them: “Can you swallow these needles? If you cannot, how can you study me?” From this one may know that Master Kumārajīva, in order to spread the great Dharma, had no choice but to provisionally show himself following conditions, while in truth he dwelt in mud without being defiled — how can one doubt him by outward traces? He died on the twentieth day of the eighth month in the eleventh year of the hongshi era. As he was about to enter extinction he said to the assembly: “Unworthy as I am, I have presumptuously filled the role of translator. If what I have transmitted is without error, then after my body is burned let my tongue be undestroyed.” When it was cremated, it was indeed so."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The sutras and treatises he translated number ninety-eight in all, more than three hundred and ninety scrolls. Afterward a man came from India and said: of what Kumārajīva understood, not one part in ten was produced. This sutra is among what he translated. It was afterward translated again under the Yuan Wei, the Chen, and the Sui. In the Tang there were two more translations. In all there were six translations. Yet in ancient and modern times only the Qin translation has been honored in circulation. As to the facts of Master Kumārajīva's life, the ancients' writings often speak of them with considerable divergence. They do not altogether agree with what is recorded in the Biographies of Eminent Monks. Here I recount them briefly and do not venture on a detailed examination. In observing the matter of Master Kumārajīva's translation of sutras, there are two things we should attend to. (1) There are two great schools of sutra translation. One is the Kumārajīva school, which fuses the meaning of the whole sutra and conveys it in Chinese literary form. Therefore what it translates often does not entirely match the Sanskrit in phrases and sections. Yet no depth is left unrevealed and no subtlety unillumined. Easterners reading it find it especially suited to their capacities and easier to grasp. For it relies on the meaning and not on the words, which is what people today call free translation. The other is the Xuanzang school, which rigidly keeps the Sanskrit format and does not follow Chinese ways of expression. Easterners reading it find it very awkward, and the meaning is hard to grasp. This is probably what is today called literal translation. Now the spreading of the Buddha-dharma lies chiefly in making its meaning understood, not in studying Sanskrit. Then which school should be preferred for translated Buddhist sutras needs no argument. (2) Before Kumārajīva, because the translations were poor, not only were the profound and subtle meanings not conveyed, but even in the shallower matters many failed to state the teaching fully. Therefore few among the scholar-officials believed in Buddhism. After Master Kumārajīva's newly translated sutras and treatises appeared, and Elder Huiyuan at Mount Lu again strove to proclaim them, then men of letters and philosophers began gradually to understand Buddhist principle. The light of the Buddha-dharma then began like the newly risen sun, and by the Tang was like the sun at noon. Therefore after the great Dharma came east, it was only with Master Kumārajīva that it truly shone forth. Otherwise, though there were earlier the eminent monks Dao'an and later Huiyuan, they might not have been able to bring about the later flourishing. Why? Because the sutras and treatises they relied on were not sufficient in number or in clarity of meaning. Master Kumārajīva was a bodhisattva come again, and his disciples at the gate, such as Sengrui and Sengzhao, were profound in letters and principle, thoroughly versed in our country's old learning of Laozi, Zhuangzi, and the Six Classics. Teacher and disciples alike were no ordinary men. Therefore what they translated conveyed every principle and could sink deep into people's hearts. From the Song onward, the Buddha-dharma declined from its height, down to the extreme of today. And the country is in disorder and the people suffer, no different from the Jin period. At that time there was the spreading of Master Kumārajīva and his disciples, and the Buddha-dharma greatly flourished from it, people's hearts were improved by it, and the government gradually obtained peace by it. Then if one wishes the world to be at peace, one must first make people's hearts good. And if one wishes people's hearts to be good, one must first make the Buddha-dharma greatly flourish — this is clear. Look at the conditions of today: what are they like? Not only is the world in utter disorder; within Buddhism too there is utter disorder. There is no other reason: the true meaning of the Buddha-dharma is not understood. Therefore to make the Buddha-dharma greatly flourish, one must first understand the true meaning of the Buddha-dharma. And to understand the true meaning, one must first proclaim and spread the Diamond Prajñā, which continues the Buddha-seed. This depends on us all rising together to bear it."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Master Kumārajīva's translation of sutras began with the Great Series of Prajñā. Then if one wishes to bear the supreme bodhi dharma, one should begin with the Diamond Prajñā. Is this not luminously clear? With this vow, I dedicate it universally to all."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The essential purport of the Diamond Prajñā is summed up in eight characters: the principle reveals the three emptinesses, and contemplation fuses the two truths."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Begin with suffering, what is called the three sufferings and the eight sufferings. Suffering comes from karma, karma arises from delusion, namely the delusions of view and thought. Therefore they are explained in detail. And the root of delusion is the view of self. When the view of self is removed, the delusions do not arise. When they do not arise, there is no suffering of karmic bondage. This is what is called ending birth and death. The diamond is hard and sharp, a simile for prajñā's ability to cut off delusion. This sutra's guiding purpose lies solely in breaking the self. The coarse attachment to self is the four elements and five aggregates. The subtle is grasping at dharmas or at non-dharmas. Wherever there is grasping, the attachment to self is not yet exhausted. Therefore one must empty it layer upon layer: no mark of self, no mark of dharmas, and also no mark of non-dharmas. This is what is called the three emptinesses."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The character “dharma” has a broad meaning; every thing and every matter is included in it. The four elements and five aggregates are also among things. Therefore, speaking in terms of coarse and subtle, there is the mark of a person and a self and the mark of dharmas and a self. And speaking in terms of marks, they all belong to dharma. So the self of a person and the self of dharmas may be combined into one. All these things that have marks — the worldly eye regards none of them as unreal, and so they are called the conventional truth. “Truth” means truly real. Yet one may not know that all marks are delusive. It says that though they exist, they are unreal (existing yet not existing). To contemplate thus is called provisional contemplation. “No mark of non-dharmas” speaks of the nature of all dharmas. The mark is provisional, the nature is real; because the mark arises from conditions and the nature is unchanging, one knows it to be real, and so it is called the ultimate truth. To contemplate thus is called emptiness contemplation. Because the nature is originally without marks, it is called empty. Yet if one grasps at this mark of emptiness, that is one-sided emptiness, not the supreme-meaning emptiness of the greater vehicle (also called the emptiness of the highest meaning). Why? For example, empty space, though originally without marks, yet has the ten thousand marks ranged in it; indeed, only with the ten thousand marks ranged in it does it become empty space. One should know that the nature is the substance and the marks are the function. Where there is substance there must be function, and so where there is nature there must be appearing marks. But marks must not be clung to; clinging, one follows the marks and is blind to the nature, follows the function and is blind to the substance. Yet marks must not be annihilated either; annihilate the marks and, though one realizes the substance, what use is it, and indeed it does not become substance, since there is certainly no substance without marks. Therefore the meaning of the greater vehicle must be contemplated thus, and only then is it called emptiness contemplation (empty yet not empty). In this way the contemplation of the two truths is fused. Fused, it becomes the supreme truth of the middle-way contemplation. It is not that outside the two truths there is a separate supreme truth, nor that outside the provisional and emptiness contemplations there is a separate middle-way contemplation. What the sutra says in this way is called concealing expression, for it speaks by way of negation. Where the Lotus Sutra and others speak of the three truths, that is positive expression, for it speaks by way of revealing the two extremes of the nature's virtue as not clung to and both illumined. Concealing expression says that clinging to existence is wrong and clinging to emptiness is also wrong, and speaks of both extremes being dispelled, so that the two extremes are fused. Prajñā takes the dispelling of clinging as its guiding purpose, and so it speaks only of the two truths. One should know that ordinary beings' sickness lies in clinging everywhere, and so their deluded thoughts are many. One must first use the work of sweeping away, and only then can the nature's virtue be revealed. Therefore the World-Honored One first spoke prajñā and afterward spoke the Lotus. This meaning deserves the greatest attention. Again, the greater vehicle Buddha-dharma reaches from top to bottom. One must by no means exalt the sage's realm and think this is a matter of leaving the world, having nothing to do with worldly dharmas, for that betrays the Buddha's grace. One should know that if the three emptinesses and the two truths are not understood, one cannot even be a good person. Therefore I have expounded this principle fully. The above was spoken over three or so sessions."
+    }
+   ]
+  },
+  {
+   "t": "h3",
+   "text": "Section One: The Occasion of the Dharma Assembly"
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "(A) Next, a separate interpretation of the text's meaning, in three parts: (B) First, the introductory section. Next, the main teaching section. Third, the concluding section."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "(A) Next, a separate interpretation of the text's meaning."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Meaning becomes manifest through words. And contemplation-prajñā and reality-prajñā both arise from textual prajñā. Then every word and every phrase of the sutra text must be examined and settled with certainty — this is clear. Now this sutra is widely read and recited, and so, in circulation from the Ming to the present, there are very many variant editions. Often they are corrupted or deficient in transmission, or meaning has been added or subtracted at will, each holding its own to be right, until one is almost at a loss what to follow. I, Xu, was born late; fortunately I have obtained the commentaries of the great masters of the Jin, Sui, and Tang, such as Sengzhao, Zhiyi, and Huijing, brought back from overseas. And Tang manuscript copies, as written by Liu Chengxuan and others and shut away in the Dunhuang caves, have also been discovered. Through them I have been able to collate them against one another and investigate, examining what is true and correcting what is false. This is truly a rare encounter, and also the responsibility of a later student. I have made a separate one-scroll Record of Textual Collation, appended after the sutra. As for differences of wording, where the presence or absence of a single character greatly affects the sutra's meaning, I now point them out one by one as they come, clarifying their purport. Which is right and which is wrong may then be plainly seen. Let the reader attend to it."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The sutra text is divided into three great sections. The first is called the introductory section. The second is called the main teaching section. The third is called the concluding section. No sutra is otherwise. This division began with Master Dao'an of the Eastern Jin, the teacher of Elder Huiyuan of Mount Lu, the first patriarch of the Pure Land school. When this account first arose, hearers doubted it. Afterward, when it was submitted to the Indian masters who came east, they learned that in the western land all sutras are divided in this way as well. Then they joyfully submitted, and it became a fixed rule. In this sutra, from “Thus have I heard” to “spread his seat and sat down” is the introductory section. From “At that time the elder Subhūti” to “this is called the mark of dharmas” is the main teaching section. From “Subhūti, if there is a person who fills immeasurable asaṃkhyeya worlds with the seven treasures and gives them away” to “believed, received, and practiced accordingly” is the concluding section."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "(B) First, the introductory section, in two parts: (C) First, the prologue of attestation; next, the prologue of arising."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "(C) First, the prologue of attestation."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Thus have I heard. At one time the Buddha was in the country of Śrāvastī, in the Jeta Grove of Anāthapiṇḍada's park, together with a great assembly of twelve hundred and fifty bhikṣus."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "This prologue of attestation is also called the common prologue, because all sutras have it in common. It is also called the prologue after the sutra, because when the Buddha first taught a sutra there was originally no such prologue, and it was added only at the time of compilation. It is also called the prologue of the bequeathed teaching, because when the Buddha was about to enter nirvāṇa, the venerable Ānanda, receiving the bequeathed command, was told that at the head of every sutra should be placed such words as “Thus have I heard; at one time the Buddha was in such-and-such a place, together with such-and-such an assembly, so many in number.” The purpose of placing “thus” and the rest is to prove that it was spoken by the Buddha, and so to arouse faith. Hence it is called the prologue of attestation."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The Mahāprajñāpāramitā Śāstra calls this section of text the six accomplishments. For whenever a sutra was compiled, six conditions had to be complete before it could be accomplished. What are the six conditions? First, “thus,” the accomplishment of faith. Second, “I heard,” the accomplishment of hearing. Third, “at one time,” the accomplishment of time. Fourth, “the Buddha,” the accomplishment of the master. Fifth, “in such-and-such a place,” the accomplishment of place. Sixth, “together with such-and-such an assembly of bhikṣus,” the accomplishment of the assembly. When the six conditions are complete, then the master who taught the Dharma, the time of teaching, the place of teaching, the assembly that heard the Dharma, and the compilers' responsible attestation that they themselves heard it — all that suffices to accomplish the faith of the assembly — each is present. Hence it is called the six accomplishments."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "First, “thus”: “not different” is ru, “nothing amiss” is shi. When people believe, they say “so it is”; when they do not believe, they must say “it is not so.” Now the compilers, as soon as they opened their mouths, solemnly said “Thus,” thereby making clear that every word was as the Buddha spoke it, and that the wording and meaning were without error. Thus it suffices to be believed now and transmitted to later ages. Hence it is called the accomplishment of faith. The Avataṃsaka Sutra says: faith is the source of the Way and the mother of merit, nourishing and fostering all good dharmas. Faith is the initial gate of entering the Way, and so it is placed first. Next, “I heard”: “I” is Ānanda's own designation. He deliberately says “I” as a word of responsibility, and also to make clear that he heard it with his own ears and did not transmit it at second hand. Above it continues “Thus,” and below it again details the assembly that heard it together, making clear also that it was not a private hearing. Thus “so it is, so it is,” and faith has its proof. Hence it is called the accomplishment of hearing."
+    }
+   ]
+  }
+ ]
+}
