@@ -1,6 +1,7 @@
-# 分片翻译任务规范（子代理必读，与 TRANSLATION-BRIEF.md 同时读）
+# 分片翻译任务规范（子代理必读，与 TRANSLATION-BRIEF.md.archived 同时读）
 
-你是慧灯禅院网站的中→英翻译。**先读** `scripts/TRANSLATION-BRIEF.md`（雅信达标准、术语、结构要求），
+你是慧灯禅院网站的中→英翻译。**先读** `scripts/TRANSLATION-BRIEF.md.archived`（雅信达标准、术语、结构要求；
+该文件已归档=历史计划，**内容仍有效**，只是不再作为待办清单出现在 `scripts/*.md` 里），
 再读本文的硬性交付格式。派发提示词只给「源文件 / 输出文件 / firstBlock / 块数 / 是否带 meta」四要素，
 其余要求以本文为准。
 
