@@ -129,17 +129,39 @@ console.log(s,'blocks='+zh.blocks.length,'slots='+slots,'slots/block='+(slots/zh
 5. 派发前跑 §3 的槽/块检查；grep 一遍该篇源里是否有 `\?\?` 字面损坏（`246henghedashouyin` 块 605 有一处，
    属源数据缺陷，照源保留并在报告里记明）。
 
-**轮次建议**
+**轮次建议（每轮 8 槽；尾部余量用下一篇的前几片补满）**
 
-| 轮 | 编组 | 槽位 | 任务 | 预期 |
-| --- | --- | --- | --- | --- |
-| R4 | `001juezhichan` 7 + `001jznf` 8 | 15 | 2 篇 merge | 最快出成果，先打通一轮完整流程 |
-| R5 | `187hanshandashinianpushu` 8 + `016xdwsjwl` 8 | 16 | 2 篇 merge | 先删 187 源 `author` |
-| R6 | `239wuliangshoujing-jiaohuibenzhu-zhu` 9 + `239wuliangshoujing-huiyi` 9 | 18 | 2 篇 merge | 同系列，术语可互相参照 |
-| R7 | `190wuliangshoujingwuyiben` 10 + `301jgj` 10 | 20 | 2 篇 merge | 均已有分片，注意区块区间 |
-| R8 | `025taishanggy-yw` 14 + `262dachengrulengqiejing` 前 6 片 | 20 | 1 篇 merge | 先删 025 源 `author` |
-| R9 | `262` 余 15 + `205jgj-jiangyi` 前 5 | 20 | 1 篇 merge | — |
-| R10–R12 | `205` 余 14 → `043mengyouji` 38 | 20/20/18 | 2 篇 merge | `043` 最大，可拆 2 轮 |
+| 轮 | 编组 | 任务 | 预期 |
+| --- | --- | --- | --- |
+| R4 | `001juezhichan` 7 + `001jznf` 8 | 15 | 2 篇 merge；先打通一轮完整流程 |
+| R5 | `187hanshandashinianpushu` 8 + `016xdwsjwl` 8 | 16 | 2 篇 merge；先删 187 源 `author` |
+| R6 | `239wuliangshoujing-jiaohuibenzhu-zhu` 9 + `239wuliangshoujing-huiyi` 9 | 18 | 2 篇 merge；同系列术语互参 |
+| R7 | `190wuliangshoujingwuyiben` 10 + `301jgj` 10 | 20 | 2 篇 merge；均已有分片，注意区间 |
+| R8 | `025taishanggy-yw` 14 + `262dachengrulengqiejing` 前 6 片 | 20 | 1 篇 merge；先删 025 源 `author` |
+| R9 | `262` 余 15 + `205jgj-jiangyi` 前 5 | 20 | 1 篇 merge |
+| R10 | `205` 余 14 | 14 | 1 篇 merge |
+| R11 | `043mengyouji` 0-2279（19 片） | 19 | 半篇，无 merge |
+| R12 | `043mengyouji` 2280-4479（19 片） | 19 | 1 篇 merge |
+
+按此剩余 12 篇约 **9 轮**（R4–R12）清完。合计 161 个任务。
+
+## 5.1 时间台账（每轮会话末必须回填）
+
+每个会话**结束时**（写完诊断后）在 `scripts/B-PHASE-HANDOFF.md` 追加一行到下面的表，
+并据此更新「剩余预测」。计时口径：从本轮第一个子代理派发到本轮整篇提交完成为止，
+不含会话中的人工等待；有跨轮补片时按实际归属轮次记。
+
+| 轮 | 日期 | 任务数 | 完成篇 | 单轮耗时 | 累计篇 | 剩余篇 | 剩余预测 |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| R1 | 2026-09-12 | 9 | `047shengmingdcj` | ~35 min | 1 | 16 | — |
+| R2 | 2026-09-12 | 16 | `293jgj-zhu`, `246henghedashouyin` | ~60 min（含返工） | 3 | 14 | 17 轮 / ~9 h |
+| R3 | 2026-09-12 | 12 | `102lfsx`, `403chanjing` | ~85 min（含 102 长线） | 5 | 12 | 9 轮 / ~6 h |
+| R4 | | | | | | | |
+
+**时间预测方法**：单轮耗时 ≈ `max(该轮最慢分片的翻译用时) + 收尾 5 min`；
+按 R4–R12 的编组，低密度篇（≤5 槽/块、≈120 块/片）实测约 **8–12 min/片**，
+故一轮 15–20 个任务、8 槽并行约 **20–30 min**；`043mengyouji` 块数最多（4,480），
+其两轮各按 **40–50 min** 估。每轮结束后用实测值替换预测值并重算剩余总时长。
 
 **每轮收尾固定四步**（顺序不可换，替换 RESUME §4 的收尾）：
 
@@ -163,6 +185,8 @@ git show --stat --oneline HEAD ; git status --porcelain  # 双向核对
 
 ## 7. 清理项
 
-`build/` 已被 `.gitignore` 忽略，但本轮遗留 **568 个文件 / 12.6MB**（其中 `build/_work/` 232 个 / 2.7MB
+`build/` 已被 `.gitignore` 忽略，但本轮遗留 **565 个文件 / 12.4MB**（其中 `build/_work/` 232 个 / 2.7MB
 来自 `102lfsx` 那条长线）。这些只是脚手架，可整目录删；`build/slices/*.src.json` 是 `verify-slices`
 的比对基准，**只在对应分片已 merge 后可删**。
+我自己产生的临时件（`build/recover-*.json|raw`）已删除；下一轮同样只用 `build/recover-*` 前缀，
+便于会话末一次清理。
