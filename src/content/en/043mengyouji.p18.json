@@ -1,0 +1,991 @@
+{
+ "firstBlock": 2040,
+ "blocks": [
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Bones like jagged peaks, mind vast and empty. Nostrils proud and noble, brows jutting like locks. Pure as a green lotus in a jade pond, tall as an ancient pine or a solitary crane. His tongue-root never stirs, yet his words crash like thunder — let no one say he has nothing to say."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Praise of Elder Ziguang"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "From the Vajra Cave he came to Rajagrha. He had no other business — only living beings. One body in the assembly, rice and gruel for all ten directions; whoever comes eats together, with no dividing host from guest. With a selfless mind he performs the Buddha's work. Meeting conditions, he takes them as the teaching; equal and without duality. If you seek the true, the true is not here — only look at what stands before you. He is a true son of the Buddha."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Praise of the Venerable Daxie in His Later Years"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "In his early years he already knew to leave the worldly life, and only in old age could he truly leave home. He made bubbling, blended practice his wondrous conduct and the Buddha's work his livelihood. In the five turbid worlds he holds not the least hindrance; in the pure realm there is only one lotus flower. This is the foremost master among the lay followers."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Praise of the Old Adept Dingzong"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "In youth he entered Thousand Buddha Cliff and dwelt in reliance on the Thousand Buddhas. Rising and sitting he never left them, and no one knew why. Though more than eighty years have passed, he is still at the very first step; only on entering the Vairocana grove does he begin the road home."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Praise of the Master of Xuejiao Peak"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "He sat and cut off Twin-Knot Peak; he squeezed juice from a pestle's weight. He smashed the vajra circle and bit through iron chestnuts and thorns. How many times did he freeze and starve, die and live again, barely winning a bit of idle breath. He is no parricide with a blood feud, so why is he so desperate at the point of death? He has salvaged a single life, and yet he casts it east and flings it west. He walks to the head of Twin-Path Peak and does not understand how to sweep away his tracks. To expose this face of his is to get grit in the eye. Even if you pile snow on frost, you must know the blazing sun of summer. Look closely at what he really is: brows across, a turtle's nose. In the cuckoo's call the rain falls like mist; the east wind blows the fallen blossoms into disarray. Barefoot and tousle-haired he descends the green heights — among those he meets, who truly knows him?"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Praise of Master Fanhuai Hui of Lingxiao Peak"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "He came from emptiness and sought to dwell in the real, and so he turned toward Lingxiao and opened a road of his own. His body is already in the void, yet his feet have not left the ground. If you would rise utterly free, you must be utterly shattered. Cloud-wrapped mountains fill the eyes; the tangled vines are not few. Though he has no stake in them, still they wind around him. Taking up not a single thing, he need only put it all down. Where no smallness remains, greatness appears. He does not seek outside or beg from others; what is originally his stands before him, and all is real. Knowing and seeing dissolve; the mysterious and wondrous find no footing. One thought pierces straight through — a wall of silver mountains and iron cliffs."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Praise of Master Nayun"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "His backbone is like iron, his mind like emptiness. One robe like a cloud, ten thousand things like wind. Early he entered the house of Fangshan; late he bore the tradition of Qingliang. The older he grew, the stronger he became; the plainer he lived, the more inexhaustible. Had he not been one among the ten thousand in that cave, how could he have raised up such a lofty trace? Therefore when I think of him I cannot see him; when I write of him I cannot describe him. Dimly, faintly — he is like the old cowherd by the pond."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Praise of Master Xugu"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Outwardly like floating clouds, inwardly like the valley spirit. His mind is the permanent dwelling, and so he makes it his body. Seventy-nine years pass like a dream; a hundred thousand billion kalpas are like a single life. Reclaimed, he has won one pure field, to pass on to sons and grandsons. Ah — a coral tree props up the bright moon; the Persian of the sea chews ice at night."
+    },
+    {
+     "s": ""
+    },
+    {
+     "s": ""
+    },
+    {
+     "s": ""
+    },
+    {
+     "s": ""
+    },
+    {
+     "s": ""
+    },
+    {
+     "s": ""
+    },
+    {
+     "s": ""
+    },
+    {
+     "s": ""
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Praise of Master Yue'an"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "When he appears, he does not come; when he vanishes, he does not go. All his life face to face with people, yet no one can find where he is. Clouds race, the moon moves on; the boat sails and the shore gallops away. Ah — one long whistle in the autumn of sea and sky; at midnight the golden crow cries and heaven dawns."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Praise of Master Xueling"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "His face like the full moon, his bones like ice and snow. Gazing at him, he is craggy and layered; within him there must be jagged heights. Ah — white clouds cut across, the dawn peak is green; the cuckoo cries out all the blood of the spring hills."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Praise of Master Danju Kai"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Bones craggy and layered, mind vast and empty. Spirit proud and noble, working lively and quick. That other half cannot be traced or drawn. Buddhas and patriarchs are slovenly; living beings are a tangle. He throws his life across his body and carries it all with one strength, never betraying the one stroke handed down in the family."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Self-Praise"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "I never penetrated the teachings; I never caught a glimpse in Chan. Entirely foolish and dull, in all ten directions clumsy and slow. Limitless as space, my temper hard as iron. I am glad I entered the cold cliffs early and threw my whole body down to rest. Then suddenly a black wind blew up and I tumbled into the land of raksasa ghosts. I was flung into a great furnace of red fire and pitched into a blazing house of flame in the burning south. Leaning on the Buddha's power for aid, I picked up this one life again. My face is covered with dust; my breast is full of ice and snow. It is not that I wandered practicing the path — mostly I was paying off old karma. Within it all, one piece of bitter heart is hard to speak of to anyone. Only at the Longhua Assembly will it at last become clear. And even then, whatever is drawn of me will not be the flesh and blood my mother bore."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "I sat on Mount Laṅkā and perched on a firm stone, hearing the sound of the tide, entering the land of the unborn. Early I came from the golden realm; in old age I was mistaken for a guest of Leiyang. Behind horses, before donkeys, feeding on wind and dew. I passed through the whole furnace of fire and the mountain of knives, and I am glad the spears and shields have come to rest. Grateful for the ruler's grace, I was released and sent back, and picked up this one life. Turning over, I went straight up to the head of ten thousand peaks and slept day and night without a moment's idleness. All demons' minds are empty; all Buddhas' ears burn hot. If people today ask what the mechanism within is: on Mount Dinghu the clouds are forever white."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "His form is like a patch of cloud, yet he does not dwell in the vast void. Coming and going without mind, he drifts once with the wind. He sits on the high peak of Dinghu and laughs at the exposed pillar of Caoxi. Let the bitter sea's waves churn as they will; he trusts his own liver and guts are cast of iron. Looking back at the blazing house of fire, how does it compare with the depths of the white clouds?"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Long accustomed to being a monk, he fell short when he returned to lay life. Old habits are hard to forget, and practice goes unfinished. Fortunately he entered the great furnace of the sage emperor and was cast into an iron arhat, flung into the burning wilderness of the fire house, as though into a cauldron of boiling water and a bed of coals. Smelted until the bones and flesh of his whole body ran molten, he was left with one piece of compassionate heart. He knows well that so great a grace can never be repaid; to repay it he must rely on true vows alone."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "His mind is no longer in the household, yet his form still blends with the world. He has a jewel in his eye and nothing at all in his breast. When people hear of him they argue yes and no; when they meet him they clamor and shout. Let them describe him in a hundred thousand ways — there is one small point that can never be drawn."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Neither layman nor monk, neither true nor false. His liver and guts are ice and frost, his body a clod of earth. Entirely foolish, in ten thousand ways free and easy. Had the sage emperor not broken the rule with hammer and tongs, how could he have ridden beside the general's warhorse? See how he has another kind of spirit, one that has nothing to do with literary flourish."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "A walking staff and a long spear, a bowl and a cooking-pot — a single kind of livelihood, so what divides the fair from the ugly? Look only at the moon in water and the flower in the sky; beyond that, what have I to do with anything?"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "In youth I loved leaving home; in old age people urged me to return to lay life. Had I not gone along with worldly conditions, they would say I harbored something within. So I briefly stepped through the gate of light and shadow and let bare a glimpse of my original face. My whiskers and hair are a nuisance to scratch, but I take delight that my body knows no restraint. One turn of the Laṅkā scripture, one stick of incense — wherever I go, my livelihood is enough as it is."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The mind is not in the hair; the form is not that of a monk. The man is unworthy of mention; the name is unworthy of praise. There is not one thing worth taking, nothing but what is detestable. The gate of patience — only this can he master."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "He loves mountains but they are not high; he loves water but it is not deep. As a monk he does not shave his head; as a layman he wears no cap. In letters he knows no characters; in arms he speaks no tactics. Truly there is nothing to be taken from him, only an empty name. This useless old teacher should simply be banished to the ranks of Leiyang, set before the donkeys and behind the horses — in that one thing he excels."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Walking alone, sitting alone, happy beyond compare. With a mind set on nothing, he does not even become a Buddha. Ten thousand miles to Leiyang he crossed in a single throw. If someone meets him and asks who he is: the first seat in the hall of Tusita."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "His mind is not in the Way; his form does not enter the common world. His feet have no entanglements; his mouth has no restraints. He moves like wind through emptiness, responds like echo in a valley. Entirely foolish, in a thousand ways buried and forgotten. Fortunately he has borrowed one branch of the bodhi tree; in this life he has a thousand feet and ten thousand feet."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "In youth he left home; in old age he returned to lay life. He feigns folly and plays the simpleton, all skin and no bone. He knows nothing of cultivation, entirely without restraint. One day he happened to offend the dragon countenance and was banished to Leiyang as a beast of burden. Now he has idled his way to Caoxi, learning to mind the stone and pound the rice."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "This old man has no decorum — what kind of appearance is this? Strike him and he feels no pain; scratch him and he feels no itch; scold him and he feels no shame; slander him and he takes no hurt. He sits rigid and knows nothing of investigating Chan, lost the whole time in wild fancies. To become a Buddha he has no share; to become a patriarch he is blocked. Best to send him off into the ranks of the idle and make him an old squad leader."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The laity do not know his name; among monks he is not counted. In the ranks of Buddhas and patriarchs he is not admitted; in the realm of living beings he does not dwell. With bare hands he grips a spear; stripped naked he goes to battle. Afraid of death, he finds no gate into the earth; wanting to live, he finds no road to heaven. Everyone says he is a teacher with no skills at all — who would guess he is a great fool who cannot read a single character?"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Frosted temples tousled and loose, an icy heart cold and plain. His mouth clamped shut, his tongue tied; he gallops like thunder and rolls like lightning. He has been a man of east, west, south, and north, and has borne a hundred thousand billion hardships. He is called a foolish monk and hailed as an iron man. Form and shadow keep each other company by the pestilential sea. Let no one say this man has no companion."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Sixty years since leaving home, three thousand days as a soldier, twenty autumns dwelling in the mountains — in the end there is no handle to grasp. As a monk he does not understand cultivation; in worldly life he keeps no scruples. What kind of karmic bond is this, to make him such a creature? What he loves best is one piece of foolish heart that takes the Buddha's and patriarchs' household affairs as his own family business. Affliction is boundless, the bitter sea without shore. He has weathered every storm and followed the ranks along; he throws himself across bramble thickets and plays among spears and halberds. And now he still will not turn his head — will old Yama not be angry? Perhaps he waits for Maitreya to be born, and only then will he understand. Ho! Spring hills, night rain, the cuckoo cries — voice after voice telling him to go home."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "His bearing is doddering, and within him all is empty. In the realm of Buddhas and patriarchs he does not dwell; among living beings he is hard to accommodate. He understands no conditions and penetrates not a single dharma. He simply takes ordinary tea and rice and makes them the upright style of the house. In vain he spends a bottomless foolish heart and is left with endless affliction. Better to banish him to the land of the unborn, to lie high pillowed on white clouds and embrace the bright moon forever. Caring for nothing at all, he dimly becomes a truly foolish old man."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "He came for the Sixth Patriarch and departed because of Master Rang. Coming and going may look like rushing about, but the Dharma gate is by nature without dwelling. He only meant to prop up the father-and-son household; he did not stir up idle temper. He passed through every hardship and wore through the bamboo clappers, and was left with a face full of dust, which he took as the ancestral meaning from the West. In the end, one piece of vajra mind still remains to spread Caoxi's ground once more."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Dull and unknowing, with a hundred things unthought. Utterly without skill, entirely foolish and dull-witted. How could he be an eye for gods and men? He is, after all, a rice-gruel teacher. He has only one marvel about him: bright moon on the coral branch."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Once in his bowl he saw a multitude, and asked whether it was Mañjuśrī who was toying with him. He went all the way to Mount Wutai and personally received its veneration. When he heard the teaching of the Pure Land, it was like dreaming with his eyes open. I think this old man's former body has come again today to make sport."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "For seventy years he wandered through the human world in a dream — a following assembly, sky-flower Buddha-work. He cared nothing for danger and kept no taboos. One day he offended the dragon countenance and was squeezed until empty space shattered. Flung into the burning wilderness ten thousand miles away, he went on playing his part on every stage. Only when the bow snaps and the arrows are spent will he at last rest his breath. And looking now with the true eye, all he has won is one deep sleep."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The moon hangs on the tall pine, its shadow sinks in autumn water. There is a form to glimpse, yet nothing can compare with it. It cannot be approached, and how could it be seized? It draws the long wind of ten thousand miles and sets a single reed adrift on the vast waves. Most like the front of Shaoshi Rock — and yet not within the city of Vairocana. Clear beyond all dust, utterly without dregs. A mud ox bellows, a flower blooms on the pounding pestle. Though those who know him fill heaven and earth, how few can take it up whole."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Like a mirror showing reflections, like clouds floating in the sky. A sound in the empty valley, a fish's trace in still water. He has eyes but does not see; he has ears but is as though deaf. Since he cannot be praised, how can he be described? Call him a thing and you miss it at once — this is why he is the foolish old man."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Majestic and imposing, limpid and clear. He sets up no walls of the heart and has no cliffs or banks at all. His spirit covers heaven and earth; his gaze props up the Milky Way. Cast adrift at the gate of present-day affairs, he never stirs from the far shore of Wuyin. Whether layman or monk, a carrying pole never leaves his shoulder. If he is not a slave of the Buddhas and patriarchs, he is surely a peddler in the field of awakening. Had he not entered the great furnace of red fire, who would know he is an iron man? Only when Maitreya is born will this case be settled."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The ice and snow of Mount Wutai have withered; the waves of the Eastern Sea are fierce. The pestilence of the burning wilderness runs deep; the karmic bond at Caoxi is thin. Only when heart and strength are spent does he walk barefoot home to Mount Nanyue. On the head of the seventy peaks he sleeps most deeply; waking, his two eyes are utterly empty. He sits leaning on the tall pine, gazing alone, as one white cloud rises from the dark ravine."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Belonging neither to sage nor to ordinary, his original face — from where does it come? It issues from the tip of a brush. The water is clear and the moon shows its face; the clouds part and the mountain bares its bones. Know the thunder in the silent deep: most like an echo carried through an empty valley. If someone asks the meaning of the coming from the West, just tell him: this very mind is Buddha."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "A broad face and a narrow mouth, brows set level, nose straight. Depict him as you will, there is no breath in it at all. Before the pattern and color are revealed, who knows the truth of him? He does not come on the road of gods and men — where, sir, have you ever known him?"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "This old man — within him there is nothing at all. Neither sage nor ordinary, neither mind nor Buddha. He fishes the moon's reflection with a rabbit-horn staff and binds the bones of empty space with a tortoise-hair rope. Call him Hanshan and you turn your back on him; do not call him Hanshan and you collide with him. Examine him carefully and he is a withered stump of root and knot — only he has a kind of wakefulness that in the end cannot be drawn. Ho, ho, ho! The moon sets but never leaves the sky; the bird returns to roost in the tree."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "He sat in the ice and snow of Mount Wutai and listened to the waves of the Eastern Sea. He drank the pestilential poison of the burning wilderness and lay on the high peaks of Mount Nanyue. He picked up the bamboo clappers of the Twin Paths and blew on the cloth hair of Yunqi. Look at these wanderings of his — just like the moon on a pine tip. If you ask after the great man's conduct, there is not the least bit to it. Seek the mark of a monk and there is not a hair. He has only one set of liver and guts, whose pain and itch lie not in skin or fur. Scrutinize him again and again, scratch and probe: you cannot find it, and the tenderest spot cannot be clawed. But tell me, after all, what is it? Ah — gibbons wail in Wu Gorge under the frosty night moon; the heart-breaking sound melts away the dream soul."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Forty-seven years ago I once dwelt at Jiangxin. Now past seventy-two, I have come a second time. Like clouds in empty sky I come and go, and no one ever knows why. Meeting people I knew long ago, I ask the road home. To see through this dream-body is the very first step. If you ask for the final phrase: look at the lantern and the exposed pillar."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Another Praise on the Sea-Viewing Portrait"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Great boulders and tall pines, vast waves and dark ravines. Look up to him and he is higher still; gaze at him and he is wider still. Within there is a man whose spirit is open and expansive. At times he hears the sound of the tide proclaiming the Universal Gate, and personally realizes the true liberation of the ear-faculty."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Another Praise of the Pilgrim"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "His ringed staff has no rings; his straw sandals have no straps. Through the ten directions he comes and goes, wherever his feet arrive. In the world and beyond the world, the two do not resemble each other. A monastery of water and moon, Buddha-work of sky-flowers. If you ask after his livelihood — thus, thus."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Praise on the Portrait of Hu the Censor"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Not quite a monk, not quite a layman. One kind of heart, two manner of bearing. If you ask whether he is magistrate or bhiksu, he is like raw rice cooked into gruel. Today we meet on a narrow road, and still it comes to two and three make six. He is bound by neither south nor north, east nor west; touch him and he is like a nail driven into wood. Coming and going on the road of birth and death, he does not know where he will finally rest. May we together be born in the Tusita heaven — that would satisfy this heart a thousand and ten thousand times over."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Praise on the Portrait of Wang the Minister"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "A bosom of water and moon, an eye of sky-flowers. Liver and guts of iron and stone, a spirit of wind and cloud. Remember that before he entered the womb, he was not this slovenly fellow. Within him there is nowhere to draw a likeness; he looks a little odd. He should not have shut his mouth at Vaiśālī back then; now he has come to repay old debts. In the dust of toil he turns the inexhaustible Dharma wheel; on the tip of a hair he reveals a hundred thousand samādhis. He gives up himself for others and trades gold for a clod. Everyone today says he is a magistrate — I say his name is Avalokiteśvara."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Dream-Wanderings of Old Man Hanshan, Volumes 36-40"
+    },
+    {
+     "s": ""
+    },
+    {
+     "s": ""
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Dream-Wanderings of Old Man Hanshan, Volume Thirty-Six"
+    }
+   ]
+  },
+  {
+   "t": "h2",
+   "text": "Verses"
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Buddha and Patriarch Karmic Encounters (Thirty Cases)"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "When Shakyamuni, the World-Honored One, was first born, he pointed one hand to heaven and one hand to earth, walked seven paces around, and looked in the four directions, saying: \"Above heaven and under heaven, I alone am the Honored One.\" Later Yunmen said: \"Had I seen him then, I would have struck him dead with one blow and tossed him to the dogs to eat, all for the sake of peace in the world.\" Langya Jue said: \"This may be called offering body and mind to the dust-lands; this indeed is named repaying the Buddha's grace.\" The verse says:"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "No sooner out of the womb than he was all in a flurry; / He opened his big mouth wide to tell of what he'd done. / He only thought to pour out what lay in his heart, / Yet stirred the bystanders to weigh his short and long."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Because Devadatta slandered the Buddha, he fell alive into hell. The Buddha sent Ananda to ask him: \"Are you at peace in hell?\" He answered: \"Though I am in hell, I enjoy the bliss of the Third Dhyana Heaven.\" The Buddha again had Ananda ask: \"Do you still seek to come out?\" He said: \"I will come out when the World-Honored One comes.\" Ananda said: \"The Buddha is the Great Master of the three realms; how could he have any share in entering hell?\" He replied: \"Since the Buddha has no share in entering hell, how could I have any share in leaving it?\" The verse says:"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "What difference is there between hell and heaven? / Where grace is deepest, there he makes his home. / When life contents a man, that is his joy; / Why waste idle feelings picking at another's faults?"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "A brahmacārin named Black Teeth once exerted his spiritual powers and carried two twin-trunked parasol trees in his left and right hands to Vulture Peak, where he offered them to the Buddha. The Buddha said: \"Brahmacārin.\" He answered: \"Yes.\" The Buddha said: \"Put it down.\" He put down the tree in his left hand. The Buddha again said: \"Put it down.\" He put down the tree in his right hand. The Buddha again said: \"Put it down.\" He said: \"Both my hands are empty — I do not know what else you would have me put down.\" The Buddha said: \"I do not tell you to put down the flowers. You should put down the six sense faculties within, the six sense objects without, and the six consciousnesses between. When there is not one thing to be cast aside, that is where you escape birth and death.\" The brahmacārin was suddenly greatly awakened. The verse says:"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "He carried them here and raised spears on level ground; / He told him to put them down, and left him helpless. / He went on till the water was dry and the mountains ended — / And even with nothing at all, he found it too much."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Long ago the World-Honored One came before the Stupa of Many Children and had Mahākāśyapa share his seat and sit upon it. He wrapped him round with his saṃghāṭī robe and then told him: \"I have the treasury of the true Dharma eye; I secretly entrust it to you. You must guard and uphold it, handing it on to those who come after, and never let it be cut off.\" The verse says:"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Clear and plain the whole earth lies open and bare — / How could a patch of robe cover and hide it? / The moment he called it secret, it was never secret at all; / His tongue sprawls over the ground in utter disarray."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Mañjuśrī was at Vulture Peak where all the Buddhas were assembled when he saw a woman seated in samādhi near the Buddha's seat. Mañjuśrī asked the Buddha: \"How is it that this woman may sit near the Buddha?\" The Buddha said: \"Just awaken this woman and make her rise from samādhi; then question her yourself.\" Mañjuśrī circled the woman three times and snapped his fingers once, and even lifted her up to the Brahma heaven, exhausting all his spiritual powers, yet he could not bring her out. The Buddha said: \"Even a hundred thousand Mañjuśrīs could not bring this woman out of her samādhi. Forty-two Ganges-sand buddha-lands below, there is a Bodhisattva named Wuming who can bring this woman out of her samādhi.\" In a moment Wuming arrived where the Buddha was, and the Buddha told him to bring the woman out of her samādhi. At once Wuming snapped his fingers before the woman, and with that the woman rose from samādhi. The verse says:"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The woman before the Buddha had taken the wrong road; / It was not that Mañjuśrī's power fell short. / Though you have the hands to seize dragons and catch tigers, / You are no match for beating a drum and plucking a lute."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "When Bodhidharma first arrived at Jinling he met Emperor Wu. The emperor asked: \"What is the highest meaning of the noble truth?\" Bodhidharma said: \"Vast and open — nothing holy.\" The emperor said: \"Who is it that stands before me?\" Bodhidharma said: \"I do not know.\" The emperor was not in accord, and so Bodhidharma crossed the river on a reed and sat facing the wall at Shaoshi for nine years. The verse says:"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "He came from far away with a heart full of warmth, / Thinking a foreign land would be his home. / He never guessed that meeting, they would not know each other; / He turned his head and sat in the cold — most desolate of all."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The Second Patriarch came to Shaolin to attend upon Bodhidharma. Standing in the snow, he cut off his arm and asked: \"May I hear the Dharma seal of all the Buddhas?\" Bodhidharma said: \"The Dharma seal of all the Buddhas is not obtained from another.\" The Patriarch said: \"My mind is not yet at peace; I beg the Master to set it at peace.\" Bodhidharma said: \"Bring me your mind and I will set it at peace for you.\" The Patriarch said: \"Seeking the mind, it is utterly ungraspable.\" Bodhidharma said: \"I have set your mind at peace for you.\" With that the Patriarch awakened. The verse says:"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The snow waist-deep, his arm cut and broken; / He came especially to force his mind to peace. / He borrowed your fist to batter your own mouth — / When did it ever add so much as a hair?"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "When the Sixth Patriarch came to study under Huangmei, the Fifth Patriarch set him to pounding rice in the mortar room. One day, because the Fifth Patriarch asked for verses, intending to transmit the robe and Dharma, the Master wrote a verse on the wall: \"Bodhi is originally no tree; / the bright mirror is no stand. / Originally there is not one thing — / where could dust ever cling?\" The Patriarch silently took note of it. At night he called him into his room and secretly showed him the mind-tradition and the Dharma eye, transmitted the robe and bowl, and had him cross the river south to return to Caoxi. The verse says:"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "What difference between a pestle head and a firewood axe? / Again he saw flowers in the clear sky. / He was firm that originally there is not one thing — / So why did he still pick up a torn robe?"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "He knew it already before he reached Huangmei; / Then why enter the room at the third watch? / Only because he made the robe and bowl a precious thing / Did he leave sons and grandsons, every one of them fools."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "One day National Master Zhong of Nanyang called his attendant. The attendant answered. Three times he called and three times the attendant answered. The Master said: \"I thought I had failed you — but it is you who have failed me.\" The verse says:"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Three calls, three answers — all too clear. / Where in failing was there heavy or light? / Try breaking through to the moment before the call: / The long wind roars through the pines day and night."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "When Chan Master Nanyue Huairang first came to study under the Sixth Patriarch, the Patriarch asked where he had come from. The Master said: \"From Mount Song.\" The Patriarch said: \"What thing is it that comes thus?\" The Master said: \"To say it resembles a thing misses it at once.\" The Patriarch said: \"Can it still be cultivated and realized?\" The Master said: \"Cultivation and realization are not absent, but defilement is impossible.\" The Patriarch said: \"It is this very non-defilement that all Buddhas protect and remember. Since you are thus, I am thus too.\" The verse says:"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "He came from afar with spirits soaring high; / When questioned, he was frost laid over snow. / Had he stood long since beneath the gate of the sun, / Why poke the fire and pour on hot water besides?"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "One day Master Ma ascended the Dharma seat, and Baizhang rolled up the mat before him; the Patriarch at once stepped down. The verse says:"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "A great general mounts the altar, winds from all eight sides; / Banners rolled, drums silent, the four ramparts empty. / Such is the clear and peaceful scene — / Only now is seen the king's army's greatest victory."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Master Ma was unwell. The temple director asked: \"How is the Master's health these days?\" The Patriarch said: \"Sun-face Buddha, Moon-face Buddha.\" The verse says:"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The illness lies in the marrow, beyond all cure; / He shuts the door and secretly ponders in the dark. / Others cannot understand that unendurable place — / And no sooner do they ask than the moment is already lost."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "A monk was traveling to Mount Wutai and asked an old woman: \"Which way leads to Mount Wutai?\" The old woman said: \"Just go straight on.\" The monk set off. The old woman said: \"What a fine teacher — and off he goes just like that.\" Later a monk told Master Zhaozhou about it. The Master said: \"Wait till I have gone and tested her.\" The next day the Master went and asked her: \"Which way leads to Mount Wutai?\" The old woman said: \"Just go straight on.\" The Master set off. The old woman said: \"What a fine teacher — and off he goes just like that.\" The Master returned to the monastery and said to the monk: \"I have seen through that old woman of Mount Wutai for you.\" The verse says:"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Slanting sunlight, fragrant grass in lush array; / Idly he lets the traveler lose his way. / How many, lost, still linger as a guest for the night? / At the fifth watch the dream breaks with a single cock's crow."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Zhaozhou asked a newly arrived monk: \"Have you been here before?\" The monk said: \"I have been here.\" The Master said: \"Go drink tea.\" He asked another monk, who said: \"I have not been here.\" The Master said: \"Go drink tea.\" Afterwards the temple director asked: \"Why did you say 'Go drink tea' to the one who had been here, and also say 'Go drink tea' to the one who had not?\" The Master called the director, who answered. The Master said: \"Go drink tea.\" The verse says:"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Zhaozhou's whole livelihood was plain and mild; / Whoever crossed his path was asked to drink tea. / If you would seek the plum blossom and its spring, / One branch leans over the wall into the neighbor's house."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "You come from far, your road long and remote; / Caked clods fill your breast, your temper proud. / No need of a wondrous pill or a wonder-working drug — / Only one bowl of hot water poured over it."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "A monk asked Zhaozhou: \"What is the meaning of the Patriarch's coming from the West?\" The Master said: \"The cypress tree in the courtyard.\" The monk said: \"Master, do not point to a scene and show it to people.\" The Master said: \"I am not pointing to a scene to show people.\" The monk said: \"What is the meaning of the Patriarch's coming from the West?\" The Master said: \"The cypress tree in the courtyard.\" The verse says:"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The scripture of the great chiliocosm is split from a mote of dust; / The year's end turns, the yang returns, and all the earth is spring. / He holds up the cypress tree in the courtyard — / The ancestral meaning from the West is new again."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "At Nanquan's place the monks of the east and west halls were quarreling over a cat. The Master came upon them and said to the assembly: \"If any of you can speak a word, you will save the cat; if you cannot, I will cut it in two.\" No one answered, so the Master cut it. Zhaozhou returned from outside, and the Master told him what he had said. Zhaozhou then took off his straw sandals, put them on his head, and walked out. The Master said: \"If you had been here just now, you would have saved the cat.\" The verse says:"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Tai'e is drawn from its sheath, utterly without mercy; / Whatever it touches must be cut off from life and death. / By chance a white ox boasts a fine hand — / And trades a heap of donkey dung for a pair of eyes."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Muzhou addressed the assembly: \"When the great matter is not yet clear, it is like mourning father and mother. When the great matter is clear, it is like mourning father and mother.\" The verse says:"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The long river stretches boundless, faint its wind and waves; / Let the light sail come through with the rain as it will. / Reaching the shore, he looks back at the whitecaps — / His sorrow, turning, is more than when aboard."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "One day Deshan was late for the meal, and came down from the hall carrying his bowl. At that time Xuefeng was the rice cook, and seeing him he said: \"Old fellow, the bell has not sounded and the drum has not been struck — where are you taking your bowl?\" The Master went back to the abbot's quarters. Xuefeng told Yantou about it. Yantou said: \"Great or small, Deshan does not understand the final phrase.\" The Master heard of it and had his attendant call Yantou in, asking: \"So you do not approve of this old monk?\" Yantou secretly conveyed his meaning, and the Master let the matter rest. The next day when he ascended the seat, it was indeed unlike the usual. Yantou came before the monks' hall and clapped his hands, laughing loudly: \"I am glad the old fellow understands the final phrase. Even so, he has only three years.\" And in three years, indeed, he passed away. The verse says:"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Idly watching a lion as it romps with its cub, / It yawns and pants, spending all its strength. / Touched, it turns over and makes one throw, / Then bows its head and goes off, setting forth the whole. / The final phrase — do not be in doubt. / Free to roam, to whom would it yield? / Through all ages the long sky, wind and moon remain; / Three years is not likely to be the date of return."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "At Deshan's place the attendant Kuo asked where all the sages from of old had gone. The Master said: \"What are you doing?\" Kuo said: \"A flying dragon horse is given the command; a lame turtle puts out its head.\" The Master said no more. The next day, when the Master came out from bathing, Kuo brought him tea. The Master stroked Kuo's back and said: \"What of yesterday's case?\" Kuo said: \"Old fellow, only today have you caught a glimpse.\" Again the Master let it rest. The verse says:"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Long used to war, he hides deep the tiger-trapping snare; / How would a hot pursuer dare break into the ring? / Even if he saves his whole body and gets away, / His banners and spears are broken, his might already gone."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Once when Mazu, Baizhang, Xitang, and Nanquan were enjoying the moon, the Patriarch said: \"At just such a time as this, what is it?\" Baizhang said: \"It is the very time for cultivation.\" Xitang said: \"It is the very time for making offerings.\" Nanquan shook out his sleeves and walked off. The Patriarch said: \"The sutras return to the storehouse; Chan returns to the sea. Only Shanyuan stands alone beyond things.\" The verse says:"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The moon at mid-autumn shines surpassingly bright; / In how many homes do songs and flutes not cease? / The old fisherman goes home to lodge among the reeds; / Deep asleep on river and sky, no dream can form."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "A scholar named Zhang Zhuo was at Changsha's place, reading the scripture of the names of the thousand Buddhas, when he asked: \"Of the hundred thousand Buddhas I see only their names; I do not know what lands they dwell in. Do they still transform living beings?\" The Master said: \"After Cui Hao wrote his poem on Yellow Crane Tower, has any scholar written one there?\" He said: \"No.\" The Master said: \"Take your leisure and write one.\" The verse says:"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Before Yellow Crane Tower the river water runs deep; / Wind and waves roar with thunder day and night. / A hundred thousand Buddhas wag their tongues together — / Why seek elsewhere when it is right before your face?"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Jiashan came to study under Chuanzi. No sooner had they met than Chuanzi asked: \"Virtuous one, what temple do you dwell in?\" Jiashan said: \"Dwelling is not dwelling; dwelling would not be like it.\" Chuanzi said: \"Not like it? Like what?\" Jiashan said: \"It is not a dharma present before the eyes.\" The Master said: \"Where did you get that?\" Jiashan said: \"It is not something the ear or eye can reach.\" The Master said: \"A single phrase that fits the head is a donkey-tethering peg for ten thousand kalpas.\" The Master also said: \"A line hung a thousand feet down aims at the deep pool; three inches from the hook — why do you not speak?\" As Jiashan was about to open his mouth, the Master knocked him into the water with a stroke of the oar. When Jiashan had just climbed back into the boat, the Master again said: \"Speak! Speak!\" As Jiashan was about to open his mouth, the Master struck him. Jiashan was suddenly greatly awakened and nodded three times. The Master said: \"From the pole's tip the line and silk are yours to play; not touching the clear waves, the meaning is of itself distinct.\" Jiashan then asked: \"What of the time when one casts away the line and stops fishing?\" The Master said: \"The silk hangs in the clear water — floating, it settles the meaning of having and not having.\" Jiashan said: \"Words carry the mystery yet there is no road; the tongue speaks and does not speak.\" The Master said: \"The whole river's waves are fished out; at last the brocade-scaled one is met.\" Jiashan covered his ears. The Master said: \"Thus, thus.\" The verse says:"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "He leans alone on the orchid-wood oar, guarding the ford; / Idly he lets down hook and line to catch the brocade scales. / By chance he meets a fierce dragon and gives it one bump — / In heaven-high waves he knows how to turn himself free."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "A monk asked Zhaozhou: \"Does a dog have the Buddha-nature or not?\" Zhaozhou said: \"Wu — No.\" The verse says:"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "One gaze down the long river — vast and faint the cold mist; / Gazing to midstream, my thoughts drift vague and lost. / How pitiful, deep in the night beneath the bright moon: / There is no one to ask about the boat at the ferry landing."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "A monk asked Zhaozhou: \"The ten thousand dharmas return to the One; where does the One return?\" The Master said: \"When this old monk was in Qingzhou I made a hempen shirt that weighed seven catties.\" The verse says:"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The road comes to a cliff where there is nowhere to walk; / He turns his body one step and his footfall is light. / If you would seek the tracks of the antelope that hangs by its horns, / Though you had eyes, I fear you would be like the blind."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The Third Sage asked Xuefeng about the golden-scaled fish that has broken through the net: \"I do not know what it feeds on.\" The Master said: \"Wait until you are out of the net and I will tell you.\" The Sage said: \"A good friend of fifteen hundred people, and you do not even know a huatou!\" The Master said: \"This old monk's duties as abbot are many.\" The verse says:"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "A little boat has spent the whole of one sail's wind; / Having reached the shore, why labor to turn the sail again? / If you ask where the old fisherman lodges — / He sings aloud and goes home in the bright moonlight."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "A monk asked Yunmen: \"When not a single thought arises, is there still any fault?\" Yunmen said: \"Mount Sumeru.\" The verse says:"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The cold sky, the frost falling, the moon sunk in the west; / The clear night stretches long, the crane's dream wanders lost. / On the ocean floor the sun-wheel glows red as fire — / The traveler still listens for the fifth-watch cock."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "When Yunmen ascended the hall he said: \"There are two kinds of illness in the light that does not penetrate through. When all places are unclear and something stands before you — that is one. Again, even if you penetrate through the emptiness of all dharmas, and dimly there seems to be something resembling a thing — that too is the light not penetrating through. The Dharma body likewise has two kinds of illness. Having attained the Dharma body, if attachment to the dharma is not forgotten and your own views still remain, so that you sit beside the Dharma body — that is one. Even if you penetrate through the Dharma body, to let it go is not permissible; examine it carefully and see what breath remains in it — that too is an illness.\" The verse says:"
+    }
+   ]
+  }
+ ]
+}
