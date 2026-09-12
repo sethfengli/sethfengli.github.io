@@ -1,0 +1,961 @@
+{
+ "firstBlock": 240,
+ "blocks": [
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "How do the statements of the long prose run, of lust and of food and drink,"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "And how of men and women’s groves? Of Mount Vajra and the rest,"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Illusion, dream, and thirsting love—whence do the clouds all rise?"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Why do the seasons come to be? What makes the many tastes?"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Women and men, and neuter too, adorned by Buddhas and by bodhisattvas,"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "How are the wondrous mountains made, adorned by rishis and gandharvas?"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Where does liberation lead? Who binds, and who is set free?"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "What is the realm of dhyana? Transformation, and the non-Buddhist paths,"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "How do things arise without a cause? How do they arise from causes?"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "How are the various views overturned? How does conceptual thought arise?"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "What is pure conceptualizing? How do created things arise?"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "How does one pass away? How are the various thoughts cut off?"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "How is samadhi entered? Who breaks the three realms of existence?"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Where does the body dwell, and what is it? How is there no self?"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Why speak in keeping with convention? What are the marks you ask about?"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "And the selflessness you ask of—how is there the tathagata-garbha,"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "And how the other branches too? How is eternalism cut off, and nihilism?"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "How is the mind one-pointed? What is the wisdom of speech?"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Sons of the Buddha of the precepts’ lineage—how are they expounded in accord with truth?"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "How are teacher and disciple, and the different natures of beings?"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Food and drink, and space, the clever and the Mara’s constructs—"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "How are the trees laid out in rows? This is what you ask."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "For what reason do all the lands have such different appearances?"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Some are like the konghou lute, the waist-drum, and a host of flowers;"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Some are without light, where rishis undergo long austerities;"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Some have noble clans and lineages, making beings hold them in respect."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Some have bodies low and mean, despised by other people;"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Why, in the realm of desire, does one practice yet not attain Buddhahood,"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "While in the highest heaven of form one rises to perfect enlightenment?"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "How can people of the world obtain supernormal powers?"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "For what reason is one called a bhikshu? For what reason is one called the sangha?"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "How are the emanation body and the reward body, the Tathagata of true suchness and of wisdom?"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "How is one’s mind made to abide in the seventh ground?"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "This, and the other meanings besides, you now ask me."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "As the Buddhas of old have taught, there are one hundred and eight statements;"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Each corresponds to the next, transcending all wrong views."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "They are beyond the worldly too—dharmas constructed by words and speech;"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "I shall now expound them for you; sons of the Buddha, you should listen and receive.”"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Then Mahamati the bodhisattva-mahasattva said to the Buddha: “World-Honored One, what are these one hundred and eight statements?”"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The Buddha said: “Mahamati, they are: the statement of birth and the statement of no birth; the statement of permanence and the statement of no permanence; the statement of characteristic and the statement of no characteristic; the statement of dwelling and difference and the statement of no dwelling and difference; the statement of the moment and the statement of no moment; the statement of own-nature and the statement of no own-nature; the statement of emptiness and the statement of no emptiness; the statement of annihilation and the statement of no annihilation; the statement of mind and the statement of no mind; the statement of the middle and the statement of no middle; the statement of condition and the statement of no condition; the statement of cause and the statement of no cause; the statement of affliction and the statement of no affliction; the statement of craving and the statement of no craving; the statement of skillful means and the statement of no skillful means; the statement of skill in means and the statement of no skill in means; the statement of purity and the statement of no purity; the statement of correspondence and the statement of no correspondence; the statement of simile and the statement of no simile; the statement of disciple and the statement of no disciple; the statement of teacher and the statement of no teacher; the statement of lineage and the statement of no lineage; the statement of the three vehicles and the statement of no three vehicles; the statement of no reflected image and the statement of no absence of reflected image; the statement of vow and the statement of no vow; the statement of the three wheels and the statement of no three wheels; the statement of marking and the statement of no marking; the statement of existence and the statement of no existence; the statement of nonexistence and the statement of no nonexistence; the statement of both and the statement of neither; the statement of self-realized noble wisdom and the statement of no self-realized noble wisdom; the statement of the bliss of the present Dharma and the statement of no bliss of the present Dharma; the statement of a land and the statement of no land; the statement of a dust-mote and the statement of no dust-mote; the statement of water and the statement of no water; the statement of a bow and the statement of no bow; the statement of the great elements and the statement of no great elements; the statement of calculation and the statement of no calculation; the statement of supernormal powers and the statement of no supernormal powers; the statement of space and the statement of no space; the statement of a cloud and the statement of no cloud; the statement of the sciences and the statement of no sciences; the statement of crafts and the statement of no crafts; the statement of wind and the statement of no wind; the statement of earth and the statement of no earth; the statement of mind and the statement of no mind; the statement of provisional positing and the statement of no provisional positing; the statement of essential nature and the statement of no essential nature; the statement of the aggregates and the statement of no aggregates; the statement of beings and the statement of no beings; the statement of awakening and the statement of no awakening; the statement of nirvana and the statement of no nirvana; the statement of the knowable and the statement of no knowable; the statement of non-Buddhist paths and the statement of no non-Buddhist paths; the statement of confusion and the statement of no confusion; the statement of illusion and the statement of no illusion; the statement of dream and the statement of no dream; the statement of the mirage and the statement of no mirage; the statement of reflected image and the statement of no reflected image; the statement of the fire-wheel and the statement of no fire-wheel; the statement of the gandharva and the statement of no gandharva; the statement of a god and the statement of no god; the statement of food and drink and the statement of no food and drink; the statement of lust and the statement of no lust; the statement of a view and the statement of no view; the statement of the paramitas and the statement of no paramitas; the statement of precepts and the statement of no precepts; the statement of sun, moon, and stars and the statement of no sun, moon, and stars; the statement of truth and the statement of no truth; the statement of fruit and the statement of no fruit; the statement of cessation and the statement of no cessation; the statement of cessation and arising and the statement of no cessation and arising; the statement of medicine and the statement of no medicine; the statement of characteristic and the statement of no characteristic; the statement of constituent parts and the statement of no constituent parts; the statement of dhyana and the statement of no dhyana; the statement of delusion and the statement of no delusion; the statement of manifestation and the statement of no manifestation; the statement of protection and the statement of no protection; the statement of lineage and the statement of no lineage; the statement of the rishis and the statement of no rishis; the statement of a king and the statement of no king; the statement of acceptance and the statement of no acceptance; the statement of a jewel and the statement of no jewel; the statement of prophecy and the statement of no prophecy; the statement of the icchantika and the statement of no icchantika; the statement of women, men, and neuters and the statement of no women, men, and neuters; the statement of taste and the statement of no taste; the statement of action and the statement of no action; the statement of body and the statement of no body; the statement of conceptualizing and the statement of no conceptualizing; the statement of movement and the statement of no movement; the statement of faculties and the statement of no faculties; the statement of the conditioned and the statement of no conditioned; the statement of cause and effect and the statement of no cause and effect; the statement of the highest heaven of form and the statement of no highest heaven of form; the statement of seasons and the statement of no seasons; the statement of trees and vines and the statement of no trees and vines; the statement of the various and the statement of no various; the statement of exposition and the statement of no exposition; the statement of determination and the statement of no determination; the statement of the Vinaya and the statement of no Vinaya; the statement of the bhikshu and the statement of no bhikshu; the statement of dharma-preservation and the statement of no dharma-preservation. Mahamati, these one hundred and eight statements are what all the Buddhas of the past have taught (two entries are missing from this enumeration; they should be sought elsewhere).”"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Then Mahamati the bodhisattva-mahasattva again said to the Buddha: “World-Honored One, how many kinds of arising, dwelling, and ceasing do the various consciousnesses have?”"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The Buddha said: “Mahamati, the various consciousnesses have two kinds of arising, dwelling, and ceasing, which those who conjecture cannot know. They are: the continuance-arising and the mark-arising, the continuance-dwelling and the mark-dwelling, the continuance-ceasing and the mark-ceasing. The various consciousnesses have three marks: the mark of turning, the mark of karma, and the mark of truth. Mahamati, consciousness is spoken of extensively as eight, but in brief as only two: the manifesting consciousness and the consciousness that discriminates objects. Mahamati, as all forms appear in a bright mirror, so it is with the manifesting consciousness. Mahamati, the manifesting consciousness and the consciousness that discriminates objects are not two different consciousnesses; each is the cause of the other. Mahamati, the manifesting consciousness takes inconceivable permeation and transformation as its cause; the consciousness that discriminates objects takes the discriminated objects and the habit-energy of beginningless conceptual play as its cause. Mahamati, when the various habit-energies of the alaya-consciousness’s false discrimination cease, then all the sense consciousnesses cease: this is called mark-ceasing. Mahamati, as for continuance-ceasing, when the supporting cause ceases and the object ceases, then continuance ceases. The supporting cause is the false habit-energy of beginningless conceptual play. The object is the discriminated objects seen by one’s own mind. Mahamati, for example, a lump of clay and a dust-mote are neither different nor not different; so too are gold and its ornaments. Mahamati, if the lump of clay and the dust-mote were different, the one could not be made of the other; but it is made of it, and so they are not different. If they were not different, the lump of clay and the dust-mote would be indistinguishable. Mahamati, if the turning consciousness and the storehouse consciousness were different, the storehouse consciousness would not be their cause; if they were not different, when the turning consciousness ceased the storehouse consciousness would cease too—yet its mark of truth does not cease. Mahamati, the mark of truth of consciousness does not cease; only the mark of karma ceases. If the mark of truth ceased, the storehouse consciousness would cease; and if the storehouse consciousness ceased, that would be no different from the non-Buddhist doctrine of annihilation."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "“Mahamati, those non-Buddhists speak in this way: ‘When the consciousness that continues by grasping objects ceases, the beginningless continuing consciousness ceases.’ Mahamati, those non-Buddhists say that the continuing consciousness is born from a creator, and do not say that the eye-consciousness arises from the coming together of form, light, and attention; they say only that the creator is the productive cause. What is the creator? They reckon that the primal nature, the person, the sovereign, time, and the dust-motes are the makers. Furthermore, Mahamati, there are seven kinds of own-nature: the own-nature of accumulation, the own-nature of nature, the own-nature of characteristic, the own-nature of the great elements, the own-nature of cause, the own-nature of condition, and the own-nature of completion. Furthermore, Mahamati, there are seven kinds of supreme meaning: the range of mind, the range of wisdom, the range of dualistic views, the range transcending dualistic views, the range transcending the stage of the sons of the Buddha, the range of the Tathagata, and the range of the Tathagata’s self-realized noble wisdom. Mahamati, this is the supreme meaning mind, the Dharma own-nature of all Tathagatas, worthy ones, and perfectly enlightened ones of past, future, and present; by this mind they accomplish the supreme dharmas of the world and beyond the world of a Tathagata, and with the noble wisdom-eye they enter the various positing of shared and individual characteristics, and their positing is not shared with the evil views of non-Buddhists. Mahamati, what is the evil view of non-Buddhists? It is not knowing that objects appear through one’s own discrimination, and so, regarding own-nature and supreme meaning, seeing existence and seeing nonexistence and giving rise to speech about them. Mahamati, I shall now teach that if one understands objects to be like illusions, appearing from one’s own mind, then one extinguishes deluded thought, the suffering of the three realms of existence, and the causes and conditions of ignorance, craving, and karma."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "“Mahamati, there are shramanas and brahmans who wrongly reckon that things appear outside of cause and effect as existent or nonexistent, abiding according to time; or they reckon that the aggregates, elements, and sense-fields arise and dwell dependent on conditions, and once existent, cease. Mahamati, for them, whether continuance, function, arising, ceasing, the various realms of existence, nirvana, the path, karma, fruit, or truth—this is a doctrine of destruction and annihilation. Why? Because they do not attain the present Dharma and do not see the root. Mahamati, for example, when a bottle is broken it no longer serves as a bottle, and a scorched seed cannot sprout; so it is here. If the dharmas of the aggregates, elements, and sense-fields appear and then cease, one should know that there is no continuance-arising, since there is no cause; it is merely what one’s own mind falsely sees."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "“Furthermore, Mahamati, if originally there were no consciousness arising from the coming together of the three conditions, then a tortoise should grow hair and sand should yield oil; your thesis would be ruined and would contradict established meanings, and all your works would be empty and without benefit. Mahamati, the coming together of the three as condition is the nature of cause and effect and may be spoken of as existent. That past, present, and future arise from nothing is what those who dwell on the stage of awakened imagination, together with all their reasoning and teaching and the residual habit-energy of their own evil views, say. Mahamati, foolish ordinary beings, devoured by evil views and drunk on wrong views, lacking wisdom, falsely claim to speak as all-knowing ones."
+    }
+   ]
+  },
+  {
+   "t": "quote",
+   "inline": [
+    {
+     "s": "“Mahamati, there are further shramanas and brahmans who contemplate all dharmas as without own-nature, like clouds in the sky, like a wheel of fire, like a gandharva city, like an illusion, like a mirage, like the moon in water, like things seen in a dream, never apart from one’s own mind; because of beginningless false seeing they take them as external. Having contemplated thus, they cut off the conditions of discrimination and are free of the names and meanings grasped by deluded mind; they know that body and possessions and the places where they dwell are all the range of the storehouse consciousness, with no grasping or grasped, no arising, dwelling, or ceasing; thus they think and abide without letting go. Mahamati, such a bodhisattva-mahasattva will before long attain the equality of samsara and nirvana, the effortless course of great compassion and skillful means, contemplate beings as illusions and shadows arising from conditions, know that all objects are unattainable apart from mind, walk the path of no characteristics and gradually ascend the grounds, dwell in the realm of samadhi, thoroughly understand that the three realms are only one’s own mind, attain the samadhi of illusion and cut off all reflected images, accomplish wisdom and realize the dharma of non-arising; entering the samadhi that is like a diamond, they will attain the Buddha body, forever dwell in suchness, and give rise to the powers, supernormal faculties, and mastery of various transformations. Mahamati, adorned with skillful means they journey through the many Buddha lands, free of non-Buddhist paths and of mind, intellect, and consciousness, and in due order of turning they accomplish the Tathagata body. Mahamati, a bodhisattva-mahasattva who wishes to attain the Buddha body should keep far from the aggregates, elements, sense-fields, mind, conditions, and the arisen, dwelling, and ceasing dharmas of the constructed, and from conceptual discrimination; they should dwell only in the measure of mind, observe the three realms, and, since they arise from beginningless false habit, contemplate the Tathagata ground’s markless, non-arising, self-realized noble Dharma; they attain mastery of mind and effortless course, and like a wish-fulfilling jewel appear in forms as suited, leading others to understand mind-only and gradually enter the grounds. Therefore, Mahamati, a bodhisattva-mahasattva should well cultivate and learn their own tradition.”"
+    }
+   ]
+  },
+  {
+   "t": "h2",
+   "text": "Chapter on the Collection of All Dharmas, Part Two of Two"
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Then Mahamati the bodhisattva-mahasattva again said to the Buddha: “World-Honored One, I pray you teach me the wonderful Dharma-gate of mind, intellect, and consciousness and of the five dharmas and own-natures, which is the entry of all Buddhas and bodhisattvas into the range of their own minds, beyond the marks of any course of action, and which accords with true meaning, the Buddha-mind of all Buddhas. I pray the Tathagata, for the sake of the bodhisattvas in this mountain assembly, following the Buddhas of the past, will expound the realm of the dharmakaya in the ocean waves of the storehouse consciousness.”"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Then the World-Honored One said to Mahamati the bodhisattva-mahasattva: “There are four conditions by which the eye-consciousness turns. What are the four? They are: not awakening to one’s own mind’s appearing and so grasping at it; the false habit-energy of beginninglessly grasping at form; the intrinsic nature of consciousness being thus; and delighting in seeing the various forms. Mahamati, by these four conditions the alaya-consciousness, like a rushing torrent, gives rise to the waves of the turning consciousnesses. As with the eye-consciousness, so with the rest. In all the faculties, dust-motes, and pores—eye and so forth—the turning consciousnesses may arise all at once, as a bright mirror shows all forms, or may arise gradually, as a fierce wind stirs the waters of the great ocean. So too with the ocean of mind: the wind of objects stirs up the waves of the consciousnesses without ceasing. Mahamati, the marks produced by karma are neither one nor different; karma and the marks of birth are bound closely together, and because they cannot understand the own-nature of form and the rest, the body of the five consciousnesses turns. Mahamati, together with the five consciousnesses, or by distinguishing the marks of different objects, the mental consciousness arises; yet those consciousnesses do not think, ‘We are simultaneous and serve as each other’s causes,’ but toward the objects appearing in their own minds, discrimination and grasping arise together, each knowing its own object with no mark of difference. Mahamati, when practitioners enter samadhi, through the subtle stirring of habit-power they do not know it, but only think, ‘I have extinguished the consciousnesses and entered samadhi.’ In truth they have not extinguished the consciousnesses and entered samadhi, because the seeds of habit-energy are not extinguished; only by not grasping at objects is it called extinction of consciousness."
+    }
+   ]
+  },
+  {
+   "t": "quote",
+   "inline": [
+    {
+     "s": "“Mahamati, thus the course of the storehouse consciousness is subtle; none but the Buddhas and the bodhisattvas dwelling on the grounds, and not all the rest—the two vehicles, the non-Buddhists, and their powers of concentration and wisdom—can know it. Only a practitioner who practices in accord with reality, who by the power of wisdom understands the marks of the grounds and well penetrates the meaning of the statements, who has gathered roots of goodness in the presence of countless Buddhas, and who does not falsely discriminate what is seen by his own mind, is able to know it. Mahamati, practitioners who dwell in mountain forests and cultivate the upper, middle, and lower, can see the flowing of their own mind’s discrimination, attain the supernormal faculties and the power of mastery in the various samadhis, receive the consecration of the Buddhas and be surrounded by bodhisattvas, know the range of mind, intellect, and consciousness, and cross the great ocean of birth and death with its craving, karma, and ignorance. Therefore you should draw near to Buddhas and bodhisattvas and to good teachers who practice in accord with reality.”"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Then the World-Honored One spoke again in verse:"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "“Like the waves of the mighty ocean, stirred up by a fierce wind,"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The surging billows lash the dark abyss and never cease."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The ocean of the storehouse consciousness ever dwells, moved by the wind of objects;"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The waves of the various consciousnesses leap up and turn to birth."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Blue, red, and the other colors, salt, shell, milk, and rock-honey,"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Flowers, fruits, the sun and moon—neither different nor not different."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The seven consciousnesses, beginning with the intellect, should be known as just the same,"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Like the ocean with its waves, arising together with the mind."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Just as the ocean waters stir and the many waves roll on,"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "So too with the storehouse consciousness: the many consciousnesses arise."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Mind, intellect, and consciousness are spoken of for the sake of characteristics;"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The eight consciousnesses have no separate marks, no grasping or grasped."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Like the ocean and its waves, they are without distinction;"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "So it is with the mind of the various consciousnesses: their difference too is unattainable."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The mind can accumulate karma; the intellect can accumulate it widely;"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Because it discerns, it is called consciousness; toward manifest objects it is called the five.”"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Then Mahamati the bodhisattva-mahasattva asked in verse:"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "“The images of blue, red, and other colors appear in the consciousness of beings;"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Like waves, the various dharmas—I pray the Buddha will explain.”"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Then the World-Honored One answered in verse:"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "“The images of blue, red, and other colors are unattainable in the waves;"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The mind gives rise to the many marks, awakening ordinary beings."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Yet that originally does not arise, apart from what one’s own mind grasps;"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Grasping and grasped are the same as those waves."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Body, possessions, and dwelling appear from the consciousness of beings;"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Therefore, seeing this arising, it is no different from the waves.”"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Then Mahamati spoke again in verse:"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "“The nature of the great ocean’s waves can be distinguished as they leap;"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The storehouse consciousness arises thus—why do you not know it?”"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "“The alaya is like the ocean, the turning consciousnesses like its waves;"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "For ordinary beings without wisdom, similes are widely set forth.”"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "“As when the sunlight rises, it shines equally above and below;"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "So too the lamp of the world should speak the truth to the foolish."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Since you can already reveal the Dharma, why not make the real clear?”"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "“If one speaks of the real, that mind has no reality."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Like ocean waves, an image in a mirror, or a dream;"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "They appear all at once, and so it is with the range of mind."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Because the objects are not complete, they turn to birth in due order;"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Consciousness knows by discerning, and the intellect thinks it so as well."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The five consciousnesses know manifest objects, with no fixed order;"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Like a master painter and the painter’s apprentices,"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Who spread their colors and paint many images, so I say it is as well."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "In the colors there is no writing, nor brush, nor yet the silk."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "To delight beings, bright and varied images are made;"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Speech and words then alter, but the real is apart from letters."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The real Dharma in which I dwell is taught for the sake of practitioners;"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "In the place of self-realization of the real, grasping and grasped are apart."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "This is taught for the sons of the Buddha; for the foolish it is expounded otherwise;"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "All is like an illusion; what is seen is unattainable."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Thus the various teachings alter according to the matter at hand;"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "What is spoken may not be fitting, and for that one it is no teaching."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Like the many sick, for whom a good physician gives medicine as fits;"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "So the Tathagata, for beings, teaches according to mind and measure."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The refuge of the world, the range of realized wisdom—"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Not the range of non-Buddhists, nor likewise of the shravakas."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "“Furthermore, Mahamati, if a bodhisattva-mahasattva wishes to understand that the discriminated objects of grasping and grasped are all what one’s own mind manifests, they should keep far from commotion, torpor, and sleep, and diligently cultivate throughout the first, middle, and last watches of the night; they should keep far from the wrong treatises of non-Buddhists they have heard and from the dharmas of the two vehicles, and thoroughly penetrate the marks of their own mind’s discrimination."
+    }
+   ]
+  },
+  {
+   "t": "quote",
+   "inline": [
+    {
+     "s": "“Furthermore, Mahamati, when a bodhisattva-mahasattva has dwelt in the marks dwelt in by the wisdom-mind, they should diligently cultivate the three marks of supreme noble wisdom. What are the three? They are: the mark of no reflected image, the mark of being upheld by the vows of all Buddhas, and the mark of the range of self-realized noble wisdom. Once practitioners attain these marks, they abandon the mark of the wisdom-mind of a lame donkey and enter the bodhisattva’s eighth ground, cultivating these three marks without letting go. Mahamati, the mark of no reflected image arises through habituating oneself to all the marks of the two vehicles and non-Buddhists; the mark of being upheld by the vows of all Buddhas arises through the sustaining power of the Buddhas’ own original vows; the mark of the range of self-realized noble wisdom arises through not grasping at the marks of any dharma, accomplishing the illusory bodies of the samadhis, and ranging into the wisdom of the Buddha ground. Mahamati, these are called the three marks of supreme noble wisdom. If one attains these marks, one reaches the range of self-realized noble wisdom; you and the bodhisattva-mahasattvas should diligently cultivate them.”"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Then Mahamati the bodhisattva-mahasattva, knowing the thoughts in the minds of the bodhisattvas, and sustained by the majestic power of all the Buddhas, said to the Buddha: “I pray you teach the Dharma-gate of the noble wisdom and own-nature that is the basis of the distinctions among the one hundred and eight statements, by which all Tathagatas, worthy ones, and perfectly enlightened ones, for the sake of bodhisattva-mahasattvas who fall into shared and individual characteristics, teach this gate of the distinctions of the nature of false reckoning; for once this meaning is known, they can purify the field of contemplation of the two selflessnesses and illumine the grounds, transcend the bliss of the samadhis of all the two vehicles and non-Buddhists, see the inconceivable range of action of the Tathagatas, utterly abandon the five dharmas and own-natures, adorn themselves with the wisdom of the dharmakaya of all Buddhas, enter the realm of illusion and dwell in all lands, and in the Tushita palace and the highest heaven of form accomplish the Tathagata body.”"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The Buddha said: “Mahamati, there is a kind of non-Buddhist who, seeing that all dharmas come to an end according to causes, gives rise to a discriminating understanding, conceives of the hornless hare and so gives rise to a view of nonexistence: as the hare’s horn is nonexistent, so are all dharmas likewise. There are other non-Buddhists who, having seen that the great elements, the qualities, the dust-motes, and other things each differ in shape, measure, and position, hold to the hare’s hornlessness as nonexistent and on this basis give rise to the notion that the bull has horns. Mahamati, they fall into dualistic views and do not understand mind-only, but only increase discrimination in their own minds. Mahamati, body, livelihood, and the vessel-world and so on—all are only what discrimination manifests. Mahamati, you should know that the hare’s horn is apart from existence and nonexistence; so it is with all dharmas—do not give rise to discrimination. How is the hare’s horn apart from existence and nonexistence? Because they are mutually dependent. Analyzing the bull’s horn down to dust-motes, its essential mark is in the end unattainable; the range of noble wisdom is far from that view, and therefore you should not discriminate about it.”"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Then Mahamati the bodhisattva-mahasattva again said to the Buddha: “World-Honored One, do they not, by a false view, give rise to marks, and by comparing and observing, falsely reckon it as nonexistent?”"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The Buddha said: “It is not that by discrimination one gives rise to marks and, depending on these, speaks of nonexistence. Why? Because they take discrimination as the cause of arising and take the discrimination of horns as what it depends on; since what it depends on is the cause, it is neither different nor not different, and it is not by mutual dependence that the hare’s horn is shown to be nonexistent. Mahamati, if this discrimination were different from the hare’s horn, it would not be the cause of the horn; if it were not different, it would arise depending on it. Mahamati, analyzing the bull’s horn down to the finest dust-mote, it is unattainable; to call it nonexistent while it differs from the horned is a discrimination that is decidedly unreasonable. If both are nonexistent, who depends on whom? If mutual dependence is not established, then to say the hare’s horn is nonexistent because it depends on the existent should not be discriminated, since the cause is not valid. Those who speak of existence and nonexistence grasp at existence and grasp at nonexistence; both are not established."
+    }
+   ]
+  },
+  {
+   "t": "quote",
+   "inline": [
+    {
+     "s": "“Mahamati, there are further non-Buddhists who, seeing the shape of form and the boundaries of space, give rise to grasping, and say that form is different from space and so give rise to discrimination. Mahamati, space is form, entering into the category of form. Mahamati, form is space, because of the nature of the supported and the supporting being established; thus should the boundaries of form and space be known. Mahamati, when the great elements arise, their own marks are each distinct, and they do not dwell in space, yet space is not absent from them. Mahamati, so too with the hare’s horn: depending on the bull’s horn, one says that horn is nonexistent. Mahamati, analyzing the bull’s horn down to dust-motes, and analyzing those dust-motes again, their marks do not appear. On what then does it depend that one says it is nonexistent? If it depends on something else, that too would be likewise. Mahamati, you should keep far from all discrimination of the hare’s horn, the bull’s horn, space, and form; you and the bodhisattva-mahasattvas should constantly observe the marks of discrimination seen by your own minds, and in all lands teach the sons of the Buddha the method of cultivating the observation of one’s own mind.”"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Then the World-Honored One spoke in verse:"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "“What the mind sees does not exist; it arises only depending on mind;"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Body, possessions, and the shadows of dwelling appear from beings’ storehouse consciousness."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Mind, intellect, and consciousness, own-nature, and the five dharmas,"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "The purity of the two selflessnesses—these the guides expound."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Long and short are mutually observed and depend on each other;"
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "inline": [
+    {
+     "s": "Because the one exists the other becomes nonexistent; because the one does not exist the other becomes existent."
+    }
+   ]
+  }
+ ]
+}
