@@ -34,7 +34,7 @@ export const VERSES: Verse[] = [
     source: '《坐禅三昧经》',
     en: {
       text: 'One moment of quiet sitting surpasses the building of stupas of seven gems as numerous as the sands of the Ganges.',
-      source: 'Sutra of the Samadhi of Sitting Meditation',
+      source: 'Sutra of the Samādhi of Sitting Meditation',
     },
   },
   {
@@ -49,7 +49,7 @@ export const VERSES: Verse[] = [
     text: '一念愚即般若绝，一念智即般若生。',
     source: '《六祖坛经》',
     en: {
-      text: 'One foolish thought and prajna ceases; one wise thought and prajna is born.',
+      text: 'One foolish thought and prajñā ceases; one wise thought and prajñā is born.',
       source: 'Platform Sutra',
     },
   },
@@ -162,7 +162,7 @@ export const VERSES: Verse[] = [
     source: '《大般涅槃经》',
     en: {
       text: 'Perfect with conscience and shame, like a clear, cooling pool.',
-      source: 'Mahaparinirvana Sutra',
+      source: 'Mahāparinirvāṇa Sutra',
     },
   },
   {
