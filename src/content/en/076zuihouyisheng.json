@@ -1,11 +1,11 @@
 {
   "slug": "076zuihouyisheng",
-  "title": "This Life Will Be My Last in the Saha World (Recitation)",
-  "excerpt": "I will bid farewell to this Saha world forever,",
+  "title": "This Life Will Be My Last in the Sahā World (Recitation)",
+  "excerpt": "I will bid farewell to this Sahā world forever,",
   "blocks": [
     {
       "t": "h2",
-      "text": "This Life Will Be My Last in the Saha World"
+      "text": "This Life Will Be My Last in the Sahā World"
     },
     {
       "t": "p",
@@ -19,7 +19,7 @@
       "t": "p",
       "inline": [
         {
-          "s": "will be, in this Saha world,"
+          "s": "will be, in this Sahā world,"
         }
       ]
     },
@@ -185,7 +185,7 @@
       "t": "p",
       "inline": [
         {
-          "s": "I will bid farewell to this Saha world forever,"
+          "s": "I will bid farewell to this Sahā world forever,"
         }
       ]
     },
