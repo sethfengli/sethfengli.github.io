@@ -9,9 +9,10 @@
 | 指标 | 值 |
 | --- | --- |
 | `validate-en` | **ok=272 crit=4 warn=11 parts=7** |
-| `scan-mojibake` | 0 / 310 |
+| `scan-mojibake` | 0 / 306 |
 | 已完成 | **16 篇**（A 期 11 + B 期 R1-R9：`047shengmingdcj` `293jgj-zhu` `246henghedashouyin` `102lfsx` `403chanjing` `001juezhichan` `001jznf` `187hanshandashinianpushu` `016xdwsjwl` `239…jiaohuibenzhu-zhu` `239…huiyi` `190wuliangshoujingwuyiben` `301jgj` `025taishanggy-yw` **`262dachengrulengqiejing`**） |
 | 剩余 | **2 篇 / 6,008 未覆盖块 / 51 任务 / 0 被挡**（`043=38`、`205=13`） |
+| 205 进度 | 已交付 `p1-p5`（`0-599`）+ 既有 `p43/p44/p45`（`2128-2223`）；R10 做 `600-2127` 13 片 |
 | crit 4 项（**非 B 期，勿顺手改**） | `043mengyouji:missing`、`068xiangxujs:cjk`、`101yebunengxi:cjk`、`303liuzutanjing`（±1 错位） |
 | R9 提交 | `4a3e15d`(262 x10 + 205 x5) `778f811`(262 p15 补跑) `2b02183`(262 整篇 2442 块) |
 
