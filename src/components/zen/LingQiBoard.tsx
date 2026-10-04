@@ -3,6 +3,7 @@ import { useI18n } from '../../i18n'
 import LINGQI_JSON from '../../content/lingqi.json'
 import LINGQI_EN_JSON from '../../content/lingqi-en.json'
 import { storageGet, storageSet } from '../../lib/storage'
+import { PlusIcon } from '../ui/Icons'
 
 /**
  * 灵棋经占卜（纯 2D，无 three 依赖）：
@@ -207,7 +208,7 @@ export function LingQiBoard() {
               aria-expanded={expanded}
             >
               {t('lingqi.notes')}
-              <span className={`text-tibetan-600 transition-transform duration-200 ${expanded ? 'rotate-45' : ''}`} aria-hidden>＋</span>
+              <span className={`text-tibetan-600 transition-transform duration-200 ${expanded ? 'rotate-45' : ''}`} aria-hidden><PlusIcon /></span>
             </button>
             {expanded && (
               <div className="mt-4 grid gap-3 sm:grid-cols-2">

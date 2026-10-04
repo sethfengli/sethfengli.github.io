@@ -18,7 +18,7 @@ export function IncenseBurner({ bare = false }: { bare?: boolean }) {
 
   const inner = (
     <>
-      <svg viewBox="0 0 200 150" className="h-32 w-48">
+      <svg aria-hidden="true" viewBox="0 0 200 150" className="h-32 w-48">
         {/* 底座 */}
         <path d="M40 124h120l-8 16H48z" fill="#543620" opacity="0.9" />
         <ellipse cx={100} cy={124} rx={62} ry={8} fill="#3e2818" />

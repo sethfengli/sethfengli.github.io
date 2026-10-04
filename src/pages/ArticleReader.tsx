@@ -28,6 +28,7 @@ import { TranslateWidget } from '../components/reader/TranslateWidget'
 import { ZenIllustration } from '../components/zen/ZenIllustration'
 import { CoverImage } from '../components/zen/CoverImage'
 import { Ornament } from '../components/ui/PageBanner'
+import { FontSizeIcon } from '../components/ui/Icons'
 
 const THEMES: Array<{
   id: ReaderTheme
@@ -466,11 +467,11 @@ function ReaderSettings({
           <div className="mt-3 flex items-center gap-3">
             <button
               type="button"
-              className="flex h-8 w-8 shrink-0 cursor-pointer items-center justify-center rounded-xs border border-hairline font-sans text-sm text-ink-700 transition-colors hover:border-sandalwood-500"
+              className="flex h-8 w-8 shrink-0 cursor-pointer items-center justify-center rounded-xs border border-hairline text-ink-700 transition-colors hover:border-sandalwood-500"
               onClick={() => onChange({ fontSize: Math.max(FONT_SIZE_RANGE.min, prefs.fontSize - 1) })}
               aria-label="A-"
             >
-              A−
+              <FontSizeIcon />
             </button>
             <input
               type="range"
@@ -483,11 +484,11 @@ function ReaderSettings({
             />
             <button
               type="button"
-              className="flex h-8 w-8 shrink-0 cursor-pointer items-center justify-center rounded-xs border border-hairline font-sans text-sm text-ink-700 transition-colors hover:border-sandalwood-500"
+              className="flex h-8 w-8 shrink-0 cursor-pointer items-center justify-center rounded-xs border border-hairline text-ink-700 transition-colors hover:border-sandalwood-500"
               onClick={() => onChange({ fontSize: Math.min(FONT_SIZE_RANGE.max, prefs.fontSize + 1) })}
               aria-label="A+"
             >
-              A＋
+              <FontSizeIcon plus />
             </button>
           </div>
         </div>

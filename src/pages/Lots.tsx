@@ -276,7 +276,7 @@ export function Lots() {
                   className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xs border border-hairline text-tibetan-600"
                   aria-hidden
                 >
-                  <svg
+                  <svg aria-hidden="true"
                     viewBox="0 0 24 24"
                     className="h-5 w-5"
                     fill="none"

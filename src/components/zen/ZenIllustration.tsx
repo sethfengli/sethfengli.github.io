@@ -96,7 +96,7 @@ export function ZenIllustration({ variant, className, animated = true }: Props) 
   const id = `zi-${variant}`
   return (
     <div className={`overflow-hidden ${className ?? ''}`} style={{ background: INK.paper }} aria-hidden="true">
-      <svg viewBox="0 0 400 240" preserveAspectRatio="xMidYMid slice" className="h-full w-full">
+      <svg aria-hidden="true" viewBox="0 0 400 240" preserveAspectRatio="xMidYMid slice" className="h-full w-full">
         <PaperDefs id={id} />
         <rect width="400" height="240" fill={`url(#${id}-paper)`} />
         <Scenes variant={variant} animated={animated} />

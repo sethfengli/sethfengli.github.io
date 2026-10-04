@@ -63,7 +63,7 @@ export function Articles() {
 
           <div className="flex items-center gap-4">
             <div className="relative w-full lg:w-64">
-              <svg
+              <svg aria-hidden="true"
                 viewBox="0 0 24 24"
                 className="pointer-events-none absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 text-ink-300"
                 fill="none"

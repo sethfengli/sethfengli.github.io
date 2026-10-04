@@ -164,7 +164,7 @@ export function TempleBell() {
           ringing ? 'cursor-wait opacity-90' : ''
         }`}
       >
-        <svg viewBox="0 0 420 340" className="h-72 w-[420px] max-w-full sm:h-80">
+        <svg aria-hidden="true" viewBox="0 0 420 340" className="h-72 w-[420px] max-w-full sm:h-80">
           {/* 木架 */}
           <path d="M120 60v190M300 60v190" stroke="#5a3d22" strokeWidth="14" strokeLinecap="round" />
           <path d="M96 60h228" stroke="#5a3d22" strokeWidth="18" strokeLinecap="round" />

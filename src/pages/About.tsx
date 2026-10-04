@@ -7,6 +7,7 @@ import { LOTS } from '../data/lots'
 import { CoverImage } from '../components/zen/CoverImage'
 import { PageBanner, SectionHeading, Section, Ornament } from '../components/ui/PageBanner'
 import { Reveal } from '../components/ui/Reveal'
+import { PlusIcon } from '../components/ui/Icons'
 
 const SECTIONS = [
   { id: 'story', key: 'about.storyTitle' },
@@ -256,7 +257,7 @@ export function About() {
                           className={`shrink-0 text-tibetan-600 transition-transform duration-300 ${openFaq === i ? 'rotate-45' : ''}`}
                           aria-hidden
                         >
-                          ＋
+                          <PlusIcon />
                         </span>
                       </button>
                       {openFaq === i && (

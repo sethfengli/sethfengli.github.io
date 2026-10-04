@@ -90,12 +90,12 @@ export function ChantPlayer({ track, index }: Props) {
             className="flex h-11 w-11 shrink-0 cursor-pointer items-center justify-center rounded-xs bg-tibetan-600 text-paper transition-colors duration-200 hover:bg-tibetan-700"
           >
             {playing ? (
-              <svg viewBox="0 0 24 24" className="h-4 w-4" fill="currentColor">
+              <svg aria-hidden="true" viewBox="0 0 24 24" className="h-4 w-4" fill="currentColor">
                 <rect x={6} y={5} width={4.5} height={14} rx={0.5} />
                 <rect x={13.5} y={5} width={4.5} height={14} rx={0.5} />
               </svg>
             ) : (
-              <svg viewBox="0 0 24 24" className="h-4 w-4 translate-x-px" fill="currentColor">
+              <svg aria-hidden="true" viewBox="0 0 24 24" className="h-4 w-4 translate-x-px" fill="currentColor">
                 <path d="M7 4.8v14.4c0 .8.9 1.3 1.6.9l11-7.2c.6-.4.6-1.4 0-1.8l-11-7.2c-.7-.4-1.6.1-1.6.9z" />
               </svg>
             )}
