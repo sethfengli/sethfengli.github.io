@@ -325,7 +325,7 @@ git show --stat --oneline HEAD ; git status --porcelain  # 双向核对
 
 | 项 | 规模 | 说明 |
 | --- | --- | --- |
-| (a) 补齐空桶 | 约 50 张 | **`halls` / `sutras` / `landscape` 三个桶还没抓完**（见 §9.4）。重跑 `PACE_MS=14000 node scripts/fetch-cn-picked.mjs` 即可续抓，已有的会自动复用。 |
+| (a) 补齐空桶 | 约 50 张 | **`halls`（1/19）/ `sutras`（0/15）/ `landscape`（0/18）三个桶还没抓完，`statues` 也差 47 张**（见 §9.4）。一条命令续抓：`.\scripts\fetch-photos.ps1`（或 `-Only halls,sutras,landscape`）。已有的会自动复用，不会重复下载。 |
 | (b) 图版转 WebP | 约 150 张 / 缩减 40% | `public/` 现约 100MB。WebP q80 目视无差。改 Pillow 输出格式 + `photoUrl()` 后缀即可；**需要重跑下载**。 |
 | (c) 具名图改为清单驱动 | 小 | `NAMED_PHOTOS` 按「桶内第 N 张」硬编码索引，桶内容一变就漂移（本轮已因桶未抓满而换过两次）。应把具名映射写进 `photos-cn.json` 的 `named` 字段。 |
 | (d) 色板令牌改名 | 大（约 200 处） | `sandalwood-*` 实际是青瓷灰绿、`tibetan-*` 实际是朱砂红、`gold-*` 基本不用。名字与含义不符，是最大的可读性债。 |
@@ -340,7 +340,8 @@ git show --stat --oneline HEAD ; git status --porcelain  # 双向核对
 | `npx vite build` | 通过（主 js 815KB / gzip 271KB；CSS 854KB） |
 | `validate-en` | ok=294 crit=0 warn=0 parts=0（未改动英文正文） |
 | `scan-mojibake` | 0 / 294 |
-| 已抓中国佛教图版 | **126 张**：paintings 41 / grottoes 45 / statues 32 / lotus 7 / halls 1（**halls · sutras · landscape 尚未抓完**） |
-| `public/` 总体积 | 约 100MB（图版 + 音档） |
-| 配图分配 | 相邻文章零重复；`halls` 为空时自动跳过该桶，不会出现空图 |
+| 已抓中国佛教图版 | **133 张**：paintings 41/41 · grottoes 45/46 · statues 39/86 · lotus 7/7 · halls 1/19 · **sutras 0/15 · landscape 0/18** |
+| `public/` 总体积 | 约 49MB 图版 + 音档 |
+| 配图分配 | 相邻文章零重复；空桶自动跳过，不会出现空图 |
 | 中英词典 | zh/en 键完全对齐（`tsc` 保证） |
+| 图版清单与磁盘 | 一致（133 = 133）；`node scripts/photos-status.mjs` 可随时体检 |

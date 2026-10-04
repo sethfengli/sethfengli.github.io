@@ -182,6 +182,25 @@ const credits = [
 ]
 
 let total = 0
+
+/**
+ * 边下边落盘：每成功一张就重写清单与署名。
+ *
+ * 为什么必须这样做：Commons 限流会让抓取在任意位置中断。若清单只在整轮跑完时才写，
+ * 中断后磁盘上就会留下一批「有图、但清单里没有、署名也缺」的孤儿文件
+ * （实测中断一次留下 7 张），而清单里又可能写着根本没抓到的文件名（前端去请求 404）。
+ * 增量落盘后，**任意中断点**的清单都等于磁盘实况。
+ */
+function persist() {
+  const ordered = {}
+  for (const [b, arr] of Object.entries(manifest)) ordered[b] = arr
+  // 保留已由 pick-named-photos.mjs 写入的 named（若有）
+  const prev = fs.existsSync(MANIFEST) ? JSON.parse(fs.readFileSync(MANIFEST, 'utf8')) : {}
+  if (prev.named) ordered.named = prev.named
+  fs.writeFileSync(MANIFEST, JSON.stringify(ordered, null, 1) + '\n', 'utf8')
+  fs.writeFileSync(path.join(OUT_DIR, 'CREDITS.md'), credits.join('\n') + '\n', 'utf8')
+}
+
 for (const [bucket, arr] of Object.entries(picked)) {
   manifest[bucket] = []
   if (onlySet && !onlySet.has(bucket)) {
@@ -238,21 +257,23 @@ for (const [bucket, arr] of Object.entries(picked)) {
     credits.push(`| ${name}.jpg | ${bucket} | [${c.title}](${c.page}) | ${c.author} | ${c.license} |`)
     i++
     total++
+    persist()
     console.log(`  ✓ ${name}  ${c.title.slice(0, 62)}`)
     // 节流：Commons 对连续抓取很敏感（约 6-8 张/分钟就会 429），
     // 每次成功下载后留足间隔，比事后长退避划算得多。
     await sleep(Number(process.env.PACE_MS ?? 6500))
   }
   console.log(`\n✔ ${bucket}: ${manifest[bucket].length}`)
+  persist()
 }
 
-fs.writeFileSync(MANIFEST, JSON.stringify(manifest, null, 1) + '\n', 'utf8')
-fs.writeFileSync(path.join(OUT_DIR, 'CREDITS.md'), credits.join('\n') + '\n', 'utf8')
+persist()
 console.log(`\n合计 ${total} 张 → public/photos/cn/`)
 console.log(`清单 → src/data/photos-cn.json`)
 
-/* 全部成功后清掉原始大图（约 200MB），只留转码后的成品 */
-if (!onlySet && !process.env.KEEP_RAW) {
+/* 清掉原始大图（只留转码后的成品）。注意：复用路径已能直接读成品取指纹，
+   不再依赖 _raw，所以这里清掉是安全的。 */
+if (!process.env.KEEP_RAW) {
   fs.rmSync(RAW, { recursive: true, force: true })
   console.log('已清理 public/photos/cn/_raw/')
 }
