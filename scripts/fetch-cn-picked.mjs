@@ -51,11 +51,12 @@ async function download(url, tries = 5) {
         return buf
       }
       if (r.status === 429 || r.status >= 500) {
-        // Commons 在连续抓取时会返回 429（正文只是普通错误页，不含提示语），
-        // 退避必须够长，否则整桶都会被限流掉。
-        const wait = 30000 + i * 30000
-        console.log(`    · 限流 ${r.status}，等待 ${wait / 1000}s（${i + 1}/${tries}）`)
-        await sleep(wait)
+        // Commons 在连续抓取时会返回 429（正文只是普通错误页，不含提示语）。
+        // 退避要够长，但也不能太长：单个条目最多等 2 次就该放弃，
+        // 否则一个被限流的条目会把整条队列拖住几分钟。
+        if (i >= 1) return null
+        console.log(`    · 限流 ${r.status}，等待 40s`)
+        await sleep(40000)
         continue
       }
       return null
@@ -74,22 +75,27 @@ import sys, json, warnings
 warnings.filterwarnings('ignore')
 from PIL import Image, ImageOps
 src, dst = sys.argv[1], sys.argv[2]
+resize = len(sys.argv) < 4 or sys.argv[3] != 'keep'
 im = Image.open(src)
 im = ImageOps.exif_transpose(im).convert('RGB')
-im.thumbnail((1600, 1600), Image.LANCZOS)
-im.save(dst, 'JPEG', quality=84, optimize=True, progressive=True, subsampling='4:2:0')
+if resize:
+    im.thumbnail((1600, 1600), Image.LANCZOS)
+    im.save(dst, 'JPEG', quality=84, optimize=True, progressive=True, subsampling='4:2:0')
+    out = im
+else:
+    out = im
 
 # 判重指纹 = dHash（结构） + 8x6 网格 RGB 均值（颜色）
 # 只比 dHash 会把「同为立轴、大片留白」的不同佛画误判成同一张，
 # 因此必须同时要求颜色也接近。
-small = im.convert('L').resize((9, 8), Image.LANCZOS)
+small = out.convert('L').resize((9, 8), Image.LANCZOS)
 px = list(small.get_flattened_data()) if hasattr(small, 'get_flattened_data') else list(small.getdata())
 bits = 0
 for r in range(8):
     for c in range(8):
         bits = (bits << 1) | (1 if px[r*9+c] > px[r*9+c+1] else 0)
 
-grid = im.resize((8, 6), Image.LANCZOS)
+grid = out.resize((8, 6), Image.LANCZOS)
 gp = list(grid.get_flattened_data()) if hasattr(grid, 'get_flattened_data') else list(grid.getdata())
 hist = []
 for (rr, gg, bb) in gp:
@@ -97,17 +103,27 @@ for (rr, gg, bb) in gp:
     hist.append(round(gg / 255.0, 3))
     hist.append(round(bb / 255.0, 3))
 
-print(json.dumps({'h': bits, 'c': hist, 'w': im.width, 'h2': im.height}))
+print(json.dumps({'h': bits, 'c': hist, 'w': out.width, 'h2': out.height}))
 `
 
-function reencode(src, dst) {
+/**
+ * 转码 + 取指纹。
+ * `resize=false` 时只读现有成品、不改写、不做缩放——用于「复用已下载图片」。
+ * 必须支持这条路：_raw 会在成功一轮后清掉，若复用判定只能读 _raw，
+ * 下一轮就会把已有图片全部当成「产物无法读取」重新下载一遍（实测踩过）。
+ */
+function reencode(src, dst, resize = true) {
   try {
-    const out = execFileSync(PYTHON, ['-c', PY, src, dst], {
-      encoding: 'utf8',
-      timeout: 60000,
-      maxBuffer: 1 << 20,
-      env: { ...process.env, PYTHONWARNINGS: 'ignore' },
-    }).trim()
+    const out = execFileSync(
+      PYTHON,
+      ['-c', PY, src, dst, ...(resize ? [] : ['keep'])],
+      {
+        encoding: 'utf8',
+        timeout: 60000,
+        maxBuffer: 1 << 20,
+        env: { ...process.env, PYTHONWARNINGS: 'ignore' },
+      },
+    ).trim()
     const last = out.split('\n').filter(Boolean).pop() ?? ''
     return JSON.parse(last)
   } catch (e) {
@@ -167,21 +183,29 @@ const credits = [
 
 let total = 0
 for (const [bucket, arr] of Object.entries(picked)) {
+  manifest[bucket] = []
   if (onlySet && !onlySet.has(bucket)) {
-    manifest[bucket] = arr.map((_, i) => `${bucket}-${String(i + 1).padStart(2, '0')}.jpg`)
+    // 本次不抓这个桶：只登记**磁盘上真实存在**的文件。
+    // 不要按 arr 全量生成文件名——那会让清单里出现一堆不存在的图，
+    // 前端就会去请求 404（实测踩过：清单 232 条、磁盘只有 125 张）。
+    for (let k = 1; k <= arr.length; k++) {
+      const f = `${bucket}-${String(k).padStart(2, '0')}.jpg`
+      if (fs.existsSync(path.join(OUT_DIR, f))) manifest[bucket].push(f)
+    }
+    total += manifest[bucket].length
     continue
   }
-  manifest[bucket] = []
   let i = 0
   for (const c of arr) {
     const name = `${bucket}-${String(i + 1).padStart(2, '0')}`
     const rawPath = path.join(RAW, `${name}.jpg`)
     const outPath = path.join(OUT_DIR, `${name}.jpg`)
     if (fs.existsSync(outPath) && !process.env.FORCE) {
-      // 已下载：从产物本身重算指纹后登记（保证跨次运行的重复检测仍然有效）
-      const fp = reencode(rawPath, outPath)
+      // 已下载：直接读成品取指纹（不缩放、不改写）；
+      // _raw 可能已被清掉，所以不能依赖它。
+      const fp = reencode(outPath, outPath, false)
       if (!fp) {
-        console.log(`  ⟳ ${name} 产物无法读取，重新下载`)
+        console.log(`  ⟳ ${name} 成品损坏，重新下载`)
         fs.rmSync(outPath, { force: true })
       } else {
         hashes.push({ ...fp, name })
@@ -215,7 +239,9 @@ for (const [bucket, arr] of Object.entries(picked)) {
     i++
     total++
     console.log(`  ✓ ${name}  ${c.title.slice(0, 62)}`)
-    await sleep(700)
+    // 节流：Commons 对连续抓取很敏感（约 6-8 张/分钟就会 429），
+    // 每次成功下载后留足间隔，比事后长退避划算得多。
+    await sleep(Number(process.env.PACE_MS ?? 6500))
   }
   console.log(`\n✔ ${bucket}: ${manifest[bucket].length}`)
 }

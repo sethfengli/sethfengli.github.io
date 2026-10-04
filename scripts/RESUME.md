@@ -294,35 +294,53 @@ git show --stat --oneline HEAD ; git status --porcelain  # 双向核对
 | 清理 | 删死代码 `LotusMark.tsx` / `GuanyinFigure.tsx`、旧清单 `src/data/photos.json` | — |
 | 工具 | 视觉预览工程 + 静态服务器 + 截图脚本 | `preview/`、`scripts/static-server.mjs`、`scripts/shoot-preview.mjs` |
 
-### 9.2 图版管线的四个坑（全部实测）
+### 9.2 图版管线的坑（全部实测）
 
 1. **不要在下载层按 JPEG 魔数过滤**。Commons 上大量中国佛画是 **PNG**（敦煌绢画、台北故宫立轴），
    按 `buf[0]===0xFF && buf[1]===0xD8` 过滤会把它们整批丢掉。格式判定交给 Pillow。
 2. **人工精选清单下不要开自动判重**。中国佛画多为「立轴 + 大片留白」，结构指纹与颜色均值高度相似，
    实测把《释迦三尊图轴》与《罗汉图轴》判成同一张。默认 `DEDUP=0`，`DEDUP=1` 才开。
-3. **429 要长退避**。Commons 限流时返回的正文是普通错误页（不含 "too many requests"），
-   只按关键词判断会漏；按状态码 429 退避 30s×n。
-4. **分类名要先探测**。`Category:Buddhist sculpture of China` 之类**不存在**（正确的是
+3. **429 要长退避，但别让单条阻塞整队**。Commons 限流时返回的正文是普通错误页
+   （不含 "too many requests"），只按关键词判断会漏；按状态码 429 退避，且**每条最多退避 1 次**
+   （退避 2 次以上会把整条队列拖住几分钟）。
+4. **抓取节流参数**：Commons 约 **6-8 张/分钟** 就会 429。成功下载之间留 6.5s 仍会偶发 429，
+   `PACE_MS=14000` 基本稳定。**不要并行跑多个抓取进程**——实测并行会立刻把两个进程一起打进限流。
+5. **`--only` 不许按候选清单全量生成文件名**。清单要只登记**磁盘上真实存在**的文件，
+   否则前端会去请求 404（实测踩过：清单 232 条、磁盘只有 125 张）。
+6. **复用已下载图片时不要依赖 `_raw/`**。一轮成功后 `_raw` 会被清掉，
+   若复用判定只能读 `_raw`，下一轮会把已有图片全部当成「产物无法读取」重新下载一遍（实测踩过，白烧 20 分钟）。
+   现 `reencode(src, dst, resize=false)` 直接读成品取指纹。
+7. **分类名要先探测**。`Category:Buddhist sculpture of China` 之类**不存在**（正确的是
    `Buddhist sculptures from China`），猜分类名会得到空结果。用 `scripts/probe-cats.mjs` 先验。
+
+### 9.2b 备选图源调查结论（2026）
+
+| 源 | 结论 |
+| --- | --- |
+| Wikimedia Commons | **主源**。中国佛教题材覆盖最广（分类 + 搜索），但限流凶，须按 §9.2 节流。 |
+| Met Open Access | `collectionapi.metmuseum.org` 的 `/objects`、`/objects/{id}` 可用，但 `/search` **已于 2026-10-01 退役**（改用 `/public/collection/v1.1/search`）；连续请求约 270 次后整段 API 返回 403（Cloudflare 拦截）。**图片 CDN `images.metmuseum.org` 没有限流**（实测直链 200、2.8MB）。若要用 Met，正确做法是**从别处取 objectID**（Met 在 GitHub 上发全量 CSV），再只用 CDN 取图。脚本骨架留在 `scripts/fetch-met-photos.mjs`（含 `--probe`）。 |
+| Art Institute of Chicago / 其它博物馆 | 未测（时间所限）。若 Commons 继续恶化，按同一思路：**列表/元数据用一个源，图片用其 CDN**。 |
 
 ### 9.3 建议下一轮做（都不是缺陷，按价值排序）
 
 | 项 | 规模 | 说明 |
 | --- | --- | --- |
-| (a) 图版转 WebP | 229 张 / 约 87MB → 约 50MB | `public/` 现 143MB（含音档）。WebP q80 目视无差、体积降 40%+。改 `fetch-cn-picked.mjs` 的 Pillow 输出格式 + `photoUrl()` 后缀即可；**需要重跑下载**。 |
-| (b) 具名图改为清单驱动 | 小 | `NAMED_PHOTOS` 现在按「桶内第 N 张」硬编码索引，桶内容一变就漂移。应把具名映射写进 `photos-cn.json` 的 `named` 字段。 |
-| (c) 色板令牌改名 | 大（约 200 处） | `sandalwood-*` 实际是青瓷灰绿、`tibetan-*` 实际是朱砂红、`gold-*` 基本不用。名字与含义不符，是最大的可读性债。 |
-| (d) 主包瘦身 | 中 | `index-*.js` 约 822KB（gzip 271KB）。`manualChunks` 已废弃，可细化 `build.rollupOptions.output.codeSplitting.groups`，把 three / 字体 / i18n 分开。 |
-| (e) 文案再打磨 | 小 | 本轮只动了一二级页面；若哪天允许，可逐段复核 `verses.ts` 每日法语的中英对应。 |
-| (f) 图版再精选 | 小 | `cn-picked.json` 里少数条目可按意境微调（如某几张偏「旅游照」）；改 `PICKS` 后重跑 ②③ 即可，注意 (b) 的索引漂移。 |
+| (a) 补齐空桶 | 约 50 张 | **`halls` / `sutras` / `landscape` 三个桶还没抓完**（见 §9.4）。重跑 `PACE_MS=14000 node scripts/fetch-cn-picked.mjs` 即可续抓，已有的会自动复用。 |
+| (b) 图版转 WebP | 约 150 张 / 缩减 40% | `public/` 现约 100MB。WebP q80 目视无差。改 Pillow 输出格式 + `photoUrl()` 后缀即可；**需要重跑下载**。 |
+| (c) 具名图改为清单驱动 | 小 | `NAMED_PHOTOS` 按「桶内第 N 张」硬编码索引，桶内容一变就漂移（本轮已因桶未抓满而换过两次）。应把具名映射写进 `photos-cn.json` 的 `named` 字段。 |
+| (d) 色板令牌改名 | 大（约 200 处） | `sandalwood-*` 实际是青瓷灰绿、`tibetan-*` 实际是朱砂红、`gold-*` 基本不用。名字与含义不符，是最大的可读性债。 |
+| (e) 主包瘦身 | 中 | 主 js 约 815KB（gzip 271KB）。可细化 `build.rollupOptions.output.codeSplitting.groups`，把 three / 字体 / i18n 分开。 |
+| (f) 文案再打磨 | 小 | 本轮只动了一二级页面；若允许，可逐段复核 `verses.ts` 每日法语的中英对应。 |
 
 ### 9.4 本轮实测数字（会话末回填）
 
 | 指标 | 值 |
 | --- | --- |
 | `npx tsc --noEmit` | 通过（exit 0） |
-| `validate-en` | ok=294 crit=0 warn=0 parts=0（未改动英文正文，应与 §1 一致） |
+| `npx vite build` | 通过（主 js 815KB / gzip 271KB；CSS 854KB） |
+| `validate-en` | ok=294 crit=0 warn=0 parts=0（未改动英文正文） |
 | `scan-mojibake` | 0 / 294 |
-| 中国佛教图版 | **229 张**（paintings 38 / grottoes 46 / statues 86 / halls 19 / sutras 15 / landscape 18 / lotus 7） |
-| `public/` 总体积 | 约 143MB（图版 + 音档） |
-| 中英词典条目 | zh/en 均 312 行上下，键完全对齐（`tsc` 保证） |
+| 已抓中国佛教图版 | **126 张**：paintings 41 / grottoes 45 / statues 32 / lotus 7 / halls 1（**halls · sutras · landscape 尚未抓完**） |
+| `public/` 总体积 | 约 100MB（图版 + 音档） |
+| 配图分配 | 相邻文章零重复；`halls` 为空时自动跳过该桶，不会出现空图 |
+| 中英词典 | zh/en 键完全对齐（`tsc` 保证） |

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useI18n } from '../i18n'
-import { CATALOG, NAMED_PHOTOS, PHOTO_NAMES } from '../lib/content'
+import { CATALOG, NAMED_PHOTOS, PHOTO_NAMES, galleryPhotos } from '../lib/content'
 import { CHANTS } from '../data/chants'
 import { LOTS } from '../data/lots'
 import { CoverImage } from '../components/zen/CoverImage'
@@ -182,17 +182,17 @@ export function About() {
               <section aria-label={t('about.galleryTitle')}>
                 <SectionHeading align="left" title={t('about.galleryTitle')} subtitle={t('about.gallerySubtitle')} />
                 <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4 [grid-auto-rows:7rem] sm:[grid-auto-rows:8rem]">
-                  {Array.from({ length: 8 }).map((_, i) => {
+                  {galleryPhotos().map((src, i) => {
                     const big = i % 4 === 0
                     return (
                       <div
-                        key={i}
+                        key={src}
                         className={`group card-media relative overflow-hidden rounded-xs border border-hairline bg-rice-100 ${
                           big ? 'row-span-2' : ''
                         }`}
                       >
                         <img
-                          src={`/photos/cn/${PHOTO_NAMES[(i * 23) % PHOTO_NAMES.length]}`}
+                          src={src}
                           alt=""
                           loading="lazy"
                           decoding="async"

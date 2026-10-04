@@ -67,6 +67,21 @@ type PhotoManifest = {
 
 const CN_PHOTOS = cnPhotosJson as PhotoManifest
 
+/** 具名映射（`scripts/pick-named-photos.mjs` 写入的 `named` 字段） */
+const NAMED_KEY_FALLBACK = {
+  hero: 'grottoes',
+  gate: 'halls',
+  guanyin: 'statues',
+  bell: 'halls',
+  lantern: 'paintings',
+  garden: 'grottoes',
+  blossom: 'paintings',
+  lotus: 'lotus',
+  sutra: 'paintings',
+} as const
+
+const NAMED_MAP = (CN_PHOTOS.named ?? {}) as Record<string, string | undefined>
+
 /** 取某桶的文件名数组（桶不存在时为空） */
 function bucketOf(name: string): string[] {
   const v = CN_PHOTOS[name]
@@ -154,16 +169,27 @@ function poolFor(school: School): string[] {
  *    而池长 236，`(7i mod 236)` 只取到 5 个值，**46 张石窟图里只用到 3 张**；
  * ② 同一篇文章既会出现在全目录里、也是院系列表的一员，两处取图不一致。
  * 现改为「院系内序号 → 交错序列」，既不重复也不会饿死任何一张图。
+ *
+ * 院系内序号在模块加载时一次算好（slug → 序号）。
+ * 不要每次调用都 `CATALOG.slice(0,i).filter(...)`：列表页一屏 24 张卡，
+ * 那样是 O(n²)，294 篇规模下会白烧几万次遍历。
  */
+const LOCAL_INDEX = (() => {
+  const m = new Map<string, number>()
+  const seen: Record<School, number> = { jing: 0, chan: 0, xiuxue: 0 }
+  for (const a of CATALOG) {
+    m.set(a.slug, seen[a.school] ?? 0)
+    seen[a.school] = (seen[a.school] ?? 0) + 1
+  }
+  return m
+})()
+
 export function photoForSlug(slug: string): string {
   const idx = CATALOG.findIndex((a) => a.slug === slug)
-  const meta = idx >= 0 ? CATALOG[idx] : null
-  const school = meta?.school ?? 'xiuxue'
+  const school = idx >= 0 ? CATALOG[idx].school : 'xiuxue'
   const pool = poolFor(school)
   if (pool.length === 0) return PHOTO_NAMES.length ? photoUrl(PHOTO_NAMES[0]) : ''
-  // 院系内序号：同一院系的文章依次取图，走完一遍再从头来
-  const localIdx = CATALOG.slice(0, Math.max(idx, 0)).filter((a) => a.school === school).length
-  return photoUrl(pool[localIdx % pool.length])
+  return photoUrl(pool[(LOCAL_INDEX.get(slug) ?? 0) % pool.length])
 }
 
 /**
@@ -171,24 +197,63 @@ export function photoForSlug(slug: string): string {
  * 取值来自各自语义最贴切的那个桶（详见上方各页调用处）。
  */
 export const NAMED_PHOTOS = {
-  /** 首页 Hero：中国石窟摩崖大佛（炳灵寺） */
-  hero: () => photoUrl(bucketOf('grottoes')[3] ?? PHOTO_NAMES[0]),
-  /** 山门匾额（文库题头） */
-  gate: () => photoUrl(bucketOf('halls')[0] ?? PHOTO_NAMES[0]),
+  /** 首页 Hero：云冈石窟横构浮雕（飞天与佛龛）。 */
+  hero: () => named('hero', 'grottoes'),
+  /** 山门 / 殿宇（文库题头） */
+  gate: () => named('gate', 'halls'),
   /** 观音造像（灵签题头与造像位） */
-  guanyin: () => photoUrl(bucketOf('statues')[80] ?? bucketOf('statues')[0] ?? PHOTO_NAMES[0]),
-  /** 梵钟（听经题头） */
-  bell: () => photoUrl(bucketOf('halls')[6] ?? PHOTO_NAMES[0]),
+  guanyin: () => named('guanyin', 'statues'),
+  /** 梵钟 / 殿宇（听经题头） */
+  bell: () => named('bell', 'halls'),
   /** 供灯意象（祈福题头） */
-  lantern: () => photoUrl(bucketOf('paintings')[35] ?? bucketOf('paintings')[0] ?? PHOTO_NAMES[0]),
+  lantern: () => named('lantern', 'paintings'),
   /** 山水（关于页题头） */
-  garden: () => photoUrl(bucketOf('landscape')[10] ?? PHOTO_NAMES[0]),
+  garden: () => named('garden', 'grottoes'),
   /** 绢本经变（关于页拼贴） */
-  blossom: () => photoUrl(bucketOf('paintings')[3] ?? PHOTO_NAMES[0]),
+  blossom: () => named('blossom', 'paintings'),
   /** 莲（关于页拼贴 · 徽记） */
-  lotus: () => photoUrl(bucketOf('lotus')[2] ?? PHOTO_NAMES[0]),
+  lotus: () => named('lotus', 'lotus'),
   /** 写经（关于页拼贴） */
-  sutra: () => photoUrl(bucketOf('sutras')[5] ?? PHOTO_NAMES[0]),
+  sutra: () => named('sutra', 'paintings'),
+}
+
+/**
+ * 具名图取值：优先用清单里 `named` 指定的那张（由
+ * `scripts/pick-named-photos.mjs` 按文件名挑选后写入），
+ * 挑不到就退回该桶第一张。
+ *
+ * 不要在这里写「桶内第 N 张」：桶一增删（某桶没抓满、某张被限流跳过），
+ * 具名图就会整体漂移，而且第 N 张是什么，读代码的人无从判断。
+ */
+function named(key: keyof typeof NAMED_KEY_FALLBACK, fallbackBucket: string): string {
+  const picked = NAMED_MAP[key]
+  if (picked && bucketOf(fallbackBucket).includes(picked)) return photoUrl(picked)
+  const arr = bucketOf(fallbackBucket)
+  return photoUrl(arr[0] ?? PHOTO_NAMES[0] ?? '')
+}
+
+/**
+ * 「禅院掠影」照片墙：按题材取图，保证画面本身就在讲「中国佛教有什么」。
+ *
+ * 旧版用 `PHOTO_NAMES[(i * 11) % len]` 从全库抽 8 张，会抽到同题材甚至同一类构图，
+ * 既不好看也不说明问题。这里复用 `named` 里已按题材选好的具名图（佛画 / 造像 /
+ * 石窟 / 殿宇 / 写经 / 莲），再补两张造像与一张山水凑满 8 格。
+ */
+export function galleryPhotos(): string[] {
+  const out = [
+    NAMED_PHOTOS.blossom(), // 绢本经变
+    NAMED_PHOTOS.guanyin(), // 观音造像
+    NAMED_PHOTOS.hero(), // 石窟浮雕
+    NAMED_PHOTOS.gate(), // 殿宇
+    NAMED_PHOTOS.sutra(), // 写经
+    NAMED_PHOTOS.lotus(), // 莲池
+  ]
+  const statues = bucketOf('statues')
+  const grottoes = bucketOf('grottoes')
+  for (const f of [statues[1], statues[2], grottoes[1]]) {
+    if (f && out.length < 8) out.push(photoUrl(f))
+  }
+  return out.slice(0, 8)
 }
 
 

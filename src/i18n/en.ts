@@ -239,7 +239,7 @@ export const en: Dict = {
     heritageTitle: 'One Line, Unbroken',
     heritage: [
       { title: 'Practice as Taught', desc: 'To study the Buddha’s way is to practise it — exactly as the Buddha taught.' },
-      { title: 'Understanding and Practice Together', desc: 'In practice there are steps by which to enter; in realisation there is something truly one’s own.' },
+      { title: 'Understanding and Practice Together', desc: 'There are steps by which to enter; there is something of one’s own to realise.' },
       { title: 'Chan and Pure Land Alike', desc: 'Ten thousand thoughts return to one, and the one returns to nothing; hold the Name in faith and vow, one mind undisturbed.' },
     ],
     contactTitle: 'Contact & Feedback',
