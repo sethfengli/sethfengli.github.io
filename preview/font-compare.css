@@ -1,0 +1,51 @@
+/* ============================================================
+   字体对比预览的作用域样式（仅 preview 用，不进正式构建）
+   ------------------------------------------------------------
+   两版**只差一处**：汉字的正文字体族。
+   标题（h1/h2/h3/blockquote 等）在两版里都用 --font-heading，即沿用现状的楷体；
+   正文（p / li / 摘要）在 proposed 版改走宋体。
+   ============================================================ */
+
+/* 现状：正文与标题同族 —— 都走 --font-serif（汉字回退霞鹜文楷 · 楷体） */
+.fc-now {
+  --fc-body: var(--font-serif);
+  --fc-heading: var(--font-serif);
+}
+
+/* 提案：正文宋体（横细竖粗的印刷体），标题仍楷体 —— 层级来自「写出 vs 印出」的质感差 */
+.fc-proposed {
+  --fc-body: 'Noto Serif SC', 'Songti SC', 'Noto Serif', serif;
+  --fc-heading: var(--font-serif);
+}
+
+/* 正文类元素改用 --fc-body */
+.fc-now p,
+.fc-proposed p,
+.fc-now li,
+.fc-proposed li {
+  font-family: var(--fc-body);
+}
+
+/* 标题类元素改用 --fc-heading（两版相同，保证「只有正文变了」） */
+.fc-now h1,
+.fc-proposed h1,
+.fc-now h2,
+.fc-proposed h2,
+.fc-now h3,
+.fc-proposed h3,
+.fc-now blockquote,
+.fc-proposed blockquote {
+  font-family: var(--fc-heading);
+}
+
+/* 阅读器的 .article-body 自己写了 font-family: var(--font-serif)，
+   这里覆写成对比用的正文族，否则左右两版看不出差别。 */
+.fc-now .article-body,
+.fc-proposed .article-body {
+  font-family: var(--fc-body);
+}
+
+/* 说明条：修掉误写的类名（sandwood）带来的无底色问题 */
+.fc-bar {
+  background: var(--color-sandalwood-950);
+}

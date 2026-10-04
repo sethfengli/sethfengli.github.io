@@ -4,11 +4,20 @@ import { I18nProvider } from '../src/i18n'
 import { WishTree } from '../src/components/zen/WishTree'
 import { ZenIllustration, type IllustrationVariant } from '../src/components/zen/ZenIllustration'
 import { IncenseBurner } from '../src/components/zen/IncenseBurner'
+import { FontCompare } from './FontCompare'
 import { initSiteTheme } from '../src/lib/siteTheme'
 import type { Wish } from '../src/lib/wishes'
 import '../src/index.css'
 
 initSiteTheme()
+
+/**
+ * 预览入口：按 URL 的 ?mode= 选择要渲染什么。
+ *   ?mode=font   → 字体对比（一级页面「标题 vs 正文」）
+ *   默认          → SVG 组件与水墨插画（改插画时用）
+ * 这样一个 Vite 工程就能同时服务两种用途，不必再开第二个 config。
+ */
+const MODE = new URLSearchParams(window.location.search).get('mode') ?? 'svg'
 
 /** 示例心愿：中文竖排飘带看起来最真实 */
 const WISHES: Wish[] = [
@@ -112,8 +121,12 @@ function App() {
 
 ReactDOM.createRoot(document.getElementById('preview')!).render(
   <React.StrictMode>
-    <I18nProvider>
-      <App />
-    </I18nProvider>
+    {MODE === 'font' ? (
+      <FontCompare />
+    ) : (
+      <I18nProvider>
+        <App />
+      </I18nProvider>
+    )}
   </React.StrictMode>,
 )
