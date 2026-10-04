@@ -237,30 +237,48 @@ git show --stat --oneline HEAD ; git status --porcelain  # 双向核对
 ## 7. 下一轮启动提示词（复制这一段）
 
 ```
-继续 huideng-chanlin 项目（D:\FengLi\Web\fou\huideng-chanlin）。上一轮做了「文案 + 视觉 + 图版」三件事，
-状态与剩余项见 scripts/RESUME.md §9（**先读 §9，再读 §4 的 16 条坑**）。
+继续 huideng-chanlin 项目（D:\FengLi\Web\fou\huideng-chanlin）。上一轮做了「文案 + 视觉 + 图版 + 字体」四件事，
+状态、坑与剩余项见 scripts/RESUME.md §9（**先读 §9，再读 §4 的 16 条历史坑**）。
 
-上一轮已落地：
+上一轮已落地（提交 5ad1a60 → 4960d55）：
 - 中英文案按「雅信达」重写（src/i18n/zh.ts + en.ts），只动一二级页面，未进文章正文；
-- 图版全面换为中国传统佛教题材（public/photos/cn/，229 张；日韩越泰印/尼泊尔/藏传题材已剔除）；
-  管线四步：collect-pool.mjs → curate-cn.mjs → fetch-cn-picked.mjs（+ probe-cats.mjs 探分类）；
-- 许愿树 SVG 重做（中国水墨松柏：一笔焦墨树干 + 松针簇 + 点苔松果 + 红绸系真实枝桠）；
-- 十二式禅意插画改为水墨卷（宣纸底 + 墨分五色 + 单点朱砂印 + 自然物缓动）；
-- 新增按路由的 title/description/og（RouteMeta）、新 favicon、3D 许愿树的粉色小点改墨绿苔点；
-- 新增视觉预览工具（preview/ + static-server.mjs + shoot-preview.mjs），改 SVG 必用。
+- 图版换为中国传统佛教题材，已抓 133 张（public/photos/cn/）；日韩越泰印/尼泊尔/藏传题材已剔除，
+  旧 147 张（40.8MB）已删。管线四步：collect-pool.mjs → curate-cn.mjs → fetch-cn-picked.mjs
+  （+ probe-cats.mjs 探分类、photos-status.mjs 体检、rebuild-photo-manifest.mjs 中断后重建清单）；
+- 许愿树 SVG 重做为水墨松柏（一笔焦墨树干 + 松针簇 + 点苔松果 + 红绸系真实枝桠）；
+- 十二式禅意插画改水墨卷（宣纸底 + 墨分五色 + 单点朱砂印 + 自然物缓动）；
+- 字体改为三分法：标题楷（--font-serif）· 正文宋（--font-song，body 默认）· 界面黑（--font-sans）；
+  迁移脚本 scripts/migrate-to-song.mjs，对比工程 preview/FontCompare.tsx（?mode=font）；
+- 新增 RouteMeta（按路由写 title/description/og）、新 favicon、scripts/style-audit.mjs（风格体检）；
+- 修掉两个实测缺陷：配图分配 (idx*7)%len 的饿死 bug、photoForSlug 的 O(n²)；
+- 装饰性 SVG 补 aria-hidden（11 处）、全角 ＋ 字符图标换内联 SVG（3 处）。
 
-下一轮请先跑这三条核对，确认 §9 的数字仍成立：
+下一轮请先跑这几条核对，确认 §9.4 的数字仍成立：
   npx tsc --noEmit
-  npx vite build            （需子进程权限；受限沙箱会 spawn EPERM）
+  npx vite build                    （需子进程权限；受限沙箱会 spawn EPERM）
   node scripts/validate-en.mjs && node scripts/scan-mojibake.mjs
+  node scripts/style-audit.mjs       （装饰符号/圆角投影/img alt/svg aria 应全 0）
+  node scripts/photos-status.mjs     （退出码 2 = 图版仍需续抓）
 
-然后**先问我这一轮要做什么**（可能是：文案再打磨、图版再精选、某个 SVG 再改、加新栏目），
-不要自行扩大范围。§9 的「建议下一轮做」列了几项已知可改之处，可直接挑。
+然后**先问我这一轮要做什么**，不要自行扩大范围。§9.3 列了几项已知可改之处，可直接挑，其中：
+- 图版还有两桶全空（sutras 0/15、landscape 0/18），halls 1/19、statues 39/86：
+  续抓用 `.\scripts\fetch-photos.ps1`（或 -Only halls,sutras,landscape,statues）；
+  已下载的自动复用、不会重复下载；Commons 约 6-8 张/分钟就 429，一次跑不完很正常，可随时中断续跑。
+- 首页导览卡有两张云冈石窟是紫外灯照明的绿色摩崖，颜色与水墨基调不搭，续抓时优先换自然光的。
 
-纪律：含中文的文件一律不要用 PowerShell Set-Content 回写（双重编码，见 §4.3），用 node writeFileSync 或 edit 工具；
-单字段改动用行级外科编辑（§4.8）；git status 有 CRLF 噪声，判据用 git hash-object（§4.8）；
-临时件只许放 build/ 并自删；改完 SVG/插画务必用 shoot-preview.mjs 截图肉眼核对，不要只看代码。
-会话末：回填 §9 的实测数字，提交 docs: …
+纪律：
+- 含中文的文件一律不要用 PowerShell Set-Content 回写（双重编码，见 §4.3），用 node writeFileSync 或 edit 工具；
+- PowerShell 脚本里的字符串常量只用 ASCII，中文只放注释（PS 5.1 读中文串会把引号配对读错，见 §9.2）；
+- 单字段改动用行级外科编辑（§4.8）；git status 有 CRLF 噪声，判据用 git hash-object（§4.8）；
+- 临时件只许放 build/ 并自删；不要 push；
+- 改完 SVG / 插画 / 字体**务必截图肉眼核对**，不要只看代码：
+    npx vite build --config preview/vite.config.ts
+    node scripts/static-server.mjs preview-dist --port=5188
+    node scripts/shoot-preview.mjs --name=tree --w=1100 --h=1500      # 或 ?mode=font 看字体
+  要核对**整站真实产物**（含路由/图片/字体）时：npx vite build 后
+    node scripts/static-server.mjs dist --port=5192
+  再对 http://127.0.0.1:5192/ 截图（加 --lang=zh-CN 走中文分支）。
+会话末：回填 §9.4 的实测数字，提交 docs: …
 ```
 
 ## 8. 归档（已执行完的历史计划，**不要当待办读**）
@@ -293,6 +311,11 @@ git show --stat --oneline HEAD ; git status --porcelain  # 双向核对
 | 图标 | favicon 改为宣纸底 + 焦墨莲 + 朱砂印；`theme-color` 改焦墨 | `public/favicon.svg`、`index.html` |
 | 清理 | 删死代码 `LotusMark.tsx` / `GuanyinFigure.tsx`、旧清单 `src/data/photos.json` | — |
 | 工具 | 视觉预览工程 + 静态服务器 + 截图脚本 | `preview/`、`scripts/static-server.mjs`、`scripts/shoot-preview.mjs` |
+| **字体三分法** | 标题楷（`--font-serif`）· 正文宋（新增 `--font-song`，**body 默认字体**）· 界面黑；48 处语义为正文的 `font-serif` 逐行改 `font-song` | `src/index.css`、`scripts/migrate-to-song.mjs`、11 个组件/页面 |
+| **字体对比工程** | 同页并排两版 + 读 computed style 验证「只有正文变了」（标题字体链与排版宽度两版一致） | `preview/FontCompare.tsx`、`scripts/probe-fonts.mjs` |
+| 可达性 | 装饰性 SVG 补 `aria-hidden`（11 处）；全角 `＋` 字符图标换内联 SVG（3 处） | `src/components/ui/Icons.tsx`、`scripts/fix-svg-aria.mjs` |
+| **风格体检** | 用计数替代「感觉」：字体分级、圆角/投影/毛玻璃/装饰渐变、emoji 与字符装饰、主题令牌名实、可达性、img alt、中英对齐 | `scripts/style-audit.mjs` |
+| 配图分配修复 | `(idx*7)%len` 在池长与步长不互质时退化（禅修院 46 张石窟只用到 3 张）→ 改按桶权重交错 + 院系内序号；并把 `photoForSlug` 从 O(n²) 降到 O(1) | `src/lib/content.ts` |
 
 ### 9.2 图版管线的坑（全部实测）
 
@@ -325,23 +348,31 @@ git show --stat --oneline HEAD ; git status --porcelain  # 双向核对
 
 | 项 | 规模 | 说明 |
 | --- | --- | --- |
-| (a) 补齐空桶 | 约 50 张 | **`halls`（1/19）/ `sutras`（0/15）/ `landscape`（0/18）三个桶还没抓完，`statues` 也差 47 张**（见 §9.4）。一条命令续抓：`.\scripts\fetch-photos.ps1`（或 `-Only halls,sutras,landscape`）。已有的会自动复用，不会重复下载。 |
-| (b) 图版转 WebP | 约 150 张 / 缩减 40% | `public/` 现约 100MB。WebP q80 目视无差。改 Pillow 输出格式 + `photoUrl()` 后缀即可；**需要重跑下载**。 |
-| (c) 具名图改为清单驱动 | 小 | `NAMED_PHOTOS` 按「桶内第 N 张」硬编码索引，桶内容一变就漂移（本轮已因桶未抓满而换过两次）。应把具名映射写进 `photos-cn.json` 的 `named` 字段。 |
-| (d) 色板令牌改名 | 大（约 200 处） | `sandalwood-*` 实际是青瓷灰绿、`tibetan-*` 实际是朱砂红、`gold-*` 基本不用。名字与含义不符，是最大的可读性债。 |
-| (e) 主包瘦身 | 中 | 主 js 约 815KB（gzip 271KB）。可细化 `build.rollupOptions.output.codeSplitting.groups`，把 three / 字体 / i18n 分开。 |
-| (f) 文案再打磨 | 小 | 本轮只动了一二级页面；若允许，可逐段复核 `verses.ts` 每日法语的中英对应。 |
+| (a) 补齐空桶 | 约 50 张 | **`sutras`（0/15）/ `landscape`（0/18）两桶全空，`halls` 1/19、`statues` 39/86 也未抓完**（见 §9.4）。一条命令续抓：`.\scripts\fetch-photos.ps1`（或 `-Only halls,sutras,landscape,statues`）。已有的会自动复用，不会重复下载。 |
+| (b) 换掉「灯光色偏重」的图 | 小 | 首页导览卡里那两张云冈石窟照片是**紫外灯照明的绿色摩崖**，颜色很冲，与水墨枯淡基调不搭；`grottoes` 桶里还有同类。挑图时优先选自然光/漫射光的照片。改 `scripts/curate-cn.mjs` 的 `PICKS` 后重跑 ②③；注意 (d) 的具名图会随之漂移，跑完记得 `node scripts/pick-named-photos.mjs`。 |
+| (c) 内置汉字 web font（可选） | 中 | 现正文宋体走**系统栈**：macOS 宋体-简好、**Windows 中易宋体偏弱**。要全平台一致需引入 `@fontsource/noto-serif-sc`（汉字全量体积可观，建议只给正文按需加载）。见 `docs/DESIGN.md` 字体一节。 |
+| (d) 色板令牌改名 | 大（约 290 处） | `sandalwood-*`（130 处）实际是青瓷灰绿、`tibetan-*`（159 处）实际是朱砂红、`gold-*` / `moon-*` 仅存于 `lots.ts` 的三档签位配色与令牌定义。名字与含义不符，是最大的可读性债。 |
+| (e) 主包瘦身 | 中 | 主 js 约 815KB（gzip 271KB）、CSS 854KB。可细化 `build.rollupOptions.output.codeSplitting.groups`（three / 字体 / i18n 分开）；CSS 大头是 `docs/markdown` 无关、主要来自文章正文样式与字体 @font-face。 |
+| (f) 图版转 WebP | 约 150 张 / 缩减约 40% | `public/` 现约 49MB 图版。WebP q80 目视无差。改 Pillow 输出格式 + `content.ts` 的 `photoUrl()` 后缀即可；**需要重跑下载**。 |
+| (g) 文案再打磨 | 小 | 本轮只动了一二级页面；若允许，可逐段复核 `verses.ts` 每日法语的中英对应。 |
 
-### 9.4 本轮实测数字（会话末回填）
+### 9.4 本轮实测数字
 
 | 指标 | 值 |
 | --- | --- |
 | `npx tsc --noEmit` | 通过（exit 0） |
-| `npx vite build` | 通过（主 js 815KB / gzip 271KB；CSS 854KB） |
-| `validate-en` | ok=294 crit=0 warn=0 parts=0（未改动英文正文） |
+| `npx vite build` | 通过（主 js 约 815KB / gzip 271KB；CSS 约 854KB） |
+| `validate-en` | ok=294 crit=0 warn=0 parts=0（英文正文未改动） |
 | `scan-mojibake` | 0 / 294 |
-| 已抓中国佛教图版 | **133 张**：paintings 41/41 · grottoes 45/46 · statues 39/86 · lotus 7/7 · halls 1/19 · **sutras 0/15 · landscape 0/18** |
-| `public/` 总体积 | 约 49MB 图版 + 音档 |
-| 配图分配 | 相邻文章零重复；空桶自动跳过，不会出现空图 |
+| `style-audit` | 装饰符号 0 · 圆角与投影 0 · img 缺 alt 0 · svg 缺 aria-hidden 0；font-weight 仅 5 处 `font-medium`（`.btn-*`）+ 1 处 `font-bold`（装饰性「嗡」字） |
+| 已抓中国佛教图版 | **133 张**（paintings 41/41 · grottoes 45/46 · statues 39/86 · lotus 7/7 · halls 1/19 · **sutras 0/15 · landscape 0/18**） |
+| 图版清单与磁盘 | 一致（133 = 133）；`node scripts/photos-status.mjs` 随时体检，退出码 2 = 仍需续抓 |
+| `public/` 图版体积 | 约 49MB |
+| 全站引用完整性 | 294 篇封面 + 9 个具名图，**引用缺失 0**（空桶会被 `poolFor` 跳过，不会出现空图） |
+| 字体分级 | 标题楷（`--font-serif` 47 处）· 正文宋（`--font-sans` 76 处 + 显式 `font-song` 54 处 + body 默认继承）· 界面黑 |
 | 中英词典 | zh/en 键完全对齐（`tsc` 保证） |
-| 图版清单与磁盘 | 一致（133 = 133）；`node scripts/photos-status.mjs` 可随时体检 |
+
+### 9.5 归档
+
+本轮（文案 / 视觉 / 图版 / 字体）已全部提交，工作区干净：`5ad1a60` → `6e952d7` → `ccbfd3f` → `2e4aae3` → `3dd6fa4` → `8b042b2` → `4960d55`。
+
