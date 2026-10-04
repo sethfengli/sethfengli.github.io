@@ -237,20 +237,30 @@ git show --stat --oneline HEAD ; git status --porcelain  # 双向核对
 ## 7. 下一轮启动提示词（复制这一段）
 
 ```
-继续 huideng-chanlin 项目（D:\FengLi\Web\fou\huideng-chanlin）。翻译与缺陷修复轮 1/2/3 均已收官：
-validate-en ok=294 crit=0 warn=0 parts=0、scan-mojibake 0/294、task-plan 0 任务、catalog-en 与 en/* 差异 0。
-先读 scripts/RESUME.md（唯一权威：状态/目录/流程/坑/剩余项，尤其 §4 的 16 条坑）。
-剩余项见 §6，**全部可选、都不是缺陷**：(a) 音标第二轮 ~2,905 处（纯风格，口径已定）；
-(b) 站点 npm run build（需本机，沙箱 spawn EPERM）；(c) meta-scan 归零（不建议）。
-默认预期是「无需改动」——请先跑 task-plan / validate-en / scan-mojibake 核对，
-确认 §1 的数字仍然成立后，**先问我这一轮要做什么**，不要自行扩大范围。
+继续 huideng-chanlin 项目（D:\FengLi\Web\fou\huideng-chanlin）。上一轮做了「文案 + 视觉 + 图版」三件事，
+状态与剩余项见 scripts/RESUME.md §9（**先读 §9，再读 §4 的 16 条坑**）。
 
-纪律：改动后必跑 node scripts/repair-json.mjs && node scripts/validate-en.mjs && node scripts/scan-mojibake.mjs；
-每个 slug 单独提交，提交后 git show --stat --oneline HEAD 与 git status --porcelain 双向核对；不要 push。
-含中文的文件一律不要用 PowerShell Set-Content 回写（双重编码，见 §4.3），用 node writeFileSync 或 edit 工具。
-单字段改动用行级外科编辑、禁止整文件重序列化（§4.8）；git status 有 CRLF 噪声，判据用 git hash-object（§4.8）。
-临时件只许放 build/ 并自删，禁止写 scripts/（除非我同意）；诊断只在会话末写一次。
-会话末：回填 RESUME.md §1 的实测数字并更新 §6，提交 docs: …
+上一轮已落地：
+- 中英文案按「雅信达」重写（src/i18n/zh.ts + en.ts），只动一二级页面，未进文章正文；
+- 图版全面换为中国传统佛教题材（public/photos/cn/，229 张；日韩越泰印/尼泊尔/藏传题材已剔除）；
+  管线四步：collect-pool.mjs → curate-cn.mjs → fetch-cn-picked.mjs（+ probe-cats.mjs 探分类）；
+- 许愿树 SVG 重做（中国水墨松柏：一笔焦墨树干 + 松针簇 + 点苔松果 + 红绸系真实枝桠）；
+- 十二式禅意插画改为水墨卷（宣纸底 + 墨分五色 + 单点朱砂印 + 自然物缓动）；
+- 新增按路由的 title/description/og（RouteMeta）、新 favicon、3D 许愿树的粉色小点改墨绿苔点；
+- 新增视觉预览工具（preview/ + static-server.mjs + shoot-preview.mjs），改 SVG 必用。
+
+下一轮请先跑这三条核对，确认 §9 的数字仍成立：
+  npx tsc --noEmit
+  npx vite build            （需子进程权限；受限沙箱会 spawn EPERM）
+  node scripts/validate-en.mjs && node scripts/scan-mojibake.mjs
+
+然后**先问我这一轮要做什么**（可能是：文案再打磨、图版再精选、某个 SVG 再改、加新栏目），
+不要自行扩大范围。§9 的「建议下一轮做」列了几项已知可改之处，可直接挑。
+
+纪律：含中文的文件一律不要用 PowerShell Set-Content 回写（双重编码，见 §4.3），用 node writeFileSync 或 edit 工具；
+单字段改动用行级外科编辑（§4.8）；git status 有 CRLF 噪声，判据用 git hash-object（§4.8）；
+临时件只许放 build/ 并自删；改完 SVG/插画务必用 shoot-preview.mjs 截图肉眼核对，不要只看代码。
+会话末：回填 §9 的实测数字，提交 docs: …
 ```
 
 ## 8. 归档（已执行完的历史计划，**不要当待办读**）
@@ -263,3 +273,56 @@ validate-en ok=294 crit=0 warn=0 parts=0、scan-mojibake 0/294、task-plan 0 任
 | `scripts/DISPATCH.md` | **仍有效**：补片派发的子代理提示词规范 | 直接读 |
 
 更早的过期文档（`NEXT.md`、`PLAYBOOK.md`、`WEEKEND-PLAN.md`、`NEXT-PLAN.md`）已在 git 历史里。
+
+## 9. 站点改进轮（文案 / 视觉 / 图版）· 状态与坑
+
+> 本轮范围：**只有一级、二级页面**（首页 / 书架 / 听经 / 祈福 / 灵签 / 关于 + 页头页脚），
+> **没有深入文章正文**。文章正文的翻译仍是 §1 的状态，未改动。
+
+### 9.1 这一轮改了什么
+
+| 面 | 改动 | 文件 |
+| --- | --- | --- |
+| 文案（中） | 按「雅信达」重写；去生硬直译与堆砌（如「不艰深 · 不难懂」→「不艰深 · 不难懂 · 从读得进去的那一部开始」）；主题名与阅读背景名对齐现行水墨配色 | `src/i18n/zh.ts` |
+| 文案（英） | **重写而非直译**：`nav` 从 "Beginner's Path / Calm & Listen" 改为 "Reading Room / Listen"；修正中式英语（"One stick of heart-incense fills the ten directions"、"Do the lots come true?"） | `src/i18n/en.ts` |
+| 图版 | 全部换为中国传统佛教题材 229 张，7 个语义桶；旧 147 张（40.8MB，含日/韩/越/泰/印题材）已删 | `public/photos/cn/`、`src/data/photos-cn.json`、`src/lib/content.ts` |
+| 许愿树 SVG | 重做为中国水墨松柏（详见 `docs/DESIGN.md` §4） | `src/components/zen/WishTree.tsx`、`src/index.css` |
+| 插画 SVG | 十二式改水墨卷（宣纸底 + 墨分五色 + 朱砂印 + 自然物缓动） | `src/components/zen/ZenIllustration.tsx` |
+| 3D 微调 | 许愿树地面粉色小点 → 墨绿苔点；地面/光圈去掉荧光绿 | `src/components/zen3d/Tree3D.tsx` |
+| SEO | 按路由写入 `title` / `description` / `og:*`（原先二级页共用一份通用 description） | `src/components/ui/RouteMeta.tsx`、`src/components/layout/Layout.tsx` |
+| 图标 | favicon 改为宣纸底 + 焦墨莲 + 朱砂印；`theme-color` 改焦墨 | `public/favicon.svg`、`index.html` |
+| 清理 | 删死代码 `LotusMark.tsx` / `GuanyinFigure.tsx`、旧清单 `src/data/photos.json` | — |
+| 工具 | 视觉预览工程 + 静态服务器 + 截图脚本 | `preview/`、`scripts/static-server.mjs`、`scripts/shoot-preview.mjs` |
+
+### 9.2 图版管线的四个坑（全部实测）
+
+1. **不要在下载层按 JPEG 魔数过滤**。Commons 上大量中国佛画是 **PNG**（敦煌绢画、台北故宫立轴），
+   按 `buf[0]===0xFF && buf[1]===0xD8` 过滤会把它们整批丢掉。格式判定交给 Pillow。
+2. **人工精选清单下不要开自动判重**。中国佛画多为「立轴 + 大片留白」，结构指纹与颜色均值高度相似，
+   实测把《释迦三尊图轴》与《罗汉图轴》判成同一张。默认 `DEDUP=0`，`DEDUP=1` 才开。
+3. **429 要长退避**。Commons 限流时返回的正文是普通错误页（不含 "too many requests"），
+   只按关键词判断会漏；按状态码 429 退避 30s×n。
+4. **分类名要先探测**。`Category:Buddhist sculpture of China` 之类**不存在**（正确的是
+   `Buddhist sculptures from China`），猜分类名会得到空结果。用 `scripts/probe-cats.mjs` 先验。
+
+### 9.3 建议下一轮做（都不是缺陷，按价值排序）
+
+| 项 | 规模 | 说明 |
+| --- | --- | --- |
+| (a) 图版转 WebP | 229 张 / 约 87MB → 约 50MB | `public/` 现 143MB（含音档）。WebP q80 目视无差、体积降 40%+。改 `fetch-cn-picked.mjs` 的 Pillow 输出格式 + `photoUrl()` 后缀即可；**需要重跑下载**。 |
+| (b) 具名图改为清单驱动 | 小 | `NAMED_PHOTOS` 现在按「桶内第 N 张」硬编码索引，桶内容一变就漂移。应把具名映射写进 `photos-cn.json` 的 `named` 字段。 |
+| (c) 色板令牌改名 | 大（约 200 处） | `sandalwood-*` 实际是青瓷灰绿、`tibetan-*` 实际是朱砂红、`gold-*` 基本不用。名字与含义不符，是最大的可读性债。 |
+| (d) 主包瘦身 | 中 | `index-*.js` 约 822KB（gzip 271KB）。`manualChunks` 已废弃，可细化 `build.rollupOptions.output.codeSplitting.groups`，把 three / 字体 / i18n 分开。 |
+| (e) 文案再打磨 | 小 | 本轮只动了一二级页面；若哪天允许，可逐段复核 `verses.ts` 每日法语的中英对应。 |
+| (f) 图版再精选 | 小 | `cn-picked.json` 里少数条目可按意境微调（如某几张偏「旅游照」）；改 `PICKS` 后重跑 ②③ 即可，注意 (b) 的索引漂移。 |
+
+### 9.4 本轮实测数字（会话末回填）
+
+| 指标 | 值 |
+| --- | --- |
+| `npx tsc --noEmit` | 通过（exit 0） |
+| `validate-en` | ok=294 crit=0 warn=0 parts=0（未改动英文正文，应与 §1 一致） |
+| `scan-mojibake` | 0 / 294 |
+| 中国佛教图版 | **229 张**（paintings 38 / grottoes 46 / statues 86 / halls 19 / sutras 15 / landscape 18 / lotus 7） |
+| `public/` 总体积 | 约 143MB（图版 + 音档） |
+| 中英词典条目 | zh/en 均 312 行上下，键完全对齐（`tsc` 保证） |

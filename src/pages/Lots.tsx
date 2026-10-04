@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState, type ReactNode } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { useI18n } from '../i18n'
+import { NAMED_PHOTOS } from '../lib/content'
 import {
   LOTS,
   clearSavedLots,
@@ -120,7 +121,7 @@ export function Lots() {
     <div>
       {/* 页头：观音法门（并置式题头，照片全明） */}
       <PageBanner
-        image="/photos/guanyin.jpg"
+        image={NAMED_PHOTOS.guanyin()}
         kicker={t('lots.kicker')}
         title={t('lots.title')}
         subtitle={t('lots.subtitle')}
@@ -166,7 +167,7 @@ export function Lots() {
                 <div className="card flex h-full flex-col items-center gap-5 p-8 text-center">
                   <div className="overflow-hidden rounded-xs border border-hairline">
                     <img
-                      src="/photos/guanyin.jpg"
+                      src={NAMED_PHOTOS.guanyin()}
                       alt={t('lots.guanyinName')}
                       loading="lazy"
                       decoding="async"

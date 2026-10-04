@@ -9,3 +9,13 @@ _decoded
 
 # prep-slices temp output
 build/
+
+# 视觉预览产物（preview/ 工程用 `vite build --config preview/vite.config.ts` 生成）
+preview-dist/
+
+# 图版抓取的原始大图（转码后自删；保留时也不入库）
+public/photos/cn/_raw/
+
+# ?????(?? scripts/collect-pool.mjs ??)
+scripts/cn-pool.json
+scripts/cn-pool.txt

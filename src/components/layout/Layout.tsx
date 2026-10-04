@@ -2,11 +2,13 @@ import { useEffect, useState } from 'react'
 import { Outlet } from 'react-router-dom'
 import { Header } from './Header'
 import { Footer } from './Footer'
+import { RouteMeta } from '../ui/RouteMeta'
 import { useI18n } from '../../i18n'
 
 export function Layout() {
   return (
     <div className="flex min-h-screen flex-col">
+      <RouteMeta />
       <ScrollProgress />
       <Header />
       <main id="main" className="flex-1">

@@ -226,7 +226,7 @@ export function Tree3D({ wishes, onRibbonClick, fallback }: Props) {
       /* ---------- 地面 ---------- */
       const ground = new THREE.Mesh(
         new THREE.CircleGeometry(16, 56),
-        new THREE.MeshStandardMaterial({ color: 0xddeedf, roughness: 1 }),
+        new THREE.MeshStandardMaterial({ color: 0xe6ede9, roughness: 1 }),
       )
       ground.rotation.x = -Math.PI / 2
       ground.position.y = -4.4
@@ -234,20 +234,22 @@ export function Tree3D({ wishes, onRibbonClick, fallback }: Props) {
       S.add(ground)
       const ring = new THREE.Mesh(
         new THREE.RingGeometry(3.6, 3.8, 72),
-        new THREE.MeshBasicMaterial({ color: 0x8fcdb2, transparent: true, opacity: 0.5, side: THREE.DoubleSide }),
+        new THREE.MeshBasicMaterial({ color: 0x7d968a, transparent: true, opacity: 0.32, side: THREE.DoubleSide }),
       )
       ring.rotation.x = -Math.PI / 2
       ring.position.y = -4.34
       S.add(ring)
       // 树底接地软阴影（树冠遮挡形成的暗区）
       stage.addCatchShadow({ radius: 4.6, y: -4.32, opacity: 0.42 })
-      // 草地小花
-      const flowerMat = new THREE.MeshStandardMaterial({ color: 0xf6c6be, roughness: 0.8 })
+      // 苔点 / 碎石：青瓷墨绿的小点。
+      // （v3 之前是粉色草地小花，粉色属东亚春樱意象，与「宣纸 · 焦墨 · 青瓷 · 朱砂」不符）
+      const mossMat = new THREE.MeshStandardMaterial({ color: 0x6f8b7e, roughness: 0.95 })
       for (let i = 0; i < 26; i++) {
         const a = Math.random() * Math.PI * 2
         const r = 4.5 + Math.random() * 9
-        const f = new THREE.Mesh(new THREE.SphereGeometry(0.07, 6, 6), flowerMat)
+        const f = new THREE.Mesh(new THREE.SphereGeometry(0.07 + Math.random() * 0.04, 6, 6), mossMat)
         f.position.set(Math.cos(a) * r, -4.28, Math.sin(a) * r)
+        f.scale.y = 0.62
         S.add(f)
       }
 

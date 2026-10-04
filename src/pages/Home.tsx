@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useI18n } from '../i18n'
-import { CATALOG, localizedMeta, photoForSlug } from '../lib/content'
+import { CATALOG, NAMED_PHOTOS, localizedMeta, photoForSlug } from '../lib/content'
 import { verseOfTheMoment } from '../data/verses'
 import type { IllustrationVariant } from '../components/zen/ZenIllustration'
 import { CoverImage } from '../components/zen/CoverImage'
@@ -27,7 +27,7 @@ export function Home() {
     <div>
       {/* ---------- Hero：图文并置题头 ---------- */}
       <PageBanner
-        image="/photos/blossom.jpg"
+        image={NAMED_PHOTOS.hero()}
         kicker={t('home.heroKicker')}
         title={t('home.heroTitle')}
         subtitle={t('home.heroSubtitle')}
@@ -70,10 +70,10 @@ export function Home() {
         </Reveal>
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {[
-            { to: '/articles', variant: 'sutra' as const, photo: '/photos/gate.jpg', title: t('nav.articles'), desc: t('home.quickArticlesDesc') },
-            { to: '/dharma', variant: 'bell' as const, photo: '/photos/bell.jpg', title: t('nav.dharma'), desc: t('home.quickDharmaDesc') },
-            { to: '/prayer', variant: 'incense' as const, photo: '/photos/lantern.jpg', title: t('nav.prayer'), desc: t('home.quickPrayerDesc') },
-            { to: '/lots', variant: 'koi' as const, photo: '/photos/guanyin.jpg', title: t('nav.lots'), desc: t('home.quickLotsDesc') },
+            { to: '/articles', variant: 'sutra' as const, photo: NAMED_PHOTOS.gate(), title: t('nav.articles'), desc: t('home.quickArticlesDesc') },
+            { to: '/dharma', variant: 'bell' as const, photo: NAMED_PHOTOS.bell(), title: t('nav.dharma'), desc: t('home.quickDharmaDesc') },
+            { to: '/prayer', variant: 'incense' as const, photo: NAMED_PHOTOS.lantern(), title: t('nav.prayer'), desc: t('home.quickPrayerDesc') },
+            { to: '/lots', variant: 'koi' as const, photo: NAMED_PHOTOS.guanyin(), title: t('nav.lots'), desc: t('home.quickLotsDesc') },
           ].map((card, i) => (
             <Reveal key={card.to} delay={i * 90} className="h-full">
               <QuickCard {...card} index={i} />

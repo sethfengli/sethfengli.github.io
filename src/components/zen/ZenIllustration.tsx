@@ -1,7 +1,21 @@
 /**
- * 禅意 SVG 插画系统 —— 全部为本地矢量绘制，无外部图库依赖。
- * 12 种场景供文章封面 / 段落配图 / 首页氛围使用。
- * 配色取自设计系统（檀木棕、藏红、金、米白、月光蓝）。
+ * 禅意 SVG 插画系统 · 水墨卷（v2，2026）
+ * ---------------------------------------------------------------
+ * 全部为本地矢量绘制，无外部图库依赖。12 种场景用于文章封面回退、
+ * 段落配图与首页氛围。
+ *
+ * v1 的问题：亮蓝天空 + 荧光绿草 + 高饱和橘金，是「卡通」而非「水墨」，
+ * 与站点「宣纸底 + 焦墨 + 青瓷 + 朱砂」的设计骨架冲突；
+ * 动效也偏「UI 动画」（弹跳、缩放），不像自然物。
+ *
+ * v2 改为中国画语汇：
+ *   1. 底色一律宣纸（rice-50 + 极轻颗粒），不再用彩色渐变当天空；
+ *   2. 山、石、叶、器用「墨分五色」——同一焦墨在不同不透明度上做远近；
+ *   3. 唯一的彩色是青瓷绿（远树）与朱砂（印章、灯焰），各不超过一处；
+ *   4. 每幅右下或左下留白处钤一枚朱砂小印（.ink-seal），是中式画面的收束；
+ *   5. 留白占画面一半以上——「计白当黑」；
+ *   6. 动效改为自然物的缓动作（烟升、水纹外扩、钟摆、云移），
+ *      取消弹跳与整体缩放。
  */
 
 export type IllustrationVariant =
@@ -25,394 +39,564 @@ interface Props {
   animated?: boolean
 }
 
-const PALETTES: Record<IllustrationVariant, { bg: string; ink: string; accent: string; soft: string }> = {
-  lotus: { bg: '#eef7f1', ink: '#255144', accent: '#c24538', soft: '#d9f0e6' },
-  incense: { bg: '#fdf6ec', ink: '#4a3f33', accent: '#d4a92c', soft: '#f6e69b' },
-  bell: { bg: '#e2f1f8', ink: '#3a6e8c', accent: '#b38620', soft: '#c5e3f0' },
-  bamboo: { bg: '#eef7ef', ink: '#2d6553', accent: '#479a7c', soft: '#d9f0e2' },
-  mountains: { bg: '#e6f2f8', ink: '#3d4f58', accent: '#5b9fc0', soft: '#ddeef6' },
-  moon: { bg: '#1f3a4c', ink: '#d3dee3', accent: '#e7c23e', soft: '#2c4a5e' },
-  enso: { bg: '#ffffff', ink: '#20333c', accent: '#c24538', soft: '#e6f2f6' },
-  bodhi: { bg: '#f0f7f1', ink: '#2d6553', accent: '#b38620', soft: '#dfefe5' },
-  sutra: { bg: '#fdf6ec', ink: '#4a3f33', accent: '#d95a48', soft: '#f6edd9' },
-  koi: { bg: '#e2f1f8', ink: '#20333c', accent: '#c24538', soft: '#c5e3f0' },
-  meditation: { bg: '#f1f8fc', ink: '#3a6e8c', accent: '#d4a92c', soft: '#e2f1f8' },
-  clouds: { bg: '#e6f2f8', ink: '#3d4f58', accent: '#9ccee3', soft: '#f1f8fc' },
+/** 水墨调色板：以焦墨的不同浓淡构成立体，不用彩色渐变 */
+const INK = {
+  /** 宣纸 */
+  paper: '#f7f4ec',
+  paper2: '#f1ece1',
+  /** 墨的五个层次：焦、浓、重、淡、清 */
+  jiao: '#1c1a17',
+  nong: '#2f2c27',
+  zhong: '#4a463f',
+  dan: '#736d63',
+  qing: '#a49c91',
+  /** 青瓷绿（远树、水色） */
+  celadon: '#5f7a6f',
+  celadonLight: '#93a89e',
+  /** 朱砂（印、灯焰）——全画唯一高饱和色 */
+  cinnabar: '#b8382e',
+  cinnabarLight: '#d4776a',
 }
-export function ZenIllustration({ variant, className, animated = true }: Props) {
-  const p = PALETTES[variant]
+
+/**
+ * 宣纸底：一层平色 + 一层极轻的斜向纤维纹（用 pattern 而非渐变，
+ * 避免「塑料感」的线性渐变）。
+ */
+function PaperDefs({ id }: { id: string }) {
   return (
-    <div
-      className={`overflow-hidden ${className ?? ''}`}
-      style={{ background: `linear-gradient(160deg, ${p.bg}, ${p.soft})` }}
-      aria-hidden="true"
-    >
-      <svg
-        viewBox="0 0 400 240"
-        preserveAspectRatio="xMidYMid slice"
-        className="h-full w-full"
-      >
-        <Scenes variant={variant} p={p} animated={animated} />
+    <defs>
+      <pattern id={`${id}-paper`} width="26" height="26" patternUnits="userSpaceOnUse">
+        <rect width="26" height="26" fill={INK.paper} />
+        <circle cx="4" cy="6" r="0.6" fill={INK.qing} opacity="0.22" />
+        <circle cx="15" cy="14" r="0.5" fill={INK.qing} opacity="0.18" />
+        <circle cx="22" cy="3" r="0.5" fill={INK.qing} opacity="0.16" />
+        <circle cx="9" cy="21" r="0.6" fill={INK.qing} opacity="0.2" />
+      </pattern>
+    </defs>
+  )
+}
+
+/** 朱砂小印：中式画面的收束（右下留白处） */
+function Seal({ x = 356, y = 208, size = 13 }: { x?: number; y?: number; size?: number }) {
+  const s = size / 13
+  return (
+    <g transform={`translate(${x} ${y}) scale(${s})`} opacity={0.9}>
+      <rect width={13} height={13} rx={1.2} fill={INK.cinnabar} />
+      <path
+        d="M3 4.6h7M4.6 4.6v4.2M8.4 4.6v4.2M3 9.6h7M6.5 4.6v5"
+        stroke={INK.paper}
+        strokeWidth={0.9}
+        opacity={0.85}
+      />
+    </g>
+  )
+}
+
+export function ZenIllustration({ variant, className, animated = true }: Props) {
+  const id = `zi-${variant}`
+  return (
+    <div className={`overflow-hidden ${className ?? ''}`} style={{ background: INK.paper }} aria-hidden="true">
+      <svg viewBox="0 0 400 240" preserveAspectRatio="xMidYMid slice" className="h-full w-full">
+        <PaperDefs id={id} />
+        <rect width="400" height="240" fill={`url(#${id}-paper)`} />
+        <Scenes variant={variant} animated={animated} />
       </svg>
     </div>
   )
 }
 
-function Scenes({
-  variant,
-  p,
-  animated,
-}: {
-  variant: IllustrationVariant
-  p: { bg: string; ink: string; accent: string; soft: string }
-  animated: boolean
-}) {
+function Scenes({ variant, animated }: { variant: IllustrationVariant; animated: boolean }) {
   switch (variant) {
     case 'lotus':
-      return <Lotus p={p} animated={animated} />
+      return <Lotus a={animated} />
     case 'incense':
-      return <Incense p={p} animated={animated} />
+      return <Incense a={animated} />
     case 'bell':
-      return <Bell p={p} animated={animated} />
+      return <Bell a={animated} />
     case 'bamboo':
-      return <Bamboo p={p} animated={animated} />
+      return <Bamboo a={animated} />
     case 'mountains':
-      return <Mountains p={p} animated={animated} />
+      return <Mountains a={animated} />
     case 'moon':
-      return <Moon p={p} animated={animated} />
+      return <Moon a={animated} />
     case 'enso':
-      return <Enso p={p} animated={animated} />
+      return <Enso a={animated} />
     case 'bodhi':
-      return <Bodhi p={p} animated={animated} />
+      return <Bodhi a={animated} />
     case 'sutra':
-      return <Sutra p={p} animated={animated} />
+      return <Sutra a={animated} />
     case 'koi':
-      return <Koi p={p} animated={animated} />
+      return <Koi a={animated} />
     case 'meditation':
-      return <Meditation p={p} animated={animated} />
+      return <Meditation a={animated} />
     case 'clouds':
-      return <Clouds p={p} animated={animated} />
+      return <Clouds a={animated} />
   }
 }
 
-/* ---------------- 场景绘制 ---------------- */
+/* ============================================================
+   场景：一律「墨线 + 淡墨渲染 + 大量留白」
+   ============================================================ */
 
-function Lotus({ p, animated }: { p: Pal; animated: boolean }) {
+/** 莲：一支出水芙蓉 + 两片荷叶（带缺口与叶脉）+ 三圈水纹 */
+function Lotus({ a }: { a: boolean }) {
   return (
     <g>
-      {/* 水纹 */}
+      {/* 水纹：三圈细墨线，由内向外淡去 */}
       {[0, 1, 2].map((i) => (
         <ellipse
           key={i}
-          cx={200}
-          cy={210}
-          rx={120 + i * 30}
-          ry={8 + i * 2}
+          cx={196}
+          cy={198}
+          rx={78 + i * 26}
+          ry={5 + i * 1.6}
           fill="none"
-          stroke={p.accent}
-          strokeWidth={1.4}
-          opacity={0.35}
-          className={animated ? 'animate-ripple' : ''}
-          style={{ animationDelay: `${i * 0.9}s`, transformOrigin: '200px 210px' }}
+          stroke={INK.dan}
+          strokeWidth={1}
+          opacity={0.32 - i * 0.08}
+          className={a ? 'ink-ripple' : ''}
+          style={{ animationDelay: `${i * 1.1}s`, transformOrigin: '196px 198px' }}
         />
       ))}
-      {/* 莲叶 */}
-      <path d="M120 208c-34-12-46-42-30-64 14-20 44-24 62-6 16 16 10 46-8 60-8 6-16 10-24 10z" fill={p.ink} opacity={0.16} />
-      <path d="M288 202c30-16 38-46 20-64-16-16-44-14-60 6-14 18-6 44 16 58 8 6 16 6 24 0z" fill={p.ink} opacity={0.14} />
-      {/* 花瓣 */}
-      <g className={animated ? 'animate-bloom' : ''} style={{ transformOrigin: '200px 120px' }}>
-        <path d="M200 150c-6 18-22 30-34 32 0-20 8-40 24-48 4 4 8 10 10 16z" fill={p.accent} opacity={0.9} />
-        <path d="M200 150c6 18 22 30 34 32 0-20-8-40-24-48-4 4-8 10-10 16z" fill={p.accent} opacity={0.85} />
-        <path d="M200 150c-16 12-40 16-52 12 2-20 14-38 32-46 8 8 14 20 20 34z" fill={p.ink} opacity={0.22} />
-        <path d="M200 150c16 12 40 16 52 12-2-20-14-38-32-46-8 8-14 20-20 34z" fill={p.ink} opacity={0.18} />
-        <path d="M200 134c-10-10-22-12-32-8 0-18 10-34 28-40 2 16 2 32 4 48z" fill={p.accent} opacity={0.75} />
-        <path d="M200 134c10-10 22-12 32-8 0-18-10-34-28-40-2 16-2 32-4 48z" fill={p.accent} opacity={0.7} />
-        <ellipse cx={200} cy={120} rx={10} ry={8} fill={p.soft} />
+
+      {/* 荷叶（左，浓）：圆盾形带 V 形缺口 + 放射叶脉，中国画的荷叶一定有缺口 */}
+      <g>
+        <path
+          d="M116 196 C86 196 62 176 62 150 C62 124 86 104 116 104 C140 104 160 116 168 134 L134 152 L168 170 C160 188 140 196 116 196 Z"
+          fill={INK.zhong}
+          opacity={0.5}
+        />
+        {/* 叶脉：自叶心放射 */}
+        <g stroke={INK.paper} strokeWidth={1.1} fill="none" opacity={0.5} strokeLinecap="round">
+          <path d="M116 150 L74 132M116 150 L78 156M116 150 L96 178M116 150 L142 176M116 150 L150 122M116 150 L134 110" />
+        </g>
+        {/* 叶柄 */}
+        <path d="M116 196v14" stroke={INK.nong} strokeWidth={2.2} strokeLinecap="round" opacity={0.6} />
       </g>
-      <path d="M200 182v26" stroke={p.ink} strokeWidth={3} strokeLinecap="round" opacity={0.7} />
+
+      {/* 荷叶（右，淡）：更小、更远 */}
+      <g>
+        <path
+          d="M286 190 C264 190 246 175 246 155 C246 135 264 120 286 120 C304 120 318 129 324 142 L298 155 L324 169 C318 182 304 190 286 190 Z"
+          fill={INK.zhong}
+          opacity={0.3}
+        />
+        <g stroke={INK.paper} strokeWidth={1} fill="none" opacity={0.42} strokeLinecap="round">
+          <path d="M286 155 L256 142M286 155 L258 162M286 155 L272 180M286 155 L306 178M286 155 L314 138" />
+        </g>
+      </g>
+
+      {/* 花：五瓣，用中锋写出，瓣尖留白 */}
+      <g className={a ? 'ink-bloom' : ''} style={{ transformOrigin: '196px 118px' }}>
+        <path d="M196 150c-7 14-19 24-30 26 0-17 7-33 20-41 4 4 8 9 10 15z" fill={INK.nong} opacity={0.72} />
+        <path d="M196 150c7 14 19 24 30 26 0-17-7-33-20-41-4 4-8 9-10 15z" fill={INK.nong} opacity={0.6} />
+        <path d="M196 150c-14 9-33 12-44 9 2-16 12-30 27-37 7 7 13 17 17 28z" fill={INK.nong} opacity={0.5} />
+        <path d="M196 150c14 9 33 12 44 9-2-16-12-30-27-37-7 7-13 17-17 28z" fill={INK.nong} opacity={0.42} />
+        <path d="M196 136c-8-8-18-10-26-7 0-15 8-28 24-33 2 13 2 27 2 40z" fill={INK.nong} opacity={0.36} />
+        <path d="M196 136c8-8 18-10 26-7 0-15-8-28-24-33-2 13-2 27-2 40z" fill={INK.nong} opacity={0.3} />
+        {/* 莲蓬：一点朱砂，是画面唯一的亮色 */}
+        <ellipse cx={196} cy={122} rx={7} ry={5.5} fill={INK.cinnabar} opacity={0.82} />
+      </g>
+      {/* 花梗：一笔直下 */}
+      <path d="M196 156v40" stroke={INK.nong} strokeWidth={2.6} strokeLinecap="round" opacity={0.72} />
+      <Seal />
     </g>
   )
 }
 
-function Incense({ p, animated }: { p: Pal; animated: boolean }) {
+/** 香：一炉三炷，青烟袅袅成线 */
+function Incense({ a }: { a: boolean }) {
   return (
     <g>
-      {/* 香炉 */}
-      <path d="M150 190h100l-8 22H158z" fill={p.ink} opacity={0.85} />
-      <ellipse cx={200} cy={190} rx={50} ry={8} fill={p.ink} />
-      <ellipse cx={200} cy={188} rx={44} ry={6} fill={p.accent} opacity={0.7} />
-      <path d="M176 212h48l6 10h-60z" fill={p.ink} opacity={0.6} />
-      <path d="M166 222h68v6h-68z" fill={p.ink} opacity={0.5} />
+      {/* 桌案一笔 */}
+      <path d="M74 206h252" stroke={INK.zhong} strokeWidth={2} opacity={0.42} strokeLinecap="round" />
+      {/* 炉：鼎式（鼓腹、双耳、三足），以墨线勾出，内部淡墨 */}
+      <path d="M148 184c0-14 20-22 48-22s48 8 48 22c0 10-16 17-48 17s-48-7-48-17z" fill={INK.zhong} opacity={0.5} />
+      <path d="M148 184c0-14 20-22 48-22s48 8 48 22" fill="none" stroke={INK.jiao} strokeWidth={2.4} opacity={0.8} />
+      <path d="M152 200 l-5 12M244 200 l5 12M196 201 v13" stroke={INK.jiao} strokeWidth={2.8} strokeLinecap="round" opacity={0.75} />
+      <path d="M140 184c-6-4-8-10-4-14M252 184c6-4 8-10 4-14" stroke={INK.jiao} strokeWidth={2.4} fill="none" strokeLinecap="round" opacity={0.7} />
+      {/* 炉口一线朱砂(香灰) */}
+      <ellipse cx={196} cy={172} rx={40} ry={5} fill={INK.cinnabar} opacity={0.22} />
       {/* 三炷香 */}
-      <line x1={186} y1={188} x2={186} y2={120} stroke={p.accent} strokeWidth={3} strokeLinecap="round" />
-      <line x1={200} y1={188} x2={200} y2={108} stroke={p.accent} strokeWidth={3} strokeLinecap="round" />
-      <line x1={214} y1={188} x2={214} y2={126} stroke={p.accent} strokeWidth={3} strokeLinecap="round" />
-      {[186, 200, 214].map((cx) => (
-        <circle key={cx} cx={cx} cy={100} r={4} fill={p.accent} className={animated ? 'animate-glow' : ''} />
+      {[
+        [176, 78],
+        [196, 66],
+        [216, 84],
+      ].map(([x, top], i) => (
+        <g key={i}>
+          <line x1={x} y1={170} x2={x} y2={top} stroke={INK.nong} strokeWidth={2.2} strokeLinecap="round" opacity={0.8} />
+          {/* 香头：一点朱砂，明灭 */}
+          <circle cx={x} cy={top - 3} r={2.6} fill={INK.cinnabar} className={a ? 'ink-glow' : ''} style={{ animationDelay: `${i * 0.5}s` }} />
+        </g>
       ))}
-      {/* 烟 */}
-      {[186, 200, 214].map((cx, i) =>
-        [0, 1, 2].map((j) => (
-          <circle
-            key={`${cx}-${j}`}
-            cx={cx + j * 8}
-            cy={92 - j * 26}
-            r={7 + j * 5}
-            fill={p.ink}
-            opacity={0.12}
-            className={animated ? (i === 1 ? 'animate-smoke-rise' : 'animate-smoke-rise-slow') : ''}
-            style={{ animationDelay: `${j * 1.6 + i * 0.4}s` }}
-          />
-        )),
-      )}
+      {/* 烟：细长曲线，不是一堆圆 */}
+      <g fill="none" stroke={INK.dan} strokeLinecap="round" className={a ? 'ink-smoke' : ''}>
+        <path d="M176 72c-10-14 10-22 0-36s8-20 2-30" strokeWidth={1.6} opacity={0.4} />
+        <path d="M196 60c-11-16 11-25 0-40s9-22 3-32" strokeWidth={1.9} opacity={0.5} />
+        <path d="M216 78c-10-13 10-21 0-34s8-19 2-28" strokeWidth={1.5} opacity={0.36} />
+      </g>
+      <Seal />
     </g>
   )
 }
 
-function Bell({ p, animated }: { p: Pal; animated: boolean }) {
+/** 钟：一架中国梵钟——扁圆钟身 + 蒲牢钮 + 上下两圈乳钉 + 钟裙外撇 */
+function Bell({ a }: { a: boolean }) {
+  // 钟身轮廓：肩窄、腰圆、口外撇（中国钟的「桶形」，不是日本钟的长筒形）
+  const body =
+    'M178 76 C172 94 164 112 158 132 C152 152 150 166 154 178 C158 190 172 196 200 196 ' +
+    'C228 196 242 190 246 178 C250 166 248 152 242 132 C236 112 228 94 222 76 Z'
   return (
     <g>
-      {/* 钟架 */}
-      <path d="M140 60v120M260 60v120" stroke={p.ink} strokeWidth={6} strokeLinecap="round" opacity={0.7} />
-      <path d="M120 60h160" stroke={p.ink} strokeWidth={8} strokeLinecap="round" opacity={0.7} />
-      {/* 铜钟 */}
-      <g className={animated ? 'animate-swing' : ''} style={{ transformOrigin: '200px 60px' }}>
-        <path d="M158 62h84l-10 120a32 32 0 0 1-64 0z" fill={p.accent} opacity={0.9} />
-        <path d="M158 62h84l-6 40H164z" fill={p.soft} opacity={0.6} />
-        <ellipse cx={200} cy={186} rx={30} ry={6} fill={p.ink} opacity={0.5} />
-        <line x1={200} y1={192} x2={200} y2={210} stroke={p.ink} strokeWidth={4} />
-        <circle cx={200} cy={214} r={6} fill={p.ink} />
+      {/* 钟架：两柱一梁 */}
+      <path d="M136 48c-2 46-2 92 0 130M264 48c2 46 2 92 0 130" stroke={INK.nong} strokeWidth={4.5} strokeLinecap="round" fill="none" opacity={0.68} />
+      <path d="M116 48h168" stroke={INK.nong} strokeWidth={6} strokeLinecap="round" opacity={0.72} />
+      <g className={a ? 'ink-swing' : ''} style={{ transformOrigin: '200px 56px' }}>
+        {/* 蒲牢钮：中国钟顶是一对龙形挂钮，这里简化为双耳环钮 */}
+        <path d="M186 56 C184 44 192 38 200 38 C208 38 216 44 214 56" fill="none" stroke={INK.jiao} strokeWidth={2.8} opacity={0.85} />
+        <path d="M193 56 v8M207 56 v8" stroke={INK.jiao} strokeWidth={2.2} opacity={0.7} strokeLinecap="round" />
+        {/* 钟身 */}
+        <path d={body} fill={INK.nong} opacity={0.6} />
+        <path d={body} fill="none" stroke={INK.jiao} strokeWidth={2.2} opacity={0.85} />
+        {/* 钟肩与钟腰两道横箍（中国钟的分段） */}
+        <path d="M164 104 C176 110 224 110 236 104M158 150 C176 158 224 158 242 150" fill="none" stroke={INK.jiao} strokeWidth={1.4} opacity={0.45} />
+        {/* 上下两圈乳钉：沿钟身轮廓排布 */}
+        {[
+          { y: 124, n: 7, r: 26, op: 0.5 },
+          { y: 164, n: 9, r: 33, op: 0.46 },
+        ].map((row) =>
+          Array.from({ length: row.n }).map((_, k) => {
+            const ang = (-56 + (112 / (row.n - 1)) * k) * (Math.PI / 180)
+            const cx = 200 + Math.sin(ang) * row.r
+            const cy = row.y + (1 - Math.cos(ang)) * 5
+            return <circle key={`${row.y}-${k}`} cx={cx} cy={cy} r={2.3} fill={INK.paper} opacity={row.op} />
+          }),
+        )}
+        {/* 撞座：钟腰偏右的圆形凸起 */}
+        <circle cx={224} cy={148} r={7} fill="none" stroke={INK.paper} strokeWidth={1.5} opacity={0.42} />
+        {/* 钟裙口沿：外撇的一笔厚线 */}
+        <path d="M154 172 C160 190 178 198 200 198 C222 198 240 190 246 172" fill={INK.jiao} opacity={0.5} />
+        <path d="M154 172 C160 190 178 198 200 198 C222 198 240 190 246 172" fill="none" stroke={INK.jiao} strokeWidth={2.4} opacity={0.8} />
       </g>
-      {/* 声波 */}
+      {/* 声纹：三道弧，向外淡出 */}
       {[0, 1, 2].map((i) => (
         <path
           key={i}
-          d={`M${250 + i * 16} 110a${34 + i * 14} 34 0 0 1 0 68`}
+          d={`M${286 + i * 15} 104a${30 + i * 13} 30 0 0 1 0 62`}
           fill="none"
-          stroke={p.accent}
-          strokeWidth={2.5}
+          stroke={INK.dan}
+          strokeWidth={1.5}
           strokeLinecap="round"
-          opacity={0.5 - i * 0.12}
-          className={animated ? 'animate-ripple' : ''}
-          style={{ animationDelay: `${i * 0.8}s`, transformOrigin: `${250 + i * 16}px 144px` }}
+          opacity={0.36 - i * 0.1}
+          className={a ? 'ink-ripple' : ''}
+          style={{ animationDelay: `${i * 0.9}s`, transformOrigin: `${286 + i * 15}px 135px` }}
         />
       ))}
+      <Seal />
     </g>
   )
 }
 
-function Bamboo({ p, animated }: { p: Pal; animated: boolean }) {
+/** 竹：五竿，节节分明，竹叶以「个」字法撇出 */
+function Bamboo({ a }: { a: boolean }) {
   const stalks = [
-    { x: 90, h: 190, w: 9 },
-    { x: 150, h: 220, w: 11 },
-    { x: 210, h: 200, w: 9 },
-    { x: 270, h: 215, w: 10 },
-    { x: 320, h: 185, w: 8 },
+    { x: 96, h: 178, w: 7 },
+    { x: 152, h: 208, w: 8 },
+    { x: 208, h: 190, w: 7 },
+    { x: 262, h: 202, w: 7.5 },
+    { x: 312, h: 172, w: 6 },
   ]
   return (
     <g>
       {stalks.map((s, i) => (
-        <g key={i}>
-          <line x1={s.x} y1={240} x2={s.x} y2={240 - s.h} stroke={p.ink} strokeWidth={s.w} strokeLinecap="round" opacity={0.55} />
-          {[40, 100, 160].map((y) => (
-            <line key={y} x1={s.x - s.w * 0.9} y1={240 - y} x2={s.x + s.w * 0.9} y2={240 - y} stroke={p.ink} strokeWidth={1.6} opacity={0.45} />
+        <g key={i} opacity={0.62 - i * 0.06}>
+          <line x1={s.x} y1={236} x2={s.x} y2={236 - s.h} stroke={INK.nong} strokeWidth={s.w} strokeLinecap="round" />
+          {/* 竹节 */}
+          {[46, 104, 158].map((y) => (
+            <line key={y} x1={s.x - s.w * 0.85} y1={236 - y} x2={s.x + s.w * 0.85} y2={236 - y} stroke={INK.zhong} strokeWidth={1.4} opacity={0.55} />
           ))}
-          {/* 竹叶 */}
-          <path d={`M${s.x} ${240 - s.h}c-4-12 6-26 22-30 2 12-6 22-22 30z`} fill={p.accent} opacity={0.75} />
-          <path d={`M${s.x} ${240 - s.h - 18}c4-10 18-14 26-10-4 8-14 12-26 10z`} fill={p.accent} opacity={0.6} />
+          {/* 竹叶：两笔「个」字，斜出 */}
+          <path
+            d={`M${s.x} ${236 - s.h}c-5-11 4-24 19-27 2 11-6 20-19 27z`}
+            fill={INK.celadon}
+            opacity={0.55}
+          />
+          <path
+            d={`M${s.x} ${236 - s.h - 16}c4-9 16-13 23-9-4 7-13 11-23 9z`}
+            fill={INK.celadon}
+            opacity={0.4}
+          />
         </g>
       ))}
-      {animated && (
-        <circle cx={180} cy={70} r={3} fill={p.accent} opacity={0.5} className="animate-float" />
-      )}
+      {/* 一叶飘下 */}
+      {a && <path d="M330 120c6 6 6 14 0 20" stroke={INK.celadon} strokeWidth={1.4} fill="none" className="ink-drift" opacity={0.45} />}
+      <Seal />
     </g>
   )
 }
 
-function Mountains({ p, animated }: { p: Pal; animated: boolean }) {
+/** 山：三层远山，最远最淡；一轮淡日 */
+function Mountains({ a }: { a: boolean }) {
   return (
     <g>
-      {/* 日轮 */}
-      <circle cx={290} cy={64} r={26} fill={p.accent} opacity={0.8} className={animated ? 'animate-glow' : ''} />
-      {/* 远山 */}
-      <path d="M0 190L80 90l60 60 50-80 70 90 140-70v120H0z" fill={p.ink} opacity={0.28} />
-      <path d="M0 210l90-100 70 70 60-60 80 90h100v40H0z" fill={p.ink} opacity={0.5} />
-      {/* 云雾 */}
-      {[0, 1, 2].map((i) => (
-        <ellipse
-          key={i}
-          cx={80 + i * 120}
-          cy={150 + i * 18}
-          rx={70}
-          ry={9}
-          fill={p.soft}
-          opacity={0.7}
-          className={animated ? 'animate-float-slow' : ''}
-          style={{ animationDelay: `${i * 1.4}s` }}
-        />
-      ))}
-      {/* 飞鸟 */}
-      <path d="M120 60l8 6-8 6M138 60l8 6-8 6" stroke={p.ink} strokeWidth={2} fill="none" strokeLinecap="round" opacity={0.7} />
+      {/* 淡日：不填实心圆，用一圈墨线 */}
+      <circle cx={296} cy={62} r={24} fill="none" stroke={INK.dan} strokeWidth={1.4} opacity={0.5} className={a ? 'ink-glow' : ''} />
+      {/* 远山：只剩轮廓的淡墨 */}
+      <path d="M0 176C48 128 92 96 132 100c30 3 52 30 78 34 30 5 58-24 96-40 34-14 68-6 94 24v122H0z" fill={INK.dan} opacity={0.2} />
+      {/* 中山 */}
+      <path d="M0 200c40-52 78-78 112-74 26 3 44 28 66 34 26 7 52-16 84-28 30-11 56 2 78 26v82H0z" fill={INK.zhong} opacity={0.32} />
+      {/* 近山：实地，压住画面下缘 */}
+      <path d="M0 226c34-40 66-56 96-50 22 4 38 22 58 26 24 5 46-12 72-22 28-10 50 0 70 20v40H0z" fill={INK.nong} opacity={0.55} />
+      {/* 山间云气：两条横向留白，是「云」不是「雾团」 */}
+      <path d="M28 186h118M244 166h130" stroke={INK.paper} strokeWidth={7} strokeLinecap="round" opacity={0.7} className={a ? 'ink-drift-slow' : ''} />
+      <path d="M70 206h96M262 196h100" stroke={INK.paper} strokeWidth={4.5} strokeLinecap="round" opacity={0.55} className={a ? 'ink-drift' : ''} />
+      {/* 飞鸟两点 */}
+      <path d="M116 74l7 5-7 5M134 70l7 5-7 5" stroke={INK.nong} strokeWidth={1.6} fill="none" strokeLinecap="round" opacity={0.6} />
+      <Seal />
     </g>
   )
 }
 
-function Moon({ p, animated }: { p: Pal; animated: boolean }) {
+/** 月：一轮淡月映水，岸边枯枝 */
+function Moon({ a }: { a: boolean }) {
   return (
     <g>
-      <circle cx={280} cy={70} r={34} fill={p.accent} opacity={0.9} className={animated ? 'animate-glow' : ''} />
-      <circle cx={268} cy={62} r={8} fill={p.bg} opacity={0.25} />
-      <circle cx={290} cy={82} r={5} fill={p.bg} opacity={0.2} />
-      {/* 水面 */}
-      <path d="M0 180h400v60H0z" fill={p.soft} opacity={0.35} />
-      {[0, 1, 2, 3].map((i) => (
-        <ellipse key={i} cx={60 + i * 100} cy={200} rx={38} ry={3.5} fill={p.accent} opacity={0.4 - i * 0.07} className={animated ? 'animate-glow' : ''} style={{ animationDelay: `${i * 0.7}s` }} />
-      ))}
-      {/* 岸上枯枝 */}
-      <path d="M0 180c40-30 70-8 100-44" stroke={p.ink} strokeWidth={4} fill="none" strokeLinecap="round" opacity={0.7} />
-      <path d="M100 136l-14-6M100 136l8-14" stroke={p.ink} strokeWidth={3} fill="none" strokeLinecap="round" opacity={0.55} />
-    </g>
-  )
-}
-
-function Enso({ p, animated }: { p: Pal; animated: boolean }) {
-  return (
-    <g>
-      <circle cx={200} cy={120} r={78} fill="none" stroke={p.ink} strokeWidth={13} opacity={0.85} strokeLinecap="round" />
-      <circle cx={200} cy={120} r={78} fill="none" stroke={p.soft} strokeWidth={2} opacity={0.9} strokeDasharray="4 14" strokeLinecap="round" className={animated ? 'animate-spin-slow' : ''} style={{ transformOrigin: '200px 120px' }} />
-      <path d="M200 196v14M200 196c-16 8-30 20-36 38" stroke={p.ink} strokeWidth={7} fill="none" strokeLinecap="round" opacity={0.7} />
-      <circle cx={200} cy={120} r={5} fill={p.accent} />
-    </g>
-  )
-}
-
-function Bodhi({ p, animated }: { p: Pal; animated: boolean }) {
-  return (
-    <g>
-      <path d="M60 120C60 40 120 10 200 24c80-14 140 16 140 96 0 66-60 106-140 106S60 186 60 120z" fill={p.ink} opacity={0.8} />
-      {/* 叶脉 */}
-      <path d="M200 32v188" stroke={p.soft} strokeWidth={2.5} opacity={0.7} />
-      {[70, 110, 150].map((y) => (
-        <g key={y}>
-          <path d={`M200 ${y}l-46-22M200 ${y}l46-22M200 ${y}l-40 26M200 ${y}l40 26`} stroke={p.soft} strokeWidth={1.8} opacity={0.55} fill="none" strokeLinecap="round" />
-        </g>
-      ))}
-      {/* 露珠 */}
-      {animated && (
-        <circle cx={150} cy={90} r={4} fill={p.accent} opacity={0.8} className="animate-float-slow" />
-      )}
-    </g>
-  )
-}
-
-function Sutra({ p, animated }: { p: Pal; animated: boolean }) {
-  return (
-    <g>
-      {/* 经卷 */}
-      <rect x={80} y={70} width={240} height={110} rx={8} fill={p.soft} stroke={p.ink} strokeWidth={3} opacity={0.95} />
-      <rect x={80} y={70} width={240} height={26} rx={8} fill={p.accent} opacity={0.85} />
-      <circle cx={106} cy={83} r={4} fill={p.soft} />
-      {[104, 130, 156, 182, 208].map((x) => (
-        <line key={x} x1={x} y1={104} x2={x + 70} y2={104} stroke={p.ink} strokeWidth={3} opacity={0.3} strokeLinecap="round" />
-      ))}
-      {[104, 130, 156, 182, 208].map((x, i) => (
-        <line key={x + 1} x1={x} y1={126} x2={x + (i % 2 ? 60 : 80)} y2={126} stroke={p.ink} strokeWidth={3} opacity={0.25} strokeLinecap="round" />
-      ))}
-      {[104, 130, 156, 182].map((x) => (
-        <line key={x + 2} x1={x} y1={148} x2={x + 74} y2={148} stroke={p.ink} strokeWidth={3} opacity={0.22} strokeLinecap="round" />
-      ))}
-      {/* 木鱼 */}
-      <g transform="translate(292 200)">
-        <path d="M-28 0c0-18 12-28 28-28 16 0 28 10 28 28z" fill={p.ink} opacity={0.75} />
-        <ellipse cx={0} cy={-14} rx={22} ry={7} fill={p.soft} opacity={0.5} />
-        <circle cx={24} cy={-20} r={5} fill={p.accent} />
-      </g>
-      {/* 小槌 */}
-      <g className={animated ? 'animate-swing' : ''} style={{ transformOrigin: '316px 120px' }}>
-        <line x1={316} y1={120} x2={330} y2={180} stroke={p.ink} strokeWidth={4} strokeLinecap="round" />
-        <circle cx={331} cy={184} r={7} fill={p.accent} />
-      </g>
-      {animated && (
-        <circle cx={240} cy={60} r={3} fill={p.accent} opacity={0.6} className="animate-float" />
-      )}
-    </g>
-  )
-}
-
-function Koi({ p, animated }: { p: Pal; animated: boolean }) {
-  return (
-    <g>
-      {/* 水波 */}
-      {[0, 1, 2, 3].map((i) => (
+      {/* 月：只一圈细线，内部完全留白（中国画的月不填色） */}
+      <circle cx={286} cy={68} r={30} fill="none" stroke={INK.zhong} strokeWidth={1.5} opacity={0.6} className={a ? 'ink-glow' : ''} />
+      <circle cx={286} cy={68} r={30} fill={INK.paper} opacity={0.5} />
+      {/* 水：横向细线数道，越远越疏 */}
+      {[0, 1, 2, 3, 4].map((i) => (
         <path
           key={i}
-          d={`M${20 + i * 100} 150q14-10 28 0t28 0t28 0`}
+          d={`M${20 + i * 34} ${196 + i * 7}h${70 - i * 6}`}
+          stroke={INK.dan}
+          strokeWidth={1.1}
+          opacity={0.34 - i * 0.05}
+          strokeLinecap="round"
+          className={a ? 'ink-glow' : ''}
+          style={{ animationDelay: `${i * 0.6}s` }}
+        />
+      ))}
+      {/* 岸边枯枝：一笔斜出，两处分叉 */}
+      <path d="M0 176c38-26 64-6 96-40" stroke={INK.nong} strokeWidth={3.4} fill="none" strokeLinecap="round" opacity={0.7} />
+      <path d="M96 136l-13-5M96 136l7-13M46 168l-10-4" stroke={INK.nong} strokeWidth={2.2} fill="none" strokeLinecap="round" opacity={0.55} />
+      <Seal />
+    </g>
+  )
+}
+
+/** 圆相：中国禅门作「一相」——一笔未闭合的圆，笔意断处即是留白 */
+function Enso({ a }: { a: boolean }) {
+  return (
+    <g>
+      {/* 一笔圆：用带粗细变化的弧线，收笔处细，起笔处重 */}
+      <path
+        d="M262 92c14 20 8 48-14 62-24 15-58 12-78-8-20-20-18-52 4-70 22-18 56-16 76 6"
+        fill="none"
+        stroke={INK.jiao}
+        strokeWidth={11}
+        strokeLinecap="round"
+        opacity={0.86}
+      />
+      {/* 笔痕：顺着弧线两三笔飞白 */}
+      <path
+        d="M218 176c-10 2-20 0-28-5"
+        fill="none"
+        stroke={INK.paper}
+        strokeWidth={3}
+        strokeLinecap="round"
+        opacity={0.55}
+        className={a ? 'ink-glow' : ''}
+      />
+      {/* 圆心一点朱砂 */}
+      <circle cx={200} cy={118} r={3.6} fill={INK.cinnabar} opacity={0.85} />
+      <Seal />
+    </g>
+  )
+}
+
+/** 菩提叶：一片叶，叶脉工整，露珠一点 */
+function Bodhi({ a }: { a: boolean }) {
+  return (
+    <g>
+      {/* 叶：心形，尖端拖长 */}
+      <path
+        d="M200 26c46-6 86 22 92 62 5 34-20 70-58 86-16 7-26 10-34 12-8-2-18-5-34-12-38-16-63-52-58-86 6-40 46-68 92-62z"
+        fill={INK.zhong}
+        opacity={0.55}
+      />
+      <path
+        d="M200 26c46-6 86 22 92 62 5 34-20 70-58 86-16 7-26 10-34 12-8-2-18-5-34-12-38-16-63-52-58-86 6-40 46-68 92-62z"
+        fill="none"
+        stroke={INK.jiao}
+        strokeWidth={1.8}
+        opacity={0.7}
+      />
+      {/* 主脉 */}
+      <path d="M200 30v152" stroke={INK.paper} strokeWidth={2} opacity={0.55} />
+      {/* 侧脉：左右各四，斜向叶缘 */}
+      {[62, 92, 122, 150].map((y, i) => (
+        <g key={y}>
+          <path d={`M200 ${y}c-16-6-30-16-40-28`} stroke={INK.paper} strokeWidth={1.3} fill="none" opacity={0.42 - i * 0.04} strokeLinecap="round" />
+          <path d={`M200 ${y}c16-6 30-16 40-28`} stroke={INK.paper} strokeWidth={1.3} fill="none" opacity={0.42 - i * 0.04} strokeLinecap="round" />
+        </g>
+      ))}
+      {/* 露珠：一点朱砂 */}
+      <circle cx={152} cy={96} r={3.2} fill={INK.cinnabar} opacity={0.7} className={a ? 'ink-glow' : ''} />
+      <Seal />
+    </g>
+  )
+}
+
+/** 经卷：一卷摊开的经 + 木鱼 */
+function Sutra({ a }: { a: boolean }) {
+  return (
+    <g>
+      {/* 案面 */}
+      <path d="M46 208h308" stroke={INK.zhong} strokeWidth={2} opacity={0.4} strokeLinecap="round" />
+      {/* 经卷：摊开的册页，中缝一线 */}
+      <path d="M72 84h112c8 0 12 4 12 10v92c0 6-4 10-12 10H72c-6 0-10-4-10-10V94c0-6 4-10 10-10z" fill={INK.paper2} stroke={INK.nong} strokeWidth={1.6} opacity={0.95} />
+      <path d="M216 84h112c6 0 10 4 10 10v92c0 6-4 10-10 10H216c-8 0-12-4-12-10V94c0-6 4-10 12-10z" fill={INK.paper2} stroke={INK.nong} strokeWidth={1.6} opacity={0.95} />
+      <path d="M204 84v102" stroke={INK.dan} strokeWidth={1.4} opacity={0.6} />
+      {/* 经文：竖行短线（写经是竖排，用竖线才像经卷） */}
+      <g stroke={INK.dan} strokeWidth={1.5} opacity={0.42} strokeLinecap="round">
+        {[86, 104, 122, 140, 158, 176].map((x) => (
+          <line key={`l${x}`} x1={x} y1={98} x2={x} y2={176} />
+        ))}
+        {[226, 244, 262, 280, 298, 316].map((x) => (
+          <line key={`r${x}`} x1={x} y1={98} x2={x} y2={176} />
+        ))}
+      </g>
+      {/* 木鱼：一小团墨，右侧 */}
+      <g transform="translate(348 178)">
+        <path d="M-20 8c0-14 9-22 20-22s20 8 20 22z" fill={INK.nong} opacity={0.7} />
+        <path d="M-14 8c0-8 5-13 14-13s14 5 14 13" fill="none" stroke={INK.paper} strokeWidth={1.2} opacity={0.4} />
+      </g>
+      {/* 磬槌：一笔斜下，轻晃 */}
+      <g className={a ? 'ink-swing' : ''} style={{ transformOrigin: '352px 120px' }}>
+        <line x1={352} y1={120} x2={362} y2={162} stroke={INK.nong} strokeWidth={3} strokeLinecap="round" opacity={0.7} />
+        <circle cx={363} cy={166} r={5} fill={INK.nong} opacity={0.65} />
+      </g>
+      <Seal />
+    </g>
+  )
+}
+
+/** 鱼：一笔游鱼 + 水纹（「鱼跃」取自在之趣） */
+function Koi({ a }: { a: boolean }) {
+  return (
+    <g>
+      {/* 水纹：三道波纹线 */}
+      {[0, 1, 2].map((i) => (
+        <path
+          key={i}
+          d={`M${18 + i * 118} ${158 + i * 16}q16-9 32 0t32 0t32 0`}
           fill="none"
-          stroke={p.ink}
-          strokeWidth={2.5}
-          opacity={0.3}
+          stroke={INK.dan}
+          strokeWidth={1.3}
+          opacity={0.3 - i * 0.06}
           strokeLinecap="round"
         />
       ))}
-      {/* 大鱼 */}
-      <g className={animated ? 'animate-float-slow' : ''}>
-        <path d="M120 100c46-14 88-8 116 16-40 16-84 20-118 6-18-7-16-16 2-22z" fill={p.accent} opacity={0.9} />
-        <path d="M246 110l26-12-10 16 18 8-24 8z" fill={p.accent} opacity={0.9} />
-        <circle cx={140} cy={108} r={3.5} fill={p.soft} />
-        <path d="M170 96c10 6 18 14 22 24" stroke={p.soft} strokeWidth={2} fill="none" opacity={0.7} strokeLinecap="round" />
+      {/* 大鱼：一笔写出，尾鳍分叉 */}
+      <g className={a ? 'ink-drift-slow' : ''}>
+        <path d="M112 104c48-15 92-9 122 17-42 17-88 21-124 6-19-8-17-17 2-23z" fill={INK.nong} opacity={0.68} />
+        <path d="M234 121l30-14-11 18 20 9-27 9z" fill={INK.nong} opacity={0.6} />
+        {/* 眼：留白点 */}
+        <circle cx={132} cy={112} r={2.8} fill={INK.paper} opacity={0.85} />
+        {/* 鳍：两笔 */}
+        <path d="M168 100c8 6 14 14 17 24M190 150c6 5 10 12 12 20" stroke={INK.nong} strokeWidth={1.6} fill="none" opacity={0.45} strokeLinecap="round" />
       </g>
       {/* 小鱼 */}
-      <g className={animated ? 'animate-float' : ''}>
-        <path d="M240 170c30-8 54-4 70 10-24 10-52 12-72 4-11-5-10-10 2-14z" fill={p.ink} opacity={0.55} />
-        <path d="M316 176l14-7-6 9 10 5-14 4z" fill={p.ink} opacity={0.55} />
+      <g className={a ? 'ink-drift' : ''}>
+        <path d="M248 176c26-7 48-3 62 9-22 9-46 10-64 3-10-4-9-9 2-12z" fill={INK.dan} opacity={0.5} />
+        <path d="M310 185l13-7-5 9 9 4-13 4z" fill={INK.dan} opacity={0.5} />
       </g>
-      {/* 莲苞 */}
-      <path d="M60 190c-6-14 2-24 12-22 4 10-2 18-12 22z" fill={p.accent} opacity={0.8} />
-      <path d="M60 168v24" stroke={p.ink} strokeWidth={2.5} opacity={0.6} />
+      {/* 莲苞：一竖一尖 */}
+      <path d="M62 188c-5-12 2-21 11-19 3 9-2 16-11 19z" fill={INK.celadon} opacity={0.5} />
+      <path d="M62 168v22" stroke={INK.nong} strokeWidth={1.8} opacity={0.5} strokeLinecap="round" />
+      <Seal />
     </g>
   )
 }
 
-function Meditation({ p, animated }: { p: Pal; animated: boolean }) {
+/** 禅坐：一个背影、一圈淡光、两点香火 */
+function Meditation({ a }: { a: boolean }) {
   return (
     <g>
-      {/* 光晕 */}
-      <circle cx={200} cy={110} r={64} fill={p.accent} opacity={0.18} className={animated ? 'animate-ray' : ''} style={{ transformOrigin: '200px 110px' }} />
-      <circle cx={200} cy={110} r={42} fill="none" stroke={p.accent} strokeWidth={2} opacity={0.5} />
-      {/* 禅坐人影 */}
-      <path d="M200 58c-12 0-20 8-20 18 0 6 4 10 8 12l-14 30c-4 8-2 14 4 16l6 2v38h32v-38l6-2c6-2 8-8 4-16l-14-30c4-2 8-6 8-12 0-10-8-18-20-18z" fill={p.ink} opacity={0.85} />
-      <ellipse cx={200} cy={176} rx={34} ry={7} fill={p.ink} opacity={0.25} />
-      {/* 香火两点 */}
-      {animated &&
+      {/* 淡光：同心墨圈而非实心光晕 */}
+      <circle cx={200} cy={116} r={66} fill="none" stroke={INK.dan} strokeWidth={1.2} opacity={0.3} className={a ? 'ink-glow' : ''} />
+      <circle cx={200} cy={116} r={44} fill="none" stroke={INK.dan} strokeWidth={1} opacity={0.22} />
+      {/* 背影：肩、头、盘坐的轮廓，一笔到底 */}
+      <path
+        d="M200 62c-11 0-19 8-19 17 0 5 3 10 7 12-6 6-13 16-16 28-3 13 0 23 8 28 6 4 14 5 20 5s14-1 20-5c8-5 11-15 8-28-3-12-10-22-16-28 4-2 7-7 7-12 0-9-8-17-19-17z"
+        fill={INK.nong}
+        opacity={0.72}
+      />
+      {/* 坐处一笔 */}
+      <path d="M164 172c12 6 24 9 36 9s24-3 36-9" fill="none" stroke={INK.jiao} strokeWidth={2.4} opacity={0.6} strokeLinecap="round" />
+      {/* 两点香火：朱砂，明灭 */}
+      {a &&
         [0, 1].map((i) => (
-          <circle key={i} cx={156 + i * 88} cy={150} r={2.5} fill={p.accent} className="animate-glow" style={{ animationDelay: `${i}s` }} />
+          <circle key={i} cx={162 + i * 76} cy={152} r={2.4} fill={INK.cinnabar} className="ink-glow" style={{ animationDelay: `${i}s` }} />
         ))}
+      <Seal />
     </g>
   )
 }
 
-function Clouds({ p, animated }: { p: Pal; animated: boolean }) {
+/** 云：留白为主，只以墨线勾两道云头，远处一塔 */
+function Clouds({ a }: { a: boolean }) {
   return (
     <g>
-      {[0, 1, 2, 3].map((i) => (
-        <g key={i} className={animated ? 'animate-float-slow' : ''} style={{ animationDelay: `${i * 1.2}s` }}>
-          <ellipse cx={70 + i * 95} cy={70 + (i % 2) * 90} rx={52} ry={18} fill={p.soft} opacity={0.9} />
-          <ellipse cx={90 + i * 95} cy={58 + (i % 2) * 90} rx={34} ry={14} fill={p.soft} opacity={0.85} />
-          <ellipse cx={48 + i * 95} cy={62 + (i % 2) * 90} rx={26} ry={11} fill={p.soft} opacity={0.8} />
+      {/* 云头：中国画的云是「勾云」，用回旋的墨线，不填色 */}
+      {[
+        { x: 44, y: 78, s: 1, o: 0.42 },
+        { x: 168, y: 60, s: 0.8, o: 0.32 },
+        { x: 250, y: 96, s: 0.9, o: 0.36 },
+        { x: 96, y: 132, s: 0.7, o: 0.26 },
+      ].map((c, i) => (
+        <g
+          key={i}
+          transform={`translate(${c.x} ${c.y}) scale(${c.s})`}
+          className={a ? 'ink-drift-slow' : ''}
+          style={{ animationDelay: `${i * 1.3}s` }}
+        >
+          <path
+            d="M0 22c-8-7-8-18 2-22 4-12 22-14 28-4 12-8 28-2 28 10 8 3 9 15 0 20-4 5-12 6-18 4-8 6-24 6-30-2-5 2-8 0-10-6z"
+            fill="none"
+            stroke={INK.zhong}
+            strokeWidth={1.6}
+            opacity={c.o}
+          />
+          <path d="M8 18c6-6 16-8 24-4" fill="none" stroke={INK.dan} strokeWidth={1.1} opacity={c.o * 0.7} strokeLinecap="round" />
         </g>
       ))}
-      {/* 远塔 */}
-      <path d="M312 240v-58l10-10v-16h16v16l10 10v58z" fill={p.ink} opacity={0.4} />
-      <line x1={330} y1={156} x2={330} y2={140} stroke={p.ink} strokeWidth={2} opacity={0.4} />
-      {/* 日照云海 */}
-      <circle cx={60} cy={60} r={16} fill={p.accent} opacity={0.7} className={animated ? 'animate-glow' : ''} />
+      {/* 远塔：七层楼阁式，最淡的一层墨 */}
+      <g opacity={0.34}>
+        {[0, 1, 2, 3, 4, 5, 6].map((i) => {
+          const w = 30 - i * 1.6
+          const y = 196 - i * 15
+          return (
+            <g key={i}>
+              <rect x={330 - w / 2} y={y} width={w} height={9} fill="none" stroke={INK.zhong} strokeWidth={1.2} />
+              <path d={`M${330 - w / 2 - 4} ${y}h${w + 8}`} stroke={INK.zhong} strokeWidth={1.4} />
+            </g>
+          )
+        })}
+        <path d="M330 92v12" stroke={INK.nong} strokeWidth={1.4} />
+        <circle cx={330} cy={88} r={2.6} fill="none" stroke={INK.nong} strokeWidth={1.2} />
+      </g>
+      {/* 地平一笔 */}
+      <path d="M20 210h180M240 206h140" stroke={INK.dan} strokeWidth={1.2} opacity={0.3} strokeLinecap="round" />
+      <Seal />
     </g>
   )
 }
 
-type Pal = { bg: string; ink: string; accent: string; soft: string }
-
-/** 依 slug 稳定映射插画变体（关键词优先，其次哈希） */
+/* ============================================================
+   slug → 变体映射（关键词优先，其次哈希）
+   ============================================================ */
 const KEYWORD_MAP: Array<[RegExp, IllustrationVariant]> = [
   [/chan|禅/, 'enso'],
   [/jingtu|净土|amt|无量寿|nianfo|念佛/, 'lotus'],

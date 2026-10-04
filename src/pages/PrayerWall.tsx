@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState, type FormEvent } from 'react'
 import { useI18n, type I18nCtx } from '../i18n'
+import { NAMED_PHOTOS } from '../lib/content'
 import { createWishRepository, type Wish } from '../lib/wishes'
 import { downloadFile, getDeviceId } from '../lib/storage'
 import { WishTree } from '../components/zen/WishTree'
@@ -177,7 +178,7 @@ export function PrayerWall() {
     <div>
       {/* 页头（图文并置，无漂浮灯火装饰） */}
       <PageBanner
-        image="/photos/lantern.jpg"
+        image={NAMED_PHOTOS.lantern()}
         kicker={t('prayer.kicker')}
         title={t('prayer.title')}
         subtitle={t('prayer.subtitle')}

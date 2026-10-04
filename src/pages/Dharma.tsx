@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useI18n } from '../i18n'
+import { NAMED_PHOTOS } from '../lib/content'
 import { TempleBell } from '../components/zen/TempleBell'
 import { Bell3D } from '../components/zen3d/Bell3D'
 import { ChantPlayer } from '../components/zen/ChantPlayer'
@@ -27,7 +28,7 @@ export function Dharma() {
     <div>
       {/* 页头：并置式题头 + 全明照片（无雾化遮罩） */}
       <PageBanner
-        image="/photos/bell.jpg"
+        image={NAMED_PHOTOS.bell()}
         kicker={t('dharma.kicker')}
         title={t('dharma.title')}
         subtitle={t('dharma.subtitle')}

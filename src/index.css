@@ -861,30 +861,80 @@ body {
   100% { transform: translate(-46px, -190px) rotate(16deg); opacity: 0; }
 }
 
-/* 许愿树红绸飘带 */
-.wish-ribbon {
-  transform-origin: top center;
-  animation: ribbon-sway 5.5s ease-in-out infinite;
+/* ============================================================
+   许愿树 · 水墨松柏
+   ------------------------------------------------------------
+   树冠团块各自微晃（不同相位、极低幅度，模拟松梢受风）；
+   红绸绕系结点摆动，且摆动的是 path 本身，因此永远系在枝头。
+   ============================================================ */
+.pine-cluster {
+  transform-box: fill-box;
+  transform-origin: 50% 90%;
+  animation: pine-sway 9s ease-in-out infinite;
+  animation-delay: var(--delay, 0s);
 }
-.wish-ribbon:nth-child(odd) {
-  animation-delay: -2.6s;
+@keyframes pine-sway {
+  0%,
+  100% {
+    transform: rotate(calc(var(--sway, 1deg) * -1)) translateY(0);
+  }
+  50% {
+    transform: rotate(var(--sway, 1deg)) translateY(-1.2px);
+  }
+}
+
+.pine-ribbon {
+  cursor: pointer;
+  animation: ribbon-sway 6.5s ease-in-out infinite;
+  animation-delay: var(--delay, 0s);
+  transform-box: fill-box;
+  transform-origin: 50% 0%;
+}
+.pine-ribbon:nth-of-type(even) {
+  animation-duration: 7.8s;
 }
 @keyframes ribbon-sway {
-  0%, 100% { transform: rotate(var(--rot)) translateX(0); }
-  50% { transform: rotate(calc(var(--rot) + 2.6deg)) translateX(2px); }
+  0%,
+  100% {
+    transform: rotate(var(--rot, 0deg)) skewX(0deg);
+  }
+  50% {
+    transform: rotate(calc(var(--rot, 0deg) + 2.2deg)) skewX(-1.4deg);
+  }
 }
-.ribbon-strip {
-  writing-mode: vertical-rl;
+.pine-ribbon:hover .pine-ribbon-text,
+.pine-ribbon:focus-visible .pine-ribbon-text {
+  fill: #f6d9d3;
+}
+.pine-ribbon-text {
+  font-family: var(--font-serif);
   letter-spacing: 0.12em;
-  max-height: 96px;
-  overflow: hidden;
-  border: 1px solid rgba(184, 56, 46, 0.35);
+  pointer-events: none;
+  paint-order: stroke;
+  stroke: rgba(64, 15, 12, 0.35);
+  stroke-width: 0.6px;
 }
-.ribbon-tail {
-  width: 14px;
-  height: 12px;
-  margin-left: -4px;
-  clip-path: polygon(0 0, 100% 0, 50% 100%);
+
+/* 飘落的松针：极缓慢下落 + 左右轻摆，长周期避免抢戏 */
+.pine-fall {
+  animation: pine-fall 14s ease-in-out infinite;
+  opacity: 0.5;
+}
+@keyframes pine-fall {
+  0% {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.55;
+  }
+  70% {
+    opacity: 0.4;
+  }
+  100% {
+    transform: translate(26px, 150px);
+    opacity: 0;
+  }
 }
 
 .om-float {
@@ -894,6 +944,112 @@ body {
   0% { opacity: 0; transform: translate(-50%, 8px) scale(0.7); }
   18% { opacity: 1; }
   100% { opacity: 0; transform: translate(-50%, -110px) scale(1.35); }
+}
+
+/* ============================================================
+   禅意插画（水墨卷）· 动效
+   ------------------------------------------------------------
+   一律是「自然物的缓动」：烟升、水纹外扩、钟摆、云移、灯焰明灭。
+   取消 v1 的弹跳（bloom 缩放）与整体旋转，避免 UI 动画感。
+   ============================================================ */
+.ink-smoke {
+  transform-box: fill-box;
+  animation: ink-smoke 7.5s ease-in-out infinite;
+  transform-origin: 50% 100%;
+}
+@keyframes ink-smoke {
+  0% {
+    transform: translate(0, 0) scaleY(0.98);
+    opacity: 0.15;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translate(4px, -10px) scaleY(1.06);
+    opacity: 0.1;
+  }
+}
+
+.ink-ripple {
+  transform-box: fill-box;
+  animation: ink-ripple 4.6s ease-out infinite;
+}
+@keyframes ink-ripple {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1.14);
+    opacity: 0.1;
+  }
+}
+
+.ink-glow {
+  transform-box: fill-box;
+  animation: ink-glow 3.6s ease-in-out infinite;
+}
+@keyframes ink-glow {
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.95;
+  }
+}
+
+/* 钟摆：以挂点为轴，摆幅小、周期长 */
+.ink-swing {
+  transform-box: fill-box;
+  transform-origin: 50% 0%;
+  animation: ink-swing 5.6s ease-in-out infinite;
+}
+@keyframes ink-swing {
+  0%,
+  100% {
+    transform: rotate(-1.8deg);
+  }
+  50% {
+    transform: rotate(1.8deg);
+  }
+}
+
+/* 云移：横向平移 + 极轻淡入淡出，模仿云气流动 */
+.ink-drift {
+  transform-box: fill-box;
+  animation: ink-drift 11s ease-in-out infinite;
+}
+@keyframes ink-drift {
+  0%,
+  100% {
+    transform: translateX(-3px);
+    opacity: 0.45;
+  }
+  50% {
+    transform: translateX(7px);
+    opacity: 0.8;
+  }
+}
+.ink-drift-slow {
+  transform-box: fill-box;
+  animation: ink-drift 16s ease-in-out infinite;
+}
+
+/* 落花 / 落叶：缓慢斜落 */
+.ink-bloom {
+  transform-box: fill-box;
+  animation: ink-bloom 8s ease-in-out infinite;
+}
+@keyframes ink-bloom {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-0.6deg);
+  }
+  50% {
+    transform: translateY(-2.4px) rotate(0.6deg);
+  }
 }
 
 /* 深色横幅文字：改用底部墨色渐变托底，取消重投影 */

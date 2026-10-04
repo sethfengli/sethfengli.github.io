@@ -14,19 +14,20 @@
 - 标语：**慧灯常照，点亮心灯** / *The lamp of wisdom ever shines — light the lamp within*
 - 域名：sethfengli.github.io（用户根站点）；仓库：`sethfengli/sethfengli.github.io`
 
-## 2. 信息架构与路由（HashRouter）
+## 2. 信息架构与路由（BrowserRouter）
 
 | 路由 | 页面 | 内容 |
 | --- | --- | --- |
-| `#/` | 首页 | Hero（禅意插画+每日法语）、禅院导览四卡、精选经论、三大修学门径、互动香炉 |
-| `#/articles` | 佛学文库 | 309 篇，按院系筛选（净修院/禅修院/修学园地）+ 标题搜索 + 分页 |
-| `#/articles/:slug` | 文章阅读器 | 封面插画、目录、进度条、字号/行距、5 种背景、翻译、上一篇/下一篇 |
-| `#/dharma` | 法音宣流 | 互动撞钟（Web Audio）、圣号持诵计数、讲经音档预留位 |
-| `#/prayer` | 在线祈福 | 供灯表单、愿望灯海、导出/导入 JSON、仅本地存储 |
-| `#/lots` | 观音灵签 | 摇签动画、翻牌揭签、解签+禅语、收藏历史 |
-| `#/about` | 关于本院 | 缘起、一脉相承、联系（GitHub Issues）、FAQ、版权声明 |
+| `/` | 首页 | Hero（中国佛教图版 + 每日法语）、禅院导览四卡、精选经论、互动香炉 |
+| `/articles` | 经典书架 | 294 篇，按院系筛选（净修院/禅修院/修学园地）+ 标题搜索 + 分页 |
+| `/articles/:slug` | 文章阅读器 | 封面图版、目录、进度条、字号/行距、5 种背景、翻译、上一篇/下一篇 |
+| `/dharma` | 静心听经 | 3D 撞钟（回退 SVG）、圣号梵音持诵计数、讲经开示外链 |
+| `/prayer` | 点亮心愿 | 供灯表单、3D 许愿树（回退水墨松柏 SVG）、导出/导入 JSON、仅本地存储 |
+| `/lots` | 观音灵签 · 灵棋经 | 3D 签筒摇签 + 居中浮动签文弹窗；灵棋经十二棋子掷卦与卦历 |
+| `/about` | 关于本院 | 缘起、一脉相承、禅院掠影、联系（GitHub Issues）、FAQ、版权声明 |
 
 顶部导航 + 页脚（导览、仓库、联系方式、版权、免责声明）全站一致；404 页“回头是岸”。
+文档 `title` / `description` / `og:*` 由 `components/ui/RouteMeta.tsx` 按路由写入（文章页由阅读器自管）。
 
 ## 3. 设计令牌
 
@@ -105,14 +106,41 @@
 
 ### 插画与互动
 
-- **禅意 SVG 插画**（`components/zen/ZenIllustration.tsx`）：12 种水墨/扁平风场景，全部本地矢量：
-  莲花（涟漪+绽放）、香炉（青烟袅袅）、铜钟（摇摆+声波）、竹林（叶影）、远山（雾带+飞鸟）、
-  明月（倒影波光）、禅圆（旋转虚线）、菩提叶（叶脉露珠）、经卷（木鱼敲击）、锦鲤（游动）、
-  禅坐（光晕）、云海（浮云宝塔）。文章封面按 slug 关键词+稳定哈希分配。
-- **互动香炉**：点击点燃心香，烟粒子升起（CSS keyframes）。
+- **禅意 SVG 插画 · 水墨卷 v2**（`components/zen/ZenIllustration.tsx`）：12 种场景，全部本地矢量。
+  v1 是「亮蓝天空 + 荧光绿 + 橘金」的卡通风，与站点骨架冲突，v2 全面改写为中国画语汇：
+  1. 底色一律宣纸（`INK.paper` + 极轻纤维纹 `pattern`），不再用彩色渐变当天空；
+  2. 山石叶器用「墨分五色」（`jiao/nong/zhong/dan/qing` 五级不透明度）做远近，不用色相；
+  3. 全画唯一彩色是**青瓷绿**（远树、竹叶）与**朱砂**（印章、灯焰、露珠），各不超过一处；
+  4. 每幅右下钤一枚朱砂小印（`Seal`），是中式画面的收束；
+  5. 留白占一半以上——「计白当黑」；
+  6. 动效改为自然物缓动：`.ink-smoke` 烟升、`.ink-ripple` 水纹外扩、`.ink-swing` 钟摆、
+     `.ink-drift` 云移、`.ink-glow` 灯焰明灭、`.ink-bloom` 花叶轻颤——**取消弹跳与整体缩放**。
+  文章封面按 slug 关键词 + 稳定哈希分配。
+- **许愿树 SVG**（`components/zen/WishTree.tsx`）：中国水墨松柏。
+  1. 树干由左右两条**对称单调收敛**的轮廓写成一笔焦墨（旧版两缘各自内凹，合起来是「沙漏」形）；
+  2. 枝干分主枝 / 侧枝 / 细枝三级递减以见笔意，并压在树冠之上形成「枝在叶前」的笔序；
+  3. 树冠是 20 个**互相咬合的松针簇**（每簇 30 根带弧度的针叶，按黄金角散开 + 确定性抖动），
+     分三色阶拉开前后，各自以不同相位微晃——取代旧版「十几个绿球等距排开」；
+  4. 飘带系在**真实枝桠坐标**上（`RIBBON_SPOTS`），用 path 自身摆动，不再靠百分比定位贴图；
+  5. 旧版的粉色「樱花」补点（日本意象）已删除，改为**松果**与**点苔**；
+  6. 背景是两层淡墨远山 + 三道留白云气，地面前景一笔坡岸。
+- **互动香炉**：点击点燃心香，香头朱砂炭火明灭、墨线青烟上升（CSS keyframes）。
 - **撞钟**：点击铜钟摇摆 + 声波扩散 + Web Audio 实时合成钟声（基频 220Hz + 2.0/2.42/3.18 泛音指数衰减）。
 - **摇签**：签筒抖动 + 签条浮动 + 翻牌 3D（`rotateY` 0.9s cubic-bezier）。
-- 动效原则：慢、柔、克制的“禅意节奏”（3~11s 循环），`prefers-reduced-motion` 下自动降级（`animated` prop）。
+- 动效原则：慢、柔、克制的“禅意节奏”（3~16s 循环），`prefers-reduced-motion` 下自动降级（`animated` prop）。
+
+### 视觉预览工具（改 SVG / 插画必用）
+
+纯 SVG 组件没有路由依赖，可单独打包后用无头 Chrome 截图肉眼核对，**不必启动整站**：
+
+```bash
+npx vite build --config preview/vite.config.ts        # 产物 → preview-dist/
+node scripts/static-server.mjs preview-dist --port=5188   # 后台起静态服务
+node scripts/shoot-preview.mjs --name=tree --w=1100 --h=1500
+```
+
+`preview/preview-main.tsx` 里渲染许愿树（有心愿 / 空枝两态）与十二式插画，
+改组件后重跑上面三步即可对比。`build/shots/` 下留档。
 
 ## 5. 无障碍与工程细节
 
@@ -137,18 +165,51 @@ Header 调色按钮一键切换并记忆（`hdc.siteTheme`）：
 深底区块的浅色文字使用恒定 `--color-paper`，朱砂/深色按钮上的文字使用恒定 `--color-ink-950`；
 另新增 `--site-hairline` 供各主题分别定义发丝线色。阅读器 5 种正文背景独立于站点主题，互不干扰。
 
-## 7. 真实照片与音档策略
+## 7. 图版与音档策略（2026 第 5 轮：全面换为中国传统佛教题材）
 
-- 文章封面/灵签页头图等使用 **Wikimedia Commons 免版权真实照片**（CC0/公有领域/CC BY*），
-  本地托管 `public/photos/`（约 48 张，按目录序稳定分配、相邻文章不重复），
-  抓取脚本 `scripts/fetch-photos2.mjs`，署名清单 `public/photos/CREDITS.md`；
-  加载失败自动回退到禅意 SVG 插画（`CoverImage`）。
-- **站标与页面背景全部改用真实照片**：logo 为莲花照片（`PhotoLogo`，v3 起改为细微圆角方裁「印面」+ 发丝描边，
-  取消圆形金环与投影）；首页 Hero/文库横幅/关于/祈福页头均使用专用照片（lotus/hero/gate/lantern/garden/blossom/guanyin/bell），
-  且专用图会从文章封面池中排除，保证 UI 与封面不重复用图。
-- 法音页梵呗与梵钟音档同样取自 Commons 并本地托管（`public/audio/`，
-  `scripts/fetch-audio.mjs`，署名 `public/audio/CREDITS.md`）；撞钟默认播放真实梵钟录音，
-  未就绪时回退 Web Audio 多泛音合成。
+**动因**：上一版配图来自 Wikimedia Commons 的宽泛分类（`Statues of Guanyin`、`Temple bells`、
+`Buddhist temple interiors`…），结果混入大量日本、韩国、越南、泰国、印度、尼泊尔、藏传题材，
+以及欧美博物馆的异域陈设（武士刀镡、象牙雕、欧洲香炉、清真寺）——与汉传佛教的场所气质不符。
+
+**现行口径（硬性）**：**只用中国传统佛教题材**。
+
+| 桶 | 内容 | 来源分类（Commons，已实测） |
+| --- | --- | --- |
+| `paintings` | 敦煌经变、宋元明清绢画、水墨观音、台北故宫立轴 | `Buddhist paintings from China`（含各馆子类）、`Buddhist paintings of the Tang/Ming Dynasty`、`Mogao Caves`、`Paintings of Guanyin` |
+| `grottoes` | 云冈 · 龙门 · 大足 · 炳灵寺 · 乐山 | `Yungang/Longmen Grottoes`、`Dazu Rock Carvings`、`Bingling Temple`、`Leshan Giant Buddha` |
+| `statues` | 北魏至清造像：石雕、木雕、鎏金铜、大理石、德化白瓷 | `Buddhist sculptures from China` 及各材质子类、`Statues of Guanyin in China` |
+| `halls` | 殿宇、山门、佛塔 | `Buddhist temples in China/Hong Kong/Taiwan`、`Pagodas in China`、`Mahavira Hall` |
+| `sutras` | 敦煌写经、金刚经刻本、经文拓片 | `Dunhuang manuscripts`、`Diamond Sutra` |
+| `landscape` | 山水、云海、松林 | `Shan shui`、`Huangshan`、`Mountains of China` |
+| `lotus` | 莲池（净土意象，只取中国产地） | `Lotus ponds in China` |
+
+**流水线**（`scripts/`，四步，可重跑）：
+
+1. `collect-pool.mjs` → 遍历上表分类，列出全部候选到 `cn-pool.json` / `cn-pool.txt`（约 810 条，供眼筛）；
+2. `curate-cn.mjs` → 人工按 ID 精选（`PICKS`）并**二次排雷**（日/韩/越/泰/印/尼泊尔/藏传/欧美本地题材一律剔除，
+   但**保留现藏海外的中国文物**）→ `cn-picked.json`；
+3. `fetch-cn-picked.mjs` → 下载并统一转码（Pillow：长边 ≤1600、sRGB、渐进式 JPEG q84）→
+   `public/photos/cn/<桶>-NN.jpg` + `CREDITS.md` + `src/data/photos-cn.json`；
+4. 具名图（Hero / 各页题头 / 关于页拼贴）在 `src/lib/content.ts` 的 `NAMED_PHOTOS` 中按固定索引取自各桶。
+
+> **已知脆弱点**：`NAMED_PHOTOS` 目前按「桶内第 N 张」硬编码，
+> 桶内容变化（增删候选）会让具名图漂移。**下一轮建议**改为在下载阶段把具名映射写进
+> `photos-cn.json` 的 `named` 字段，由清单驱动而非硬编码索引。
+
+**分配**：`src/lib/content.ts` 的 `poolFor(school)` 按院系组桶并加权（佛画/石窟权重最高），
+`photoForSlug` 以目录序 ×7 步长取图，保证同院系相邻文章不同图；具名图见 `NAMED_PHOTOS`。
+加载失败一律回退到水墨插画（`CoverImage`）。
+
+> **坑（已踩）**：① Commons 上大量中国佛画是 **PNG/TIFF**，若在下载层按 JPEG 魔数过滤会整批丢弃，
+> 必须把格式判定交给 Pillow；② 中国佛画多为「立轴 + 大片留白」，结构/颜色指纹高度相似，
+> **任何自动判重阈值都会误杀真品**（实测把《释迦三尊图轴》与《罗汉图轴》判成同一张），
+> 故人工精选清单下**默认关闭判重**（`DEDUP=1` 才开）。
+
+- 删除配置：`scripts/probe-cats.mjs`（探测分类是否真实存在及其文件数）、
+  `scripts/shoot-preview.mjs` + `scripts/static-server.mjs` + `preview/`（把纯 SVG 组件单独打包后用无头 Chrome 截图肉眼核对）。
+- 音档仍取自 Commons 并本地托管（`public/audio/`，`scripts/fetch-audio.mjs`，署名 `public/audio/CREDITS.md`）；
+  撞钟默认播放真实梵钟录音，未就绪时回退 Web Audio 多泛音合成。
+- 站标为「印面」式方裁图版（`PhotoLogo`，细微圆角 + 发丝描边，取消圆形金环与投影）。
 ## 8. Three.js 3D 场景（2026 修订）
 
 - `/dharma`：3D 铜钟（木架 + 撞木击钟 + 声波金环 + “嗡”字浮升），点击铜钟或按钮撞钟（播完前禁点）；

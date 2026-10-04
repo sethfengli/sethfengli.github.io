@@ -43,7 +43,7 @@ export interface ArticleEn {
 /* ---------------- 目录 ---------------- */
 import catalogJson from '../content/catalog.json'
 import catalogEnJson from '../content/catalog-en.json'
-import photosJson from '../data/photos.json'
+import cnPhotosJson from '../data/photos-cn.json'
 
 export const CATALOG: ArticleMeta[] = catalogJson as ArticleMeta[]
 
@@ -56,60 +56,141 @@ export function hasEnglish(slug: string): boolean {
   return Boolean(enFiles[`../content/en/${slug}.json`])
 }
 
-/** 免版权真实照片（Wikimedia Commons，本地托管 public/photos/） */
-export const PHOTO_NAMES: string[] = (photosJson as { photos?: string[] }).photos ?? []
-
 /* ------------------------------------------------------------------
-   封面照片按院系语义分池（2026-08 意境核对）：
-   - 净修院（净土/莲花）→ 莲池、清净园林
-   - 禅修院（禅门）→ 梵钟、山峦、禅修雕像
-   - 修学园地（随笔）→ 寺院山门、殿堂、行脚路
-   已从池中剔除与佛法意境不符的照片（大象象牙雕、军工博物馆、
-   军乐队、武士刀镡、面目狰狞雕像等，见 public/photos/CREDITS.md）。
-------------------------------------------------------------------- */
-const LOTUS_POOL = ['photo-111', 'photo-112', 'photo-113', 'photo-114', 'photo-115', 'photo-116', 'photo-117']
-const BELL_POOL = [
-  'photo-50', 'photo-53', 'photo-55', 'photo-56', 'photo-58', 'photo-59', 'photo-65',
-  'photo-66', 'photo-68', 'photo-69', 'photo-74', 'photo-77', 'photo-79', 'photo-81',
-]
-const STATUE_POOL = [
-  'photo-02', 'photo-03', 'photo-04', 'photo-06', 'photo-07', 'photo-09', 'photo-10',
-  'photo-12', 'photo-13', 'photo-14', 'photo-15', 'photo-16', 'photo-17', 'photo-18',
-  'photo-19', 'photo-20', 'photo-21', 'photo-22', 'photo-23', 'photo-24', 'photo-25',
-  'photo-26', 'photo-27', 'photo-28', 'photo-29', 'photo-30', 'photo-31', 'photo-32',
-  'photo-33', 'photo-34', 'photo-35', 'photo-36', 'photo-37', 'photo-38', 'photo-39',
-  'photo-40', 'photo-41', 'photo-42', 'photo-43', 'photo-44', 'photo-45', 'photo-46',
-  'photo-47', 'photo-95', 'photo-96', 'photo-97', 'photo-98', 'photo-105', 'photo-108',
-]
-const TEMPLE_POOL = [
-  'photo-49', 'photo-52', 'photo-54', 'photo-60', 'photo-61', 'photo-62', 'photo-63',
-  'photo-64', 'photo-71', 'photo-72', 'photo-73', 'photo-75', 'photo-76', 'photo-78',
-  'photo-83', 'photo-88', 'photo-89', 'photo-99', 'photo-101', 'photo-102', 'photo-103',
-  'photo-104', 'photo-106', 'photo-107', 'photo-109',
-]
-const MOUNTAIN_POOL = ['photo-84', 'photo-89', 'photo-118', 'photo-119']
-
-function poolFor(school: School): string[] {
-  switch (school) {
-    case 'jing':
-      return [...LOTUS_POOL, ...LOTUS_POOL, ...TEMPLE_POOL] // 莲池为主，穿插清净园林
-    case 'chan':
-      return [...BELL_POOL, ...BELL_POOL, ...MOUNTAIN_POOL, ...STATUE_POOL.slice(0, 14)]
-    case 'xiuxue':
-      return [...TEMPLE_POOL, ...TEMPLE_POOL, ...STATUE_POOL.slice(14, 30)]
-  }
+   配图：Wikimedia Commons 免版权素材，**只取中国传统佛教题材**
+   （佛画 / 石窟 / 造像 / 殿宇 / 写经 / 山水 / 莲），见 public/photos/cn/CREDITS.md。
+   抓取与转码见 scripts/collect-pool.mjs → curate-cn.mjs → fetch-cn-picked.mjs。
+   ------------------------------------------------------------------- */
+type PhotoManifest = {
+  [bucket: string]: unknown
 }
 
-/** 按目录序 + 步长分配封面照片：同院系相邻文章跳 7 张，避免雷同/重复 */
+const CN_PHOTOS = cnPhotosJson as PhotoManifest
+
+/** 取某桶的文件名数组（桶不存在时为空） */
+function bucketOf(name: string): string[] {
+  const v = CN_PHOTOS[name]
+  return Array.isArray(v) ? (v as string[]) : []
+}
+
+/** 全部中国佛教图版文件名（用于「关于本院」照片墙与统计） */
+export const PHOTO_NAMES: string[] = Object.values(CN_PHOTOS)
+  .filter(Array.isArray)
+  .flatMap((v) => v as string[])
+
+/** 对外路径：public/photos/cn/<file> */
+function photoUrl(file: string): string {
+  return `/photos/cn/${file}`
+}
+
+/**
+ * 各校/各页面语义对应的图片桶：
+ *   净修院（净土）→ 佛画（经变、观音）＋ 莲池 ＋ 写经 ＋ 造像
+ *   禅修院（禅门）→ 石窟摩崖 ＋ 山水 ＋ 造像 ＋ 佛画
+ *   修学园地（随笔）→ 殿宇 ＋ 佛画 ＋ 造像 ＋ 写经
+ */
+const POOLS: Record<School, string[]> = {
+  jing: ['paintings', 'lotus', 'sutras', 'statues'],
+  chan: ['grottoes', 'landscape', 'statues', 'paintings'],
+  xiuxue: ['halls', 'paintings', 'statues', 'sutras'],
+}
+
+/** 每桶在池中的权重：靠前的桶出现更多，用于拉开比重 */
+const POOL_WEIGHT: Record<string, number> = {
+  paintings: 3,
+  lotus: 2,
+  sutras: 1,
+  statues: 2,
+  grottoes: 3,
+  landscape: 2,
+  halls: 2,
+}
+
+/**
+ * 把若干桶按权重**交错**成一条序列。
+ *
+ * 做法：按「轮」生成。每一轮中，每个桶按自己的权重取 w 个名额
+ * （桶内按 round % 长度 循环，权重 2 的桶则取第 2r、2r+1 张）。
+ * 循环轮数 = max(⌈该桶张数 / 权重⌉)，因此**每张图都会被取到至少一次**。
+ *
+ * 交错而不是「先铺完 A 再铺 B」：后者会让全部 A 集中在列表前段，
+ * 于是该院系的文章配图先清一色是 A、后清一色是 B。
+ */
+function interleave(buckets: string[]): string[] {
+  const lists = buckets
+    .map((b) => ({ files: bucketOf(b), w: POOL_WEIGHT[b] ?? 1 }))
+    .filter((l) => l.files.length > 0)
+  if (lists.length === 0) return []
+
+  const rounds = Math.max(...lists.map((l) => Math.ceil(l.files.length / l.w)))
+  const out: string[] = []
+  for (let r = 0; r < rounds; r++) {
+    for (const l of lists) {
+      for (let k = 0; k < l.w; k++) {
+        // 权重 w 的桶每轮取 w 张，使各桶按 w:1 的占空比同时推进
+        out.push(l.files[(r * l.w + k) % l.files.length])
+      }
+    }
+  }
+  return out
+}
+
+/** 院系 → 交错好的配图序列（模块级缓存，避免每次调用重算） */
+const POOL_CACHE = new Map<School, string[]>()
+
+function poolFor(school: School): string[] {
+  const cached = POOL_CACHE.get(school)
+  if (cached) return cached
+  const built = interleave(POOLS[school])
+  POOL_CACHE.set(school, built)
+  return built
+}
+
+/**
+ * 按「该院系内的序号」连续取图。
+ *
+ * 上一版用「全目录序 × 7 对池长取模」，看似能跳开相邻重复，实则：
+ * ① 池长与步长不互质时序列会退化成很小的循环——实测禅修院只有 5 篇文章，
+ *    而池长 236，`(7i mod 236)` 只取到 5 个值，**46 张石窟图里只用到 3 张**；
+ * ② 同一篇文章既会出现在全目录里、也是院系列表的一员，两处取图不一致。
+ * 现改为「院系内序号 → 交错序列」，既不重复也不会饿死任何一张图。
+ */
 export function photoForSlug(slug: string): string {
   const idx = CATALOG.findIndex((a) => a.slug === slug)
   const meta = idx >= 0 ? CATALOG[idx] : null
-  const pool = poolFor(meta?.school ?? 'xiuxue')
-  if (pool.length === 0) return PHOTO_NAMES.length ? `/photos/${PHOTO_NAMES[0]}` : ''
-  const base = idx < 0 ? 0 : idx
-  const pick = (((base * 7) % pool.length) + pool.length) % pool.length
-  return `/photos/${pool[pick]}.jpg`
+  const school = meta?.school ?? 'xiuxue'
+  const pool = poolFor(school)
+  if (pool.length === 0) return PHOTO_NAMES.length ? photoUrl(PHOTO_NAMES[0]) : ''
+  // 院系内序号：同一院系的文章依次取图，走完一遍再从头来
+  const localIdx = CATALOG.slice(0, Math.max(idx, 0)).filter((a) => a.school === school).length
+  return photoUrl(pool[localIdx % pool.length])
 }
+
+/**
+ * 具名专用图：首页 Hero、各页题头、关于页拼贴等固定位置。
+ * 取值来自各自语义最贴切的那个桶（详见上方各页调用处）。
+ */
+export const NAMED_PHOTOS = {
+  /** 首页 Hero：中国石窟摩崖大佛（炳灵寺） */
+  hero: () => photoUrl(bucketOf('grottoes')[3] ?? PHOTO_NAMES[0]),
+  /** 山门匾额（文库题头） */
+  gate: () => photoUrl(bucketOf('halls')[0] ?? PHOTO_NAMES[0]),
+  /** 观音造像（灵签题头与造像位） */
+  guanyin: () => photoUrl(bucketOf('statues')[80] ?? bucketOf('statues')[0] ?? PHOTO_NAMES[0]),
+  /** 梵钟（听经题头） */
+  bell: () => photoUrl(bucketOf('halls')[6] ?? PHOTO_NAMES[0]),
+  /** 供灯意象（祈福题头） */
+  lantern: () => photoUrl(bucketOf('paintings')[35] ?? bucketOf('paintings')[0] ?? PHOTO_NAMES[0]),
+  /** 山水（关于页题头） */
+  garden: () => photoUrl(bucketOf('landscape')[10] ?? PHOTO_NAMES[0]),
+  /** 绢本经变（关于页拼贴） */
+  blossom: () => photoUrl(bucketOf('paintings')[3] ?? PHOTO_NAMES[0]),
+  /** 莲（关于页拼贴 · 徽记） */
+  lotus: () => photoUrl(bucketOf('lotus')[2] ?? PHOTO_NAMES[0]),
+  /** 写经（关于页拼贴） */
+  sutra: () => photoUrl(bucketOf('sutras')[5] ?? PHOTO_NAMES[0]),
+}
+
 
 export const SCHOOL_LABEL_ZH: Record<School, string> = {
   jing: '净修院',

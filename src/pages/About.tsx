@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useI18n } from '../i18n'
-import { CATALOG, PHOTO_NAMES } from '../lib/content'
+import { CATALOG, NAMED_PHOTOS, PHOTO_NAMES } from '../lib/content'
 import { CHANTS } from '../data/chants'
 import { LOTS } from '../data/lots'
 import { CoverImage } from '../components/zen/CoverImage'
@@ -85,7 +85,7 @@ export function About() {
   return (
     <div>
       {/* 页头：图文并置禅庭照片 */}
-      <PageBanner image="/photos/garden.jpg" kicker={t('about.kicker')} title={t('about.title')} subtitle={t('about.subtitle')} />
+      <PageBanner image={NAMED_PHOTOS.garden()} kicker={t('about.kicker')} title={t('about.title')} subtitle={t('about.subtitle')} />
 
       {/* 数字带：发丝线分隔的统计行 */}
       <section className="border-b border-hairline bg-surface">
@@ -140,9 +140,9 @@ export function About() {
                   </div>
                   {/* 竖排照片拼贴：发丝描边，取消投影 */}
                   <div className="hidden gap-4 md:flex md:flex-col">
-                    <CoverImage src="/photos/lotus.jpg" alt="" fallbackVariant="lotus" className="h-44 w-full rounded-xs border border-hairline object-cover" />
-                    <CoverImage src="/photos/gate.jpg" alt="" fallbackVariant="clouds" className="h-56 w-full rounded-xs border border-hairline object-cover" />
-                    <CoverImage src="/photos/blossom.jpg" alt="" fallbackVariant="mountains" className="h-40 w-full rounded-xs border border-hairline object-cover" />
+                    <CoverImage src={NAMED_PHOTOS.lotus()} alt="" fallbackVariant="lotus" className="h-44 w-full rounded-xs border border-hairline object-cover" />
+                    <CoverImage src={NAMED_PHOTOS.gate()} alt="" fallbackVariant="clouds" className="h-56 w-full rounded-xs border border-hairline object-cover" />
+                    <CoverImage src={NAMED_PHOTOS.blossom()} alt="" fallbackVariant="mountains" className="h-40 w-full rounded-xs border border-hairline object-cover" />
                   </div>
                 </div>
               </section>
@@ -158,7 +158,7 @@ export function About() {
                     <div key={i} className="card-link group overflow-hidden">
                       <div className="card-media relative overflow-hidden border-b border-hairline">
                         <CoverImage
-                          src={['/photos/lotus.jpg', '/photos/garden.jpg', '/photos/blossom.jpg'][i]}
+                          src={[NAMED_PHOTOS.lotus(), NAMED_PHOTOS.garden(), NAMED_PHOTOS.sutra()][i]}
                           alt={h.title}
                           fallbackVariant={(['lotus', 'enso', 'meditation'] as const)[i]}
                           className="h-32 w-full transition-transform duration-500 group-hover:scale-105"
@@ -192,7 +192,7 @@ export function About() {
                         }`}
                       >
                         <img
-                          src={`/photos/${PHOTO_NAMES[(i * 11) % PHOTO_NAMES.length]}`}
+                          src={`/photos/cn/${PHOTO_NAMES[(i * 23) % PHOTO_NAMES.length]}`}
                           alt=""
                           loading="lazy"
                           decoding="async"
@@ -285,8 +285,8 @@ export function About() {
                   <h3 className="font-serif text-base font-normal tracking-tight text-ink-900">{t('about.creditsTitle')}</h3>
                   <p className="mt-3 font-serif text-sm leading-[1.9] text-ink-500">{t('about.creditsDesc')}</p>
                   <p className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2 font-sans text-xs">
-                    <a href="/photos/CREDITS.md" target="_blank" rel="noreferrer" className="text-tibetan-600 underline underline-offset-4 transition-colors duration-200 hover:text-tibetan-500">
-                      public/photos/CREDITS.md
+                    <a href="/photos/cn/CREDITS.md" target="_blank" rel="noreferrer" className="text-tibetan-600 underline underline-offset-4 transition-colors duration-200 hover:text-tibetan-500">
+                      public/photos/cn/CREDITS.md
                     </a>
                     <a href="/audio/CREDITS.md" target="_blank" rel="noreferrer" className="text-tibetan-600 underline underline-offset-4 transition-colors duration-200 hover:text-tibetan-500">
                       public/audio/CREDITS.md
