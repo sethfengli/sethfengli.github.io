@@ -175,7 +175,7 @@ export function Lots() {
                     />
                   </div>
                   <p className="section-kicker">{t('lots.guanyinName')}</p>
-                  <p className="max-w-xs font-serif text-[13px] leading-relaxed text-ink-700">{t('lots.guanyinDesc')}</p>
+                  <p className="max-w-xs font-song text-[13px] leading-relaxed text-ink-700">{t('lots.guanyinDesc')}</p>
                 </div>
               </Reveal>
 
@@ -195,7 +195,7 @@ export function Lots() {
                   >
                     {phase === 'shaking' ? t('lots.drawing') : phase === 'revealed' ? t('lots.again') : t('lots.draw')}
                   </button>
-                  {phase !== 'shaking' && <p className="font-serif text-xs text-sandalwood-500">{t('lots.shakeHint')}</p>}
+                  {phase !== 'shaking' && <p className="font-song text-xs text-sandalwood-500">{t('lots.shakeHint')}</p>}
                 </div>
               </Reveal>
             </div>
@@ -222,7 +222,7 @@ export function Lots() {
                 <p className="mt-2 text-xs text-sandalwood-500">{t('lots.historyHint')}</p>
 
                 {saved.length === 0 ? (
-                  <p className="mt-8 rounded-card border border-dashed border-hairline bg-rice-100/50 p-10 text-center font-serif text-sandalwood-500">
+                  <p className="mt-8 rounded-card border border-dashed border-hairline bg-rice-100/50 p-10 text-center font-song text-sandalwood-500">
                     {t('lots.historyEmpty')}
                   </p>
                 ) : (
@@ -238,11 +238,11 @@ export function Lots() {
                             onClick={() => openHistory(l.id)}
                             className="card-link flex w-full cursor-pointer items-center gap-4 p-4 text-left"
                           >
-                            <span className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xs font-serif text-sm ${levelClass(l.level)}`}>
+                            <span className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xs font-song text-sm ${levelClass(l.level)}`}>
                               {l.id}
                             </span>
                             <span className="min-w-0">
-                              <span className="block truncate font-serif text-sandalwood-800">
+                              <span className="block truncate font-song text-sandalwood-800">
                                 {t('lots.lotNumber', { n: l.id })} · {lx.title}
                               </span>
                               <span className="mt-1 block text-xs text-sandalwood-500">
@@ -258,7 +258,7 @@ export function Lots() {
               </section>
             </Reveal>
 
-            <p className="text-center font-serif text-xs leading-relaxed text-sandalwood-500">{t('lots.disclaimer')}</p>
+            <p className="text-center font-song text-xs leading-relaxed text-sandalwood-500">{t('lots.disclaimer')}</p>
           </div>
         ) : (
           /* ---------- 灵棋经 ---------- */
@@ -290,7 +290,7 @@ export function Lots() {
                   </svg>
                 </span>
                 <span className="text-left">
-                  <span className="block font-serif text-sandalwood-800">{t('lingqi.fullText')}</span>
+                  <span className="block font-song text-sandalwood-800">{t('lingqi.fullText')}</span>
                   <span className="mt-1 block text-xs text-sandalwood-500">{t('lingqi.fullTextDesc')}</span>
                 </span>
               </a>
@@ -310,7 +310,7 @@ export function Lots() {
       )}
 
       {toast && (
-        <div className="fixed bottom-6 left-1/2 z-50 -translate-x-1/2 animate-fade-up rounded-xs border border-sandalwood-700 bg-sandalwood-900 px-6 py-3 font-serif text-sm text-paper">
+        <div className="fixed bottom-6 left-1/2 z-50 -translate-x-1/2 animate-fade-up rounded-xs border border-sandalwood-700 bg-sandalwood-900 px-6 py-3 font-song text-sm text-paper">
           {toast}
         </div>
       )}
@@ -416,7 +416,7 @@ function LotModal({
         ) : (
           <div className="lot-fade-in mt-8 rounded-card border border-hairline bg-surface px-6 py-6">
             <p className="section-kicker">{t('lots.interpretationLabel')}</p>
-            <p className="mt-4 font-serif text-[15px] leading-loose text-ink-700">{lx.meaning}</p>
+            <p className="mt-4 font-song text-[15px] leading-loose text-ink-700">{lx.meaning}</p>
             {/* 禅语祝福：与解签一体 */}
             <div className="mt-6 border-t border-hairline pt-5">
               <p className="section-kicker">{t('lots.blessingLabel')}</p>

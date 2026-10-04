@@ -53,12 +53,38 @@
 - 装饰性高饱和色只允许朱砂红（`tibetan-600`），一屏内不超过 2～3 处；
 - 全面禁用 `bg-gradient-*` 做装饰性渐变；发丝线统一用 `border-hairline` / `bg-hairline` / `.hairline`。
 
-### 字体
+### 字体（2026 第 6 轮：标题楷 / 正文宋 / 界面黑）
 
-- 正文与区块标题：霞鹜文楷 / 思源宋体栈（`--font-serif`），标题**不再加粗**，靠字号与留白建立层级；
-- UI 与标签：思源黑体栈（`--font-sans`）；
-- 书法体（`--font-brush`，马善政 / 龙藏）：仅作**偶尔点睛**（如签文诗句），不用于页头与区块标题；
-- 本地自托管 unicode-range 子集，弱网可用。
+全站字体按**职能**三分，而不是按"好看"随手指定。中国出版的惯例本就是「正文宋、标题楷、界面黑」：
+
+| 角色 | 令牌 | 汉字 | 用于 |
+| --- | --- | --- | --- |
+| 标题 | `--font-serif`（Tailwind `font-serif`） | 霞鹜文楷（楷体） | `h1/h2/h3`、刊头、板块题、文章标题、偈颂/诗句 |
+| 正文 | `--font-song`（Tailwind `font-song`） | 宋体（Noto Serif SC / Songti SC / SimSun） | 段落、列表摘要、卡片说明、释义、说明性副题 |
+| 界面 | `--font-sans`（Tailwind `font-sans`） | 思源黑体 | 导航、按钮、标签、数字、表单、目录 |
+| 点睛 | `--font-brush`（Tailwind `font-brush`） | 马善政 / 龙藏 | 仅签文诗句、禅语祝福 |
+
+**`body` 的默认字体是 `--font-song`（宋体）**，因此**未加字体类的正文元素自动落在宋体上**，
+不必逐个标注 `font-song`；标题显式加 `font-serif`，界面显式加 `font-sans`。
+
+> **为什么改**（第 6 轮动因）：此前正文与标题同走 `--font-serif`（汉字回退霞鹜文楷 · 楷体），
+> 而全站 `font-weight` 一律 `font-normal`（不加粗）。楷体本身笔画粗细差小，
+> 层级只能靠字号撑，长文读起来发"黏"，标题与正文也拉不开对比。
+> 改为「标题楷 / 正文宋」后，层级来自**"写出 vs 印出"的质感差**而非字重——
+> 全站至今仍一处也不加粗（`scripts/style-audit.mjs` 的 font-weight 一节可核）。
+>
+> 迁移脚本：`scripts/migrate-to-song.mjs`（把语义上是正文的 `font-serif` 逐行改为 `font-song`）。
+> 对比工程：`preview/FontCompare.tsx`（`?mode=font`，同页并排两版，并读 computed style 验证
+> 「只有正文变了」——实测标题 font-family 链与排版宽度两版完全一致）。
+
+- 西文与中英混排：三套栈都把 `'Noto Serif' / 'Noto Sans'` 放在**汉字字体之前**，
+  让西文走真正的拉丁衬线、汉字回退到中文族；不要把 `'Noto Serif SC'` 提前，
+  它的西文字形与 Noto Serif 不同，会把中英混排的西文观感拉低。
+- **未内置汉字 web font**：宋体依赖系统栈（macOS 宋体-简 / Windows 中易宋体 / Linux 思源宋体）。
+  好处是零体积代价；代价是 Windows 上是中易宋体，观感弱于截图中用的 Noto Serif SC。
+  若要全平台统一，需引入 `@fontsource/noto-serif-sc`——汉字全量字体体积可观，
+  建议按需（只给正文区域）加载，属于可选增强，见 `scripts/RESUME.md §9.3`。
+- 本地自托管 unicode-range 子集。
 
 ### 形状与阴影
 

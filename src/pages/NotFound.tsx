@@ -12,7 +12,7 @@ export function NotFound() {
       <h1 className="mt-8 font-serif text-3xl font-normal tracking-tight text-ink-900 sm:text-4xl">
         {t('common.notFoundTitle')}
       </h1>
-      <p className="mt-4 font-serif text-sm leading-relaxed text-ink-500">{t('common.notFoundDesc')}</p>
+      <p className="mt-4 font-song text-sm leading-relaxed text-ink-500">{t('common.notFoundDesc')}</p>
       <Link to="/" viewTransition className="btn-primary mt-10">
         {t('common.backHome')}
       </Link>

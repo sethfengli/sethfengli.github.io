@@ -114,7 +114,7 @@ export function About() {
                 >
                   {/* 序号：方形朱砂小印（替换旧版圆形徽章） */}
                   <span
-                    className={`flex h-6 w-6 items-center justify-center rounded-xs font-serif text-xs ${
+                    className={`flex h-6 w-6 items-center justify-center rounded-xs font-song text-xs ${
                       active === s.id ? 'bg-tibetan-600 text-paper' : 'border border-hairline text-ink-300'
                     }`}
                   >
@@ -133,7 +133,7 @@ export function About() {
                 <div className="grid items-start gap-10 md:grid-cols-[1fr_260px]">
                   <div>
                     <h2 className="section-title">{t('about.storyTitle')}</h2>
-                    <div className="mt-8 space-y-6 font-serif text-[15px] leading-loose text-ink-700">
+                    <div className="mt-8 space-y-6 font-song text-[15px] leading-loose text-ink-700">
                       <p className="text-indent-2em">{t('about.story1')}</p>
                       <p className="text-indent-2em">{t('about.story2')}</p>
                       <p className="text-indent-2em">{t('about.story3')}</p>
@@ -164,13 +164,13 @@ export function About() {
                           fallbackVariant={(['lotus', 'enso', 'meditation'] as const)[i]}
                           className="h-32 w-full transition-transform duration-500 group-hover:scale-105"
                         />
-                        <span className="absolute bottom-3 left-3 rounded-xs bg-sandalwood-950/80 px-2 py-1 font-serif text-xs text-white">
+                        <span className="absolute bottom-3 left-3 rounded-xs bg-sandalwood-950/80 px-2 py-1 font-song text-xs text-white">
                           0{i + 1}
                         </span>
                       </div>
                       <div className="p-5">
                         <h3 className="font-serif text-lg font-normal tracking-tight text-ink-900">{h.title}</h3>
-                        <p className="mt-3 font-serif text-sm leading-[1.9] text-ink-500">{h.desc}</p>
+                        <p className="mt-3 font-song text-sm leading-[1.9] text-ink-500">{h.desc}</p>
                       </div>
                     </div>
                   ))}
@@ -210,7 +210,7 @@ export function About() {
             <Reveal>
               <section id="contact" className="scroll-mt-24">
                 <h2 className="section-title">{t('about.contactTitle')}</h2>
-                <p className="mt-5 max-w-2xl font-serif text-sm leading-loose text-ink-700">{t('about.contactDesc')}</p>
+                <p className="mt-5 max-w-2xl font-song text-sm leading-loose text-ink-700">{t('about.contactDesc')}</p>
                 <div className="mt-8 grid gap-6 sm:grid-cols-2">
                   <a
                     href="https://github.com/sethfengli/sethfengli.github.io/issues/new"
@@ -222,7 +222,7 @@ export function About() {
                       <MailIcon />
                     </span>
                     <span>
-                      <span className="block font-serif text-base text-ink-900">{t('about.contactEmail')}</span>
+                      <span className="block font-song text-base text-ink-900">{t('about.contactEmail')}</span>
                       <span className="mt-1 block font-sans text-xs leading-relaxed text-ink-500">{t('about.contactEmailDesc')}</span>
                     </span>
                   </a>
@@ -231,7 +231,7 @@ export function About() {
                       <BookIcon />
                     </span>
                     <span>
-                      <span className="block font-serif text-base text-ink-900">{t('about.contactBrowse')}</span>
+                      <span className="block font-song text-base text-ink-900">{t('about.contactBrowse')}</span>
                       <span className="mt-1 block font-sans text-xs leading-relaxed text-ink-500">{t('about.contactBrowseDesc')}</span>
                     </span>
                   </Link>
@@ -252,7 +252,7 @@ export function About() {
                         className="flex w-full cursor-pointer items-center justify-between gap-4 py-5 text-left transition-colors duration-200"
                         aria-expanded={openFaq === i}
                       >
-                        <span className="font-serif text-base font-normal tracking-tight text-ink-900">{f.q}</span>
+                        <span className="font-song text-base font-normal tracking-tight text-ink-900">{f.q}</span>
                         <span
                           className={`shrink-0 text-tibetan-600 transition-transform duration-300 ${openFaq === i ? 'rotate-45' : ''}`}
                           aria-hidden
@@ -262,7 +262,7 @@ export function About() {
                       </button>
                       {openFaq === i && (
                         <div className="pb-6">
-                          <div className="max-w-2xl font-serif text-sm leading-loose text-ink-500">{f.a}</div>
+                          <div className="max-w-2xl font-song text-sm leading-loose text-ink-500">{f.a}</div>
                         </div>
                       )}
                     </div>
@@ -276,15 +276,15 @@ export function About() {
               <section id="copyright" className="scroll-mt-24 grid gap-6 sm:grid-cols-2">
                 <div className="card p-6">
                   <h3 className="font-serif text-base font-normal tracking-tight text-ink-900">{t('about.copyrightTitle')}</h3>
-                  <p className="mt-3 font-serif text-sm leading-[1.9] text-ink-500">{t('about.copyright')}</p>
+                  <p className="mt-3 font-song text-sm leading-[1.9] text-ink-500">{t('about.copyright')}</p>
                 </div>
                 <div className="card p-6">
                   <h3 className="font-serif text-base font-normal tracking-tight text-ink-900">{t('about.techTitle')}</h3>
-                  <p className="mt-3 font-serif text-sm leading-[1.9] text-ink-500">{t('about.techDesc')}</p>
+                  <p className="mt-3 font-song text-sm leading-[1.9] text-ink-500">{t('about.techDesc')}</p>
                 </div>
                 <div className="card p-6 sm:col-span-2">
                   <h3 className="font-serif text-base font-normal tracking-tight text-ink-900">{t('about.creditsTitle')}</h3>
-                  <p className="mt-3 font-serif text-sm leading-[1.9] text-ink-500">{t('about.creditsDesc')}</p>
+                  <p className="mt-3 font-song text-sm leading-[1.9] text-ink-500">{t('about.creditsDesc')}</p>
                   <p className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2 font-sans text-xs">
                     <a href="/photos/cn/CREDITS.md" target="_blank" rel="noreferrer" className="text-tibetan-600 underline underline-offset-4 transition-colors duration-200 hover:text-tibetan-500">
                       public/photos/cn/CREDITS.md
@@ -301,7 +301,7 @@ export function About() {
 
         <div className="mt-20 flex flex-col items-center gap-6">
           <Ornament />
-          <p className="text-center font-serif text-sm text-ink-500">「{t('slogan')}」</p>
+          <p className="text-center font-song text-sm text-ink-500">「{t('slogan')}」</p>
         </div>
       </Section>
     </div>
@@ -311,7 +311,7 @@ export function About() {
 function Stat({ value, label }: { value: string; label: string }) {
   return (
     <div>
-      <p className="font-serif text-3xl font-normal tracking-tight text-tibetan-600">{value}</p>
+      <p className="font-song text-3xl font-normal tracking-tight text-tibetan-600">{value}</p>
       <p className="mt-2 font-sans text-xs tracking-widest text-ink-500">{label}</p>
     </div>
   )

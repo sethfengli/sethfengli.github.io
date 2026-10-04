@@ -58,7 +58,7 @@ export function IncenseBurner({ bare = false }: { bare?: boolean }) {
           </>
         )}
       </svg>
-      <div className="mt-1 text-center font-serif text-xs text-sandalwood-500">
+      <div className="mt-1 text-center font-song text-xs text-sandalwood-500">
         {lit ? (count > 1 ? t('incense.litMany', { n: count }) : t('incense.litOne')) : t('incense.idle')}
       </div>
     </>

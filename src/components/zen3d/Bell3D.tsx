@@ -448,7 +448,7 @@ export function Bell3D({ fallback }: { fallback?: ReactNode }) {
       <div className="relative h-[380px] w-full max-w-[560px] sm:h-[430px]">
         <canvas ref={canvasRef} className="h-full w-full" aria-label={t('common.bellAlt')} />
         {ringing && (
-          <span className="pointer-events-none absolute top-6 left-1/2 -translate-x-1/2 font-serif text-lg tracking-[0.3em] text-tibetan-600">
+          <span className="pointer-events-none absolute top-6 left-1/2 -translate-x-1/2 font-song text-lg tracking-[0.3em] text-tibetan-600">
             {t('dharma.ringing')}
           </span>
         )}
@@ -465,7 +465,7 @@ export function Bell3D({ fallback }: { fallback?: ReactNode }) {
         </svg>
         {ringing ? t('dharma.ringing') : count > 0 ? t('dharma.ringAgain') : t('dharma.ringBell')}
       </button>
-      <div className="text-center font-serif text-sm text-ink-500" aria-live="polite">
+      <div className="text-center font-song text-sm text-ink-500" aria-live="polite">
         {count > 0 ? t('dharma.bellCount', { n: count }) : '\u00a0'}
         <p className="mt-1.5 font-sans text-[11px] text-ink-300">{t('common.bellHint')}</p>
       </div>

@@ -130,7 +130,7 @@ export function Home() {
             <Ornament />
           </Reveal>
           <Reveal delay={80}>
-            <p className="max-w-md font-serif text-sm leading-relaxed text-ink-500">{t('home.incenseHint')}</p>
+            <p className="max-w-md font-song text-sm leading-relaxed text-ink-500">{t('home.incenseHint')}</p>
           </Reveal>
           <Reveal delay={140}>
             {/* 起始即全景（最小缩放），用户可自行拉近 */}
@@ -179,7 +179,7 @@ function QuickCard({
         <h3 className="mt-3 font-serif text-lg font-normal text-ink-900 transition-colors duration-200 group-hover:text-tibetan-600">
           {title}
         </h3>
-        <p className="mt-3 font-serif text-sm leading-[1.9] text-ink-500">{desc}</p>
+        <p className="mt-3 font-song text-sm leading-[1.9] text-ink-500">{desc}</p>
       </div>
     </Link>
   )
@@ -225,7 +225,7 @@ function ArticleLead({
             {t('common.authorBy', { name: author })}
           </p>
         )}
-        <p className="mt-6 line-clamp-4 font-serif text-sm leading-[1.95] text-ink-500">{excerpt}</p>
+        <p className="mt-6 line-clamp-4 font-song text-sm leading-[1.95] text-ink-500">{excerpt}</p>
         <span className="mt-8 inline-flex items-center gap-2 font-sans text-xs tracking-wider text-tibetan-600">
           {t('home.readFull')}
           <svg viewBox="0 0 24 24" className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
@@ -268,7 +268,7 @@ function ArticleRow({
             </p>
           )}
         </div>
-        <p className="line-clamp-2 font-serif text-sm leading-[1.9] text-ink-500 lg:col-span-7">{excerpt}</p>
+        <p className="line-clamp-2 font-song text-sm leading-[1.9] text-ink-500 lg:col-span-7">{excerpt}</p>
         <div className="flex items-start lg:col-span-1 lg:justify-end lg:pt-1">
           <svg viewBox="0 0 24 24" className="h-4 w-4 text-ink-300 transition-all duration-300 group-hover:translate-x-1 group-hover:text-tibetan-600" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
             <path d="M5 12h14M13 6l6 6-6 6" />

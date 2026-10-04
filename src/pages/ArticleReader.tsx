@@ -167,7 +167,7 @@ export function ArticleReader() {
       <div className="flex min-h-[60vh] items-center justify-center">
         <div className="flex flex-col items-center gap-4 text-ink-500">
           <div className="h-6 w-6 animate-spin rounded-full border border-hairline border-t-tibetan-600" />
-          <p className="font-serif text-sm">{t('common.loading')}</p>
+          <p className="font-song text-sm">{t('common.loading')}</p>
         </div>
       </div>
     )
@@ -177,7 +177,7 @@ export function ArticleReader() {
     return (
       <div className="mx-auto flex min-h-[60vh] max-w-xl flex-col items-center justify-center px-5 text-center">
         <ZenIllustration variant="enso" className="h-32 w-64 rounded-xs" animated={false} />
-        <p className="mt-8 font-serif text-xl text-ink-900">{t('reader.notFound')}</p>
+        <p className="mt-8 font-song text-xl text-ink-900">{t('reader.notFound')}</p>
         <Link to="/articles" className="btn-secondary mt-8">
           {t('reader.backToList')}
         </Link>
@@ -274,7 +274,7 @@ export function ArticleReader() {
                 <span>{t('reader.wordCount', { n: doc.chars.toLocaleString() })}</span>
               </div>
               {lang === 'en' && !nativeEn && (
-                <p className="mt-6 border-l-2 border-tibetan-500 bg-rice-100/70 px-5 py-3.5 font-serif text-xs leading-relaxed text-ink-500">
+                <p className="mt-6 border-l-2 border-tibetan-500 bg-rice-100/70 px-5 py-3.5 font-song text-xs leading-relaxed text-ink-500">
                   {t('reader.untranslatedFallback')}
                 </p>
               )}
@@ -322,7 +322,7 @@ export function ArticleReader() {
             <div className="mt-10" style={readerStyle}>
               <ArticleBody doc={doc} />
               <Ornament className="mt-14 flex justify-center" />
-              <p className="mt-6 text-center font-serif text-sm text-ink-500">
+              <p className="mt-6 text-center font-song text-sm text-ink-500">
                 {t('reader.likeNote')}
               </p>
             </div>

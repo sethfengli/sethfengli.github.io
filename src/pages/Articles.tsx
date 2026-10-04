@@ -96,7 +96,7 @@ export function Articles() {
         {shown.length === 0 ? (
           <div className="py-24 text-center">
             <ZenIllustration variant="clouds" className="mx-auto h-32 w-64 rounded-xs" animated={false} />
-            <p className="mt-8 font-serif text-ink-500">{t('articles.noResults')}</p>
+            <p className="mt-8 font-song text-ink-500">{t('articles.noResults')}</p>
           </div>
         ) : (
           <ul className="mt-2">
@@ -127,7 +127,7 @@ export function Articles() {
                           {schoolLabel(a.school, lang)}
                         </span>
                       </div>
-                      <p className="mt-2 line-clamp-2 font-serif text-sm leading-[1.9] text-ink-500">{m.excerpt}</p>
+                      <p className="mt-2 line-clamp-2 font-song text-sm leading-[1.9] text-ink-500">{m.excerpt}</p>
                       <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1 font-sans text-xs text-ink-300">
                         <span>{m.author ? t('common.authorBy', { name: m.author }) : t('reader.authorLabel')}</span>
                         <span aria-hidden className="h-3 w-px bg-hairline" />

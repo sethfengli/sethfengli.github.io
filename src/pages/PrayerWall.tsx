@@ -172,7 +172,7 @@ export function PrayerWall() {
   const rest = shown.slice(TREE_CAPACITY)
 
   const fieldClass =
-    'w-full rounded-xs border border-hairline bg-rice-50 px-4 py-2.5 font-serif text-sm text-ink-900 placeholder:text-ink-300 focus:border-tibetan-500 focus:outline-none'
+    'w-full rounded-xs border border-hairline bg-rice-50 px-4 py-2.5 font-song text-sm text-ink-900 placeholder:text-ink-300 focus:border-tibetan-500 focus:outline-none'
 
   return (
     <div>
@@ -281,7 +281,7 @@ export function PrayerWall() {
                 {t('prayer.mineOnly')}
               </label>
             </div>
-            <p className="mt-4 font-serif text-xs leading-relaxed text-ink-500">{t('prayer.treeHint')}</p>
+            <p className="mt-4 font-song text-xs leading-relaxed text-ink-500">{t('prayer.treeHint')}</p>
 
             {/* 许愿树（始终展示，无愿望时以提示语引导） */}
             <div className="mt-8 rounded-card border border-hairline bg-rice-100/50 p-3 sm:p-5">
@@ -293,7 +293,7 @@ export function PrayerWall() {
             </div>
             {shown.length === 0 && (
               <div className="mt-6 border border-hairline px-6 py-5 text-center">
-                <p className="font-serif text-sm text-ink-500">{t('prayer.wallEmpty')}</p>
+                <p className="font-song text-sm text-ink-500">{t('prayer.wallEmpty')}</p>
               </div>
             )}
 
@@ -306,9 +306,9 @@ export function PrayerWall() {
                 <ul className="mt-6 border-t border-hairline">
                   {rest.map((w) => (
                     <li key={w.id} className="border-b border-hairline py-5">
-                      <p className="font-serif text-sm leading-[1.9] text-ink-900">{w.text}</p>
+                      <p className="font-song text-sm leading-[1.9] text-ink-900">{w.text}</p>
                       <div className="mt-3 flex items-center justify-between font-sans text-xs text-ink-500">
-                        <span className="font-serif">{w.name} · {formatAgo(w.createdAt, t)}</span>
+                        <span className="font-song">{w.name} · {formatAgo(w.createdAt, t)}</span>
                         {w.owner === deviceId && (
                           <button
                             type="button"
@@ -336,8 +336,8 @@ export function PrayerWall() {
             <span aria-hidden className="mx-auto flex h-12 w-12 items-center justify-center rounded-xs bg-tibetan-600 text-paper">
               <LampIcon className="h-6 w-6" />
             </span>
-            <p className="mt-6 text-center font-serif text-lg leading-[1.9] text-ink-900">{selected.text}</p>
-            <p className="mt-4 text-center font-serif text-sm text-ink-500">
+            <p className="mt-6 text-center font-song text-lg leading-[1.9] text-ink-900">{selected.text}</p>
+            <p className="mt-4 text-center font-song text-sm text-ink-500">
               —— {selected.name} · {formatAgo(selected.createdAt, t)}
             </p>
             <hr className="hairline mt-7" />
@@ -357,7 +357,7 @@ export function PrayerWall() {
 
       {/* 轻提示 */}
       {toast && (
-        <div className="fixed bottom-6 left-1/2 z-50 -translate-x-1/2 animate-fade-up rounded-xs border border-paper/15 bg-sandalwood-950 px-6 py-3 font-serif text-sm text-paper">
+        <div className="fixed bottom-6 left-1/2 z-50 -translate-x-1/2 animate-fade-up rounded-xs border border-paper/15 bg-sandalwood-950 px-6 py-3 font-song text-sm text-paper">
           {toast}
         </div>
       )}

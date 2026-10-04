@@ -100,12 +100,12 @@ function countElements(tag, requireAttr) {
 console.log('慧灯禅院 · 风格体检')
 console.log(`扫描 ${files.length} 个源文件`)
 
-section('1. 字体分级', '设计约定：正文与区块标题用宋/楷（serif），UI 与标签用黑体（sans），书法体（brush）只作点睛')
+section('1. 字体分级', '设计约定（2026 第 6 轮）：标题楷（serif）· 正文宋（song）· 界面黑（sans）；书法体（brush）只作点睛')
 
 const fontCounts = {}
 for (const f of files) {
   if (!/\.(tsx|ts|css)$/.test(f)) continue
-  for (const m of read(f).matchAll(/font-(sans|serif|brush)\b/g)) {
+  for (const m of read(f).matchAll(/font-(sans|serif|brush|song)\b/g)) {
     fontCounts[m[0]] = (fontCounts[m[0]] ?? 0) + 1
   }
 }
@@ -115,9 +115,9 @@ for (const [k, v] of Object.entries(fontCounts).sort((a, b) => b[1] - a[1])) {
   const pct = ((v / total) * 100).toFixed(0)
   console.log(`    ${k.padEnd(14)} ${String(v).padStart(4)}  (${pct}%)`)
 }
-// --font-serif 定义里，汉字回退到霞鹜文楷（楷体）——正文若全用楷体，层级会被抹平
-console.log('  提示：--font-serif 的汉字回退是霞鹜文楷（楷体）。')
-console.log('        正文与标题同用一个楷体族时，层级只能靠字号撑，读起来黏。')
+console.log('  说明：正文大量元素不加字体类、直接继承 body（= --font-song），')
+console.log('        所以 font-song 的显式次数不多并不代表正文不是宋体。')
+console.log('  提示：--font-serif 的汉字回退是霞鹜文楷（楷体），仅供标题使用。')
 
 report('font-weight 使用（靠字重能否区分层级）', count(/font-(normal|medium|semibold|bold|light)\b/))
 

@@ -94,11 +94,31 @@
   --radius-xs: 2px;
   --radius-card: 4px;
 
-  /* 字体：正文用霞鹜文楷/宋体，UI 用思源黑，书法体仅作标题点缀。
-     西文字体优先 Noto Sans/Serif，汉字自动回退到后面的汉字字体。 */
+  /* ============================================================
+     字体分级（2026 · 第 6 轮「标题楷 / 正文宋」）
+     ------------------------------------------------------------
+     旧版正文与标题同走 --font-serif（汉字回退霞鹜文楷 · 楷体），
+     层级只能靠字号撑；楷体笔画粗细差小，长文读起来会「黏」。
+     现按中国出版惯例分工：
+
+       标题（h1/h2/h3、刊头、板块题、偈颂）→ --font-serif，即楷体
+       正文（段落、列表摘要、卡片说明、释义）→ --font-song，即宋体
+       UI / 标签 / 数字 / 按钮              → --font-sans，即黑体
+
+     层级因此来自「写出 vs 印出」的质感差，而不是加粗——
+     全站依旧一处 font-weight 也不加（体检脚本可核）。
+     ============================================================ */
   --font-serif:
     'Noto Serif', Georgia, 'Times New Roman', 'LXGW WenKai', 'Kaiti SC',
     'STKaiti', 'KaiTi', 'Noto Serif SC', 'Songti SC', SimSun, serif;
+
+  /* 正文宋体：西文先走 Noto Serif（印刷衬线），汉字再落到宋体族。
+     注意 'Noto Serif' 在前是为了西文，**不要**把 'Noto Serif SC' 提前——
+     它的西文字形与 Noto Serif 不同，会让中英混排的西文观感变差。 */
+  --font-song:
+    'Noto Serif', Georgia, 'Times New Roman', 'Noto Serif SC', 'Songti SC',
+    'STSong', 'Source Han Serif SC', 'Noto Serif CJK SC', SimSun, serif;
+
   --font-sans:
     'Noto Sans', 'Helvetica Neue', Arial, system-ui, 'Noto Sans SC',
     'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
@@ -463,7 +483,12 @@ html {
 }
 
 body {
-  @apply bg-rice-50 font-sans text-ink-900 antialiased;
+  /* 默认字体 = 宋体（--font-song），而不是黑体或楷体。
+     中国出版的惯例是「正文宋、标题楷、界面黑」：
+     未加字体类的正文元素落在宋体上，长文最好读；
+     标题显式加 font-serif（楷），界面文字显式加 font-sans（黑）。 */
+  @apply bg-rice-50 text-ink-900 antialiased;
+  font-family: var(--font-song);
   text-rendering: optimizeLegibility;
   overflow-wrap: break-word;
   /* 宣纸微颗粒：极轻的斜向纹理，避免大面积纯色的平板感 */
@@ -585,7 +610,8 @@ body {
     text-wrap: balance;
   }
   .section-sub {
-    @apply font-serif text-sm leading-relaxed text-ink-500;
+    /* 副题是说明性正文，走宋体（与「标题楷 / 正文宋」一致） */
+    @apply font-song text-sm leading-relaxed text-ink-500;
   }
   /* 区块小标：细字距 + 短朱砂线 */
   .section-kicker {
@@ -633,7 +659,7 @@ body {
    阅读器排版（article-body）与五种阅读主题
    ============================================================ */
 .article-body {
-  font-family: var(--font-serif);
+  font-family: var(--font-song);
   font-size: var(--reader-font-size, 18px);
   line-height: var(--reader-line-height, 1.9);
   letter-spacing: 0.02em;
