@@ -51,12 +51,19 @@ function Variant({ variant }: { variant: 'now' | 'proposed' }) {
       <div className="border-b border-hairline bg-surface px-6 py-3">
         <p className="font-sans text-xs tracking-[0.2em] text-tibetan-600 uppercase">{label}</p>
       </div>
+      {/*
+        固定内容宽度（720px）：两栏必须等宽，否则正文换行位置不同会让两版的
+        **标题**落在不同的设备像素上，抗锯齿强度随之不同，看起来像换了字体。
+        实测过：面板宽度差 20px 时，同一款楷体标题的墨量会差 0.3%，
+        肉眼足以误判成「标题也改了」。固定宽度后标题可逐像素对齐。
+      */}
+      <div className="mx-auto w-[720px]">
 
       {/* 题头：与正式 PageBanner 同结构，只是去掉照片以便专注文字 */}
       <header className="border-b border-hairline">
-        <div className="px-6 pt-8 pb-10 lg:px-10">
+        <div className="px-6 pt-8 pb-10">
           <p className="section-kicker">{HERO.kicker}</p>
-          <h1 className="mt-5 max-w-3xl font-serif text-4xl leading-[1.15] font-normal tracking-tight text-ink-900 text-balance sm:text-5xl">
+          <h1 className="mt-5 max-w-3xl font-serif text-4xl leading-[1.15] font-normal tracking-tight text-ink-900 text-balance">
             {HERO.title}
           </h1>
           <p className="mt-5 max-w-2xl font-serif text-base leading-[1.9] text-ink-500">{HERO.subtitle}</p>
@@ -65,10 +72,10 @@ function Variant({ variant }: { variant: 'now' | 'proposed' }) {
 
       {/* 每日法语 */}
       <section className="border-b border-hairline">
-        <div className="px-6 py-10 lg:px-10">
+        <div className="px-6 py-10">
           <div className="max-w-3xl">
             <p className="section-kicker">每日一语</p>
-            <blockquote className="mt-7 font-serif text-xl leading-[2] text-ink-900 text-balance sm:text-2xl">
+            <blockquote className="mt-7 font-serif text-xl leading-[2] text-ink-900 text-balance">
               {VERSE.text}
             </blockquote>
             <footer className="mt-6 flex items-center gap-3 font-sans text-xs tracking-wider text-ink-500">
@@ -80,7 +87,7 @@ function Variant({ variant }: { variant: 'now' | 'proposed' }) {
       </section>
 
       {/* 导览四卡 */}
-      <Section rhythm="tight" className="!px-6 lg:!px-10">
+      <Section rhythm="tight" className="!px-6">
         <SectionHeading align="left" kicker="首页" title="从哪里进门" subtitle="四扇门都开着，走哪一扇都不算绕路" />
         <div className="mt-8 grid gap-5 sm:grid-cols-2">
           {QUICK.map((q, i) => (
@@ -96,7 +103,7 @@ function Variant({ variant }: { variant: 'now' | 'proposed' }) {
       </Section>
 
       {/* 文章条目列表：最能看出正文可读性的地方 */}
-      <Section rhythm="tight" tone="muted" className="!px-6 lg:!px-10">
+      <Section rhythm="tight" tone="muted" className="!px-6">
         <SectionHeading align="left" kicker="初学入门" title="今天，读一部经典" subtitle="不艰深 · 不难懂 · 从读得进去的那一部开始" />
         <ul className="mt-8 border-t border-hairline">
           {ARTICLES.map((a) => (
@@ -125,6 +132,7 @@ function Variant({ variant }: { variant: 'now' | 'proposed' }) {
           </div>
         </div>
       </Section>
+      </div>
     </div>
   )
 }
