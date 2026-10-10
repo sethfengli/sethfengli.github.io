@@ -715,13 +715,13 @@ export function levelClass(level: LotLevel): string {
     case '上上':
       return 'bg-cinnabar-600 text-on-accent'
     case '上吉':
-      return 'bg-gold-500 text-ink-950'
+      return 'bg-brass-500 text-ink-950'
     case '中吉':
       return 'bg-celadon-500 text-on-accent'
     case '中平':
       return 'bg-celadon-200 text-celadon-800'
     case '中下':
-      return 'bg-moon-200 text-moon-700'
+      return 'bg-mist-200 text-mist-700'
     case '下下':
       return 'bg-ink-500 text-on-accent'
   }

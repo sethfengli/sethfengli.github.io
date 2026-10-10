@@ -147,7 +147,7 @@ export function TempleBell() {
       {ringing && (
         <span
           key={omId}
-          className="om-float pointer-events-none absolute top-10 left-1/2 z-10 -translate-x-1/2 font-song text-4xl font-bold text-gold-400"
+          className="om-float pointer-events-none absolute top-10 left-1/2 z-10 -translate-x-1/2 font-song text-4xl font-bold text-brass-400"
           aria-hidden
         >
           嗡
