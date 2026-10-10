@@ -49,7 +49,7 @@ function Variant({ variant }: { variant: 'now' | 'proposed' }) {
   return (
     <div className={`bg-rice-50 ${variant === 'now' ? 'fc-now' : 'fc-proposed'}`}>
       <div className="border-b border-hairline bg-surface px-6 py-3">
-        <p className="font-sans text-xs tracking-[0.2em] text-tibetan-600 uppercase">{label}</p>
+        <p className="font-sans text-xs tracking-[0.2em] text-cinnabar-600 uppercase">{label}</p>
       </div>
       {/*
         固定内容宽度（720px）：两栏必须等宽，否则正文换行位置不同会让两版的

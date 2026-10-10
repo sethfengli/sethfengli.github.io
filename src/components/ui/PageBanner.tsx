@@ -43,7 +43,7 @@ export function PageBanner({
         <div className="relative lg:col-span-5">
           <span
             aria-hidden
-            className="absolute -top-2.5 -right-2.5 hidden h-full w-full rounded-xs border border-sandalwood-300 lg:block"
+            className="absolute -top-2.5 -right-2.5 hidden h-full w-full rounded-xs border border-celadon-300 lg:block"
           />
           <div className="relative aspect-4/3 overflow-hidden rounded-xs border border-hairline bg-rice-100 lg:aspect-16/10">
             <CoverImage
@@ -150,7 +150,7 @@ export function Section({
 export function Ornament({ className = '' }: { className?: string }) {
   return (
     <span aria-hidden className={`ornament ${className}`}>
-      <span className="h-1 w-1 rounded-full bg-tibetan-600" />
+      <span className="h-1 w-1 rounded-full bg-cinnabar-600" />
     </span>
   )
 }

@@ -16,23 +16,26 @@
 新版语汇：**宣纸底 + 焦墨字 + 青瓷灰绿 + 朱砂印章红**，
 用「发丝描边 + 大留白 + 非对称栅格 + 细线」建立秩序。装饰极少、克制、清透。
 
-## 2. 颜色令牌（名字沿用，含义已重映射）
+## 2. 颜色令牌（2026 第 7 轮已按实义改名）
+
+> 改名：`sandalwood-*` → `celadon-*`（青瓷灰绿）· `tibetan-*` → `cinnabar-*`（朱砂印章红），
+> 共 314 处。旧名与实际颜色不符（"檀木"是灰绿、"藏传"是朱砂红），是当时最大的可读性债。
 
 | 令牌 | 新含义 | 用法 |
 | --- | --- | --- |
 | `rice-50/100/200/300` | 宣纸底（近白） | 页面底、浅区块 |
 | `ink-900/700/500/300/100` | 焦墨阶 | 正文、次要文字、说明、禁用 |
-| `sandalwood-*` | **青瓷灰绿**（主色） | 描边、次要强调、深色页脚底（`bg-sandalwood-950`） |
-| `tibetan-*` | **朱砂印章红**（唯一高饱和强调） | 主按钮底、当前态、下划线、焦点环、kicker 短线 |
-| `gold-*` | 鎏金（极少量） | 仅偶发点缀，不要大面积使用 |
-| `moon-*` | 冷灰蓝 | 极少使用 |
+| `celadon-*` | **青瓷灰绿**（主色） | 描边、次要强调、深色页脚底（`bg-celadon-950`） |
+| `cinnabar-*` | **朱砂印章红**（唯一高饱和强调） | 主按钮底、当前态、下划线、焦点环、kicker 短线 |
+| `gold-*` | 黄铜（`#ab8940` 一族，非鎏金） | 仅签位分档与梵钟「嗡」字 |
+| `moon-*` | 青灰蓝 | 仅签位分档 |
 | `surface` / `paper` / `on-accent` / `hairline` | 纸面 / 恒定宣纸白 / 强调底上的字 / 发丝线色 | 见下 |
 
 **硬性规定**
 
-- 装饰性高饱和色**只允许朱砂红**（`tibetan-600`），一屏内不超过 2～3 处。
+- 装饰性高饱和色**只允许朱砂红**（`cinnabar-600`），一屏内不超过 2～3 处。
 - 金色不再做渐变按钮或大面积底色；`bg-gradient-*` 一律清除。
-- 发丝线统一用 `border-hairline` / `bg-hairline` / `.hairline`，不要再用 `border-sandalwood-200/70` 这类半透明描边。
+- 发丝线统一用 `border-hairline` / `bg-hairline` / `.hairline`，不要再用 `border-celadon-200/70` 这类半透明描边。
 
 ## 3. 组件类（`src/index.css` 已定义，直接用）
 
@@ -81,8 +84,8 @@
 ## 6. 交互与动效
 
 - 过渡只保留 `transition-colors` / `transition-opacity`，时长 200–300ms。
-- 卡片 hover：换描边色（`hover:border-sandalwood-500`）+ 图片微缩放，**不再位移抬起**。
-- 链接 hover：`hover:text-tibetan-600`。
+- 卡片 hover：换描边色（`hover:border-celadon-500`）+ 图片微缩放，**不再位移抬起**。
+- 链接 hover：`hover:text-cinnabar-600`。
 - 焦点环已全局定义为朱砂色，不要覆盖。
 - `prefers-reduced-motion` 已全局处理，不要新增无限循环的大幅动效。
 
@@ -90,7 +93,7 @@
 
 - 保留所有 `aria-*`、语义标签、`aria-label`、`inert`、`role`。
 - 保留键盘可达性；**不要**移除 `cursor-pointer` 与 `type="button"`。
-- 深色底上的文字对比度 ≥ 4.5:1；`bg-sandalwood-950` 上用 `text-paper` / `text-paper/70`。
+- 深色底上的文字对比度 ≥ 4.5:1；`bg-celadon-950` 上用 `text-paper` / `text-paper/70`。
 - 仅替换 emoji 时，必须同时删除其 `aria-hidden` 包装或保留等价可读文本。
 
 ## 8. 禁止事项

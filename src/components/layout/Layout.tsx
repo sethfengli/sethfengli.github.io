@@ -50,7 +50,7 @@ function ScrollProgress() {
       className="pointer-events-none fixed inset-x-0 top-0 z-50 h-[2px]"
       style={{ opacity: progress > 0.002 ? 1 : 0, transition: 'opacity 0.3s' }}
     >
-      <div className="h-full bg-tibetan-600" style={{ width: `${progress * 100}%` }} />
+      <div className="h-full bg-cinnabar-600" style={{ width: `${progress * 100}%` }} />
     </div>
   )
 }
@@ -72,7 +72,7 @@ function ScrollTopButton() {
       onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
       aria-label={t('common.scrollTop')}
       title={t('common.scrollTop')}
-      className={`fixed right-5 bottom-6 z-40 flex h-10 w-10 cursor-pointer items-center justify-center rounded-xs border border-hairline bg-surface text-ink-500 transition-all duration-300 hover:border-sandalwood-500 hover:text-tibetan-600 ${
+      className={`fixed right-5 bottom-6 z-40 flex h-10 w-10 cursor-pointer items-center justify-center rounded-xs border border-hairline bg-surface text-ink-500 transition-all duration-300 hover:border-celadon-500 hover:text-cinnabar-600 ${
         visible ? 'translate-y-0 opacity-100' : 'pointer-events-none translate-y-4 opacity-0'
       }`}
     >

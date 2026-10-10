@@ -713,13 +713,13 @@ export const LOTS: GuanyinLot[] = [
 export function levelClass(level: LotLevel): string {
   switch (level) {
     case '上上':
-      return 'bg-tibetan-600 text-on-accent'
+      return 'bg-cinnabar-600 text-on-accent'
     case '上吉':
       return 'bg-gold-500 text-ink-950'
     case '中吉':
-      return 'bg-sandalwood-500 text-on-accent'
+      return 'bg-celadon-500 text-on-accent'
     case '中平':
-      return 'bg-sandalwood-200 text-sandalwood-800'
+      return 'bg-celadon-200 text-celadon-800'
     case '中下':
       return 'bg-moon-200 text-moon-700'
     case '下下':

@@ -133,11 +133,14 @@ report('emoji', count(/[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}]/u), (n) => (n > 0 
 report('❖/✦/✧/◈ 等字符装饰', count(/[❖✦✧◈◆◇]/), (n) => (n > 0 ? '⚠ 有字符装饰' : 'ok'))
 report('＋/× 等全角符号当图标', count(/[＋✕✗]/), (n) => (n > 0 ? '⚠ 建议换内联 SVG' : 'ok'))
 
-section('4. 主题令牌是否名不副实', '设计约定：令牌名沿用历史命名，但含义已重映射（这是最大的可读性债）')
-report('sandalwood-* 用量（实为青瓷灰绿）', count(/sandalwood-\d/))
-report('tibetan-* 用量（实为朱砂印章红）', count(/tibetan-\d/))
-report('gold-* 用量（已基本不用）', count(/gold-\d/), (n) => (n > 0 ? '⚠ 仍在用' : 'ok — 可删'))
-report('moon-* 用量', count(/moon-\d/))
+section(
+  '4. 主题令牌是否名实相符',
+  '2026 第 7 轮已改名：sandalwood-* → celadon-*（青瓷灰绿）· tibetan-* → cinnabar-*（朱砂印章红）',
+)
+report('celadon-* 用量（青瓷灰绿 · 主色）', count(/celadon-\d/))
+report('cinnabar-* 用量（朱砂印章红 · 唯一高饱和强调）', count(/cinnabar-\d/))
+report('gold-* 用量（黄铜色，仅签位分档与梵钟「嗡」字）', count(/gold-\d/))
+report('moon-* 用量（青灰蓝，仅签位分档）', count(/moon-\d/))
 
 section('5. 交互可达性', '基准：图标按钮需 aria-label；装饰性 SVG 应 aria-hidden')
 // 只找「没有 aria-hidden 也没有 role/title/aria-label」的 svg —— 这类才可能被读屏当图形念出来

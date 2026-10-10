@@ -172,7 +172,7 @@ export function PrayerWall() {
   const rest = shown.slice(TREE_CAPACITY)
 
   const fieldClass =
-    'w-full rounded-xs border border-hairline bg-rice-50 px-4 py-2.5 font-song text-sm text-ink-900 placeholder:text-ink-300 focus:border-tibetan-500 focus:outline-none'
+    'w-full rounded-xs border border-hairline bg-rice-50 px-4 py-2.5 font-song text-sm text-ink-900 placeholder:text-ink-300 focus:border-cinnabar-500 focus:outline-none'
 
   return (
     <div>
@@ -226,14 +226,14 @@ export function PrayerWall() {
                     {t('prayer.wishCounter', { n: text.length })}
                   </p>
                 </div>
-                {error && <p className="font-sans text-sm text-tibetan-600">{error}</p>}
+                {error && <p className="font-sans text-sm text-cinnabar-600">{error}</p>}
                 <button type="submit" className="btn-primary w-full">
                   <LampIcon className="h-4 w-4" />
                   {t('prayer.submit')}
                 </button>
               </form>
               <p className="mt-6 flex items-start gap-2.5 border-t border-hairline pt-5 font-sans text-xs leading-relaxed text-ink-500">
-                <LockIcon className="mt-px h-4 w-4 shrink-0 text-sandalwood-500" />
+                <LockIcon className="mt-px h-4 w-4 shrink-0 text-celadon-500" />
                 <span>{t('prayer.privacyNote')}</span>
               </p>
             </div>
@@ -276,7 +276,7 @@ export function PrayerWall() {
                   type="checkbox"
                   checked={mineOnly}
                   onChange={(e) => setMineOnly(e.target.checked)}
-                  className="h-4 w-4 accent-tibetan-600"
+                  className="h-4 w-4 accent-cinnabar-600"
                 />
                 {t('prayer.mineOnly')}
               </label>
@@ -313,7 +313,7 @@ export function PrayerWall() {
                           <button
                             type="button"
                             onClick={() => void remove(w.id)}
-                            className="cursor-pointer text-tibetan-600 underline underline-offset-4 transition-colors duration-200 hover:text-tibetan-700"
+                            className="cursor-pointer text-cinnabar-600 underline underline-offset-4 transition-colors duration-200 hover:text-cinnabar-700"
                           >
                             {t('prayer.delete')}
                           </button>
@@ -331,9 +331,9 @@ export function PrayerWall() {
       {/* 飘带详情 */}
       {selected && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4" role="dialog" aria-modal="true">
-          <div className="absolute inset-0 bg-sandalwood-950/75" onClick={() => setSelected(null)} />
+          <div className="absolute inset-0 bg-celadon-950/75" onClick={() => setSelected(null)} />
           <div className="relative w-full max-w-md animate-fade-up rounded-card border border-hairline bg-surface p-7 shadow-lift sm:p-8">
-            <span aria-hidden className="mx-auto flex h-12 w-12 items-center justify-center rounded-xs bg-tibetan-600 text-paper">
+            <span aria-hidden className="mx-auto flex h-12 w-12 items-center justify-center rounded-xs bg-cinnabar-600 text-paper">
               <LampIcon className="h-6 w-6" />
             </span>
             <p className="mt-6 text-center font-song text-lg leading-[1.9] text-ink-900">{selected.text}</p>
@@ -357,7 +357,7 @@ export function PrayerWall() {
 
       {/* 轻提示 */}
       {toast && (
-        <div className="fixed bottom-6 left-1/2 z-50 -translate-x-1/2 animate-fade-up rounded-xs border border-paper/15 bg-sandalwood-950 px-6 py-3 font-song text-sm text-paper">
+        <div className="fixed bottom-6 left-1/2 z-50 -translate-x-1/2 animate-fade-up rounded-xs border border-paper/15 bg-celadon-950 px-6 py-3 font-song text-sm text-paper">
           {toast}
         </div>
       )}

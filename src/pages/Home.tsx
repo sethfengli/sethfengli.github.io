@@ -176,7 +176,7 @@ function QuickCard({
         <span className="font-sans text-[11px] tracking-[0.2em] text-ink-300">
           {String(index + 1).padStart(2, '0')}
         </span>
-        <h3 className="mt-3 font-serif text-lg font-normal text-ink-900 transition-colors duration-200 group-hover:text-tibetan-600">
+        <h3 className="mt-3 font-serif text-lg font-normal text-ink-900 transition-colors duration-200 group-hover:text-cinnabar-600">
           {title}
         </h3>
         <p className="mt-3 font-song text-sm leading-[1.9] text-ink-500">{desc}</p>
@@ -217,7 +217,7 @@ function ArticleLead({
       </div>
       <div className="flex flex-col justify-center border-t border-hairline p-8 lg:col-span-6 lg:border-t-0 lg:border-l lg:p-12">
         <span className="seal self-start">{t('home.badge')}</span>
-        <h3 className="mt-6 font-serif text-2xl leading-snug font-normal text-ink-900 transition-colors duration-200 group-hover:text-tibetan-600 sm:text-3xl">
+        <h3 className="mt-6 font-serif text-2xl leading-snug font-normal text-ink-900 transition-colors duration-200 group-hover:text-cinnabar-600 sm:text-3xl">
           {quoted}
         </h3>
         {author && (
@@ -226,7 +226,7 @@ function ArticleLead({
           </p>
         )}
         <p className="mt-6 line-clamp-4 font-song text-sm leading-[1.95] text-ink-500">{excerpt}</p>
-        <span className="mt-8 inline-flex items-center gap-2 font-sans text-xs tracking-wider text-tibetan-600">
+        <span className="mt-8 inline-flex items-center gap-2 font-sans text-xs tracking-wider text-cinnabar-600">
           {t('home.readFull')}
           <svg viewBox="0 0 24 24" className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
             <path d="M5 12h14M13 6l6 6-6 6" />
@@ -259,7 +259,7 @@ function ArticleRow({
         className="group grid gap-3 py-7 transition-colors duration-200 lg:grid-cols-12 lg:items-start lg:gap-8"
       >
         <div className="lg:col-span-4">
-          <h3 className="font-serif text-lg leading-snug font-normal text-ink-900 transition-colors duration-200 group-hover:text-tibetan-600">
+          <h3 className="font-serif text-lg leading-snug font-normal text-ink-900 transition-colors duration-200 group-hover:text-cinnabar-600">
             {quoted}
           </h3>
           {author && (
@@ -270,7 +270,7 @@ function ArticleRow({
         </div>
         <p className="line-clamp-2 font-song text-sm leading-[1.9] text-ink-500 lg:col-span-7">{excerpt}</p>
         <div className="flex items-start lg:col-span-1 lg:justify-end lg:pt-1">
-          <svg viewBox="0 0 24 24" className="h-4 w-4 text-ink-300 transition-all duration-300 group-hover:translate-x-1 group-hover:text-tibetan-600" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+          <svg viewBox="0 0 24 24" className="h-4 w-4 text-ink-300 transition-all duration-300 group-hover:translate-x-1 group-hover:text-cinnabar-600" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
             <path d="M5 12h14M13 6l6 6-6 6" />
           </svg>
         </div>

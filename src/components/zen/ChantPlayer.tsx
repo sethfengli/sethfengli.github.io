@@ -87,7 +87,7 @@ export function ChantPlayer({ track, index }: Props) {
             type="button"
             onClick={toggle}
             aria-label={playing ? t('dharma.pause') : t('dharma.play')}
-            className="flex h-11 w-11 shrink-0 cursor-pointer items-center justify-center rounded-xs bg-tibetan-600 text-paper transition-colors duration-200 hover:bg-tibetan-700"
+            className="flex h-11 w-11 shrink-0 cursor-pointer items-center justify-center rounded-xs bg-cinnabar-600 text-paper transition-colors duration-200 hover:bg-cinnabar-700"
           >
             {playing ? (
               <svg aria-hidden="true" viewBox="0 0 24 24" className="h-4 w-4" fill="currentColor">
@@ -103,7 +103,7 @@ export function ChantPlayer({ track, index }: Props) {
           <div className="min-w-0 flex-1">
             <div className="h-px w-full bg-hairline">
               <div
-                className="h-full bg-tibetan-600 transition-[width] duration-300"
+                className="h-full bg-cinnabar-600 transition-[width] duration-300"
                 style={{ width: duration ? `${(progress / duration) * 100}%` : '0%' }}
               />
             </div>
@@ -120,7 +120,7 @@ export function ChantPlayer({ track, index }: Props) {
           type="button"
           onClick={addCount}
           title={t('dharma.chantHint')}
-          className="cursor-pointer rounded-xs border border-hairline px-4 py-1.5 font-sans text-xs tabular-nums text-ink-700 transition-colors duration-200 hover:border-tibetan-500 hover:text-tibetan-600"
+          className="cursor-pointer rounded-xs border border-hairline px-4 py-1.5 font-sans text-xs tabular-nums text-ink-700 transition-colors duration-200 hover:border-cinnabar-500 hover:text-cinnabar-600"
         >
           {t('dharma.count', { n: count })}
         </button>
@@ -129,7 +129,7 @@ export function ChantPlayer({ track, index }: Props) {
       {/* 署名 */}
       <p className="mt-4 font-sans text-[11px] leading-relaxed text-ink-300">
         {t('dharma.audioCredit')}：{track.author} · {track.license} ·{' '}
-        <a href={track.page} target="_blank" rel="noreferrer" className="underline underline-offset-2 transition-colors hover:text-tibetan-600">
+        <a href={track.page} target="_blank" rel="noreferrer" className="underline underline-offset-2 transition-colors hover:text-cinnabar-600">
           Wikimedia Commons
         </a>
       </p>

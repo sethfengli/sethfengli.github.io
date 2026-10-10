@@ -72,12 +72,12 @@ export function TranslateWidget() {
       <button
         type="button"
         onClick={load}
-        className="cursor-pointer rounded-xs border border-hairline px-4 py-1.5 font-sans text-xs text-ink-700 transition-colors duration-200 hover:border-tibetan-500 hover:text-tibetan-600"
+        className="cursor-pointer rounded-xs border border-hairline px-4 py-1.5 font-sans text-xs text-ink-700 transition-colors duration-200 hover:border-cinnabar-500 hover:text-cinnabar-600"
         title={t('reader.translateHint')}
       >
         {state === 'loading' ? t('reader.translateLoading') : `${t('reader.translate')} · EN`}
       </button>
-      {state === 'error' && <span className="font-sans text-xs text-tibetan-500">{t('common.offlineNotice')}</span>}
+      {state === 'error' && <span className="font-sans text-xs text-cinnabar-500">{t('common.offlineNotice')}</span>}
     </div>
   )
 }

@@ -448,7 +448,7 @@ export function Bell3D({ fallback }: { fallback?: ReactNode }) {
       <div className="relative h-[380px] w-full max-w-[560px] sm:h-[430px]">
         <canvas ref={canvasRef} className="h-full w-full" aria-label={t('common.bellAlt')} />
         {ringing && (
-          <span className="pointer-events-none absolute top-6 left-1/2 -translate-x-1/2 font-song text-lg tracking-[0.3em] text-tibetan-600">
+          <span className="pointer-events-none absolute top-6 left-1/2 -translate-x-1/2 font-song text-lg tracking-[0.3em] text-cinnabar-600">
             {t('dharma.ringing')}
           </span>
         )}

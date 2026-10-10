@@ -145,7 +145,7 @@ export function Lots() {
               }}
               aria-pressed={tab === x.id}
               className={`flex cursor-pointer items-center gap-2 rounded-xs px-5 py-2.5 text-sm transition-colors duration-200 ${
-                tab === x.id ? 'bg-tibetan-600 text-paper' : 'text-ink-700 hover:text-tibetan-600'
+                tab === x.id ? 'bg-cinnabar-600 text-paper' : 'text-ink-700 hover:text-cinnabar-600'
               }`}
             >
               <span aria-hidden>{TAB_ICONS[x.id]}</span>
@@ -195,7 +195,7 @@ export function Lots() {
                   >
                     {phase === 'shaking' ? t('lots.drawing') : phase === 'revealed' ? t('lots.again') : t('lots.draw')}
                   </button>
-                  {phase !== 'shaking' && <p className="font-song text-xs text-sandalwood-500">{t('lots.shakeHint')}</p>}
+                  {phase !== 'shaking' && <p className="font-song text-xs text-celadon-500">{t('lots.shakeHint')}</p>}
                 </div>
               </Reveal>
             </div>
@@ -212,17 +212,17 @@ export function Lots() {
               <section>
                 <hr className="hairline" />
                 <div className="mt-8 flex flex-wrap items-center justify-between gap-3">
-                  <h2 className="font-serif text-xl font-normal tracking-tight text-sandalwood-800">{t('lots.historyTitle')}</h2>
+                  <h2 className="font-serif text-xl font-normal tracking-tight text-celadon-800">{t('lots.historyTitle')}</h2>
                   {saved.length > 0 && (
                     <button type="button" onClick={clear} className="btn-ghost text-xs underline underline-offset-4">
                       {t('lots.clearHistory')}
                     </button>
                   )}
                 </div>
-                <p className="mt-2 text-xs text-sandalwood-500">{t('lots.historyHint')}</p>
+                <p className="mt-2 text-xs text-celadon-500">{t('lots.historyHint')}</p>
 
                 {saved.length === 0 ? (
-                  <p className="mt-8 rounded-card border border-dashed border-hairline bg-rice-100/50 p-10 text-center font-song text-sandalwood-500">
+                  <p className="mt-8 rounded-card border border-dashed border-hairline bg-rice-100/50 p-10 text-center font-song text-celadon-500">
                     {t('lots.historyEmpty')}
                   </p>
                 ) : (
@@ -242,10 +242,10 @@ export function Lots() {
                               {l.id}
                             </span>
                             <span className="min-w-0">
-                              <span className="block truncate font-song text-sandalwood-800">
+                              <span className="block truncate font-song text-celadon-800">
                                 {t('lots.lotNumber', { n: l.id })} · {lx.title}
                               </span>
-                              <span className="mt-1 block text-xs text-sandalwood-500">
+                              <span className="mt-1 block text-xs text-celadon-500">
                                 {new Date(s.drawnAt).toLocaleString()}
                               </span>
                             </span>
@@ -258,7 +258,7 @@ export function Lots() {
               </section>
             </Reveal>
 
-            <p className="text-center font-song text-xs leading-relaxed text-sandalwood-500">{t('lots.disclaimer')}</p>
+            <p className="text-center font-song text-xs leading-relaxed text-celadon-500">{t('lots.disclaimer')}</p>
           </div>
         ) : (
           /* ---------- 灵棋经 ---------- */
@@ -273,7 +273,7 @@ export function Lots() {
                 className="card-link mx-auto flex max-w-xl items-center gap-5 p-6"
               >
                 <span
-                  className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xs border border-hairline text-tibetan-600"
+                  className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xs border border-hairline text-cinnabar-600"
                   aria-hidden
                 >
                   <svg aria-hidden="true"
@@ -290,8 +290,8 @@ export function Lots() {
                   </svg>
                 </span>
                 <span className="text-left">
-                  <span className="block font-song text-sandalwood-800">{t('lingqi.fullText')}</span>
-                  <span className="mt-1 block text-xs text-sandalwood-500">{t('lingqi.fullTextDesc')}</span>
+                  <span className="block font-song text-celadon-800">{t('lingqi.fullText')}</span>
+                  <span className="mt-1 block text-xs text-celadon-500">{t('lingqi.fullTextDesc')}</span>
                 </span>
               </a>
             </div>
@@ -310,7 +310,7 @@ export function Lots() {
       )}
 
       {toast && (
-        <div className="fixed bottom-6 left-1/2 z-50 -translate-x-1/2 animate-fade-up rounded-xs border border-sandalwood-700 bg-sandalwood-900 px-6 py-3 font-song text-sm text-paper">
+        <div className="fixed bottom-6 left-1/2 z-50 -translate-x-1/2 animate-fade-up rounded-xs border border-celadon-700 bg-celadon-900 px-6 py-3 font-song text-sm text-paper">
           {toast}
         </div>
       )}
@@ -351,7 +351,7 @@ function LotModal({
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-label={t('lots.lotNumber', { n: lot.id })}>
       {/* 遮罩：不透明压暗，不再毛玻璃 */}
-      <div className="absolute inset-0 bg-sandalwood-950/80" onClick={onClose} />
+      <div className="absolute inset-0 bg-celadon-950/80" onClick={onClose} />
       {/* 光晕（装饰性圆形，保留圆） */}
       <div className="lot-rays pointer-events-none absolute h-[560px] w-[560px] rounded-full" aria-hidden />
       <div className="lot-modal-in relative max-h-[88vh] w-full max-w-xl overflow-y-auto rounded-card border border-hairline bg-rice-50 p-7 shadow-lift sm:p-9">
@@ -359,7 +359,7 @@ function LotModal({
           type="button"
           onClick={onClose}
           aria-label={t('nav.closeMenu')}
-          className="absolute top-4 right-4 flex h-9 w-9 cursor-pointer items-center justify-center rounded-xs border border-hairline text-sandalwood-500 transition-colors duration-200 hover:border-sandalwood-500 hover:text-tibetan-600"
+          className="absolute top-4 right-4 flex h-9 w-9 cursor-pointer items-center justify-center rounded-xs border border-hairline text-celadon-500 transition-colors duration-200 hover:border-celadon-500 hover:text-cinnabar-600"
         >
           <svg
             viewBox="0 0 24 24"
@@ -377,8 +377,8 @@ function LotModal({
 
         <div className="flex flex-wrap items-center justify-center gap-3">
           <span className={`rounded-xs px-3 py-1 text-xs ${levelClass(lot.level)}`}>{lx.level}</span>
-          <h3 className="font-serif text-2xl font-normal tracking-tight text-sandalwood-900 sm:text-3xl">{lx.title}</h3>
-          <span className="text-sm text-sandalwood-500">{t('lots.lotNumber', { n: lot.id })}</span>
+          <h3 className="font-serif text-2xl font-normal tracking-tight text-celadon-900 sm:text-3xl">{lx.title}</h3>
+          <span className="text-sm text-celadon-500">{t('lots.lotNumber', { n: lot.id })}</span>
         </div>
 
         {/* 签诗 */}
@@ -420,7 +420,7 @@ function LotModal({
             {/* 禅语祝福：与解签一体 */}
             <div className="mt-6 border-t border-hairline pt-5">
               <p className="section-kicker">{t('lots.blessingLabel')}</p>
-              <p className="mt-4 font-brush text-lg leading-relaxed text-tibetan-600">{lx.blessing}</p>
+              <p className="mt-4 font-brush text-lg leading-relaxed text-cinnabar-600">{lx.blessing}</p>
             </div>
           </div>
         )}

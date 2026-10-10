@@ -83,7 +83,7 @@ export function Incense3D({
   return (
     <div className={`relative w-full ${heightClass}`}>
       <canvas ref={canvasRef} className="h-full w-full" aria-label={t('common.censerAlt')} />
-      <p className="pointer-events-none absolute bottom-1 left-1/2 -translate-x-1/2 rounded-xs border border-paper/15 bg-sandalwood-950/85 px-3 py-1 font-sans text-[11px] tracking-wider text-paper/75">
+      <p className="pointer-events-none absolute bottom-1 left-1/2 -translate-x-1/2 rounded-xs border border-paper/15 bg-celadon-950/85 px-3 py-1 font-sans text-[11px] tracking-wider text-paper/75">
         {t('common.dragRotate')} · {t('common.scrollZoom')} · {t('common.censerHint')}
       </p>
     </div>

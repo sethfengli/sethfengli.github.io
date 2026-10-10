@@ -214,9 +214,9 @@ export function TempleBell() {
         </svg>
       </button>
 
-      <div className="text-center font-song text-sm text-sandalwood-500">
+      <div className="text-center font-song text-sm text-celadon-500">
         {ringing ? t('dharma.ringing') : count > 0 ? t('dharma.bellCount', { n: count }) : '\u00a0'}
-        <p className="mt-1 text-[11px] text-sandalwood-400">
+        <p className="mt-1 text-[11px] text-celadon-400">
           {BELL_TRACK.author} · {BELL_TRACK.license} · Wikimedia Commons
         </p>
       </div>

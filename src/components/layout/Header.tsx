@@ -64,7 +64,7 @@ export function Header() {
               end={item.to === '/'}
               viewTransition
               className={({ isActive }) =>
-                `relative py-1.5 font-sans text-[13px] whitespace-nowrap transition-colors duration-200 after:absolute after:inset-x-0 after:-bottom-px after:h-px after:origin-left after:bg-tibetan-600 after:transition-transform after:duration-300 xl:text-sm ${
+                `relative py-1.5 font-sans text-[13px] whitespace-nowrap transition-colors duration-200 after:absolute after:inset-x-0 after:-bottom-px after:h-px after:origin-left after:bg-cinnabar-600 after:transition-transform after:duration-300 xl:text-sm ${
                   isActive
                     ? 'text-ink-900 after:scale-x-100'
                     : 'text-ink-500 after:scale-x-0 hover:text-ink-900 hover:after:scale-x-100'
@@ -81,14 +81,14 @@ export function Header() {
           <button
             type="button"
             onClick={toggleLang}
-            className="cursor-pointer rounded-xs border border-hairline px-2.5 py-1.5 font-sans text-xs text-ink-500 transition-colors duration-200 hover:border-sandalwood-500 hover:text-ink-900"
+            className="cursor-pointer rounded-xs border border-hairline px-2.5 py-1.5 font-sans text-xs text-ink-500 transition-colors duration-200 hover:border-celadon-500 hover:text-ink-900"
             title={t('langSwitchTitle')}
           >
             {t('langLabel')}
           </button>
           <button
             type="button"
-            className="-mr-1.5 cursor-pointer p-2 text-ink-700 transition-colors hover:text-tibetan-600 lg:hidden"
+            className="-mr-1.5 cursor-pointer p-2 text-ink-700 transition-colors hover:text-cinnabar-600 lg:hidden"
             aria-label={open ? t('nav.closeMenu') : t('nav.openMenu')}
             aria-expanded={open}
             aria-controls="mobile-nav"
@@ -129,7 +129,7 @@ export function Header() {
                     onClick={() => setOpen(false)}
                     className={({ isActive }) =>
                       `flex items-center justify-between py-3 font-sans text-sm transition-colors ${
-                        isActive ? 'text-tibetan-600' : 'text-ink-700 hover:text-ink-900'
+                        isActive ? 'text-cinnabar-600' : 'text-ink-700 hover:text-ink-900'
                       }`
                     }
                   >

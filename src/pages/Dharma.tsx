@@ -39,11 +39,11 @@ export function Dharma() {
         <Reveal className="lg:col-span-5">
           <div>
             <p className="section-kicker">{t('dharma.mantraTitle')}</p>
-            <h2 className="mt-5 font-serif text-2xl font-normal tracking-tight text-sandalwood-800 sm:text-3xl">
+            <h2 className="mt-5 font-serif text-2xl font-normal tracking-tight text-celadon-800 sm:text-3xl">
               {t('dharma.bellTitle')}
             </h2>
             <p className="mt-4 font-song text-sm leading-loose text-ink-700">{t('dharma.bellDesc')}</p>
-            <blockquote className="mt-8 border-l-2 border-tibetan-600 bg-rice-100/60 py-4 pl-6 font-serif text-sm leading-loose text-sandalwood-700">
+            <blockquote className="mt-8 border-l-2 border-cinnabar-600 bg-rice-100/60 py-4 pl-6 font-serif text-sm leading-loose text-celadon-700">
               {t('dharma.bellVerse')}
             </blockquote>
           </div>

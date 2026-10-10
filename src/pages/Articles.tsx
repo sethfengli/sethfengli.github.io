@@ -83,7 +83,7 @@ export function Articles() {
                 }}
                 placeholder={t('articles.searchPlaceholder')}
                 aria-label={t('articles.searchPlaceholder')}
-                className="w-full rounded-xs border border-hairline bg-surface py-2 pr-3 pl-9 font-sans text-sm text-ink-900 transition-colors placeholder:text-ink-300 focus:border-tibetan-500 focus:outline-none"
+                className="w-full rounded-xs border border-hairline bg-surface py-2 pr-3 pl-9 font-sans text-sm text-ink-900 transition-colors placeholder:text-ink-300 focus:border-cinnabar-500 focus:outline-none"
               />
             </div>
             <p className="shrink-0 font-sans text-xs tabular-nums text-ink-300">
@@ -120,7 +120,7 @@ export function Articles() {
                     </div>
                     <div className="min-w-0">
                       <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                        <h2 className="font-serif text-base leading-snug font-normal text-ink-900 transition-colors duration-200 group-hover:text-tibetan-600 sm:text-lg">
+                        <h2 className="font-serif text-base leading-snug font-normal text-ink-900 transition-colors duration-200 group-hover:text-cinnabar-600 sm:text-lg">
                           {quoted}
                         </h2>
                         <span className="font-sans text-[10px] tracking-[0.18em] text-ink-300 uppercase">
@@ -169,7 +169,7 @@ function FilterLink({
       type="button"
       onClick={onClick}
       aria-pressed={active}
-      className={`relative cursor-pointer py-1 font-sans text-sm transition-colors duration-200 after:absolute after:inset-x-0 after:-bottom-px after:h-px after:origin-left after:bg-tibetan-600 after:transition-transform after:duration-300 ${
+      className={`relative cursor-pointer py-1 font-sans text-sm transition-colors duration-200 after:absolute after:inset-x-0 after:-bottom-px after:h-px after:origin-left after:bg-cinnabar-600 after:transition-transform after:duration-300 ${
         active
           ? 'text-ink-900 after:scale-x-100'
           : 'text-ink-500 after:scale-x-0 hover:text-ink-900 hover:after:scale-x-100'

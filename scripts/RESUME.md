@@ -247,8 +247,11 @@ git show --stat --oneline HEAD ; git status --porcelain  # 双向核对
   全量转 WebP q80；实测 227 张、7 桶全非空、photos-status 退出码 0；
 - 导览卡换掉 halls-01（反光金属说明牌）与 halls-07（黑白书影）→ 自然光石窟造像；
   注意 content.ts 的 named(key, 校验桶) 第二个参数必须与被指图片所属桶一致，否则静默回退；
-- 字体瘦身（计划外，收益最大）：CSS 875 KB → 77 KB、字体 41.5 MB/940 文件 → 0.55 MB/14 文件；
+- 字体：CSS 875 KB → 77 KB、字体 41.5 MB/940 文件 → 0.55 MB/14 文件；
   移除 lxgw-wenkai-webfont 与 @fontsource/long-cang，ma-shan-zheng 改项目子集 382 KB；
+- **新增汉字正文 webfont**：Noto Serif SC 项目子集 1.39 MB（含 unicode-range，英文页不下载）；
+- **色板令牌改名**：sandalwood-* → celadon-*、tibetan-* → cinnabar-*，共 314 处；
+- 修掉 PhotoLogo 硬编码 .jpg 导致的站标 404（构建全绿、只有截图能发现）；
 - codeSplitting 增 three / vendor 分组。
 
 下一轮请先跑这几条核对，确认 §9.4 的数字仍成立：
@@ -258,13 +261,12 @@ git show --stat --oneline HEAD ; git status --porcelain  # 双向核对
   node scripts/style-audit.mjs
   node scripts/photos-status.mjs     （退出码 0 = 图版齐了；2 = 仍有空桶）
   node build/pool-drift.mjs          （改过 PICKS 的话必跑）
+  node build/shot-scrolled.mjs ".card-media" build/shots/x.png   # 截图 + 报每张图 naturalWidth
 
 然后**先问我这一轮要做什么**，不要自行扩大范围。§9.3 里还剩：
-- (c) 内置汉字 web font：**已实测**走 @fontsource 的 400.css 会命中 86 个分片、合计 2.92 MB，
-  且单取 chinese-simplified 那个分片缺 1253 个本站要用的字；要做需下 Google Noto Serif SC
-  完整字体（约 66 MB）再按 build/collect-cjk.mjs 的 6888 字子集化。**可选，现状系统宋体栈可用。**
-- (d) 色板令牌改名 sandalwood-*/tibetan-* → 实义名（约 290 处，纯重构、零视觉变化）；
-- (g) verses.ts 每日法语的中英逐段复核。
+- (g) verses.ts 每日法语的中英逐段复核；
+- (d2) gold-*/moon-* 是否也改名（统计会被英文正文的散文词污染，需按文件白名单）；
+- (e) 主包 index.js 仍 836 KB —— 目前是应用代码 + 路由元数据，尚未拆分。
 
 纪律：
 - 含中文的文件一律不要用 PowerShell Set-Content 回写（双重编码，见 §4.3），用 node writeFileSync 或 edit 工具；
@@ -324,6 +326,9 @@ git show --stat --oneline HEAD ; git status --porcelain  # 双向核对
 | **图版体检** | 同时认 `.jpg`/`.webp`（原先只认 `.jpg`，迁移后会误报「磁盘 0 张」） | `scripts/photos-status.mjs` |
 | **导览卡换图** | `halls-01`（反光金属说明牌）与 `halls-07`（黑白书影）→ 自然光石窟造像；并修掉 `named()` 校验桶没同步改导致「改了 named 却不生效」 | `scripts/pick-named-photos.mjs`、`src/lib/content.ts` |
 | **字体瘦身（计划外）** | CSS 875 KB → **77 KB**、字体 940 个/41.5 MB → **14 个/0.55 MB**：移除 `lxgw-wenkai-webfont`(27.9 MB)、`@fontsource/long-cang`(6.4 MB，零引用)，`ma-shan-zheng` 改项目子集(5.99 MB → 382 KB) | `src/main.tsx`、`src/index.css`、`public/fonts/` |
+| **汉字正文 webfont** | 新增 **Noto Serif SC 项目子集 1.39 MB / 1 个文件**（`unicode-range` 限定汉字，英文页不下载）；全站字体合计约 1.94 MB | `src/index.css`、`public/fonts/`、`build/make-song-subset.mjs` |
+| **色板令牌改名** | `sandalwood-*`→`celadon-*`、`tibetan-*`→`cinnabar-*`，**314 处 / 30 文件**（含 docs/preview） | `src/**`、`docs/**`、`preview/**`、`build/rename-tokens.mjs` |
+| **站标 404 修复** | `PhotoLogo.tsx` 硬编码 `/photos/cn/lotus-03.jpg`，转 WebP 后 404 → 站标空白；改为从 `PHOTO_NAMES` 推导 | `src/components/zen/PhotoLogo.tsx` |
 | **分包** | `codeSplitting` 增 `three` / `vendor` 分组（React 229 KB 独立长期缓存） | `vite.config.ts` |
 | **canvas 字体名** | 9 处硬编码 `"LXGW WenKai"` / `"Ma Shan Zheng"` → 子集名（否则 canvas 画回退体） | `src/components/zen3d/*` |
 
@@ -375,6 +380,17 @@ git show --stat --oneline HEAD ; git status --porcelain  # 双向核对
     裁成窄条后只剩「一块花板子」，与水墨基调冲突——这才是上一轮记的「颜色很冲」的真身
     （**不是**紫外灯偏绿的云冈摩崖；实测逐张看过多张云冈，均为自然暖调砂岩）。
     现两者都改用自然光石窟造像（`grottoes-16` / `grottoes-02`）。
+13. **〔坑〕组件里不要硬编码图版文件名**。`PhotoLogo.tsx` 写死了 `/photos/cn/lotus-03.jpg`，
+    图版整体转 WebP 后该路径 404，站标变成**空白方框**，而 `tsc` 与 `vite build` **全绿**。
+    现改为从 `PHOTO_NAMES` 推导并做后缀归一。
+    **判据**：图片要么走 `photoUrl()`/清单，要么查 `naturalWidth`；
+    只用「构建通过」判断是不够的——本轮是靠截图 + 读 `naturalWidth` 才发现的。
+14. **CDP 全页截图（`captureBeyondViewport`）不会触发视口外的 `loading="lazy"`**，
+    全页图里会出现空白图片框。**这不是缺陷**：先 `scrollIntoView` 再截图即可
+    （`build/shot-scrolled.mjs` 就是这么做的，并会打印每张图的 `naturalWidth` 佐证）。
+15. **改 `PICKS` 后必须核对池子**：`cn-pool.json` 是**未入库**的生成物，而 `PICKS` 按池内 id 手写。
+    池子重抓后 id 会整体漂移，且**只比「picked 与 pool 是否一致」不够**——
+    两者同时漂到同一片垃圾上时也会「全等」。必须逐条看标题（§9.2 第 8 条）。
 
 ### 9.2b 备选图源调查结论（2026）
 
@@ -393,8 +409,9 @@ git show --stat --oneline HEAD ; git status --porcelain  # 双向核对
 | --- | --- | --- |
 | ~~(a) 补齐空桶~~ | — | **本轮已修**。真因不是限流，而是 `PICKS` 与重抓后的池子**不同源**（见 §9.2 第 8 条）。 |
 | ~~(b) 换掉灯光色偏重的图~~ | — | **本轮已修**。halls / sutras / landscape 三桶按标题重挑，剔掉韩国/蒙古寺院、清真寺、17 世纪铜版画与藏地/地图类。 |
-| **(c) 内置汉字 web font（Noto Serif SC）** | 中 | **本轮未做，降级为可选**。实测结论：`@fontsource/noto-serif-sc` 的 400.css 有 **101 个 unicode-range 分片**，本站在用汉字需命中 **86 个、合计 2.92 MB**；而单取 `chinese-simplified` 那一个分片又**缺 1253 个本站要用的字**（含 淨/觀/釋 等繁体）。要做得漂亮必须下 Google Noto Serif SC 完整字体（约 **66 MB**）再按 `build/collect-cjk.mjs` 的 6888 字子集化——本轮无网可下，故留待下轮。**现状是系统宋体栈**（Windows 中易宋体 / macOS 宋体-简），可用。 |
-| (d) 色板令牌改名 | 大（约 290 处） | `sandalwood-*`（130 处）实际是青瓷灰绿、`tibetan-*`（159 处）实际是朱砂红。名字与含义不符，是最大的可读性债。**本轮未做**。 |
+| ~~(c) 内置汉字 web font（Noto Serif SC）~~ | — | **本轮已完成**：项目子集 **1.39 MB / 1 个文件**（§9.4c）。成本比预估低很多——不必下 66 MB 的完整包，取 `notofonts/noto-cjk` 的 `Serif/SubsetOTF/SC/NotoSerifSC-Regular.otf`（11.1 MB）再子集化即可。 |
+| ~~(d) 色板令牌改名~~ | — | **本轮已完成**：`sandalwood-*` → `celadon-*`、`tibetan-*` → `cinnabar-*`，**314 处**（§9.4d）。注意排除 `src/content/**` 与两个把 `/tibetan/i` 当图片排雷正则用的抓取脚本。 |
+| (d2) `gold-*` / `moon-*` 是否也改名 | 小～中 | `gold-*`（`#ab8940`，实为黄铜）60 处在 `index.css`、其余在 `TempleBell.tsx` 与正文散文里；`moon-*`（青灰蓝）集中在签位分档。**难点是统计会被英文正文的 "gold"/"moon" 污染**，需按文件白名单处理。 |
 | ~~(e) 主包瘦身~~ | — | **本轮已做**（`three` / `vendor` 分组 + 字体瘦身）。CSS 875 KB → **77 KB**、字体 41.5 MB → **0.55 MB**，见 §9.4。 |
 | ~~(f) 图版转 WebP~~ | — | **本轮已做**。49.1 MB → 40.5 MB（−17.5%）。判据：JPEG 已是 q84 渐进式，故 WebP q80 只省约 17%，而非预估的 40%。 |
 | (g) 文案再打磨 | 小 | 本轮只动了一二级页面；若允许，可逐段复核 `verses.ts` 每日法语的中英对应。 |
@@ -411,7 +428,7 @@ git show --stat --oneline HEAD ; git status --porcelain  # 双向核对
 | `vendor.js`（React + Router） | 229 KB / gzip 73 KB（单独缓存） |
 | `three.js` | 724 KB / gzip 184 KB（按需） |
 | **CSS** | **77.2 KB / gzip 14.5 KB** —— 原先 875 KB，降 **91%** |
-| **字体分片** | **14 个文件 / 0.55 MB** —— 原先 940 个 / 41.5 MB，降 **98.7%** |
+| **字体分片** | 瘦身后 **14 个 / 0.55 MB**（原先 940 个 / 41.5 MB，降 **98.7%**）；**再加上本轮新增的汉字宋体子集 1.39 MB**，全部字体合计 **约 1.94 MB / 15 个文件** |
 | `@font-face` 条数 | **4**（原先 772） |
 | `validate-en` | ok=294 crit=0 warn=0 parts=0（英文正文未改动） |
 | `scan-mojibake` | 0 / 294 |
@@ -420,6 +437,8 @@ git show --stat --oneline HEAD ; git status --porcelain  # 双向核对
 | `public/` 图版体积 | 133 张 JPEG 49.1 MB → 同 133 张 WebP **40.5 MB**（−17.5%，q80）；现共 227 张 WebP **58.2 MB** |
 | 图版桶 | paintings 41 · grottoes 45 · statues **89** · halls **21** · sutras **11** · landscape **13** · lotus 7（**7 桶全部非空**） |
 | 图版抓取实测 | 一轮 `fetch-cn-webp.mjs`：**新下 94 · 复用 40 · 失败 11**（11 张全因 429 限流，续跑可补齐；留空不影响清单一致性） |
+| **汉字正文 webfont** | 内置 Noto Serif SC **项目子集 1.39 MB / 1 个文件**（详见 §9.4c） |
+| **色板令牌** | `celadon-*`（青瓷灰绿，130 处）· `cinnabar-*`（朱砂印章红，159 处）—— 由 `sandalwood-*`/`tibetan-*` 改名（§9.4d） |
 | 中英词典 | zh/en 键完全对齐（`tsc` 保证） |
 
 **CSS 为什么能降 91%**：那 875 KB 里 **91.3% 是 `@font-face` 规则**（772 条），来自三个
@@ -436,6 +455,39 @@ webfont 依赖；真正的站点样式只有约 76 KB。移除未用字体后 CS
 
 书法体子集重建：`node build/make-brush-subset.mjs`（需 `python -m pip install fonttools brotli`）。
 许可 OFL-1.1 随字体放在 `public/fonts/ma-shan-zheng-OFL.txt`。
+
+### 9.4c 汉字正文 webfont（内置 Noto Serif SC 项目子集）
+
+| 方案 | 体积 | 说明 |
+| --- | --- | --- |
+| 系统栈（第 6 轮） | 0 | macOS 宋体-简 / Windows 中易宋体 / Linux 思源宋体，三端观感不一致 |
+| `@fontsource/noto-serif-sc` 全量 CSS | **2.92 MB / 86 个分片** | 实测本站用字命中 86 个 unicode-range 分片；且单取 `chinese-simplified` 那一片**缺 1253 个本站用字**（含 淨/觀/釋） |
+| **项目子集（本轮采用）** | **1.39 MB / 1 个文件** | 取完整 Noto Serif SC Regular（30928 字形 / 11.1 MB），按 `build/collect-cjk.mjs` 统计的 **6965 字**（其中 6888 汉字）子集化 |
+
+- 字形覆盖：**6965 字只缺 1 个**（`鶴`，CJK 兼容表意文字；掉回系统字体，可接受）。
+- **`unicode-range` 是刻意的**：只覆盖汉字与中文标点，**英文页面不会下载这 1.39 MB**。
+  实测：英文分支只请求 Noto Serif/Sans 的 latin 分片与书法体子集，**无 CJK 子集**；
+  中文分支（`hdc.lang=zh`）则实测请求到 `/fonts/noto-serif-sc-subset.woff2`（200）。
+- 重建：`node build/make-song-subset.mjs`（需 `python -m pip install fonttools brotli`；
+  字体源从 jsdelivr 的 `notofonts/noto-cjk` 拉取）。**改动正文/文案后要重跑**，否则新字掉回系统字体。
+- 许可 OFL-1.1：`public/fonts/noto-serif-sc-OFL.txt`。
+
+### 9.4d 色板令牌改名
+
+| 旧名 | 新名 | 实际颜色 | 处数 |
+| --- | --- | --- | --- |
+| `sandalwood-*` | **`celadon-*`** | 青瓷灰绿（`#789085`，G>R） | 130 |
+| `tibetan-*` | **`cinnabar-*`** | 朱砂印章红（`#b8382e`） | 159 |
+
+共 **314 处 / 30 个文件**（含 `docs/` 与 `preview/`）。
+
+**排除项（重要，踩过）**：`src/content/**`（英文正文里的 "gold"/"moon" 是散文词）与
+`scripts/curate-cn.mjs`、`scripts/fetch-met-photos.mjs` —— 后两者里的 `/tibetan/i` 是
+**图片排雷正则**，按令牌名一刀切改会破坏图版筛选。
+脚本：`build/rename-tokens.mjs`（dry-run + 残留自检）。
+
+`gold-*`（实为黄铜 `#ab8940`）与 `moon-*`（青灰蓝）本轮**未改名**：代码用量集中在
+签位分档与梵钟「嗡」字，价值低于前两者；且统计会被正文散文词污染，需单独处理。
 
 ### 9.4b 图版新管线（取代旧的 fetch-cn-picked + rebuild）
 

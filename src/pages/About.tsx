@@ -109,13 +109,13 @@ export function About() {
                   type="button"
                   onClick={() => scrollTo(s.id)}
                   className={`flex w-full cursor-pointer items-center gap-3 rounded-xs px-2 py-2.5 text-left font-sans text-sm transition-colors duration-200 ${
-                    active === s.id ? 'text-tibetan-700' : 'text-ink-500 hover:text-ink-900'
+                    active === s.id ? 'text-cinnabar-700' : 'text-ink-500 hover:text-ink-900'
                   }`}
                 >
                   {/* 序号：方形朱砂小印（替换旧版圆形徽章） */}
                   <span
                     className={`flex h-6 w-6 items-center justify-center rounded-xs font-song text-xs ${
-                      active === s.id ? 'bg-tibetan-600 text-paper' : 'border border-hairline text-ink-300'
+                      active === s.id ? 'bg-cinnabar-600 text-paper' : 'border border-hairline text-ink-300'
                     }`}
                   >
                     {i + 1}
@@ -164,7 +164,7 @@ export function About() {
                           fallbackVariant={(['lotus', 'enso', 'meditation'] as const)[i]}
                           className="h-32 w-full transition-transform duration-500 group-hover:scale-105"
                         />
-                        <span className="absolute bottom-3 left-3 rounded-xs bg-sandalwood-950/80 px-2 py-1 font-song text-xs text-white">
+                        <span className="absolute bottom-3 left-3 rounded-xs bg-celadon-950/80 px-2 py-1 font-song text-xs text-white">
                           0{i + 1}
                         </span>
                       </div>
@@ -218,7 +218,7 @@ export function About() {
                     rel="noreferrer"
                     className="card-link flex items-center gap-4 p-6"
                   >
-                    <span aria-hidden className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xs border border-hairline text-sandalwood-600">
+                    <span aria-hidden className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xs border border-hairline text-celadon-600">
                       <MailIcon />
                     </span>
                     <span>
@@ -227,7 +227,7 @@ export function About() {
                     </span>
                   </a>
                   <Link to="/articles" viewTransition className="card-link flex items-center gap-4 p-6">
-                    <span aria-hidden className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xs border border-hairline text-sandalwood-600">
+                    <span aria-hidden className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xs border border-hairline text-celadon-600">
                       <BookIcon />
                     </span>
                     <span>
@@ -254,7 +254,7 @@ export function About() {
                       >
                         <span className="font-song text-base font-normal tracking-tight text-ink-900">{f.q}</span>
                         <span
-                          className={`shrink-0 text-tibetan-600 transition-transform duration-300 ${openFaq === i ? 'rotate-45' : ''}`}
+                          className={`shrink-0 text-cinnabar-600 transition-transform duration-300 ${openFaq === i ? 'rotate-45' : ''}`}
                           aria-hidden
                         >
                           <PlusIcon />
@@ -286,10 +286,10 @@ export function About() {
                   <h3 className="font-serif text-base font-normal tracking-tight text-ink-900">{t('about.creditsTitle')}</h3>
                   <p className="mt-3 font-song text-sm leading-[1.9] text-ink-500">{t('about.creditsDesc')}</p>
                   <p className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2 font-sans text-xs">
-                    <a href="/photos/cn/CREDITS.md" target="_blank" rel="noreferrer" className="text-tibetan-600 underline underline-offset-4 transition-colors duration-200 hover:text-tibetan-500">
+                    <a href="/photos/cn/CREDITS.md" target="_blank" rel="noreferrer" className="text-cinnabar-600 underline underline-offset-4 transition-colors duration-200 hover:text-cinnabar-500">
                       public/photos/cn/CREDITS.md
                     </a>
-                    <a href="/audio/CREDITS.md" target="_blank" rel="noreferrer" className="text-tibetan-600 underline underline-offset-4 transition-colors duration-200 hover:text-tibetan-500">
+                    <a href="/audio/CREDITS.md" target="_blank" rel="noreferrer" className="text-cinnabar-600 underline underline-offset-4 transition-colors duration-200 hover:text-cinnabar-500">
                       public/audio/CREDITS.md
                     </a>
                   </p>
@@ -311,7 +311,7 @@ export function About() {
 function Stat({ value, label }: { value: string; label: string }) {
   return (
     <div>
-      <p className="font-song text-3xl font-normal tracking-tight text-tibetan-600">{value}</p>
+      <p className="font-song text-3xl font-normal tracking-tight text-cinnabar-600">{value}</p>
       <p className="mt-2 font-sans text-xs tracking-widest text-ink-500">{label}</p>
     </div>
   )

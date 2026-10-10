@@ -58,7 +58,7 @@ export function IncenseBurner({ bare = false }: { bare?: boolean }) {
           </>
         )}
       </svg>
-      <div className="mt-1 text-center font-song text-xs text-sandalwood-500">
+      <div className="mt-1 text-center font-song text-xs text-celadon-500">
         {lit ? (count > 1 ? t('incense.litMany', { n: count }) : t('incense.litOne')) : t('incense.idle')}
       </div>
     </>
@@ -82,7 +82,7 @@ export function IncenseBurner({ bare = false }: { bare?: boolean }) {
       type="button"
       onClick={light}
       aria-label={t('incense.aria')}
-      className="group relative block cursor-pointer rounded-xs border border-hairline bg-rice-100/60 p-4 text-left transition-colors duration-200 hover:border-sandalwood-500 hover:bg-rice-100"
+      className="group relative block cursor-pointer rounded-xs border border-hairline bg-rice-100/60 p-4 text-left transition-colors duration-200 hover:border-celadon-500 hover:bg-rice-100"
     >
       {inner}
     </button>

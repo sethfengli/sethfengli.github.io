@@ -47,5 +47,5 @@
 
 /* 说明条：修掉误写的类名（sandwood）带来的无底色问题 */
 .fc-bar {
-  background: var(--color-sandalwood-950);
+  background: var(--color-celadon-950);
 }

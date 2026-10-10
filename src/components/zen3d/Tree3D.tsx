@@ -568,7 +568,7 @@ export function Tree3D({ wishes, onRibbonClick, fallback }: Props) {
   return (
     <div className="relative h-[520px] w-full sm:h-[640px]">
       <canvas ref={canvasRef} className="h-full w-full" aria-label={t('common.treeAlt')} />
-      <p className="pointer-events-none absolute bottom-2 left-1/2 -translate-x-1/2 rounded-xs border border-paper/15 bg-sandalwood-950/85 px-3 py-1 font-sans text-[11px] tracking-wider text-paper/75">
+      <p className="pointer-events-none absolute bottom-2 left-1/2 -translate-x-1/2 rounded-xs border border-paper/15 bg-celadon-950/85 px-3 py-1 font-sans text-[11px] tracking-wider text-paper/75">
         {t('common.treeHint')}
       </p>
     </div>

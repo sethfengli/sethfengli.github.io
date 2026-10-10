@@ -35,7 +35,7 @@ export function ThemeSwitcher() {
         aria-expanded={open}
         aria-label={t('theme.label')}
         title={t('theme.label')}
-        className="flex cursor-pointer items-center gap-1.5 rounded-xs border border-hairline px-2.5 py-1.5 transition-colors duration-200 hover:border-sandalwood-500"
+        className="flex cursor-pointer items-center gap-1.5 rounded-xs border border-hairline px-2.5 py-1.5 transition-colors duration-200 hover:border-celadon-500"
       >
         <span className="flex gap-0.5" aria-hidden>
           {currentOption.swatches.map((s) => (
@@ -63,7 +63,7 @@ export function ThemeSwitcher() {
                 aria-checked={current === o.id}
                 onClick={() => pick(o.id)}
                 className={`flex w-full cursor-pointer items-center gap-2.5 px-3 py-2 text-left font-sans text-sm transition-colors ${
-                  current === o.id ? 'text-tibetan-600' : 'text-ink-700 hover:bg-rice-100'
+                  current === o.id ? 'text-cinnabar-600' : 'text-ink-700 hover:bg-rice-100'
                 }`}
               >
                 <span className="flex gap-0.5" aria-hidden>
@@ -73,7 +73,7 @@ export function ThemeSwitcher() {
                 </span>
                 {t(o.labelKey)}
                 {current === o.id && (
-                  <svg viewBox="0 0 24 24" className="ml-auto h-3.5 w-3.5 text-tibetan-600" fill="none" stroke="currentColor" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                  <svg viewBox="0 0 24 24" className="ml-auto h-3.5 w-3.5 text-cinnabar-600" fill="none" stroke="currentColor" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
                     <path d="M4 12.5l5.5 5.5L20 6.5" />
                   </svg>
                 )}

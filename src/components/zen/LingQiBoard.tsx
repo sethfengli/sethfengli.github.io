@@ -119,7 +119,7 @@ export function LingQiBoard() {
           <ul className="mt-6 space-y-3 font-serif text-sm leading-relaxed text-ink-700">
             {[t('lingqi.how1'), t('lingqi.how2'), t('lingqi.how3')].map((s, i) => (
               <li key={i} className="flex items-start gap-3">
-                <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-xs bg-tibetan-600 font-sans text-[10px] text-paper">
+                <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-xs bg-cinnabar-600 font-sans text-[10px] text-paper">
                   {i + 1}
                 </span>
                 <span>{s}</span>
@@ -140,7 +140,7 @@ export function LingQiBoard() {
 
         {/* 十二棋子 */}
         <div className="card p-7">
-          <p className="font-sans text-[11px] tracking-[0.28em] text-sandalwood-500 uppercase text-center">{t('lingqi.chessTitle')}</p>
+          <p className="font-sans text-[11px] tracking-[0.28em] text-celadon-500 uppercase text-center">{t('lingqi.chessTitle')}</p>
           <div className="mt-6 grid grid-cols-4 gap-3">
             {Array.from({ length: 12 }, (_, i) => {
               const level = Math.floor(i / 4)
@@ -151,9 +151,9 @@ export function LingQiBoard() {
                   key={i}
                   className={`relative flex aspect-square items-center justify-center rounded-xs border font-serif text-2xl transition-colors duration-300 ${
                     rolling
-                      ? 'border-sandalwood-300 bg-rice-100 text-ink-300'
+                      ? 'border-celadon-300 bg-rice-100 text-ink-300'
                       : shown
-                        ? 'border-tibetan-600 bg-tibetan-600 text-paper'
+                        ? 'border-cinnabar-600 bg-cinnabar-600 text-paper'
                         : 'border-hairline bg-surface text-ink-300/70'
                   }`}
                 >
@@ -176,7 +176,7 @@ export function LingQiBoard() {
           <div className="relative flex flex-wrap items-center gap-10">
             <div className="mx-auto text-center sm:mx-0">
               <p className="section-kicker justify-center">{t('lingqi.resultLabel')}</p>
-              <p className="mt-4 font-serif text-4xl font-normal tracking-tight text-tibetan-600">{view?.name}</p>
+              <p className="mt-4 font-serif text-4xl font-normal tracking-tight text-cinnabar-600">{view?.name}</p>
               <p className="mt-2 font-serif text-sm tracking-[0.25em] text-ink-500">{view?.image}</p>
               {/* 层级计数徽章 */}
               <div className="mt-5 flex justify-center gap-2">
@@ -187,12 +187,12 @@ export function LingQiBoard() {
                 ))}
               </div>
             </div>
-            <div className="min-w-0 flex-1 border-l-2 border-tibetan-600 bg-rice-100/60 px-6 py-5">
+            <div className="min-w-0 flex-1 border-l-2 border-cinnabar-600 bg-rice-100/60 px-6 py-5">
               <p className="section-kicker">{t('lingqi.xiang')}</p>
               <p className="mt-3 font-serif text-lg leading-relaxed text-ink-900">{view?.xiang}</p>
               {view?.shi && (
                 <>
-                  <p className="mt-6 border-t border-hairline pt-4 font-sans text-[11px] tracking-[0.28em] text-sandalwood-500 uppercase">{t('lingqi.shi')}</p>
+                  <p className="mt-6 border-t border-hairline pt-4 font-sans text-[11px] tracking-[0.28em] text-celadon-500 uppercase">{t('lingqi.shi')}</p>
                   <p className="mt-2 font-serif text-base leading-relaxed text-ink-700">{view.shi}</p>
                 </>
               )}
@@ -204,11 +204,11 @@ export function LingQiBoard() {
             <button
               type="button"
               onClick={() => setExpanded((v) => !v)}
-              className="flex w-full cursor-pointer items-center justify-between rounded-xs border border-hairline bg-surface px-4 py-3 font-sans text-sm text-ink-700 transition-colors duration-200 hover:border-sandalwood-500"
+              className="flex w-full cursor-pointer items-center justify-between rounded-xs border border-hairline bg-surface px-4 py-3 font-sans text-sm text-ink-700 transition-colors duration-200 hover:border-celadon-500"
               aria-expanded={expanded}
             >
               {t('lingqi.notes')}
-              <span className={`text-tibetan-600 transition-transform duration-200 ${expanded ? 'rotate-45' : ''}`} aria-hidden><PlusIcon /></span>
+              <span className={`text-cinnabar-600 transition-transform duration-200 ${expanded ? 'rotate-45' : ''}`} aria-hidden><PlusIcon /></span>
             </button>
             {expanded && (
               <div className="mt-4 grid gap-3 sm:grid-cols-2">
@@ -220,7 +220,7 @@ export function LingQiBoard() {
                 ].map(([k, label, text]) =>
                   text ? (
                     <div key={k} className="border-l border-hairline bg-rice-100/60 px-4 py-3">
-                      <p className="font-sans text-[11px] tracking-[0.24em] text-tibetan-600">{label}</p>
+                      <p className="font-sans text-[11px] tracking-[0.24em] text-cinnabar-600">{label}</p>
                       <p className="mt-2 font-serif text-[13px] leading-relaxed text-ink-700">{text}</p>
                     </div>
                   ) : null,
@@ -262,9 +262,9 @@ export function LingQiBoard() {
                       setExpanded(false)
                       window.scrollTo({ top: 0, behavior: 'smooth' })
                     }}
-                    className="flex w-full cursor-pointer items-center gap-4 rounded-card border border-hairline bg-surface p-4 text-left transition-colors duration-200 hover:border-sandalwood-500"
+                    className="flex w-full cursor-pointer items-center gap-4 rounded-card border border-hairline bg-surface p-4 text-left transition-colors duration-200 hover:border-celadon-500"
                   >
-                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xs border border-hairline font-serif text-base text-tibetan-600">
+                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xs border border-hairline font-serif text-base text-cinnabar-600">
                       {q.code}
                     </span>
                     <span className="min-w-0">

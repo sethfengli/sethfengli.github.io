@@ -20,7 +20,7 @@ export function Footer() {
   const year = new Date().getFullYear()
 
   return (
-    <footer className="bg-sandalwood-950 text-paper">
+    <footer className="bg-celadon-950 text-paper">
       <div className="container-page grid gap-12 py-16 md:grid-cols-[1.6fr_1fr_1fr]">
         <div>
           <div className="flex items-center gap-3">
@@ -35,7 +35,7 @@ export function Footer() {
         </div>
 
         <nav aria-label={t('common.footerNav')}>
-          <h3 className="font-sans text-[11px] tracking-[0.28em] text-tibetan-400 uppercase">{t('common.footerNav')}</h3>
+          <h3 className="font-sans text-[11px] tracking-[0.28em] text-cinnabar-400 uppercase">{t('common.footerNav')}</h3>
           <ul className="mt-5 space-y-3 font-sans text-sm">
             {NAV.map((item) => (
               <li key={item.to}>
@@ -52,7 +52,7 @@ export function Footer() {
         </nav>
 
         <div>
-          <h3 className="font-sans text-[11px] tracking-[0.28em] text-tibetan-400 uppercase">{t('common.footerMore')}</h3>
+          <h3 className="font-sans text-[11px] tracking-[0.28em] text-cinnabar-400 uppercase">{t('common.footerMore')}</h3>
           <ul className="mt-5 space-y-3 font-sans text-sm">
             <li>
               <a

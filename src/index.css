@@ -6,8 +6,8 @@
    原则：
    1. 少即是多：去掉满屏圆角卡片、投影堆叠、毛玻璃与渐变堆栈；
       改用「发丝描边 + 大留白 + 非对称栅格」建立秩序。
-   2. 水墨基调：宣纸底（rice）+ 焦墨字（ink）+ 青瓷灰绿（sandalwood）
-      + 朱砂印章红（tibetan）；鎏金（gold）只作极少量点缀。
+   2. 水墨基调：宣纸底（rice）+ 焦墨字（ink）+ 青瓷灰绿（celadon）
+      + 朱砂印章红（cinnabar）；鎏金（gold）只作极少量点缀。
    3. 字体分级：书法体仅用于 Hero/区块主标题，正文与 UI 全部用宋/黑，
       避免「处处书法」造成的装饰疲劳。
    4. 装饰克制：不再使用 emoji 与 ❖/✦ 字符做装饰，改用细线、
@@ -23,29 +23,29 @@
   --color-rice-200: var(--site-rice-200);
   --color-rice-300: var(--site-rice-300);
 
-  --color-sandalwood-50: var(--site-sandalwood-50);
-  --color-sandalwood-100: var(--site-sandalwood-100);
-  --color-sandalwood-200: var(--site-sandalwood-200);
-  --color-sandalwood-300: var(--site-sandalwood-300);
-  --color-sandalwood-400: var(--site-sandalwood-400);
-  --color-sandalwood-500: var(--site-sandalwood-500);
-  --color-sandalwood-600: var(--site-sandalwood-600);
-  --color-sandalwood-700: var(--site-sandalwood-700);
-  --color-sandalwood-800: var(--site-sandalwood-800);
-  --color-sandalwood-900: var(--site-sandalwood-900);
-  --color-sandalwood-950: var(--site-sandalwood-950);
+  --color-celadon-50: var(--site-celadon-50);
+  --color-celadon-100: var(--site-celadon-100);
+  --color-celadon-200: var(--site-celadon-200);
+  --color-celadon-300: var(--site-celadon-300);
+  --color-celadon-400: var(--site-celadon-400);
+  --color-celadon-500: var(--site-celadon-500);
+  --color-celadon-600: var(--site-celadon-600);
+  --color-celadon-700: var(--site-celadon-700);
+  --color-celadon-800: var(--site-celadon-800);
+  --color-celadon-900: var(--site-celadon-900);
+  --color-celadon-950: var(--site-celadon-950);
 
-  --color-tibetan-50: var(--site-tibetan-50);
-  --color-tibetan-100: var(--site-tibetan-100);
-  --color-tibetan-200: var(--site-tibetan-200);
-  --color-tibetan-300: var(--site-tibetan-300);
-  --color-tibetan-400: var(--site-tibetan-400);
-  --color-tibetan-500: var(--site-tibetan-500);
-  --color-tibetan-600: var(--site-tibetan-600);
-  --color-tibetan-700: var(--site-tibetan-700);
-  --color-tibetan-800: var(--site-tibetan-800);
-  --color-tibetan-900: var(--site-tibetan-900);
-  --color-tibetan-950: var(--site-tibetan-950);
+  --color-cinnabar-50: var(--site-cinnabar-50);
+  --color-cinnabar-100: var(--site-cinnabar-100);
+  --color-cinnabar-200: var(--site-cinnabar-200);
+  --color-cinnabar-300: var(--site-cinnabar-300);
+  --color-cinnabar-400: var(--site-cinnabar-400);
+  --color-cinnabar-500: var(--site-cinnabar-500);
+  --color-cinnabar-600: var(--site-cinnabar-600);
+  --color-cinnabar-700: var(--site-cinnabar-700);
+  --color-cinnabar-800: var(--site-cinnabar-800);
+  --color-cinnabar-900: var(--site-cinnabar-900);
+  --color-cinnabar-950: var(--site-cinnabar-950);
 
   --color-gold-50: var(--site-gold-50);
   --color-gold-100: var(--site-gold-100);
@@ -108,12 +108,14 @@
      层级因此来自「写出 vs 印出」的质感差，而不是加粗——
      全站依旧一处 font-weight 也不加（体检脚本可核）。
      ============================================================ */
+  /* 标题楷体：汉字优先用系统楷体；都没有时才用内置的 Noto Serif SC 子集兜底
+     （它是宋体，不是楷体 —— 放在系统楷体**之后**，免得把标题的楷意换掉）。 */
   --font-serif:
     'Noto Serif', Georgia, 'Times New Roman', 'Kaiti SC', 'STKaiti', 'KaiTi',
     'LXGW WenKai', 'Noto Serif SC', 'Songti SC', SimSun, serif;
 
-  /* 正文宋体：西文先走 Noto Serif（印刷衬线），汉字再落到宋体族。
-     注意 'Noto Serif' 在前是为了西文，**不要**把 'Noto Serif SC' 提前——
+  /* 正文宋体：西文先走 Noto Serif（印刷衬线），汉字落到内置的 Noto Serif SC 子集。
+     注意 'Noto Serif' 在**前**是为了西文，**不要**把 'Noto Serif SC' 提前——
      它的西文字形与 Noto Serif 不同，会让中英混排的西文观感变差。 */
   --font-song:
     'Noto Serif', Georgia, 'Times New Roman', 'Noto Serif SC', 'Songti SC',
@@ -275,6 +277,33 @@
 }
 
 /* ============================================================
+   正文宋体 @font-face（项目子集）
+   ------------------------------------------------------------
+   为什么要有它：正文宋体原先走**系统栈**（macOS 宋体-简 / Windows 中易宋体 /
+   Linux 思源宋体），三端观感不一致，Windows 的中易宋体明显偏弱。
+   内置 Noto Serif SC 的完整汉字表有 30928 个字形（源文件 11.1 MB）；
+   @fontsource 的 101 个 unicode-range 分片方案，实测本站用字会命中
+   **86 个分片、合计 2.92 MB**，且单取 chinese-simplified 那一片还缺
+   1253 个本站用字（含 淨/觀/釋）。故改为**按全站实际用字子集化**：
+   单个约 1.4 MB 文件，比 fontsource 方案小一半且无命中问题。
+   重建：node build/make-song-subset.mjs
+   许可：OFL-1.1，见 public/fonts/noto-serif-sc-OFL.txt
+
+   ⚠ `unicode-range` 是刻意的：把它限制在汉字与中文标点，
+   **英文页面就不会下载这 1.4 MB**（西文仍走 Noto Serif 的 latin 分片）。
+   代价：正文里出现 unicode-range 之外的生僻字会掉回系统字体（可接受）。
+   ============================================================ */
+@font-face {
+  font-family: 'Noto Serif SC';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/noto-serif-sc-subset.woff2') format('woff2');
+  unicode-range: U+2E80-2EFF, U+3000-303F, U+3400-4DBF, U+4E00-9FFF, U+F900-FAFF,
+    U+FE30-FE4F, U+FF00-FFEF, U+20000-2A6DF;
+}
+
+/* ============================================================
    配色主题（4 套，由 Header 切换并记忆）
    宣纸·青瓷（默认） / 素笺·朱印 / 冷瓷·新绿 / 焦墨·禅夜
    —— 2026 v3：建立「青瓷灰绿 + 朱砂」的水墨双色骨架，
@@ -286,28 +315,28 @@
   --site-rice-100: #f5f3ee;
   --site-rice-200: #eae6de;
   --site-rice-300: #dcd6ca;
-  --site-sandalwood-50: #f2f6f4;
-  --site-sandalwood-100: #e6ede9;
-  --site-sandalwood-200: #d2ddd7;
-  --site-sandalwood-300: #b3c3bb;
-  --site-sandalwood-400: #93a89e;
-  --site-sandalwood-500: #789085;
-  --site-sandalwood-600: #5f7a6f;
-  --site-sandalwood-700: #4c6459;
-  --site-sandalwood-800: #3c5049;
-  --site-sandalwood-900: #2a3a34;
-  --site-sandalwood-950: #1d2723;
-  --site-tibetan-50: #fdf5f4;
-  --site-tibetan-100: #fae7e4;
-  --site-tibetan-200: #f4cbc5;
-  --site-tibetan-300: #e7a79e;
-  --site-tibetan-400: #d67f74;
-  --site-tibetan-500: #c25a4f;
-  --site-tibetan-600: #b8382e;
-  --site-tibetan-700: #9b3028;
-  --site-tibetan-800: #7c2822;
-  --site-tibetan-900: #61201b;
-  --site-tibetan-950: #400f0c;
+  --site-celadon-50: #f2f6f4;
+  --site-celadon-100: #e6ede9;
+  --site-celadon-200: #d2ddd7;
+  --site-celadon-300: #b3c3bb;
+  --site-celadon-400: #93a89e;
+  --site-celadon-500: #789085;
+  --site-celadon-600: #5f7a6f;
+  --site-celadon-700: #4c6459;
+  --site-celadon-800: #3c5049;
+  --site-celadon-900: #2a3a34;
+  --site-celadon-950: #1d2723;
+  --site-cinnabar-50: #fdf5f4;
+  --site-cinnabar-100: #fae7e4;
+  --site-cinnabar-200: #f4cbc5;
+  --site-cinnabar-300: #e7a79e;
+  --site-cinnabar-400: #d67f74;
+  --site-cinnabar-500: #c25a4f;
+  --site-cinnabar-600: #b8382e;
+  --site-cinnabar-700: #9b3028;
+  --site-cinnabar-800: #7c2822;
+  --site-cinnabar-900: #61201b;
+  --site-cinnabar-950: #400f0c;
   --site-gold-50: #faf7ef;
   --site-gold-100: #f3ecd9;
   --site-gold-200: #e7dab3;
@@ -341,28 +370,28 @@
   --site-rice-100: #f4ede6;
   --site-rice-200: #e8ded4;
   --site-rice-300: #d8c9bb;
-  --site-sandalwood-50: #f6f2ee;
-  --site-sandalwood-100: #ece3dc;
-  --site-sandalwood-200: #dbcbc0;
-  --site-sandalwood-300: #c0a898;
-  --site-sandalwood-400: #a28674;
-  --site-sandalwood-500: #8a6e5e;
-  --site-sandalwood-600: #71584b;
-  --site-sandalwood-700: #5b473d;
-  --site-sandalwood-800: #46372f;
-  --site-sandalwood-900: #322723;
-  --site-sandalwood-950: #221a17;
-  --site-tibetan-50: #fdf4f3;
-  --site-tibetan-100: #fae4e1;
-  --site-tibetan-200: #f4c6c0;
-  --site-tibetan-300: #e89f96;
-  --site-tibetan-400: #d97568;
-  --site-tibetan-500: #c94f42;
-  --site-tibetan-600: #c1362b;
-  --site-tibetan-700: #a02d24;
-  --site-tibetan-800: #7f251e;
-  --site-tibetan-900: #631d18;
-  --site-tibetan-950: #420e0b;
+  --site-celadon-50: #f6f2ee;
+  --site-celadon-100: #ece3dc;
+  --site-celadon-200: #dbcbc0;
+  --site-celadon-300: #c0a898;
+  --site-celadon-400: #a28674;
+  --site-celadon-500: #8a6e5e;
+  --site-celadon-600: #71584b;
+  --site-celadon-700: #5b473d;
+  --site-celadon-800: #46372f;
+  --site-celadon-900: #322723;
+  --site-celadon-950: #221a17;
+  --site-cinnabar-50: #fdf4f3;
+  --site-cinnabar-100: #fae4e1;
+  --site-cinnabar-200: #f4c6c0;
+  --site-cinnabar-300: #e89f96;
+  --site-cinnabar-400: #d97568;
+  --site-cinnabar-500: #c94f42;
+  --site-cinnabar-600: #c1362b;
+  --site-cinnabar-700: #a02d24;
+  --site-cinnabar-800: #7f251e;
+  --site-cinnabar-900: #631d18;
+  --site-cinnabar-950: #420e0b;
   --site-gold-50: #faf6ea;
   --site-gold-100: #f3e9cf;
   --site-gold-200: #e6d4a2;
@@ -396,28 +425,28 @@
   --site-rice-100: #eff5f2;
   --site-rice-200: #e0ebe5;
   --site-rice-300: #ccddd4;
-  --site-sandalwood-50: #eef7f2;
-  --site-sandalwood-100: #ddeee5;
-  --site-sandalwood-200: #c2dfd0;
-  --site-sandalwood-300: #9cc8b3;
-  --site-sandalwood-400: #74ad94;
-  --site-sandalwood-500: #559278;
-  --site-sandalwood-600: #3f7862;
-  --site-sandalwood-700: #33604f;
-  --site-sandalwood-800: #2a4d40;
-  --site-sandalwood-900: #1f3a30;
-  --site-sandalwood-950: #152720;
-  --site-tibetan-50: #fdf5f4;
-  --site-tibetan-100: #fae7e4;
-  --site-tibetan-200: #f4cbc5;
-  --site-tibetan-300: #e7a79e;
-  --site-tibetan-400: #d67f74;
-  --site-tibetan-500: #c25a4f;
-  --site-tibetan-600: #b8382e;
-  --site-tibetan-700: #9b3028;
-  --site-tibetan-800: #7c2822;
-  --site-tibetan-900: #61201b;
-  --site-tibetan-950: #400f0c;
+  --site-celadon-50: #eef7f2;
+  --site-celadon-100: #ddeee5;
+  --site-celadon-200: #c2dfd0;
+  --site-celadon-300: #9cc8b3;
+  --site-celadon-400: #74ad94;
+  --site-celadon-500: #559278;
+  --site-celadon-600: #3f7862;
+  --site-celadon-700: #33604f;
+  --site-celadon-800: #2a4d40;
+  --site-celadon-900: #1f3a30;
+  --site-celadon-950: #152720;
+  --site-cinnabar-50: #fdf5f4;
+  --site-cinnabar-100: #fae7e4;
+  --site-cinnabar-200: #f4cbc5;
+  --site-cinnabar-300: #e7a79e;
+  --site-cinnabar-400: #d67f74;
+  --site-cinnabar-500: #c25a4f;
+  --site-cinnabar-600: #b8382e;
+  --site-cinnabar-700: #9b3028;
+  --site-cinnabar-800: #7c2822;
+  --site-cinnabar-900: #61201b;
+  --site-cinnabar-950: #400f0c;
   --site-gold-50: #faf7ef;
   --site-gold-100: #f3ecd9;
   --site-gold-200: #e7dab3;
@@ -451,28 +480,28 @@
   --site-rice-100: #1b1e23;
   --site-rice-200: #23272e;
   --site-rice-300: #31363f;
-  --site-sandalwood-50: #1b201f;
-  --site-sandalwood-100: #232a28;
-  --site-sandalwood-200: #2f3836;
-  --site-sandalwood-300: #43514d;
-  --site-sandalwood-400: #5e716a;
-  --site-sandalwood-500: #7e928a;
-  --site-sandalwood-600: #9fb2a8;
-  --site-sandalwood-700: #c0cfc6;
-  --site-sandalwood-800: #d8e2db;
-  --site-sandalwood-900: #1a1f22;
-  --site-sandalwood-950: #101316;
-  --site-tibetan-50: #341a18;
-  --site-tibetan-100: #43211e;
-  --site-tibetan-200: #5a2c27;
-  --site-tibetan-300: #7a3a33;
-  --site-tibetan-400: #9c4a40;
-  --site-tibetan-500: #bd5f52;
-  --site-tibetan-600: #d4776a;
-  --site-tibetan-700: #e5a196;
-  --site-tibetan-800: #5c1f1a;
-  --site-tibetan-900: #451612;
-  --site-tibetan-950: #2e0d0a;
+  --site-celadon-50: #1b201f;
+  --site-celadon-100: #232a28;
+  --site-celadon-200: #2f3836;
+  --site-celadon-300: #43514d;
+  --site-celadon-400: #5e716a;
+  --site-celadon-500: #7e928a;
+  --site-celadon-600: #9fb2a8;
+  --site-celadon-700: #c0cfc6;
+  --site-celadon-800: #d8e2db;
+  --site-celadon-900: #1a1f22;
+  --site-celadon-950: #101316;
+  --site-cinnabar-50: #341a18;
+  --site-cinnabar-100: #43211e;
+  --site-cinnabar-200: #5a2c27;
+  --site-cinnabar-300: #7a3a33;
+  --site-cinnabar-400: #9c4a40;
+  --site-cinnabar-500: #bd5f52;
+  --site-cinnabar-600: #d4776a;
+  --site-cinnabar-700: #e5a196;
+  --site-cinnabar-800: #5c1f1a;
+  --site-cinnabar-900: #451612;
+  --site-cinnabar-950: #2e0d0a;
   --site-gold-50: #2a2519;
   --site-gold-100: #38311f;
   --site-gold-200: #e6d4a2;
@@ -528,13 +557,13 @@ body {
 }
 
 ::selection {
-  background: var(--color-tibetan-200);
+  background: var(--color-cinnabar-200);
   color: var(--color-ink-950);
 }
 
 /* 键盘可达性：全局焦点环 */
 :focus-visible {
-  outline: 2px solid var(--color-tibetan-600);
+  outline: 2px solid var(--color-cinnabar-600);
   outline-offset: 2px;
   border-radius: 2px;
 }
@@ -545,10 +574,10 @@ body {
   height: 6px;
 }
 *::-webkit-scrollbar-thumb {
-  background: var(--color-sandalwood-300);
+  background: var(--color-celadon-300);
 }
 *::-webkit-scrollbar-thumb:hover {
-  background: var(--color-sandalwood-400);
+  background: var(--color-celadon-400);
 }
 *::-webkit-scrollbar-track {
   background: transparent;
@@ -579,16 +608,16 @@ body {
   }
 
   .btn-primary {
-    @apply inline-flex cursor-pointer items-center justify-center gap-2 rounded-xs bg-tibetan-600 px-7 py-2.5 font-sans text-sm font-medium text-on-accent transition-colors duration-200 hover:bg-tibetan-700 focus-visible:ring-2 focus-visible:ring-tibetan-400 focus-visible:ring-offset-2 focus-visible:ring-offset-rice-50 focus-visible:outline-none;
+    @apply inline-flex cursor-pointer items-center justify-center gap-2 rounded-xs bg-cinnabar-600 px-7 py-2.5 font-sans text-sm font-medium text-on-accent transition-colors duration-200 hover:bg-cinnabar-700 focus-visible:ring-2 focus-visible:ring-cinnabar-400 focus-visible:ring-offset-2 focus-visible:ring-offset-rice-50 focus-visible:outline-none;
   }
   .btn-secondary {
-    @apply inline-flex cursor-pointer items-center justify-center gap-2 rounded-xs border border-sandalwood-300 bg-transparent px-7 py-2.5 font-sans text-sm font-medium text-sandalwood-800 transition-colors duration-200 hover:border-sandalwood-600 hover:bg-sandalwood-50 focus-visible:ring-2 focus-visible:ring-tibetan-400 focus-visible:ring-offset-2 focus-visible:ring-offset-rice-50 focus-visible:outline-none;
+    @apply inline-flex cursor-pointer items-center justify-center gap-2 rounded-xs border border-celadon-300 bg-transparent px-7 py-2.5 font-sans text-sm font-medium text-celadon-800 transition-colors duration-200 hover:border-celadon-600 hover:bg-celadon-50 focus-visible:ring-2 focus-visible:ring-cinnabar-400 focus-visible:ring-offset-2 focus-visible:ring-offset-rice-50 focus-visible:outline-none;
   }
   .btn-gold {
-    @apply inline-flex cursor-pointer items-center justify-center gap-2 rounded-xs border border-ink-900/85 bg-ink-900 px-7 py-2.5 font-sans text-sm font-medium text-paper transition-colors duration-200 hover:bg-ink-700 focus-visible:ring-2 focus-visible:ring-tibetan-400 focus-visible:ring-offset-2 focus-visible:ring-offset-rice-50 focus-visible:outline-none;
+    @apply inline-flex cursor-pointer items-center justify-center gap-2 rounded-xs border border-ink-900/85 bg-ink-900 px-7 py-2.5 font-sans text-sm font-medium text-paper transition-colors duration-200 hover:bg-ink-700 focus-visible:ring-2 focus-visible:ring-cinnabar-400 focus-visible:ring-offset-2 focus-visible:ring-offset-rice-50 focus-visible:outline-none;
   }
   .btn-ghost {
-    @apply inline-flex cursor-pointer items-center gap-1.5 font-sans text-sm text-sandalwood-700 transition-colors duration-200 hover:text-tibetan-600;
+    @apply inline-flex cursor-pointer items-center gap-1.5 font-sans text-sm text-celadon-700 transition-colors duration-200 hover:text-cinnabar-600;
   }
 
   /* 纸面卡片：发丝描边，无投影 */
@@ -596,7 +625,7 @@ body {
     @apply rounded-card border border-hairline bg-surface;
   }
   .card-link {
-    @apply rounded-card relative block border border-hairline bg-surface transition-colors duration-300 hover:border-sandalwood-400;
+    @apply rounded-card relative block border border-hairline bg-surface transition-colors duration-300 hover:border-celadon-400;
   }
   .card-link:hover .card-media img {
     transform: scale(1.03);
@@ -613,12 +642,12 @@ body {
 
   /* 朱砂印章：全站唯一的高饱和红点，用于栏目/标签点题 */
   .seal {
-    @apply inline-flex items-center justify-center rounded-xs bg-tibetan-600 px-1.5 py-1 font-serif text-xs leading-none font-normal text-paper;
+    @apply inline-flex items-center justify-center rounded-xs bg-cinnabar-600 px-1.5 py-1 font-serif text-xs leading-none font-normal text-paper;
   }
 
   /* 单点装饰：以细线与圆点取代 ❖/✦ 字符 */
   .ornament {
-    @apply inline-flex items-center gap-2.5 text-sandalwood-400;
+    @apply inline-flex items-center gap-2.5 text-celadon-400;
   }
   .ornament::before,
   .ornament::after {
@@ -642,11 +671,11 @@ body {
   }
   /* 区块小标：细字距 + 短朱砂线 */
   .section-kicker {
-    @apply inline-flex items-center gap-2.5 font-sans text-xs tracking-[0.3em] text-tibetan-600 uppercase;
+    @apply inline-flex items-center gap-2.5 font-sans text-xs tracking-[0.3em] text-cinnabar-600 uppercase;
   }
   .section-kicker::before {
     content: '';
-    @apply h-px w-8 bg-tibetan-600;
+    @apply h-px w-8 bg-cinnabar-600;
   }
 }
 
@@ -838,12 +867,12 @@ body {
 
 /* 阅读进度条：细线 + 朱砂 */
 .reader-progress {
-  @apply fixed top-0 left-0 z-50 h-[2px] bg-tibetan-600;
+  @apply fixed top-0 left-0 z-50 h-[2px] bg-cinnabar-600;
 }
 
 /* 目录当前项 */
 .toc-active {
-  @apply border-l-2 border-tibetan-600 pl-3 font-medium text-tibetan-700;
+  @apply border-l-2 border-cinnabar-600 pl-3 font-medium text-cinnabar-700;
 }
 
 /* 签筒摇动 */
