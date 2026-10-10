@@ -21,206 +21,277 @@ const PICKED = path.join(__dirname, 'cn-picked.json')
    人工精选：pool ID。分组即最终分池桶。
    ============================================================ */
 const PICKS = {
-  // —— 佛画 · 经变 · 绢画 · 水墨观音（中国佛教绘画，镇馆级公有领域）——
+  // —— 佛画 · 经变 · 绢画 · 水墨观音（已核对：与 pool 无漂移，原样保留）——
   paintings: [
-    'paintings-016', // 8 世纪绢本佛像（大英博物馆）
-    'paintings-017', // 药师如来像页
-    'paintings-018', // 丁观鹏 莲座大士像轴
-    'paintings-019', // 丁元公 佛像轴
-    'paintings-020', // 达摩渡扬子江（吉美）
-    'paintings-023', // 元 佚名 跋陀罗第六罗汉图轴（MET）
-    'paintings-026', // 元 佚名 释迦三尊图轴（MET）
-    'paintings-029', // 明 佚名 罗汉图轴 金刚手（MET）
-    'paintings-053', // 罗汉（MET）
-    'paintings-055', // 千佛窟（MET LC）
-    'paintings-059', // 元/明 释迦三尊（克利夫兰）
-    'paintings-063', // 元 福州 释迦三尊（克利夫兰）
-    'paintings-064', // 明 菩提树下的释迦（克利夫兰）
-    'paintings-067', // 明 文殊（克利夫兰）
-    'paintings-069', // 唐/宋 说法佛像（克利夫兰）
-    'paintings-075', // 树下说法图（敦煌）
-    'paintings-076', // 引路菩萨（敦煌）
-    'paintings-077', // 药师净土变（敦煌）
-    'paintings-078', // 报恩经变（敦煌）
-    'paintings-080', // 唐 日曜菩萨 敦煌幡画（大英博物馆）
-    'paintings-083', // 唐 天王像
-    'paintings-086', // 唐 刺绣释迦灵鹫山说法图（大英博物馆）
-    'paintings-092', // 心经 写绘图卷
-    'paintings-099', // 观世音（Google Art Project）
-    'paintings-100', // 药师净土变（Google Art Project）
-    'paintings-105', // 莫高窟 322 窟 药师经变
-    'paintings-106', // 台北故宫 唐 范琼 大悲观音像轴（局部）
-    'paintings-109', // 台北故宫 唐 范琼 大悲观音像轴
-    'paintings-112', // 阿弥陀佛净土
-    'paintings-122', // 丁云鹏 十八罗汉（檀香山）
-    'paintings-123', // 陈洪绶 准提佛母法像图轴（MET）
-    'paintings-125', // 药师佛（MET）
-    'paintings-135', // 十八应真图卷局部
-    'paintings-137', // 准提菩萨像轴 明 台北故宫
-    'paintings-138', // 明人画 准提佛母像
-    'paintings-184', // 敦煌绢画 白衣观音
-    'paintings-185', // 方维仪 观音轴
-    'paintings-186', // 盛弘景 柳瓶观音
-    'paintings-188', // 水陆画 男相观音
-    'paintings-007', // 唐 阿弥陀佛净土变
-    'paintings-008', // 维摩诘经变
+    'paintings-016',
+    'paintings-017',
+    'paintings-018',
+    'paintings-019',
+    'paintings-020',
+    'paintings-023',
+    'paintings-026',
+    'paintings-029',
+    'paintings-053',
+    'paintings-055',
+    'paintings-059',
+    'paintings-063',
+    'paintings-064',
+    'paintings-067',
+    'paintings-069',
+    'paintings-075',
+    'paintings-076',
+    'paintings-077',
+    'paintings-078',
+    'paintings-080',
+    'paintings-083',
+    'paintings-086',
+    'paintings-092',
+    'paintings-099',
+    'paintings-100',
+    'paintings-105',
+    'paintings-106',
+    'paintings-109',
+    'paintings-112',
+    'paintings-122',
+    'paintings-123',
+    'paintings-125',
+    'paintings-135',
+    'paintings-137',
+    'paintings-138',
+    'paintings-184',
+    'paintings-185',
+    'paintings-186',
+    'paintings-188',
+    'paintings-007',
+    'paintings-008',
   ],
 
-  // —— 石窟 · 摩崖造像 ——
+  // —— 石窟 · 摩崖造像（已核对：与 pool 无漂移，原样保留）——
   grottoes: [
-    ...Array.from({ length: 14 }, (_, i) => `grottoes-${String(i + 1).padStart(3, '0')}`), // 云冈 01-14
-    'grottoes-051', 'grottoes-052', 'grottoes-053', 'grottoes-054', 'grottoes-055',
-    'grottoes-056', 'grottoes-057', 'grottoes-058', 'grottoes-060', 'grottoes-061', // 龙门
-    'grottoes-078', 'grottoes-080', 'grottoes-083', 'grottoes-087', 'grottoes-091',
-    'grottoes-095', 'grottoes-100', 'grottoes-110', 'grottoes-118', 'grottoes-125', // 炳灵寺
-    'grottoes-077', // 大足 六师外道
-    'grottoes-175', // 大足宝顶 塔
-    'grottoes-180', // 大足宝顶山摩崖造像
-    'grottoes-181', 'grottoes-183', 'grottoes-185', 'grottoes-188', // 大足石刻
-    'grottoes-128', // 乐山大佛 全景
-    'grottoes-133', // 乐山大佛 崖壁
-    'grottoes-160', // 乐山大佛
-    'grottoes-173', // 乐山大佛 头与躯干
-    'grottoes-174', // 乐山大佛 头部
+    'grottoes-001',
+    'grottoes-002',
+    'grottoes-003',
+    'grottoes-004',
+    'grottoes-005',
+    'grottoes-006',
+    'grottoes-007',
+    'grottoes-008',
+    'grottoes-009',
+    'grottoes-010',
+    'grottoes-011',
+    'grottoes-012',
+    'grottoes-013',
+    'grottoes-014',
+    'grottoes-051',
+    'grottoes-052',
+    'grottoes-053',
+    'grottoes-054',
+    'grottoes-055',
+    'grottoes-056',
+    'grottoes-057',
+    'grottoes-058',
+    'grottoes-060',
+    'grottoes-061',
+    'grottoes-078',
+    'grottoes-080',
+    'grottoes-083',
+    'grottoes-087',
+    'grottoes-091',
+    'grottoes-095',
+    'grottoes-100',
+    'grottoes-110',
+    'grottoes-118',
+    'grottoes-125',
+    'grottoes-077',
+    'grottoes-175',
+    'grottoes-180',
+    'grottoes-181',
+    'grottoes-183',
+    'grottoes-185',
+    'grottoes-188',
+    'grottoes-128',
+    'grottoes-133',
+    'grottoes-160',
+    'grottoes-173',
+    'grottoes-174',
   ],
 
-  // —— 造像 · 石雕 · 木雕 · 鎏金 · 白瓷 ——
+  // —— 造像（基线 86，剔 4 条道教/后加彩：073 刘海 / 089 刘海 / 103 真武 / 092 后加彩）——
   statues: [
-    'statues-001', // 辽 鎏金铜佛冠像
-    'statues-015', 'statues-020', 'statues-021', // 唐 石灰岩菩萨（宾大）
-    'statues-016', 'statues-017', 'statues-018', 'statues-019', // 唐 天龙山 鎏金力士（宾大）
-    'statues-022', 'statues-023', 'statues-024', // 辽 观音（宾大）
-    'statues-025', 'statues-026', 'statues-027', // 宋 木雕观音
-    'statues-028', // 明 铜罗汉
-    'statues-035', // 北魏 铜佛禅定印
-    'statues-036', // 北魏 莲花手菩萨
-    'statues-037', // 东魏 弥勒菩萨
-    'statues-038', // 西魏 佛头（陕西）
-    'statues-039', // 晚唐/宋 石佛头
-    'statues-041', // 隋 菩萨头
-    'statues-043', // 菩萨头
-    'statues-045', // 辽 彩绘木雕观音立像
-    'statues-046', // 观音立像（阿姆斯特丹）
-    'statues-047', // 罗汉（阿姆斯特丹）
-    'statues-049', // 元 木雕观音 面部（皇家安大略）
-    'statues-051', // 金华万佛塔 鎏金铜大势至
-    'statues-052', // 克利夫兰 1962.213
-    'statues-053', // 元 铜菩萨（大英博物馆）
-    'statues-054', // 鎏金铜观音
-    'statues-055', // 唐 鎏金铜观音
-    'statues-056', // 观音（大英博物馆）
-    'statues-057', // 何朝宗 德化瓷
-    'statues-060', // 清 德化 观音
-    'statues-063', // 观音（LACMA）
-    'statues-066', // 清 地藏菩萨 景德镇瓷（皇家安大略）
-    'statues-076', // 清乾隆 粉彩佛像（四川博物院）
-    'statues-077', // 清 白衣观音 德化瓷
-    'statues-083', // 明/清 南海观音（克利夫兰）
-    'statues-091', // 清初 德化 达摩
-    'statues-093', // 明 瓷菩萨
-    'statues-094', // 清 瓷佛
-    'statues-101', // 元 景德镇 釉瓷菩萨
-    'statues-104', // 大势至菩萨
-    'statues-105', // 辽 大理石文殊骑狮
-    'statues-107', // 隋 大理石观音（斯德哥尔摩）
-    'statues-108', // 隋 大理石僧（斯德哥尔摩）
-    'statues-111', // 金 文殊游戏坐（大英博物馆）
-    'statues-113', // 宋 白石佛
-    'statues-114', // 辽 观音
-    'statues-116', // 金 罗汉 跋陀罗（波士顿）
-    'statues-117', // 佛头（LACMA）
-    'statues-118', // 佛光寺东大殿 佛坛造像
-    'statues-119', // 送子观音（四川丹山）
-    'statues-123', 'statues-124', // 东林寺 观音
-    'statues-125', // 法华寺 观音
-    'statues-136', // 密印寺 千手千眼观音
-    'statues-137', // 密印寺 观音/佛/观音
-    'statues-142', // 明 观音坐像（克利夫兰）
-    'statues-143', // 辽上京 铜观音
-    'statues-156', // 上海静安寺 观音
-    'statues-157', // 淮安府署? 造像
-    'statues-169', 'statues-170', // 上海博物馆 造像
-    'statues-171', 'statues-172', // 上海龙华寺
-    'statues-174', // 东林寺 罗汉
-    'statues-175', // 东林寺 三世佛
-    'statues-184', // 北宋 彩塑菩萨像
-    'statues-188', 'statues-189', 'statues-190', // 清 彩绘木雕佛半身像
-    'statues-194', // 内蒙古博物院 鎏金铜菩萨
-    'statues-195', // 内蒙古博物院 彩绘佛像
-    'statues-197', // 上海宝山寺 韦驮
-    'statues-198', 'statues-199', 'statues-200', 'statues-201', // 七塔寺 四大天王
-    'statues-202', // 七塔寺 韦驮
-    'statues-203', // 七塔寺 千手观音
-    'statues-208', 'statues-209', 'statues-210', // 明 德化窑 观音（吉美）
-    'statues-211', // 吉美 观音
+    'statues-001',
+    'statues-015',
+    'statues-020',
+    'statues-021',
+    'statues-016',
+    'statues-017',
+    'statues-018',
+    'statues-019',
+    'statues-022',
+    'statues-023',
+    'statues-024',
+    'statues-025',
+    'statues-026',
+    'statues-027',
+    'statues-028',
+    'statues-035',
+    'statues-036',
+    'statues-037',
+    'statues-038',
+    'statues-039',
+    'statues-041',
+    'statues-043',
+    'statues-045',
+    'statues-046',
+    'statues-047',
+    'statues-049',
+    'statues-051',
+    'statues-052',
+    'statues-053',
+    'statues-054',
+    'statues-055',
+    'statues-056',
+    'statues-057',
+    'statues-060',
+    'statues-063',
+    'statues-066',
+    'statues-076',
+    'statues-077',
+    'statues-083',
+    'statues-091',
+    'statues-093',
+    'statues-094',
+    'statues-101',
+    'statues-104',
+    'statues-105',
+    'statues-107',
+    'statues-108',
+    'statues-111',
+    'statues-113',
+    'statues-114',
+    'statues-116',
+    'statues-117',
+    'statues-118',
+    'statues-119',
+    'statues-123',
+    'statues-124',
+    'statues-125',
+    'statues-136',
+    'statues-137',
+    'statues-142',
+    'statues-143',
+    'statues-156',
+    'statues-157',
+    'statues-169',
+    'statues-170',
+    'statues-171',
+    'statues-172',
+    'statues-174',
+    'statues-175',
+    'statues-184',
+    'statues-188',
+    'statues-189',
+    'statues-190',
+    'statues-194',
+    'statues-195',
+    'statues-197',
+    'statues-198',
+    'statues-199',
+    'statues-200',
+    'statues-201',
+    'statues-202',
+    'statues-203',
+    'statues-208',
+    'statues-209',
+    'statues-210',
+    'statues-211',
+    'statues-167',
+    'statues-179',
+    'statues-204',
   ],
 
-  // —— 殿宇 · 山门 · 塔 · 廊庑 ——
+  // —— 殿宇 · 山门 · 塔 ——
+  // ⚠ 旧 PICKS 引用的 halls-001..019 在 pool 里是韩国/蒙古寺院、清真寺、17 世纪荷兰铜版画，
+  //   因此该桶一张都没下成（空桶）。这里改为逐条按标题重挑。
   halls: [
-    'halls-001', // 山门匾额
-    'halls-006', // 四川 寺院
-    'halls-011', // 上海玉佛寺 二十四诸天
-    'halls-012', // 中国佛寺 罗汉像
-    'halls-013', 'halls-014', // 山西福胜寺 元 明王像
-    'halls-019', // 北少林寺
-    'halls-020', // 佛像群
-    'halls-026', // 山间古塔
-    'halls-027', // 中国 塔刹
-    'halls-053', 'halls-054', // Jimmy Chang（Unsplash）中国寺塔
-    'halls-055', // 昆明东寺塔
-    'halls-058', 'halls-059', // 开封铁塔
-    'halls-060', // 边屯塔 明嘉靖
-    'halls-062', // 奎光塔
-    'halls-063', // 汇丰塔
-    'halls-064', // 楚王塔
+    'halls-001',
+    'halls-006',
+    'halls-011',
+    'halls-012',
+    'halls-013',
+    'halls-014',
+    'halls-016',
+    'halls-019',
+    'halls-020',
+    'halls-023',
+    'halls-024',
+    'halls-026',
+    'halls-053',
+    'halls-054',
+    'halls-055',
+    'halls-058',
+    'halls-059',
+    'halls-060',
+    'halls-062',
+    'halls-063',
+    'halls-064',
   ],
 
   // —— 经卷 · 写经 · 刻经 ——
+  // ⚠ 旧 PICKS 的 sutras-001..015 在 pool 里是蒙古人物像、藏文/回鹘文/希伯来文写本，
+  //   故空桶。这里只取**汉文佛教写经/刻经**。
   sutras: [
-    'sutras-001', // 敦煌回鹘文文书
-    'sutras-003', // 敦煌 棋经
-    'sutras-004', // 敦煌写卷数字化
-    'sutras-005', // 敦煌写卷数字化
-    'sutras-006', // 伯希和汉文 4646
-    'sutras-008', // 伯希和汉文 2778
-    'sutras-012', // 欧阳询 敦煌拓本
-    'sutras-013', // 六种佛经合卷
-    'sutras-015', // 伯希和汉文 3349
-    'sutras-016', // 伯希和汉文 3453v
-    'sutras-017', // 伯希和汉文 3448v
-    'sutras-018', // 敦煌写卷
-    'sutras-019', // 金刚经
-    'sutras-028', // 金刚经
-    'sutras-040', // 金刚般若波罗蜜经
+    'sutras-004',
+    'sutras-005',
+    'sutras-006',
+    'sutras-008',
+    'sutras-011',
+    'sutras-012',
+    'sutras-013',
+    'sutras-015',
+    'sutras-016',
+    'sutras-017',
+    'sutras-018',
+    'sutras-019',
+    'sutras-023',
+    'sutras-028',
+    'sutras-040',
   ],
 
   // —— 山水 · 云海 · 松林 ——
+  // ⚠ 旧 PICKS 的 landscape-001..018 在 pool 里是藏地高原、地图、昆虫标本照，故空桶。
+  //   这里只取水墨山水与名山云海。
   landscape: [
-    'landscape-001', 'landscape-002', 'landscape-003', // 俯仰抱悟山水志
-    'landscape-004', // 秋江帆影
-    'landscape-006', // 陇南群山
-    'landscape-008', // 陇南群山 2
-    'landscape-009', // 沔阳幻景
-    'landscape-011', // 黄山竹
-    'landscape-013', // 安徽黄山
-    'landscape-014', // 黄山
-    'landscape-018', // 广德 安徽
-    'landscape-024', // 青翠山峦
-    'landscape-025', // 青云山
-    'landscape-026', // 笔架山
-    'landscape-040', // 云山
-    'landscape-043', // 中国圣山
-    'landscape-049', // 中国 云海
-    'landscape-054', // 1974 长城
+    'landscape-001',
+    'landscape-002',
+    'landscape-003',
+    'landscape-004',
+    'landscape-006',
+    'landscape-008',
+    'landscape-009',
+    'landscape-011',
+    'landscape-012',
+    'landscape-013',
+    'landscape-014',
+    'landscape-018',
+    'landscape-024',
+    'landscape-025',
+    'landscape-026',
+    'landscape-035',
+    'landscape-040',
+    'landscape-042',
+    'landscape-049',
+    'landscape-050',
   ],
 
-  // —— 莲 · 荷塘（净土意象）——
+  // —— 莲 · 荷塘（净土意象，已核对：与 pool 无漂移，原样保留）——
   lotus: [
-    'lotus-001', 'lotus-002', // 荷花池
-    'lotus-003', // 香港中文大学（深圳）莲池
-    'lotus-004', // 紫竹院莲池
-    'lotus-011', // 莲叶
-    'lotus-035', 'lotus-036', // 北京 莲
+    'lotus-001',
+    'lotus-002',
+    'lotus-003',
+    'lotus-004',
+    'lotus-011',
+    'lotus-035',
+    'lotus-036',
   ],
 }
 

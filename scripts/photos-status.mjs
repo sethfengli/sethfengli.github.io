@@ -27,8 +27,12 @@ if (!fs.existsSync(MANIFEST)) {
   process.exit(1)
 }
 
+// 图版格式：2026 第 7 轮起统一为 .webp（旧版是 .jpg）。
+// 两种都收，免得格式迁移期间把磁盘上的图当成「不存在」。
 const onDisk = new Set(
-  fs.existsSync(DIR) ? fs.readdirSync(DIR).filter((f) => f.toLowerCase().endsWith('.jpg')) : [],
+  fs.existsSync(DIR)
+    ? fs.readdirSync(DIR).filter((f) => /\.(jpe?g|webp)$/i.test(f))
+    : [],
 )
 const manifest = JSON.parse(fs.readFileSync(MANIFEST, 'utf8'))
 

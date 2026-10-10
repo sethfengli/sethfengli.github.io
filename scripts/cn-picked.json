@@ -2079,6 +2079,42 @@
    "h": 2404,
    "sha1": "a9d10e2fa878caa48581ad18e50a840b62cfcf26",
    "cat": "Category:Guanyin 觀音 (M.C. 9594)"
+  },
+  {
+   "id": "statues-167",
+   "title": "Feilai Feng grottos.jpg",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/2/2f/Feilai_Feng_grottos.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+   "page": "https://commons.wikimedia.org/wiki/File:Feilai_Feng_grottos.jpg",
+   "author": "Gisling",
+   "license": "CC BY-SA 3.0",
+   "w": 1786,
+   "h": 1162,
+   "sha1": "cb618c8bb521c36e283d3ca0479845457f271873",
+   "cat": "Category:Buddhist statues in China"
+  },
+  {
+   "id": "statues-179",
+   "title": "Statues of Gate Guardians in One of the Temples in Yangxian, Shaanxi Province, China, 1875 WDL2096.png",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/f/f5/Statues_of_Gate_Guardians_in_One_of_the_Temples_in_Yangxian%2C_Shaanxi_Province%2C_China%2C_1875_WDL2096.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+   "page": "https://commons.wikimedia.org/wiki/File:Statues_of_Gate_Guardians_in_One_of_the_Temples_in_Yangxian,_Shaanxi_Province,_China,_1875_WDL2096.png",
+   "author": "Boiarskii, Adolf-Nikolay Erazmovich",
+   "license": "Public domain",
+   "w": 1024,
+   "h": 1332,
+   "sha1": "89b23a15cfdd10a2d4ca43714c30e8622d752ee7",
+   "cat": "Category:Buddhist statues in China"
+  },
+  {
+   "id": "statues-204",
+   "title": "20210529 Seated statuettes of seven Buddhas.jpg",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/5/5e/20210529_Seated_statuettes_of_seven_Buddhas.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+   "page": "https://commons.wikimedia.org/wiki/File:20210529_Seated_statuettes_of_seven_Buddhas.jpg",
+   "author": "Windmemories",
+   "license": "CC BY-SA 4.0",
+   "w": 1200,
+   "h": 1800,
+   "sha1": "e0eb26baf1aa105780b2341c300572a4e596e02f",
+   "cat": "Category:Buddhist statues in China"
   }
  ],
  "halls": [
@@ -2155,6 +2191,18 @@
    "cat": "Category:Buddhist temples in China"
   },
   {
+   "id": "halls-016",
+   "title": "Chinese art. Vol. 1 1909 (147342469).jpg",
+   "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e5/Chinese_art._Vol._1_1909_%28147342469%29.jpg/1920px-Chinese_art._Vol._1_1909_%28147342469%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "page": "https://commons.wikimedia.org/wiki/File:Chinese_art._Vol._1_1909_(147342469).jpg",
+   "author": "Stephen Wootton Bushell",
+   "license": "Public domain",
+   "w": 3636,
+   "h": 2436,
+   "sha1": "b000aaa786e53a091562b20872d2d30fcc2dff04",
+   "cat": "Category:Buddhist temples in China"
+  },
+  {
    "id": "halls-019",
    "title": "Bei Shaolin Si.jpg",
    "url": "https://upload.wikimedia.org/wikipedia/commons/8/83/Bei_Shaolin_Si.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
@@ -2179,6 +2227,30 @@
    "cat": "Category:Buddhist temples in China"
   },
   {
+   "id": "halls-023",
+   "title": "Thousand Hands GuanYin FGS Buddha Museum.jpg",
+   "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d4/Thousand_Hands_GuanYin_FGS_Buddha_Museum.jpg/1920px-Thousand_Hands_GuanYin_FGS_Buddha_Museum.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "page": "https://commons.wikimedia.org/wiki/File:Thousand_Hands_GuanYin_FGS_Buddha_Museum.jpg",
+   "author": "วัศย์รุจ ปริญญาวุฒิชัย",
+   "license": "CC BY-SA 4.0",
+   "w": 2014,
+   "h": 1525,
+   "sha1": "09c65968201438fc95264c96524127a1b088daf8",
+   "cat": "Category:Buddhist temples in Taiwan"
+  },
+  {
+   "id": "halls-024",
+   "title": "Fo Guang Shan - FoGuangShan5227.jpg",
+   "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ea/Fo_Guang_Shan_-_FoGuangShan5227.jpg/1920px-Fo_Guang_Shan_-_FoGuangShan5227.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "page": "https://commons.wikimedia.org/wiki/File:Fo_Guang_Shan_-_FoGuangShan5227.jpg",
+   "author": "lumoplank",
+   "license": "CC0",
+   "w": 5192,
+   "h": 3461,
+   "sha1": "612178e7f85b89c54fb57e5205ac930b6081fd77",
+   "cat": "Category:Buddhist temples in Taiwan"
+  },
+  {
    "id": "halls-026",
    "title": "Mountain pagoda.JPG",
    "url": "https://upload.wikimedia.org/wikipedia/commons/4/46/Mountain_pagoda.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
@@ -2188,18 +2260,6 @@
    "w": 1920,
    "h": 2560,
    "sha1": "4ed1fc74f91134c651ce1263b07b38f853d8472d",
-   "cat": "Category:Pagodas in China"
-  },
-  {
-   "id": "halls-027",
-   "title": "China (2494395272).jpg",
-   "url": "https://upload.wikimedia.org/wikipedia/commons/2/23/China_%282494395272%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
-   "page": "https://commons.wikimedia.org/wiki/File:China_(2494395272).jpg",
-   "author": "Steve Evans from Citizen of the World",
-   "license": "CC BY 2.0",
-   "w": 1080,
-   "h": 720,
-   "sha1": "57b2b032d75a92c33d3ab28067e6631a532f07f9",
    "cat": "Category:Pagodas in China"
   },
   {
@@ -2313,30 +2373,6 @@
  ],
  "sutras": [
   {
-   "id": "sutras-001",
-   "title": "Baghatur Chigshi.jpeg",
-   "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3a/Baghatur_Chigshi.jpeg/1920px-Baghatur_Chigshi.jpeg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-   "page": "https://commons.wikimedia.org/wiki/File:Baghatur_Chigshi.jpeg",
-   "author": "The International Dunhuang Project",
-   "license": "Public domain",
-   "w": 2218,
-   "h": 1476,
-   "sha1": "a4aa029354ab81b1b93c1e59e87bb3880a51e23c",
-   "cat": "Category:Dunhuang manuscripts"
-  },
-  {
-   "id": "sutras-003",
-   "title": "British Library Dunhuang Go Manual.jpg",
-   "url": "https://upload.wikimedia.org/wikipedia/commons/e/ea/British_Library_Dunhuang_Go_Manual.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
-   "page": "https://commons.wikimedia.org/wiki/File:British_Library_Dunhuang_Go_Manual.jpg",
-   "author": "Unknown authorUnknown author",
-   "license": "Public domain",
-   "w": 1486,
-   "h": 1346,
-   "sha1": "fdf083243326adcbe3dcb430bb5ae38fd76df85d",
-   "cat": "Category:Dunhuang manuscripts"
-  },
-  {
    "id": "sutras-004",
    "title": "Digitisation of a Dunhuang manuscript.jpg",
    "url": "https://upload.wikimedia.org/wikipedia/commons/0/04/Digitisation_of_a_Dunhuang_manuscript.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
@@ -2382,6 +2418,18 @@
    "w": 1133,
    "h": 855,
    "sha1": "12e0853855e95f665efc33a3a37659e46504a219",
+   "cat": "Category:Dunhuang manuscripts"
+  },
+  {
+   "id": "sutras-011",
+   "title": "Dunhuang Musical score.jpg",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/a/a8/Dunhuang_Musical_score.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+   "page": "https://commons.wikimedia.org/wiki/File:Dunhuang_Musical_score.jpg",
+   "author": "Unknown authorUnknown author",
+   "license": "Public domain",
+   "w": 1422,
+   "h": 1022,
+   "sha1": "fc9349f42d966833ded8e1014731813c7c3a94bb",
    "cat": "Category:Dunhuang manuscripts"
   },
   {
@@ -2467,6 +2515,18 @@
    "h": 6297,
    "sha1": "bb99091ac4380cd2ea2e2a6ac405d5023049e99c",
    "cat": "Category:Dunhuang manuscripts"
+  },
+  {
+   "id": "sutras-023",
+   "title": "Libro Mahayana.jpg",
+   "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1a/Libro_Mahayana.jpg/1920px-Libro_Mahayana.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "page": "https://commons.wikimedia.org/wiki/File:Libro_Mahayana.jpg",
+   "author": "Tamorlan",
+   "license": "CC BY 3.0",
+   "w": 3888,
+   "h": 2592,
+   "sha1": "9e7383928eb346c18dcd59c92eb65fd65dbe5689",
+   "cat": "Category:Diamond Sutra"
   },
   {
    "id": "sutras-028",
@@ -2591,6 +2651,18 @@
    "cat": "Category:Huangshan"
   },
   {
+   "id": "landscape-012",
+   "title": "20180614 CHINA 1432.jpg",
+   "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1b/20180614_CHINA_1432.jpg/1920px-20180614_CHINA_1432.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "page": "https://commons.wikimedia.org/wiki/File:20180614_CHINA_1432.jpg",
+   "author": "Nicolascornet",
+   "license": "CC BY-SA 4.0",
+   "w": 2500,
+   "h": 1668,
+   "sha1": "d4be60745a321a20d52cd02c68e6f7b1dc168b93",
+   "cat": "Category:Huangshan"
+  },
+  {
    "id": "landscape-013",
    "title": "Anhui Huangshan.jpg",
    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/28/Anhui_Huangshan.jpg/1920px-Anhui_Huangshan.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
@@ -2663,6 +2735,18 @@
    "cat": "Category:Mountains of China"
   },
   {
+   "id": "landscape-035",
+   "title": "Exposed rocky cliff face on mountains from G6 in northern Beijing.jpg",
+   "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/29/Exposed_rocky_cliff_face_on_mountains_from_G6_in_northern_Beijing.jpg/1920px-Exposed_rocky_cliff_face_on_mountains_from_G6_in_northern_Beijing.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "page": "https://commons.wikimedia.org/wiki/File:Exposed_rocky_cliff_face_on_mountains_from_G6_in_northern_Beijing.jpg",
+   "author": "Daniel Case",
+   "license": "CC BY-SA 3.0",
+   "w": 4896,
+   "h": 3240,
+   "sha1": "b4ce043933a6247d263a386d62e765301cec39fb",
+   "cat": "Category:Mountains of China"
+  },
+  {
    "id": "landscape-040",
    "title": "Cloud mount.jpg",
    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ef/Cloud_mount.jpg/1920px-Cloud_mount.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
@@ -2675,15 +2759,15 @@
    "cat": "Category:Mountains of China"
   },
   {
-   "id": "landscape-043",
-   "title": "China Sacred Mountains.png",
-   "url": "https://upload.wikimedia.org/wikipedia/commons/3/30/China_Sacred_Mountains.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
-   "page": "https://commons.wikimedia.org/wiki/File:China_Sacred_Mountains.png",
-   "author": "LifanDefense",
+   "id": "landscape-042",
+   "title": "A raft in the Yangtze River.jpg",
+   "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/50/A_raft_in_the_Yangtze_River.jpg/1920px-A_raft_in_the_Yangtze_River.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "page": "https://commons.wikimedia.org/wiki/File:A_raft_in_the_Yangtze_River.jpg",
+   "author": "Chrisding30",
    "license": "CC BY-SA 4.0",
-   "w": 1045,
-   "h": 737,
-   "sha1": "22144c73cab13b9a263a2b7467cfaac21b08d222",
+   "w": 4243,
+   "h": 2829,
+   "sha1": "a9d13f3270d5cbdb337dd7a486c0adbdc2475ba1",
    "cat": "Category:Mountains of China"
   },
   {
@@ -2699,15 +2783,15 @@
    "cat": "Category:Mountains of China"
   },
   {
-   "id": "landscape-054",
-   "title": "1974 China Great Wall 01.jpg",
-   "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6a/1974_China_Great_Wall_01.jpg/1920px-1974_China_Great_Wall_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-   "page": "https://commons.wikimedia.org/wiki/File:1974_China_Great_Wall_01.jpg",
-   "author": "GraceMarcellaNorman",
-   "license": "CC BY 2.0",
-   "w": 4127,
-   "h": 2752,
-   "sha1": "2da16fb990ac9f68483e06c6fd070104f3d650b7",
+   "id": "landscape-050",
+   "title": "DJI 0023 (25894965583).jpg",
+   "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f6/DJI_0023_%2825894965583%29.jpg/1920px-DJI_0023_%2825894965583%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "page": "https://commons.wikimedia.org/wiki/File:DJI_0023_(25894965583).jpg",
+   "author": "Yupeng Wu from sydney, Australia",
+   "license": "CC BY-SA 2.0",
+   "w": 3992,
+   "h": 2242,
+   "sha1": "ba2ea721f050cc0e470c0070356529863784af16",
    "cat": "Category:Mountains of China"
   }
  ],

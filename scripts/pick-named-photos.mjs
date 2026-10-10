@@ -33,26 +33,30 @@ const NAMED = {
   hero: {
     // 首页 Hero：云冈石窟横构浮雕（飞天与佛龛）。
     // 题头照片框是 16:10，横构图才不被裁掉大半；也不选怒目护法——首页第一眼应当安详。
-    prefer: ['grottoes-13.jpg', 'grottoes-16.jpg', 'grottoes-15.jpg'],
+    prefer: ['grottoes-13.webp', 'grottoes-15.webp', 'grottoes-16.webp'],
     note: '石窟横构浮雕',
   },
-  gate: { prefer: ['halls-01.jpg'], note: '山门 / 殿宇' },
+  // ⚠ 导览卡是 128×32 的窄条裁切（object-cover），**别用带文字的标牌特写**：
+  //   旧值 halls-01 是一块反光金属说明牌、拍在粉色木门上；halls-07 是黑白书影，
+  //   两者裁成窄条后只剩「一块花板子」，与水墨基调冲突。
+  //   现统一改用自然光的石窟造像（顺带解决「紫外灯偏绿」的同源问题）。
+  gate: { prefer: ['grottoes-16.webp', 'halls-19.webp'], note: '佛龛 / 殿宇' },
   guanyin: {
-    prefer: ['statues-31.jpg', 'statues-23.jpg', 'statues-22.jpg', 'statues-25.jpg'],
+    prefer: ['statues-31.webp', 'statues-23.webp', 'statues-22.webp', 'statues-25.webp'],
     note: '观音造像',
   },
-  bell: { prefer: ['halls-07.jpg', 'halls-06.jpg', 'halls-01.jpg'], note: '梵钟 / 殿宇' },
+  bell: { prefer: ['grottoes-02.webp', 'halls-19.webp'], note: '造像三尊 / 殿宇' },
   lantern: {
-    prefer: ['paintings-37.jpg', 'paintings-03.jpg', 'paintings-02.jpg'],
+    prefer: ['paintings-37.webp', 'paintings-03.webp', 'paintings-02.webp'],
     note: '供灯意象（绢本观音）',
   },
   garden: {
-    prefer: ['landscape-04.jpg', 'landscape-09.jpg', 'grottoes-02.jpg'],
+    prefer: ['landscape-04.webp', 'landscape-09.webp', 'grottoes-02.webp'],
     note: '山水',
   },
-  blossom: { prefer: ['paintings-26.jpg', 'paintings-11.jpg'], note: '绢本经变' },
-  lotus: { prefer: ['lotus-03.jpg', 'lotus-04.jpg', 'lotus-01.jpg'], note: '莲池' },
-  sutra: { prefer: ['sutras-06.jpg', 'sutras-02.jpg', 'paintings-22.jpg'], note: '写经' },
+  blossom: { prefer: ['paintings-26.webp', 'paintings-11.webp'], note: '绢本经变' },
+  lotus: { prefer: ['lotus-03.webp', 'lotus-04.webp', 'lotus-01.webp'], note: '莲池' },
+  sutra: { prefer: ['sutras-06.webp', 'sutras-02.webp', 'paintings-22.webp'], note: '写经' },
 }
 
 /** 这张图在哪个桶里？找不到返回 null */
