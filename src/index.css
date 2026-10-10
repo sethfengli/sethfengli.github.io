@@ -133,7 +133,7 @@
     Georgia, 'KaiTi', cursive;
 
   /* 点睛书法体（项目子集，单个文件 ~380 KB）：
-     由 build/make-brush-subset.mjs 从 @fontsource/ma-shan-zheng 的 92 个分片
+     由 scripts/make-brush-subset.mjs 从 @fontsource/ma-shan-zheng 的 92 个分片
      merge 后按「全站书法体实际用字 + ASCII」子集化，含 OFL 许可（见 public/fonts/）。
      @font-face 不能写在 @theme 里（Tailwind v4 只允许自定义属性与 @keyframes），
      故实际声明在 @theme 区块之外——见紧随其后的 @font-face 段。 */
@@ -265,7 +265,7 @@
    从 @fontsource/ma-shan-zheng 的 92 个 unicode-range 分片（合计 5.99 MB）
    merge 成一份完整字体，再按「全站书法体实际用字 + ASCII」子集化，
    输出单个 public/fonts/ma-shan-zheng-subset.woff2（约 380 KB）。
-   重建：node build/make-brush-subset.mjs
+   重建：node scripts/make-brush-subset.mjs
    许可：OFL-1.1，见 public/fonts/ma-shan-zheng-OFL.txt
    ============================================================ */
 @font-face {
@@ -286,7 +286,7 @@
    **86 个分片、合计 2.92 MB**，且单取 chinese-simplified 那一片还缺
    1253 个本站用字（含 淨/觀/釋）。故改为**按全站实际用字子集化**：
    单个约 1.4 MB 文件，比 fontsource 方案小一半且无命中问题。
-   重建：node build/make-song-subset.mjs
+   重建：node scripts/make-song-subset.mjs
    许可：OFL-1.1，见 public/fonts/noto-serif-sc-OFL.txt
 
    ⚠ `unicode-range` 是刻意的：把它限制在汉字与中文标点，

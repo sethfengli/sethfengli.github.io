@@ -276,7 +276,7 @@ const PICKS = {
   //              （1874 年 WDL albumen 照片：宋代沧浪亭嵌在汉江峭壁上，单色，与水墨基调同调）
   //   ⚠ 原本想换 landscape-007（真水墨雪山+佛寺），但它被 TITLE_REJECT 的 /tibetan/i 剔掉
   //     （标题含 "Tibetan Plateau"）——**这是正确行为**，但也说明「换 id 前先用
-  //     `build/screen-cands.mjs` 过一遍 111 条排雷规则**，否则 picked 少一条、下标整体前移。
+  //     `scripts/screen-cands.mjs` 过一遍 111 条排雷规则**，否则 picked 少一条、下标整体前移。
   //   保留：landscape-013（Huangshan，层叠岩峰与松，虽偏蓝但构图与题材都成立）。
   landscape: [
     'landscape-001',

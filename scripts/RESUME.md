@@ -88,35 +88,37 @@ src/content/en/*.json           英文覆盖（整篇；分片在 merge 前是 *
 src/content/catalog-en.json     slug → {title,author,excerpt}（英文界面用；build-catalog-en.mjs 生成）
 src/content/{catalog,lingqi,lingqi-en,…}.json   其它内容数据
 dist/                           vite 构建产物（gitignore）
-build/                          临时工作区（gitignore）：只留 5 个复用脚本，见下
+build/                          临时工作区（gitignore）：**只放生成物**（slices/ · shots/ · chrome-* ·
+                                cjk-chars.txt · brush-chars.txt · NotoSerifSC-Regular.otf）
+scripts/*.mjs                   全部工具脚本（**第 9 轮起，原先在 build/ 的可复用脚本已全部搬到这里**）
 scripts/*.md.archived           已执行完的历史计划，**不要当待办读**
 ```
 
-**`build/` 里的 5 个复用脚本（补片/返工必用；**临时件只许放 build/ 并自删**）**
+**补片/返工用的 5 个工具（已入库 `scripts/`；临时件只许放 `build/` 并自删）**
 
 | 脚本 | 用途 |
 | --- | --- |
-| `mksrc.mjs <slug.pN>` | 编号源 → `build/<slug.pN>.src.txt`（每行 `<n>\t<源文>`，非 `p` 块带 `[t=..]`/`[segs=N]`/`[HREF]`） |
-| `recover-r9-dispatch.mjs <slug.pN>` | 打印首/末块 `src8` 与 `multiSegBlocks`/`tableBlocks` 计数（派发前给子代理对照锚点） |
-| `recover-r9-assemble.mjs <slug.pN> <out.jsonl>` | **按源结构确定性组装**；锚点/块数/片段数/href/CJK/空译全校验，失败**拒收且不留文件** |
-| `recover-r9-scan.mjs <slug> [pN…]` | 占位符 / 空块 / 无字母块扫描 |
-| `audit-slices-runtime.mjs <slug> <pN…> [--dump=abs]` | 缺陷类 E 判据入口：结构 + 重复 + **逐块长度比离群** |
+| `scripts/mksrc.mjs <slug.pN>` | 编号源 → `build/<slug.pN>.src.txt`（每行 `<n>\t<源文>`，非 `p` 块带 `[t=..]`/`[segs=N]`/`[HREF]`） |
+| `scripts/recover-r9-dispatch.mjs <slug.pN>` | 打印首/末块 `src8` 与 `multiSegBlocks`/`tableBlocks` 计数（派发前给子代理对照锚点） |
+| `scripts/recover-r9-assemble.mjs <slug.pN> <out.jsonl>` | **按源结构确定性组装**；锚点/块数/片段数/href/CJK/空译全校验，失败**拒收且不留文件** |
+| `scripts/recover-r9-scan.mjs <slug> [pN…]` | 占位符 / 空块 / 无字母块扫描 |
+| `scripts/audit-slices-runtime.mjs <slug> <pN…> [--dump=abs]` | 缺陷类 E 判据入口：结构 + 重复 + **逐块长度比离群** |
 
 ## 3. 翻译流水线（如需再译）
 
 ```bash
 node scripts/task-plan.mjs 120                          # 1) 唯一权威的「还剩多少」
 node scripts/gap-prep.mjs "<slug>:<a>-<b>"              # 2) 缺口源（同 slug 多区间须分多次进程调用）
-node build/mksrc.mjs <slug.pN>                          # 3) 编号源 + 锚点
-node build/recover-r9-dispatch.mjs <slug.pN>
+node scripts/mksrc.mjs <slug.pN>                          # 3) 编号源 + 锚点
+node scripts/recover-r9-dispatch.mjs <slug.pN>
 # 4) 一条消息并行派 8 个子代理：各只写 build/<slug.pN>-out.jsonl
 #    每行 {"n":0..N-1,"src8":"<源块去空白前8字>","en":"<英文>"}；n 不重不漏
 #    提示词模板见 scripts/DISPATCH.md（+ 防漂移三行）
-node build/recover-r9-assemble.mjs <slug.pN> build/<slug.pN>-out.jsonl   # 5) 父代理组装
+node scripts/recover-r9-assemble.mjs <slug.pN> build/<slug.pN>-out.jsonl   # 5) 父代理组装
 node scripts/verify-slices.mjs <本轮全部分片>            # 6) 收尾（顺序不可换）
 node scripts/coverage.mjs <slug>                        #    uncovered_blocks=0 且 bad=0
-node build/audit-slices-runtime.mjs <slug> <pN...>      #    必须 all clean
-node build/recover-r9-scan.mjs <slug>                   #    必须 clean
+node scripts/audit-slices-runtime.mjs <slug> <pN...>      #    必须 all clean
+node scripts/recover-r9-scan.mjs <slug>                   #    必须 clean
 git add <各分片，显式文件名> && git commit -m "EN: … shards"
 node scripts/merge-parts.mjs <slug>                     # 会删掉它合并的分片 → 必须在提交之后
 node scripts/repair-json.mjs ; node scripts/validate-en.mjs
@@ -251,7 +253,7 @@ scripts/RESUME.md §9（**先读 §9，再读 §4 的 16 条历史坑**）。
   再 `node scripts/fetch-cn-webp.mjs`（读的是 cn-picked.json，不是 PICKS）。只改 PICKS 就抓图
   会**照旧按旧 id 下载**，日志还打印旧标题 —— 上一轮我连犯两次（§9.2 第 17 条）；
 - ⚠ **换槽位必须换同一位置**（编号恒等于下标+1）；且换 id 前先用
-  `node build/screen-cands.mjs landscape <id...>` 过一遍 111 条 TITLE_REJECT ——
+  `node scripts/screen-cands.mjs landscape <id...>` 过一遍 111 条 TITLE_REJECT ——
   被剔的 id 不进 cn-picked.json，会让该桶少一条、后面下标全部前移（§9.2 第 21 条）；
 - ⚠ **pool 里的标题本身也可能是错的**：`landscape-012` 标题「20180614 CHINA 1432.jpg」，
   实际画面是**游客举手机拍猕猴**。pool-drift 结构性抓不到（只比 picked 与 pool 的 title 是否全等）
@@ -265,11 +267,11 @@ scripts/RESUME.md §9（**先读 §9，再读 §4 的 16 条历史坑**）。
   做法是把正则收窄为**令牌-数字边界** `\b(gold|moon)-(\d{2,3})\b`，散文词与语义标识
   （`.btn-gold`、`illustration:'moon'`、`.reader-theme-moon`）天然不受影响，不必用文件白名单；
 - 判据提醒：Tailwind v4 把令牌值**内联进工具类**，产物 CSS 里搜不到 `--color-*` ——
-  要读渲染后的 computed color（`build/probe-colors.mjs` / `build/probe-lot-badges.mjs`）。
+  要读渲染后的 computed color（`scripts/probe-colors.mjs` / `scripts/probe-lot-badges.mjs`）。
 
-下一轮任务（**原 §9.3 的第 3/4/5 项，尚未开工**；先跑核对，再问我从哪项开始，不要自行扩大范围）：
+下一轮任务（**§9.3 的第 3/4/5 项，用户指定顺序 4 → 3 → 5**）：
  3. 主包 index.js 继续拆分（现 836.68 KB / gzip 276.67 KB；three 与 vendor 已独立）；
- 4. 把 build/ 可复用脚本搬进 scripts/（清单见 §9.5，本轮又新增 4 个探针/工具）；
+ 4. ✅ 已完成（第 9 轮）：26 个可复用工具从 build/ 搬进 scripts/，见 §10.6；
  5. verses.ts 每日法语中英逐段复核（第 6 轮只动了一二级页面文案）。
 
 核对（全跑一遍再问我）：
@@ -279,19 +281,19 @@ scripts/RESUME.md §9（**先读 §9，再读 §4 的 16 条历史坑**）。
   node scripts/validate-en.mjs && node scripts/scan-mojibake.mjs
   node scripts/style-audit.mjs
   node scripts/photos-status.mjs     （⚠ 退出码 0 不代表桶内齐了，见上）
-  node build/pool-drift.mjs          （改过 PICKS 的话必跑；但抓不到「池子自身选错」）
-  node build/shot-scrolled.mjs ".card-media" build/shots/x.png   # 截图 + 报每张图 naturalWidth
+  node scripts/pool-drift.mjs          （改过 PICKS 的话必跑；但抓不到「池子自身选错」）
+  node scripts/shot-scrolled.mjs ".card-media" build/shots/x.png   # 截图 + 报每张图 naturalWidth
 
 两个**隐性失效**要记牢（不报错，但会静默劣化）：
 - 字体子集是按「当前全站用字」生成的 → 改动正文/文案后新字会掉回系统字体，需重跑
-  `node build/make-song-subset.mjs`（或搬进 scripts/ 后的新路径），看它打印的 missing 数；
+  `node scripts/make-song-subset.mjs`（或搬进 scripts/ 后的新路径），看它打印的 missing 数；
 - cn-pool.json 是未入库的生成物，而 PICKS 按池内 id 手写 → 再重抓 pool 必须逐条看标题核对，
   且**标题也不可信**，要逐张看全尺寸图。
 
 纪律：
 - 含中文的文件一律不要用 PowerShell Set-Content 回写（双重编码，见 §4.3），用 node writeFileSync 或 edit 工具；
 - **命令行里不要内联复杂 JS**：PowerShell 会把单双引号吃掉（本轮反复踩到 `Expected ident` /
-  `Unmatched )`）。判据脚本一律写成 `build/*.mjs` 文件再跑，或直接用现成的探针脚本；
+  `Unmatched )`）。判据脚本一律写成 `scripts/*.mjs` 文件再跑，或直接用现成的探针脚本；
 - PowerShell 脚本里的字符串常量只用 ASCII，中文只放注释（PS 5.1 读中文串会把引号配对读错，见 §9.2）；
 - 单字段改动用行级外科编辑（§4.8）；git status 有 CRLF 噪声，判据用 git hash-object（§4.8）；
 - ⚠ 本仓库脚本有 CRLF 也有 LF 两种行尾（`curate-cn.mjs` 是 CRLF）——写正则改文件时必须用 `\r?\n`，否则静默失配；
@@ -356,8 +358,8 @@ scripts/RESUME.md §9（**先读 §9，再读 §4 的 16 条历史坑**）。
 | **图版体检** | 同时认 `.jpg`/`.webp`（原先只认 `.jpg`，迁移后会误报「磁盘 0 张」） | `scripts/photos-status.mjs` |
 | **导览卡换图** | `halls-01`（反光金属说明牌）与 `halls-07`（黑白书影）→ 自然光石窟造像；并修掉 `named()` 校验桶没同步改导致「改了 named 却不生效」 | `scripts/pick-named-photos.mjs`、`src/lib/content.ts` |
 | **字体瘦身（计划外）** | CSS 875 KB → **77 KB**、字体 940 个/41.5 MB → **14 个/0.55 MB**：移除 `lxgw-wenkai-webfont`(27.9 MB)、`@fontsource/long-cang`(6.4 MB，零引用)，`ma-shan-zheng` 改项目子集(5.99 MB → 382 KB) | `src/main.tsx`、`src/index.css`、`public/fonts/` |
-| **汉字正文 webfont** | 新增 **Noto Serif SC 项目子集 1.39 MB / 1 个文件**（`unicode-range` 限定汉字，英文页不下载）；全站字体合计约 1.94 MB | `src/index.css`、`public/fonts/`、`build/make-song-subset.mjs` |
-| **色板令牌改名** | `sandalwood-*`→`celadon-*`、`tibetan-*`→`cinnabar-*`，**314 处 / 30 文件**（含 docs/preview） | `src/**`、`docs/**`、`preview/**`、`build/rename-tokens.mjs` |
+| **汉字正文 webfont** | 新增 **Noto Serif SC 项目子集 1.39 MB / 1 个文件**（`unicode-range` 限定汉字，英文页不下载）；全站字体合计约 1.94 MB | `src/index.css`、`public/fonts/`、`scripts/make-song-subset.mjs` |
+| **色板令牌改名** | `sandalwood-*`→`celadon-*`、`tibetan-*`→`cinnabar-*`，**314 处 / 30 文件**（含 docs/preview） | `src/**`、`docs/**`、`preview/**`、`scripts/rename-tokens.mjs` |
 | **站标 404 修复** | `PhotoLogo.tsx` 硬编码 `/photos/cn/lotus-03.jpg`，转 WebP 后 404 → 站标空白；改为从 `PHOTO_NAMES` 推导 | `src/components/zen/PhotoLogo.tsx` |
 | **分包** | `codeSplitting` 增 `three` / `vendor` 分组（React 229 KB 独立长期缓存） | `vite.config.ts` |
 | **canvas 字体名** | 9 处硬编码 `"LXGW WenKai"` / `"Ma Shan Zheng"` → 子集名（否则 canvas 画回退体） | `src/components/zen3d/*` |
@@ -388,7 +390,7 @@ scripts/RESUME.md §9（**先读 §9，再读 §4 的 16 条历史坑**）。
    - `landscape-001..018` → 变成藏地高原、地图、昆虫标本照。
    这三个桶因此**一张都没下成**，成了空桶（这就是 §9.4 里 sutras 0/15、landscape 0/18 的真因，
    **不是**「限流没抓完」）。
-   **核对办法**（改 `PICKS` 后必跑）：`node build/pool-drift.mjs` —— 它把 `cn-picked.json`
+   **核对办法**（改 `PICKS` 后必跑）：`node scripts/pool-drift.mjs` —— 它把 `cn-picked.json`
    每条与 `pool` 同 id 的 `title` 逐条比，必须**全等**才说明没有漂移。
    ⚠ 只比「picked 与 pool 是否一致」是**不够**的：两者都漂到同一片垃圾上时也会「全等」，
    所以还要**逐条看标题**（本轮的垃圾前缀就是这样才发现的）。
@@ -396,7 +398,7 @@ scripts/RESUME.md §9（**先读 §9，再读 §4 的 16 条历史坑**）。
    单元格，纵向图的标签与图像整体错位，于是把「炳灵寺石窟」看成了「停车场与锥桶」，
    差点据此删掉正确的图。**判据用逐张全尺寸图**，或先把每张强制 cover 到等尺寸单元格再拼。
 10. **核对「picks 是否真的对应磁盘文件」要用字节比较**：
-    `node build/verify-photo-ids.mjs "grottoes:25,grottoes:31"` 会按同一参数重新下载 + 转码，
+    `node scripts/verify-photo-ids.mjs "grottoes:25,grottoes:31"` 会按同一参数重新下载 + 转码，
     与磁盘成品逐字节比。实测这条给出了决定性结论（映射其实是对的）。
 11. **〔坑〕`content.ts` 的 `named(key, fallbackBucket)` 第二个参数是「校验桶」，不是注释**。
     `named()` 要求 `named.<key>` 指的文件确实在该桶内，否则**静默**退回该桶第一张。
@@ -417,7 +419,7 @@ scripts/RESUME.md §9（**先读 §9，再读 §4 的 16 条历史坑**）。
     只用「构建通过」判断是不够的——本轮是靠截图 + 读 `naturalWidth` 才发现的。
 14. **CDP 全页截图（`captureBeyondViewport`）不会触发视口外的 `loading="lazy"`**，
     全页图里会出现空白图片框。**这不是缺陷**：先 `scrollIntoView` 再截图即可
-    （`build/shot-scrolled.mjs` 就是这么做的，并会打印每张图的 `naturalWidth` 佐证）。
+    （`scripts/shot-scrolled.mjs` 就是这么做的，并会打印每张图的 `naturalWidth` 佐证）。
 15. **改 `PICKS` 后必须核对池子**：`cn-pool.json` 是**未入库**的生成物，而 `PICKS` 按池内 id 手写。
     池子重抓后 id 会整体漂移，且**只比「picked 与 pool 是否一致」不够**——
     两者同时漂到同一片垃圾上时也会「全等」。必须逐条看标题（§9.2 第 8 条）。
@@ -458,9 +460,9 @@ scripts/RESUME.md §9（**先读 §9，再读 §4 的 16 条历史坑**）。
     Tailwind v4 把 `@theme` 的值**内联进工具类**，产物 CSS 里**根本搜不到** `--color-brass-500`
     （搜 `--site-*` 也搜不到）——只有 `.bg-brass-500{background-color:#ab8940}`。
     所以「搜不到令牌名」不等于改名失败。判据：
-    - `build/probe-colors.mjs`：读 `getComputedStyle(:root)` 的 `--site-brass-500` 等实际值 +
+    - `scripts/probe-colors.mjs`：读 `getComputedStyle(:root)` 的 `--site-brass-500` 等实际值 +
       `--site-gold-500` 应为 `(unset)`；
-    - `build/probe-lot-badges.mjs`：种入历史后**一次核对签位六档配色**
+    - `scripts/probe-lot-badges.mjs`：种入历史后**一次核对签位六档配色**
       （`.bg-mist-200` 落在 `中下`，实测 `rgb(211,221,225)` == `#d3dde1`）。
     梵钟「嗡」字**不能靠静态探针**：它只在 `ringing` 为真时渲染，而 3D 钟一渲染
     DOM 版 fallback 就不挂载（本轮实测 `NO_BELL_BUTTON`），无 WebGL 的环境才能测到。
@@ -472,7 +474,7 @@ scripts/RESUME.md §9（**先读 §9，再读 §4 的 16 条历史坑**）。
     结果 `landscape-007` 因标题含 "Tibetan Plateau" 被剔 → landscape 变成 19 条；
     幸好 `curate-cn.mjs` 会在末尾打印「被排雷剔掉」并给出 `合计 238（缺 0）`，
     否则就会带着错位去抓图。**判据**：`curate-cn.mjs` 输出的「合计」必须等于 PICKS 总数
-    （本轮 239），且桶数与 PICKS 一致。可用 `build/screen-cands.mjs <bucket> <id...>` 预筛。
+    （本轮 239），且桶数与 PICKS 一致。可用 `scripts/screen-cands.mjs <bucket> <id...>` 预筛。
 
 ### 9.2b 备选图源调查结论（2026）
 
@@ -492,11 +494,11 @@ scripts/RESUME.md §9（**先读 §9，再读 §4 的 16 条历史坑**）。
 | **1** | **补满图版余量** | ✅ **完成** | 7 桶全满、**239 = 239**、0 孤儿 0 缺口（`sutras 15/15`、`landscape 20/20`、`grottoes 46/46`）。⚠ 过程中发现 4 个新坑（§9.2 第 16–18、21 条）并修掉 `--only` 删桶的缺陷。**另经用户批准再做一轮题材精修**：`landscape` 换掉 4 个「合法但偏弱」的槽位（拍猕猴的 `landscape-012`、雾霾村庄 `landscape-018`、带高压电线的 `landscape-024`、航拍河滩 `landscape-050`）→ 依次换成 `landscape-010`（水墨山水+佛塔）/ `landscape-046`（传统屋顶群+雪山）/ `landscape-038`（云海雪峰）/ `landscape-034`（1874 年 albumen 照片：宋代沧浪亭嵌于汉江峭壁）。 |
 | **2** | **`gold-*` / `moon-*` 改名** | ✅ **完成** | `gold-*`→`brass-*`（黄铜）/ `moon-*`→`mist-*`（青雾灰蓝），**107 处 / 4 文件**。做法：把正则从「裸词边界」收窄为**令牌-数字边界** `\b(gold|moon)-(\d{2,3})\b`，于是散文词与语义标识（`.btn-gold`、`illustration:'moon'`、`.reader-theme-moon`）**天然不受影响**，不必依赖文件白名单。 |
 | **3** | **主包 `index.js` 继续拆分** | ⬜ 未做 | 现 **836 KB / gzip 277 KB**（`three` 与 `vendor` 已独立）。可试：把 294 篇的目录/元数据与 `verses.ts` 拆成独立 chunk、或对 `src/content/*.json` 用动态 import。**判据**：首屏请求的 chunk 总量下降，且路由切换不出现明显空白。 |
-| **4** | **把 `build/` 里可复用脚本搬进 `scripts/`** | ⬜ 未做 | 清单见 §9.5。本轮新增两个值得一起搬的探针：`probe-colors.mjs`、`probe-lot-badges.mjs`（见 §9.2 第 20 条）。 |
+| **4** | **把 `build/` 里可复用脚本搬进 `scripts/`** | ✅ **完成（第 9 轮）** | **26 个可复用工具全部入库 `scripts/`**（扁平结构），`build/` 只留生成物；顺带修掉两个字体脚本用 cwd 相对路径调用兄弟脚本的真缺陷。判据见 §10.6。 |
 | **5** | **`verses.ts` 每日法语中英逐段复核** | ⬜ 未做 | 第 6 轮只动了一二级页面文案，未进 `verses.ts`。逐条核对中英对应（现在是意译，可能存在语义漂移或术语不一致）。 |
 
 **仍需注意的两个"隐性失效"**（不修会静默劣化，不是本轮遗留缺陷）：
-- 字体子集是**按当前全站用字生成**的：改动文章正文或界面文案后，新出现的字会**静默掉回系统字体**。改完文案请重跑 `node build/make-song-subset.mjs`（或搬进 `scripts/` 后跑新路径）。判据：脚本末尾会打印 `glyphs / missing`。
+- 字体子集是**按当前全站用字生成**的：改动文章正文或界面文案后，新出现的字会**静默掉回系统字体**。改完文案请重跑 `node scripts/make-song-subset.mjs`（或搬进 `scripts/` 后跑新路径）。判据：脚本末尾会打印 `glyphs / missing`。
 - `cn-pool.json` 是**未入库**的生成物，而 `curate-cn.mjs` 的 `PICKS` 按池内 id 手写。**若再重抓 pool，必须重跑 `pool-drift.mjs` 并逐条看标题**（§9.2 第 8 条：两者同时漂到同一片垃圾上也会「全等」）。
 
 ### 9.4 本轮实测数字
@@ -555,7 +557,7 @@ webfont 依赖；真正的站点样式只有约 76 KB。移除未用字体后 CS
 | `@fontsource/ma-shan-zheng` | 92 个文件 / **5.99 MB** | 改**项目子集**：merge 92 个分片后按「书法体实际用字 + ASCII」子集化 → 单个 **382 KB** 文件 |
 | `@fontsource/noto-sans` / `noto-serif`（latin） | 12 个 / 0.18 MB | 保留（西文正文） |
 
-书法体子集重建：`node build/make-brush-subset.mjs`（需 `python -m pip install fonttools brotli`）。
+书法体子集重建：`node scripts/make-brush-subset.mjs`（需 `python -m pip install fonttools brotli`）。
 许可 OFL-1.1 随字体放在 `public/fonts/ma-shan-zheng-OFL.txt`。
 
 ### 9.4c 汉字正文 webfont（内置 Noto Serif SC 项目子集）
@@ -564,13 +566,13 @@ webfont 依赖；真正的站点样式只有约 76 KB。移除未用字体后 CS
 | --- | --- | --- |
 | 系统栈（第 6 轮） | 0 | macOS 宋体-简 / Windows 中易宋体 / Linux 思源宋体，三端观感不一致 |
 | `@fontsource/noto-serif-sc` 全量 CSS | **2.92 MB / 86 个分片** | 实测本站用字命中 86 个 unicode-range 分片；且单取 `chinese-simplified` 那一片**缺 1253 个本站用字**（含 淨/觀/釋） |
-| **项目子集（本轮采用）** | **1.39 MB / 1 个文件** | 取完整 Noto Serif SC Regular（30928 字形 / 11.1 MB），按 `build/collect-cjk.mjs` 统计的 **6965 字**（其中 6888 汉字）子集化 |
+| **项目子集（本轮采用）** | **1.39 MB / 1 个文件** | 取完整 Noto Serif SC Regular（30928 字形 / 11.1 MB），按 `scripts/collect-cjk.mjs` 统计的 **6965 字**（其中 6888 汉字）子集化 |
 
 - 字形覆盖：**6965 字只缺 1 个**（`鶴`，CJK 兼容表意文字；掉回系统字体，可接受）。
 - **`unicode-range` 是刻意的**：只覆盖汉字与中文标点，**英文页面不会下载这 1.39 MB**。
   实测：英文分支只请求 Noto Serif/Sans 的 latin 分片与书法体子集，**无 CJK 子集**；
   中文分支（`hdc.lang=zh`）则实测请求到 `/fonts/noto-serif-sc-subset.woff2`（200）。
-- 重建：`node build/make-song-subset.mjs`（需 `python -m pip install fonttools brotli`；
+- 重建：`node scripts/make-song-subset.mjs`（需 `python -m pip install fonttools brotli`；
   字体源从 jsdelivr 的 `notofonts/noto-cjk` 拉取）。**改动正文/文案后要重跑**，否则新字掉回系统字体。
 - 许可 OFL-1.1：`public/fonts/noto-serif-sc-OFL.txt`。
 
@@ -589,7 +591,7 @@ webfont 依赖；真正的站点样式只有约 76 KB。移除未用字体后 CS
 `scripts/curate-cn.mjs`、`scripts/fetch-met-photos.mjs` —— 后两者里的 `/tibetan/i` 是
 **图片排雷正则**，按令牌名一刀切改会破坏图版筛选。
 
-**第 8 轮把正则本身收窄，问题从根上消失**：`build/rename-tokens.mjs` 原来用**裸词边界**
+**第 8 轮把正则本身收窄，问题从根上消失**：`scripts/rename-tokens.mjs` 原来用**裸词边界**
 `\b(gold|moon)\b`（所以第 7 轮只能靠 `EXCLUDE` 文件白名单兜着），
 现改为**令牌-数字边界** `\b(gold|moon)-(\d{2,3})\b`：
 
@@ -620,7 +622,7 @@ node scripts/fetch-cn-webp.mjs --only=halls,sutras   # 只抓指定桶（其余�
 node scripts/fetch-cn-webp.mjs --migrate             # 把已有 .jpg 就地转 .webp（不联网）
 # ③ 体检
 node scripts/photos-status.mjs                       # 退出码 2 = 仍有空桶；0 **不代表桶内齐了**（§9.2 第 19 条）
-node build/pool-drift.mjs                            # 改过 PICKS 必跑（但抓不到「池子自身选错」）
+node scripts/pool-drift.mjs                            # 改过 PICKS 必跑（但抓不到「池子自身选错」）
 ```
 
 - 已下载的自动复用、不会重复下载（编号恒定，不再需要 `_raw`）。
@@ -643,8 +645,8 @@ node build/pool-drift.mjs                            # 改过 PICKS 必跑（但
 第 8 轮（补满图版 / `brass`+`mist` 改名 / 修 `--only` 删桶缺陷）：
 见下方 §9.5 提交清单。
 
-**`build/` 里可复用脚本**（`build/` 是 gitignore 的临时工作区，故未入库；
-若要长期保留请搬进 `scripts/` —— 这是 §9.3 第 4 项）：
+**可复用脚本已全部入库到 `scripts/`（第 9 轮，见 §10.6）**。下表是第 7/8 轮在 `build/`
+里开发时的历史清单，路径已就地更新为 `scripts/`：
 
 | 脚本 | 用途 |
 | --- | --- |
@@ -662,8 +664,6 @@ node build/pool-drift.mjs                            # 改过 PICKS 必跑（但
 | **`probe-lot-badges.mjs`** | **第 8 轮新增**：种入历史，一次核对签位六档徽章的 computed color |
 | **`screen-cands.mjs`** | **第 8 轮新增**：用 `curate-cn.mjs` 里真正的 111 条 `TITLE_REJECT` 预筛候选 id —— **换 id 前必跑**（§9.2 第 21 条） |
 | **`fetch-cand.mjs`** | **第 8 轮新增**：抓候选缩略图做**排序**（用池内自带 url；`420px` 常返回 400，会回退到 1920px）。⚠ 题材最终必须看全尺寸 |
-| `ls-unused.mjs` | 按分类列出未选中的池内条目（挑替换图用） |
-| `verify-slots.mjs` | 打印某桶各槽位「下标 → 文件名 → 磁盘是否存在 → 标题」，核对换槽位是否错位 |
 | `probe-lots.mjs` | 抽一支签并读徽章色（随机档位，不如上面那个全面） |
 | `lot-levels.mjs` | 列出每档一支签的 id（供 `probe-lot-badges.mjs` 种历史） |
 | `fix-canvas-fonts.mjs` | 批量改 zen3d 里硬编码的 canvas 字体名（一次性迁移脚本） |
@@ -687,16 +687,16 @@ node build/pool-drift.mjs                            # 改过 PICKS 必跑（但
 22. **〔最隐蔽〕两位槽位名不匹配「三位数字」正则是正常的，不是正则坏了**。
     `grottoes-01.webp` 的点号前只有 **两位** 数字，所以任何要求「连续三位数字」的模式
     （`[0-9]{3}`、`[0-9][0-9][0-9]`、`\d{3}`）对它**必然 false** —— 这是判据写错了，不是引擎错。
-    本轮为写 `build/check-buckets.mjs` 排查这件事绕了很久（一度怀疑正则字面量被改写），
+    本轮为写 `scripts/check-buckets.mjs` 排查这件事绕了很久（一度怀疑正则字面量被改写），
     最终判据：`grottoes-048` 命中、`grottoes-01` 不命中，而 `\d{2}` 两者都命中 → 语义正确。
     **写判据脚本时槽位号一律用 `[0-9][0-9][0-9]?`**（或先取数字再比大小），
-    不要写死位宽；`build/dbg-regex.mjs` 是这条的回归见证。
+    不要写死位宽；`scripts/dbg-regex.mjs` 是这条的回归见证。
 23. **`photos-status.mjs` 退出码 0 ≠ 桶内齐了（§9.2 第 19 条的判据现已落地为脚本）**。
     真判据「清单条数 == 磁盘张数 == PICKS 条数 + 编号连续（slot == 下标+1）」已写成
-    `build/check-buckets.mjs`（**本轮新增，改 `PICKS` 后应与 `pool-drift.mjs` 一起跑**）。
+    `scripts/check-buckets.mjs`（**本轮新增，改 `PICKS` 后应与 `pool-drift.mjs` 一起跑**）。
     本轮实测 `picks=239 manifest=239 disk=239 | bad buckets=0`。
 24. **字体子集的真判据是「逐字查 woff2 的 cmap」，不是看 mtime 或重跑一遍**。
-    已写成 `build/check-font-coverage.mjs`（**本轮新增**）：纯 Node 解 woff2
+    已写成 `scripts/check-font-coverage.mjs`（**本轮新增**）：纯 Node 解 woff2
     （`zlib.brotliDecompressSync` + 手写 cmap format 4/12 读取，**不需要 Python/fonttools**）。
     ⚠ 两个易踩点：① woff2 的 `origLength` **可以大于文件体积**（15 张表共享一条 brotli 流，
     CFF 表 origLength 2.2 MB 而文件只有 1.39 MB），**不能**按 `origLength` 在文件里切片，
@@ -713,23 +713,23 @@ node build/pool-drift.mjs                            # 改过 PICKS 必跑（但
 | `node scripts/scan-mojibake.mjs` | 0 / 294 |
 | `node scripts/style-audit.mjs` | 装饰符号 0 · 圆角与投影 0 · img 缺 alt 0 · svg 缺 aria-hidden 0 · `gold-*`/`moon-*` 旧名残留 **0** |
 | `node scripts/photos-status.mjs` | 退出码 0；磁盘 239 张 / 61.6 MB、清单 239 条、9 张具名图全部 ✓ |
-| **`node build/check-buckets.mjs`（新）** | **picks=239 manifest=239 disk=239、bad buckets=0、7 桶编号全连续** |
-| `node build/pool-drift.mjs` | 7 桶 title 全等、不一致 0（paintings 41/188 · grottoes 46/189 · statues 89/211 · halls 21/64 · sutras 15/43 · landscape 20/54 · lotus 7/49） |
-| `node build/check-font-coverage.mjs`（新） | 6964 / 6965 覆盖；唯一缺 `U+FA2D` 为可接受回退 → **字体子集未过期，无需重跑** |
+| **`node scripts/check-buckets.mjs`（新）** | **picks=239 manifest=239 disk=239、bad buckets=0、7 桶编号全连续** |
+| `node scripts/pool-drift.mjs` | 7 桶 title 全等、不一致 0（paintings 41/188 · grottoes 46/189 · statues 89/211 · halls 21/64 · sutras 15/43 · landscape 20/54 · lotus 7/49） |
+| `node scripts/check-font-coverage.mjs`（新） | 6964 / 6965 覆盖；唯一缺 `U+FA2D` 为可接受回退 → **字体子集未过期，无需重跑** |
 | 截图核对 | 首页 8 张导览卡 `naturalWidth` 全非 0（1258×802 截图肉眼核对：造像/水墨/青瓷三组题材一致） |
 
-### 10.3 第 9 轮任务状态（沿用 §9.3 的第 3/4/5 项，**均未开工**）
+### 10.3 第 9 轮任务状态（§9.3 的第 3/4/5 项，用户指定顺序 **4 → 3 → 5**）
 
 | # | 项 | 状态 | 备注 |
 | --- | --- | --- | --- |
-| **3** | 主包 `index.js` 继续拆分 | ⬜ | 836.68 KB / gzip 276.67 KB；`three`(724 KB) 与 `vendor`(229 KB) 已独立，294 篇文章已各自成块 |
-| **4** | `build/` 可复用脚本搬进 `scripts/` | ⬜ | 现状见 §10.5：**28 个 `.mjs`**，其中 **7 个未登记**（§2 的 5 个 R9 工具 + 本轮 2 个新探针） |
+| **4** | `build/` 可复用脚本搬进 `scripts/` | ✅ **完成** | 26 个工具入库 `scripts/`（扁平）；`build/` 只留生成物。做法与判据见 §10.6 |
+| **3** | 主包 `index.js` 继续拆分 | ⬜ 下一步 | 836.68 KB / gzip 276.67 KB；`three`(724 KB) 与 `vendor`(229 KB) 已独立，294 篇文章已各自成块 |
 | **5** | `verses.ts` 每日法语中英逐段复核 | ⬜ | 第 6 轮只动一二级页面文案 |
 
 ### 10.4 第 9 轮实测数字
 
-> 第 9 轮**未改产品代码**，因此体积/内容指标与 §9.4（第 8 轮）逐项一致；
-> 差异只有「新增两个判据探针 + 本节文档」。
+> 第 4 项（脚本搬迁）**不改产品代码**，故体积/内容指标与 §9.4（第 8 轮）逐项一致；
+> 差异只有「新增受版本管理的 26 个工具脚本 + 2 个判据探针 + 本节文档」。
 
 | 指标 | 第 9 轮实测 | 与第 8 轮对比 |
 | --- | --- | --- |
@@ -741,11 +741,16 @@ node build/pool-drift.mjs                            # 改过 PICKS 必跑（但
 | `scan-mojibake` | 0 / 294 | 同 |
 | 图版清单与磁盘 | 239 = 239 = **239（含 PICKS）**、孤儿 0、缺口 0 | 新增 PICKS 维度 |
 | 字体子集 | 6964 / 6965 覆盖（缺 `U+FA2D`，可接受） | 新增判据 |
-| 新增脚本 | `build/check-buckets.mjs` · `build/check-font-coverage.mjs` · `build/dbg-regex.mjs` | — |
+| 入库脚本 | `scripts/` 新增 **27** 个（26 个从 `build/*.mjs` 搬迁 + 共享模块 `woff2-cmap.mjs`） | §10.6 |
+| 新增判据探针 | `scripts/check-buckets.mjs` · `scripts/check-font-coverage.mjs` · `scripts/dbg-regex.mjs` | — |
+| 字体子集 | 6964 / 6965 覆盖；**重建逐字节幂等**（并入现有字形后 1,421,548 B 与 HEAD 相同） | §10.7 第 3 条 |
+| 外部污染恢复 | `src/content` 39 个文件 + 6 个未跟踪文章 + 25 张孤儿 jpg 已恢复/隔离；`ok=294 crit=0` | §10.8 |
 
-### 10.5 `build/` 脚本现状（第 9 轮实测枚举）
+### 10.5 `build/` 脚本现状（第 9 轮开工前实测枚举）
 
-`build/` 里共 **28 个 `.mjs`**。§9.5 的表格登记了 21 个，另有 **7 个未登记**：
+开工前 `build/` 里共 **26 个可复用 `.mjs`**（另加 3 个一次性助手：`audit-build-refs.mjs`、
+`migrate-build-scripts.mjs`、`verify-migration.mjs`）。§9.5 的表格登记了 21 个，**7 个未登记**：
+
 | 脚本 | 用途 | 来源 |
 | --- | --- | --- |
 | `mksrc.mjs` | 编号源 → `build/<slug.pN>.src.txt` | §2 |
@@ -756,9 +761,99 @@ node build/pool-drift.mjs                            # 改过 PICKS 必跑（但
 | **`check-buckets.mjs`** | **第 9 轮新增**：清单 == 磁盘 == PICKS + 编号连续（§10.1 第 23 条） | 第 9 轮 |
 | **`check-font-coverage.mjs`** | **第 9 轮新增**：逐字查 woff2 cmap，判字体子集是否过期（§10.1 第 24 条） | 第 9 轮 |
 
-另有非脚本生成物：`cjk-chars.txt`、`noto-serif-sc-subset.woff2`、`NotoSerifSC-Regular.otf`、
-`brush-chars.txt`，以及 `chrome-scroll/`、`shots/` 两个目录。
-**第 4 项（搬进 `scripts/`）的完整清单 = 这 28 个 `.mjs`**，不只 §9.5 那 21 个。
+非脚本生成物（**留在 `build/`，不入库**）：`cjk-chars.txt`、`brush-chars.txt`、
+`noto-serif-sc-subset.woff2`、`NotoSerifSC-Regular.otf`，以及 `chrome-scroll/`、`shots/` 两个目录。
+
+⚠ **§9.5 表里原有的 `ls-unused.mjs` 与 `verify-slots.mjs` 在本仓库并不存在**（`Test-Path` 均为 false，
+`build/` 与 `scripts/` 都没有）—— 它们是第 7 轮的临时件且从未落地，故第 9 轮按**实存清单**执行，
+这两个名字已从 §9.5 表中删除。
+
+### 10.6 第 9 轮搬迁（§9.3 第 4 项）：`build/*.mjs` → `scripts/*.mjs`
+
+**结论：26 个可复用工具全部入库 `scripts/`；`build/` 只留生成物。**
+做法（可复现）：`build/migrate-build-scripts.mjs` 按**精确字面量 + 期望出现次数**做代入，
+任何一处对不上就中止（**不做模糊正则替换**），随后 `build/fix-migrated-refs.mjs` 补上
+「跨工具引用 / 注释里的兄弟工具名 / 无 `.mjs` 后缀的提示串」这三类第一遍看不见的引用。
+
+**同时修掉的一个真缺陷**：`make-song-subset.mjs` 与 `make-brush-subset.mjs` 原来用
+`execFileSync(process.execPath, ['build/collect-cjk.mjs'])` 这种**cwd 相对路径**调用兄弟脚本 ——
+一旦从非仓库根目录调用就会 ENOENT。现全部改为 `ART(...)` = `path.join(process.cwd(), ...)`，
+并在每个受影响的脚本顶部注入：
+
+```js
+const ROOT = process.cwd()
+const ART = (p) => path.join(ROOT, p)
+```
+
+⚠ **没有动**模板字面量路径（`build/slices/${part}.src.json`）与 `build/shots/*.png` 之类的
+**产物路径**（它们本来就该落在 `build/`），只把「脚本互相调用」与「读 `scripts/*.json`」锚定。
+
+**搬迁判据（全部实测通过）**：
+
+| 判据 | 结果 |
+| --- | --- |
+| 26 个文件语法可解析（`node --check`） | **26/26 parse clean** |
+| 无嵌套/重复包裹损伤（`ART(ART(`、`ART(''`、残留占位符） | **0** |
+| 全仓库残留 `build/<tool>` 引用（跳过 `build/` 自身） | **0** |
+| 跨工具引用（`make-song → collect-cjk` 等） | 10 处已改到 `scripts/` |
+| 三类探针实跑（新路径） | `scripts/check-buckets.mjs` = 239/239/239；`scripts/check-font-coverage.mjs` = 6964/6965；`scripts/pool-drift.mjs` = 7 桶全等 |
+
+`scripts/` 目录约定：**扁平结构，无子目录**（搬迁前已有 46 个脚本），故不加 `scripts/photos/` 之类的分组。
+入库后新增受版本管理的脚本：**27 个**（26 个搬迁 + 新增共享模块 `scripts/woff2-cmap.mjs`，见 §10.7）。
+
+### 10.7 搬迁过程中改掉的 4 个真问题（都不是「搬文件」本身）
+
+1. **兄弟脚本用 cwd 相对路径 spawn**（会 ENOENT）。`make-song-subset` / `make-brush-subset`
+   原来 spawn `build/collect-cjk.mjs`、`build/collect-brush.mjs`。现改为**直接 import**：
+   `collect-cjk.mjs` / `collect-brush.mjs` 变成**可 import 的模块**（导出 `collectChars()` /
+   `writeCharsFile()` / `collectBrushChars()` / `writeBrushCharsFile()`），CLI 部分用
+   **`process.argv[1] === fileURLToPath(import.meta.url)`** 守门 ——
+   ⚠ **不要用 `import.meta.main`**：Node 24.19 实测它是 `undefined`。
+   同样地，`check-font-coverage.mjs` 现在**现场扫 `src/`**（import `collectChars`），
+   不再依赖 gitignore 的 `build/cjk-chars.txt`（在干净 clone 里那个文件根本不存在）。
+2. **Windows 绝对路径不能内联进 Python 源码**。`make-brush-subset.mjs` 原来把
+   `D:\FengLi\...\build\msz-full.ttf` 拼进 pyftsubset 的 Python 字符串 → `\F`/`\b` 被当转义序列，
+   实测 `SyntaxWarning: invalid escape sequence '\F'` 且写出 `D:\\FengLi\\Web\x0cou\\...` 这种坏路径。
+   现所有路径一律**走 argv 传参**（Python 端 `sys.argv[n]`）。
+3. **〔隐蔽，最值得记〕字体子集不能只在「当前 src/ 用字」上重建**。按 src/ 重建得到 6965 字，
+   而**已发布子集里 331 个繁体/异体字（龍 龜 資 報 問 圖 團 寶 專 …）并不在当前 src/ 中** ——
+   直接重建会把这 331 字从「站内字体」退回系统字体，而它们仍可能出现在旧稿或外链页面上。
+   现 `make-song-subset.mjs` 会**先读现有成品字体的 cmap，把其字形并入新子集**（单调、幂等）：
+   实测在 HEAD 字体上重跑得到**逐字节相同**的 1,421,548 字节产物。
+   判据脚本 `check-font-coverage.mjs` 同时会报出这个「保留量」（reserve）。
+4. **重复的 woff2 cmap 读取被收敛成一个模块**：`scripts/woff2-cmap.mjs`
+   （`readWoff2` / `readCmap` / `readWoff2Cmap`），被 `check-font-coverage.mjs` 与
+   `make-song-subset.mjs` 共用。两个易踩点写在文件头：① woff2 的全部表**共享一条 brotli 流**，
+   `origLength` 可以大于文件体积，**不能**按它切文件（必须先整条流解压）；② 表目录里存的是 tag **索引**。
+
+### 10.8 第 9 轮过程中的一次「工作区被外部进程污染」（已恢复，教训）
+
+核对阶段发现 `src/content` 被**本会话之外的进程**整批改写，且内容是坏的：
+
+| 现象 | 实测 |
+| --- | --- |
+| 文章被换成另一份稿 | `111mituoyuanzhongchao`：HEAD 标题「阿弥陀经略解圆中钞」**488 块** → 工作区「弥圆い钞-学园」**973 块** |
+| 标题取错 | `060yuyinku` 标题变成 `MyTmp`（其源 `docs/markdown/060yuyinku.md` 第 1 行就是 `# MyTmp`） |
+| 文件名双重编码 | 6 个未跟踪文件，形如 `239wuliangshoujing-huiyi-zhu-╫╩┴╧.json`（「资粮」被当 **CP936/GBK** 解码后的残迹） |
+| 生成物被截断 | `src/data/photos-cn.json` 从 257 行被砍到 20 行（→ `check-buckets` 直接报 `manifest 239 ≠ disk 247`） |
+| 25 个孤儿图片 | `public/photos/**/*.jpg`（第 7 轮已全面转 WebP，这些是旧副本，全部未跟踪） |
+| **未提交** | `git diff --cached` = 0、无 stash → **HEAD 完好，可一键恢复** |
+
+处置（**都只动未跟踪/被改写的内容，不碰任何设计决策**）：
+`git checkout -- src/content public/photos/cn/CREDITS.md src/data/photos-cn.json scripts/slice-plan.json`，
+未跟踪的 6 个文章文件与 25 张 jpg **移动到 `build/quarantine-strays/`**（不删除，保留可回滚）。
+恢复后实测 `ok=294 crit=0 warn=0`、`check-buckets` 239/239/239、`pool-drift` 7 桶全等。
+
+**教训**：
+- **动到 `src/content` 前先看 mtime 与 `git status`**：本轮 `src/content/articles` 的批次写入时间戳是 19:03:26，
+  而 `dist/` 是 18:18 —— 时间戳不一致就是「有别的进程在写」的直接证据。
+- **判据脚本不要依赖 gitignore 的中间产物**（`build/cjk-chars.txt`）：在干净 clone 或外部清理后它会消失，
+  判据就会**假失败**（本节第 3 条那个 331 字的假警报就是这么来的）。现两个字体脚本都已自给自足。
+- 排版类判据要**方向明确**：`check-font-coverage` 之前只报「src 用字是否都被字体覆盖」，
+  抓不到「字体里的字被删掉」这个反向退化；现已同时报 reserve。
+
+
+
 
 
 
