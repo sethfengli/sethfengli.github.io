@@ -744,7 +744,7 @@ node scripts/pool-drift.mjs                            # 改过 PICKS 必跑（�
 | `style-audit` | 装饰符号 0 · 圆角与投影 0 · img 缺 alt 0 · svg 缺 aria-hidden 0 | 同 |
 | 图版清单与磁盘 | 239 = 239 = **239（含 PICKS）**、孤儿 0、缺口 0 | 同 |
 | 字体子集 | 6964 / 6965 覆盖（缺 `U+FA2D`，可接受）；**重建逐字节幂等** | §10.7 第 3 条 |
-| 入库脚本 | `scripts/` 新增 **29** 个（26 个搬迁 + `woff2-cmap.mjs` + `probe-route-cost.mjs` + `verify-3d-gate.mjs` + `shots-routes.mjs`） | §10.6/§10.9 |
+| 入库脚本 | `scripts/` 新增 **32** 个（26 个搬迁 + `woff2-cmap` · `probe-route-cost` · `verify-3d-gate` · `shots-routes` · `term-counts` · `spelling-audit` · `fix-verses`） | §10.6/§10.9/§10.10 |
 | 外部污染恢复 | `src/content` 39 个文件 + 6 个未跟踪文章 + 25 张孤儿 jpg 已恢复/隔离 | §10.8 |
 | 字体子集 | 6964 / 6965 覆盖；**重建逐字节幂等**（并入现有字形后 1,421,548 B 与 HEAD 相同） | §10.7 第 3 条 |
 | 外部污染恢复 | `src/content` 39 个文件 + 6 个未跟踪文章 + 25 张孤儿 jpg 已恢复/隔离；`ok=294 crit=0` | §10.8 |
@@ -949,11 +949,23 @@ const ART = (p) => path.join(ROOT, p)
 - `《法句经》`→`Dhammapada`（全库 `Dharmapada` 仅 1 次）、`涅槃`→`Mahāparinirvāṇa Sutra` 等按各自版本定名，保留。
 - 逐条**块级对照**（中英成对、无漏条/空串）：30 条 zh 与 30 条 en 一一对应，条数前后都是 30。
 
-**判据（实测）**：`build/fix-verses.mjs` 每处字面量命中数必须恰为 1（否则拒绝写入）；
+**判据（实测）**：`scripts/fix-verses.mjs` 每处字面量命中数必须恰为 1（否则拒绝写入）；
+**幂等性**：改完再跑一次会报 `expected 1 occurrence, found 0` 并 exit 1（即「已全部应用」），
+故这个脚本本身就是「是否已应用」的判据。
 改完 `npx tsc --noEmit` 通过、`validate-en` 仍 `ok=294 crit=0 warn=0`、`scan-mojibake` 0/294；
 **字体子集无需重跑**——复核只改英文侧（`en.text`），全站汉字集合不变，
 `check-font-coverage` 仍是 `6964 / 6965`（唯一缺 `U+FA2D` 为可接受回退）。
 构建产物核对：12 个改动串在 `dist/assets/Home-*.js` 里全部命中（`node -e` 逐串 `includes` 验证）。
+
+**本次一并入库的三个口径脚本**（第 9 轮新增，`scripts/`）：
+
+| 脚本 | 用途 |
+| --- | --- |
+| `term-counts.mjs` | 扫 `src/content/en/**` 统计术语各变体出现次数 —— **定译名口径前先跑它**，别自造 |
+| `spelling-audit.mjs` | 扫 `src/content/en` + `src/i18n` 判 BrE/AmE 房规（实测全库是**美式**） |
+| `fix-verses.mjs` | 本次 13 处改动的可复现脚本（精确字面量 + 命中数必须为 1；幂等，重跑即报 0 命中） |
+
+
 
 
 
