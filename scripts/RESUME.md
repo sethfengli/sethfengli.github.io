@@ -178,6 +178,28 @@ git show --stat --oneline HEAD ; git status --porcelain  # 双向核对
     `git checkout -- scripts/plan-slices.mjs` 可复原。
 16. **取回历史文件不要用 `git show > file`**（PowerShell 里写 UTF-16，JSON 非法）；
     用 `git cat-file blob` 配 Node 读取，或 `git checkout`。
+17. **〔第 10 轮新增〕受限沙箱有两种**：**「策略层拒绝」**（会打印
+    `[sandbox: file access denied under <mode> mode]`）与**「OS 层 EPERM」**（harness 不打印任何标记，
+    只会看到 Node 的裸 `EPERM`）。后者**必须自己定位**，否则极易误判成「脚本坏了」。
+    实测第 10 轮：`npx vite build` 报 `spawn EPERM`，真因**不是** vite 缺陷 ——
+    沙箱禁止「打开命名管道」（= 捕获子进程输出），于是任何 `stdio:'pipe'` 的 spawn 全 EPERM：
+    - `spawnSync(exe, …, {encoding:'utf8'})`（= pipe）→ **EPERM**；
+    - `spawnSync(exe, …, {stdio:'ignore'})` / `{stdio:'inherit'}` → **status=0，正常**；
+    - `exec(...)` / `execFile(...)`（vite 的 `optimizeSafeRealPathSync` 用 `exec('net use')`）→ **EPERM**。
+      ⚠ 该处 `exec` 的回调里只有 `if (error) return`，**同步抛出**会直接冒泡成
+      `failed to load config from vite.config.ts` + `spawn EPERM` —— 看着像配置坏了，其实是沙箱。
+    同一模式下**工作区写入/删除也被拒**（`writeFileSync` / `mkdirSync` / `unlinkSync` / `renameSync`
+    全 EPERM），所以 `dist/` 会**静默变成陈旧产物**，而 `probe-route-cost.mjs` 会死在第一步
+    `fs.rmSync('build/chrome-routecost')` 上（它的 Chrome 临时 profile 建不出来）。
+    判据脚本（只读，实测仍全绿）：`tsc` / `validate-en` / `scan-mojibake` / `style-audit` /
+    `check-buckets` / `photos-status` / `pool-drift` / `check-font-coverage`。
+    **处置**：要么把策略放到 `danger-full-access` 重跑，要么本机跑（见 §5）。
+18. **〔第 10 轮新增〕`fs.rmSync(p, {recursive:true, force:true})` 在「什么都没删」时也返回成功**。
+    `force:true` 会把 `ENOENT` 吞掉，所以「`rmSync` 没抛异常」**不能**作为「删除成功」的判据
+    —— 第 10 轮我据此一度得出「沙箱允许删除、只拒绝写入」的错误结论。
+    **正确判据**：删之前先 `existsSync`，删之后**再 `existsSync` 一次**，或直接看抛出的
+    `code`。真正的删除拒绝会给出**裸 `EPERM`**（不是 `ENOENT`）。
+    同理：`dist` 是否新鲜**不要只信 mtime**，要验「产物里含当前源码的特征串」（§11.2）。
 
 ## 5. 脚本速查
 
@@ -199,7 +221,10 @@ git show --stat --oneline HEAD ; git status --porcelain  # 双向核对
 | `migrate.mjs` | 旧站 HTML 迁移（历史，一般不动） |
 | `fetch-*.mjs` / `merge-lingqi.mjs` | 媒体与灵棋经抓取/合并（内容侧，按需） |
 
-**常用校验**：`npm run typecheck`（tsc）可跑；`npm run build`（vite）在受限沙箱会因 `spawn EPERM` 失败，需本机跑。
+**常用校验**：`npm run typecheck`（tsc）可跑。`npm run build`（vite）：**第 10 轮实测通过**
+（`npx vite build` → exit 0，2.57s，`dist/` 重建后与第 9 轮**逐字节同哈希**）。
+⚠ 但若沙箱处于「受限」模式，它会因 `spawn EPERM` 失败（真因见 §4 第 17 条：禁止命名管道，
+**不是** vite 的缺陷），此时需本机跑或放宽到 `danger-full-access`。
 
 ## 6. 剩余项（**全部可选，非缺陷**；建议就此收官）
 
@@ -964,6 +989,62 @@ const ART = (p) => path.join(ROOT, p)
 | `term-counts.mjs` | 扫 `src/content/en/**` 统计术语各变体出现次数 —— **定译名口径前先跑它**，别自造 |
 | `spelling-audit.mjs` | 扫 `src/content/en` + `src/i18n` 判 BrE/AmE 房规（实测全库是**美式**） |
 | `fix-verses.mjs` | 本次 13 处改动的可复现脚本（精确字面量 + 命中数必须为 1；幂等，重跑即报 0 命中） |
+
+## 11. 第 10 轮（仅核对 · 无回退）
+
+> **范围**：只跑核对，**未改任何产品代码**（`git status` 全程干净；提交仅本 docs 一节）。
+> 结论：**首屏成本与体积零回退**，与第 9 轮逐字节一致。
+
+### 11.1 核对结果（全绿）
+
+| 核对项 | 第 10 轮实测 |
+| --- | --- |
+| `npx tsc --noEmit` | 通过（exit 0） |
+| `npx vite build` | **通过（exit 0，2.57s）** —— 需 `danger-full-access`，受限模式会 `spawn EPERM`（§4 第 17 条） |
+| `validate-en` | ok=294 crit=0 warn=0 parts=0 |
+| `scan-mojibake` | 0 / 294 |
+| `style-audit` | 装饰符号 0 · 圆角与投影 0 · img 缺 alt 0 · svg 缺 aria-hidden 0 · 旧令牌残留 0 |
+| `photos-status` | 退出码 0；磁盘 **239 张 / 61.6 MB**、清单 239 条、9 张具名图全 ✓ |
+| `check-buckets` | **picks=239 manifest=239 disk=239 · bad buckets=0** · 7 桶编号全连续 |
+| `pool-drift` | 7 桶 **title 全等 · 不一致 0**（41/188 · 46/189 · 89/211 · 21/64 · 15/43 · 20/54 · 7/49） |
+| `check-font-coverage` | **6964 / 6965** 覆盖 · missing 1（`U+FA2D` 可接受回退）· action needed 0 → **子集未过期** |
+| `probe-route-cost` | 见 §11.2（**与第 9 轮逐位相同**） |
+| `verify-3d-gate` | `/` `/dharma` `/prayer` canvas=1、`/lots` canvas=2，**全部挂载 OK**（门控不是「永不显示 3D」） |
+
+### 11.2 首屏成本与体积：**无回退**（实测）
+
+**重建 `dist/` 后哈希与第 9 轮完全一致**（这同时证明「重建 → 首屏数字」因果成立，不是陈旧产物）：
+
+| 产物 | 第 10 轮实测 | 第 9 轮 | 判据 |
+| --- | --- | --- | --- |
+| 主包 `index-65Qih43E.js` | **286,961 B / 280.24 KB**（gzip 92.96） | 286.96 KB | 逐字节同哈希 |
+| `vendor-BTjPlzBp.js` | 229,340 B / 223.96 KB | 同 | 逐字节同哈希 |
+| `index-DvMq8mHc.css` | 77,905 B / 76.08 KB | 77.90 KB | 逐字节同哈希 |
+| `three-DwIcnsOs.js` | 724,169 B / 707.20 KB | 同 | 逐字节同哈希 |
+
+**首屏 JS（decoded，每路由一次性浏览器上下文）**：
+
+| 路由 | 第 10 轮 | 第 9 轮 | 回退？ | 3D |
+| --- | --- | --- | --- | --- |
+| `/` | **615.6 KB**（8 files） | 615.6 | **无** | 门控生效（只下了 `Contained3D` 0.6 KB，**未下 three.js**） |
+| `/articles` | **605.1 KB**（7 files） | 605.1 | 无 | 未下 |
+| `/about` | **645.2 KB**（10 files） | 645.2 | 无 | 未下 |
+| `/dharma` | 1338.2 KB（13 files，1 canvas） | 1338.2 | 无 | 仍下 three.js 707.2 KB（场景在 802px 视口内，门控按设计放行） |
+| `/prayer` | 1354.1 KB（13 files，1 canvas） | 1354.1 | 无 | 同上 |
+| `/lots` | 1369.4 KB（13 files，1 canvas） | 1369.4 | 无 | 同上 |
+
+### 11.3 `dist` 新鲜度的正确判据（本轮做法，可复用）
+
+**不能只看 mtime**。本轮用了两条独立证据（都实测通过）：
+
+1. **时序**：`dist/index.html` mtime(19:53:15) **晚于**最新源文件 `src/data/verses.ts`(19:52:48)，
+   且 `git status --porcelain -- src public scripts` 为空（源码与 HEAD 完全相同）→ 产物不可能更旧；
+2. **内容**：在 `dist/assets/*.js` 里**逐串查当前源码的特征串**（第 9 轮的 `One deluded thought`、
+   `stūpas of seven treasures`、`like a master painter`、`practice all that is good` 全部命中；
+   旧串 `One foolish thought`、`stupas of seven gems` **全部缺席**）。
+   ⚠ 反面教训：我一开始把 `nothing it cannot accomplish` 当「旧串」，其实它是
+   **`src/data/lots.ts:413` 的合法文案**（与 `verses.ts:148` 的 `does not accomplish` 是两处不同文本）
+   —— **写「旧串缺席」判据前，必须先在当前源码里 grep 该串**，否则会造出假失败。
 
 
 
