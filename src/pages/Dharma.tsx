@@ -62,8 +62,18 @@ export function Dharma() {
         </Reveal>
         <Reveal delay={120} className="lg:col-span-7">
           <div className="flex justify-center">
-            {/* three.js 到位前先给可交互的 DOM 版梵钟；并且只在滚到附近才请求 three.js */}
-            <Contained3D minHeight={360} placeholder={<TempleBell />}>
+            {/* three.js 到位前先给可交互的 DOM 版梵钟。
+                第 10 轮：实测本站 3D 容器 top=573（折叠线 802），**本来就在首屏内**，
+                故视口门控会按设计放行、照样下 707 KB。要挪到触发带（y>1202）之外需再下移
+                630px，而整页只有 2506px —— 会把首屏留白一半，属版面重排而非微调。
+                因此这里改为**按需开启**：DOM 版梵钟本身就能敲（含真实录音），
+                点了「开启 3D」才请求 three.js。 */}
+            <Contained3D
+              minHeight={360}
+              requireOptIn
+              optInLabel={t('common.enable3d')}
+              placeholder={<TempleBell />}
+            >
               <Bell3D fallback={<TempleBell />} />
             </Contained3D>
           </div>

@@ -307,6 +307,9 @@ export const zh = {
     censerAlt: '3D 鼎式香炉',
     bellAlt: '3D 铜钟',
     cylinderAlt: '3D 签筒',
+    /* 3D 按需开启（第 10 轮）：场景在首屏内时不再自动下载 707 KB 的 three.js */
+    enable3d: '开启 3D',
+    loading3d: '正在加载 3D…',
     mainNav: '主导航',
     mobileNav: '移动导航',
   },

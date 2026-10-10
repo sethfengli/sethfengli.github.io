@@ -207,7 +207,12 @@ export function Lots() {
 
               <Reveal delay={100}>
                 <div className="card flex h-full flex-col items-center justify-center gap-5 p-8">
-                  <Contained3D minHeight={360} placeholder={<LotCylinder shaking={phase === 'shaking'} revealed={phase === 'revealed'} />}>
+                  <Contained3D
+                    minHeight={360}
+                    requireOptIn
+                    optInLabel={t('common.enable3d')}
+                    placeholder={<LotCylinder shaking={phase === 'shaking'} revealed={phase === 'revealed'} />}
+                  >
                     <LotCylinder3D
                       shaking={phase === 'shaking'}
                       revealed={phase === 'revealed'}
@@ -231,7 +236,12 @@ export function Lots() {
             {/* 塔香点缀（3D 按需加载，未到位时先是同尺寸的 DOM 香炉） */}
             <Reveal>
               <div className="mx-auto max-w-sm">
-                <Contained3D minHeight={260} placeholder={<IncenseBurner bare />}>
+                <Contained3D
+                  minHeight={260}
+                  requireOptIn
+                  optInLabel={t('common.enable3d')}
+                  placeholder={<IncenseBurner bare />}
+                >
                   <Incense3D variant="cone" scale={0.9} distance={16} maxDistance={16} heightClass="h-[260px]" fallback={<IncenseBurner bare />} />
                 </Contained3D>
               </div>

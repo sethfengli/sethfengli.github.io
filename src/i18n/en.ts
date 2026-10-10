@@ -318,6 +318,9 @@ export const en: Dict = {
     censerAlt: '3D tripod censer',
     bellAlt: '3D bronze bell',
     cylinderAlt: '3D lot cylinder',
+    /* 3D on demand (round 10): scenes that sit above the fold no longer pull the 707 KB three.js chunk automatically */
+    enable3d: 'Enable 3D',
+    loading3d: 'Loading 3D…',
     mainNav: 'Main navigation',
     mobileNav: 'Mobile navigation',
   },

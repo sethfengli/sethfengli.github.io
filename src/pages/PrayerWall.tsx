@@ -294,9 +294,17 @@ export function PrayerWall() {
             </div>
             <p className="mt-4 font-song text-xs leading-relaxed text-ink-500">{t('prayer.treeHint')}</p>
 
-            {/* 许愿树（始终展示，无愿望时以提示语引导） */}
+            {/* 许愿树（始终展示，无愿望时以提示语引导）。
+                第 10 轮：实测 3D 容器 top=722（折叠线 802）本就在首屏内，视口门控必然放行
+                707 KB；挪到触发带外需 +481px，而整页只有 2011px，故改为**按需开启**——
+                SVG 版许愿树本身可挂愿、可点红绸，点了「开启 3D」才请求 three.js。 */}
             <div className="mt-8 rounded-card border border-hairline bg-rice-100/50 p-3 sm:p-5">
-              <Contained3D minHeight={420} placeholder={<WishTree wishes={onTree} onRibbonClick={setSelected} />}>
+              <Contained3D
+                minHeight={420}
+                requireOptIn
+                optInLabel={t('common.enable3d')}
+                placeholder={<WishTree wishes={onTree} onRibbonClick={setSelected} />}
+              >
                 <Tree3D
                   wishes={onTree}
                   onRibbonClick={setSelected}
