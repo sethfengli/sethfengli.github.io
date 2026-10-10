@@ -237,55 +237,74 @@ git show --stat --oneline HEAD ; git status --porcelain  # 双向核对
 ## 7. 下一轮启动提示词（复制这一段）
 
 ```
-继续 huideng-chanlin 项目（D:\FengLi\Web\fou\huideng-chanlin）。上一轮做了「图版补桶 + WebP + 字体
-（瘦身 + 内置汉字子集）+ 令牌改名 + 分包」，状态、坑与下一轮任务见 scripts/RESUME.md §9
-（**先读 §9，再读 §4 的 16 条历史坑**）。
+继续 huideng-chanlin 项目（D:\FengLi\Web\fou\huideng-chanlin）。上一轮（第 8 轮）做了「补满图版 +
+landscape 题材精修 + gold/moon 令牌改名 + 修 --only 删桶缺陷」，状态、坑与下一轮任务见
+scripts/RESUME.md §9（**先读 §9，再读 §4 的 16 条历史坑**）。
 
-上一轮已落地（提交 a2ad34c → db26e35）：
-- 图版空桶的真因**不是限流**：cn-pool.json 重抓后 curate-cn.mjs 的 PICKS 仍按旧 id 取图，
-  halls/sutras/landscape 三桶整体漂到韩国寺院/清真寺/蒙古人物像/藏地高原上 → 逐条按标题重挑；
-  新增 scripts/fetch-cn-webp.mjs：编号恒等于「清单下标+1」，失败条目留空 → 清单=磁盘=署名天然一致；
-  全量转 WebP q80；实测 227 张、photos-status 退出码 0（sutras 11/15、landscape 13/20 仍缺，429 留空）；
-- 导览卡换掉 halls-01（反光金属说明牌）与 halls-07（黑白书影）→ 自然光石窟造像；
-  注意 content.ts 的 named(key, 校验桶) 第二个参数必须与被指图片所属桶一致，否则静默回退；
-- 字体：CSS 875 KB → 77 KB、字体分片 940 个/41.5 MB → 15 个/1.94 MB；
-  移除 lxgw-wenkai-webfont(27.9 MB) 与 @fontsource/long-cang(6.4 MB)，ma-shan-zheng 改项目子集 382 KB；
-  新增 Noto Serif SC 正文子集 1.39 MB（带 unicode-range，实测英文页不下载）；
-- 色板令牌改名：sandalwood-* → celadon-*、tibetan-* → cinnabar-*，共 314 处；
-- 修掉 PhotoLogo 硬编码 .jpg 导致的站标 404（构建全绿、只有截图加上读 naturalWidth 才能发现）；
-- codeSplitting 增 three / vendor 分组；主包 index.js 仍 836 KB（未拆）。
+上一轮已落地（提交 150786b → ba9aa98 → 9137745）：
+- 图版**七桶全满**：sutras 15/15、landscape 20/20、grottoes 46/46（grottoes-46 原是未登记的孤儿
+  文件，清单 229 → 239 就是把它与其它缺口补回）；实测 **清单 239 = 磁盘 239、孤儿 0、缺口 0**、
+  7 桶编号全连续、pool-drift 全等；
+- ⚠ **`photos-status` 退出码 0 ≠ 桶内齐了**（它只判空桶/具名图损坏）——上一轮它返回 0 的时候
+  sutras 才 11/15、landscape 13/20。真判据是「清单条数 == 磁盘张数 == PICKS 条数」+ 编号连续；
+- ⚠ **改 PICKS 是两步**：`node scripts/curate-cn.mjs`（PICKS → cn-picked.json，**已入库**）
+  再 `node scripts/fetch-cn-webp.mjs`（读的是 cn-picked.json，不是 PICKS）。只改 PICKS 就抓图
+  会**照旧按旧 id 下载**，日志还打印旧标题 —— 上一轮我连犯两次（§9.2 第 17 条）；
+- ⚠ **换槽位必须换同一位置**（编号恒等于下标+1）；且换 id 前先用
+  `node build/screen-cands.mjs landscape <id...>` 过一遍 111 条 TITLE_REJECT ——
+  被剔的 id 不进 cn-picked.json，会让该桶少一条、后面下标全部前移（§9.2 第 21 条）；
+- ⚠ **pool 里的标题本身也可能是错的**：`landscape-012` 标题「20180614 CHINA 1432.jpg」，
+  实际画面是**游客举手机拍猕猴**。pool-drift 结构性抓不到（只比 picked 与 pool 的 title 是否全等）
+  → 题材判据只能**逐张看全尺寸**（§9.2 第 16 条）；
+- 本轮我又修了 `fetch-cn-webp.mjs` 一个静默缺陷：`--only=<桶>` 会把其余桶**从清单整体删掉**
+  （实测删掉 landscape 20 + lotus 7，7 张 lotus 立刻成孤儿，而退出码 0、构建全绿）。已给
+  `persist()` 加 `carry` 参数修好（§9.2 第 18 条）；
+- 图版题材精修（用户批准）：landscape 换掉 4 个槽位 → 010（水墨+佛塔）、046（屋顶群+雪山）、
+  038（云海雪峰）、034（1874 albumen 沧浪亭嵌崖）；保留了 013（Huangshan）；
+- 令牌改名：`gold-*` → `brass-*`（黄铜）、`moon-*` → `mist-*`（青雾灰蓝），**107 处 / 4 文件**。
+  做法是把正则收窄为**令牌-数字边界** `\b(gold|moon)-(\d{2,3})\b`，散文词与语义标识
+  （`.btn-gold`、`illustration:'moon'`、`.reader-theme-moon`）天然不受影响，不必用文件白名单；
+- 判据提醒：Tailwind v4 把令牌值**内联进工具类**，产物 CSS 里搜不到 `--color-*` ——
+  要读渲染后的 computed color（`build/probe-colors.mjs` / `build/probe-lot-badges.mjs`）。
 
-下一轮任务**已在 §9.3 排定为五项**（1 补满图版余量 · 2 gold/moon 改名 · 3 主包继续拆分 ·
-4 把 build/ 可复用脚本搬进 scripts/ · 5 verses.ts 中英复核）。**先跑下面的核对，
-再问我从哪一项开始 / 是否按顺序做，不要自行扩大范围**：
+下一轮任务（**原 §9.3 的第 3/4/5 项，尚未开工**；先跑核对，再问我从哪项开始，不要自行扩大范围）：
+ 3. 主包 index.js 继续拆分（现 836.68 KB / gzip 276.67 KB；three 与 vendor 已独立）；
+ 4. 把 build/ 可复用脚本搬进 scripts/（清单见 §9.5，本轮又新增 4 个探针/工具）；
+ 5. verses.ts 每日法语中英逐段复核（第 6 轮只动了一二级页面文案）。
+
+核对（全跑一遍再问我）：
 
   npx tsc --noEmit
   npx vite build                    （需子进程权限；受限沙箱会 spawn EPERM）
   node scripts/validate-en.mjs && node scripts/scan-mojibake.mjs
   node scripts/style-audit.mjs
-  node scripts/photos-status.mjs     （退出码 0 = 图版齐了；2 = 仍有空桶）
-  node build/pool-drift.mjs          （改过 PICKS 的话必跑）
+  node scripts/photos-status.mjs     （⚠ 退出码 0 不代表桶内齐了，见上）
+  node build/pool-drift.mjs          （改过 PICKS 的话必跑；但抓不到「池子自身选错」）
   node build/shot-scrolled.mjs ".card-media" build/shots/x.png   # 截图 + 报每张图 naturalWidth
 
 两个**隐性失效**要记牢（不报错，但会静默劣化）：
 - 字体子集是按「当前全站用字」生成的 → 改动正文/文案后新字会掉回系统字体，需重跑
   `node build/make-song-subset.mjs`（或搬进 scripts/ 后的新路径），看它打印的 missing 数；
-- cn-pool.json 是未入库的生成物，而 PICKS 按池内 id 手写 → 再重抓 pool 必须逐条看标题核对。
+- cn-pool.json 是未入库的生成物，而 PICKS 按池内 id 手写 → 再重抓 pool 必须逐条看标题核对，
+  且**标题也不可信**，要逐张看全尺寸图。
 
 纪律：
 - 含中文的文件一律不要用 PowerShell Set-Content 回写（双重编码，见 §4.3），用 node writeFileSync 或 edit 工具；
+- **命令行里不要内联复杂 JS**：PowerShell 会把单双引号吃掉（本轮反复踩到 `Expected ident` /
+  `Unmatched )`）。判据脚本一律写成 `build/*.mjs` 文件再跑，或直接用现成的探针脚本；
 - PowerShell 脚本里的字符串常量只用 ASCII，中文只放注释（PS 5.1 读中文串会把引号配对读错，见 §9.2）；
 - 单字段改动用行级外科编辑（§4.8）；git status 有 CRLF 噪声，判据用 git hash-object（§4.8）；
 - ⚠ 本仓库脚本有 CRLF 也有 LF 两种行尾（`curate-cn.mjs` 是 CRLF）——写正则改文件时必须用 `\r?\n`，否则静默失配；
-- 改名类改动要**按文件白名单**：`src/content/**` 是英文正文数据，里面的 gold/moon/tibetan 是散文词
-  或图片排雷正则，动了会破坏图版筛选（§9.4d 记录过这个坑）；
-- 临时件只许放 build/ 并自删；不要 push；
+- 令牌改名/批量替换要用**令牌-数字边界**正则（见上），不要用裸词边界 + 文件白名单；
+- 临时件只许放 build/ 并自删；
+- ⚠ 429 会**连片发生**（整段 CDN 被限流时连 HEAD 探测都 429）：别连续硬重试，
+  冷却 30–60s 后重跑即可（上一轮 landscape-14 连败 3 次、冷却后一次成功）；
 - 改完 SVG / 插画 / 字体 / 图片**务必截图肉眼核对**，不要只看代码：
-    node scripts/static-server.mjs dist --port=5192     # 对真实产物
+    node scripts/static-server.mjs dist --port=5192     # 对真实产物（后台任务）
     然后用 Chrome 无头截图 http://127.0.0.1:5192/
     （§9.2 第 9 条：不要用拼图核对题材；§9.2 第 14 条：全页截图不会触发视口外 lazy 图，
       要先用 scrollIntoView 并读 naturalWidth 判断）
-会话末：回填 §9.4 的实测数字，提交 docs: …
+- 会话末：回填 §9.4 的实测数字，提交 docs: …，**完成后 push**。
 ```
 
 ## 8. 归档（已执行完的历史计划，**不要当待办读**）
