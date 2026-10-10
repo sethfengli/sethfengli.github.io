@@ -9,7 +9,7 @@ import { useI18n } from '../../i18n'
  * 鼠标拖拽旋转 / 滚轮缩放；WebGL 不可用时回退 2D 香炉。
  */
 
-interface Props {
+export interface Props {
   variant?: CenserVariant
   scale?: number
   /** 场景高度（配合版面） */

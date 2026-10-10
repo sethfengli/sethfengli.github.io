@@ -44,7 +44,11 @@ const BELL_PROFILE: Array<[number, number]> = [
   [3.95, -11.7],
 ]
 
-export function Bell3D({ fallback }: { fallback?: ReactNode }) {
+export interface Props {
+  fallback?: ReactNode
+}
+
+export function Bell3D({ fallback }: Props) {
   const { t } = useI18n()
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const stageRef = useRef<Stage | null>(null)

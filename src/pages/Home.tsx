@@ -1,12 +1,24 @@
+import { lazy } from 'react'
 import { Link } from 'react-router-dom'
 import { useI18n } from '../i18n'
 import { CATALOG, NAMED_PHOTOS, localizedMeta, photoForSlug } from '../lib/content'
 import { verseOfTheMoment } from '../data/verses'
 import type { IllustrationVariant } from '../components/zen/ZenIllustration'
 import { CoverImage } from '../components/zen/CoverImage'
-import { Incense3D } from '../components/zen3d/Incense3D'
+import { Contained3D } from '../components/zen3d/Contained3D'
 import { PageBanner, Section, SectionHeading, Ornament } from '../components/ui/PageBanner'
 import { Reveal } from '../components/ui/Reveal'
+
+/**
+ * 3D 香炉按需加载（第 9 轮）：`three.js` 是 **707 KB（gzip 184 KB）** 的独立 chunk，
+ * 之前因为它是静态 import 而被**每个路由的首屏**都拉下来（实测首页/听经/祈福/灵签
+ * 四个页面都在 1824 KB 那一档）。它不是首屏内容，只是页面下方「一炷心香」的点睛，
+ * 因此改为懒加载：首屏不再下发 three.js，滚到那一段才请求。
+ * 占位块固定成与 `Incense3D` 相同的 420×420，避免真组件到位后版面跳动。
+ */
+const Incense3D = lazy(() =>
+  import('../components/zen3d/Incense3D').then((m) => ({ default: m.Incense3D })),
+)
 
 const FEATURED_SLUGS = ['301jgj', '302xinj', '303liuzutanjing', '102lfsx', '001jznf', '001zyxuefo', '402nianfolun', '202bada']
 
@@ -133,8 +145,11 @@ export function Home() {
             <p className="max-w-md font-song text-sm leading-relaxed text-ink-500">{t('home.incenseHint')}</p>
           </Reveal>
           <Reveal delay={140}>
-            {/* 起始即全景（最小缩放），用户可自行拉近 */}
-            <Incense3D variant="sticks" distance={16} maxDistance={16} heightClass="h-[420px] w-[420px] max-w-full" />
+            {/* 起始即全景（最小缩放），用户可自行拉近。
+                3D 与 three.js（707 KB）等都滚到附近才加载：先给同尺寸占位，避免版面跳动 */}
+            <Contained3D minHeight={420} placeholder={<div className="h-[420px] w-[420px] max-w-full animate-pulse rounded-xs bg-rice-100" aria-hidden />}>
+              <Incense3D variant="sticks" distance={16} maxDistance={16} heightClass="h-[420px] w-[420px] max-w-full" />
+            </Contained3D>
           </Reveal>
         </div>
       </Section>

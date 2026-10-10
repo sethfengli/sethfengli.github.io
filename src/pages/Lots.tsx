@@ -1,7 +1,8 @@
-import { useCallback, useEffect, useRef, useState, type ReactNode } from 'react'
+import { Suspense, lazy, useCallback, useEffect, useRef, useState, type ComponentType, type ReactNode } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { useI18n } from '../i18n'
 import { NAMED_PHOTOS } from '../lib/content'
+import { Contained3D } from '../components/zen3d/Contained3D'
 import {
   LOTS,
   clearSavedLots,
@@ -14,12 +15,37 @@ import {
   type SavedLot,
 } from '../data/lots'
 import { LotCylinder } from '../components/zen/LotCylinder'
-import { LotCylinder3D } from '../components/zen3d/LotCylinder3D'
+import type { Props as LotCylinder3DProps } from '../components/zen3d/LotCylinder3D'
 import { IncenseBurner } from '../components/zen/IncenseBurner'
-import { Incense3D } from '../components/zen3d/Incense3D'
-import { LingQiBoard } from '../components/zen/LingQiBoard'
+import type { Props as Incense3DProps } from '../components/zen3d/Incense3D'
+import { LingQiBoard as LingQiBoardDirect } from '../components/zen/LingQiBoard'
 import { PageBanner, Section } from '../components/ui/PageBanner'
 import { Reveal } from '../components/ui/Reveal'
+
+/**
+ * 灵棋经面板按需加载（第 9 轮）：它**静态 import 了 361 KB 的卦辞数据**
+ * （`lingqi.json` 122 KB + `lingqi-en.json` 239 KB）。之前这份数据进的是主包，
+ * 于是**每个路由的首屏**都在为「另一个 tab 的卦辞」付费。改为 lazy 后，
+ * 只有点了「灵棋经」这个 tab 才会请求（它没有 props，边界很干净）。
+ */
+// LingQiBoard 不吃 props；`lazy()` 返回的是 LazyExoticComponent，与 `() => Element`
+// 差异在于它接受可选的 props，故先过 unknown 再断言（类型安全由调用点保证：无 props）。
+const LingQiBoard = lazy(() =>
+  import('../components/zen/LingQiBoard').then((m) => ({ default: m.LingQiBoard })),
+) as unknown as typeof LingQiBoardDirect
+/**
+ * 灵签页的两个 3D 部件按需加载（第 9 轮）：three.js（707 KB）不再进首屏。
+ * 两者本来就各自接受 `fallback`（DOM 签筒 `LotCylinder` / 香炉 `IncenseBurner`），
+ * 这里再用 Suspense 把「还在下载 three.js」这段也交给它们，
+ * 于是抽签与上香在任何阶段都是可用的界面，不会出现空白。
+ * 类型取自真实组件（`import type` 不产生运行时代码）。
+ */
+const LotCylinder3D = lazy(() =>
+  import('../components/zen3d/LotCylinder3D').then((m) => ({ default: m.LotCylinder3D })),
+) as ComponentType<LotCylinder3DProps>
+const Incense3D = lazy(() =>
+  import('../components/zen3d/Incense3D').then((m) => ({ default: m.Incense3D })),
+) as ComponentType<Incense3DProps>
 
 type Phase = 'idle' | 'shaking' | 'revealed'
 type Tab = 'lots' | 'lingqi'
@@ -181,12 +207,14 @@ export function Lots() {
 
               <Reveal delay={100}>
                 <div className="card flex h-full flex-col items-center justify-center gap-5 p-8">
-                  <LotCylinder3D
-                    shaking={phase === 'shaking'}
-                    revealed={phase === 'revealed'}
-                    onShake={shake}
-                    fallback={<LotCylinder shaking={phase === 'shaking'} revealed={phase === 'revealed'} />}
-                  />
+                  <Contained3D minHeight={360} placeholder={<LotCylinder shaking={phase === 'shaking'} revealed={phase === 'revealed'} />}>
+                    <LotCylinder3D
+                      shaking={phase === 'shaking'}
+                      revealed={phase === 'revealed'}
+                      onShake={shake}
+                      fallback={<LotCylinder shaking={phase === 'shaking'} revealed={phase === 'revealed'} />}
+                    />
+                  </Contained3D>
                   <button
                     type="button"
                     onClick={shake}
@@ -200,10 +228,12 @@ export function Lots() {
               </Reveal>
             </div>
 
-            {/* 塔香点缀 */}
+            {/* 塔香点缀（3D 按需加载，未到位时先是同尺寸的 DOM 香炉） */}
             <Reveal>
               <div className="mx-auto max-w-sm">
-                <Incense3D variant="cone" scale={0.9} distance={16} maxDistance={16} heightClass="h-[260px]" fallback={<IncenseBurner bare />} />
+                <Contained3D minHeight={260} placeholder={<IncenseBurner bare />}>
+                  <Incense3D variant="cone" scale={0.9} distance={16} maxDistance={16} heightClass="h-[260px]" fallback={<IncenseBurner bare />} />
+                </Contained3D>
               </div>
             </Reveal>
 
@@ -265,7 +295,17 @@ export function Lots() {
           <Reveal>
             <div className="mt-14 space-y-10">
               <p className="section-sub mx-auto max-w-2xl text-center leading-loose">{t('lingqi.subtitle')}</p>
-              <LingQiBoard />
+              <Suspense
+                fallback={
+                  <div className="card mx-auto max-w-2xl animate-pulse p-8" aria-hidden>
+                    <div className="mx-auto h-40 w-40 rounded-full bg-rice-100" />
+                    <div className="mx-auto mt-6 h-3 w-2/3 rounded-xs bg-rice-200" />
+                    <div className="mx-auto mt-3 h-3 w-1/2 rounded-xs bg-rice-100" />
+                  </div>
+                }
+              >
+                <LingQiBoard />
+              </Suspense>
               <a
                 href="https://github.com/seth2000/linqijing"
                 target="_blank"

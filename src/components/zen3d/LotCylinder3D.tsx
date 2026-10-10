@@ -18,7 +18,7 @@ interface CylinderRig {
   shaker: { shaking: boolean; revealed: boolean }
 }
 
-interface Props {
+export interface Props {
   shaking: boolean
   revealed: boolean
   onShake: () => void

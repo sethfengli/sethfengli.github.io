@@ -1,11 +1,22 @@
-import { useCallback, useEffect, useRef, useState, type FormEvent } from 'react'
+import { lazy, useCallback, useEffect, useRef, useState, type ComponentType, type FormEvent } from 'react'
 import { useI18n, type I18nCtx } from '../i18n'
 import { NAMED_PHOTOS } from '../lib/content'
 import { createWishRepository, type Wish } from '../lib/wishes'
 import { downloadFile, getDeviceId } from '../lib/storage'
 import { WishTree } from '../components/zen/WishTree'
-import { Tree3D } from '../components/zen3d/Tree3D'
+import type { Props as Tree3DProps } from '../components/zen3d/Tree3D'
+import { Contained3D } from '../components/zen3d/Contained3D'
 import { PageBanner } from '../components/ui/PageBanner'
+
+/**
+ * 3D 许愿树按需加载（第 9 轮）：three.js（707 KB）不再进首屏。
+ * `Tree3D` 原本就接受 `fallback`（水墨 SVG 许愿树），这里再用 Suspense 把
+ * 「还在下载 three.js」这段也交给同一棵 SVG 树，因此任何阶段都不会出现空白。
+ * 类型取自真实组件（`import type` 不产生运行时代码）。
+ */
+const Tree3D = lazy(() =>
+  import('../components/zen3d/Tree3D').then((m) => ({ default: m.Tree3D })),
+) as ComponentType<Tree3DProps>
 
 const MAX_WISH = 120
 const TREE_CAPACITY = 24
@@ -285,11 +296,13 @@ export function PrayerWall() {
 
             {/* 许愿树（始终展示，无愿望时以提示语引导） */}
             <div className="mt-8 rounded-card border border-hairline bg-rice-100/50 p-3 sm:p-5">
-              <Tree3D
-                wishes={onTree}
-                onRibbonClick={setSelected}
-                fallback={<WishTree wishes={onTree} onRibbonClick={setSelected} />}
-              />
+              <Contained3D minHeight={420} placeholder={<WishTree wishes={onTree} onRibbonClick={setSelected} />}>
+                <Tree3D
+                  wishes={onTree}
+                  onRibbonClick={setSelected}
+                  fallback={<WishTree wishes={onTree} onRibbonClick={setSelected} />}
+                />
+              </Contained3D>
             </div>
             {shown.length === 0 && (
               <div className="mt-6 border border-hairline px-6 py-5 text-center">

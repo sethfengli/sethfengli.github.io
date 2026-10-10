@@ -28,7 +28,7 @@ interface TreeRig {
   censer: import('./censer').CenserRig
 }
 
-interface Props {
+export interface Props {
   wishes: Wish[]
   onRibbonClick: (w: Wish) => void
   fallback?: ReactNode
