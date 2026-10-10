@@ -17,7 +17,7 @@ export const VERSES: Verse[] = [
     text: '心如工画师，能画诸世间；五蕴悉从生，无法而不造。',
     source: '《华严经》',
     en: {
-      text: 'The mind is like a painter, able to paint all the worlds; the five aggregates all arise from it, and there is nothing it does not create.',
+      text: 'The mind is like a master painter, able to paint every world; the five aggregates all arise from it, and there is nothing it does not create.',
       source: 'Avatamsaka Sutra',
     },
   },
@@ -25,7 +25,7 @@ export const VERSES: Verse[] = [
     text: '一灯能除千年暗，一智能灭万年愚。',
     source: '《六祖坛经》',
     en: {
-      text: 'One lamp dispels a thousand years of darkness; one flash of wisdom ends ten thousand years of folly.',
+      text: 'One lamp dispels a thousand years of darkness; one flash of wisdom ends ten thousand years of delusion.',
       source: 'Platform Sutra',
     },
   },
@@ -33,7 +33,7 @@ export const VERSES: Verse[] = [
     text: '若人静坐一须臾，胜造恒沙七宝塔。',
     source: '《坐禅三昧经》',
     en: {
-      text: 'One moment of quiet sitting surpasses the building of stupas of seven gems as numerous as the sands of the Ganges.',
+      text: 'One moment of quiet sitting surpasses the building of stūpas of seven treasures as numerous as the sands of the Ganges.',
       source: 'Sutra of the Samādhi of Sitting Meditation',
     },
   },
@@ -41,7 +41,7 @@ export const VERSES: Verse[] = [
     text: '诸恶莫作，众善奉行，自净其意，是诸佛教。',
     source: '《法句经》',
     en: {
-      text: 'Commit no evil, do all that is good, and purify your own mind — this is the teaching of all the Buddhas.',
+      text: 'Do no evil, practice all that is good, and purify your own mind — this is the teaching of all the Buddhas.',
       source: 'Dhammapada',
     },
   },
@@ -49,7 +49,7 @@ export const VERSES: Verse[] = [
     text: '一念愚即般若绝，一念智即般若生。',
     source: '《六祖坛经》',
     en: {
-      text: 'One foolish thought and prajñā ceases; one wise thought and prajñā is born.',
+      text: 'One deluded thought and prajñā ceases; one wise thought and prajñā is born.',
       source: 'Platform Sutra',
     },
   },
@@ -97,7 +97,7 @@ export const VERSES: Verse[] = [
     text: '百花丛里过，片叶不沾身。',
     source: '禅门古德',
     en: {
-      text: 'Passing through the hundred flowers, not a single petal clings to you.',
+      text: 'Passing through a hundred flowers, not a single leaf clings to the body.',
       source: 'An Ancient Chan Master',
     },
   },
@@ -137,7 +137,7 @@ export const VERSES: Verse[] = [
     text: '时时勤拂拭，莫使惹尘埃。',
     source: '神秀大师',
     en: {
-      text: 'Polish it constantly, diligently — let no dust ever settle.',
+      text: 'Polish it constantly and diligently — let no dust ever settle.',
       source: 'Master Shenxiu',
     },
   },
@@ -145,7 +145,7 @@ export const VERSES: Verse[] = [
     text: '制心一处，无事不办。',
     source: '《佛遗教经》',
     en: {
-      text: 'Fix the mind on one place, and there is nothing it cannot accomplish.',
+      text: 'Fix the mind on one place, and there is nothing it does not accomplish.',
       source: 'Sutra of the Buddha’s Last Teachings',
     },
   },
@@ -161,7 +161,7 @@ export const VERSES: Verse[] = [
     text: '惭愧得具足，犹如清凉池。',
     source: '《大般涅槃经》',
     en: {
-      text: 'Perfect with conscience and shame, like a clear, cooling pool.',
+      text: 'Perfect in a sense of shame, like a clear, cooling pool.',
       source: 'Mahāparinirvāṇa Sutra',
     },
   },
@@ -177,7 +177,7 @@ export const VERSES: Verse[] = [
     text: '若众生心，忆佛念佛，现前当来，必定见佛。',
     source: '《大势至菩萨念佛圆通章》',
     en: {
-      text: 'If beings’ minds recollect the Buddha and recite His name, now and in the future they shall surely see the Buddha.',
+      text: 'If the minds of beings recollect the Buddha and recite His name, now and in the future they shall surely see the Buddha.',
       source: 'Chapter of Mahasthamaprapta’s Perfect Penetration of Buddha-Recitation',
     },
   },
@@ -193,7 +193,7 @@ export const VERSES: Verse[] = [
     text: '自心众生无边誓愿度，自心烦恼无尽誓愿断，自性法门无量誓愿学，自性佛道无上誓愿成。',
     source: '《六祖坛经》',
     en: {
-      text: 'Beings of my own mind are boundless — I vow to deliver them all; afflictions of my own mind are endless — I vow to sever them all; Dharma gates of my own nature are numberless — I vow to learn them all; the Buddha Way of my own nature is supreme — I vow to attain it.',
+      text: 'Beings of my own mind are boundless — I vow to deliver them all; afflictions of my own mind are endless — I vow to sever them all; Dharma gates of my own nature are numberless — I vow to learn them all; the Buddha Way of my own nature is unsurpassed — I vow to attain it.',
       source: 'Platform Sutra',
     },
   },
@@ -201,7 +201,7 @@ export const VERSES: Verse[] = [
     text: '佛法在世间，不离世间觉；离世觅菩提，恰如求兔角。',
     source: '《六祖坛经》',
     en: {
-      text: 'The Buddha-Dharma is in the world; awakening is not apart from the world. To seek bodhi beyond the world is like searching for a hare’s horns.',
+      text: 'The Buddha-Dharma is in the world; awakening is not apart from the world. To seek bodhi apart from the world is like searching for a hare’s horns.',
       source: 'Platform Sutra',
     },
   },
@@ -217,7 +217,7 @@ export const VERSES: Verse[] = [
     text: '慈悲为怀，方便为门。',
     source: '《大乘起信论》',
     en: {
-      text: 'With compassion as the bosom, with skillful means as the gate.',
+      text: 'With compassion as the foundation, with skillful means as the gate.',
       source: 'Awakening of Faith in the Mahayana',
     },
   },

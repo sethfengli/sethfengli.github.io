@@ -495,7 +495,7 @@ scripts/RESUME.md §9（**先读 §9，再读 §4 的 16 条历史坑**）。
 | **2** | **`gold-*` / `moon-*` 改名** | ✅ **完成** | `gold-*`→`brass-*`（黄铜）/ `moon-*`→`mist-*`（青雾灰蓝），**107 处 / 4 文件**。做法：把正则从「裸词边界」收窄为**令牌-数字边界** `\b(gold|moon)-(\d{2,3})\b`，于是散文词与语义标识（`.btn-gold`、`illustration:'moon'`、`.reader-theme-moon`）**天然不受影响**，不必依赖文件白名单。 |
 | **3** | **主包 `index.js` 继续拆分** | ✅ **完成（第 9 轮）** | 路由级 `lazy()` + three.js 视口门控：主包 **836.68 → 286.96 KB**，首屏 JS **1824.5 → 615.6 KB**（`/articles` 605.1）。判据与实测见 §10.9。 |
 | **4** | **把 `build/` 里可复用脚本搬进 `scripts/`** | ✅ **完成（第 9 轮）** | **26 个可复用工具全部入库 `scripts/`**（扁平结构），`build/` 只留生成物；顺带修掉两个字体脚本用 cwd 相对路径调用兄弟脚本的真缺陷。判据见 §10.6。 |
-| **5** | **`verses.ts` 每日法语中英逐段复核** | ⬜ 未做 | 第 6 轮只动了一二级页面文案，未进 `verses.ts`。逐条核对中英对应（现在是意译，可能存在语义漂移或术语不一致）。 |
+| **5** | **`verses.ts` 每日法语中英逐段复核** | ✅ **完成（第 9 轮）** | 30 条逐条对照，改 **13 条**（术语/漏译/误译），保留 17 条。逐条理由与术语口径见 §10.10。 |
 
 **仍需注意的两个"隐性失效"**（不修会静默劣化，不是本轮遗留缺陷）：
 - 字体子集是**按当前全站用字生成**的：改动文章正文或界面文案后，新出现的字会**静默掉回系统字体**。改完文案请重跑 `node scripts/make-song-subset.mjs`（或搬进 `scripts/` 后跑新路径）。判据：脚本末尾会打印 `glyphs / missing`。
@@ -724,7 +724,7 @@ node scripts/pool-drift.mjs                            # 改过 PICKS 必跑（�
 | --- | --- | --- | --- |
 | **4** | `build/` 可复用脚本搬进 `scripts/` | ✅ **完成** | 26 个工具入库 `scripts/`（扁平）；`build/` 只留生成物。做法与判据见 §10.6 · 4 个真缺陷见 §10.7 |
 | **3** | 主包 `index.js` 继续拆分 | ✅ **完成** | 路由级 `lazy()` + three.js 视口门控；**首屏 JS 从 1824 KB → 616 KB**（`/articles` 605 KB）。判据与实测见 §10.9 |
-| **5** | `verses.ts` 每日法语中英逐段复核 | ⬜ 未开工 | 第 6 轮只动一二级页面文案 |
+| **5** | `verses.ts` 每日法语中英逐段复核 | ✅ **完成** | 30 条**逐条对照**，改 **13 条**（术语/漏译/误译）；判据与逐条理由见 §10.10 |
 
 ### 10.4 第 9 轮实测数字
 
@@ -897,6 +897,65 @@ const ART = (p) => path.join(ROOT, p)
 | `probe-route-cost.mjs` | **首屏成本的真判据**：每路由一次性上下文 + Resource Timing，报 JS/CSS 字节与是否下了 three.js。⚠ 两个坑：① 同一会话里客户端路由跳转**共用 document**，`performance.getEntriesByType` 会累积上一次路由的记录（第一版就因此虚高）→ 必须每个路由用 `Target.createBrowserContext` 开新上下文；② CDP 的 `Network.responseReceived.encodedDataLength` 在 headless 里常为 0，用 `decodedBodySize` 更可靠（**故本表数字是 decoded，不是 gzip**）。 |
 | `verify-3d-gate.mjs` | 滚到底后核对 3D 是否真的挂载（见上） |
 | `shots-routes.mjs` | 7 条路由全页截图（滚过一遍以触发懒加载与门控） |
+
+### 10.10 第 9 轮 `verses.ts` 复核（§9.3 第 5 项）· 逐条实测
+
+**范围**：`src/data/verses.ts` 的 **30 条**每日法语（首页「每日一语」用），中英逐条对照。
+**结论**：改 **13 条**，保留 **17 条**。改法全部是**术语或语义对齐**，不是重写风格。
+
+**先定术语口径（用全库计数反查，避免自造）**：`node build/term-counts.mjs` 扫
+`src/content/en/**` 294 个文件，实测：
+
+| 词 | 全库计数 | 采用 |
+| --- | --- | --- |
+| `prajñā`（带长音符） | **1754** | ✅ 带音符（ASCII `prajna` 全库 **0**） |
+| `Prajñāpāramitā` | 108 | 带音符 |
+| `stupa` / `stūpa` | 346 / **153** | 两套并存，**经文偈颂一律用 `stūpa`** |
+| `bodhi` / `Bodhi` | 7843 / 2783 | 小写泛指、大写专名 |
+| `parinirvāṇa` | 202 | 带音符 |
+| `Ganges` / `Gaṅgā` | 746 / 2 | 用 `Ganges` |
+| `Mahasthamaprapta` / `Mahāsthāmaprāpta` | 247 / 64 | 用 `Mahasthamaprapta` |
+| `Avatamsaka` / `Avataṃsaka` | 390 / 177 | 用 `Avatamsaka` |
+| `Shurangama` / `Surangama` | 40 / 224 | **条内已有 `Shurangama`**（同名经文两条都写作 `Shurangama`），保持条内一致 |
+| `Vimalakirti` / `Vimalakīrti` | 130 / 83 | 用 `Vimalakirti` |
+| `five aggregates` / `five skandhas` | 618 / 29 | 用 `five aggregates` |
+| `Pure Land` / `Buddha-land` | 4709 / 1547 | 两个都留着（原文分别是「净土」与「佛土」） |
+| `practice` / `practise` | **10802 / 81** | **全库是美式**（`realize` 1564 / `realise` 5、`color` 454 / `colour` 14、`center` 162 / `centre` 4）→ 新写英文一律用美式（脚本：`build/spelling-audit.mjs`） |
+
+**13 处改动（逐条给出中文原文与理由；脚本：`build/fix-verses.mjs`，精确匹配、命中数必须为 1 才写）**：
+
+| # | zh 原文 | 原文 | 改为 | 理由 |
+| --- | --- | --- | --- | --- |
+| 1 | 一念**愚**即般若绝 | One **foolish** thought and prajñā ceases | One **deluded** thought … | 愚=无明（delusion），foolish 读成「愚笨」；且同条已有 `prajñā`，ASCII 不符全库口径 |
+| 2 | 一智能灭万年**愚** | ten thousand years of **folly** | … of **delusion** | 同上，两条同词须一致 |
+| 3 | 制心一处，**无事不办** | nothing it **cannot** accomplish | nothing it **does not** accomplish | 无事不办=无事不成（nothing left undone），cannot 是反向 |
+| 4 | **惭愧**得具足 | **conscience and shame** | **a sense of shame** | 惭愧=惭+愧（善心所），写成 conscience **and** shame 像在说两种过失 |
+| 5 | 胜造恒沙**七宝塔** | **stupas of seven gems** | **stūpas of seven treasures** | 七宝是「七种宝物」的固定搭配，非「七颗宝石」；stūpa 循偈颂口径 |
+| 6 | 时时勤拂拭 | Polish it constantly**,** diligently | …constantly **and** diligently | 原文是「勤+拂拭」两事，裸逗号读作同位 |
+| 7 | 心如**工画师**，能画**诸**世间 | like a painter, able to paint **all the** worlds | like a **master** painter, able to paint **every** world | 工画师=巧匠；诸世间是逐指（every），英文漏了分配义 |
+| 8 | **离世**觅菩提，恰如求兔角 | To seek bodhi **beyond** the world | To seek bodhi **apart from** the world | 离世与前句「不离世间觉」是同一短语，beyond 让两句自相矛盾 |
+| 9 | 若**众生心**，忆佛念佛 | If **beings’ minds** … | If **the minds of beings** … | 所有格挂错名词 |
+| 10 | 百花丛里过，**片叶**不**沾身** | Passing through the hundred flowers, not a single **petal** clings to **you** | …a hundred flowers, not a single **leaf** clings to **the body** | 片叶≠petal；不沾身是「不沾身」而非「不沾你」，且此句本无人称 |
+| 11 | 众善**奉行** | do all that is good | **practice** all that is good | 奉行=依教而行，英文漏了动词义；拼写取**全库口径**（AmE：`practice` 10802 vs `practise` 81，`realize` 1564 vs `realise` 5，`color` 454 vs `colour` 14 → 全库是美式） |
+| 12 | **慈悲为怀**，方便为门 | With compassion as the **bosom** | …as the **foundation** | 为怀=以…为心/本；bosom 不是英文惯用搭配 |
+| 13 | 自性佛道**无上**誓愿成 | the Buddha Way … is **supreme** | … is **unsurpassed** | 四弘誓愿的定译是 unsurpassed，supreme 是这一条里的孤例 |
+
+**保留未改（复核过但不是缺陷）**：
+
+- **出处标注不一致**：`《楞严经》` 的两条分别标为 `Shurangama Sutra`（#9 狂心若歇、#23 忆佛念佛），
+  而同源的 `《大势至菩萨念佛圆通章》`（本身即楞严经的一章）标为 `Chapter of Mahasthamaprapta’s Perfect
+  Penetration of Buddha-Recitation`。整条标题没错（它就是楞严经里的那一章），故保留，仅记录。
+- `《杂阿含经》`→`Samyukta Agama`：全库 `Agama` 仅 **19** 次，属低频专名，无更强的既有口径可依，保留。
+- `《法句经》`→`Dhammapada`（全库 `Dharmapada` 仅 1 次）、`涅槃`→`Mahāparinirvāṇa Sutra` 等按各自版本定名，保留。
+- 逐条**块级对照**（中英成对、无漏条/空串）：30 条 zh 与 30 条 en 一一对应，条数前后都是 30。
+
+**判据（实测）**：`build/fix-verses.mjs` 每处字面量命中数必须恰为 1（否则拒绝写入）；
+改完 `npx tsc --noEmit` 通过、`validate-en` 仍 `ok=294 crit=0 warn=0`、`scan-mojibake` 0/294；
+**字体子集无需重跑**——复核只改英文侧（`en.text`），全站汉字集合不变，
+`check-font-coverage` 仍是 `6964 / 6965`（唯一缺 `U+FA2D` 为可接受回退）。
+构建产物核对：12 个改动串在 `dist/assets/Home-*.js` 里全部命中（`node -e` 逐串 `includes` 验证）。
+
+
 
 
 
