@@ -221,6 +221,15 @@
   "sutras-14.webp",
   "sutras-15.webp"
  ],
+ "lotus": [
+  "lotus-01.webp",
+  "lotus-02.webp",
+  "lotus-03.webp",
+  "lotus-04.webp",
+  "lotus-05.webp",
+  "lotus-06.webp",
+  "lotus-07.webp"
+ ],
  "landscape": [
   "landscape-01.webp",
   "landscape-02.webp",
@@ -242,15 +251,6 @@
   "landscape-18.webp",
   "landscape-19.webp",
   "landscape-20.webp"
- ],
- "lotus": [
-  "lotus-01.webp",
-  "lotus-02.webp",
-  "lotus-03.webp",
-  "lotus-04.webp",
-  "lotus-05.webp",
-  "lotus-06.webp",
-  "lotus-07.webp"
  ],
  "named": {
   "hero": "grottoes-13.webp",

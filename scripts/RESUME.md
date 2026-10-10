@@ -445,6 +445,15 @@ git show --stat --oneline HEAD ; git status --porcelain  # 双向核对
       （`.bg-mist-200` 落在 `中下`，实测 `rgb(211,221,225)` == `#d3dde1`）。
     梵钟「嗡」字**不能靠静态探针**：它只在 `ringing` 为真时渲染，而 3D 钟一渲染
     DOM 版 fallback 就不挂载（本轮实测 `NO_BELL_BUTTON`），无 WebGL 的环境才能测到。
+21. **〔第 8 轮第二轮〕换 id 前必须先用 `TITLE_REJECT` 过一遍，否则下标整体前移**。
+    `curate-cn.mjs` 除 `PICKS` 外还有 **111 条 `TITLE_REJECT` 排雷正则**
+    （`/tibetan/i`、`/mosque/i`、`/zookeys/i` …）。被剔掉的 id**不会进 `cn-picked.json`**，
+    于是该桶少一条、**后面每条的下标全部前移 1**，编号（== 下标+1）与磁盘整体错位。
+    实测：想把 `landscape-050` 换成 `landscape-007`（真水墨雪山+佛寺），
+    结果 `landscape-007` 因标题含 "Tibetan Plateau" 被剔 → landscape 变成 19 条；
+    幸好 `curate-cn.mjs` 会在末尾打印「被排雷剔掉」并给出 `合计 238（缺 0）`，
+    否则就会带着错位去抓图。**判据**：`curate-cn.mjs` 输出的「合计」必须等于 PICKS 总数
+    （本轮 239），且桶数与 PICKS 一致。可用 `build/screen-cands.mjs <bucket> <id...>` 预筛。
 
 ### 9.2b 备选图源调查结论（2026）
 
@@ -461,7 +470,7 @@ git show --stat --oneline HEAD ; git status --porcelain  # 双向核对
 
 | # | 项 | 状态 | 说明 |
 | --- | --- | --- | --- |
-| **1** | **补满图版余量** | ✅ **完成** | 7 桶全满、**239 = 239**、0 孤儿 0 缺口（`sutras 15/15`、`landscape 20/20`）。⚠ 过程中发现 3 个新坑（§9.2 第 16–18 条）并修掉 `--only` 删桶的缺陷。 |
+| **1** | **补满图版余量** | ✅ **完成** | 7 桶全满、**239 = 239**、0 孤儿 0 缺口（`sutras 15/15`、`landscape 20/20`、`grottoes 46/46`）。⚠ 过程中发现 4 个新坑（§9.2 第 16–18、21 条）并修掉 `--only` 删桶的缺陷。**另经用户批准再做一轮题材精修**：`landscape` 换掉 4 个「合法但偏弱」的槽位（拍猕猴的 `landscape-012`、雾霾村庄 `landscape-018`、带高压电线的 `landscape-024`、航拍河滩 `landscape-050`）→ 依次换成 `landscape-010`（水墨山水+佛塔）/ `landscape-046`（传统屋顶群+雪山）/ `landscape-038`（云海雪峰）/ `landscape-034`（1874 年 albumen 照片：宋代沧浪亭嵌于汉江峭壁）。 |
 | **2** | **`gold-*` / `moon-*` 改名** | ✅ **完成** | `gold-*`→`brass-*`（黄铜）/ `moon-*`→`mist-*`（青雾灰蓝），**107 处 / 4 文件**。做法：把正则从「裸词边界」收窄为**令牌-数字边界** `\b(gold|moon)-(\d{2,3})\b`，于是散文词与语义标识（`.btn-gold`、`illustration:'moon'`、`.reader-theme-moon`）**天然不受影响**，不必依赖文件白名单。 |
 | **3** | **主包 `index.js` 继续拆分** | ⬜ 未做 | 现 **836 KB / gzip 277 KB**（`three` 与 `vendor` 已独立）。可试：把 294 篇的目录/元数据与 `verses.ts` 拆成独立 chunk、或对 `src/content/*.json` 用动态 import。**判据**：首屏请求的 chunk 总量下降，且路由切换不出现明显空白。 |
 | **4** | **把 `build/` 里可复用脚本搬进 `scripts/`** | ⬜ 未做 | 清单见 §9.5。本轮新增两个值得一起搬的探针：`probe-colors.mjs`、`probe-lot-badges.mjs`（见 §9.2 第 20 条）。 |
@@ -489,7 +498,8 @@ git show --stat --oneline HEAD ; git status --porcelain  # 双向核对
 | `style-audit` | 装饰符号 0 · 圆角与投影 0 · img 缺 alt 0 · svg 缺 aria-hidden 0 |
 | **图版清单与磁盘** | **239 = 239 严格一致** · **孤儿 0** · **缺口 0**；7 桶编号全部连续；`photos-status` 退出码 **0**（`磁盘 239 张 / 61.5 MB`，`清单登记 239 条`） |
 | **图版桶（全满）** | paintings 41 · grottoes **46** · statues **89** · halls 21 · sutras **15** · landscape **20** · lotus 7 |
-| 图版本轮抓取 | 多轮 `fetch-cn-webp.mjs` 合计 **新下 13 · 复用 200+ · 失败 0**（429 失败经冷却重跑全部补齐） |
+| 图版题材精修（用户批准） | `landscape` 第二批次换掉 4 个槽位：`012` 拍猕猴→`010` 水墨山水+佛塔 · `018` 雾霾村庄→`046` 屋顶群+雪山 · `024` 带高压电线→`038` 云海雪峰 · `050` 航拍河滩→`034` 1874 albumen 沧浪亭嵌崖。保留 `landscape-013`（Huangshan，层叠岩峰与松）。 |
+| 图版本轮抓取 | 多轮 `fetch-cn-webp.mjs` 合计 **新下 16 · 复用 220+ · 失败 0**（429 失败经冷却重跑全部补齐） |
 | `pool-drift` | 7 桶 **title 全等 · 不一致 0**（landscape 换成 `landscape-010` 后仍全等） |
 | **色板令牌（第 8 轮）** | `brass-*`（黄铜 `#ab8940`）· `mist-*`（青雾灰蓝 `#7b96a1` 一族）—— 由 `gold-*`/`moon-*` 改名，**107 处 / 4 文件**（`src/index.css` 102 · `src/data/lots.ts` 3 · `src/components/zen/TempleBell.tsx` 1 · `docs/VISUAL-SPEC-v3.md` 1） |
 | 令牌渲染判据 | `--site-brass-500` = `#ab8940`、`--site-mist-200` = `#d3dde1`、`--site-mist-700` = `#54707c`、`--site-gold-*` = `(unset)`；产物里 `.bg-brass-500`/`.bg-mist-200`/`.text-brass-400`/`.text-mist-700` 均已生成，旧名 0 命中 |
@@ -630,6 +640,10 @@ node build/pool-drift.mjs                            # 改过 PICKS 必跑（但
 | `dump-palette.mjs` | 打印各主题的实际色值（令牌改名的真值来源） |
 | **`probe-colors.mjs`** | **第 8 轮新增**：读 `:root` 上 `--site-*` 的实际值 + 校验旧令牌为 `(unset)` |
 | **`probe-lot-badges.mjs`** | **第 8 轮新增**：种入历史，一次核对签位六档徽章的 computed color |
+| **`screen-cands.mjs`** | **第 8 轮新增**：用 `curate-cn.mjs` 里真正的 111 条 `TITLE_REJECT` 预筛候选 id —— **换 id 前必跑**（§9.2 第 21 条） |
+| **`fetch-cand.mjs`** | **第 8 轮新增**：抓候选缩略图做**排序**（用池内自带 url；`420px` 常返回 400，会回退到 1920px）。⚠ 题材最终必须看全尺寸 |
+| `ls-unused.mjs` | 按分类列出未选中的池内条目（挑替换图用） |
+| `verify-slots.mjs` | 打印某桶各槽位「下标 → 文件名 → 磁盘是否存在 → 标题」，核对换槽位是否错位 |
 | `probe-lots.mjs` | 抽一支签并读徽章色（随机档位，不如上面那个全面） |
 | `lot-levels.mjs` | 列出每档一支签的 id（供 `probe-lot-badges.mjs` 种历史） |
 | `fix-canvas-fonts.mjs` | 批量改 zen3d 里硬编码的 canvas 字体名（一次性迁移脚本） |

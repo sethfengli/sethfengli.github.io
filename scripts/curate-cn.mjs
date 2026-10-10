@@ -266,6 +266,18 @@ const PICKS = {
   //   是否全等；池子自身选错时两者当然「全等」）。故此处换成 landscape-010
   //   （`Category:Shan shui`，水墨山水 + 佛塔 + 题记，与桶义一致）。
   //   换 id 必须换**同一位置**：编号恒等于下标 + 1，删条目会让后面全部错位。
+  // ⚠⚠ 第 8 轮第二轮（用户批准）：再换 3 个「合法但审美偏弱」的槽位。
+  //   判据是**逐张看全尺寸**（不是标题、不是缩略图拼图）：
+  //     下标 12  landscape-018「Guangde County, Anhui」→ 雾霾村庄快照（近景枯枝），→ landscape-046
+  //              （丽江木府式传统屋顶群 + 玉龙雪山，构图有层次）
+  //     下标 13  landscape-024「Greenish hills」→ 阴天河边、**画面里有高压电线**，→ landscape-038
+  //              （白马雪山 · 云海雪峰，最贴合「山水云海」桶义）
+  //     下标 20  landscape-050「DJI 0023」→ 航拍河滩+桥，→ landscape-034
+  //              （1874 年 WDL albumen 照片：宋代沧浪亭嵌在汉江峭壁上，单色，与水墨基调同调）
+  //   ⚠ 原本想换 landscape-007（真水墨雪山+佛寺），但它被 TITLE_REJECT 的 /tibetan/i 剔掉
+  //     （标题含 "Tibetan Plateau"）——**这是正确行为**，但也说明「换 id 前先用
+  //     `build/screen-cands.mjs` 过一遍 111 条排雷规则**，否则 picked 少一条、下标整体前移。
+  //   保留：landscape-013（Huangshan，层叠岩峰与松，虽偏蓝但构图与题材都成立）。
   landscape: [
     'landscape-001',
     'landscape-002',
@@ -278,15 +290,15 @@ const PICKS = {
     'landscape-010',
     'landscape-013',
     'landscape-014',
-    'landscape-018',
-    'landscape-024',
+    'landscape-046',
+    'landscape-038',
     'landscape-025',
     'landscape-026',
     'landscape-035',
     'landscape-040',
     'landscape-042',
     'landscape-049',
-    'landscape-050',
+    'landscape-034',
   ],
 
   // —— 莲 · 荷塘（净土意象，已核对：与 pool 无漂移，原样保留）——

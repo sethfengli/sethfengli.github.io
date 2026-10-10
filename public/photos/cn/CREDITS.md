@@ -237,19 +237,12 @@
 | landscape-09.webp | landscape | [Landscape with a Stupa, Tsanlha.jpg](https://commons.wikimedia.org/wiki/File:Landscape_with_a_Stupa,_Tsanlha.jpg) | Uriel1022 | CC BY-SA 4.0 |
 | landscape-10.webp | landscape | [Anhui Huangshan.jpg](https://commons.wikimedia.org/wiki/File:Anhui_Huangshan.jpg) | Miaulian | CC BY-SA 3.0 |
 | landscape-11.webp | landscape | [20230903 Huang Shan.jpg](https://commons.wikimedia.org/wiki/File:20230903_Huang_Shan.jpg) | Yumeto | CC BY-SA 4.0 |
-| landscape-12.webp | landscape | [Guangde County, Anhui.JPG](https://commons.wikimedia.org/wiki/File:Guangde_County,_Anhui.JPG) | Hareinhardt | Public domain |
-| landscape-13.webp | landscape | [Greenish hills.JPG](https://commons.wikimedia.org/wiki/File:Greenish_hills.JPG) | Oliverlyc | CC BY 3.0 |
+| landscape-12.webp | landscape | [Dsc (189719977).jpeg](https://commons.wikimedia.org/wiki/File:Dsc_(189719977).jpeg) | Ree Xue | CC BY 3.0 |
+| landscape-13.webp | landscape | [Baimang Snow Mountain - panoramio - ustgary (1).jpg](https://commons.wikimedia.org/wiki/File:Baimang_Snow_Mountain_-_panoramio_-_ustgary_(1).jpg) | ustgary | CC BY-SA 3.0 |
 | landscape-14.webp | landscape | [Green cloud hill.JPG](https://commons.wikimedia.org/wiki/File:Green_cloud_hill.JPG) | GnuDoyng | Public domain |
 | landscape-15.webp | landscape | [Bi jia shan at high tide.JPG](https://commons.wikimedia.org/wiki/File:Bi_jia_shan_at_high_tide.JPG) | Wen2li3 (talk) | CC BY-SA 4.0 |
 | landscape-16.webp | landscape | [Exposed rocky cliff face on mountains from G6 in northern Beijing.jpg](https://commons.wikimedia.org/wiki/File:Exposed_rocky_cliff_face_on_mountains_from_G6_in_northern_Beijing.jpg) | Daniel Case | CC BY-SA 3.0 |
 | landscape-17.webp | landscape | [Cloud mount.jpg](https://commons.wikimedia.org/wiki/File:Cloud_mount.jpg) | Rain xiao | CC BY-SA 4.0 |
 | landscape-18.webp | landscape | [A raft in the Yangtze River.jpg](https://commons.wikimedia.org/wiki/File:A_raft_in_the_Yangtze_River.jpg) | Chrisding30 | CC BY-SA 4.0 |
 | landscape-19.webp | landscape | [20191202 CHINA 1857-Pano.jpg](https://commons.wikimedia.org/wiki/File:20191202_CHINA_1857-Pano.jpg) | Nicolascornet | CC BY-SA 4.0 |
-| landscape-20.webp | landscape | [DJI 0023 (25894965583).jpg](https://commons.wikimedia.org/wiki/File:DJI_0023_(25894965583).jpg) | Yupeng Wu from sydney, Australia | CC BY-SA 2.0 |
-| lotus-01.webp | lotus | [荷花池 - panoramio (5).jpg](https://commons.wikimedia.org/wiki/File:%E8%8D%B7%E8%8A%B1%E6%B1%A0_-_panoramio_(5).jpg) | Ranran Clatin | CC BY 3.0 |
-| lotus-02.webp | lotus | [荷花池 - panoramio (7).jpg](https://commons.wikimedia.org/wiki/File:%E8%8D%B7%E8%8A%B1%E6%B1%A0_-_panoramio_(7).jpg) | Ranran Clatin | CC BY 3.0 |
-| lotus-03.webp | lotus | [Lotus pond - CUHKSZ - 20240811.jpg](https://commons.wikimedia.org/wiki/File:Lotus_pond_-_CUHKSZ_-_20240811.jpg) | 鹿苑 | CC BY-SA 4.0 |
-| lotus-04.webp | lotus | [Lotus pond of Zizhuyuan Park.jpg](https://commons.wikimedia.org/wiki/File:Lotus_pond_of_Zizhuyuan_Park.jpg) | HoweyYuan | CC BY-SA 4.0 |
-| lotus-05.webp | lotus | [Asus zen fone zoom-蓮葉.jpg](https://commons.wikimedia.org/wiki/File:Asus_zen_fone_zoom-%E8%93%AE%E8%91%89.jpg) | Cjackh | CC BY-SA 4.0 |
-| lotus-06.webp | lotus | [20240819 171052 Beijing.jpg](https://commons.wikimedia.org/wiki/File:20240819_171052_Beijing.jpg) | J. Patrick Fischer | CC BY-SA 4.0 |
-| lotus-07.webp | lotus | [20240819 171042 Beijing.jpg](https://commons.wikimedia.org/wiki/File:20240819_171042_Beijing.jpg) | J. Patrick Fischer | CC BY-SA 4.0 |
+| landscape-20.webp | landscape | [Canglangting Temple Built in the Song Dynasty (960-1279) on the Steep Bank of Han Jiang (Han River) and Partly Cut into the Rock. Hubei Province, China, 1874 WDL2098.png](https://commons.wikimedia.org/wiki/File:Canglangting_Temple_Built_in_the_Song_Dynasty_(960-1279)_on_the_Steep_Bank_of_Han_Jiang_(Han_River)_and_Partly_Cut_into_the_Rock._Hubei_Province,_China,_1874_WDL2098.png) | Adolf Nikolay Boyarsky | Public domain |
