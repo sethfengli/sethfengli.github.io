@@ -123,9 +123,19 @@ function creditsHeader() {
   ]
 }
 
-/** 落盘：清单 + 署名，两者都由 rows 单一来源生成。 */
-function persist(manifest, rows) {
+/**
+ * 落盘：清单 + 署名，两者都由 rows 单一来源生成。
+ *
+ * ⚠ `--only` 必须「沿用未处理桶」：本函数会把 `carry`（上一次清单里**本次没抓**的桶）
+ *   原样写回。没有这一步时，`--only=<桶>` 会把其余桶从清单里**静默删掉** ——
+ *   实测第 8 轮：跑 `--only=sutras` 后 `landscape`(20) 与 `lotus`(7) 两个键整体消失，
+ *   磁盘上 7 张 lotus 立刻变成「孤儿文件」（前端 `PHOTO_NAMES` 也少一桶）。
+ *   判据：`node scripts/photos-status.mjs` 各桶张数 + `build/check-orphans.mjs`。
+ */
+function persist(manifest, rows, carry = {}) {
   const ordered = {}
+  // 未处理的桶先写（保持原顺序），再由本次结果覆盖
+  for (const [b, arr] of Object.entries(carry)) ordered[b] = arr
   for (const [b, arr] of Object.entries(manifest)) ordered[b] = arr
   const prev = fs.existsSync(MANIFEST) ? JSON.parse(fs.readFileSync(MANIFEST, 'utf8')) : {}
   if (prev.named) ordered.named = prev.named
@@ -188,6 +198,20 @@ let downloaded = 0
 let reused = 0
 let failed = 0
 
+/**
+ * `--only` 留下的「未处理桶」：从上次清单原样带过来，避免被静默删除（见 persist 注释）。
+ * 只有 `--only` 模式下才会有内容；不指定 --only 时 `onlySet` 为 null，这里恒为空对象。
+ */
+const carry = {}
+if (onlySet) {
+  const prevManifest = fs.existsSync(MANIFEST) ? JSON.parse(fs.readFileSync(MANIFEST, 'utf8')) : {}
+  for (const [b, arr] of Object.entries(prevManifest)) {
+    if (Array.isArray(arr) && !onlySet.has(b)) carry[b] = arr
+  }
+  const names = Object.keys(carry)
+  if (names.length) console.log(`（--only）沿用未处理桶：${names.join(', ')}`)
+}
+
 for (const [bucket, arr] of Object.entries(picked)) {
   manifest[bucket] = []
   if (onlySet && !onlySet.has(bucket)) {
@@ -232,12 +256,12 @@ for (const [bucket, arr] of Object.entries(picked)) {
     downloaded++
     manifest[bucket].push(`${base}.webp`)
     rows.push({ file: `${base}.webp`, bucket, ...c })
-    persist(manifest, rows)
+    persist(manifest, rows, carry)
     console.log(`  ✓ ${base}  ${c.title.slice(0, 62)}`)
     await sleep(Number(process.env.PACE_MS ?? 14000))
   }
   console.log(`\n✔ ${bucket}: ${manifest[bucket].length}`)
-  persist(manifest, rows)
+  persist(manifest, rows, carry)
 }
 
 fs.rmSync(RAW, { recursive: true, force: true })

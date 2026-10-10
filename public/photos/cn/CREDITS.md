@@ -100,6 +100,7 @@
 | grottoes-43.webp | grottoes | [Cliff Side-Leshan Giant Buddha.jpg](https://commons.wikimedia.org/wiki/File:Cliff_Side-Leshan_Giant_Buddha.jpg) | rduta | CC BY 2.0 |
 | grottoes-44.webp | grottoes | [Leshan Giant Buddha, 20161101.jpg](https://commons.wikimedia.org/wiki/File:Leshan_Giant_Buddha,_20161101.jpg) | 王计 | CC BY 2.5 |
 | grottoes-45.webp | grottoes | [Head and torso of the Giant Buddha of Leshan.jpg](https://commons.wikimedia.org/wiki/File:Head_and_torso_of_the_Giant_Buddha_of_Leshan.jpg) | Jan Kranendonk (https://www.jankranendonk.nl) | CC0 |
+| grottoes-46.webp | grottoes | [Head of the giant Buddha of Leshan.jpg](https://commons.wikimedia.org/wiki/File:Head_of_the_giant_Buddha_of_Leshan.jpg) | Jan Kranendonk (https://www.jankranendonk.nl) | CC0 |
 | statues-01.webp | statues | [Gilt bronze buddha with crown, Liao Dynasty.JPG](https://commons.wikimedia.org/wiki/File:Gilt_bronze_buddha_with_crown,_Liao_Dynasty.JPG) | User:PericlesofAthens | CC BY-SA 4.0 |
 | statues-02.webp | statues | [Bodhisattva of the Tang Dynasty 200 CE Limestone with gold leaf China Penn Museum.jpg](https://commons.wikimedia.org/wiki/File:Bodhisattva_of_the_Tang_Dynasty_200_CE_Limestone_with_gold_leaf_China_Penn_Museum.jpg) | Mary Harrsch | CC BY-SA 4.0 |
 | statues-03.webp | statues | [Bodhisattva Limestone 700 CE Tang Dynasty (618-907 CE) China Penn Museum.jpg](https://commons.wikimedia.org/wiki/File:Bodhisattva_Limestone_700_CE_Tang_Dynasty_(618-907_CE)_China_Penn_Museum.jpg) | Mary Harrsch | CC BY-SA 4.0 |
@@ -218,19 +219,37 @@
 | sutras-06.webp | sutras | [Estampage Ouyang Xun Dunhuang BNF.jpg](https://commons.wikimedia.org/wiki/File:Estampage_Ouyang_Xun_Dunhuang_BNF.jpg) | Zunkir | CC BY-SA 4.0 |
 | sutras-07.webp | sutras | [A scroll with illustrated cover containing six Buddhist texts.jpg](https://commons.wikimedia.org/wiki/File:A_scroll_with_illustrated_cover_containing_six_Buddhist_texts.jpg) | anonymous | CC0 |
 | sutras-08.webp | sutras | [Pelliot chinois 3349 1 4.png](https://commons.wikimedia.org/wiki/File:Pelliot_chinois_3349_1_4.png) | Unknown | Public domain |
+| sutras-09.webp | sutras | [Pelliot chinois 3453v 1 2.png](https://commons.wikimedia.org/wiki/File:Pelliot_chinois_3453v_1_2.png) | Unknown authorUnknown author | Public domain |
+| sutras-10.webp | sutras | [Pelliot chinois 3448v f40.png](https://commons.wikimedia.org/wiki/File:Pelliot_chinois_3448v_f40.png) | Unknown authorUnknown author | Public domain |
 | sutras-11.webp | sutras | [0-Or-8212-84-R-1-Recto-0-0.jpg](https://commons.wikimedia.org/wiki/File:0-Or-8212-84-R-1-Recto-0-0.jpg) | Unknown authorUnknown author | CC BY 2.5 |
 | sutras-12.webp | sutras | [Diamond Sutra Rev 12-12-24.jpg](https://commons.wikimedia.org/wiki/File:Diamond_Sutra_Rev_12-12-24.jpg) | Zhao Ming An | CC0 |
 | sutras-13.webp | sutras | [Libro Mahayana.jpg](https://commons.wikimedia.org/wiki/File:Libro_Mahayana.jpg) | Tamorlan | CC BY 3.0 |
+| sutras-14.webp | sutras | [The Diamond Sutra.jpg](https://commons.wikimedia.org/wiki/File:The_Diamond_Sutra.jpg) | Unknown | Public domain |
+| sutras-15.webp | sutras | [Diamond of perfect wisdom sutra.jpg](https://commons.wikimedia.org/wiki/File:Diamond_of_perfect_wisdom_sutra.jpg) | anonymous | Public domain |
 | landscape-01.webp | landscape | [《俯仰抱悟山水志一》.JPG](https://commons.wikimedia.org/wiki/File:%E3%80%8A%E4%BF%AF%E4%BB%B0%E6%8A%B1%E6%82%9F%E5%B1%B1%E6%B0%B4%E5%BF%97%E4%B8%80%E3%80%8B.JPG) | 王继伟 | CC BY-SA 3.0 |
+| landscape-02.webp | landscape | [《俯仰抱悟山水志二》.JPG](https://commons.wikimedia.org/wiki/File:%E3%80%8A%E4%BF%AF%E4%BB%B0%E6%8A%B1%E6%82%9F%E5%B1%B1%E6%B0%B4%E5%BF%97%E4%BA%8C%E3%80%8B.JPG) | 王继伟 | CC BY-SA 3.0 |
+| landscape-03.webp | landscape | [《俯仰抱悟山水志三》.JPG](https://commons.wikimedia.org/wiki/File:%E3%80%8A%E4%BF%AF%E4%BB%B0%E6%8A%B1%E6%82%9F%E5%B1%B1%E6%B0%B4%E5%BF%97%E4%B8%89%E3%80%8B.JPG) | 王继伟 | CC BY-SA 3.0 |
 | landscape-04.webp | landscape | [Sailing Boats on an Autumn River.jpg](https://commons.wikimedia.org/wiki/File:Sailing_Boats_on_an_Autumn_River.jpg) | Uriel1022 | CC BY-SA 4.0 |
-| landscape-09.webp | landscape | [20180614 CHINA 1432.jpg](https://commons.wikimedia.org/wiki/File:20180614_CHINA_1432.jpg) | Nicolascornet | CC BY-SA 4.0 |
+| landscape-05.webp | landscape | [Mountains in Lung-nan.jpg](https://commons.wikimedia.org/wiki/File:Mountains_in_Lung-nan.jpg) | Uriel1022 | CC BY-SA 4.0 |
+| landscape-06.webp | landscape | [Mountains in Lung-nan 2.jpg](https://commons.wikimedia.org/wiki/File:Mountains_in_Lung-nan_2.jpg) | Uriel1022 | CC BY-SA 4.0 |
+| landscape-07.webp | landscape | [An Imaginary Landscape of Mien-yang.jpg](https://commons.wikimedia.org/wiki/File:An_Imaginary_Landscape_of_Mien-yang.jpg) | Uriel1022 | CC BY-SA 4.0 |
+| landscape-08.webp | landscape | [Bamboo at Huang Shan IMG 2820b.jpg](https://commons.wikimedia.org/wiki/File:Bamboo_at_Huang_Shan_IMG_2820b.jpg) | Mätes II. | CC BY-SA 3.0 |
+| landscape-09.webp | landscape | [Landscape with a Stupa, Tsanlha.jpg](https://commons.wikimedia.org/wiki/File:Landscape_with_a_Stupa,_Tsanlha.jpg) | Uriel1022 | CC BY-SA 4.0 |
 | landscape-10.webp | landscape | [Anhui Huangshan.jpg](https://commons.wikimedia.org/wiki/File:Anhui_Huangshan.jpg) | Miaulian | CC BY-SA 3.0 |
 | landscape-11.webp | landscape | [20230903 Huang Shan.jpg](https://commons.wikimedia.org/wiki/File:20230903_Huang_Shan.jpg) | Yumeto | CC BY-SA 4.0 |
 | landscape-12.webp | landscape | [Guangde County, Anhui.JPG](https://commons.wikimedia.org/wiki/File:Guangde_County,_Anhui.JPG) | Hareinhardt | Public domain |
 | landscape-13.webp | landscape | [Greenish hills.JPG](https://commons.wikimedia.org/wiki/File:Greenish_hills.JPG) | Oliverlyc | CC BY 3.0 |
+| landscape-14.webp | landscape | [Green cloud hill.JPG](https://commons.wikimedia.org/wiki/File:Green_cloud_hill.JPG) | GnuDoyng | Public domain |
 | landscape-15.webp | landscape | [Bi jia shan at high tide.JPG](https://commons.wikimedia.org/wiki/File:Bi_jia_shan_at_high_tide.JPG) | Wen2li3 (talk) | CC BY-SA 4.0 |
 | landscape-16.webp | landscape | [Exposed rocky cliff face on mountains from G6 in northern Beijing.jpg](https://commons.wikimedia.org/wiki/File:Exposed_rocky_cliff_face_on_mountains_from_G6_in_northern_Beijing.jpg) | Daniel Case | CC BY-SA 3.0 |
 | landscape-17.webp | landscape | [Cloud mount.jpg](https://commons.wikimedia.org/wiki/File:Cloud_mount.jpg) | Rain xiao | CC BY-SA 4.0 |
 | landscape-18.webp | landscape | [A raft in the Yangtze River.jpg](https://commons.wikimedia.org/wiki/File:A_raft_in_the_Yangtze_River.jpg) | Chrisding30 | CC BY-SA 4.0 |
 | landscape-19.webp | landscape | [20191202 CHINA 1857-Pano.jpg](https://commons.wikimedia.org/wiki/File:20191202_CHINA_1857-Pano.jpg) | Nicolascornet | CC BY-SA 4.0 |
 | landscape-20.webp | landscape | [DJI 0023 (25894965583).jpg](https://commons.wikimedia.org/wiki/File:DJI_0023_(25894965583).jpg) | Yupeng Wu from sydney, Australia | CC BY-SA 2.0 |
+| lotus-01.webp | lotus | [荷花池 - panoramio (5).jpg](https://commons.wikimedia.org/wiki/File:%E8%8D%B7%E8%8A%B1%E6%B1%A0_-_panoramio_(5).jpg) | Ranran Clatin | CC BY 3.0 |
+| lotus-02.webp | lotus | [荷花池 - panoramio (7).jpg](https://commons.wikimedia.org/wiki/File:%E8%8D%B7%E8%8A%B1%E6%B1%A0_-_panoramio_(7).jpg) | Ranran Clatin | CC BY 3.0 |
+| lotus-03.webp | lotus | [Lotus pond - CUHKSZ - 20240811.jpg](https://commons.wikimedia.org/wiki/File:Lotus_pond_-_CUHKSZ_-_20240811.jpg) | 鹿苑 | CC BY-SA 4.0 |
+| lotus-04.webp | lotus | [Lotus pond of Zizhuyuan Park.jpg](https://commons.wikimedia.org/wiki/File:Lotus_pond_of_Zizhuyuan_Park.jpg) | HoweyYuan | CC BY-SA 4.0 |
+| lotus-05.webp | lotus | [Asus zen fone zoom-蓮葉.jpg](https://commons.wikimedia.org/wiki/File:Asus_zen_fone_zoom-%E8%93%AE%E8%91%89.jpg) | Cjackh | CC BY-SA 4.0 |
+| lotus-06.webp | lotus | [20240819 171052 Beijing.jpg](https://commons.wikimedia.org/wiki/File:20240819_171052_Beijing.jpg) | J. Patrick Fischer | CC BY-SA 4.0 |
+| lotus-07.webp | lotus | [20240819 171042 Beijing.jpg](https://commons.wikimedia.org/wiki/File:20240819_171042_Beijing.jpg) | J. Patrick Fischer | CC BY-SA 4.0 |

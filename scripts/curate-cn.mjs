@@ -260,6 +260,12 @@ const PICKS = {
   // —— 山水 · 云海 · 松林 ——
   // ⚠ 旧 PICKS 的 landscape-001..018 在 pool 里是藏地高原、地图、昆虫标本照，故空桶。
   //   这里只取水墨山水与名山云海。
+  // ⚠⚠ 第 8 轮实测：**pool 里的标题本身也不可信**。原下标 9 的 landscape-012
+  //   （pool 标题「20180614 CHINA 1432.jpg」，无害）实际内容是**游客举着手机拍笼中猕猴**
+  //   —— 与山水无关，且 `pool-drift.mjs` 结构性抓不到（它只比 picked 与 pool 的 title
+  //   是否全等；池子自身选错时两者当然「全等」）。故此处换成 landscape-010
+  //   （`Category:Shan shui`，水墨山水 + 佛塔 + 题记，与桶义一致）。
+  //   换 id 必须换**同一位置**：编号恒等于下标 + 1，删条目会让后面全部错位。
   landscape: [
     'landscape-001',
     'landscape-002',
@@ -269,7 +275,7 @@ const PICKS = {
     'landscape-008',
     'landscape-009',
     'landscape-011',
-    'landscape-012',
+    'landscape-010',
     'landscape-013',
     'landscape-014',
     'landscape-018',
