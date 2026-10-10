@@ -135,12 +135,16 @@ report('＋/× 等全角符号当图标', count(/[＋✕✗]/), (n) => (n > 0 ? 
 
 section(
   '4. 主题令牌是否名实相符',
-  '2026 第 7 轮已改名：sandalwood-* → celadon-*（青瓷灰绿）· tibetan-* → cinnabar-*（朱砂印章红）',
+  '第 7 轮改名：sandalwood-* → celadon-*（青瓷灰绿）· tibetan-* → cinnabar-*（朱砂印章红）；' +
+    '第 8 轮改名：gold-* → brass-*（黄铜，非鎏金）· moon-* → mist-*（青雾灰蓝，非月白）',
 )
 report('celadon-* 用量（青瓷灰绿 · 主色）', count(/celadon-\d/))
 report('cinnabar-* 用量（朱砂印章红 · 唯一高饱和强调）', count(/cinnabar-\d/))
-report('gold-* 用量（黄铜色，仅签位分档与梵钟「嗡」字）', count(/gold-\d/))
-report('moon-* 用量（青灰蓝，仅签位分档）', count(/moon-\d/))
+report('brass-* 用量（黄铜，仅签位分档与梵钟「嗡」字）', count(/brass-\d/))
+report('mist-* 用量（青雾灰蓝，仅签位分档）', count(/mist-\d/))
+// 旧名若回来了，说明有文件没跟上改名 —— 这类「0」是**健康**的（第 8 轮起）
+report('gold-* 旧名残留（应为 0）', count(/gold-\d/), (n) => (n > 0 ? '⚠ 有文件没跟上改名' : 'ok'))
+report('moon-* 旧名残留（应为 0）', count(/moon-\d/), (n) => (n > 0 ? '⚠ 有文件没跟上改名' : 'ok'))
 
 section('5. 交互可达性', '基准：图标按钮需 aria-label；装饰性 SVG 应 aria-hidden')
 // 只找「没有 aria-hidden 也没有 role/title/aria-label」的 svg —— 这类才可能被读屏当图形念出来
