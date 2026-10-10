@@ -93,9 +93,15 @@ export const PHOTO_NAMES: string[] = Object.values(CN_PHOTOS)
   .filter(Array.isArray)
   .flatMap((v) => v as string[])
 
-/** 对外路径：public/photos/cn/<file> */
+/**
+ * 对外路径：public/photos/cn/<file>
+ *
+ * 2026 第 7 轮起图版统一为 **WebP q80**（视觉无损，体积约降 25–40%），
+ * 清单里存的也是 .webp。这里额外做一次后缀归一：即便清单里残留 .jpg，
+ * 也指向实际存在的 .webp，不会请求到 404。
+ */
 function photoUrl(file: string): string {
-  return `/photos/cn/${file}`
+  return `/photos/cn/${file.replace(/\.jpe?g$/i, '.webp')}`
 }
 
 /**
@@ -199,12 +205,18 @@ export function photoForSlug(slug: string): string {
 export const NAMED_PHOTOS = {
   /** 首页 Hero：云冈石窟横构浮雕（飞天与佛龛）。 */
   hero: () => named('hero', 'grottoes'),
-  /** 山门 / 殿宇（文库题头） */
-  gate: () => named('gate', 'halls'),
+  /**
+   * 山门 / 殿宇（文库题头）
+   * ⚠ 这里的第二个参数是**校验桶**：`named()` 会要求 `named.gate` 指的文件确实在
+   *   该桶里，否则静默退回「该桶第一张」。导览卡改用自然光石窟造像后，
+   *   校验桶必须一起改成 grottoes —— 否则 grottoes-16 在 halls 桶里找不到，
+   *   就会悄悄退回 halls-01（一块反光说明牌），改了 `named` 却看不出效果。
+   */
+  gate: () => named('gate', 'grottoes'),
   /** 观音造像（灵签题头与造像位） */
   guanyin: () => named('guanyin', 'statues'),
-  /** 梵钟 / 殿宇（听经题头） */
-  bell: () => named('bell', 'halls'),
+  /** 梵钟 / 殿宇（听经题头）——同上，校验桶用 grottoes */
+  bell: () => named('bell', 'grottoes'),
   /** 供灯意象（祈福题头） */
   lantern: () => named('lantern', 'paintings'),
   /** 山水（关于页题头） */

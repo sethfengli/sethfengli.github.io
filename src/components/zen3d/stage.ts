@@ -359,14 +359,14 @@ export function makeTextCanvas(
   cv.height = h
   const ctx = cv.getContext('2d')!
   ctx.clearRect(0, 0, w, h)
-  ctx.font = `${opts.fontSize ?? 96}px ${opts.font ?? '"Ma Shan Zheng","LXGW WenKai","KaiTi",cursive'}`
+  ctx.font = `${opts.fontSize ?? 96}px ${opts.font ?? '"MaShanZhengSubset","MaShanZhengSubset","KaiTi","KaiTi",cursive'}`
   ctx.fillStyle = opts.color ?? '#f3f0e6'
   ctx.textAlign = 'center'
   ctx.textBaseline = 'middle'
   if (opts.vertical) {
     const n = Math.min(text.length, 8)
     const fs = (opts.fontSize ?? 96) * 0.72
-    ctx.font = `${fs}px ${opts.font ?? '"LXGW WenKai","KaiTi",cursive'}`
+    ctx.font = `${fs}px ${opts.font ?? '"MaShanZhengSubset","KaiTi","KaiTi",cursive'}`
     const lineH = fs * 1.15
     const startY = h / 2 - ((n - 1) * lineH) / 2
     for (let i = 0; i < n; i++) ctx.fillText(text[i], w / 2, startY + i * lineH)
@@ -409,7 +409,7 @@ export function makeRibbonTexture(
   ctx.strokeRect(3, 3, w - 6, h - 50)
   // 竖排文字
   const n = Math.min(text.length, 12)
-  ctx.font = '40px "LXGW WenKai","KaiTi",cursive'
+  ctx.font = '40px "MaShanZhengSubset","KaiTi","KaiTi",cursive'
   ctx.fillStyle = '#fdf3e7'
   ctx.textAlign = 'center'
   ctx.textBaseline = 'middle'

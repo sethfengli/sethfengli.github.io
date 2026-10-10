@@ -76,7 +76,7 @@ function drawBellyTexture(inscription: string): HTMLCanvasElement {
   ctx.fillStyle = '#f6e69b'
   ctx.textAlign = 'center'
   ctx.textBaseline = 'middle'
-  ctx.font = 'bold 52px "LXGW WenKai","KaiTi","SimSun",serif'
+  ctx.font = 'bold 52px "MaShanZhengSubset","KaiTi","KaiTi","SimSun",serif'
   for (let i = 0; i < inscription.length; i++) {
     ctx.fillText(inscription[i], 512, 180 + i * 64)
   }

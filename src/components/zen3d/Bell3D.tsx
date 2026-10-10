@@ -120,7 +120,7 @@ export function Bell3D({ fallback }: { fallback?: ReactNode }) {
         ctx.lineWidth = 10
         ctx.strokeRect(12, 12, 1000, 232)
         ctx.fillStyle = '#f6e69b'
-        ctx.font = `${fs}px "Ma Shan Zheng","LXGW WenKai","KaiTi",cursive`
+        ctx.font = `${fs}px "MaShanZhengSubset","MaShanZhengSubset","KaiTi","KaiTi",cursive`
         ctx.textAlign = 'center'
         ctx.textBaseline = 'middle'
         ctx.fillText(text, 512, 132)
@@ -174,7 +174,7 @@ export function Bell3D({ fallback }: { fallback?: ReactNode }) {
       bctx.textBaseline = 'middle'
       const cols = [205, 614, 1024, 1434, 1843]
       picked.forEach((text, ci) => {
-        bctx.font = 'bold 88px "LXGW WenKai","KaiTi","SimSun",serif'
+        bctx.font = 'bold 88px "MaShanZhengSubset","KaiTi","KaiTi","SimSun",serif'
         for (let i = 0; i < text.length; i++) {
           bctx.fillText(text[i], cols[ci], 540 + i * 108)
         }

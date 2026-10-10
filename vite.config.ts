@@ -29,9 +29,15 @@ export default defineConfig({
       output: {
         codeSplitting: {
           groups: [
+            // three.js 只被 zen3d 用到，单独成块：不进首屏，且升级不动其余缓存
+            {
+              name: 'three',
+              test: /node_modules[\\/]three[\\/]/,
+            },
+            // React 运行时 + 路由：体积大、变更频率极低，单独长期缓存
             {
               name: 'vendor',
-              test: /node_modules[\\/](react|react-dom|react-router|react-router-dom)[\\/]/,
+              test: /node_modules[\\/](react|react-dom|react-router|react-router-dom|scheduler)[\\/]/,
             },
           ],
         },

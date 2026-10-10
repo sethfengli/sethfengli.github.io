@@ -109,8 +109,8 @@
      全站依旧一处 font-weight 也不加（体检脚本可核）。
      ============================================================ */
   --font-serif:
-    'Noto Serif', Georgia, 'Times New Roman', 'LXGW WenKai', 'Kaiti SC',
-    'STKaiti', 'KaiTi', 'Noto Serif SC', 'Songti SC', SimSun, serif;
+    'Noto Serif', Georgia, 'Times New Roman', 'Kaiti SC', 'STKaiti', 'KaiTi',
+    'LXGW WenKai', 'Noto Serif SC', 'Songti SC', SimSun, serif;
 
   /* 正文宋体：西文先走 Noto Serif（印刷衬线），汉字再落到宋体族。
      注意 'Noto Serif' 在前是为了西文，**不要**把 'Noto Serif SC' 提前——
@@ -122,9 +122,19 @@
   --font-sans:
     'Noto Sans', 'Helvetica Neue', Arial, system-ui, 'Noto Sans SC',
     'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  /* 点睛书法体：只随包分发「马善政」（约 6 MB 的汉字分片，仅签文诗句/禅语用到）。
+     Long Cang 与 LXGW WenKai 已从 webfont 依赖里移除——前者全站零引用，
+     后者只是标题楷体的回退项，两者合计约 34 MB 的字体分片不值得。
+     字体名仍保留在栈里：本机装了就用，没装继续回退，不会再随包下载。 */
   --font-brush:
-    'Ma Shan Zheng', 'Long Cang', 'LXGW WenKai', 'Noto Serif', Georgia, 'KaiTi',
-    cursive;
+    'MaShanZhengSubset', 'Ma Shan Zheng', 'Long Cang', 'LXGW WenKai', 'Noto Serif',
+    Georgia, 'KaiTi', cursive;
+
+  /* 点睛书法体（项目子集，单个文件 ~380 KB）：
+     由 build/make-brush-subset.mjs 从 @fontsource/ma-shan-zheng 的 92 个分片
+     merge 后按「全站书法体实际用字 + ASCII」子集化，含 OFL 许可（见 public/fonts/）。
+     @font-face 不能写在 @theme 里（Tailwind v4 只允许自定义属性与 @keyframes），
+     故实际声明在 @theme 区块之外——见紧随其后的 @font-face 段。 */
 
   /* 动画 */
   --animate-smoke-rise: smoke-rise 7s ease-in-out infinite;
@@ -245,6 +255,23 @@
       transform: rotate(3deg) scale(1.04);
     }
   }
+}
+
+/* ============================================================
+   书法体 @font-face（项目子集）
+   ------------------------------------------------------------
+   从 @fontsource/ma-shan-zheng 的 92 个 unicode-range 分片（合计 5.99 MB）
+   merge 成一份完整字体，再按「全站书法体实际用字 + ASCII」子集化，
+   输出单个 public/fonts/ma-shan-zheng-subset.woff2（约 380 KB）。
+   重建：node build/make-brush-subset.mjs
+   许可：OFL-1.1，见 public/fonts/ma-shan-zheng-OFL.txt
+   ============================================================ */
+@font-face {
+  font-family: 'MaShanZhengSubset';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/ma-shan-zheng-subset.woff2') format('woff2');
 }
 
 /* ============================================================

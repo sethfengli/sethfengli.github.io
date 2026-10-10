@@ -72,7 +72,7 @@ function drawCylinderTexture(): HTMLCanvasElement {
   ctx.textAlign = 'center'
   ctx.textBaseline = 'middle'
   const vtext = (text: string, cx: number, y0: number, fs: number) => {
-    ctx.font = `bold ${fs}px "LXGW WenKai","KaiTi","SimSun",serif`
+    ctx.font = `bold ${fs}px "MaShanZhengSubset","KaiTi","KaiTi","SimSun",serif`
     for (let i = 0; i < text.length; i++) {
       ctx.fillText(text[i], cx, y0 + i * (fs + 10))
     }
