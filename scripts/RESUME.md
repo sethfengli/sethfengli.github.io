@@ -501,6 +501,7 @@ scripts/RESUME.md §9（**先读 §9，再读 §4 的 16 条历史坑**）。
 
 ### 9.4 本轮实测数字
 
+> **2026 第 9 轮（仅核对，未改产品代码）实测**：见 §10.4。
 > **2026 第 8 轮（补满图版 + `brass`/`mist` 改名 + 修 `--only` 删桶缺陷）实测**。
 > 第 7 轮的数字见下方「第 7 轮存档」表。
 
@@ -675,5 +676,89 @@ node build/pool-drift.mjs                            # 改过 PICKS 必跑（但
 | （第 8 轮）图版提交 | 补满 7 桶（sutras 15/15 · landscape 20/20 · grottoes 46/46）· 修 `landscape-012` 题材错误（→ `landscape-010` 水墨山水+佛塔）· 修 `--only` 删桶缺陷 · 回填清单/署名 |
 | （第 8 轮）改名提交 | `gold-*`→`brass-*`、`moon-*`→`mist-*`（107 处 / 4 文件）+ 正则收窄为令牌-数字边界 + docs |
 | （第 8 轮）docs 提交 | 本文件 §9.2 第 16–20 条 · §9.3 进度 · §9.4 实测数字 · §9.4b 四步链路 · §9.4d |
+
+## 10. 第 9 轮（核对 + 新建判据探针）
+
+> **范围**：只跑核对、补两个「隐性失效」的判据探针，**未改任何产品代码**。
+> §9.3 的第 3/4/5 项（主包拆分 / 脚本归位 / `verses.ts` 复核）**仍未开工**，见 §10.3。
+
+### 10.1 本轮新增的坑（全部实测）
+
+22. **〔最隐蔽〕两位槽位名不匹配「三位数字」正则是正常的，不是正则坏了**。
+    `grottoes-01.webp` 的点号前只有 **两位** 数字，所以任何要求「连续三位数字」的模式
+    （`[0-9]{3}`、`[0-9][0-9][0-9]`、`\d{3}`）对它**必然 false** —— 这是判据写错了，不是引擎错。
+    本轮为写 `build/check-buckets.mjs` 排查这件事绕了很久（一度怀疑正则字面量被改写），
+    最终判据：`grottoes-048` 命中、`grottoes-01` 不命中，而 `\d{2}` 两者都命中 → 语义正确。
+    **写判据脚本时槽位号一律用 `[0-9][0-9][0-9]?`**（或先取数字再比大小），
+    不要写死位宽；`build/dbg-regex.mjs` 是这条的回归见证。
+23. **`photos-status.mjs` 退出码 0 ≠ 桶内齐了（§9.2 第 19 条的判据现已落地为脚本）**。
+    真判据「清单条数 == 磁盘张数 == PICKS 条数 + 编号连续（slot == 下标+1）」已写成
+    `build/check-buckets.mjs`（**本轮新增，改 `PICKS` 后应与 `pool-drift.mjs` 一起跑**）。
+    本轮实测 `picks=239 manifest=239 disk=239 | bad buckets=0`。
+24. **字体子集的真判据是「逐字查 woff2 的 cmap」，不是看 mtime 或重跑一遍**。
+    已写成 `build/check-font-coverage.mjs`（**本轮新增**）：纯 Node 解 woff2
+    （`zlib.brotliDecompressSync` + 手写 cmap format 4/12 读取，**不需要 Python/fonttools**）。
+    ⚠ 两个易踩点：① woff2 的 `origLength` **可以大于文件体积**（15 张表共享一条 brotli 流，
+    CFF 表 origLength 2.2 MB 而文件只有 1.39 MB），**不能**按 `origLength` 在文件里切片，
+    必须整条流解压后按 origLength 顺序切；② 表目录里的 tag 是**索引**（0x3F 才是 4 字节 tag）。
+    本轮实测 `6964 / 6965`，唯一缺的是已知的 `U+FA2D 鶴`（CJK 兼容表意文字，可接受回退）→ 子集**未过期**。
+
+### 10.2 本轮核对结果（全绿）
+
+| 核对项 | 第 9 轮实测 |
+| --- | --- |
+| `npx tsc --noEmit` | 通过（exit 0） |
+| `npx vite build` | 通过（exit 0，2.43s）；主包 `index-DbXIaZdk.js` **836.68 KB / gzip 276.67 KB**（与第 8 轮一致，未拆） |
+| `node scripts/validate-en.mjs` | ok=294 crit=0 warn=0 parts=0 |
+| `node scripts/scan-mojibake.mjs` | 0 / 294 |
+| `node scripts/style-audit.mjs` | 装饰符号 0 · 圆角与投影 0 · img 缺 alt 0 · svg 缺 aria-hidden 0 · `gold-*`/`moon-*` 旧名残留 **0** |
+| `node scripts/photos-status.mjs` | 退出码 0；磁盘 239 张 / 61.6 MB、清单 239 条、9 张具名图全部 ✓ |
+| **`node build/check-buckets.mjs`（新）** | **picks=239 manifest=239 disk=239、bad buckets=0、7 桶编号全连续** |
+| `node build/pool-drift.mjs` | 7 桶 title 全等、不一致 0（paintings 41/188 · grottoes 46/189 · statues 89/211 · halls 21/64 · sutras 15/43 · landscape 20/54 · lotus 7/49） |
+| `node build/check-font-coverage.mjs`（新） | 6964 / 6965 覆盖；唯一缺 `U+FA2D` 为可接受回退 → **字体子集未过期，无需重跑** |
+| 截图核对 | 首页 8 张导览卡 `naturalWidth` 全非 0（1258×802 截图肉眼核对：造像/水墨/青瓷三组题材一致） |
+
+### 10.3 第 9 轮任务状态（沿用 §9.3 的第 3/4/5 项，**均未开工**）
+
+| # | 项 | 状态 | 备注 |
+| --- | --- | --- | --- |
+| **3** | 主包 `index.js` 继续拆分 | ⬜ | 836.68 KB / gzip 276.67 KB；`three`(724 KB) 与 `vendor`(229 KB) 已独立，294 篇文章已各自成块 |
+| **4** | `build/` 可复用脚本搬进 `scripts/` | ⬜ | 现状见 §10.5：**28 个 `.mjs`**，其中 **7 个未登记**（§2 的 5 个 R9 工具 + 本轮 2 个新探针） |
+| **5** | `verses.ts` 每日法语中英逐段复核 | ⬜ | 第 6 轮只动一二级页面文案 |
+
+### 10.4 第 9 轮实测数字
+
+> 第 9 轮**未改产品代码**，因此体积/内容指标与 §9.4（第 8 轮）逐项一致；
+> 差异只有「新增两个判据探针 + 本节文档」。
+
+| 指标 | 第 9 轮实测 | 与第 8 轮对比 |
+| --- | --- | --- |
+| 主包 `index.js` | 836.68 KB / gzip 276.67 KB | 同 |
+| `vendor.js` | 229.34 KB / gzip 73.41 KB | 同 |
+| `three.js` | 724.16 KB / gzip 184.42 KB | 同 |
+| CSS | 77.31 KB / gzip 14.63 KB | 同 |
+| `validate-en` | ok=294 crit=0 warn=0 parts=0 | 同 |
+| `scan-mojibake` | 0 / 294 | 同 |
+| 图版清单与磁盘 | 239 = 239 = **239（含 PICKS）**、孤儿 0、缺口 0 | 新增 PICKS 维度 |
+| 字体子集 | 6964 / 6965 覆盖（缺 `U+FA2D`，可接受） | 新增判据 |
+| 新增脚本 | `build/check-buckets.mjs` · `build/check-font-coverage.mjs` · `build/dbg-regex.mjs` | — |
+
+### 10.5 `build/` 脚本现状（第 9 轮实测枚举）
+
+`build/` 里共 **28 个 `.mjs`**。§9.5 的表格登记了 21 个，另有 **7 个未登记**：
+| 脚本 | 用途 | 来源 |
+| --- | --- | --- |
+| `mksrc.mjs` | 编号源 → `build/<slug.pN>.src.txt` | §2 |
+| `recover-r9-dispatch.mjs` | 打印首/末块 `src8` 与块计数 | §2 |
+| `recover-r9-assemble.mjs` | 按源结构确定性组装 + 全量校验 | §2 |
+| `recover-r9-scan.mjs` | 占位符 / 空块 / 无字母块扫描 | §2 |
+| `audit-slices-runtime.mjs` | 缺陷类 E 判据入口（含逐块长度比） | §2 |
+| **`check-buckets.mjs`** | **第 9 轮新增**：清单 == 磁盘 == PICKS + 编号连续（§10.1 第 23 条） | 第 9 轮 |
+| **`check-font-coverage.mjs`** | **第 9 轮新增**：逐字查 woff2 cmap，判字体子集是否过期（§10.1 第 24 条） | 第 9 轮 |
+
+另有非脚本生成物：`cjk-chars.txt`、`noto-serif-sc-subset.woff2`、`NotoSerifSC-Regular.otf`、
+`brush-chars.txt`，以及 `chrome-scroll/`、`shots/` 两个目录。
+**第 4 项（搬进 `scripts/`）的完整清单 = 这 28 个 `.mjs`**，不只 §9.5 那 21 个。
+
 
 
