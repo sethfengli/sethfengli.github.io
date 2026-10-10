@@ -237,47 +237,44 @@ git show --stat --oneline HEAD ; git status --porcelain  # 双向核对
 ## 7. 下一轮启动提示词（复制这一段）
 
 ```
-继续 huideng-chanlin 项目（D:\FengLi\Web\fou\huideng-chanlin）。上一轮做了「文案 + 视觉 + 图版 + 字体」四件事，
+继续 huideng-chanlin 项目（D:\FengLi\Web\fou\huideng-chanlin）。上一轮做了「图版空桶 + WebP + 字体瘦身 + 分包」，
 状态、坑与剩余项见 scripts/RESUME.md §9（**先读 §9，再读 §4 的 16 条历史坑**）。
 
-上一轮已落地（提交 5ad1a60 → 4960d55）：
-- 中英文案按「雅信达」重写（src/i18n/zh.ts + en.ts），只动一二级页面，未进文章正文；
-- 图版换为中国传统佛教题材，已抓 133 张（public/photos/cn/）；日韩越泰印/尼泊尔/藏传题材已剔除，
-  旧 147 张（40.8MB）已删。管线四步：collect-pool.mjs → curate-cn.mjs → fetch-cn-picked.mjs
-  （+ probe-cats.mjs 探分类、photos-status.mjs 体检、rebuild-photo-manifest.mjs 中断后重建清单）；
-- 许愿树 SVG 重做为水墨松柏（一笔焦墨树干 + 松针簇 + 点苔松果 + 红绸系真实枝桠）；
-- 十二式禅意插画改水墨卷（宣纸底 + 墨分五色 + 单点朱砂印 + 自然物缓动）；
-- 字体改为三分法：标题楷（--font-serif）· 正文宋（--font-song，body 默认）· 界面黑（--font-sans）；
-  迁移脚本 scripts/migrate-to-song.mjs，对比工程 preview/FontCompare.tsx（?mode=font）；
-- 新增 RouteMeta（按路由写 title/description/og）、新 favicon、scripts/style-audit.mjs（风格体检）；
-- 修掉两个实测缺陷：配图分配 (idx*7)%len 的饿死 bug、photoForSlug 的 O(n²)；
-- 装饰性 SVG 补 aria-hidden（11 处）、全角 ＋ 字符图标换内联 SVG（3 处）。
+上一轮已落地（提交 a2ad34c → 本轮）：
+- 图版空桶的真因**不是限流**：cn-pool.json 重抓后 curate-cn.mjs 的 PICKS 仍按旧 id 取图，
+  halls/sutras/landscape 三桶整体漂到韩国寺院/清真寺/蒙古人物像/藏地高原上 → 逐条按标题重挑；
+  新增 fetch-cn-webp.mjs：编号恒等于「清单下标+1」，失败条目留空 → 清单=磁盘=署名天然一致；
+  全量转 WebP q80；实测 227 张、7 桶全非空、photos-status 退出码 0；
+- 导览卡换掉 halls-01（反光金属说明牌）与 halls-07（黑白书影）→ 自然光石窟造像；
+  注意 content.ts 的 named(key, 校验桶) 第二个参数必须与被指图片所属桶一致，否则静默回退；
+- 字体瘦身（计划外，收益最大）：CSS 875 KB → 77 KB、字体 41.5 MB/940 文件 → 0.55 MB/14 文件；
+  移除 lxgw-wenkai-webfont 与 @fontsource/long-cang，ma-shan-zheng 改项目子集 382 KB；
+- codeSplitting 增 three / vendor 分组。
 
 下一轮请先跑这几条核对，确认 §9.4 的数字仍成立：
   npx tsc --noEmit
   npx vite build                    （需子进程权限；受限沙箱会 spawn EPERM）
   node scripts/validate-en.mjs && node scripts/scan-mojibake.mjs
-  node scripts/style-audit.mjs       （装饰符号/圆角投影/img alt/svg aria 应全 0）
-  node scripts/photos-status.mjs     （退出码 2 = 图版仍需续抓）
+  node scripts/style-audit.mjs
+  node scripts/photos-status.mjs     （退出码 0 = 图版齐了；2 = 仍有空桶）
+  node build/pool-drift.mjs          （改过 PICKS 的话必跑）
 
-然后**先问我这一轮要做什么**，不要自行扩大范围。§9.3 列了几项已知可改之处，可直接挑，其中：
-- 图版还有两桶全空（sutras 0/15、landscape 0/18），halls 1/19、statues 39/86：
-  续抓用 `.\scripts\fetch-photos.ps1`（或 -Only halls,sutras,landscape,statues）；
-  已下载的自动复用、不会重复下载；Commons 约 6-8 张/分钟就 429，一次跑不完很正常，可随时中断续跑。
-- 首页导览卡有两张云冈石窟是紫外灯照明的绿色摩崖，颜色与水墨基调不搭，续抓时优先换自然光的。
+然后**先问我这一轮要做什么**，不要自行扩大范围。§9.3 里还剩：
+- (c) 内置汉字 web font：**已实测**走 @fontsource 的 400.css 会命中 86 个分片、合计 2.92 MB，
+  且单取 chinese-simplified 那个分片缺 1253 个本站要用的字；要做需下 Google Noto Serif SC
+  完整字体（约 66 MB）再按 build/collect-cjk.mjs 的 6888 字子集化。**可选，现状系统宋体栈可用。**
+- (d) 色板令牌改名 sandalwood-*/tibetan-* → 实义名（约 290 处，纯重构、零视觉变化）；
+- (g) verses.ts 每日法语的中英逐段复核。
 
 纪律：
 - 含中文的文件一律不要用 PowerShell Set-Content 回写（双重编码，见 §4.3），用 node writeFileSync 或 edit 工具；
 - PowerShell 脚本里的字符串常量只用 ASCII，中文只放注释（PS 5.1 读中文串会把引号配对读错，见 §9.2）；
 - 单字段改动用行级外科编辑（§4.8）；git status 有 CRLF 噪声，判据用 git hash-object（§4.8）；
+- ⚠ 本仓库脚本有 CRLF 也有 LF 两种行尾（`curate-cn.mjs` 是 CRLF）——写正则改文件时必须用 `\r?\n`，否则静默失配；
 - 临时件只许放 build/ 并自删；不要 push；
-- 改完 SVG / 插画 / 字体**务必截图肉眼核对**，不要只看代码：
-    npx vite build --config preview/vite.config.ts
-    node scripts/static-server.mjs preview-dist --port=5188
-    node scripts/shoot-preview.mjs --name=tree --w=1100 --h=1500      # 或 ?mode=font 看字体
-  要核对**整站真实产物**（含路由/图片/字体）时：npx vite build 后
-    node scripts/static-server.mjs dist --port=5192
-  再对 http://127.0.0.1:5192/ 截图（加 --lang=zh-CN 走中文分支）。
+- 改完 SVG / 插画 / 字体 / 图片**务必截图肉眼核对**，不要只看代码：
+    node scripts/static-server.mjs dist --port=5192     # 对真实产物
+    然后用 Chrome 无头截图 http://127.0.0.1:5192/（参考 §9.2 第 9 条：不要用拼图核对题材）
 会话末：回填 §9.4 的实测数字，提交 docs: …
 ```
 
@@ -317,6 +314,19 @@ git show --stat --oneline HEAD ; git status --porcelain  # 双向核对
 | **风格体检** | 用计数替代「感觉」：字体分级、圆角/投影/毛玻璃/装饰渐变、emoji 与字符装饰、主题令牌名实、可达性、img alt、中英对齐 | `scripts/style-audit.mjs` |
 | 配图分配修复 | `(idx*7)%len` 在池长与步长不互质时退化（禅修院 46 张石窟只用到 3 张）→ 改按桶权重交错 + 院系内序号；并把 `photoForSlug` 从 O(n²) 降到 O(1) | `src/lib/content.ts` |
 
+### 9.1b 第 7 轮改了什么（图版空桶 / WebP / 字体瘦身 / 分包）
+
+| 面 | 改动 | 文件 |
+| --- | --- | --- |
+| **图版空桶（真因）** | 不是限流：`cn-pool.json` 重抓后 `PICKS` 仍用旧 id，halls/sutras/landscape 三桶整体漂到韩国与蒙古寺院、清真寺、17 世纪荷兰铜版画、蒙古人物像、藏地高原与地图上 | `scripts/curate-cn.mjs` |
+| **图版新管线** | 编号**恒等于**清单下标+1（旧管线是「前 N 个成功条目」，欠定、中断即错位）；失败条目留空 → 清单=磁盘=署名三者天然一致 | `scripts/fetch-cn-webp.mjs`（新） |
+| **图版转 WebP** | 全量 q80；`--migrate` 可就地迁移已有 jpg | 同上 |
+| **图版体检** | 同时认 `.jpg`/`.webp`（原先只认 `.jpg`，迁移后会误报「磁盘 0 张」） | `scripts/photos-status.mjs` |
+| **导览卡换图** | `halls-01`（反光金属说明牌）与 `halls-07`（黑白书影）→ 自然光石窟造像；并修掉 `named()` 校验桶没同步改导致「改了 named 却不生效」 | `scripts/pick-named-photos.mjs`、`src/lib/content.ts` |
+| **字体瘦身（计划外）** | CSS 875 KB → **77 KB**、字体 940 个/41.5 MB → **14 个/0.55 MB**：移除 `lxgw-wenkai-webfont`(27.9 MB)、`@fontsource/long-cang`(6.4 MB，零引用)，`ma-shan-zheng` 改项目子集(5.99 MB → 382 KB) | `src/main.tsx`、`src/index.css`、`public/fonts/` |
+| **分包** | `codeSplitting` 增 `three` / `vendor` 分组（React 229 KB 独立长期缓存） | `vite.config.ts` |
+| **canvas 字体名** | 9 处硬编码 `"LXGW WenKai"` / `"Ma Shan Zheng"` → 子集名（否则 canvas 画回退体） | `src/components/zen3d/*` |
+
 ### 9.2 图版管线的坑（全部实测）
 
 1. **不要在下载层按 JPEG 魔数过滤**。Commons 上大量中国佛画是 **PNG**（敦煌绢画、台北故宫立轴），
@@ -335,6 +345,36 @@ git show --stat --oneline HEAD ; git status --porcelain  # 双向核对
    现 `reencode(src, dst, resize=false)` 直接读成品取指纹。
 7. **分类名要先探测**。`Category:Buddhist sculpture of China` 之类**不存在**（正确的是
    `Buddhist sculptures from China`），猜分类名会得到空结果。用 `scripts/probe-cats.mjs` 先验。
+8. **〔最危险〕`cn-pool.json` 重抓后，`curate-cn.mjs` 的 `PICKS` 必须同源核对**。
+   池子是**未纳入 git** 的生成物（`scripts/cn-pool.json`），而 `PICKS` 是按池内 **id** 手写的。
+   本轮实测的根因就是这个：池子重抓过一次，顺序全变，而 `PICKS` 还是旧 id ——
+   - `halls-001..019` → 变成韩国/蒙古寺院、清真寺、17 世纪荷兰铜版画；
+   - `sutras-001..015` → 变成蒙古人物像《Baghatur Chigshi》、藏文/回鹘文/希伯来文写本、《论语》；
+   - `landscape-001..018` → 变成藏地高原、地图、昆虫标本照。
+   这三个桶因此**一张都没下成**，成了空桶（这就是 §9.4 里 sutras 0/15、landscape 0/18 的真因，
+   **不是**「限流没抓完」）。
+   **核对办法**（改 `PICKS` 后必跑）：`node build/pool-drift.mjs` —— 它把 `cn-picked.json`
+   每条与 `pool` 同 id 的 `title` 逐条比，必须**全等**才说明没有漂移。
+   ⚠ 只比「picked 与 pool 是否一致」是**不够**的：两者都漂到同一片垃圾上时也会「全等」，
+   所以还要**逐条看标题**（本轮的垃圾前缀就是这样才发现的）。
+9. **不要用「按序号缩略图拼 contact sheet」来核对图片题材**。实测踩过：缩略图未居中到固定
+   单元格，纵向图的标签与图像整体错位，于是把「炳灵寺石窟」看成了「停车场与锥桶」，
+   差点据此删掉正确的图。**判据用逐张全尺寸图**，或先把每张强制 cover 到等尺寸单元格再拼。
+10. **核对「picks 是否真的对应磁盘文件」要用字节比较**：
+    `node build/verify-photo-ids.mjs "grottoes:25,grottoes:31"` 会按同一参数重新下载 + 转码，
+    与磁盘成品逐字节比。实测这条给出了决定性结论（映射其实是对的）。
+11. **〔坑〕`content.ts` 的 `named(key, fallbackBucket)` 第二个参数是「校验桶」，不是注释**。
+    `named()` 要求 `named.<key>` 指的文件确实在该桶内，否则**静默**退回该桶第一张。
+    本轮踩过：把导览卡的 `named.gate` 改成 `grottoes-16.webp`，却忘了把
+    `NAMED_PHOTOS.gate()` 的第二个参数从 `'halls'` 改成 `'grottoes'` ——
+    结果 `grottoes-16` 在 halls 桶里找不到，页面照旧显示 `halls-01`，
+    **改了 `named` 却看不到任何效果**（构建、tsc 全绿，只有截图能发现）。
+    改 `named` 的文件所属桶时，务必同步改这里的校验桶。
+12. **导览卡是「窄条裁切」（`object-cover`，约 128×32 的显示比例），别用带文字的标牌特写**。
+    原 `gate: halls-01` 是一块反光金属说明牌（拍在粉色木门上）、`bell: halls-07` 是黑白书影，
+    裁成窄条后只剩「一块花板子」，与水墨基调冲突——这才是上一轮记的「颜色很冲」的真身
+    （**不是**紫外灯偏绿的云冈摩崖；实测逐张看过多张云冈，均为自然暖调砂岩）。
+    现两者都改用自然光石窟造像（`grottoes-16` / `grottoes-02`）。
 
 ### 9.2b 备选图源调查结论（2026）
 
@@ -346,33 +386,91 @@ git show --stat --oneline HEAD ; git status --porcelain  # 双向核对
 
 ### 9.3 建议下一轮做（都不是缺陷，按价值排序）
 
+> **2026 第 7 轮已完成 (a) 补桶（在抓）、(b) 换图、(e) 主包瘦身、(f) WebP，
+> 以及一项计划外的字体瘦身（§9.4）。剩余见下表。**
+
 | 项 | 规模 | 说明 |
 | --- | --- | --- |
-| (a) 补齐空桶 | 约 50 张 | **`sutras`（0/15）/ `landscape`（0/18）两桶全空，`halls` 1/19、`statues` 39/86 也未抓完**（见 §9.4）。一条命令续抓：`.\scripts\fetch-photos.ps1`（或 `-Only halls,sutras,landscape,statues`）。已有的会自动复用，不会重复下载。 |
-| (b) 换掉「灯光色偏重」的图 | 小 | 首页导览卡里那两张云冈石窟照片是**紫外灯照明的绿色摩崖**，颜色很冲，与水墨枯淡基调不搭；`grottoes` 桶里还有同类。挑图时优先选自然光/漫射光的照片。改 `scripts/curate-cn.mjs` 的 `PICKS` 后重跑 ②③；注意 (d) 的具名图会随之漂移，跑完记得 `node scripts/pick-named-photos.mjs`。 |
-| (c) 内置汉字 web font（可选） | 中 | 现正文宋体走**系统栈**：macOS 宋体-简好、**Windows 中易宋体偏弱**。要全平台一致需引入 `@fontsource/noto-serif-sc`（汉字全量体积可观，建议只给正文按需加载）。见 `docs/DESIGN.md` 字体一节。 |
-| (d) 色板令牌改名 | 大（约 290 处） | `sandalwood-*`（130 处）实际是青瓷灰绿、`tibetan-*`（159 处）实际是朱砂红、`gold-*` / `moon-*` 仅存于 `lots.ts` 的三档签位配色与令牌定义。名字与含义不符，是最大的可读性债。 |
-| (e) 主包瘦身 | 中 | 主 js 约 815KB（gzip 271KB）、CSS 854KB。可细化 `build.rollupOptions.output.codeSplitting.groups`（three / 字体 / i18n 分开）；CSS 大头是 `docs/markdown` 无关、主要来自文章正文样式与字体 @font-face。 |
-| (f) 图版转 WebP | 约 150 张 / 缩减约 40% | `public/` 现约 49MB 图版。WebP q80 目视无差。改 Pillow 输出格式 + `content.ts` 的 `photoUrl()` 后缀即可；**需要重跑下载**。 |
+| ~~(a) 补齐空桶~~ | — | **本轮已修**。真因不是限流，而是 `PICKS` 与重抓后的池子**不同源**（见 §9.2 第 8 条）。 |
+| ~~(b) 换掉灯光色偏重的图~~ | — | **本轮已修**。halls / sutras / landscape 三桶按标题重挑，剔掉韩国/蒙古寺院、清真寺、17 世纪铜版画与藏地/地图类。 |
+| **(c) 内置汉字 web font（Noto Serif SC）** | 中 | **本轮未做，降级为可选**。实测结论：`@fontsource/noto-serif-sc` 的 400.css 有 **101 个 unicode-range 分片**，本站在用汉字需命中 **86 个、合计 2.92 MB**；而单取 `chinese-simplified` 那一个分片又**缺 1253 个本站要用的字**（含 淨/觀/釋 等繁体）。要做得漂亮必须下 Google Noto Serif SC 完整字体（约 **66 MB**）再按 `build/collect-cjk.mjs` 的 6888 字子集化——本轮无网可下，故留待下轮。**现状是系统宋体栈**（Windows 中易宋体 / macOS 宋体-简），可用。 |
+| (d) 色板令牌改名 | 大（约 290 处） | `sandalwood-*`（130 处）实际是青瓷灰绿、`tibetan-*`（159 处）实际是朱砂红。名字与含义不符，是最大的可读性债。**本轮未做**。 |
+| ~~(e) 主包瘦身~~ | — | **本轮已做**（`three` / `vendor` 分组 + 字体瘦身）。CSS 875 KB → **77 KB**、字体 41.5 MB → **0.55 MB**，见 §9.4。 |
+| ~~(f) 图版转 WebP~~ | — | **本轮已做**。49.1 MB → 40.5 MB（−17.5%）。判据：JPEG 已是 q84 渐进式，故 WebP q80 只省约 17%，而非预估的 40%。 |
 | (g) 文案再打磨 | 小 | 本轮只动了一二级页面；若允许，可逐段复核 `verses.ts` 每日法语的中英对应。 |
 
 ### 9.4 本轮实测数字
 
+> **2026 第 7 轮（图版空桶 + WebP + 字体瘦身 + 分包）实测**，替换原先的数字。
+
 | 指标 | 值 |
 | --- | --- |
 | `npx tsc --noEmit` | 通过（exit 0） |
-| `npx vite build` | 通过（主 js 约 815KB / gzip 271KB；CSS 约 854KB） |
+| `npx vite build` | 通过（exit 0） |
+| 主包 `index.js` | **835 KB** / gzip 276 KB |
+| `vendor.js`（React + Router） | 229 KB / gzip 73 KB（单独缓存） |
+| `three.js` | 724 KB / gzip 184 KB（按需） |
+| **CSS** | **77.2 KB / gzip 14.5 KB** —— 原先 875 KB，降 **91%** |
+| **字体分片** | **14 个文件 / 0.55 MB** —— 原先 940 个 / 41.5 MB，降 **98.7%** |
+| `@font-face` 条数 | **4**（原先 772） |
 | `validate-en` | ok=294 crit=0 warn=0 parts=0（英文正文未改动） |
 | `scan-mojibake` | 0 / 294 |
-| `style-audit` | 装饰符号 0 · 圆角与投影 0 · img 缺 alt 0 · svg 缺 aria-hidden 0；font-weight 仅 5 处 `font-medium`（`.btn-*`）+ 1 处 `font-bold`（装饰性「嗡」字） |
-| 已抓中国佛教图版 | **133 张**（paintings 41/41 · grottoes 45/46 · statues 39/86 · lotus 7/7 · halls 1/19 · **sutras 0/15 · landscape 0/18**） |
-| 图版清单与磁盘 | 一致（133 = 133）；`node scripts/photos-status.mjs` 随时体检，退出码 2 = 仍需续抓 |
-| `public/` 图版体积 | 约 49MB |
-| 全站引用完整性 | 294 篇封面 + 9 个具名图，**引用缺失 0**（空桶会被 `poolFor` 跳过，不会出现空图） |
-| 字体分级 | 标题楷（`--font-serif` 47 处）· 正文宋（`--font-sans` 76 处 + 显式 `font-song` 54 处 + body 默认继承）· 界面黑 |
+| `style-audit` | 装饰符号 0 · 圆角与投影 0 · img 缺 alt 0 · svg 缺 aria-hidden 0 |
+| 图版清单与磁盘 | **227 = 227 严格一致**（编号 == 清单下标 + 1，见 §9.2 新管线）；`photos-status` 退出码 **0** |
+| `public/` 图版体积 | 133 张 JPEG 49.1 MB → 同 133 张 WebP **40.5 MB**（−17.5%，q80）；现共 227 张 WebP **58.2 MB** |
+| 图版桶 | paintings 41 · grottoes 45 · statues **89** · halls **21** · sutras **11** · landscape **13** · lotus 7（**7 桶全部非空**） |
+| 图版抓取实测 | 一轮 `fetch-cn-webp.mjs`：**新下 94 · 复用 40 · 失败 11**（11 张全因 429 限流，续跑可补齐；留空不影响清单一致性） |
 | 中英词典 | zh/en 键完全对齐（`tsc` 保证） |
+
+**CSS 为什么能降 91%**：那 875 KB 里 **91.3% 是 `@font-face` 规则**（772 条），来自三个
+webfont 依赖；真正的站点样式只有约 76 KB。移除未用字体后 CSS 自然回到 77 KB。
+
+**字体为什么能降 98.7%**：
+
+| 依赖 | 原体积 | 处置 |
+| --- | --- | --- |
+| `lxgw-wenkai-webfont` | 582 个文件 / **27.9 MB** | **移除**。它只是标题楷体栈的第 4 顺位回退（前三名是系统楷体 Kaiti SC / STKaiti / KaiTi），却在 `style.css` 里把 mono/light/bold **6 套**全引入 |
+| `@fontsource/long-cang` | 186 个文件 / **6.4 MB** | **移除**。全站**零** `font-family` 引用 |
+| `@fontsource/ma-shan-zheng` | 92 个文件 / **5.99 MB** | 改**项目子集**：merge 92 个分片后按「书法体实际用字 + ASCII」子集化 → 单个 **382 KB** 文件 |
+| `@fontsource/noto-sans` / `noto-serif`（latin） | 12 个 / 0.18 MB | 保留（西文正文） |
+
+书法体子集重建：`node build/make-brush-subset.mjs`（需 `python -m pip install fonttools brotli`）。
+许可 OFL-1.1 随字体放在 `public/fonts/ma-shan-zheng-OFL.txt`。
+
+### 9.4b 图版新管线（取代旧的 fetch-cn-picked + rebuild）
+
+旧的「编号 = 前 N 个成功条目」是**欠定**的：中断一次，磁盘上的 `<bucket>-NN` 与清单第 NN 条
+就整体错位，只能靠 `rebuild-photo-manifest.mjs` 猜。新脚本改为 **编号 == 清单下标 + 1**，
+下载失败的条目直接留空（不进清单、不进署名），于是「清单 = 磁盘 = 署名」三者天然一致。
+
+```bash
+node scripts/fetch-cn-webp.mjs                       # 抓所有桶（WebP q80，长边 1600）
+node scripts/fetch-cn-webp.mjs --only=halls,sutras   # 只抓指定桶（其余桶沿用磁盘现状）
+node scripts/fetch-cn-webp.mjs --migrate             # 把已有 .jpg 就地转 .webp（不联网）
+node scripts/photos-status.mjs                       # 体检；退出码 2 = 仍有空桶
+```
+
+- 已下载的自动复用、不会重复下载（编号恒定，不再需要 `_raw`）。
+- 节流：`PACE_MS` 默认 14000；Commons 约 6–8 张/分钟就 429，任一条最多退避 1 次。
+- **不要并行跑多个抓取进程**（见 §9.2 第 4 条）。
 
 ### 9.5 归档
 
-本轮（文案 / 视觉 / 图版 / 字体）已全部提交，工作区干净：`5ad1a60` → `6e952d7` → `ccbfd3f` → `2e4aae3` → `3dd6fa4` → `8b042b2` → `4960d55`。
+第 6 轮（文案 / 视觉 / 图版 / 字体）已全部提交，工作区干净：
+`5ad1a60` → `6e952d7` → `ccbfd3f` → `2e4aae3` → `3dd6fa4` → `8b042b2` → `4960d55` → `a2ad34c`。
+
+第 7 轮（图版空桶 / WebP / 字体瘦身 / 分包）：
+`61777fc`（图版管线 + WebP）→ `fbe0968`（字体瘦身 + 分包）→ 本轮 docs 提交。
+
+**`build/` 里本轮新增的可复用脚本**（`build/` 是 gitignore 的临时工作区，故未入库；
+若要长期保留请搬进 `scripts/`）：
+
+| 脚本 | 用途 |
+| --- | --- |
+| `make-brush-subset.mjs` | 重建书法体项目子集（依赖 `python -m pip install fonttools brotli`） |
+| `collect-brush.mjs` | 收集书法体实际用字 → `build/brush-chars.txt` |
+| `collect-cjk.mjs` | 收集全站汉字（供将来做正文宋体子集，本轮未用） |
+| `pool-drift.mjs` | **改 `PICKS` 后必跑**：核对 picked 与 pool 同 id 的 title 是否全等 |
+| `verify-photo-ids.mjs` | 重新下载+转码一张，与磁盘成品逐字节比，验证「picks→文件」映射 |
+| `fix-canvas-fonts.mjs` | 批量改 zen3d 里硬编码的 canvas 字体名（一次性迁移脚本） |
 
