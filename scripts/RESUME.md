@@ -237,24 +237,28 @@ git show --stat --oneline HEAD ; git status --porcelain  # 双向核对
 ## 7. 下一轮启动提示词（复制这一段）
 
 ```
-继续 huideng-chanlin 项目（D:\FengLi\Web\fou\huideng-chanlin）。上一轮做了「图版空桶 + WebP + 字体瘦身 + 分包」，
-状态、坑与剩余项见 scripts/RESUME.md §9（**先读 §9，再读 §4 的 16 条历史坑**）。
+继续 huideng-chanlin 项目（D:\FengLi\Web\fou\huideng-chanlin）。上一轮做了「图版补桶 + WebP + 字体
+（瘦身 + 内置汉字子集）+ 令牌改名 + 分包」，状态、坑与下一轮任务见 scripts/RESUME.md §9
+（**先读 §9，再读 §4 的 16 条历史坑**）。
 
-上一轮已落地（提交 a2ad34c → 本轮）：
+上一轮已落地（提交 a2ad34c → db26e35）：
 - 图版空桶的真因**不是限流**：cn-pool.json 重抓后 curate-cn.mjs 的 PICKS 仍按旧 id 取图，
   halls/sutras/landscape 三桶整体漂到韩国寺院/清真寺/蒙古人物像/藏地高原上 → 逐条按标题重挑；
-  新增 fetch-cn-webp.mjs：编号恒等于「清单下标+1」，失败条目留空 → 清单=磁盘=署名天然一致；
-  全量转 WebP q80；实测 227 张、7 桶全非空、photos-status 退出码 0；
+  新增 scripts/fetch-cn-webp.mjs：编号恒等于「清单下标+1」，失败条目留空 → 清单=磁盘=署名天然一致；
+  全量转 WebP q80；实测 227 张、photos-status 退出码 0（sutras 11/15、landscape 13/20 仍缺，429 留空）；
 - 导览卡换掉 halls-01（反光金属说明牌）与 halls-07（黑白书影）→ 自然光石窟造像；
   注意 content.ts 的 named(key, 校验桶) 第二个参数必须与被指图片所属桶一致，否则静默回退；
-- 字体：CSS 875 KB → 77 KB、字体 41.5 MB/940 文件 → 0.55 MB/14 文件；
-  移除 lxgw-wenkai-webfont 与 @fontsource/long-cang，ma-shan-zheng 改项目子集 382 KB；
-- **新增汉字正文 webfont**：Noto Serif SC 项目子集 1.39 MB（含 unicode-range，英文页不下载）；
-- **色板令牌改名**：sandalwood-* → celadon-*、tibetan-* → cinnabar-*，共 314 处；
-- 修掉 PhotoLogo 硬编码 .jpg 导致的站标 404（构建全绿、只有截图能发现）；
-- codeSplitting 增 three / vendor 分组。
+- 字体：CSS 875 KB → 77 KB、字体分片 940 个/41.5 MB → 15 个/1.94 MB；
+  移除 lxgw-wenkai-webfont(27.9 MB) 与 @fontsource/long-cang(6.4 MB)，ma-shan-zheng 改项目子集 382 KB；
+  新增 Noto Serif SC 正文子集 1.39 MB（带 unicode-range，实测英文页不下载）；
+- 色板令牌改名：sandalwood-* → celadon-*、tibetan-* → cinnabar-*，共 314 处；
+- 修掉 PhotoLogo 硬编码 .jpg 导致的站标 404（构建全绿、只有截图加上读 naturalWidth 才能发现）；
+- codeSplitting 增 three / vendor 分组；主包 index.js 仍 836 KB（未拆）。
 
-下一轮请先跑这几条核对，确认 §9.4 的数字仍成立：
+下一轮任务**已在 §9.3 排定为五项**（1 补满图版余量 · 2 gold/moon 改名 · 3 主包继续拆分 ·
+4 把 build/ 可复用脚本搬进 scripts/ · 5 verses.ts 中英复核）。**先跑下面的核对，
+再问我从哪一项开始 / 是否按顺序做，不要自行扩大范围**：
+
   npx tsc --noEmit
   npx vite build                    （需子进程权限；受限沙箱会 spawn EPERM）
   node scripts/validate-en.mjs && node scripts/scan-mojibake.mjs
@@ -263,20 +267,24 @@ git show --stat --oneline HEAD ; git status --porcelain  # 双向核对
   node build/pool-drift.mjs          （改过 PICKS 的话必跑）
   node build/shot-scrolled.mjs ".card-media" build/shots/x.png   # 截图 + 报每张图 naturalWidth
 
-然后**先问我这一轮要做什么**，不要自行扩大范围。§9.3 里还剩：
-- (g) verses.ts 每日法语的中英逐段复核；
-- (d2) gold-*/moon-* 是否也改名（统计会被英文正文的散文词污染，需按文件白名单）；
-- (e) 主包 index.js 仍 836 KB —— 目前是应用代码 + 路由元数据，尚未拆分。
+两个**隐性失效**要记牢（不报错，但会静默劣化）：
+- 字体子集是按「当前全站用字」生成的 → 改动正文/文案后新字会掉回系统字体，需重跑
+  `node build/make-song-subset.mjs`（或搬进 scripts/ 后的新路径），看它打印的 missing 数；
+- cn-pool.json 是未入库的生成物，而 PICKS 按池内 id 手写 → 再重抓 pool 必须逐条看标题核对。
 
 纪律：
 - 含中文的文件一律不要用 PowerShell Set-Content 回写（双重编码，见 §4.3），用 node writeFileSync 或 edit 工具；
 - PowerShell 脚本里的字符串常量只用 ASCII，中文只放注释（PS 5.1 读中文串会把引号配对读错，见 §9.2）；
 - 单字段改动用行级外科编辑（§4.8）；git status 有 CRLF 噪声，判据用 git hash-object（§4.8）；
 - ⚠ 本仓库脚本有 CRLF 也有 LF 两种行尾（`curate-cn.mjs` 是 CRLF）——写正则改文件时必须用 `\r?\n`，否则静默失配；
+- 改名类改动要**按文件白名单**：`src/content/**` 是英文正文数据，里面的 gold/moon/tibetan 是散文词
+  或图片排雷正则，动了会破坏图版筛选（§9.4d 记录过这个坑）；
 - 临时件只许放 build/ 并自删；不要 push；
 - 改完 SVG / 插画 / 字体 / 图片**务必截图肉眼核对**，不要只看代码：
     node scripts/static-server.mjs dist --port=5192     # 对真实产物
-    然后用 Chrome 无头截图 http://127.0.0.1:5192/（参考 §9.2 第 9 条：不要用拼图核对题材）
+    然后用 Chrome 无头截图 http://127.0.0.1:5192/
+    （§9.2 第 9 条：不要用拼图核对题材；§9.2 第 14 条：全页截图不会触发视口外 lazy 图，
+      要先用 scrollIntoView 并读 naturalWidth 判断）
 会话末：回填 §9.4 的实测数字，提交 docs: …
 ```
 
@@ -291,12 +299,15 @@ git show --stat --oneline HEAD ; git status --porcelain  # 双向核对
 
 更早的过期文档（`NEXT.md`、`PLAYBOOK.md`、`WEEKEND-PLAN.md`、`NEXT-PLAN.md`）已在 git 历史里。
 
-## 9. 站点改进轮（文案 / 视觉 / 图版）· 状态与坑
+## 9. 站点改进轮（文案 / 视觉 / 图版 / 字体 / 性能）· 状态与坑
 
-> 本轮范围：**只有一级、二级页面**（首页 / 书架 / 听经 / 祈福 / 灵签 / 关于 + 页头页脚），
-> **没有深入文章正文**。文章正文的翻译仍是 §1 的状态，未改动。
+> **范围**：只有一级、二级页面（首页 / 书架 / 听经 / 祈福 / 灵签 / 关于 + 页头页脚），
+> **没有深入文章正文**；文章正文的翻译仍是 §1 的状态，未改动。
+>
+> **轮次**：§9.1 = 第 6 轮（文案/视觉/图版/字体）· §9.1b–§9.4d = **第 7 轮**（图版补桶 / WebP /
+> 字体瘦身 + 内置汉字子集 / 令牌改名 / 分包）· **§9.3 = 第 8 轮的既定任务（五项）**。
 
-### 9.1 这一轮改了什么
+### 9.1 第 6 轮改了什么（文案 / 视觉 / 图版 / 字体）
 
 | 面 | 改动 | 文件 |
 | --- | --- | --- |
@@ -400,21 +411,23 @@ git show --stat --oneline HEAD ; git status --porcelain  # 双向核对
 | Met Open Access | `collectionapi.metmuseum.org` 的 `/objects`、`/objects/{id}` 可用，但 `/search` **已于 2026-10-01 退役**（改用 `/public/collection/v1.1/search`）；连续请求约 270 次后整段 API 返回 403（Cloudflare 拦截）。**图片 CDN `images.metmuseum.org` 没有限流**（实测直链 200、2.8MB）。若要用 Met，正确做法是**从别处取 objectID**（Met 在 GitHub 上发全量 CSV），再只用 CDN 取图。脚本骨架留在 `scripts/fetch-met-photos.mjs`（含 `--probe`）。 |
 | Art Institute of Chicago / 其它博物馆 | 未测（时间所限）。若 Commons 继续恶化，按同一思路：**列表/元数据用一个源，图片用其 CDN**。 |
 
-### 9.3 建议下一轮做（都不是缺陷，按价值排序）
+### 9.3 下一轮要做的五件（**已排定，直接开工**）
 
-> **2026 第 7 轮已完成 (a) 补桶（在抓）、(b) 换图、(e) 主包瘦身、(f) WebP，
-> 以及一项计划外的字体瘦身（§9.4）。剩余见下表。**
+> **2026 第 7 轮已完成** (a) 补桶 · (b) 换图 · (c) 内置汉字 web font · (d) 令牌改名 ·
+> (e) 瘦身 · (f) WebP（见 §9.4 / §9.4b/c/d）。
+> 以下是**第 8 轮的既定任务**，按建议顺序：
 
-| 项 | 规模 | 说明 |
-| --- | --- | --- |
-| ~~(a) 补齐空桶~~ | — | **本轮已修**。真因不是限流，而是 `PICKS` 与重抓后的池子**不同源**（见 §9.2 第 8 条）。 |
-| ~~(b) 换掉灯光色偏重的图~~ | — | **本轮已修**。halls / sutras / landscape 三桶按标题重挑，剔掉韩国/蒙古寺院、清真寺、17 世纪铜版画与藏地/地图类。 |
-| ~~(c) 内置汉字 web font（Noto Serif SC）~~ | — | **本轮已完成**：项目子集 **1.39 MB / 1 个文件**（§9.4c）。成本比预估低很多——不必下 66 MB 的完整包，取 `notofonts/noto-cjk` 的 `Serif/SubsetOTF/SC/NotoSerifSC-Regular.otf`（11.1 MB）再子集化即可。 |
-| ~~(d) 色板令牌改名~~ | — | **本轮已完成**：`sandalwood-*` → `celadon-*`、`tibetan-*` → `cinnabar-*`，**314 处**（§9.4d）。注意排除 `src/content/**` 与两个把 `/tibetan/i` 当图片排雷正则用的抓取脚本。 |
-| (d2) `gold-*` / `moon-*` 是否也改名 | 小～中 | `gold-*`（`#ab8940`，实为黄铜）60 处在 `index.css`、其余在 `TempleBell.tsx` 与正文散文里；`moon-*`（青灰蓝）集中在签位分档。**难点是统计会被英文正文的 "gold"/"moon" 污染**，需按文件白名单处理。 |
-| ~~(e) 主包瘦身~~ | — | **本轮已做**（`three` / `vendor` 分组 + 字体瘦身）。CSS 875 KB → **77 KB**、字体 41.5 MB → **0.55 MB**，见 §9.4。 |
-| ~~(f) 图版转 WebP~~ | — | **本轮已做**。49.1 MB → 40.5 MB（−17.5%）。判据：JPEG 已是 q84 渐进式，故 WebP q80 只省约 17%，而非预估的 40%。 |
-| (g) 文案再打磨 | 小 | 本轮只动了一二级页面；若允许，可逐段复核 `verses.ts` 每日法语的中英对应。 |
+| # | 项 | 规模 | 说明 |
+| --- | --- | --- | --- |
+| **1** | **补满图版余量** | 小（约 11 张） | `sutras` 11/15、`landscape` 13/20 仍缺（第 7 轮 429 限流留空）。跑 `node scripts/fetch-cn-webp.mjs --only=sutras,landscape`（PACE_MS 默认 14000；一条命令可反复重跑，已下载的自动复用）。跑完 `node scripts/pick-named-photos.mjs` 并核对 `photos-status` 退出码 0。 |
+| **2** | **`gold-*` / `moon-*` 改名** | 小～中 | `gold-*`（`#ab8940`，实为**黄铜**，非鎏金）与 `moon-*`（青灰蓝）。⚠ 难点：直接全文统计会被**英文正文的散文词** "gold"/"moon" 污染（实测 `gold` 80 处里约 20 处在 `src/content/en/*.json`）。做法：**按文件白名单**（只改 `src/index.css` 的令牌定义/别名 + `src/components/**` + `src/pages/**` + `src/data/lots.ts` + `docs/**` + `preview/**`），跳过 `src/content/**`。复用 `build/rename-tokens.mjs`（改 `MAP` 表 + `EXCLUDE`）。改完逐张截图核对签位三档配色与梵钟「嗡」字。 |
+| **3** | **主包 `index.js` 继续拆分** | 中 | 现 **836 KB / gzip 277 KB**，内容是应用代码 + 路由元数据（`three` 与 `vendor` 已独立）。可试：把 294 篇的目录/元数据与 `verses.ts` 拆成独立 chunk、或对 `src/content/*.json` 用动态 import。**判据**：首屏请求的 chunk 总量下降，且路由切换不出现明显空白。 |
+| **4** | **把 `build/` 里可复用脚本搬进 `scripts/`** | 小 | `build/` 是 gitignore 的临时区，下一轮换机器/克隆就没了。建议搬迁并按 §9.5 的清单在 §9.5 表里登记：`make-song-subset.mjs`、`make-brush-subset.mjs`、`collect-cjk.mjs`、`collect-brush.mjs`、`pool-drift.mjs`、`verify-photo-ids.mjs`、`rename-tokens.mjs`、`shot-zh.mjs`、`shot-scrolled.mjs`、`dump-palette.mjs`。（`fix-canvas-fonts.mjs` 是一次性迁移脚本，可不搬。） |
+| **5** | **`verses.ts` 每日法语中英逐段复核** | 小 | 第 6 轮只动了一二级页面文案，未进 `verses.ts`。逐条核对中英对应（现在是意译，可能存在语义漂移或术语不一致）。 |
+
+**仍需注意的两个"隐性失效"**（不修会静默劣化，不是本轮遗留缺陷）：
+- 字体子集是**按当前全站用字生成**的：改动文章正文或界面文案后，新出现的字会**静默掉回系统字体**。改完文案请重跑 `node build/make-song-subset.mjs`（或搬进 `scripts/` 后跑新路径）。判据：脚本末尾会打印 `glyphs / missing`。
+- `cn-pool.json` 是**未入库**的生成物，而 `curate-cn.mjs` 的 `PICKS` 按池内 id 手写。**若再重抓 pool，必须重跑 `pool-drift.mjs` 并逐条看标题**（§9.2 第 8 条：两者同时漂到同一片垃圾上也会「全等」）。
 
 ### 9.4 本轮实测数字
 
