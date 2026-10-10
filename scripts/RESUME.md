@@ -493,7 +493,7 @@ scripts/RESUME.md §9（**先读 §9，再读 §4 的 16 条历史坑**）。
 | --- | --- | --- | --- |
 | **1** | **补满图版余量** | ✅ **完成** | 7 桶全满、**239 = 239**、0 孤儿 0 缺口（`sutras 15/15`、`landscape 20/20`、`grottoes 46/46`）。⚠ 过程中发现 4 个新坑（§9.2 第 16–18、21 条）并修掉 `--only` 删桶的缺陷。**另经用户批准再做一轮题材精修**：`landscape` 换掉 4 个「合法但偏弱」的槽位（拍猕猴的 `landscape-012`、雾霾村庄 `landscape-018`、带高压电线的 `landscape-024`、航拍河滩 `landscape-050`）→ 依次换成 `landscape-010`（水墨山水+佛塔）/ `landscape-046`（传统屋顶群+雪山）/ `landscape-038`（云海雪峰）/ `landscape-034`（1874 年 albumen 照片：宋代沧浪亭嵌于汉江峭壁）。 |
 | **2** | **`gold-*` / `moon-*` 改名** | ✅ **完成** | `gold-*`→`brass-*`（黄铜）/ `moon-*`→`mist-*`（青雾灰蓝），**107 处 / 4 文件**。做法：把正则从「裸词边界」收窄为**令牌-数字边界** `\b(gold|moon)-(\d{2,3})\b`，于是散文词与语义标识（`.btn-gold`、`illustration:'moon'`、`.reader-theme-moon`）**天然不受影响**，不必依赖文件白名单。 |
-| **3** | **主包 `index.js` 继续拆分** | ⬜ 未做 | 现 **836 KB / gzip 277 KB**（`three` 与 `vendor` 已独立）。可试：把 294 篇的目录/元数据与 `verses.ts` 拆成独立 chunk、或对 `src/content/*.json` 用动态 import。**判据**：首屏请求的 chunk 总量下降，且路由切换不出现明显空白。 |
+| **3** | **主包 `index.js` 继续拆分** | ✅ **完成（第 9 轮）** | 路由级 `lazy()` + three.js 视口门控：主包 **836.68 → 286.96 KB**，首屏 JS **1824.5 → 615.6 KB**（`/articles` 605.1）。判据与实测见 §10.9。 |
 | **4** | **把 `build/` 里可复用脚本搬进 `scripts/`** | ✅ **完成（第 9 轮）** | **26 个可复用工具全部入库 `scripts/`**（扁平结构），`build/` 只留生成物；顺带修掉两个字体脚本用 cwd 相对路径调用兄弟脚本的真缺陷。判据见 §10.6。 |
 | **5** | **`verses.ts` 每日法语中英逐段复核** | ⬜ 未做 | 第 6 轮只动了一二级页面文案，未进 `verses.ts`。逐条核对中英对应（现在是意译，可能存在语义漂移或术语不一致）。 |
 
@@ -722,27 +722,30 @@ node scripts/pool-drift.mjs                            # 改过 PICKS 必跑（�
 
 | # | 项 | 状态 | 备注 |
 | --- | --- | --- | --- |
-| **4** | `build/` 可复用脚本搬进 `scripts/` | ✅ **完成** | 26 个工具入库 `scripts/`（扁平）；`build/` 只留生成物。做法与判据见 §10.6 |
-| **3** | 主包 `index.js` 继续拆分 | ⬜ 下一步 | 836.68 KB / gzip 276.67 KB；`three`(724 KB) 与 `vendor`(229 KB) 已独立，294 篇文章已各自成块 |
-| **5** | `verses.ts` 每日法语中英逐段复核 | ⬜ | 第 6 轮只动一二级页面文案 |
+| **4** | `build/` 可复用脚本搬进 `scripts/` | ✅ **完成** | 26 个工具入库 `scripts/`（扁平）；`build/` 只留生成物。做法与判据见 §10.6 · 4 个真缺陷见 §10.7 |
+| **3** | 主包 `index.js` 继续拆分 | ✅ **完成** | 路由级 `lazy()` + three.js 视口门控；**首屏 JS 从 1824 KB → 616 KB**（`/articles` 605 KB）。判据与实测见 §10.9 |
+| **5** | `verses.ts` 每日法语中英逐段复核 | ⬜ 未开工 | 第 6 轮只动一二级页面文案 |
 
 ### 10.4 第 9 轮实测数字
 
-> 第 4 项（脚本搬迁）**不改产品代码**，故体积/内容指标与 §9.4（第 8 轮）逐项一致；
-> 差异只有「新增受版本管理的 26 个工具脚本 + 2 个判据探针 + 本节文档」。
+> 第 3 项（拆分）与第 4 项（脚本搬迁）**都不改内容与设计**，故 `validate-en` / 图版 / 字体覆盖
+> 等指标与 §9.4（第 8 轮）逐项一致；体积指标见下表与 §10.9。
 
 | 指标 | 第 9 轮实测 | 与第 8 轮对比 |
 | --- | --- | --- |
-| 主包 `index.js` | 836.68 KB / gzip 276.67 KB | 同 |
-| `vendor.js` | 229.34 KB / gzip 73.41 KB | 同 |
-| `three.js` | 724.16 KB / gzip 184.42 KB | 同 |
-| CSS | 77.31 KB / gzip 14.63 KB | 同 |
+| 主包 `index.js` | **286.96 KB / gzip 92.96 KB**（原先 836.68 / 276.67） | **−66%** |
+| `vendor.js`（React + Router） | 229.34 KB / gzip 73.41 KB | 同 |
+| `three.js` | 724.16 KB / gzip 184.42 KB | 同（但**已不在首屏**，见 §10.9） |
+| CSS | 77.90 KB / gzip 14.81 KB | +0.6 KB（RouteFallback 的骨架类） |
+| **首屏 JS（实测，decoded）** | **`/` 615.6 KB**（原 1824.5）· `/articles` 605.1 KB · `/about` 645.2 KB | **−66% / −67% / −65%** |
+| 路由 chunk | Home 14.8 · Articles 4.8 · Dharma 10.6 · Lots 15.2 · PrayerWall 19.5 · About 10.4 · ArticleReader 18.8 · NotFound 0.8 KB | 新增 8 个 |
 | `validate-en` | ok=294 crit=0 warn=0 parts=0 | 同 |
 | `scan-mojibake` | 0 / 294 | 同 |
-| 图版清单与磁盘 | 239 = 239 = **239（含 PICKS）**、孤儿 0、缺口 0 | 新增 PICKS 维度 |
-| 字体子集 | 6964 / 6965 覆盖（缺 `U+FA2D`，可接受） | 新增判据 |
-| 入库脚本 | `scripts/` 新增 **27** 个（26 个从 `build/*.mjs` 搬迁 + 共享模块 `woff2-cmap.mjs`） | §10.6 |
-| 新增判据探针 | `scripts/check-buckets.mjs` · `scripts/check-font-coverage.mjs` · `scripts/dbg-regex.mjs` | — |
+| `style-audit` | 装饰符号 0 · 圆角与投影 0 · img 缺 alt 0 · svg 缺 aria-hidden 0 | 同 |
+| 图版清单与磁盘 | 239 = 239 = **239（含 PICKS）**、孤儿 0、缺口 0 | 同 |
+| 字体子集 | 6964 / 6965 覆盖（缺 `U+FA2D`，可接受）；**重建逐字节幂等** | §10.7 第 3 条 |
+| 入库脚本 | `scripts/` 新增 **29** 个（26 个搬迁 + `woff2-cmap.mjs` + `probe-route-cost.mjs` + `verify-3d-gate.mjs` + `shots-routes.mjs`） | §10.6/§10.9 |
+| 外部污染恢复 | `src/content` 39 个文件 + 6 个未跟踪文章 + 25 张孤儿 jpg 已恢复/隔离 | §10.8 |
 | 字体子集 | 6964 / 6965 覆盖；**重建逐字节幂等**（并入现有字形后 1,421,548 B 与 HEAD 相同） | §10.7 第 3 条 |
 | 外部污染恢复 | `src/content` 39 个文件 + 6 个未跟踪文章 + 25 张孤儿 jpg 已恢复/隔离；`ok=294 crit=0` | §10.8 |
 
@@ -851,6 +854,51 @@ const ART = (p) => path.join(ROOT, p)
   判据就会**假失败**（本节第 3 条那个 331 字的假警报就是这么来的）。现两个字体脚本都已自给自足。
 - 排版类判据要**方向明确**：`check-font-coverage` 之前只报「src 用字是否都被字体覆盖」，
   抓不到「字体里的字被删掉」这个反向退化；现已同时报 reserve。
+
+### 10.9 第 9 轮分包（§9.3 第 3 项）· 判据与实测
+
+**改动**（都只动加载时机，不动任何页面内容与设计）：
+
+| 面 | 改动 | 文件 |
+| --- | --- | --- |
+| **路由级 `lazy()`** | 7 个页面从静态 import 改成 `lazy(() => import(...))`，各自成块；每个 Route 外套 `Suspense` | `src/App.tsx` |
+| **骨架 fallback** | 新增 `RouteFallback`：与 `PageBanner` 同构的题头 + 4 张卡骨架（**不用 `null`**，否则切路由会出现空白帧） | `src/components/ui/RouteFallback.tsx`（新） |
+| **three.js 视口门控** | 新增 `Contained3D`：`IntersectionObserver`（`rootMargin: 400px`）滚到附近才挂载 3D；未挂载时显示**原有 DOM fallback**（`TempleBell` / `WishTree` / `LotCylinder` / `IncenseBurner`） | `src/components/zen3d/Contained3D.tsx`（新） |
+| **3D 组件懒加载** | `Incense3D` / `Bell3D` / `Tree3D` / `LotCylinder3D` 由 `lazy()` 引入；类型用 `import type { Props as XProps }` + `as ComponentType<XProps>`（`import type` 不产生运行时代码） | `Home.tsx` · `Dharma.tsx` · `PrayerWall.tsx` · `Lots.tsx` |
+| **卦辞数据延迟** | `LingQiBoard` 静态 import 了 **361 KB** 卦辞 JSON（`lingqi.json` 122 + `lingqi-en.json` 239）→ 改为点了「灵棋经」tab 才请求 | `Lots.tsx` |
+| 3D 组件导出 props 类型 | `Incense3D` / `LotCylinder3D` / `Tree3D` 的 `interface Props` 加 `export`；`Bell3D` 的内联 props 抽成 `Props` | 4 个 zen3d 文件 |
+
+**关键实测（`scripts/probe-route-cost.mjs`，每个路由用**一次性浏览器上下文**取真实首屏，单位 decoded）**：
+
+| 路由 | 第 8 轮首屏 | 第 9 轮首屏 | 变化 | 首屏是否还下 three.js |
+| --- | --- | --- | --- | --- |
+| `/` | 1824.5 KB | **615.6 KB** | **−66.3%** | ❌ 不再下（门控生效） |
+| `/articles` | 1824.5 KB | **605.1 KB** | **−66.8%** | ❌ |
+| `/about` | 1824.5 KB | **645.2 KB** | **−64.6%** | ❌ |
+| `/dharma` | 1824.5 KB | 1338.2 KB | −26.7% | ✅ 仍下（场景在首屏内，门控放行） |
+| `/prayer` | 1824.5 KB | 1354.1 KB | −25.8% | ✅ 同上 |
+| `/lots` | 1824.5 KB | 1369.4 KB | −24.9% | ✅ 同上 |
+
+- 主包 836.68 → **286.96 KB**；`three.js`(724 KB) 只在 `/dharma` `/prayer` `/lots` 首屏仍出现，
+  因为那三个页面的 3D 场景在 802px 视口里**本来就露在首屏内**（`/dharma` 的门在 y=571），
+  门控按设计放行。**要再降只能不用 WebGL 或把场景挪到折叠线以下**，属设计决策，本轮不做。
+- 三个 3D 路由的剩余成本几乎全是引擎本身（707 KB）：那是「有 3D」的固定价，非拆分漏网。
+
+**「不出现空白帧」怎么验的**：
+1. 每个 `Suspense` 的 fallback 都是**有尺寸的骨架**（`RouteFallback` / 3D 各自的 DOM fallback），没有 `null`；
+2. `node scripts/verify-3d-gate.mjs` —— 滚到底后**四个路由都真的挂上了 canvas**（`/lots` 2 个），
+   证明门控不是「永不显示 3D」的开关；
+3. `node scripts/shots-routes.mjs` —— 7 条路由各截一张全页图（滚过一遍再截），肉眼核对无空白块。
+
+**新增判据脚本（已入库）**：
+
+| 脚本 | 用途 |
+| --- | --- |
+| `probe-route-cost.mjs` | **首屏成本的真判据**：每路由一次性上下文 + Resource Timing，报 JS/CSS 字节与是否下了 three.js。⚠ 两个坑：① 同一会话里客户端路由跳转**共用 document**，`performance.getEntriesByType` 会累积上一次路由的记录（第一版就因此虚高）→ 必须每个路由用 `Target.createBrowserContext` 开新上下文；② CDP 的 `Network.responseReceived.encodedDataLength` 在 headless 里常为 0，用 `decodedBodySize` 更可靠（**故本表数字是 decoded，不是 gzip**）。 |
+| `verify-3d-gate.mjs` | 滚到底后核对 3D 是否真的挂载（见上） |
+| `shots-routes.mjs` | 7 条路由全页截图（滚过一遍以触发懒加载与门控） |
+
+
 
 
 
