@@ -402,6 +402,49 @@ git show --stat --oneline HEAD ; git status --porcelain  # 双向核对
 15. **改 `PICKS` 后必须核对池子**：`cn-pool.json` 是**未入库**的生成物，而 `PICKS` 按池内 id 手写。
     池子重抓后 id 会整体漂移，且**只比「picked 与 pool 是否一致」不够**——
     两者同时漂到同一片垃圾上时也会「全等」。必须逐条看标题（§9.2 第 8 条）。
+16. **〔第 8 轮新踩〕`pool` 里的标题本身也可能是错的**。原下标 9 的 `landscape-012`
+    池内标题「20180614 CHINA 1432.jpg」（无害），实际内容是**游客举手机拍树上的猕猴**
+    —— 与山水毫无关系。③ 也就是说 `pool-drift.mjs` **结构性抓不到这类错**：
+    它只比「picked 与 pool 的 title 是否全等」，池子自身选错时两者当然「全等」。
+    **判据必须包含「逐张看全尺寸图」**，不能只看标题（§9.2 第 9 条：也不要用缩略图拼图）。
+    本轮另见同桶 `landscape-013`（标题「Anhui Huangshan」实为湖南蓝调）——
+    署名表里的标题与画面**不保证对应关系**。
+17. **〔第 8 轮新踩，最隐蔽〕改 `PICKS` 是两步，不是一步**：
+    `fetch-cn-webp.mjs` 读的是 **`scripts/cn-picked.json`**（**已入库**），
+    而 `cn-picked.json` 由 `curate-cn.mjs` 从 `PICKS` + `cn-pool.json` 生成。
+    ```bash
+    node scripts/curate-cn.mjs          # ① PICKS → cn-picked.json（必须先跑！）
+    node scripts/fetch-cn-webp.mjs      # ② cn-picked.json → 磁盘 + 清单 + 署名
+    ```
+    本轮实测：只改 `PICKS` 就抓图，脚本**照旧按旧 id 下载**，
+    日志里还打印旧标题（`✓ landscape-09  20180614 CHINA 1432.jpg`），
+    于是「改了 PICKS 却毫无效果」——而且我连着犯了两次。
+    **换 id 必须换同一位置**：编号恒等于下标 + 1，删条目会让后面全部错位。
+18. **〔第 8 轮新踩〕`--only=<桶>` 会把它桶从清单里静默删掉**（已修）。
+    实测：清单已有 `landscape`(20) 与 `lotus`(7) 时跑 `--only=sutras`，
+    这两个键**整体从 `photos-cn.json` 消失**，磁盘上 7 张 lotus 立刻变成「孤儿文件」
+    （前端 `PHOTO_NAMES` 也少一桶）——**退出码 0、构建全绿、`photos-status` 仍返回 0**
+    （它只算「清单里在盘上还剩几张」，键没了自然不报空桶）。
+    位置：`fetch-cn-webp.mjs` 的 `persist()`（它由 `rows` 重建，而 `rows` 只含本次处理的桶）。
+    修法：`persist(manifest, rows, carry)`，`carry` = 上次清单里**本次 `--only` 未处理**的桶，原样写回。
+    **判据**：跑完 `--only` 后 `photos-status` 各桶张数不变，且
+    `disk == listed`、`orphan == 0`（本轮实测 239 = 239 / 0 / 0）。
+    ⚠ 只要清单曾经被删掉过某个键，**再跑 `--only` 也救不回来**（空数组推不出文件）；
+    必须跑一次**不带 `--only` 的全量**才能重建。
+19. **`photos-status` 退出码 0 ≠ 图版齐了**。退出码只看「有没有空桶 / 具名图是否损坏」；
+    `sutras 11/15`、`landscape 13/20` 这种**桶内缺口**它照样返回 0。
+    真正的判据是「清单条数 == 磁盘张数 == PICKS 条数」，且每桶编号连续
+    （`<bucket>-NN` 恰好等于下标 NN−1）。
+20. **令牌改名的判据要读「渲染后的 computed color」，不能只看构建**。
+    Tailwind v4 把 `@theme` 的值**内联进工具类**，产物 CSS 里**根本搜不到** `--color-brass-500`
+    （搜 `--site-*` 也搜不到）——只有 `.bg-brass-500{background-color:#ab8940}`。
+    所以「搜不到令牌名」不等于改名失败。判据：
+    - `build/probe-colors.mjs`：读 `getComputedStyle(:root)` 的 `--site-brass-500` 等实际值 +
+      `--site-gold-500` 应为 `(unset)`；
+    - `build/probe-lot-badges.mjs`：种入历史后**一次核对签位六档配色**
+      （`.bg-mist-200` 落在 `中下`，实测 `rgb(211,221,225)` == `#d3dde1`）。
+    梵钟「嗡」字**不能靠静态探针**：它只在 `ringing` 为真时渲染，而 3D 钟一渲染
+    DOM 版 fallback 就不挂载（本轮实测 `NO_BELL_BUTTON`），无 WebGL 的环境才能测到。
 
 ### 9.2b 备选图源调查结论（2026）
 
@@ -411,19 +454,18 @@ git show --stat --oneline HEAD ; git status --porcelain  # 双向核对
 | Met Open Access | `collectionapi.metmuseum.org` 的 `/objects`、`/objects/{id}` 可用，但 `/search` **已于 2026-10-01 退役**（改用 `/public/collection/v1.1/search`）；连续请求约 270 次后整段 API 返回 403（Cloudflare 拦截）。**图片 CDN `images.metmuseum.org` 没有限流**（实测直链 200、2.8MB）。若要用 Met，正确做法是**从别处取 objectID**（Met 在 GitHub 上发全量 CSV），再只用 CDN 取图。脚本骨架留在 `scripts/fetch-met-photos.mjs`（含 `--probe`）。 |
 | Art Institute of Chicago / 其它博物馆 | 未测（时间所限）。若 Commons 继续恶化，按同一思路：**列表/元数据用一个源，图片用其 CDN**。 |
 
-### 9.3 下一轮要做的五件（**已排定，直接开工**）
+### 9.3 第 8 轮进度（原定五项）
 
-> **2026 第 7 轮已完成** (a) 补桶 · (b) 换图 · (c) 内置汉字 web font · (d) 令牌改名 ·
-> (e) 瘦身 · (f) WebP（见 §9.4 / §9.4b/c/d）。
-> 以下是**第 8 轮的既定任务**，按建议顺序：
+> **第 8 轮已完成 ① 补满图版余量 · ② `gold`/`moon` 改名**（见 §9.4）。
+> **③④⑤ 尚未开工**，原样留到下一轮：
 
-| # | 项 | 规模 | 说明 |
+| # | 项 | 状态 | 说明 |
 | --- | --- | --- | --- |
-| **1** | **补满图版余量** | 小（约 11 张） | `sutras` 11/15、`landscape` 13/20 仍缺（第 7 轮 429 限流留空）。跑 `node scripts/fetch-cn-webp.mjs --only=sutras,landscape`（PACE_MS 默认 14000；一条命令可反复重跑，已下载的自动复用）。跑完 `node scripts/pick-named-photos.mjs` 并核对 `photos-status` 退出码 0。 |
-| **2** | **`gold-*` / `moon-*` 改名** | 小～中 | `gold-*`（`#ab8940`，实为**黄铜**，非鎏金）与 `moon-*`（青灰蓝）。⚠ 难点：直接全文统计会被**英文正文的散文词** "gold"/"moon" 污染（实测 `gold` 80 处里约 20 处在 `src/content/en/*.json`）。做法：**按文件白名单**（只改 `src/index.css` 的令牌定义/别名 + `src/components/**` + `src/pages/**` + `src/data/lots.ts` + `docs/**` + `preview/**`），跳过 `src/content/**`。复用 `build/rename-tokens.mjs`（改 `MAP` 表 + `EXCLUDE`）。改完逐张截图核对签位三档配色与梵钟「嗡」字。 |
-| **3** | **主包 `index.js` 继续拆分** | 中 | 现 **836 KB / gzip 277 KB**，内容是应用代码 + 路由元数据（`three` 与 `vendor` 已独立）。可试：把 294 篇的目录/元数据与 `verses.ts` 拆成独立 chunk、或对 `src/content/*.json` 用动态 import。**判据**：首屏请求的 chunk 总量下降，且路由切换不出现明显空白。 |
-| **4** | **把 `build/` 里可复用脚本搬进 `scripts/`** | 小 | `build/` 是 gitignore 的临时区，下一轮换机器/克隆就没了。建议搬迁并按 §9.5 的清单在 §9.5 表里登记：`make-song-subset.mjs`、`make-brush-subset.mjs`、`collect-cjk.mjs`、`collect-brush.mjs`、`pool-drift.mjs`、`verify-photo-ids.mjs`、`rename-tokens.mjs`、`shot-zh.mjs`、`shot-scrolled.mjs`、`dump-palette.mjs`。（`fix-canvas-fonts.mjs` 是一次性迁移脚本，可不搬。） |
-| **5** | **`verses.ts` 每日法语中英逐段复核** | 小 | 第 6 轮只动了一二级页面文案，未进 `verses.ts`。逐条核对中英对应（现在是意译，可能存在语义漂移或术语不一致）。 |
+| **1** | **补满图版余量** | ✅ **完成** | 7 桶全满、**239 = 239**、0 孤儿 0 缺口（`sutras 15/15`、`landscape 20/20`）。⚠ 过程中发现 3 个新坑（§9.2 第 16–18 条）并修掉 `--only` 删桶的缺陷。 |
+| **2** | **`gold-*` / `moon-*` 改名** | ✅ **完成** | `gold-*`→`brass-*`（黄铜）/ `moon-*`→`mist-*`（青雾灰蓝），**107 处 / 4 文件**。做法：把正则从「裸词边界」收窄为**令牌-数字边界** `\b(gold|moon)-(\d{2,3})\b`，于是散文词与语义标识（`.btn-gold`、`illustration:'moon'`、`.reader-theme-moon`）**天然不受影响**，不必依赖文件白名单。 |
+| **3** | **主包 `index.js` 继续拆分** | ⬜ 未做 | 现 **836 KB / gzip 277 KB**（`three` 与 `vendor` 已独立）。可试：把 294 篇的目录/元数据与 `verses.ts` 拆成独立 chunk、或对 `src/content/*.json` 用动态 import。**判据**：首屏请求的 chunk 总量下降，且路由切换不出现明显空白。 |
+| **4** | **把 `build/` 里可复用脚本搬进 `scripts/`** | ⬜ 未做 | 清单见 §9.5。本轮新增两个值得一起搬的探针：`probe-colors.mjs`、`probe-lot-badges.mjs`（见 §9.2 第 20 条）。 |
+| **5** | **`verses.ts` 每日法语中英逐段复核** | ⬜ 未做 | 第 6 轮只动了一二级页面文案，未进 `verses.ts`。逐条核对中英对应（现在是意译，可能存在语义漂移或术语不一致）。 |
 
 **仍需注意的两个"隐性失效"**（不修会静默劣化，不是本轮遗留缺陷）：
 - 字体子集是**按当前全站用字生成**的：改动文章正文或界面文案后，新出现的字会**静默掉回系统字体**。改完文案请重跑 `node build/make-song-subset.mjs`（或搬进 `scripts/` 后跑新路径）。判据：脚本末尾会打印 `glyphs / missing`。
@@ -431,28 +473,45 @@ git show --stat --oneline HEAD ; git status --porcelain  # 双向核对
 
 ### 9.4 本轮实测数字
 
-> **2026 第 7 轮（图版空桶 + WebP + 字体瘦身 + 分包）实测**，替换原先的数字。
+> **2026 第 8 轮（补满图版 + `brass`/`mist` 改名 + 修 `--only` 删桶缺陷）实测**。
+> 第 7 轮的数字见下方「第 7 轮存档」表。
+
+| 指标 | 第 8 轮实测 |
+| --- | --- |
+| `npx tsc --noEmit` | 通过（exit 0） |
+| `npx vite build` | 通过（exit 0，2.37s） |
+| 主包 `index.js` | **836.68 KB** / gzip 276.66 KB（未拆，见 §9.3 第 3 项） |
+| `vendor.js`（React + Router） | 229.34 KB / gzip 73.41 KB |
+| `three.js` | 724.16 KB / gzip 184.42 KB（按需） |
+| **CSS** | **77.31 KB** / gzip 14.63 KB（改名后净增 ~0.07 KB，纯属令牌名长度差异） |
+| `validate-en` | ok=294 crit=0 warn=0 parts=0 |
+| `scan-mojibake` | 0 / 294 |
+| `style-audit` | 装饰符号 0 · 圆角与投影 0 · img 缺 alt 0 · svg 缺 aria-hidden 0 |
+| **图版清单与磁盘** | **239 = 239 严格一致** · **孤儿 0** · **缺口 0**；7 桶编号全部连续；`photos-status` 退出码 **0**（`磁盘 239 张 / 61.5 MB`，`清单登记 239 条`） |
+| **图版桶（全满）** | paintings 41 · grottoes **46** · statues **89** · halls 21 · sutras **15** · landscape **20** · lotus 7 |
+| 图版本轮抓取 | 多轮 `fetch-cn-webp.mjs` 合计 **新下 13 · 复用 200+ · 失败 0**（429 失败经冷却重跑全部补齐） |
+| `pool-drift` | 7 桶 **title 全等 · 不一致 0**（landscape 换成 `landscape-010` 后仍全等） |
+| **色板令牌（第 8 轮）** | `brass-*`（黄铜 `#ab8940`）· `mist-*`（青雾灰蓝 `#7b96a1` 一族）—— 由 `gold-*`/`moon-*` 改名，**107 处 / 4 文件**（`src/index.css` 102 · `src/data/lots.ts` 3 · `src/components/zen/TempleBell.tsx` 1 · `docs/VISUAL-SPEC-v3.md` 1） |
+| 令牌渲染判据 | `--site-brass-500` = `#ab8940`、`--site-mist-200` = `#d3dde1`、`--site-mist-700` = `#54707c`、`--site-gold-*` = `(unset)`；产物里 `.bg-brass-500`/`.bg-mist-200`/`.text-brass-400`/`.text-mist-700` 均已生成，旧名 0 命中 |
+| 截图核对 | 首页导览卡 8 张图 `naturalWidth` 全非 0；`/lots` 签位六档徽章配色正确（`中下` = `rgb(211,221,225)`） |
+| 中英词典 | zh/en 键完全对齐（`tsc` 保证） |
+
+#### 第 7 轮存档（图版空桶 + WebP + 字体瘦身 + 分包）
 
 | 指标 | 值 |
 | --- | --- |
-| `npx tsc --noEmit` | 通过（exit 0） |
-| `npx vite build` | 通过（exit 0） |
 | 主包 `index.js` | **835 KB** / gzip 276 KB |
 | `vendor.js`（React + Router） | 229 KB / gzip 73 KB（单独缓存） |
 | `three.js` | 724 KB / gzip 184 KB（按需） |
 | **CSS** | **77.2 KB / gzip 14.5 KB** —— 原先 875 KB，降 **91%** |
-| **字体分片** | 瘦身后 **14 个 / 0.55 MB**（原先 940 个 / 41.5 MB，降 **98.7%**）；**再加上本轮新增的汉字宋体子集 1.39 MB**，全部字体合计 **约 1.94 MB / 15 个文件** |
+| **字体分片** | 瘦身后 **14 个 / 0.55 MB**（原先 940 个 / 41.5 MB，降 **98.7%**）；**再加上汉字宋体子集 1.39 MB**，全部字体合计 **约 1.94 MB / 15 个文件** |
 | `@font-face` 条数 | **4**（原先 772） |
-| `validate-en` | ok=294 crit=0 warn=0 parts=0（英文正文未改动） |
-| `scan-mojibake` | 0 / 294 |
-| `style-audit` | 装饰符号 0 · 圆角与投影 0 · img 缺 alt 0 · svg 缺 aria-hidden 0 |
-| 图版清单与磁盘 | **227 = 227 严格一致**（编号 == 清单下标 + 1，见 §9.2 新管线）；`photos-status` 退出码 **0** |
-| `public/` 图版体积 | 133 张 JPEG 49.1 MB → 同 133 张 WebP **40.5 MB**（−17.5%，q80）；现共 227 张 WebP **58.2 MB** |
-| 图版桶 | paintings 41 · grottoes 45 · statues **89** · halls **21** · sutras **11** · landscape **13** · lotus 7（**7 桶全部非空**） |
-| 图版抓取实测 | 一轮 `fetch-cn-webp.mjs`：**新下 94 · 复用 40 · 失败 11**（11 张全因 429 限流，续跑可补齐；留空不影响清单一致性） |
+| 图版清单与磁盘 | **227 = 227**（编号 == 清单下标 + 1） |
+| `public/` 图版体积 | 133 张 JPEG 49.1 MB → 同 133 张 WebP **40.5 MB**（−17.5%，q80） |
+| 图版桶（第 7 轮末） | sutras **11/15** · landscape **13/20**（第 8 轮已补齐，**退出码 0 掩盖了这个缺口**，见 §9.2 第 19 条） |
+| 图版抓取实测 | 一轮：**新下 94 · 复用 40 · 失败 11**（11 张全因 429 限流） |
 | **汉字正文 webfont** | 内置 Noto Serif SC **项目子集 1.39 MB / 1 个文件**（详见 §9.4c） |
-| **色板令牌** | `celadon-*`（青瓷灰绿，130 处）· `cinnabar-*`（朱砂印章红，159 处）—— 由 `sandalwood-*`/`tibetan-*` 改名（§9.4d） |
-| 中英词典 | zh/en 键完全对齐（`tsc` 保证） |
+| **色板令牌（第 7 轮）** | `celadon-*`（130 处）· `cinnabar-*`（159 处）—— 由 `sandalwood-*`/`tibetan-*` 改名（§9.4d） |
 
 **CSS 为什么能降 91%**：那 875 KB 里 **91.3% 是 `@font-face` 规则**（772 条），来自三个
 webfont 依赖；真正的站点样式只有约 76 KB。移除未用字体后 CSS 自然回到 77 KB。
@@ -487,20 +546,32 @@ webfont 依赖；真正的站点样式只有约 76 KB。移除未用字体后 CS
 
 ### 9.4d 色板令牌改名
 
-| 旧名 | 新名 | 实际颜色 | 处数 |
-| --- | --- | --- | --- |
-| `sandalwood-*` | **`celadon-*`** | 青瓷灰绿（`#789085`，G>R） | 130 |
-| `tibetan-*` | **`cinnabar-*`** | 朱砂印章红（`#b8382e`） | 159 |
+| 旧名 | 新名 | 实际颜色 | 处数 | 轮次 |
+| --- | --- | --- | --- | --- |
+| `sandalwood-*` | **`celadon-*`** | 青瓷灰绿（`#789085`，G>R） | 130 | 第 7 轮 |
+| `tibetan-*` | **`cinnabar-*`** | 朱砂印章红（`#b8382e`） | 159 | 第 7 轮 |
+| `gold-*` | **`brass-*`** | 黄铜（`#ab8940`，**非鎏金**） | 44+ | 第 8 轮 |
+| `moon-*` | **`mist-*`** | 青雾灰蓝（`#7b96a1` 一族） | 44+ | 第 8 轮 |
 
-共 **314 处 / 30 个文件**（含 `docs/` 与 `preview/`）。
+第 7 轮共 **314 处 / 30 个文件**（含 `docs/` 与 `preview/`）；第 8 轮共 **107 处 / 4 个文件**。
 
-**排除项（重要，踩过）**：`src/content/**`（英文正文里的 "gold"/"moon" 是散文词）与
+**第 7 轮的排除项（重要，踩过）**：`src/content/**`（英文正文里的 "gold"/"moon" 是散文词）与
 `scripts/curate-cn.mjs`、`scripts/fetch-met-photos.mjs` —— 后两者里的 `/tibetan/i` 是
 **图片排雷正则**，按令牌名一刀切改会破坏图版筛选。
-脚本：`build/rename-tokens.mjs`（dry-run + 残留自检）。
 
-`gold-*`（实为黄铜 `#ab8940`）与 `moon-*`（青灰蓝）本轮**未改名**：代码用量集中在
-签位分档与梵钟「嗡」字，价值低于前两者；且统计会被正文散文词污染，需单独处理。
+**第 8 轮把正则本身收窄，问题从根上消失**：`build/rename-tokens.mjs` 原来用**裸词边界**
+`\b(gold|moon)\b`（所以第 7 轮只能靠 `EXCLUDE` 文件白名单兜着），
+现改为**令牌-数字边界** `\b(gold|moon)-(\d{2,3})\b`：
+
+- 散文词 `gold`/`moon`（`src/content/**` 里成百上千处）**不匹配**，无需白名单；
+- `.btn-gold`（**类名**，实为焦墨按钮）、`illustration: 'moon'`（插画变体）、
+  `.reader-theme-moon`（阅读主题，用自己的 `--reader-*`）**都不匹配**，天然保留；
+- 仍显式排除 `src/curate-cn.mjs`、`fetch-met-photos.mjs`（题材排雷正则）与
+  `scan-mojibake.mjs`（CP1252 映射表含 ASCII 样本词）。
+
+改完自检：`--dry` 预览处数 → 关键文件无旧名 → 排除区无「旧名-数字」命中。
+**判据不能只看构建**（Tailwind v4 把令牌值内联进工具类，产物里搜不到 `--color-*`），
+要读渲染后的 computed color，见 §9.2 第 20 条。
 
 ### 9.4b 图版新管线（取代旧的 fetch-cn-picked + rebuild）
 
@@ -508,16 +579,28 @@ webfont 依赖；真正的站点样式只有约 76 KB。移除未用字体后 CS
 就整体错位，只能靠 `rebuild-photo-manifest.mjs` 猜。新脚本改为 **编号 == 清单下标 + 1**，
 下载失败的条目直接留空（不进清单、不进署名），于是「清单 = 磁盘 = 署名」三者天然一致。
 
+**⚠ 完整链路是四步，缺一步就会「改了没效果」（§9.2 第 17 条）**：
+
 ```bash
+# ① 改 PICKS（scripts/curate-cn.mjs）后，必须先生成 cn-picked.json
+node scripts/curate-cn.mjs                           # PICKS + cn-pool.json → cn-picked.json（已入库）
+# ② 再抓图：读的是 cn-picked.json，不是 PICKS
 node scripts/fetch-cn-webp.mjs                       # 抓所有桶（WebP q80，长边 1600）
-node scripts/fetch-cn-webp.mjs --only=halls,sutras   # 只抓指定桶（其余桶沿用磁盘现状）
+node scripts/fetch-cn-webp.mjs --only=halls,sutras   # 只抓指定桶（其余桶沿用**上次清单**）
 node scripts/fetch-cn-webp.mjs --migrate             # 把已有 .jpg 就地转 .webp（不联网）
-node scripts/photos-status.mjs                       # 体检；退出码 2 = 仍有空桶
+# ③ 体检
+node scripts/photos-status.mjs                       # 退出码 2 = 仍有空桶；0 **不代表桶内齐了**（§9.2 第 19 条）
+node build/pool-drift.mjs                            # 改过 PICKS 必跑（但抓不到「池子自身选错」）
 ```
 
 - 已下载的自动复用、不会重复下载（编号恒定，不再需要 `_raw`）。
 - 节流：`PACE_MS` 默认 14000；Commons 约 6–8 张/分钟就 429，任一条最多退避 1 次。
+  **429 会连片发生**：整段 CDN 被限流时，连 HEAD 探测都返回 429；
+  实测**冷却 30–60s 后重跑即可**（`landscape-14` 连续失败 3 次，冷却后一次成功）。
 - **不要并行跑多个抓取进程**（见 §9.2 第 4 条）。
+- 换某一个槽位的图：改 `PICKS` 同位置的 id → 跑 `curate-cn.mjs` → **删掉该槽位的 `.webp`**
+  （不删的话脚本会「复用」旧文件，等于没换）→ 再 `fetch-cn-webp.mjs`。
+  ⚠ 顺序不能颠倒：先在旧脚本进程启动后改 `PICKS`，那一次跑仍按旧 `cn-picked.json` 下载。
 
 ### 9.5 归档
 
@@ -527,15 +610,37 @@ node scripts/photos-status.mjs                       # 体检；退出码 2 = �
 第 7 轮（图版空桶 / WebP / 字体瘦身 / 分包）：
 `61777fc`（图版管线 + WebP）→ `fbe0968`（字体瘦身 + 分包）→ 本轮 docs 提交。
 
-**`build/` 里本轮新增的可复用脚本**（`build/` 是 gitignore 的临时工作区，故未入库；
-若要长期保留请搬进 `scripts/`）：
+第 8 轮（补满图版 / `brass`+`mist` 改名 / 修 `--only` 删桶缺陷）：
+见下方 §9.5 提交清单。
+
+**`build/` 里可复用脚本**（`build/` 是 gitignore 的临时工作区，故未入库；
+若要长期保留请搬进 `scripts/` —— 这是 §9.3 第 4 项）：
 
 | 脚本 | 用途 |
 | --- | --- |
 | `make-brush-subset.mjs` | 重建书法体项目子集（依赖 `python -m pip install fonttools brotli`） |
+| `make-song-subset.mjs` | 重建正文宋体子集（**改文案/正文后必须重跑**，否则新字掉回系统字体） |
 | `collect-brush.mjs` | 收集书法体实际用字 → `build/brush-chars.txt` |
-| `collect-cjk.mjs` | 收集全站汉字（供将来做正文宋体子集，本轮未用） |
-| `pool-drift.mjs` | **改 `PICKS` 后必跑**：核对 picked 与 pool 同 id 的 title 是否全等 |
+| `collect-cjk.mjs` | 收集全站汉字（供正文宋体子集用） |
+| `pool-drift.mjs` | **改 `PICKS` 后必跑**：核对 picked 与 pool 同 id 的 title 是否全等（抓不到「池子自身选错」） |
 | `verify-photo-ids.mjs` | 重新下载+转码一张，与磁盘成品逐字节比，验证「picks→文件」映射 |
+| `rename-tokens.mjs` | 色板令牌改名（`--dry` 预览 + 残留/排除区自检） |
+| `shot-scrolled.mjs` | 先 `scrollIntoView` 再截图，并打印每张图的 `naturalWidth`（懒加载验证） |
+| `shot-zh.mjs` | 中文分支截图 |
+| `dump-palette.mjs` | 打印各主题的实际色值（令牌改名的真值来源） |
+| **`probe-colors.mjs`** | **第 8 轮新增**：读 `:root` 上 `--site-*` 的实际值 + 校验旧令牌为 `(unset)` |
+| **`probe-lot-badges.mjs`** | **第 8 轮新增**：种入历史，一次核对签位六档徽章的 computed color |
+| `probe-lots.mjs` | 抽一支签并读徽章色（随机档位，不如上面那个全面） |
+| `lot-levels.mjs` | 列出每档一支签的 id（供 `probe-lot-badges.mjs` 种历史） |
 | `fix-canvas-fonts.mjs` | 批量改 zen3d 里硬编码的 canvas 字体名（一次性迁移脚本） |
+| `probe-bell.mjs` | 撞钟读「嗡」字色 —— ⚠ **实测无效**：3D 钟一渲染，DOM 版 fallback 不挂载 |
+
+### 9.5 提交清单
+
+| 提交 | 内容 |
+| --- | --- |
+| （第 8 轮）图版提交 | 补满 7 桶（sutras 15/15 · landscape 20/20 · grottoes 46/46）· 修 `landscape-012` 题材错误（→ `landscape-010` 水墨山水+佛塔）· 修 `--only` 删桶缺陷 · 回填清单/署名 |
+| （第 8 轮）改名提交 | `gold-*`→`brass-*`、`moon-*`→`mist-*`（107 处 / 4 文件）+ 正则收窄为令牌-数字边界 + docs |
+| （第 8 轮）docs 提交 | 本文件 §9.2 第 16–20 条 · §9.3 进度 · §9.4 实测数字 · §9.4b 四步链路 · §9.4d |
+
 
