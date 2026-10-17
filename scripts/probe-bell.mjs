@@ -1,12 +1,18 @@
 /**
- * 撞钟 → 读「嗡」字的 computed color + 截图。
- * 为什么不能用静态探针：【嗡】只有 ringing 为真时才渲染，必须真的点一下钟。
- * 判据：改令牌名（gold→brass）后若有一处没跟上，该字会静默变成继承色（近黑），
- *      而构建与 tsc 全绿 —— 只有渲染后的颜色能证明。
+ * 撞钟 → 读「按钮 / 画布」状态 + 截图（v3：3D 梵钟）。
  *
- * 用法：node scripts/probe-bell.mjs [out.png]
+ * v2 的判据是读 DOM 里「嗡」字的 computed color；v3 把「嗡」改成 3D Sprite，
+ * 这个断言已失效。现在改为验证可观测的产品状态：
+ *   - 点击后按钮进入 ringing（文案变化 + disabled）；
+ *   - 页面上出现「钟声回荡中…」提示；
+ *   - canvas 仍在（说明 3D 场景已挂载）。
+ * 仍然必须真的点一下，因为 ringing 只在交互后出现。
+ *
+ * 用法：node scripts/probe-bell.mjs [out.png] [url]
+ * 前提：站点已跑起来（默认 http://127.0.0.1:5192/dharma）。
  */
 import fs from 'node:fs'
+import os from 'node:os'
 import path from 'node:path'
 import { spawn } from 'node:child_process'
 
@@ -21,15 +27,15 @@ const CHROME = [
   'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe',
   'C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe',
 ].find((p) => fs.existsSync(p))
-const profile = path.resolve(ART('build/chrome-bell'))
-fs.rmSync(profile, { recursive: true, force: true })
+const profile = fs.mkdtempSync(path.join(os.tmpdir(), 'hdc-bell-'))
 fs.mkdirSync(path.dirname(OUT), { recursive: true })
 
 const chrome = spawn(
   CHROME,
   [
     '--headless=new',
-    '--disable-gpu',
+    '--use-gl=swiftshader',
+    '--enable-unsafe-swiftshader',
     '--hide-scrollbars',
     '--force-device-scale-factor=1',
     '--no-first-run',
@@ -118,14 +124,16 @@ const { result: probe } = await send(
   'Runtime.evaluate',
   {
     expression: `(() => {
-      const el = [...document.querySelectorAll('span')].find(e => (e.textContent||'').trim() === '嗡')
-      if (!el) return JSON.stringify({ om: null, note: '嗡 未出现（ringing 未触发或已结束）' })
-      const cs = getComputedStyle(el)
-      const root = getComputedStyle(document.documentElement)
+      const btns = [...document.querySelectorAll('button')]
+      const b = btns.find(x => (x.getAttribute('aria-label')||'').includes('钟'))
+        || btns.find(x => (x.getAttribute('title')||'').includes('钟'))
+      const hint = [...document.querySelectorAll('span')]
+        .map(e => (e.textContent || '').trim())
+        .find(t => t.includes('回荡') || t.includes('钟声'))
       return JSON.stringify({
-        om: { text: el.textContent.trim(), color: cs.color, opacity: cs.opacity, fontSize: cs.fontSize, className: el.className },
-        tokenBrass400: root.getPropertyValue('--site-brass-400').trim(),
-        tokenGold400: root.getPropertyValue('--site-gold-400').trim() || '(unset)',
+        canvases: document.querySelectorAll('canvas').length,
+        button: b ? { label: b.textContent.trim(), disabled: b.disabled } : null,
+        ringingHint: hint || null,
       }, null, 1)
     })()`,
     returnByValue: true,

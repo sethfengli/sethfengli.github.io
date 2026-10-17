@@ -1098,6 +1098,107 @@ const ART = (p) => path.join(ROOT, p)
 （`action needed 0`）。**字体子集无需重跑**：本改动只动组件与 i18n，全站汉字集合不变
 （新增中文串「开启 3D / 正在加载 3D…」的字均已在子集内，实测覆盖数不变）。
 
+## 12. 第 11 轮（3D 重制 + 每日法语扩容）
+
+> **范围**：按用户要求 —— ① 去掉三页「开启 3D」按钮，改为首屏直接播放；
+> ② 重做 `/dharma` 梵钟；③ 重做 `/prayer` 许愿树；④ 每日法语增补（长期可重复任务）。
+
+### 12.1 做了什么
+
+| 项 | 落点 | 要点 |
+| --- | --- | --- |
+| 去掉按需开启 | `Contained3D.tsx`、`Dharma/PrayerWall/Lots` | 删 `requireOptIn` / `optInLabel` 与 `common.enable3d`；只留视口门控；三页首屏重新下载 three.js（707 KB），用户明确选「视觉优先」 |
+| 梵钟 v3 | `zen3d/Bell3D.tsx` | 双壳钟身 + 外撇钟唇；莲座龙钮（挂在等比空间，避免 1.3 纵向拉伸变形）；两排乳钉、双面阴刻铭文、细金弦线；木架 + 匾额；删除悬空撞木（实测像「炮管」），击钟改为钟体摆荡 + 地面涟漪 |
+| 许愿树 v3 | `zen3d/Tree3D.tsx` | 树干 / 枝改用 Frenet 帧变径管；树冠改层叠针叶圆盘（`alphaTest`）；红绸缩短加金环；无心愿时 8 条常备祈福绸（不可点）；树脚碎石 + 草 + 香炉；底色改淡墨地台 |
+| 每日法语 | `data/verses.ts` | 31 → **77 条**；新增般若系经典、禅门宗匠、本站祖师文章、近现代法师四组；全部补齐英文与出处 |
+| 新工具 | `scripts/verse-candidates.mjs` / `verse-audit.mjs` / `shot-3d.mjs` | 语料挖候选 / 机械体检 / 3D 截图（SwiftShader） |
+
+### 12.2 本轮新增的坑（全部实测）
+
+1. **vite dev 会被「编辑临时目录」搞崩**：改 `src/components/zen3d/stage.ts` 时，编辑器的
+   `.stage.ts.<pid>.tmpdir` 被 fs.watch 撞上 `EBUSY`，整个 dev server 退出。已在
+   `vite.config.ts` 的 `server.watch.ignored` 里排掉 `**/build/**`、`**/*.tmpdir/**`、`**/.stage.*`。
+2. **Chrome 临时 profile 不能放仓库的 `build/`**：dev server 会 watch 到
+   `Default/Network/Cookies` → 锁文件 → 同一 `EBUSY`。`shot-3d.mjs` 改用 `os.tmpdir()`。
+3. **CDP `Page.captureScreenshot` 的 `clip` 是文档坐标**（不是视口坐标）：
+   不加 `scrollY` 会拍到页头。`shot-3d.mjs` 已加 `sx/sy`。
+4. **PowerShell here-string 写补丁脚本时，中文会变 `?`**：`Out-File -Encoding ascii`
+   把注释里的汉字替换成问号，写进 TSX 后是合法注释、构建全绿，但源码被污染。
+   补丁脚本只放 ASCII；含中文的改动一律用 `edit` 工具或 Node `writeFileSync(...,'utf8')`（§4.3 的同类问题）。
+5. **字体覆盖扫描包含注释**：`check-font-coverage.mjs` 扫 `src/**` 的**所有字符**，包括注释。
+   给 3D 组件写「蘑菇 / 铝桶」这类注释会凭空多出 3 个未覆盖字，被误判成「需要重跑子集」。
+   已在注释里换成子集内已有的字；覆盖回到 6962/6963（1 个可接受回退）。
+6. **`PCFSoftShadowMap` 在 three r185 已弃用**（控制台警告），改用 `PCFShadowMap`。
+
+### 12.3 每日法语：长期可重复任务（下一轮继续）
+
+**现状**：`src/data/verses.ts` 77 条，出处 39 个；首页按「日 + 小时」轮换（`verseOfTheMoment`）。
+
+**流程（每轮 20–40 条，做完即提交）**：
+
+```bash
+# 1) 从 294 篇正文里挖候选（按出现次数 / 短句排序）
+node scripts/verse-candidates.mjs --top=200 --json=build/verse-candidates.json
+
+# 2) 逐条读上下文，挑「独立成句、不是定义/设问/残缺句」的；补中英出处
+#    本站文章里的句子，出处写文章标题/作者（如「湛然《觉知禅》」），
+#    不要臆造佛经名；网上的流行语先核实原始出处，查不到就写「禅门古德」或不用。
+
+# 3) 机械体检（重复 / 缺英文 / 英文夹汉字 / 过长）
+node scripts/verse-audit.mjs
+```
+
+**判据**：
+- 正文 3–44 字；`source`、`en.text`、`en.source` 齐全；
+- 英文为「雅信达」重写，不逐字直译；英文里不得夹汉字；
+- 去标点后不得重复；
+- 出处集中度可接受（《金刚经》《六祖坛经》各 8 条属正常，但别让单一出处超过 10 条）。
+
+**下一批候选**（已读过、可用，未入库）：
+- 「见山是山，见水是水；见山不是山，见水不是水；见山还是山，见水还是水。」（青原惟信，42 字，需决定是否拆条）
+- 「一花一世界，一叶一如来。」（出处存疑，**不要**标《华严经》）
+- 「随缘消旧业，更不造新殃。」（出处待核）
+- 憨山《费闲歌》其余联句、彻悟大师《念佛论》语录（`402nianfolun`）
+
+### 12.4 3D 改动的最小核对流程
+
+```bash
+# 开发服务器（截图用；profile 已改到 os.tmpdir()）
+node node_modules/vite/bin/vite.js --port 5193 --strictPort --host 127.0.0.1
+
+# 梵钟：默认视角 + 拖拽换角度（--page 另拍整屏）
+node scripts/shot-3d.mjs --route=/dharma --out=build/shots/bell --drag=100,0 --page
+
+# 许愿树：有心愿 / 无心愿两态都要看（后者会挂 8 条常备祈福绸）
+node scripts/shot-3d.mjs --route=/prayer --out=build/shots/tree --wishes=8 --drag=100,0
+node scripts/shot-3d.mjs --route=/prayer --out=build/shots/tree-empty --page
+
+# 撞钟动画：点一下钟再截图（复用已有探针）
+node scripts/probe-bell.mjs build/shots/bell-ring.png
+```
+
+判据：截图里**没有**悬空零件、穿模、被裁切的主体；钟唇 / 绸带 / 香炉在默认视角内；
+控制台无 three 相关报错。`verify-3d-optin.mjs` / `shots-optin.mjs` 已随按钮一起删除；
+点击交互改用 `shot-3d.mjs --click` 看「钟声回荡中…」+ 地面涟漪。
+
+### 12.5 本轮实测
+
+| 项 | 结果 |
+| --- | --- |
+| `npx tsc --noEmit` | 通过 |
+| `npx vite build` | 通过（2.57s） |
+| `verify-3d-gate` | `/` 1 · `/dharma` 1 · `/prayer` 1 · `/lots` 2，全部挂载 |
+| `probe-route-cost` | `/` 624.8 KB · `/articles` 605.2 · `/about` 645.4 · **`/dharma` 1341.9 · `/prayer` 1358.2 · `/lots` 1371.3** |
+| `style-audit` | 装饰符 0 · 圆角/投影 0 · 旧令牌 0 · svg 缺 aria 0 · img 缺 alt 0 |
+| `check-font-coverage` | 6962 / 6963（1 accepted fallback，action needed 0） |
+| `validate-en` / `scan-mojibake` | ok=294 crit=0 warn=0 / 0 乱码 |
+| `verse-audit` | 77 条 · 39 个出处 · 全绿（1 条英文偏长，属原有长偈） |
+| 肉眼截图 | `build/shots/final-dharma2.png`（击钟）、`final-tree2.png`（有心愿）、`tree-final-empty.png`（空树 8 条常备绸） |
+
+体积：主包 `index` 286.96 KB（gzip 92.97）· `three` 724.16 KB（gzip 184.42）·
+`Bell3D` 13.58 KB · `Tree3D` 13.58 KB · `stage` 8.10 KB。三页首屏回到 ~1.34–1.37 MB，
+这是移除「开启 3D」按钮的直接代价（第 10 轮曾降到 615–653 KB），**按用户要求取舍**。
+
 
 
 

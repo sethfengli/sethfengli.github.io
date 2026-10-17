@@ -20,6 +20,8 @@ export interface StageOpts {
   phi?: number
   minPhi?: number
   maxPhi?: number
+  /** 观察目标的高度偏移（场景整体重心不在 y=0 时用，避免主体偏出画面） */
+  targetY?: number
   /** 空闲自动旋转速度（rad/s） */
   autoRotate?: number
   /** 场景背景色（雾色，默认透明）——设了才加雾 */
@@ -28,6 +30,10 @@ export interface StageOpts {
   fogDensity?: number
   /** 主光强度 */
   lightIntensity?: number
+  /** 主光方位（默认右上前方；钟 / 树各自换一边，形体才不被正面光拍平） */
+  lightPosition?: [number, number, number]
+  /** 半球环境光强度（调低可增强明暗对比） */
+  hemiIntensity?: number
 }
 
 export interface Stage {
@@ -49,6 +55,8 @@ export interface Stage {
     color?: number
     follow?: () => THREE.Vector3
   }) => THREE.Mesh
+  /** 宣纸上的淡墨地台：径向渐隐，没有硬边（取代以前那圈「灰盘子」） */
+  addInkGround: (opts?: { radius?: number; y?: number; opacity?: number; color?: number }) => THREE.Mesh
   dispose: () => void
 }
 
@@ -82,9 +90,34 @@ export function createStage(
 
   // 柔和阴影贴图（默认开启，组件通过 castShadow 使用；场景小、代价低）
   renderer.shadowMap.enabled = true
-  renderer.shadowMap.type = THREE.PCFSoftShadowMap
+  renderer.shadowMap.type = THREE.PCFShadowMap
 
   const scene = new THREE.Scene()
+  // 极简环境贴图：上暖下冷的竖直渐变。金属材质（青铜/黄铜）没有环境反射时
+  // 会呈现「一片死黄」，加一层低成本 equirect 渐变就能出现柔和的明暗过渡。
+  // （不引入 three/examples 的 RoomEnvironment —— 那会把 examples 拖进 chunk）
+  const envCanvas = document.createElement('canvas')
+  envCanvas.width = 256
+  envCanvas.height = 128
+  const envCtx = envCanvas.getContext('2d')!
+  const envGrad = envCtx.createLinearGradient(0, 0, 0, 128)
+  envGrad.addColorStop(0, '#fbf6e9')
+  envGrad.addColorStop(0.45, '#e9eee9')
+  envGrad.addColorStop(0.75, '#b9c8c0')
+  envGrad.addColorStop(1, '#6f8478')
+  envCtx.fillStyle = envGrad
+  envCtx.fillRect(0, 0, 256, 128)
+  // 左上暖光斑：让金属高光有方向感
+  const envSpot = envCtx.createRadialGradient(64, 30, 2, 64, 30, 60)
+  envSpot.addColorStop(0, 'rgba(255,248,225,0.95)')
+  envSpot.addColorStop(1, 'rgba(255,248,225,0)')
+  envCtx.fillStyle = envSpot
+  envCtx.fillRect(0, 0, 256, 128)
+  const envTex = new THREE.CanvasTexture(envCanvas)
+  envTex.mapping = THREE.EquirectangularReflectionMapping
+  envTex.colorSpace = THREE.SRGBColorSpace
+  scene.environment = envTex
+  scene.environmentIntensity = 0.65
   if (opts.fogColor != null) {
     scene.fog = new THREE.FogExp2(opts.fogColor, opts.fogDensity ?? 0.008)
   }
@@ -93,9 +126,9 @@ export function createStage(
   const ndc = new THREE.Vector2()
 
   // 灯光：半球环境 + 全场景太阳（投影）+ 暖色补光
-  scene.add(new THREE.HemisphereLight(0xf3f9fb, 0x2d4a3e, 1.15))
+  scene.add(new THREE.HemisphereLight(0xf3f9fb, 0x2d4a3e, opts.hemiIntensity ?? 1.15))
   const sun = new THREE.DirectionalLight(0xfff3dd, opts.lightIntensity ?? 2.0)
-  sun.position.set(6, 10, 7)
+  sun.position.set(...(opts.lightPosition ?? [6, 10, 7]))
   sun.castShadow = true
   sun.shadow.mapSize.set(1024, 1024)
   sun.shadow.camera.near = 1
@@ -107,11 +140,16 @@ export function createStage(
   sun.shadow.bias = -0.0015
   sun.shadow.normalBias = 0.02
   scene.add(sun)
-  const warm = new THREE.PointLight(0xffd9a0, 26, 40, 1.8)
+  const warm = new THREE.PointLight(0xffd9a0, 16, 40, 1.8)
   warm.position.set(-4, 3, 4)
   scene.add(warm)
+  // 冷色轮廓光：从背左打来，把主体边缘从浅色纸面上「剥」出来
+  const rim = new THREE.DirectionalLight(0xc9dcd6, 0.55)
+  rim.position.set(-7, 6, -9)
+  scene.add(rim)
 
   // 轨道状态（带阻尼）
+  const targetY = opts.targetY ?? 0
   const cur = {
     theta: opts.theta ?? 0.45,
     phi: opts.phi ?? 1.12,
@@ -270,7 +308,8 @@ export function createStage(
 
     const sp = new THREE.Spherical(cur.radius, cur.phi, cur.theta)
     camera.position.setFromSpherical(sp)
-    camera.lookAt(0, 0, 0)
+    camera.position.y += targetY
+    camera.lookAt(0, targetY, 0)
 
     for (const cb of frameCbs) cb(dt, elapsed)
     renderer.render(scene, camera)
@@ -295,6 +334,38 @@ export function createStage(
     const tex = new THREE.CanvasTexture(cv)
     return tex
   })()
+
+  /** 宣纸淡墨地台纹理（径向渐隐 + 少许墨点飞白） */
+  let inkTex: THREE.CanvasTexture | null = null
+  const getInkTex = () => {
+    if (inkTex) return inkTex
+    const cv = document.createElement('canvas')
+    cv.width = 512
+    cv.height = 512
+    const ctx = cv.getContext('2d')!
+    ctx.clearRect(0, 0, 512, 512)
+    const g = ctx.createRadialGradient(256, 256, 24, 256, 256, 252)
+    g.addColorStop(0, 'rgba(52,68,60,0.3)')
+    g.addColorStop(0.5, 'rgba(52,68,60,0.16)')
+    g.addColorStop(0.82, 'rgba(52,68,60,0.05)')
+    g.addColorStop(1, 'rgba(52,68,60,0)')
+    ctx.fillStyle = g
+    ctx.beginPath()
+    ctx.arc(256, 256, 252, 0, Math.PI * 2)
+    ctx.fill()
+    // 边缘飞白：几十枚极淡的墨点，打散「完美圆形」的机械感
+    for (let i = 0; i < 90; i++) {
+      const a = Math.random() * Math.PI * 2
+      const r = 150 + Math.random() * 100
+      const rr = 2 + Math.random() * 14
+      ctx.fillStyle = `rgba(52,68,60,${0.01 + Math.random() * 0.03})`
+      ctx.beginPath()
+      ctx.ellipse(256 + Math.cos(a) * r, 256 + Math.sin(a) * r, rr, rr * 0.55, a, 0, Math.PI * 2)
+      ctx.fill()
+    }
+    inkTex = new THREE.CanvasTexture(cv)
+    return inkTex
+  }
 
   return {
     scene,
@@ -330,6 +401,21 @@ export function createStage(
       }
       return mesh
     },
+    addInkGround({ radius = 12, y = -4.4, opacity = 1, color = 0xffffff } = {}) {
+      const mat = new THREE.MeshBasicMaterial({
+        map: getInkTex(),
+        transparent: true,
+        opacity,
+        color,
+        depthWrite: false,
+      })
+      const mesh = new THREE.Mesh(new THREE.PlaneGeometry(radius * 2, radius * 2), mat)
+      mesh.rotation.x = -Math.PI / 2
+      mesh.position.y = y
+      mesh.renderOrder = 0
+      scene.add(mesh)
+      return mesh
+    },
     dispose() {
       renderer.setAnimationLoop(null)
       visObserver.disconnect()
@@ -342,6 +428,8 @@ export function createStage(
       canvas.removeEventListener('pointerleave', onPointerLeave)
       canvas.removeEventListener('wheel', onWheel)
       shadowTex.dispose()
+      inkTex?.dispose()
+      envTex.dispose()
       renderer.dispose()
     },
   }
@@ -388,8 +476,8 @@ export function makeRibbonTexture(
   cv.width = w
   cv.height = h
   const ctx = cv.getContext('2d')!
-  const grads = ['#d95a48', '#e67a6a', '#c24538']
-  const dark = ['#a13a30', '#c24538', '#8f2e28']
+  const grads = ['#c2543c', '#cf6a52', '#ab4330']
+  const dark = ['#8e2e22', '#a13728', '#7d241b']
   const g = ctx.createLinearGradient(0, 0, w, 0)
   g.addColorStop(0, dark[shade % 3])
   g.addColorStop(0.5, grads[shade % 3])
@@ -408,12 +496,12 @@ export function makeRibbonTexture(
   ctx.lineWidth = 5
   ctx.strokeRect(3, 3, w - 6, h - 50)
   // 竖排文字
-  const n = Math.min(text.length, 12)
-  ctx.font = '40px "MaShanZhengSubset","KaiTi","KaiTi",cursive'
+  const n = Math.min(text.length, 10)
+  ctx.font = '50px "MaShanZhengSubset","KaiTi","KaiTi",cursive'
   ctx.fillStyle = '#fdf3e7'
   ctx.textAlign = 'center'
   ctx.textBaseline = 'middle'
-  const lineH = 46
+  const lineH = 52
   const startY = 90 + Math.max(0, (400 - n * lineH) / 2)
   for (let i = 0; i < n; i++) ctx.fillText(text[i], w / 2, startY + i * lineH)
   const tex = new THREEmod.CanvasTexture(cv)

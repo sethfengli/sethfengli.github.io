@@ -44,4 +44,13 @@ export default defineConfig({
       },
     },
   },
+  server: {
+    // 编辑器/代理写文件时会先落一个临时目录再 rename。Vite 的 fs.watch 撞上
+    // 这些「已被删除但句柄未释放」的临时文件会抛 EBUSY 并**整个开发服务器退出**
+    // （实测：改 src/components/zen3d/stage.ts 时崩在 .stage.ts.<pid>.tmpdir）。
+    // build/ 里放的是截图与临时 Chrome profile，同样不需要 watch。
+    watch: {
+      ignored: ['**/build/**', '**/preview-dist/**', '**/*.tmpdir/**', '**/.stage.*'],
+    },
+  },
 })

@@ -209,8 +209,6 @@ export function Lots() {
                 <div className="card flex h-full flex-col items-center justify-center gap-5 p-8">
                   <Contained3D
                     minHeight={360}
-                    requireOptIn
-                    optInLabel={t('common.enable3d')}
                     placeholder={<LotCylinder shaking={phase === 'shaking'} revealed={phase === 'revealed'} />}
                   >
                     <LotCylinder3D
@@ -238,8 +236,6 @@ export function Lots() {
               <div className="mx-auto max-w-sm">
                 <Contained3D
                   minHeight={260}
-                  requireOptIn
-                  optInLabel={t('common.enable3d')}
                   placeholder={<IncenseBurner bare />}
                 >
                   <Incense3D variant="cone" scale={0.9} distance={16} maxDistance={16} heightClass="h-[260px]" fallback={<IncenseBurner bare />} />
