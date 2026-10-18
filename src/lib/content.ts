@@ -69,15 +69,16 @@ const CN_PHOTOS = cnPhotosJson as PhotoManifest
 
 /** 具名映射（`scripts/pick-named-photos.mjs` 写入的 `named` 字段） */
 const NAMED_KEY_FALLBACK = {
-  hero: 'grottoes',
-  gate: 'halls',
+  hero: 'halls',
+  gate: 'statues',
   guanyin: 'statues',
   bell: 'halls',
-  lantern: 'paintings',
+  lantern: 'lotus',
   garden: 'grottoes',
   blossom: 'paintings',
   lotus: 'lotus',
   sutra: 'paintings',
+  diamond: 'sutras',
 } as const
 
 const NAMED_MAP = (CN_PHOTOS.named ?? {}) as Record<string, string | undefined>
@@ -203,22 +204,21 @@ export function photoForSlug(slug: string): string {
  * 取值来自各自语义最贴切的那个桶（详见上方各页调用处）。
  */
 export const NAMED_PHOTOS = {
-  /** 首页 Hero：云冈石窟横构浮雕（飞天与佛龛）。 */
-  hero: () => named('hero', 'grottoes'),
+  /** 首页 Hero：佛殿金身三尊（暖光、正面、不压抑；取代原先阴暗的云冈浮雕局部） */
+  hero: () => named('hero', 'halls'),
   /**
    * 山门 / 殿宇（文库题头）
    * ⚠ 这里的第二个参数是**校验桶**：`named()` 会要求 `named.gate` 指的文件确实在
-   *   该桶里，否则静默退回「该桶第一张」。导览卡改用自然光石窟造像后，
-   *   校验桶必须一起改成 grottoes —— 否则 grottoes-16 在 halls 桶里找不到，
-   *   就会悄悄退回 halls-01（一块反光说明牌），改了 `named` 却看不出效果。
+   *   该桶里，否则静默退回「该桶第一张」。换图时校验桶必须一起改 —— 否则改完
+   *   `named` 也看不出效果（会悄悄退回桶内第一张）。
    */
-  gate: () => named('gate', 'grottoes'),
-  /** 观音造像（灵签题头与造像位） */
+  gate: () => named('gate', 'statues'),
+  /** 观音造像（灵签题头与造像位）：鎏金千手观音近景，头部完整 */
   guanyin: () => named('guanyin', 'statues'),
-  /** 梵钟 / 殿宇（听经题头）——同上，校验桶用 grottoes */
-  bell: () => named('bell', 'grottoes'),
-  /** 供灯意象（祈福题头） */
-  lantern: () => named('lantern', 'paintings'),
+  /** 梵钟 / 殿宇（听经题头）：暮色中的寺院，正好是「晨钟暮鼓」 */
+  bell: () => named('bell', 'halls'),
+  /** 供灯意象（祈福题头）：莲灯——以莲为灯，最合「点亮心愿」 */
+  lantern: () => named('lantern', 'lotus'),
   /** 山水（关于页题头） */
   garden: () => named('garden', 'grottoes'),
   /** 绢本经变（关于页拼贴） */
@@ -227,6 +227,8 @@ export const NAMED_PHOTOS = {
   lotus: () => named('lotus', 'lotus'),
   /** 写经（关于页拼贴） */
   sutra: () => named('sutra', 'paintings'),
+  /** 首页主推《金刚经》配图：带朱印的《金刚经》写本（内容与图对得上） */
+  diamond: () => named('diamond', 'sutras'),
 }
 
 /**

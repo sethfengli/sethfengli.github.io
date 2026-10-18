@@ -190,6 +190,7 @@ export function PrayerWall() {
       {/* 页头（图文并置，无漂浮灯火装饰） */}
       <PageBanner
         image={NAMED_PHOTOS.lantern()}
+        position="50% 45%"
         kicker={t('prayer.kicker')}
         title={t('prayer.title')}
         subtitle={t('prayer.subtitle')}

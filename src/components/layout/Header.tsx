@@ -43,14 +43,14 @@ export function Header() {
         scrolled ? 'border-hairline' : 'border-transparent'
       }`}
     >
-      <div className="container-page grid h-16 grid-cols-[auto_1fr_auto] items-center gap-4 lg:gap-6">
+      <div className="container-page grid h-16 grid-cols-[auto_1fr_auto] items-center gap-2 sm:gap-4 lg:gap-6">
         <Link to="/" viewTransition className="group flex min-w-0 items-center gap-2.5" aria-label={t('appName')}>
-          <PhotoLogo className="h-8 w-8 transition-opacity duration-300 group-hover:opacity-80" />
+          <PhotoLogo className="h-8 w-8 shrink-0 transition-opacity duration-300 group-hover:opacity-80" />
           <span className="flex min-w-0 flex-col leading-none">
             <span className="font-serif text-base font-normal tracking-[0.12em] whitespace-nowrap text-ink-900 sm:text-lg sm:tracking-[0.2em]">
               {t('appName')}
             </span>
-            <span className="mt-1 font-sans text-[9px] tracking-[0.28em] text-ink-300 uppercase">
+            <span className="mt-1 hidden font-sans text-[9px] tracking-[0.28em] whitespace-nowrap text-ink-300 uppercase sm:block">
               {lang === 'zh' ? 'Huideng Zen Temple' : '慧灯禅院'}
             </span>
           </span>
@@ -76,12 +76,12 @@ export function Header() {
           ))}
         </nav>
 
-        <div className="flex items-center gap-2">
+        <div className="flex shrink-0 items-center gap-1.5 sm:gap-2">
           <ThemeSwitcher />
           <button
             type="button"
             onClick={toggleLang}
-            className="cursor-pointer rounded-xs border border-hairline px-2.5 py-1.5 font-sans text-xs text-ink-500 transition-colors duration-200 hover:border-celadon-500 hover:text-ink-900"
+            className="cursor-pointer rounded-xs border border-hairline px-2 py-1.5 font-sans text-xs whitespace-nowrap text-ink-500 transition-colors duration-200 hover:border-celadon-500 hover:text-ink-900 sm:px-2.5"
             title={t('langSwitchTitle')}
           >
             {t('langLabel')}

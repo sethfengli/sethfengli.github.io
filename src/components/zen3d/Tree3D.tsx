@@ -22,7 +22,9 @@ import { useI18n } from '../../i18n'
  *     贴图是 900 根细针叶（1px 级）不是粗线；用 alphaTest 裁边，
  *     远看是「墨绿云片」，近看有针叶；
  *   - 红绸挂点重新落在新枝头，绸面加宽加长；无心愿时也保留树形本身；
- *   - 地面改为淡墨地台 + 苔点 + 碎石，香炉缩小移到树下。
+ *   - 树脚由「水平切面 + 围一圈碎石」改为**坡脚 + 根盘**：高度场土坡
+ *     （向相机一侧压低、坡背抬高）、4 条粗板根 + 1 条越过坡沿的长根、
+ *     苔点 / 草叶 / 半埋石；树干起点埋到坡面以下，不再出现平切圆面。
  *
  * 交互不变：拖拽旋转 / 滚轮缩放，点红绸看心愿、点香炉供香。
  * WebGL 不可用时回退 2D 水墨松柏。
@@ -119,6 +121,24 @@ function taperedTube(
   g.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3))
   g.setAttribute('uv', new THREE.Float32BufferAttribute(uv, 2))
   g.setIndex(idx)
+  g.computeVertexNormals()
+  return g
+}
+
+/**
+ * 树根几何：保持圆管截面，只横向加宽 5%。
+ * 不压扁 y —— 压扁会把陡峭的根颈压成「刀刃」，反而更像木板。
+ */
+function rootGeometry(
+  THREE: typeof import('three'),
+  curve: THREE.CatmullRomCurve3,
+  radiusAt: (t: number) => number,
+  tubular = 32,
+  radial = 10,
+  ridge = 0.09,
+): THREE.BufferGeometry {
+  const g = taperedTube(THREE, curve, radiusAt, tubular, radial, ridge)
+  g.scale(1.05, 1, 1.05)
   g.computeVertexNormals()
   return g
 }
@@ -284,6 +304,193 @@ function makeFallingNeedles(THREE: typeof import('three')): THREE.CanvasTexture 
   return tex
 }
 
+/* ------------------------------------------------------------------
+   树脚 · 坡脚 / 根盘
+   ------------------------------------------------------------------
+   上一版树干是从一个水平切面「插」在淡墨地台上的：切面平、树脚围一圈
+   碎石，读起来像木盆。这里把「地面」做成一圈真正有起伏的低矮土坡：
+
+   - 高度场 moundHeightAt()：中心隆起、向外 1.65 次幂衰减，外缘精确回到
+     地台 y；再叠加一圈很轻的角向起伏，使坡脚不对称、不机械。
+   - 树心处压出一个浅盆（basin），树干从盆里长出，不会浮在坡面上。
+   - 坡面用 alphaMap 径向淡出，边缘融进淡墨地台，任何主题下都不出现
+     「一块绿圆盘」的硬边。
+   - 根盘 = 4 条从树干高处斜下、贴着坡面走的**粗板根** + 1 条越过坡沿的**长根**，
+     全部用 taperedTube 生成，根部粗、末端细，末端钻进土里（y 低于坡面）。
+   ------------------------------------------------------------------ */
+const GROUND_Y = -4.5
+const MOUND_R = 3.0
+const MOUND_H = 0.75
+
+/** 坡面高度：中心高、外缘回到地台；树心处再压出一个浅盆 */
+function moundHeightAt(x: number, z: number): number {
+  const r = Math.hypot(x, z)
+  if (r >= MOUND_R) return GROUND_Y
+  const t = Math.atan2(z, x)
+  const k = 1 - r / MOUND_R
+  // 相机在右前方（theta≈0.42）：把坡面向相机一侧放低，坡背抬高。
+  // 这样从默认视角看过去，根盘是「露在坡上」的，而不是被土包埋住。
+  const front = Math.max(0, Math.cos(t - 0.42))
+  const swell = 1 - 0.55 * front * (1 - k)
+  const ripple = 1 + 0.05 * Math.sin(t * 5 + 1.2) * k
+  const basin = -0.04 * Math.exp(-Math.pow(r / 0.75, 2))
+  // 坡背再鼓一小片，让等高线不是同心圆
+  const lobe = 0.16 * Math.exp(-Math.pow((x + 1.4) / 1.1, 2) - Math.pow((z + 0.8) / 1.2, 2))
+  return GROUND_Y + MOUND_H * Math.pow(k, 1.55) * swell * ripple + basin + lobe
+}
+
+/** 坡面网格：中心 + 20 圈 × 112 段；外圈高度精确落回地台，避免接缝 */
+function makeMoundGeometry(THREE: typeof import('three')): THREE.BufferGeometry {
+  const RINGS = 20
+  const SEGS = 112
+  const pos: number[] = [0, moundHeightAt(0, 0), 0]
+  const uv: number[] = [0.5, 0.5]
+  const col: number[] = []
+  const c = new THREE.Color()
+
+  const pushColor = (x: number, z: number) => {
+    const y = moundHeightAt(x, z)
+    const r = Math.hypot(x, z)
+    const top = Math.min(1, Math.max(0, (y - GROUND_Y) / MOUND_H))
+    // 坡顶亮、坡脚暗；树心再压一道接触阴影，树干才「坐」得实
+    let shade = 0.86 + 0.14 * Math.pow(top, 0.5)
+    shade *= 0.7 + 0.3 * Math.min(1, r / 1.1)
+    const warm = 1 + 0.04 * Math.sin(x * 1.7 + z * 2.3)
+    c.setRGB(Math.min(1, shade * warm), shade, shade * 0.96)
+    col.push(c.r, c.g, c.b)
+  }
+  pushColor(0, 0)
+
+  for (let ring = 1; ring <= RINGS; ring++) {
+    const edge = ring / RINGS
+    const radius = MOUND_R * edge
+    for (let j = 0; j < SEGS; j++) {
+      const t = (j / SEGS) * Math.PI * 2
+      // 角向轻微不圆：外圈衰减到 0，边缘仍是干净的地台
+      const wob = 1 + (0.035 * Math.sin(t * 5 + 0.7) + 0.018 * Math.sin(t * 9 - 0.4)) * (1 - edge)
+      const x = Math.cos(t) * radius * wob
+      const z = Math.sin(t) * radius * wob
+      const y = edge === 1 ? GROUND_Y - 0.004 : moundHeightAt(x, z)
+      pos.push(x, y, z)
+      uv.push(x / (2 * MOUND_R) + 0.5, z / (2 * MOUND_R) + 0.5)
+      pushColor(x, z)
+    }
+  }
+
+  const idx: number[] = []
+  // 中心扇面（朝上）
+  for (let j = 0; j < SEGS; j++) {
+    const a = 1 + j
+    const b = 1 + ((j + 1) % SEGS)
+    idx.push(0, b, a)
+  }
+  // 环与环之间
+  for (let ring = 1; ring < RINGS; ring++) {
+    const start = 1 + (ring - 1) * SEGS
+    const next = start + SEGS
+    for (let j = 0; j < SEGS; j++) {
+      const a = start + j
+      const b = start + ((j + 1) % SEGS)
+      const cc = next + j
+      const d = next + ((j + 1) % SEGS)
+      idx.push(a, b, cc, b, d, cc)
+    }
+  }
+
+  const g = new THREE.BufferGeometry()
+  g.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3))
+  g.setAttribute('uv', new THREE.Float32BufferAttribute(uv, 2))
+  g.setAttribute('color', new THREE.Float32BufferAttribute(col, 3))
+  g.setIndex(idx)
+  g.computeVertexNormals()
+  return g
+}
+
+/** 坡面颜色：树心是裸土，往外转苔绿，坡沿再淡下去；一张径向贴图解决「一坨土」 */
+function makeMoundTexture(THREE: typeof import('three')): THREE.CanvasTexture {
+  const cv = document.createElement('canvas')
+  cv.width = 512
+  cv.height = 512
+  const ctx = cv.getContext('2d')!
+  const g = ctx.createRadialGradient(256, 256, 10, 256, 256, 256)
+  g.addColorStop(0, '#6b5a45')
+  g.addColorStop(0.3, '#7a8467')
+  g.addColorStop(0.56, '#8a9578')
+  g.addColorStop(0.82, '#9aa68a')
+  g.addColorStop(1, '#aab59d')
+  ctx.fillStyle = g
+  ctx.fillRect(0, 0, 512, 512)
+
+  // 苔痕 / 土斑：越靠外越偏绿，越靠内越偏褐
+  const tones = ['#5a4a35', '#84926f', '#63785a', '#98a58a', '#6b5a45']
+  for (let i = 0; i < 110; i++) {
+    const a = Math.random() * Math.PI * 2
+    const rr = Math.pow(Math.random(), 0.6) * 240
+    const x = 256 + Math.cos(a) * rr
+    const y = 256 + Math.sin(a) * rr
+    const rad = 12 + Math.random() * 58
+    const tone = tones[Math.floor(Math.random() * tones.length)]
+    const tg = ctx.createRadialGradient(x, y, 1, x, y, rad)
+    tg.addColorStop(0, `${tone}aa`)
+    tg.addColorStop(1, `${tone}00`)
+    ctx.fillStyle = tg
+    ctx.fillRect(x - rad, y - rad, rad * 2, rad * 2)
+  }
+  for (let i = 0; i < 900; i++) {
+    const x = 12 + Math.random() * 488
+    const y = 12 + Math.random() * 488
+    const s = 0.7 + Math.random() * 1.8
+    ctx.fillStyle = Math.random() > 0.5 ? 'rgba(38,52,38,0.3)' : 'rgba(120,134,108,0.28)'
+    ctx.beginPath()
+    ctx.arc(x, y, s, 0, Math.PI * 2)
+    ctx.fill()
+  }
+  const tex = new THREE.CanvasTexture(cv)
+  tex.colorSpace = THREE.SRGBColorSpace
+  tex.wrapS = THREE.ClampToEdgeWrapping
+  tex.wrapT = THREE.ClampToEdgeWrapping
+  tex.anisotropy = 4
+  return tex
+}
+
+/** 坡面 alpha：中心不透明，外缘慢慢淡出；再用几十个黑斑咬出不规则边 */
+function makeMoundAlpha(THREE: typeof import('three')): THREE.CanvasTexture {
+  const cv = document.createElement('canvas')
+  cv.width = 256
+  cv.height = 256
+  const ctx = cv.getContext('2d')!
+  ctx.fillStyle = '#000'
+  ctx.fillRect(0, 0, 256, 256)
+  const g = ctx.createRadialGradient(128, 128, 32, 128, 128, 128)
+  g.addColorStop(0, '#fff')
+  g.addColorStop(0.46, '#fff')
+  g.addColorStop(0.74, '#c8c8c8')
+  g.addColorStop(0.92, '#4a4a4a')
+  g.addColorStop(1, '#000')
+  ctx.fillStyle = g
+  ctx.beginPath()
+  ctx.arc(128, 128, 128, 0, Math.PI * 2)
+  ctx.fill()
+  for (let i = 0; i < 90; i++) {
+    const a = Math.random() * Math.PI * 2
+    const r = 92 + Math.random() * 44
+    const x = 128 + Math.cos(a) * r
+    const y = 128 + Math.sin(a) * r
+    const rr = 6 + Math.random() * 20
+    const bg = ctx.createRadialGradient(x, y, 0, x, y, rr)
+    bg.addColorStop(0, 'rgba(0,0,0,0.8)')
+    bg.addColorStop(1, 'rgba(0,0,0,0)')
+    ctx.fillStyle = bg
+    ctx.beginPath()
+    ctx.arc(x, y, rr, 0, Math.PI * 2)
+    ctx.fill()
+  }
+  const tex = new THREE.CanvasTexture(cv)
+  tex.wrapS = THREE.ClampToEdgeWrapping
+  tex.wrapT = THREE.ClampToEdgeWrapping
+  return tex
+}
+
 export function Tree3D({ wishes, onRibbonClick, fallback }: Props) {
   const { t } = useI18n()
   const canvasRef = useRef<HTMLCanvasElement>(null)
@@ -302,11 +509,11 @@ export function Tree3D({ wishes, onRibbonClick, fallback }: Props) {
       if (disposed || !canvas.isConnected) return
       try {
         stage = createStage(THREE, canvas, {
-          distance: 23,
+          distance: 22.5,
           autoRotate: 0,
           theta: 0.42,
-          phi: 1.16,
-          targetY: 0.35,
+          phi: 1.29,
+          targetY: 0.25,
           minPhi: 0.62,
           maxPhi: 1.5,
           minDistance: 5,
@@ -321,32 +528,75 @@ export function Tree3D({ wishes, onRibbonClick, fallback }: Props) {
       }
       const S = stage.scene
 
-      /* ---------- 地面：淡墨地台 + 软阴影 + 苔点 / 碎石 ---------- */
-      stage.addInkGround({ radius: 14, y: -4.5, opacity: 1 })
-      stage.addCatchShadow({ radius: 5.4, y: -4.48, opacity: 0.42 })
-      stage.addCatchShadow({ radius: 2.4, y: -4.49, opacity: 0.5 })
-      const mossMat = new THREE.MeshStandardMaterial({ color: 0x6f8b7e, roughness: 0.95 })
-      for (let i = 0; i < 30; i++) {
+      // 树脚补一盏低处暖光：不让根盘永远陷在树冠与树干的影子里
+      const baseFill = new THREE.PointLight(0xffd9a8, 7, 10, 2)
+      baseFill.position.set(2.4, -2.9, 3.6)
+      S.add(baseFill)
+
+      /* ---------- 地面：淡墨地台 + 坡脚（土坡与地台同高收边） ---------- */
+      stage.addInkGround({ radius: 14, y: GROUND_Y, opacity: 1 })
+
+      const mound = new THREE.Mesh(makeMoundGeometry(THREE), new THREE.MeshStandardMaterial({
+        map: makeMoundTexture(THREE),
+        alphaMap: makeMoundAlpha(THREE),
+        transparent: true,
+        depthWrite: true,
+        roughness: 1,
+        metalness: 0,
+        vertexColors: true,
+      }))
+      mound.receiveShadow = true
+      S.add(mound)
+
+      // 坡面苔点：按坡面高度落位，不再平铺在 y=-4.47 的平面上
+      const mossMats = [0x5a7a5e, 0x6b8a6a, 0x4c6a50].map(
+        (color) => new THREE.MeshStandardMaterial({ color, roughness: 0.98 }),
+      )
+      for (let i = 0; i < 34; i++) {
         const a = Math.random() * Math.PI * 2
-        const r = 3.2 + Math.random() * 7
-        const f = new THREE.Mesh(new THREE.SphereGeometry(0.04 + Math.random() * 0.045, 8, 6), mossMat)
-        f.position.set(Math.cos(a) * r, -4.47, Math.sin(a) * r)
-        f.scale.y = 0.5
-        S.add(f)
+        const r = 0.55 + Math.random() * 2.2
+        const x = Math.cos(a) * r
+        const z = Math.sin(a) * r
+        const s = 0.04 + Math.random() * 0.075
+        const moss = new THREE.Mesh(new THREE.SphereGeometry(s, 8, 6), mossMats[i % mossMats.length])
+        moss.position.set(x, moundHeightAt(x, z) + s * 0.2, z)
+        moss.scale.set(1, 0.38, 1)
+        S.add(moss)
       }
-      // 碎石三块：给树根一点「山石」的依托
-      const rockMat = new THREE.MeshStandardMaterial({ color: 0x7d8a82, roughness: 1 })
-      for (const [x, z, s] of [
-        [2.6, 1.9, 0.7],
-        [-2.9, -1.4, 0.55],
-        [1.2, -2.8, 0.42],
-      ]) {
-        const rock = new THREE.Mesh(new THREE.DodecahedronGeometry(s, 0), rockMat)
-        rock.position.set(x, -4.42 + s * 0.35, z)
-        rock.scale.set(1, 0.62, 1)
+
+      // 半埋的坡脚石：只留四五块，颜色压暗，主要用来「咬住」坡脚
+      const stoneMat = new THREE.MeshStandardMaterial({ color: 0x66705f, roughness: 1 })
+      const stones: Array<[number, number, number, number]> = [
+        [1.95, 0.75, 0.62, 0.3],
+        [-1.9, -0.95, 0.56, 0.22],
+        [0.85, -1.95, 0.46, 0.42],
+        [-2.25, 1.2, 0.36, 0.5],
+        [2.55, -0.55, 0.24, 0.35],
+        [-2.55, -0.1, 0.22, 0.3],
+      ]
+      for (const [x, z, s, expose] of stones) {
+        const rock = new THREE.Mesh(new THREE.IcosahedronGeometry(s, 1), stoneMat)
+        rock.position.set(x, moundHeightAt(x, z) + s * (0.02 + 0.28 * expose), z)
+        rock.scale.set(1.15, 0.58, 0.95)
         rock.rotation.set(Math.random(), Math.random(), Math.random())
         rock.castShadow = true
+        rock.receiveShadow = true
         S.add(rock)
+      }
+
+      // 坡脚草：几撮细叶，柔化土坡与地台的交界
+      const grassMat = new THREE.MeshStandardMaterial({ color: 0x6f8a61, roughness: 0.95 })
+      for (let i = 0; i < 70; i++) {
+        const a = Math.random() * Math.PI * 2
+        const r = 1.1 + Math.random() * 1.85
+        const x = Math.cos(a) * r
+        const z = Math.sin(a) * r
+        const h = 0.2 + Math.random() * 0.32
+        const blade = new THREE.Mesh(new THREE.ConeGeometry(0.035, h, 4), grassMat)
+        blade.position.set(x, moundHeightAt(x, z) + h / 2 - 0.01, z)
+        blade.rotation.z = (Math.random() - 0.5) * 0.5
+        blade.rotation.x = (Math.random() - 0.5) * 0.4
+        S.add(blade)
       }
 
       /* ---------- 材质 ---------- */
@@ -359,6 +609,10 @@ export function Tree3D({ wishes, onRibbonClick, fallback }: Props) {
         roughness: 0.95,
         color: 0xffffff,
       })
+      // 露出的板根比主干浅一度：既从阴影里「剥」得出来，也像被风雨洗白的木质
+      const rootBark = bark.clone()
+      rootBark.color.setHex(0x8f6f4f)
+      rootBark.roughness = 0.92
       const needleTex = makePineNeedles(THREE)
       const foliage = [
         new THREE.MeshStandardMaterial({
@@ -384,10 +638,10 @@ export function Tree3D({ wishes, onRibbonClick, fallback }: Props) {
         }),
       ]
 
-      /* ---------- 树干：一条 S 形曲线 + 变径管（含根部鼓包） ---------- */
+      /* ---------- 树干：一条 S 形曲线 + 变径管（起点埋在坡面以下） ---------- */
       const trunkCurve = new THREE.CatmullRomCurve3([
-        [0, -4.5, 0],
-        [0, -4.05, 0],
+        [0, -4.8, 0],
+        [0, -4.3, 0],
         [0.12, -3.5, 0.1],
         [0.18, -2.9, 0.28],
         [-0.15, -2.5, -0.2],
@@ -402,55 +656,102 @@ export function Tree3D({ wishes, onRibbonClick, fallback }: Props) {
       // 根基外扩直接写进半径函数：不另做锥筒，
       // 免得与树干之间出现一道「一圈篮沿」的接缝。
       const trunkRadius = (t: number) => {
-        // 根部粗、胸径略鼓、梢部急收；根部再做一次平滑外扩（不用外接锥筒）
+        // 根部粗、胸径略鼓、梢部急收；板根另做，这里只留一点根部外扩
         const base = 1.08 * Math.pow(1 - t, 1.3) + 0.22
         const swell = Math.exp(-Math.pow((t - 0.18) / 0.14, 2)) * 0.12
-        const rootFlare = t < 0.2 ? 0.38 * Math.pow(1 - t / 0.2, 1.2) : 0
+        const rootFlare = t < 0.2 ? 0.3 * Math.pow(1 - t / 0.2, 1.2) : 0
         return base + swell + rootFlare
       }
       const trunk = new THREE.Mesh(taperedTube(THREE, trunkCurve, trunkRadius, 40, 16, 0.05), bark)
       trunk.castShadow = true
       trunk.receiveShadow = true
       S.add(trunk)
-      // 树干入土处补一枚水平盖板：曲线起点两点的切线垂直，
-      // 管口恰是水平圆环，盖板与环口同径同高，不会像「一圈盘子」探出来。
-      const baseCap = new THREE.Mesh(new THREE.CircleGeometry(trunkRadius(0), 40), bark)
-      baseCap.rotation.x = -Math.PI / 2
-      baseCap.position.y = -4.498
-      S.add(baseCap)
-      // 树脚再压一层暗影：盖板是水平切面，不压暗会读成「木盆口」。
-      stage.addCatchShadow({ radius: 1.9, y: -4.494, opacity: 0.85 })
 
-      // 树脚碎石：把平切的树根围起来，避免「插在木盆里」的读感
-      const baseRockMat = new THREE.MeshStandardMaterial({ color: 0x7f8c84, roughness: 1 })
-      for (const [x, z, s] of [
-        [1.9, 0.6, 0.62],
-        [-1.8, 0.9, 0.52],
-        [0.5, -1.9, 0.46],
-        [-1.1, -1.6, 0.34],
-        [2.1, -1.1, 0.3],
-        [-2.2, -0.6, 0.28],
-      ]) {
-        const rock = new THREE.Mesh(new THREE.DodecahedronGeometry(s, 0), baseRockMat)
-        rock.position.set(x, -4.46 + s * 0.34, z)
-        rock.scale.set(1.15, 0.6, 0.95)
-        rock.rotation.set(Math.random(), Math.random(), Math.random())
-        rock.castShadow = true
-        rock.receiveShadow = true
-        S.add(rock)
+      // 板根在树干上的「脊」：从胸径以下纵向鼓出，再没入坡面，
+      // 根盘才像从树干长出来的，而不是在树脚插了一圈木棍。
+      for (const a of [0.55, 2.4, 4.35]) {
+        const finPts = [
+          new THREE.Vector3(Math.cos(a) * 0.95, -2.35, Math.sin(a) * 0.95),
+          new THREE.Vector3(Math.cos(a + 0.04) * 1.1, -2.95, Math.sin(a + 0.04) * 1.1),
+          new THREE.Vector3(Math.cos(a + 0.08) * 1.26, -3.5, Math.sin(a + 0.08) * 1.26),
+          new THREE.Vector3(Math.cos(a + 0.1) * 1.55, -3.88, Math.sin(a + 0.1) * 1.55),
+        ]
+        const finCurve = new THREE.CatmullRomCurve3(finPts)
+        const fin = new THREE.Mesh(
+          taperedTube(THREE, finCurve, (t) => 0.08 + 0.14 * t, 24, 8, 0.07),
+          bark,
+        )
+        fin.castShadow = false
+        S.add(fin)
       }
-      // 草丛：几撮细叶，柔化树脚与地面的交界
-      const grassMat = new THREE.MeshStandardMaterial({ color: 0x5f7d6b, roughness: 0.95 })
-      for (let i = 0; i < 14; i++) {
-        const a = Math.random() * Math.PI * 2
-        const r = 1.5 + Math.random() * 1.2
-        const h = 0.25 + Math.random() * 0.3
-        const blade = new THREE.Mesh(new THREE.ConeGeometry(0.05, h, 4), grassMat)
-        blade.position.set(Math.cos(a) * r, -4.45 + h / 2, Math.sin(a) * r)
-        blade.rotation.z = (Math.random() - 0.5) * 0.5
-        blade.rotation.x = (Math.random() - 0.5) * 0.4
-        S.add(blade)
+
+      /* ---------- 根盘：4 条粗板根 + 1 条长根，沿坡面铺开 ---------- */
+      // 根不投影：低角度下根的投影会变成一片片「叶状黑影」，
+      // 反而看不出圆根；接地感交给坡面自身的受影与苔石。
+      const rootPoint = (a: number, r: number, lift: number) => {
+        const x = Math.cos(a) * r
+        const z = Math.sin(a) * r
+        return new THREE.Vector3(x, moundHeightAt(x, z) + lift, z)
       }
+      const buttress = [
+        { a: 0.2, len: 2.7, thick: 0.68, sway: 0.2, startY: -3.48 },
+        { a: 1.25, len: 2.2, thick: 0.55, sway: -0.26, startY: -3.56 },
+        { a: 2.75, len: 2.9, thick: 0.6, sway: 0.3, startY: -3.62 },
+        { a: 4.35, len: 1.9, thick: 0.48, sway: -0.18, startY: -3.52 },
+      ]
+      for (const spec of buttress) {
+        const { a, len, thick, sway, startY } = spec
+        const p0 = new THREE.Vector3(Math.cos(a) * 0.95, startY, Math.sin(a) * 0.95)
+        const p1 = rootPoint(a, 1.5, 0.3)
+        const p2 = rootPoint(a + sway * 0.5, 2.0, 0.2)
+        const p3 = rootPoint(a + sway, 2.45, 0.05)
+        const p4 = rootPoint(a + sway * 1.2, len, -0.4)
+        const curve = new THREE.CatmullRomCurve3([p0, p1, p2, p3, p4])
+        const root = new THREE.Mesh(
+          rootGeometry(
+            THREE,
+            curve,
+            (t) => thick * Math.pow(1 - t, 0.7) + 0.035,
+            32,
+            10,
+            0.11,
+          ),
+          rootBark,
+        )
+        root.castShadow = false
+        root.receiveShadow = true
+        S.add(root)
+
+      }
+
+      // 一条长根：越过坡沿，平铺到淡墨地台上。
+      // 它们让根盘不再是一个「与坡等大的圆」，而是真正向四外抓地。
+      for (const spec of [{ a: 2.55, len: 3.8, thick: 0.34, sway: 0.3 }]) {
+        const { a, len, thick, sway } = spec
+        const p0 = new THREE.Vector3(Math.cos(a) * 0.8, -3.9, Math.sin(a) * 0.8)
+        const p1 = rootPoint(a, 1.5, 0.2)
+        const p2 = rootPoint(a + sway * 0.4, 2.4, 0.12)
+        const p3p = rootPoint(a + sway * 0.8, 3.35, 0.06)
+        const p3 = new THREE.Vector3(p3p.x, Math.max(GROUND_Y + 0.04, p3p.y), p3p.z)
+        const p4p = rootPoint(a + sway, len, 0)
+        const p4 = new THREE.Vector3(p4p.x, GROUND_Y - 0.16, p4p.z)
+        const curve = new THREE.CatmullRomCurve3([p0, p1, p2, p3, p4])
+        const root = new THREE.Mesh(
+          rootGeometry(
+            THREE,
+            curve,
+            (t) => thick * Math.pow(1 - t, 0.8) + 0.025,
+            40,
+            10,
+            0.08,
+          ),
+          rootBark,
+        )
+        root.castShadow = false
+        root.receiveShadow = true
+        S.add(root)
+      }
+
       // 树瘤
       for (let i = 0; i < 7; i++) {
         const t = 0.12 + Math.random() * 0.6

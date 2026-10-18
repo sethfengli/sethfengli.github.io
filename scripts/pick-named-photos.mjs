@@ -31,24 +31,22 @@ const buckets = Object.fromEntries(
  */
 const NAMED = {
   hero: {
-    // 首页 Hero：云冈石窟横构浮雕（飞天与佛龛）。
-    // 题头照片框是 16:10，横构图才不被裁掉大半；也不选怒目护法——首页第一眼应当安详。
-    prefer: ['grottoes-13.webp', 'grottoes-15.webp', 'grottoes-16.webp'],
-    note: '石窟横构浮雕',
+    // 首页 Hero：佛殿金身三尊。暖光、正面、不压抑；
+    // 题头照片框是 16:10，横构图才不被裁掉大半。
+    prefer: ['halls-09.webp', 'halls-08.webp', 'halls-02.webp'],
+    note: '佛殿金身',
   },
-  // ⚠ 导览卡是 128×32 的窄条裁切（object-cover），**别用带文字的标牌特写**：
-  //   旧值 halls-01 是一块反光金属说明牌、拍在粉色木门上；halls-07 是黑白书影，
-  //   两者裁成窄条后只剩「一块花板子」，与水墨基调冲突。
-  //   现统一改用自然光的石窟造像（顺带解决「紫外灯偏绿」的同源问题）。
-  gate: { prefer: ['grottoes-16.webp', 'halls-19.webp'], note: '佛龛 / 殿宇' },
+  // 导览卡已从 128px 窄条改为 4:3 大图；这里优先选「活着」的寺院/莲池/造像，
+  // 不再用石窟考古现场或空白绢本（用户明确要求换掉压抑、裁头、像考古的图）。
+  gate: { prefer: ['statues-55.webp', 'halls-02.webp', 'halls-08.webp'], note: '寺院庭院 / 殿宇' },
   guanyin: {
-    prefer: ['statues-31.webp', 'statues-23.webp', 'statues-22.webp', 'statues-25.webp'],
-    note: '观音造像',
+    prefer: ['statues-82.webp', 'statues-30.webp', 'statues-31.webp'],
+    note: '观音造像（头部完整）',
   },
-  bell: { prefer: ['grottoes-02.webp', 'halls-19.webp'], note: '造像三尊 / 殿宇' },
+  bell: { prefer: ['halls-08.webp', 'halls-09.webp', 'halls-02.webp'], note: '暮色寺院 / 晨钟暮鼓' },
   lantern: {
-    prefer: ['paintings-37.webp', 'paintings-03.webp', 'paintings-02.webp'],
-    note: '供灯意象（绢本观音）',
+    prefer: ['lotus-02.webp', 'lotus-06.webp', 'lotus-03.webp'],
+    note: '莲灯（以莲为灯）',
   },
   garden: {
     prefer: ['landscape-04.webp', 'landscape-09.webp', 'grottoes-02.webp'],
@@ -57,6 +55,8 @@ const NAMED = {
   blossom: { prefer: ['paintings-26.webp', 'paintings-11.webp'], note: '绢本经变' },
   lotus: { prefer: ['lotus-03.webp', 'lotus-04.webp', 'lotus-01.webp'], note: '莲池' },
   sutra: { prefer: ['sutras-06.webp', 'sutras-02.webp', 'paintings-22.webp'], note: '写经' },
+  // 首页主推《金刚经》专用：带朱印的写本，图与文对得上
+  diamond: { prefer: ['sutras-14.webp', 'sutras-15.webp', 'sutras-06.webp'], note: '金刚经写本' },
 }
 
 /** 这张图在哪个桶里？找不到返回 null */

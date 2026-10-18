@@ -148,6 +148,7 @@ export function Lots() {
       {/* 页头：观音法门（并置式题头，照片全明） */}
       <PageBanner
         image={NAMED_PHOTOS.guanyin()}
+        position="50% 30%"
         kicker={t('lots.kicker')}
         title={t('lots.title')}
         subtitle={t('lots.subtitle')}

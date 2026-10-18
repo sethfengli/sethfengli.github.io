@@ -9,6 +9,11 @@ export interface CoverImageProps {
   animated?: boolean
   /** 首屏关键图：eager 加载 + fetchpriority=high */
   priority?: boolean
+  /**
+   * object-position：竖构图裁成横构图时，默认居中常把人物/佛像的头裁掉。
+   * 需要「保头」的图（如观音造像）在这里给 `50% 30%` 一类的焦点。
+   */
+  position?: string
 }
 
 /** 真实照片封面：加载失败/缺失时自动回退到禅意 SVG 插画 */
@@ -19,6 +24,7 @@ export function CoverImage({
   fallbackVariant,
   animated = false,
   priority = false,
+  position,
 }: CoverImageProps) {
   const [failed, setFailed] = useState(false)
 
@@ -34,6 +40,7 @@ export function CoverImage({
       decoding="async"
       fetchPriority={priority ? 'high' : 'auto'}
       onError={() => setFailed(true)}
+      style={position ? { objectPosition: position } : undefined}
       className={`${className} object-cover`}
     />
   )

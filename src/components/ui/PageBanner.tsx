@@ -16,12 +16,15 @@ export function PageBanner({
   kicker,
   title,
   subtitle,
+  position,
   children,
 }: {
   image: string
   kicker?: string
   title: string
   subtitle?: string
+  /** 竖构图照片裁成横幅时的焦点，如 `50% 30%`；默认居中可能裁掉佛像头部 */
+  position?: string
   children?: ReactNode
 }) {
   return (
@@ -51,6 +54,7 @@ export function PageBanner({
               alt=""
               fallbackVariant="clouds"
               priority
+              position={position}
               className="absolute inset-0 h-full w-full object-cover"
             />
           </div>

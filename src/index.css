@@ -1179,7 +1179,32 @@ body {
 }
 
 /* ============================================================
-   页面切换动画（View Transitions API，渐进增强）
+   首页 · 一分钟静坐
+   ------------------------------------------------------------
+   呼吸圆：4 秒吸、6 秒呼（10 秒一循环），只改 transform/opacity，
+   不做无限大位移。全局 prefers-reduced-motion 已把动画时长压到 0.01ms。
+   ============================================================ */
+.breathe-orb {
+  animation: breathe-orb 10s ease-in-out infinite;
+  transform-origin: center;
+}
+@keyframes breathe-orb {
+  0%,
+  100% {
+    transform: scale(0.72);
+    opacity: 0.5;
+  }
+  40% {
+    transform: scale(1);
+    opacity: 0.92;
+  }
+  55% {
+    transform: scale(1);
+    opacity: 0.92;
+  }
+}
+
+/* 页面切换动画（View Transitions API，渐进增强） */
    React Router 7 的 viewTransition 链接触发；不支持的浏览器静默跳过
    ============================================================ */
 @media (prefers-reduced-motion: no-preference) {
