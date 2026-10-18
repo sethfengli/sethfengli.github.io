@@ -9,6 +9,9 @@
 
 ## 0. 先看这五条（第 14 轮踩出来的）
 
+> 开工先加载 DSH skill **`huideng-chanlin`**（`docs/skill/huideng-chanlin/SKILL.md` 是源，
+> 安装副本在 `~\.dsh\skills\huideng-chanlin\`）。它是本文件的浓缩版 + 判据表；这里是细节。
+
 1. **改 3D 画面先跑 `npm run audit:framing`**（纯 Node，不开浏览器）。它把「主体是否完整入画、
    香头有没有贴边」算成 NDC 断言。第 14 轮首页香炉「放太大、看不到燃烧的香」正是
    `tsc` / `vite build` / 所有既有 audit 全绿、只有截图能看出来的那类问题——现在一半能先算出来。
@@ -45,7 +48,7 @@ src/content/          articles/*.json（中文源，权威）· en/*.json（英�
 public/photos/cn/     图版成品（WebP）；_raw/ 不入库
 scripts/*.mjs         全部工具（26 个可复用工具已从 build/ 搬来）
 scripts/*.md.archived 已执行完的历史计划，**不要当待办读**
-docs/                 DESIGN.md（设计系统）· VISUAL-SPEC-v3.md
+docs/                 DESIGN.md（设计系统）· VISUAL-SPEC-v3.md · skill/huideng-chanlin/SKILL.md（DSH skill 源）
 dist/ build/          gitignore：构建产物 / 临时区（只放生成物，自删）
 ```
 
