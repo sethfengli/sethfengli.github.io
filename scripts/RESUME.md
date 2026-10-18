@@ -139,6 +139,10 @@ node scripts/verse-audit.mjs       # 动过 verses.ts
 - PowerShell 脚本里的字符串常量只用 ASCII，中文只放注释。
 - `fs.rmSync(p, {recursive:true, force:true})` 在「什么都没删」时也返回成功：判据要前后各 `existsSync` 一次。
 - 槽位号正则别写死位宽：`grottoes-01` 是两位数字，`[0-9]{3}` 对它必然 false（用 `[0-9][0-9][0-9]?`）。
+- **先确认你在打哪个服务器**（第 14 轮为此白跑了 3 轮截图）：`Invoke-WebRequest http://127.0.0.1:PORT/src/...`
+  返回 `text/javascript` 才是 **vite dev**（HMR 生效）；返回 `text/html`（SPA fallback）说明是
+  `vite preview` / `static-server`，服务的是**旧的 `dist/`** —— 这时改代码看不到任何变化。
+  另一个信号：dev server 的 `title` 相同，但页面里没有 `/src/main.tsx`。
 
 ### 5.3 沙箱
 
