@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, type ReactNode } from 'react'
-import { createStage, type Stage } from './stage'
+import { createStage, fitDistance, type Stage } from './stage'
 import { createCenser, type CenserVariant } from './censer'
 import { useI18n } from '../../i18n'
 
@@ -7,6 +7,11 @@ import { useI18n } from '../../i18n'
  * 3D 鼎式香炉（独立场景）：三足双耳铜鼎、香灰、真实燃香细节、袅袅青烟。
  * 香型按场景切换：sticks=线香（礼佛）、coil=盘香（禅修）、cone=塔香（祈愿）。
  * 鼠标拖拽旋转 / 滚轮缩放；WebGL 不可用时回退 2D 香炉。
+ *
+ * 取景：相机看向**香炉主体**（含香头之上的青烟）而不是 y=0 的场景原点，
+ * 距离由 `fitDistance` 按画布比例算出来。第 13 轮首页把 distance 写死成 10，
+ * 主体中心偏低 → 相机又近又低，三炷香的香头和青烟整个栽到画面外，
+ * 只剩一截红棍子（用户原话「放太大了，看不到燃烧的香」）。
  */
 
 export interface Props {
@@ -14,7 +19,7 @@ export interface Props {
   scale?: number
   /** 场景高度（配合版面） */
   heightClass?: string
-  /** 相机距离（初始即全景，最小缩放） */
+  /** 相机距离（不传则按主体自动取景；传了即固定，起始仍在最远处） */
   distance?: number
   /** 最大距离（默认 = distance，起始即放到最远） */
   maxDistance?: number
@@ -25,7 +30,7 @@ export function Incense3D({
   variant = 'sticks',
   scale = 1,
   heightClass = 'h-[300px]',
-  distance = 7,
+  distance,
   maxDistance,
   fallback,
 }: Props) {
@@ -42,24 +47,39 @@ export function Incense3D({
 
     void import('three').then((THREE) => {
       if (disposed || !canvas.isConnected) return
+      let scene: ReturnType<typeof createCenser> | null = null
+      try {
+        scene = createCenser(THREE, variantRef.current, scale)
+      } catch {
+        setFailed(true)
+        return
+      }
+      const { group, rig } = scene
+      const box = rig.bounds
+      const targetY = ((box.top + box.bottom) / 2) * scale
+      const parent = canvas.parentElement
+      const aspect = parent && parent.clientHeight ? parent.clientWidth / parent.clientHeight : 1
+      const fit = fitDistance(
+        { top: box.top * scale, bottom: box.bottom * scale, halfWidth: box.halfWidth * scale },
+        { aspect },
+      )
       try {
         // 起始即最小缩放（相机放到最远），由用户自行拉近
         stage = createStage(THREE, canvas, {
-          distance: maxDistance ?? distance,
-          minDistance: 4,
-          maxDistance: maxDistance ?? distance,
+          distance: maxDistance ?? distance ?? fit,
+          minDistance: Math.max(4, fit * 0.45),
+          maxDistance: maxDistance ?? distance ?? fit,
           autoRotate: 0,
           phi: 1.0,
+          targetY,
         })
       } catch {
         setFailed(true)
         return
       }
-      const S = stage.scene
-      const { group, rig } = createCenser(THREE, variantRef.current, scale)
-      // 入场轻缩放：从 0.82 → 1（最短距离为全景，物体不会遮挡视野）
+      stage.scene.add(group)
+      // 入场轻缩放：从 0.82 → 1（取景已按完整主体算好，缩放不会把香头推出画面）
       group.scale.setScalar(scale * 0.82)
-      S.add(group)
 
       stage.onFrame((dt, t) => {
         rig.update(dt, t)

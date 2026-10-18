@@ -36,6 +36,43 @@ export interface StageOpts {
   hemiIntensity?: number
 }
 
+/** 主体包围盒（模型坐标）：取景只认这三个数，不要再让页面猜相机距离 */
+export interface FitBox {
+  /** 主体上沿（含需要留白的部分，例如香头之上的青烟） */
+  top: number
+  /** 主体下沿 */
+  bottom: number
+  /** 主体在 x/z 平面上的最大半径 */
+  halfWidth: number
+}
+
+/**
+ * 取景距离：给定包围盒，算出让它**完整入画**的相机半径。
+ *
+ * 相机始终看向包围盒中心，所以上、下沿各解一次不等式，取较远的那个：
+ *   |h|·sinφ ≤ tan(fov/2)·(r − h·cosφ)
+ * 其中 h 是相对中心的竖直偏移。相机在包围盒上方（phi<π/2）时上沿更苛刻，
+ * 这正是香炉「香头被裁掉」的原因：中心默认在 y=0，而主体一路长到 y≈5。
+ * aspect 只用在横向项上；正方形画布通常是竖直项胜出。
+ */
+export function fitDistance(
+  { top, bottom, halfWidth }: FitBox,
+  opts: { fov?: number; phi?: number; aspect?: number; margin?: number } = {},
+): number {
+  const fov = opts.fov ?? 42
+  const phi = opts.phi ?? 1.0
+  const aspect = opts.aspect ?? 1
+  const margin = opts.margin ?? 0.1
+  const tanHalf = Math.tan((fov * Math.PI) / 360)
+  const half = Math.max((top - bottom) / 2, 0.001)
+  const offset = half * Math.cos(phi)
+  const vertical = (half * Math.sin(phi)) / tanHalf
+  const rTop = vertical + offset
+  const rBottom = vertical - offset
+  const rSide = Math.max(halfWidth, 0.001) / (tanHalf * aspect)
+  return Math.max(rTop, rBottom, rSide) * (1 + margin)
+}
+
 export interface Stage {
   scene: THREE.Scene
   camera: THREE.PerspectiveCamera

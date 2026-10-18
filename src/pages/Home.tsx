@@ -328,12 +328,8 @@ export function Home() {
                 </div>
               }
             >
-              <Incense3D
-                variant="sticks"
-                distance={10}
-                maxDistance={10}
-                heightClass="h-[420px] w-full max-w-[420px]"
-              />
+              {/* 不写 distance：取景交给 Incense3D 的 fitDistance（含香头之上的青烟） */}
+              <Incense3D variant="sticks" heightClass="h-[420px] w-full max-w-[420px]" />
             </Contained3D>
           </div>
         </div>

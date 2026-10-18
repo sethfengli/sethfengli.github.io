@@ -1,4 +1,5 @@
 import type * as THREE from 'three'
+import type { FitBox } from './stage'
 
 /**
  * 共享 3D 香炉构建器（鼎式铜炉 + 三种香型）
@@ -13,12 +14,27 @@ export type CenserVariant = 'sticks' | 'coil' | 'cone'
 export interface CenserRig {
   group: THREE.Group
   embers: Array<{ mesh: THREE.Mesh; mat: THREE.MeshBasicMaterial }>
+  /** 香头光晕（加色 sprite），随炭火一起明灭 */
+  halos: Array<{ s: THREE.Sprite; mat: THREE.SpriteMaterial; base: number }>
   ashCaps: THREE.Mesh[]
   smoke: THREE.Points | null
   smokeSprites: Array<{ s: THREE.Sprite; mat: THREE.SpriteMaterial; life: number; phase: number; tip: number }>
   tips: Array<{ x: number; y: number; z: number }>
+  /** 主体范围（局部坐标，未乘 scale）：相机取景用，见 stage.ts 的 fitDistance */
+  bounds: FitBox
   lit: boolean
   update: (dt: number, t: number) => void
+}
+
+/**
+ * 各香型的主体范围。`top` 不只到香头（线香 5.22 / 塔香 3.95 / 盘香 2.42），
+ * 还要含一段青烟——烟是「在燃烧」的视觉证据，裁掉它香头就只剩一根红棍子。
+ * 炉足最低点在 y≈−2.22（三足的球脚），炉耳外沿到 x≈±1.95。
+ */
+const BOUNDS: Record<CenserVariant, FitBox> = {
+  sticks: { top: 6.4, bottom: -2.25, halfWidth: 1.95 },
+  coil: { top: 3.7, bottom: -2.25, halfWidth: 1.95 },
+  cone: { top: 5.15, bottom: -2.25, halfWidth: 1.95 },
 }
 
 const INSCRIPTIONS = ['戒定真香', '心香一炷', '智慧香', '清净香', '般若香']
@@ -109,6 +125,28 @@ function makeSmokeTexture(THREE: typeof import('three')): THREE.CanvasTexture {
   return tex
 }
 
+/**
+ * 香头炭火的光晕贴图。
+ * 只有一个 0.15 单位的球体时，420px 的画布上香头不到 7px，再加上它原来被香灰筒
+ * 罩住，「在燃烧」这件事完全看不出来；一层加色光晕才能让香头亮起来。
+ */
+function makeEmberTexture(THREE: typeof import('three')): THREE.CanvasTexture {
+  const cv = document.createElement('canvas')
+  cv.width = 64
+  cv.height = 64
+  const ctx = cv.getContext('2d')!
+  const g = ctx.createRadialGradient(32, 32, 0, 32, 32, 32)
+  g.addColorStop(0, 'rgba(255,232,186,0.95)')
+  g.addColorStop(0.25, 'rgba(255,158,72,0.7)')
+  g.addColorStop(0.6, 'rgba(240,104,44,0.18)')
+  g.addColorStop(1, 'rgba(230,90,36,0)')
+  ctx.fillStyle = g
+  ctx.fillRect(0, 0, 64, 64)
+  const tex = new THREE.CanvasTexture(cv)
+  tex.colorSpace = THREE.SRGBColorSpace
+  return tex
+}
+
 export function createCenser(
   THREE: typeof import('three'),
   variant: CenserVariant,
@@ -192,33 +230,57 @@ export function createCenser(
   }
 
   const embers: CenserRig['embers'] = []
+  const halos: CenserRig['halos'] = []
   const ashCaps: THREE.Mesh[] = []
   const tips: Array<{ x: number; y: number; z: number }> = []
+  const heatTex = makeEmberTexture(THREE)
+
+  /** 香头：炭火球 + 加色光晕。光晕是给浅色纸底准备的——只有球体时香头只是几个像素的暗点 */
+  const addEmber = (parent: THREE.Object3D, x: number, y: number, z: number, size = 0.075) => {
+    const mat = new THREE.MeshBasicMaterial({ color: 0xe0733a })
+    const mesh = new THREE.Mesh(new THREE.SphereGeometry(size, 10, 10), mat)
+    mesh.position.set(x, y, z)
+    parent.add(mesh)
+    embers.push({ mesh, mat })
+    const haloMat = new THREE.SpriteMaterial({
+      map: heatTex,
+      transparent: true,
+      depthWrite: false,
+      blending: THREE.AdditiveBlending,
+      color: 0xffb070,
+      opacity: 0.5,
+    })
+    const halo = new THREE.Sprite(haloMat)
+    halo.position.set(x, y + size * 0.25, z)
+    const base = size * 5
+    halo.scale.setScalar(base)
+    parent.add(halo)
+    halos.push({ s: halo, mat: haloMat, base })
+  }
 
   /* ---------- 香型 ---------- */
   if (variant === 'sticks') {
     const stickMat = new THREE.MeshStandardMaterial({ color: 0x8c2f39, roughness: 0.9 })
     const ashMat = new THREE.MeshStandardMaterial({ color: 0xd9dcd6, roughness: 1 })
-    ;([[-0.3, 0.22, 0.1], [0.05, -0.28, -0.05], [0.32, 0.18, -0.12]] as Array<[number, number, number]>).forEach(
+    // 三炷香要**排开**：原来三根挤在半径 0.3 的圆圈里，默认机位下后两根在屏幕上几乎重叠，
+    // 看上去只有两炷（礼佛的三炷香，少一根是明显的错）。拉开到半径 0.5，并让中间那炷偏后。
+    ;([[-0.5, 0.14, 0.1], [0.02, -0.52, -0.05], [0.5, 0.12, -0.12]] as Array<[number, number, number]>).forEach(
       ([dx, dz, tilt]) => {
         const st = new THREE.Group()
         const stick = new THREE.Mesh(new THREE.CylinderGeometry(0.045, 0.045, 2.6, 10), stickMat)
         stick.position.y = 1.3
         st.add(stick)
+        // 燃过的一段香灰：从香身顶端到 2.89，炭火露在香灰**之上**
         const cap = new THREE.Mesh(new THREE.CylinderGeometry(0.05, 0.055, 0.34, 10), ashMat)
-        cap.position.y = 2.75
+        cap.position.y = 2.72
         st.add(cap)
         ashCaps.push(cap)
-        const emberMat = new THREE.MeshBasicMaterial({ color: 0xe0733a })
-        const ember = new THREE.Mesh(new THREE.SphereGeometry(0.06, 10, 10), emberMat)
-        ember.position.y = 2.58
-        st.add(ember)
-        embers.push({ mesh: ember, mat: emberMat })
+        addEmber(st, 0, 2.93, 0, 0.07)
         st.position.set(dx, 2.3, dz)
         st.rotation.x = tilt * 0.6
         st.rotation.z = -tilt * 0.6
         group.add(st)
-        tips.push({ x: dx, y: 2.3 + 2.9, z: dz })
+        tips.push({ x: dx, y: 2.3 + 2.96, z: dz })
       },
     )
   } else if (variant === 'coil') {
@@ -244,11 +306,7 @@ export function createCenser(
     plate.position.y = 2.28
     group.add(plate)
     const end = coilPts[coilPts.length - 1]
-    const emberMat = new THREE.MeshBasicMaterial({ color: 0xe0733a })
-    const ember = new THREE.Mesh(new THREE.SphereGeometry(0.07, 10, 10), emberMat)
-    ember.position.set(end.x, 2.42, end.z)
-    group.add(ember)
-    embers.push({ mesh: ember, mat: emberMat })
+    addEmber(group, end.x, 2.44, end.z, 0.07)
     tips.push({ x: end.x, y: 2.5, z: end.z })
   } else {
     // 塔香：塔形香立在香插上
@@ -272,17 +330,16 @@ export function createCenser(
     ashRing.rotation.x = Math.PI / 2
     ashRing.position.y = 2.4
     group.add(ashRing)
-    const emberMat = new THREE.MeshBasicMaterial({ color: 0xe0733a })
-    const ember = new THREE.Mesh(new THREE.SphereGeometry(0.08, 10, 10), emberMat)
-    ember.position.y = 3.95
-    group.add(ember)
-    embers.push({ mesh: ember, mat: emberMat })
+    addEmber(group, 0, 3.98, 0, 0.08)
     tips.push({ x: 0, y: 4.05, z: 0 })
   }
 
   /* ---------- 青烟粒子（加色混合，逆光更明亮） ---------- */
+  /* ---------- 青烟粒子 ---------- */
+  // 纸底上不能用加色混合：白色叠加只会把烟烧成一颗颗白点（实测截图里像浮着的小球）。
+  // 烟在浅色纸上看的是「吃掉一点底色」，所以用普通混合、冷灰绿、低不透明度堆出层次。
   const smokeTex = makeSmokeTexture(THREE)
-  const N = 70
+  const N = 84
   const sprites: CenserRig['smokeSprites'] = []
   for (let i = 0; i < N; i++) {
     const mat = new THREE.SpriteMaterial({
@@ -290,8 +347,7 @@ export function createCenser(
       transparent: true,
       depthWrite: false,
       opacity: 0,
-      blending: THREE.AdditiveBlending,
-      color: 0xf2f5f6,
+      color: 0x74827d,
     })
     const s = new THREE.Sprite(mat)
     group.add(s)
@@ -308,7 +364,7 @@ export function createCenser(
   emberLight.position.set(firstTip.x, firstTip.y, firstTip.z)
   group.add(emberLight)
 
-  const rig: CenserRig = { group, embers, ashCaps, smoke: null, smokeSprites: sprites, tips, lit: true, update: () => undefined }
+  const rig: CenserRig = { group, embers, halos, ashCaps, smoke: null, smokeSprites: sprites, tips, bounds: BOUNDS[variant], lit: true, update: () => undefined }
 
   const update = (dt: number, t: number) => {
     for (const e of rig.embers) {
@@ -316,6 +372,12 @@ export function createCenser(
       const flick = Math.sin(t * 7 + e.mesh.position.x * 12) * 0.5 + Math.sin(t * 13 + e.mesh.position.z * 9) * 0.5
       const glow = rig.lit ? 0.72 + flick * 0.22 : 0
       e.mat.color.setRGB(glow, glow * 0.38, glow * 0.12)
+    }
+    for (let i = 0; i < rig.halos.length; i++) {
+      const h = rig.halos[i]
+      const flick = Math.sin(t * 6.7 + i * 2.3) * 0.5 + Math.sin(t * 12.9 + i * 1.1) * 0.5
+      h.mat.opacity = rig.lit ? 0.4 + flick * 0.14 : 0
+      h.s.scale.setScalar(h.base * (1 + flick * 0.06))
     }
     emberLight.intensity = rig.lit ? 0.35 + Math.sin(t * 9.5) * 0.14 + Math.sin(t * 17.3) * 0.08 : 0
     if (variant === 'sticks') {
@@ -339,7 +401,8 @@ export function createCenser(
         p.s.position.z = p.s.position.z + Math.cos(t * 1.3 + p.phase * 1.3 + y * 1.1) * dt * 0.18
         const sc = 0.12 + k * 0.85
         p.s.scale.setScalar(sc)
-        p.mat.opacity = rig.lit ? (k < 0.15 ? (k / 0.15) * 0.42 : 0.42 * (1 - (k - 0.15) / 0.85)) : 0
+        // 刚离香头的烟最细，中段最浓，飘高后散尽
+        p.mat.opacity = rig.lit ? 0.24 * Math.sin(Math.PI * Math.min(1, Math.max(0, k))) : 0
       }
     }
   }
