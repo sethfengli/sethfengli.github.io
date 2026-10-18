@@ -1019,6 +1019,32 @@ body {
   }
 }
 
+/* 慧灯灯焰：极轻的明灭与偏摆，像真火而不是 GIF */
+.hui-lamp-flame {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  animation: hui-lamp-flicker 4.6s ease-in-out infinite;
+}
+@keyframes hui-lamp-flicker {
+  0%,
+  100% {
+    transform: scale(1, 1) rotate(0deg);
+    opacity: 0.95;
+  }
+  22% {
+    transform: scale(0.97, 1.04) rotate(-1.2deg);
+    opacity: 1;
+  }
+  46% {
+    transform: scale(1.03, 0.97) rotate(1deg);
+    opacity: 0.92;
+  }
+  71% {
+    transform: scale(0.98, 1.02) rotate(-0.6deg);
+    opacity: 1;
+  }
+}
+
 .om-float {
   animation: om-float 2.4s ease-out both;
 }

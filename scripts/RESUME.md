@@ -1199,6 +1199,61 @@ node scripts/probe-bell.mjs build/shots/bell-ring.png
 `Bell3D` 13.58 KB · `Tree3D` 13.58 KB · `stage` 8.10 KB。三页首屏回到 ~1.34–1.37 MB，
 这是移除「开启 3D」按钮的直接代价（第 10 轮曾降到 615–653 KB），**按用户要求取舍**。
 
+## 13. 第 13 轮（关于页重排 + 图片灯箱 + 慧灯 3D + 许愿树接枝）
+
+> 用户原话四件事：① 许愿树树干和树枝的连接太生硬；② About 页排版局促、图片堆积，
+> 图片点击要能放大/跳转，慧灯常照上面的 3D 灯不见了；③ 关于本院横幅显示
+> `grottoes-01.webp`（和上一轮「换掉压抑/像考古的图」是同一要求）；④ 以后所有 banner
+> 图都要按同一标准检查。
+
+### 13.1 改了什么
+
+| 项 | 处理 | 文件 |
+| --- | --- | --- |
+| **横幅 bucket bug（真因）** | `named.garden` 选的是 `landscape-04.webp`，但 `NAMED_KEY_FALLBACK.garden` 还是 `'grottoes'` → `named()` 静默退回 `grottoes-01.webp`（阴暗浮雕特写）。改为 `'landscape'` | `src/lib/content.ts` |
+| 横幅换图（全部实测） | `/about` 水墨山水 `landscape-04` · `/dharma` 山巅塔影 `halls-13` · `/prayer` 莲池 `lotus-04` · `/lots` 德化白瓷观音 `statues-84` · 首页 Hero 仍 `halls-09` | `photos-cn.json`、`pick-named-photos.mjs` |
+| 首页四门卡 | 初学入门 `sutras-15` 金泥扉画 · 听经 `halls-13` · 点亮心愿 `lotus-04` · 观音灵签 `paintings-03` 蓝底绢本（白瓷观音在白底卡片上会「消失」） | `Home.tsx` |
+| 关于页重排 | 缘起改「左文 + 两张错落照片」（不再三张竖着挤）；一脉相承改三张可点入口卡；禅院掠影改 5 图非对称栅格（大图 8/12 + 4 张小图），移动端 2 列；纵向节奏 `space-y-24/32`、侧栏 gap 20 | `About.tsx` |
+| 图片点击 | 新增全站 `PhotoLightbox`：半屏/近全屏、Esc/←/→、点背景关闭、锁滚动、图注 + 署名；`PageBanner` 题头图可直接点开；关于页缘起/照片墙全部可点；一脉相承卡改为跳转 `/articles` `/dharma` `/prayer` | `components/ui/PhotoLightbox.tsx`、`PageBanner.tsx` |
+| 慧灯 3D | 新增 `Lamp3D`（双层莲座 + 灯柱 + 浅口铜盏 + 灯芯火苗 + 加色光晕 + 点光源）与 `HuiLamp` 水墨回退；放在「慧灯常照」标题上方、`Contained3D` 视口门控 + `lazy()`；不铺淡墨地台，只留接地阴影（否则浅色纸底上会露出方形地台边） | `zen3d/Lamp3D.tsx`、`zen/HuiLamp.tsx`、`About.tsx` |
+| 许愿树接枝 | ① 枝的控制点后退到树干轴线内、第三点以 ~40° 出干，不再 T 形横插；② 枝基加 `collar` 外扩，树干半径一路收到 0.09，顶端被主梢盖住；③ 曾试「锥筒套袖」「球形树瘤」两版，低角度都会露新接缝，已删 | `zen3d/Tree3D.tsx` |
+| SVG 回退树 | 修补 `TRUNK_LEFT/RIGHT` 之间的白缝（两片半干没并集，中段约 28px 透白）；补 4 簇枝梢松针盖住圆头笔帽；两根主枝改为先向上拱再出干 | `zen/WishTree.tsx` |
+| **横幅体检脚本** | `npm run audit:banners`：① 每个具名图 ∈ 声明桶；② 按 16:10 / 4:3 cover 算保留面积，竖图必须给 position；③ 人工禁用图清单（文字标牌/色卡/电线/垃圾桶/过暗考古特写）。退出码 1 = 有 error | `scripts/audit-banners.mjs`（新） |
+
+### 13.2 本轮新坑（务必记住）
+
+1. **`named()` 的「校验桶」和 `named` 实际图必须同源核对**。`garden` 的 bug 让「关于本院」
+   横幅显示成 `grottoes-01`，而 `tsc`、`vite build`、`photos-status` 全绿——只有截图能发现。
+   判据：`npm run audit:banners` 必须 0 error；换图后**先跑它**，再看截图。
+2. **浅色纸底 + 3D 地台 = 方形灰边**。`addInkGround` 在深色/有边框的场景里没问题，
+   但 About 灯段是纯纸底，地台的方形投影会显出一条边。灯这类「单件小物」用
+   `addCatchShadow` 就够，不要铺整块地台。
+3. **白瓷/白底图不能做缩略图**。`statues-84` 做 `/lots` 大横幅很好，但塞进 4:3 卡片
+   会跟纸底糊成一片；首页卡改用蓝底绢本 `paintings-03`。同一个「观音」语义可以有两个
+   具名键（`guanyin` / `guanyinArt`），分别服务横幅与缩略图。
+4. **3D 枝干不要用「套袖/树瘤」补接缝**。锥筒的开口在低角度会露出深色内壁，球形树瘤会
+   变成一串「橡果」。真正有效的是：把枝的起点退到干内、出干角度抬到 40° 左右、树干
+   半径收到梢部；接缝阴影是自然的，不要试图用几何体盖掉。
+5. **SVG 回退树的白缝**：左右两片「半干」各自闭合，中间其实没并集。先铺一层完整
+   `TRUNK_BASE` 再叠明暗，白缝才会消失。判据：`--disable-webgl` 截 `/prayer`。
+6. 本机跑 `vite build` / 无头 Chrome 需要**完整文件/子进程权限**（`spawn EPERM`、
+   Chrome crashpad `OpenProcess: Access denied`）；受限沙箱里只能 `tsc --noEmit`。
+   截图脚本：`build/shot-audit.mjs`、`build/shot-mobile.mjs`、`build/shot-no-webgl*.mjs`
+   （临时验收脚本，不入库）。
+
+### 13.3 本轮实测
+
+| 项 | 结果 |
+| --- | --- |
+| `npx tsc --noEmit` | 通过 |
+| `npx vite build` | 通过（2.6–3.8s）；新增 `Lamp3D` 5.32 KB（gzip 2.23）· `Contained3D` 0.61 KB |
+| `npm run audit:banners` | 9 个显示位 · **0 error · 0 warn**（`/lots` `statues-84` 保留 84%） |
+| 全页截图（1280） | `/` `/about` `/prayer` `/lots` `/dharma`，broken images **0**，console 仅 SwiftShader 精度 warning |
+| 移动/平板 | 390×7948、768×6699，`scrollWidth - innerWidth = 0`（无横向溢出） |
+| 灯箱交互 | PageBanner 1 个按钮、gallery 5 个按钮；点开 → dialog、图片 naturalWidth 正常；下一张从「观音」→「莲池」；Esc 关闭、body overflow 恢复 |
+| 3D 灯 | About 页 `canvas 1`，`#lamp` 截图可见灯焰/莲座/光晕；`--disable-webgl` 回退 `HuiLamp` 正常 |
+| 许愿树 SVG | `--disable-webgl` 截图树干白缝消失；枝梢圆头笔帽被新松针簇盖住 |
+
 
 
 

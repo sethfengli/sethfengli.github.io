@@ -254,14 +254,16 @@
  ],
  "named": {
   "hero": "halls-09.webp",
-  "gate": "statues-55.webp",
-  "guanyin": "statues-82.webp",
-  "bell": "halls-08.webp",
-  "lantern": "lotus-02.webp",
+  "gate": "sutras-15.webp",
+  "guanyin": "statues-84.webp",
+  "guanyinArt": "paintings-03.webp",
+  "bell": "halls-13.webp",
+  "lantern": "lotus-04.webp",
   "garden": "landscape-04.webp",
   "blossom": "paintings-26.webp",
-  "lotus": "lotus-03.webp",
-  "sutra": "sutras-06.webp",
-  "diamond": "sutras-14.webp"
+  "lotus": "lotus-04.webp",
+  "sutra": "sutras-03.webp",
+  "diamond": "sutras-14.webp",
+  "ink": "landscape-09.webp"
  }
 }

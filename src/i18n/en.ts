@@ -268,6 +268,9 @@ export const en: Dict = {
       'The phrase “practice as taught” comes from the Shurangama Sutra: “What I have spoken is the Buddha’s teaching; to speak otherwise is the speech of Mara.” To study the Buddha’s way is to practise it — and to practise it exactly as the Buddha taught. Under the name Huideng Zen Temple we take up that thread again, that lamp may pass to lamp and light up the long night of ignorance.',
     story3:
       'We keep no temple hall and ask for no money. All the teaching materials remain free to reprint, quote, copy, publish and distribute, with the merit dedicated to all beings throughout the Dharma realm.',
+    storyQuote:
+      '“What I have spoken is the Buddha’s teaching; to speak otherwise is the speech of Mara.”',
+    storyQuoteSource: '— Shurangama Sutra',
     heritageTitle: 'One Line, Unbroken',
     heritage: [
       { title: 'Practice as Taught', desc: 'To study the Buddha’s way is to practise it — exactly as the Buddha taught.' },
@@ -281,7 +284,17 @@ export const en: Dict = {
     contactBrowse: 'Browse the Shelf',
     contactBrowseDesc: 'More than three hundred commentaries and talks are waiting for you',
     galleryTitle: 'Scenes of the Temple',
-    gallerySubtitle: 'Buddhist painting, cave carving, sculpture and temple gate — look first, then read slowly',
+    gallerySubtitle: 'Landscape, Buddha hall, Guanyin, scripture and lotus pond — a glance before the reading',
+    galleryCaptions: ['Landscape', 'Buddha Hall', 'Guanyin', 'Sutra', 'Lotus Pond', 'Old Temple'],
+    photoHint: 'Click any image to view it larger',
+    storyPhotoCaption: 'Landscape · the temple banner',
+    storySutraCaption: 'Sutra · the Diamond Sutra',
+    heritageCta: 'Enter this way',
+    lampKicker: 'The Lamp Passed On',
+    lampTitle: 'The Lamp Ever Shines',
+    lampBody:
+      'The lamp is not on the stand; it is in the heart. May this ever-burning lamp light every thought that rises, and every good wish you make for yourself and for others.',
+    lampCta: 'Go and light a lamp',
     faqTitle: 'Questions',
     faq: [
       {
@@ -350,6 +363,14 @@ export const en: Dict = {
     censerAlt: '3D tripod censer',
     bellAlt: '3D bronze bell',
     cylinderAlt: '3D lot cylinder',
+    lampAlt: '3D lamp of wisdom, ever burning',
+    lampHint: 'The lamp of wisdom ever shines',
+    photoView: 'View larger',
+    photoPrev: 'Previous',
+    photoNext: 'Next',
+    photoClose: 'Close',
+    photoCredit: 'Image source & credits',
+    photoCounter: '{{n}} / {{total}}',
     mainNav: 'Main navigation',
     mobileNav: 'Mobile navigation',
   },

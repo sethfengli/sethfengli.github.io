@@ -36,27 +36,46 @@ const NAMED = {
     prefer: ['halls-09.webp', 'halls-08.webp', 'halls-02.webp'],
     note: '佛殿金身',
   },
-  // 导览卡已从 128px 窄条改为 4:3 大图；这里优先选「活着」的寺院/莲池/造像，
-  // 不再用石窟考古现场或空白绢本（用户明确要求换掉压抑、裁头、像考古的图）。
-  gate: { prefer: ['statues-55.webp', 'halls-02.webp', 'halls-08.webp'], note: '寺院庭院 / 殿宇' },
-  guanyin: {
-    prefer: ['statues-82.webp', 'statues-30.webp', 'statues-31.webp'],
-    note: '观音造像（头部完整）',
+  // 导览卡已从 128px 窄条改为 4:3 大图；这里优先选「活着」的寺院/经卷/莲池，
+  // 不再用石窟考古现场、博物馆标牌或空白绢本（用户明确要求换掉压抑、裁头、像考古的图）。
+  gate: {
+    prefer: ['sutras-15.webp', 'sutras-14.webp', 'halls-11.webp'],
+    note: '经卷扉画 / 寺院（初学入门）',
   },
-  bell: { prefer: ['halls-08.webp', 'halls-09.webp', 'halls-02.webp'], note: '暮色寺院 / 晨钟暮鼓' },
+  guanyin: {
+    // 必须完整头部、横构图、无展签；德化白瓷观音最干净，也最贴「观音灵签」。
+    prefer: ['statues-84.webp', 'statues-85.webp', 'statues-82.webp'],
+    note: '德化白瓷观音（横构图、头部完整）',
+  },
+  guanyinArt: {
+    // 关于页照片墙 / 首页导览卡用：蓝底绢本，缩略图尺寸下仍有足够对比。
+    prefer: ['paintings-03.webp', 'statues-82.webp', 'paintings-02.webp'],
+    note: '绢本观音（缩略图可辨）',
+  },
+  bell: {
+    // 晨钟暮鼓：山巅塔影，比 HDR 蓝调、带电线与垃圾桶的 halls-08 干净。
+    prefer: ['halls-13.webp', 'halls-19.webp', 'halls-20.webp'],
+    note: '山巅塔影 / 晨钟',
+  },
   lantern: {
-    prefer: ['lotus-02.webp', 'lotus-06.webp', 'lotus-03.webp'],
-    note: '莲灯（以莲为灯）',
+    // 莲池：选有天空、有花的横构图，避开 lotus-02 水面里的塑料管与浑水。
+    prefer: ['lotus-04.webp', 'lotus-02.webp', 'lotus-03.webp'],
+    note: '莲池（以莲为灯）',
   },
   garden: {
-    prefer: ['landscape-04.webp', 'landscape-09.webp', 'grottoes-02.webp'],
-    note: '山水',
+    // ⚠ 本项必须落在 landscape 桶；校验桶写在 content.ts 的 NAMED_KEY_FALLBACK。
+    //   第 13 轮前的 bug：这里选了 landscape-04，但校验桶还是 grottoes，
+    //   于是「关于本院」横幅静默显示成阴暗的 grottoes-01 云冈浮雕特写。
+    prefer: ['landscape-04.webp', 'landscape-09.webp', 'landscape-02.webp'],
+    note: '山水（水墨长卷）',
   },
   blossom: { prefer: ['paintings-26.webp', 'paintings-11.webp'], note: '绢本经变' },
-  lotus: { prefer: ['lotus-03.webp', 'lotus-04.webp', 'lotus-01.webp'], note: '莲池' },
-  sutra: { prefer: ['sutras-06.webp', 'sutras-02.webp', 'paintings-22.webp'], note: '写经' },
+  lotus: { prefer: ['lotus-04.webp', 'lotus-03.webp', 'lotus-02.webp'], note: '莲池' },
+  sutra: { prefer: ['sutras-03.webp', 'sutras-14.webp', 'sutras-06.webp'], note: '写经' },
   // 首页主推《金刚经》专用：带朱印的写本，图与文对得上
   diamond: { prefer: ['sutras-14.webp', 'sutras-15.webp', 'sutras-06.webp'], note: '金刚经写本' },
+  // 关于页「一脉相承」/照片墙：竖构图水墨山水，山巅有塔
+  ink: { prefer: ['landscape-09.webp', 'landscape-05.webp', 'landscape-06.webp'], note: '水墨山水（山巅古塔）' },
 }
 
 /** 这张图在哪个桶里？找不到返回 null */

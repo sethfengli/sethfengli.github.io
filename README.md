@@ -25,6 +25,7 @@ npm install
 npm run dev        # 本地开发（http://localhost:5173）
 npm run build      # 构建到 dist/
 npm run preview    # 本地预览构建产物
+npm run audit:banners  # 横幅 / 导览卡图片体检（具名桶、裁切保留率、禁用图）
 npm run migrate    # 重新执行旧站 HTML → JSON/Markdown 迁移（含自动去重）
 ```
 
@@ -35,6 +36,9 @@ npm run migrate    # 重新执行旧站 HTML → JSON/Markdown 迁移（含自�
 ### 图版与预览工具
 
 ```bash
+# 横幅体检：具名图 ∈ 校验桶 + 桌面 16:10 / 移动 4:3 裁切保留率 + 禁用图清单
+npm run audit:banners
+
 # 图版：Commons 分类 → 候选池 → 人工精选 → 下载转码（四步，可重跑）
 node scripts/collect-pool.mjs            # 分类候选 → scripts/cn-pool.json / cn-pool.txt
 node scripts/curate-cn.mjs               # 人工精选 + 二次排雷 → scripts/cn-picked.json
@@ -50,6 +54,11 @@ node scripts/shoot-preview.mjs --name=tree --w=1100 --h=1500
 node scripts/shot-3d.mjs --route=/dharma --out=build/shots/bell --drag=100,0
 node scripts/shot-3d.mjs --route=/prayer --out=build/shots/tree --wishes=8
 ```
+
+> 横幅图的三条硬要求：① 必须是 `NAMED_PHOTOS` 具名图，且落在 `content.ts` 声明的校验桶内
+> （否则 `named()` 会静默退回桶内第一张）；② 按桌面 16:10、移动 4:3 的 `cover` 裁切后主体不被裁掉，
+> 竖构图必须给 `position` 焦点；③ 不带文字标牌、水印、色卡、电线、垃圾桶等杂物。
+> `npm run audit:banners` 会把这三条逐项打出来，换图后先跑它。
 
 > 旧站原文位于仓库外的 `../My Web Sites/`，迁移脚本默认从该目录读取；如需换源，改 `scripts/migrate.mjs` 顶部的 `OLD` 路径。
 

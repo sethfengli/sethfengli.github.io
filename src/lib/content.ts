@@ -67,18 +67,29 @@ type PhotoManifest = {
 
 const CN_PHOTOS = cnPhotosJson as PhotoManifest
 
-/** 具名映射（`scripts/pick-named-photos.mjs` 写入的 `named` 字段） */
+/**
+ * 具名映射（`scripts/pick-named-photos.mjs` 写入的 `named` 字段）
+ *
+ * ⚠ 这里的值是**校验桶**，必须与 `named` 图实际所在的桶一致。
+ *   不一致时 `named()` 会静默退回该桶第一张 —— 第 13 轮「关于本院」横幅
+ *   之所以显示成 `grottoes-01.webp`（阴暗的云冈浮雕特写），就是因为
+ *   `garden` 的校验桶还是旧的 `grottoes`，而选中的 `landscape-04.webp`
+ *   在 `landscape` 桶里。构建、tsc 全绿，只有截图/肉眼能发现。
+ *   现由 `scripts/audit-banners.mjs` 逐条核对「named 图 ∈ 校验桶」。
+ */
 const NAMED_KEY_FALLBACK = {
   hero: 'halls',
-  gate: 'statues',
+  gate: 'sutras',
   guanyin: 'statues',
+  guanyinArt: 'paintings',
   bell: 'halls',
   lantern: 'lotus',
-  garden: 'grottoes',
+  garden: 'landscape',
   blossom: 'paintings',
   lotus: 'lotus',
-  sutra: 'paintings',
+  sutra: 'sutras',
   diamond: 'sutras',
+  ink: 'landscape',
 } as const
 
 const NAMED_MAP = (CN_PHOTOS.named ?? {}) as Record<string, string | undefined>
@@ -204,31 +215,33 @@ export function photoForSlug(slug: string): string {
  * 取值来自各自语义最贴切的那个桶（详见上方各页调用处）。
  */
 export const NAMED_PHOTOS = {
-  /** 首页 Hero：佛殿金身三尊（暖光、正面、不压抑；取代原先阴暗的云冈浮雕局部） */
+  /** 首页 Hero：佛殿金身三尊（暖光、正面、不压抑） */
   hero: () => named('hero', 'halls'),
   /**
-   * 山门 / 殿宇（文库题头）
-   * ⚠ 这里的第二个参数是**校验桶**：`named()` 会要求 `named.gate` 指的文件确实在
-   *   该桶里，否则静默退回「该桶第一张」。换图时校验桶必须一起改 —— 否则改完
-   *   `named` 也看不出效果（会悄悄退回桶内第一张）。
+   * 初学入门题头 / 首页导览：金泥经卷扉画。
+   * ⚠ 第二个参数是**校验桶**，换图时必须一起改，否则会静默退回桶内第一张。
    */
-  gate: () => named('gate', 'statues'),
-  /** 观音造像（灵签题头与造像位）：鎏金千手观音近景，头部完整 */
+  gate: () => named('gate', 'sutras'),
+  /** 观音造像（灵签题头与造像位）：德化白瓷观音，横构图、头部完整、无展签 */
   guanyin: () => named('guanyin', 'statues'),
-  /** 梵钟 / 殿宇（听经题头）：暮色中的寺院，正好是「晨钟暮鼓」 */
+  /** 绢本观音（关于页照片墙与首页导览卡）：蓝底设色，缩略图下仍有辨识度 */
+  guanyinArt: () => named('guanyinArt', 'paintings'),
+  /** 梵钟 / 晨钟暮鼓（听经题头）：山巅塔影 */
   bell: () => named('bell', 'halls'),
-  /** 供灯意象（祈福题头）：莲灯——以莲为灯，最合「点亮心愿」 */
+  /** 供灯意象（祈福题头）：莲池——以莲为灯，最合「点亮心愿」 */
   lantern: () => named('lantern', 'lotus'),
-  /** 山水（关于页题头） */
-  garden: () => named('garden', 'grottoes'),
-  /** 绢本经变（关于页拼贴） */
+  /** 山水（关于页题头）：水墨山水长卷，横构图，不再误退回石窟图 */
+  garden: () => named('garden', 'landscape'),
+  /** 绢本经变（关于页旧拼贴，现不再用于首屏） */
   blossom: () => named('blossom', 'paintings'),
   /** 莲（关于页拼贴 · 徽记） */
   lotus: () => named('lotus', 'lotus'),
   /** 写经（关于页拼贴） */
-  sutra: () => named('sutra', 'paintings'),
+  sutra: () => named('sutra', 'sutras'),
   /** 首页主推《金刚经》配图：带朱印的《金刚经》写本（内容与图对得上） */
   diamond: () => named('diamond', 'sutras'),
+  /** 水墨山水（关于页「一脉相承」与照片墙）：山巅古塔，竖构图 */
+  ink: () => named('ink', 'landscape'),
 }
 
 /**
@@ -247,28 +260,10 @@ function named(key: keyof typeof NAMED_KEY_FALLBACK, fallbackBucket: string): st
 }
 
 /**
- * 「禅院掠影」照片墙：按题材取图，保证画面本身就在讲「中国佛教有什么」。
- *
- * 旧版用 `PHOTO_NAMES[(i * 11) % len]` 从全库抽 8 张，会抽到同题材甚至同一类构图，
- * 既不好看也不说明问题。这里复用 `named` 里已按题材选好的具名图（佛画 / 造像 /
- * 石窟 / 殿宇 / 写经 / 莲），再补两张造像与一张山水凑满 8 格。
+ * 关于页「禅院掠影」的选片逻辑已上移到 `src/pages/About.tsx`：
+ * 该处需要同时携带图注、裁切焦点与灯箱序号，放在内容层会与 UI 耦合。
+ * 具名图仍统一由 `NAMED_PHOTOS` 提供，保证与各页题头同源。
  */
-export function galleryPhotos(): string[] {
-  const out = [
-    NAMED_PHOTOS.blossom(), // 绢本经变
-    NAMED_PHOTOS.guanyin(), // 观音造像
-    NAMED_PHOTOS.hero(), // 石窟浮雕
-    NAMED_PHOTOS.gate(), // 殿宇
-    NAMED_PHOTOS.sutra(), // 写经
-    NAMED_PHOTOS.lotus(), // 莲池
-  ]
-  const statues = bucketOf('statues')
-  const grottoes = bucketOf('grottoes')
-  for (const f of [statues[1], statues[2], grottoes[1]]) {
-    if (f && out.length < 8) out.push(photoUrl(f))
-  }
-  return out.slice(0, 8)
-}
 
 
 export const SCHOOL_LABEL_ZH: Record<School, string> = {

@@ -9,6 +9,7 @@
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
+    "audit:banners": "node scripts/audit-banners.mjs",
     "migrate": "node scripts/migrate.mjs",
     "migrate:md": "node scripts/migrate.mjs --md"
   },

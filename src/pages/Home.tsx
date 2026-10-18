@@ -107,7 +107,7 @@ export function Home() {
     {
       to: '/lots',
       variant: 'koi',
-      photo: NAMED_PHOTOS.guanyin(),
+      photo: NAMED_PHOTOS.guanyinArt(),
       position: '50% 30%',
       title: t('nav.lots'),
       desc: t('home.quickLotsDesc'),

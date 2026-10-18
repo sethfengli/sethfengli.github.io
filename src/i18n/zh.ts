@@ -259,6 +259,8 @@ export const zh = {
     story2:
       '「如说修行」四字，出自《楞严经》：「如我所说，名为佛说；不如此说，即波旬说。」学佛就是修行，而且是如佛所说地修行。今以「慧灯禅院」之名再续前缘，愿此灯灯相续，照破无明长夜。',
     story3: '本院不设实体殿堂，不募化钱财。所有教材依旧欢迎转载、演讲、翻印、出版、发行，功德回向法界众生。',
+    storyQuote: '「如我所说，名为佛说；不如此说，即波旬说。」',
+    storyQuoteSource: '《楞严经》',
     heritageTitle: '一脉相承',
     heritage: [
       { title: '如说修行', desc: '学佛就是修行，而且是如佛所说地修行。' },
@@ -272,7 +274,18 @@ export const zh = {
     contactBrowse: '去书架看看',
     contactBrowseDesc: '三百余篇经论与开示，正等着您',
     galleryTitle: '禅院掠影',
-    gallerySubtitle: '佛画、石窟、造像与山门——先看一眼，再慢慢读',
+    gallerySubtitle: '山水、佛殿、观音、写经与莲池——先看一眼，再慢慢读',
+    /** 「禅院掠影」六格图注（与 About.tsx 的顺序一一对应） */
+    galleryCaptions: ['山水', '佛殿', '观音', '写经', '莲池', '古寺'],
+    photoHint: '点击任意图片可放大查看',
+    storyPhotoCaption: '山水 · 本院题头',
+    storySutraCaption: '写经 · 金刚般若',
+    heritageCta: '循此入门',
+    lampKicker: '灯 传',
+    lampTitle: '慧灯常照',
+    lampBody:
+      '灯不在台上，在心上。愿这一盏长明灯，照见每一次起心动念，也照见您为自己、为他人许下的那一点善愿。',
+    lampCta: '去点亮一盏心灯',
     faqTitle: '常见问题',
     faq: [
       {
@@ -339,6 +352,14 @@ export const zh = {
     censerAlt: '3D 鼎式香炉',
     bellAlt: '3D 铜钟',
     cylinderAlt: '3D 签筒',
+    lampAlt: '3D 慧灯长明',
+    lampHint: '慧灯常照',
+    photoView: '放大查看',
+    photoPrev: '上一张',
+    photoNext: '下一张',
+    photoClose: '关闭',
+    photoCredit: '图源与署名',
+    photoCounter: '{{n}} / {{total}}',
     mainNav: '主导航',
     mobileNav: '移动导航',
   },

@@ -1,5 +1,7 @@
-import type { ReactNode } from 'react'
+import { useState, type ReactNode } from 'react'
+import { useI18n } from '../../i18n'
 import { CoverImage } from '../zen/CoverImage'
+import { PhotoLightbox } from './PhotoLightbox'
 
 /**
  * 全站统一页面横幅 —— 新中式极简「图文并置」。
@@ -10,6 +12,8 @@ import { CoverImage } from '../zen/CoverImage'
  *   左：宣纸底上的题头（朱砂小标 + 宋体大标题 + 副题 + 内容插槽）
  *   右：完整清透的照片，独立成框，并以一条错位青线压边
  * 照片不再承担承载文字的任务，因而可以全明显示；文字也无需重投影。
+ *
+ * 第 13 轮：题头照片本身可点开灯箱（半屏/近全屏查看），不再是一张死图。
  */
 export function PageBanner({
   image,
@@ -27,6 +31,9 @@ export function PageBanner({
   position?: string
   children?: ReactNode
 }) {
+  const { t } = useI18n()
+  const [viewing, setViewing] = useState(false)
+
   return (
     <header className="border-b border-hairline">
       <div className="container-page grid items-center gap-10 pt-10 pb-14 lg:grid-cols-12 lg:gap-14 lg:pt-14 lg:pb-20">
@@ -48,19 +55,47 @@ export function PageBanner({
             aria-hidden
             className="absolute -top-2.5 -right-2.5 hidden h-full w-full rounded-xs border border-celadon-300 lg:block"
           />
-          <div className="relative aspect-4/3 overflow-hidden rounded-xs border border-hairline bg-rice-100 lg:aspect-16/10">
-            <CoverImage
-              src={image}
-              alt=""
-              fallbackVariant="clouds"
-              priority
-              position={position}
-              className="absolute inset-0 h-full w-full object-cover"
-            />
-          </div>
+          <button
+            type="button"
+            onClick={() => setViewing(true)}
+            aria-label={`${t('common.photoView')}：${title}`}
+            className="group relative block w-full cursor-zoom-in text-left focus-visible:ring-2 focus-visible:ring-cinnabar-400 focus-visible:ring-offset-2 focus-visible:ring-offset-rice-50 focus-visible:outline-none"
+          >
+            <div className="relative aspect-4/3 overflow-hidden rounded-xs border border-hairline bg-rice-100 lg:aspect-16/10">
+              <CoverImage
+                src={image}
+                alt={title}
+                fallbackVariant="clouds"
+                priority
+                position={position}
+                className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+              />
+              <span
+                aria-hidden
+                className="pointer-events-none absolute top-3 right-3 flex h-8 w-8 items-center justify-center rounded-xs border border-paper/35 bg-celadon-950/55 text-paper opacity-80 transition-opacity duration-200 group-hover:opacity-100"
+              >
+                <ExpandIcon />
+              </span>
+            </div>
+          </button>
+
+          <PhotoLightbox
+            key={viewing ? 'open' : 'closed'}
+            items={[{ src: image, alt: title, caption: title }]}
+            index={viewing ? 0 : null}
+            onClose={() => setViewing(false)}
+          />
         </div>
       </div>
     </header>
+  )
+}
+
+function ExpandIcon({ className = 'h-4 w-4' }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} fill="none" stroke="currentColor" strokeWidth={1.4} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+      <path d="M9 4H4v5M15 4h5v5M9 20H4v-5M15 20h5v-5" />
+    </svg>
   )
 }
 
