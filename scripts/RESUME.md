@@ -88,7 +88,9 @@ node scripts/verse-audit.mjs       # 动过 verses.ts
   「failed to load config from vite.config.ts」+ `spawn EPERM` —— 看着像配置坏了，其实是沙箱。
   `stdio:'ignore'` / `'inherit'` 的 spawn **能跑**。
 - **无头 Chrome**：crashpad `OpenProcess: Access denied` →「crash server failed to launch」→ 自终止。
-  `--no-sandbox`、`--disable-crash-reporter`、临时 profile 都救不了（第 14 轮实测）。
+  默认参数下必崩（第 14 轮实测）。`--no-sandbox` / `--disable-crash-reporter` / 临时 profile 这几条
+  **没有逐一试过**，但不值得试：crashpad 是被「禁止 OpenProcess」卡住的，属进程权限，不是浏览器开关。
+  真要再试，只试一条：--headless=old（老实现不起 crashpad handler；本机 155 上仍能 --dump-dom，但是否真是老实现、沙箱下能否起来，都**没有验证**）。
 - **写工作区**（视策略）：`writeFileSync` / `renameSync` 可能裸 `EPERM`，`dist/` 会静默变陈旧。
 
 所以按这个顺序走：
