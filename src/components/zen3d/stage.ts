@@ -46,6 +46,9 @@ export interface FitBox {
   halfWidth: number
 }
 
+/** 竖直视场角（度）。相机与取景数学必须共用这一个数，否则「算出来的取景」和「拍出来的画面」会差一点 */
+export const STAGE_FOV = 42
+
 /**
  * 取景距离：给定包围盒，算出让它**完整入画**的相机半径。
  *
@@ -59,7 +62,7 @@ export function fitDistance(
   { top, bottom, halfWidth }: FitBox,
   opts: { fov?: number; phi?: number; aspect?: number; margin?: number } = {},
 ): number {
-  const fov = opts.fov ?? 42
+  const fov = opts.fov ?? STAGE_FOV
   const phi = opts.phi ?? 1.0
   const aspect = opts.aspect ?? 1
   const margin = opts.margin ?? 0.1
@@ -158,7 +161,7 @@ export function createStage(
   if (opts.fogColor != null) {
     scene.fog = new THREE.FogExp2(opts.fogColor, opts.fogDensity ?? 0.008)
   }
-  const camera = new THREE.PerspectiveCamera(42, 1, 0.1, 300)
+  const camera = new THREE.PerspectiveCamera(STAGE_FOV, 1, 0.1, 300)
   const raycaster = new THREE.Raycaster()
   const ndc = new THREE.Vector2()
 

@@ -1,1319 +1,215 @@
-# 慧灯禅院 · 英文翻译工程（状态 + 流程 + 坑）
+# 慧灯禅院 · 工程状态 / 流程 / 坑
 
-> 工作目录 `D:\FengLi\Web\fou\huideng-chanlin`。
-> **翻译与缺陷修复均已收官**（A+B 期 29 篇整篇翻译；缺陷修复轮 1/2/3）。
-> 本文件 = 唯一权威入口（状态 / 目录 / 流程 / 坑 / 剩余项）。
-> 历史计划已归档为 `scripts/*.md.archived`（已执行完，**不要当待办读**，需要时 `git show` 取回）。
-
-## 1. 当前状态（实测，最后一轮 = 缺陷修复轮 3 + 收尾）
-
-| 指标 | 值 | 判据 |
-| --- | --- | --- |
-| `validate-en` | **ok=294 crit=0 warn=0 parts=0** | 硬缺陷归零 |
-| `scan-mojibake` | **0 / 294** | 无乱码 |
-| `meta-scan` | 命中 **13** | **期望值就是 13，不是 0** —— 它是**待复核清单**，见 §4.4 |
-| `name-scan` | 3 篇「混合」 | **全是子串假阳性，不是缺陷**，见 §4.5 |
-| `catalog-en` ↔ `en/*` | 294/294 全等，stale **0** | 生成器已能自愈（§4.2） |
-| 孤儿分片 `en/*.pN.json` | **0** | 卫生达标 |
-| `task-plan` | **0 篇 / 0 块 / 0 任务 / 0 被挡** | **翻译收工** |
-| `plan-slices` | 0 缺口 / 可派 0 片 / 一致性问题 0 | 翻译收工 |
-| `npm run typecheck` | 通过 | |
-| 工作区 | 干净、全提交、**未 push** | |
-
-**规模**：`articles/*.json` **294** 篇中文源 = `en/*.json` **294** 篇英文；英文正文 **54,799 块**；
-`catalog-en.json` **294** 条。其中 **A 期 11 篇 + B 期 18 篇 = 29 篇**为本轮新增整篇翻译（B 期 24,491 块 / 205 任务，实测 395 min ≈ 6.6 h），
-其余为既有内容的英文覆盖（均通过 `validate-en`）。
-
-### 1.1 缺陷修复轮 1（crit/warn）
-
-| slug | 症状 | 处置 |
-| --- | --- | --- |
-| `303liuzutanjing` | 块 551 多余 / 块 822 缺译，551..822 区间 `en[i]=zh[i-1]`（272/272） | 删重复块 + 补译 `zh[822]`（**纯插入**，整段只滑动一格，555..822 **不重译**） |
-| `068xiangxujs` | **不是**未翻译：25 块里**汉字 0 个**，残留只是 CJK 标点 | 标点机械归一为 ASCII，块数/`t`/片段数全不变 |
-| `101yebunengxi` | 同上，8 块只有 `〔〕` | 同上 |
-| 11 篇 warn 片段数不符 | 实测 **42 块**（`103yjy` 一篇 22 块） | 逐篇把 en 片段数对齐 zh（13 个提交） |
-| 248 篇片段接头丢空格 | 英文 248 篇 / 补 **15,548** 处；中文 0 处 | 渲染层按需插空格（`ArticleBody.tsx`，仅 `lang==='en'`） |
-
-### 1.2 缺陷修复轮 2（catalog / 孤儿 / author / 音标）
-
-| 步骤 | 计划 | **实测** |
-| --- | --- | --- |
-| `build-catalog-en.mjs` | 差异 8 → 0 | 生成器**只合并不删键** → 需额外 prune 才到 0（见 §4.2）；重建顺带刷新了 **228 行**陈旧 title/excerpt |
-| 删 6 个孤儿分片 | `parts` 6→0 | `parts` 6→0，但 `ok` **288→294**：`validate-en` 对「有分片的 slug」整篇 `continue`，分片删掉后才第一次被校验 |
-| author 源缺陷 | 15 篇 | 实测 **16 条**；**14 改 + 2 保留**（`028baofufa` 聂云台、`246henghedashouyin` 元音老人 是真作者） |
-| 音标统一 | 10 组 | 口径 = **统一带变音符**；实测 **7,956 处**（`en/*` 7,952 / 185 篇 + `verses.ts` 4） |
-| 计划外 | — | `scan-mojibake` 有**假阴性**（漏 C4/C5/E1 前导字节），en 里实际 5 处；已修检测器 + 修数据（§4.3） |
-
-### 1.3 缺陷修复轮 3（author 18 篇）+ 收尾
-
-**共 21 个提交**：1 工具（生成器 prune）+ 17 逐 slug（author）+ 2 逐 slug（真错字）+ 1 docs。
-
-18 篇判定：`NEXT-PLAN.md` §6.1(b) 原列 12 条**全部是缺陷**（书名/品名/正文短语/角色语，**没有一条是真人**），
-另加实测新发现 6 条同类。**17 改 + 1 保留**：
-
-| slug | 原 `author`（错） | 改为 | en 侧 |
-| --- | --- | --- | --- |
-| `002baiyunxy` | 但看自心 | **刘洙源** | Liu Zhuyuan |
-| `019xinnzy` | 业不能系 | **彻悟大师** | Master Chewu |
-| `082renshibenyuanfamen` | 第十八愿 | **（置空）** | 删键 |
-| `088linzhongshinianxiangxu` | 要以深信切愿 | **湛然** | Zhanran |
-| `092shangdaochuan` | 第十八愿 | **湛然** | Zhanran |
-| `109chenggong` | 就像溺水的人 | **（置空）** | 删键 |
-| `269yigenianforendezishu` | 呼吸念佛精要 | **（置空）** | 删键 |
-| `170buyuanren` | 王凤仪嘉言录 | **王凤仪** | Wang Fengyi |
-| `193guanwuliangshoufojingjijie` | 正宗分 | **会性法师** | Master Huixing |
-| `212frame` | 金刚经精解 | **鸠摩罗什** | Kumarajiva |
-| `091wuyalishenghuo` | 宁静在说话 | **艾克哈特·托勒** | Eckhart Tolle |
-| `236kuailedemimi` | 一个新世界 | **艾克哈特·托勒** | Eckhart Tolle |
-| `292wuzhongzuiqiangdadeliliang` | 修行的真谛 | **顶果钦哲仁波切** | Dilgo Khyentse Rinpoche |
-| `011errusx` | 达摩祖师亲传 | **湛然** | Zhanran |
-| `012liuzutanjing_kp` | 门人法海 录 | **法海** | Fahai |
-| `239wuliangshoujing-jiaohuibenzhu-zhu` | 湛然 校会 | **湛然** | Zhanran |
-| `056chengzanjingtujing` | 湛然 分科 | **湛然** | Zhanran |
-| `049kulianyiwan` | 同人于野 | **不改（真人笔名）** | 不改 |
-
-- **4 篇置空**（`082`/`109`/`269` 无作者可考；`082` 是《禅刊》未署名「编者小语」）。
-  置空写法循两侧既有惯例：**中文源 `author: ""`、英文侧删键**（故 catalog 也删该字段）。
-- **英文命名一律取自库内既有英文、不新造**：`Master Huixing`（`193` 自身首块）、`Master Chewu`（48 篇）、
-  `Liu Zhuyuan`（6 篇）、`Kumarajiva`（31 篇）、`Wang Fengyi`（6 篇）、`Dilgo Khyentse Rinpoche`（`291`/`292` 首块）、
-  `Eckhart Tolle`、`Fahai`、`Zhanran`。
-- **收尾真错字 2 处**（不属风格分叉）：`043mengyouji` 的 `Paramiti`×2 → **`Pāramiti`**（般剌密谛）；
-  `302xinj` 的 `Prajñāpāramita` → **`Prajñāpāramitā`**（同一文件另有 107 处正确拼写，故确为笔误）。
-
-## 2. 目录与产出
-
-```
-src/content/articles/*.json     中文源（权威；meta 缺陷也改这里，不要改 en）
-src/content/en/*.json           英文覆盖（整篇；分片在 merge 前是 *.pN.json）
-src/content/catalog-en.json     slug → {title,author,excerpt}（英文界面用；build-catalog-en.mjs 生成）
-src/content/{catalog,lingqi,lingqi-en,…}.json   其它内容数据
-dist/                           vite 构建产物（gitignore）
-build/                          临时工作区（gitignore）：**只放生成物**（slices/ · shots/ · chrome-* ·
-                                cjk-chars.txt · brush-chars.txt · NotoSerifSC-Regular.otf）
-scripts/*.mjs                   全部工具脚本（**第 9 轮起，原先在 build/ 的可复用脚本已全部搬到这里**）
-scripts/*.md.archived           已执行完的历史计划，**不要当待办读**
-```
-
-**补片/返工用的 5 个工具（已入库 `scripts/`；临时件只许放 `build/` 并自删）**
-
-| 脚本 | 用途 |
-| --- | --- |
-| `scripts/mksrc.mjs <slug.pN>` | 编号源 → `build/<slug.pN>.src.txt`（每行 `<n>\t<源文>`，非 `p` 块带 `[t=..]`/`[segs=N]`/`[HREF]`） |
-| `scripts/recover-r9-dispatch.mjs <slug.pN>` | 打印首/末块 `src8` 与 `multiSegBlocks`/`tableBlocks` 计数（派发前给子代理对照锚点） |
-| `scripts/recover-r9-assemble.mjs <slug.pN> <out.jsonl>` | **按源结构确定性组装**；锚点/块数/片段数/href/CJK/空译全校验，失败**拒收且不留文件** |
-| `scripts/recover-r9-scan.mjs <slug> [pN…]` | 占位符 / 空块 / 无字母块扫描 |
-| `scripts/audit-slices-runtime.mjs <slug> <pN…> [--dump=abs]` | 缺陷类 E 判据入口：结构 + 重复 + **逐块长度比离群** |
-
-## 3. 翻译流水线（如需再译）
-
-```bash
-node scripts/task-plan.mjs 120                          # 1) 唯一权威的「还剩多少」
-node scripts/gap-prep.mjs "<slug>:<a>-<b>"              # 2) 缺口源（同 slug 多区间须分多次进程调用）
-node scripts/mksrc.mjs <slug.pN>                          # 3) 编号源 + 锚点
-node scripts/recover-r9-dispatch.mjs <slug.pN>
-# 4) 一条消息并行派 8 个子代理：各只写 build/<slug.pN>-out.jsonl
-#    每行 {"n":0..N-1,"src8":"<源块去空白前8字>","en":"<英文>"}；n 不重不漏
-#    提示词模板见 scripts/DISPATCH.md（+ 防漂移三行）
-node scripts/recover-r9-assemble.mjs <slug.pN> build/<slug.pN>-out.jsonl   # 5) 父代理组装
-node scripts/verify-slices.mjs <本轮全部分片>            # 6) 收尾（顺序不可换）
-node scripts/coverage.mjs <slug>                        #    uncovered_blocks=0 且 bad=0
-node scripts/audit-slices-runtime.mjs <slug> <pN...>      #    必须 all clean
-node scripts/recover-r9-scan.mjs <slug>                   #    必须 clean
-git add <各分片，显式文件名> && git commit -m "EN: … shards"
-node scripts/merge-parts.mjs <slug>                     # 会删掉它合并的分片 → 必须在提交之后
-node scripts/repair-json.mjs ; node scripts/validate-en.mjs
-git add <slug>.json ; git add -u src/content/en && git commit -m "EN: … merge"
-git show --stat --oneline HEAD ; git status --porcelain  # 双向核对
-```
-
-**`meta` 规则**：源切片里有 `zhAuthor` 才写 `author`。`head=Y` 的片若被 `meta-scan` 命中，
-**先删 `src/content/articles/<slug>.json` 的 `author`**（改源，不是改 en）再 `gap-prep`。
-
-## 4. 必须遵守的坑（全部实测）
-
-1. **〔最危险〕`merge-parts` 会删除它合并的分片** → 固定顺序：先 `git add` 全部分片 → 再 merge → 再提交。
-   `git add A B` 只要有一个路径不存在，**整条 add 失败**，随后 `git add -u` 只暂存删除 → 提交里只有删除没有新增。
-   每次提交后 `git show --stat` + `git status --porcelain` 双向核对。
-2. **`build-catalog-en.mjs` 是合并式更新：不会删键，但现已加 prune**。当 `en/<slug>.json` 的
-   `title`/`author`/`excerpt` 被清空或删行后，**必须先跑生成器**（它会删掉「en 侧无值」的陈旧字段）。
-   输出里的 `M stale fields pruned` **应恒为 0**；`M > 0` 说明上次改 en 后没重建 catalog。
-   实测：把 `en/170buyuanren.json` 的 author 行删掉后重建 → `1 stale field pruned` 且 catalog 该键消失。
-   ⚠ **只删整行、不要 `delete` 后再补** —— 那会把键序改成 `title,excerpt,author`。
-3. **含中文的文件禁止用 PowerShell `Set-Content -Encoding utf8` 回写**：它把已是 UTF-8 的内容按 CP936/CP1252
-   再解一次，产出**双重编码乱码**（`行` → `è¡Œ`，无 BOM、仍是合法 UTF-8，所以 `tsc`/JSON 解析都不报错）。
-   回写一律用 `node` 的 `writeFileSync(p, s, 'utf8')`、`edit` 工具或 Node 脚本。
-   自检：`s.includes('\u884c')` 且 `(s.match(/\uFFFD/g)||[]).length === 0`。
-4. **`meta-scan` 是「待复核清单」，命中数不是验收指标**：它唯一判据是「`author` 恰是某正文块开头」，
-   而**真人署名天然满足**（署名块 `会性法师 敬集` 的开头就是名字）。故轮 3 把错值改成真名后命中数 5→**13**，
-   新增 8 条**全是真署名**。**判据**：该 `author` 值在正文里有「相等的短块」或「以它开头的署名块」→ 真署名，**不要删**。
-5. **`name-scan` 是裸子串计数**（`raw.split(v)`，不解析 JSON、不看词边界）：长专名会被算成「另一个变体」——
-   `Anandatta` 记成 `Ananda`、`Sakyamunindra` 记成 `Sakyamuni`、`Vajrasamadhi`/`Mahaprajna` 记成 `samadhi`/`prajna`。
-   它报的 3 篇「混合」**全是假阳性**（判据：取整词看，没有一个是词本身）。
-6. **本库正文不在 `blocks[].text` 里**：正文在 `blocks[].inline[].s`（`text` 多为**空串**）。
-   用 `b.text` 拼正文会把每篇读成空文，从而把「正文短语型 author」误判成「正文里没这个词」。
-   取法：`Array.isArray(b.inline) ? b.inline.map(s => s.s ?? '').join('') : (b.text ?? '')`。
-7. **改 `articles/<slug>.json` 的 `author` 不影响英文页署名**：英文页/列表页读 `en/*.json` 的 `author`
-   （再汇总进 `catalog-en.json`），与中文源**两侧独立**。**改 author 必须同时决定 en 侧**，否则 en 留错误署名。
-8. **单字段改动用行级外科编辑，禁止整文件重序列化**：`en/*.json` 的缩进与行尾**不统一**
-   （`1 空格+LF`、`2 空格+LF`、`2 空格+CRLF` 三种并存），`JSON.stringify(j,null,1)` 只对一部分是恒等变换，
-   整体重写会把一篇变成「全文重排」的巨型 diff。定位 `^(\s*)"author"\s*:` 行、保留原缩进与 `\r`，改完 `JSON.parse` 回验、
-   要求 diff 恰为 1 行。**另**：`git status --porcelain` 在本仓库有 **CRLF 统计噪声**（工作区 LF、blob CRLF、
-   `core.autocrlf=true`），会偶发报 ` M` 但 `git diff --numstat` 为空 —— **判据用 `git hash-object <f>` ==
-   `git rev-parse HEAD:<f>`**，或直接看 `git diff --numstat`，不要只看 `git status`。
-9. **禁用字符只限 CJK 汉字 + 全角**（`【】〔〕《》（）「」、。，！？：；`）；`“ ” ‘ ’ — · …` **允许且推荐**。
-   ⚠ `validate-en` 的 CJK 正则只认 `[\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff【】〔〕《》]` ——
-   `（）`/`？`/全角逗号分号**不触发 crit**。所以「N 块含中文」要先分清**真汉字**（未翻译）还是**只剩 CJK 标点**（排版脏）。
-10. **`scan-mojibake` 用「CP1252 反查回字节 → 严格 UTF-8 回环解码」判乱码**（已补 C4/C5/E1 前导字节）：
-    只有解码成功且结果不同才判乱码，故 `café` 这类真 latin-1、`dhāraṇī` 这类正确变音符都不会误报。
-11. **片段数对齐不能改措辞**：要求 ①片段数 == zh 数；②**去掉全部空白后**与改动前逐字节相同（只许边界插空格）；
-    ③href 多重集不变；④未列入的块逐字节不变；⑤整篇去空白内容不变。子代理交回后**必须父代理独立复验**。
-12. **`verify-slices` + `coverage` 全绿 ≠ 译完**：块内截断/占位符/空块只有 `audit-slices-runtime` 的**逐块长度比**
-    能抓。判据：`EN/ZH` 超出同片中位 2.5×/0.4×；**报警必须回看 ZH 块**（源文自身重复/叠句/偈颂重出/源文损坏都会合法离群）。
-13. **子代理自报不可信**：必须逐块核对 `n` 覆盖（`lines/min/max/uniq` **不够**，要查 missing 集合）；
-    实测子代理会「只写一部分就正常结束回合」。补写要让它写**新文件**（`-tail.jsonl`），父代理按 `n` 合并去重再组装。
-    **同一分片绝不允许两个代理同时写。**
-14. **`task-plan`/`plan-slices`/`coverage`/`merge-parts` 四个脚本都读 `slice-plan.json`**：
-    删掉它会整条队列链路报 ENOENT（实测过）。**只跑审计器 `plan-slices.mjs`**，不要跑生成器 `slice-plan.mjs`（会覆盖审计器）。
-15. **`slice-plan.mjs` 与 `plan-slices.mjs` 同名互覆**（历史教训）；误跑生成器后
-    `git checkout -- scripts/plan-slices.mjs` 可复原。
-16. **取回历史文件不要用 `git show > file`**（PowerShell 里写 UTF-16，JSON 非法）；
-    用 `git cat-file blob` 配 Node 读取，或 `git checkout`。
-17. **〔第 10 轮新增〕受限沙箱有两种**：**「策略层拒绝」**（会打印
-    `[sandbox: file access denied under <mode> mode]`）与**「OS 层 EPERM」**（harness 不打印任何标记，
-    只会看到 Node 的裸 `EPERM`）。后者**必须自己定位**，否则极易误判成「脚本坏了」。
-    实测第 10 轮：`npx vite build` 报 `spawn EPERM`，真因**不是** vite 缺陷 ——
-    沙箱禁止「打开命名管道」（= 捕获子进程输出），于是任何 `stdio:'pipe'` 的 spawn 全 EPERM：
-    - `spawnSync(exe, …, {encoding:'utf8'})`（= pipe）→ **EPERM**；
-    - `spawnSync(exe, …, {stdio:'ignore'})` / `{stdio:'inherit'}` → **status=0，正常**；
-    - `exec(...)` / `execFile(...)`（vite 的 `optimizeSafeRealPathSync` 用 `exec('net use')`）→ **EPERM**。
-      ⚠ 该处 `exec` 的回调里只有 `if (error) return`，**同步抛出**会直接冒泡成
-      `failed to load config from vite.config.ts` + `spawn EPERM` —— 看着像配置坏了，其实是沙箱。
-    同一模式下**工作区写入/删除也被拒**（`writeFileSync` / `mkdirSync` / `unlinkSync` / `renameSync`
-    全 EPERM），所以 `dist/` 会**静默变成陈旧产物**，而 `probe-route-cost.mjs` 会死在第一步
-    `fs.rmSync('build/chrome-routecost')` 上（它的 Chrome 临时 profile 建不出来）。
-    判据脚本（只读，实测仍全绿）：`tsc` / `validate-en` / `scan-mojibake` / `style-audit` /
-    `check-buckets` / `photos-status` / `pool-drift` / `check-font-coverage`。
-    **处置**：要么把策略放到 `danger-full-access` 重跑，要么本机跑（见 §5）。
-18. **〔第 10 轮新增〕`fs.rmSync(p, {recursive:true, force:true})` 在「什么都没删」时也返回成功**。
-    `force:true` 会把 `ENOENT` 吞掉，所以「`rmSync` 没抛异常」**不能**作为「删除成功」的判据
-    —— 第 10 轮我据此一度得出「沙箱允许删除、只拒绝写入」的错误结论。
-    **正确判据**：删之前先 `existsSync`，删之后**再 `existsSync` 一次**，或直接看抛出的
-    `code`。真正的删除拒绝会给出**裸 `EPERM`**（不是 `ENOENT`）。
-    同理：`dist` 是否新鲜**不要只信 mtime**，要验「产物里含当前源码的特征串」（§11.2）。
-
-## 5. 脚本速查
-
-| 脚本 | 用途 |
-| --- | --- |
-| `task-plan.mjs [maxBlocks]` | 生成任务队列（唯一权威的「还剩多少」） |
-| `plan-slices.mjs` | 切片计划**审计**（只跑这个，不要跑生成器） |
-| `coverage.mjs [slug]` | 每篇覆盖% / 缺口区间 / 孤儿分片（merge 后整篇不再计分片，显示 0% 属正常） |
-| `gap-prep.mjs <slug>[:a-b]` | 预提取缺口源文 → `build/slices/<part>.src.json` |
-| `verify-slices.mjs <part…>` | 分片核验（含 `JSON.parse`），必须 `ok` |
-| `merge-parts.mjs <slug…>` | 按 firstBlock 连续拼接为整篇，**并删除分片** |
-| `validate-en.mjs` | 全库校验：`ok` / `crit` / `warn` / `parts` |
-| `repair-json.mjs` | 清 BOM 与字符串内裸控制字符 |
-| `scan-mojibake.mjs` | 乱码扫描（现状 0 / 294） |
-| `meta-scan.mjs` | 作者/元数据**待复核清单**（改中文源）；命中数**不是**验收指标，见 §4.4 |
-| `name-scan.mjs` | 人名/译名一致性扫描（裸子串，见 §4.5） |
-| `build-catalog-en.mjs` | 由 `en/*.json` 汇总 `catalog-en.json`（含 prune，见 §4.2） |
-| `fix-mojibake.mjs` | CP1252→UTF-8 乱码修复 |
-| `migrate.mjs` | 旧站 HTML 迁移（历史，一般不动） |
-| `fetch-*.mjs` / `merge-lingqi.mjs` | 媒体与灵棋经抓取/合并（内容侧，按需） |
-
-**常用校验**：`npm run typecheck`（tsc）可跑。`npm run build`（vite）：**第 10 轮实测通过**
-（`npx vite build` → exit 0，2.57s，`dist/` 重建后与第 9 轮**逐字节同哈希**）。
-⚠ 但若沙箱处于「受限」模式，它会因 `spawn EPERM` 失败（真因见 §4 第 17 条：禁止命名管道，
-**不是** vite 的缺陷），此时需本机跑或放宽到 `danger-full-access`。
-
-## 6. 剩余项（**全部可选，非缺陷**；建议就此收官）
-
-> 结论：**翻译任务与硬缺陷均已完工**。以下三项都**不是缺陷**，做与不做不影响交付质量。
-
-| 项 | 规模 | 性质 | 建议 |
-| --- | --- | --- | --- |
-| **(a) 音标/专名第二轮** | ASCII→变音符 ~**2,905 处 / ~169 文件** | **纯风格**（两套拼写均合法） | **建议不做**。这是唯一有回归风险的改动 |
-| **(b) 站点构建** | — | 运营/发布 | 需**本机**跑 `npm run build` 出 `dist/` 后发布（沙箱 `spawn EPERM`） |
-| **(c) `meta-scan` 归零** | 13 条 | 扫描器口径 | **不建议**：13 条全是真署名；要归零需给扫描器加「纯署名块」白名单（改 `scripts/`，需批准） |
-
-**(a) 若将来要做，口径已定（勿再问）**：**只统一变音符、保留原有大小写分布** ——
-`paramita`→`pāramitā`、`Paramita`→`Pāramitā`，**不**把句首/句中大小写拉平。
-实测两套并存正是这个原因：`pāramitā`=779 / `Pāramitā`=38；`saṃsāra`=144 / `Saṃsāra`=8。
-好处：去空白后仅变音符不同，逐块复核最容易。**href 守卫已复核：目标词在 href 中出现 0 次。**
-
-**(a) 的实测计数（`\b` 整词；供将来直接开工）**：
-
-| 词 | ASCII 侧（待改） | 变音符侧（目标） |
-| --- | --- | --- |
-| `pāramitā` 系 | `paramita`=258 + `Paramita`=120 = **378** | `pāramitā`=779 / `Pāramitā`=38 |
-| `Subhūti` | `Subhuti`=**1251** | `Subhūti`=327 |
-| `Śāriputra` | `Sariputra`=**447** + `Sāriputra`=**36** | `Śāriputra`=515 |
-| `Mahāyāna` | `Mahayana`=**298** + `mahayana`=**2** | `Mahāyāna`=270 |
-| `Avalokiteśvara` | `Avalokitesvara`=**98** | `Avalokiteśvara`=137 |
-| `Mañjuśrī` | `Manjusri`=**39** + `Mañjusri`=**13** | `Mañjuśrī`=166 |
-| `saṃsāra` | `samsara`=**70** + `Samsara`=**7** | `saṃsāra`=144 / `Saṃsāra`=8 |
-| `Kṣitigarbha` | `Ksitigarbha`=**99** | `Kṣitigarbha`=36 |
-| `Tripiṭaka` | `Tripitaka`=**137** + `tripiṭaka`=**1** | `Tripiṭaka`=56 |
-| `Nāgārjuna` | `Nagarjuna`=**30** | `Nāgārjuna`=53 |
-
-**（a) 的三条硬约束（做时必须包含）**：①只按 `\b` 整词替换、长词形优先；
-②**href 硬守卫**（任何目标词出现在 href 里就中止）；③逐文件复核「块数 / 块签名 / href 多重集不变 + 不引入乱码」。
-（`\b` 是必须的：`Siksananda`/`Shikshananda`/`Anandatta`/`Sakyamunindra`/`Samadhisvara`/`Prajnaruci`/`Prajnatara`
-等长专名**不可**被替换。）
-
-## 7. 下一轮启动提示词（复制这一段）
-
-```
-继续 huideng-chanlin 项目（D:\FengLi\Web\fou\huideng-chanlin）。上一轮（第 8 轮）做了「补满图版 +
-landscape 题材精修 + gold/moon 令牌改名 + 修 --only 删桶缺陷」，状态、坑与下一轮任务见
-scripts/RESUME.md §9（**先读 §9，再读 §4 的 16 条历史坑**）。
-
-上一轮已落地（提交 150786b → ba9aa98 → 9137745）：
-- 图版**七桶全满**：sutras 15/15、landscape 20/20、grottoes 46/46（grottoes-46 原是未登记的孤儿
-  文件，清单 229 → 239 就是把它与其它缺口补回）；实测 **清单 239 = 磁盘 239、孤儿 0、缺口 0**、
-  7 桶编号全连续、pool-drift 全等；
-- ⚠ **`photos-status` 退出码 0 ≠ 桶内齐了**（它只判空桶/具名图损坏）——上一轮它返回 0 的时候
-  sutras 才 11/15、landscape 13/20。真判据是「清单条数 == 磁盘张数 == PICKS 条数」+ 编号连续；
-- ⚠ **改 PICKS 是两步**：`node scripts/curate-cn.mjs`（PICKS → cn-picked.json，**已入库**）
-  再 `node scripts/fetch-cn-webp.mjs`（读的是 cn-picked.json，不是 PICKS）。只改 PICKS 就抓图
-  会**照旧按旧 id 下载**，日志还打印旧标题 —— 上一轮我连犯两次（§9.2 第 17 条）；
-- ⚠ **换槽位必须换同一位置**（编号恒等于下标+1）；且换 id 前先用
-  `node scripts/screen-cands.mjs landscape <id...>` 过一遍 111 条 TITLE_REJECT ——
-  被剔的 id 不进 cn-picked.json，会让该桶少一条、后面下标全部前移（§9.2 第 21 条）；
-- ⚠ **pool 里的标题本身也可能是错的**：`landscape-012` 标题「20180614 CHINA 1432.jpg」，
-  实际画面是**游客举手机拍猕猴**。pool-drift 结构性抓不到（只比 picked 与 pool 的 title 是否全等）
-  → 题材判据只能**逐张看全尺寸**（§9.2 第 16 条）；
-- 本轮我又修了 `fetch-cn-webp.mjs` 一个静默缺陷：`--only=<桶>` 会把其余桶**从清单整体删掉**
-  （实测删掉 landscape 20 + lotus 7，7 张 lotus 立刻成孤儿，而退出码 0、构建全绿）。已给
-  `persist()` 加 `carry` 参数修好（§9.2 第 18 条）；
-- 图版题材精修（用户批准）：landscape 换掉 4 个槽位 → 010（水墨+佛塔）、046（屋顶群+雪山）、
-  038（云海雪峰）、034（1874 albumen 沧浪亭嵌崖）；保留了 013（Huangshan）；
-- 令牌改名：`gold-*` → `brass-*`（黄铜）、`moon-*` → `mist-*`（青雾灰蓝），**107 处 / 4 文件**。
-  做法是把正则收窄为**令牌-数字边界** `\b(gold|moon)-(\d{2,3})\b`，散文词与语义标识
-  （`.btn-gold`、`illustration:'moon'`、`.reader-theme-moon`）天然不受影响，不必用文件白名单；
-- 判据提醒：Tailwind v4 把令牌值**内联进工具类**，产物 CSS 里搜不到 `--color-*` ——
-  要读渲染后的 computed color（`scripts/probe-colors.mjs` / `scripts/probe-lot-badges.mjs`）。
-
-下一轮任务（**§9.3 的第 3/4/5 项，用户指定顺序 4 → 3 → 5**）：
- 3. 主包 index.js 继续拆分（现 836.68 KB / gzip 276.67 KB；three 与 vendor 已独立）；
- 4. ✅ 已完成（第 9 轮）：26 个可复用工具从 build/ 搬进 scripts/，见 §10.6；
- 5. verses.ts 每日法语中英逐段复核（第 6 轮只动了一二级页面文案）。
-
-核对（全跑一遍再问我）：
-
-  npx tsc --noEmit
-  npx vite build                    （需子进程权限；受限沙箱会 spawn EPERM）
-  node scripts/validate-en.mjs && node scripts/scan-mojibake.mjs
-  node scripts/style-audit.mjs
-  node scripts/photos-status.mjs     （⚠ 退出码 0 不代表桶内齐了，见上）
-  node scripts/pool-drift.mjs          （改过 PICKS 的话必跑；但抓不到「池子自身选错」）
-  node scripts/shot-scrolled.mjs ".card-media" build/shots/x.png   # 截图 + 报每张图 naturalWidth
-
-两个**隐性失效**要记牢（不报错，但会静默劣化）：
-- 字体子集是按「当前全站用字」生成的 → 改动正文/文案后新字会掉回系统字体，需重跑
-  `node scripts/make-song-subset.mjs`（或搬进 scripts/ 后的新路径），看它打印的 missing 数；
-- cn-pool.json 是未入库的生成物，而 PICKS 按池内 id 手写 → 再重抓 pool 必须逐条看标题核对，
-  且**标题也不可信**，要逐张看全尺寸图。
-
-纪律：
-- 含中文的文件一律不要用 PowerShell Set-Content 回写（双重编码，见 §4.3），用 node writeFileSync 或 edit 工具；
-- **命令行里不要内联复杂 JS**：PowerShell 会把单双引号吃掉（本轮反复踩到 `Expected ident` /
-  `Unmatched )`）。判据脚本一律写成 `scripts/*.mjs` 文件再跑，或直接用现成的探针脚本；
-- PowerShell 脚本里的字符串常量只用 ASCII，中文只放注释（PS 5.1 读中文串会把引号配对读错，见 §9.2）；
-- 单字段改动用行级外科编辑（§4.8）；git status 有 CRLF 噪声，判据用 git hash-object（§4.8）；
-- ⚠ 本仓库脚本有 CRLF 也有 LF 两种行尾（`curate-cn.mjs` 是 CRLF）——写正则改文件时必须用 `\r?\n`，否则静默失配；
-- 令牌改名/批量替换要用**令牌-数字边界**正则（见上），不要用裸词边界 + 文件白名单；
-- 临时件只许放 build/ 并自删；
-- ⚠ 429 会**连片发生**（整段 CDN 被限流时连 HEAD 探测都 429）：别连续硬重试，
-  冷却 30–60s 后重跑即可（上一轮 landscape-14 连败 3 次、冷却后一次成功）；
-- 改完 SVG / 插画 / 字体 / 图片**务必截图肉眼核对**，不要只看代码：
-    node scripts/static-server.mjs dist --port=5192     # 对真实产物（后台任务）
-    然后用 Chrome 无头截图 http://127.0.0.1:5192/
-    （§9.2 第 9 条：不要用拼图核对题材；§9.2 第 14 条：全页截图不会触发视口外 lazy 图，
-      要先用 scrollIntoView 并读 naturalWidth 判断）
-- 会话末：回填 §9.4 的实测数字，提交 docs: …，**完成后 push**。
-```
-
-## 8. 归档（已执行完的历史计划，**不要当待办读**）
-
-| 文件 | 内容 | 取回 |
-| --- | --- | --- |
-| `scripts/B-PHASE-HANDOFF.md.archived` | B 期 12 轮翻译实测手册、派发提示词、时间台账（395 min / 18 篇）、缺陷类 E 判据 | `git show <sha>:scripts/B-PHASE-HANDOFF.md` |
-| `scripts/DEFECT-ROUND-2-PLAN.md.archived` | 缺陷修复轮 2 的执行计划（命令/预期输出/回退/逐篇 author 判定表，32 提交） | `git show <sha>:scripts/DEFECT-ROUND-2-PLAN.md` |
-| `scripts/TRANSLATION-BRIEF.md.archived` | 翻译规范（雅信达标准、术语表、结构要求） | `git show <sha>:scripts/TRANSLATION-BRIEF.md` |
-| `scripts/DISPATCH.md` | **仍有效**：补片派发的子代理提示词规范 | 直接读 |
-
-更早的过期文档（`NEXT.md`、`PLAYBOOK.md`、`WEEKEND-PLAN.md`、`NEXT-PLAN.md`）已在 git 历史里。
-
-## 9. 站点改进轮（文案 / 视觉 / 图版 / 字体 / 性能）· 状态与坑
-
-> **范围**：只有一级、二级页面（首页 / 书架 / 听经 / 祈福 / 灵签 / 关于 + 页头页脚），
-> **没有深入文章正文**；文章正文的翻译仍是 §1 的状态，未改动。
+> `D:\FengLi\Web\fou\huideng-chanlin` · Vite + React 19 + React Router 7 + Tailwind v4 + three.js r185。
+> 本文件是**唯一入口**：现状、命令、判据、坑。逐轮的实测明细**不再留在这里**（见 §7 的提交索引，
+> 需要时 `git show <sha>`）。
 >
-> **轮次**：§9.1 = 第 6 轮（文案/视觉/图版/字体）· §9.1b–§9.4d = **第 7 轮**（图版补桶 / WebP /
-> 字体瘦身 + 内置汉字子集 / 令牌改名 / 分包）· **§9.3 = 第 8 轮的既定任务（五项）**。
+> **维护纪律：本文件目标 ≤ 300 行。** 一轮做完，只把「下一轮还会踩的」写进 §5，
+> 其余写进提交信息。不要回灌过程叙事——第 13 轮它曾长到 108 KB / 1319 行，读它比干活还贵。
 
-### 9.1 第 6 轮改了什么（文案 / 视觉 / 图版 / 字体）
+## 0. 先看这五条（第 14 轮踩出来的）
 
-| 面 | 改动 | 文件 |
-| --- | --- | --- |
-| 文案（中） | 按「雅信达」重写；去生硬直译与堆砌（如「不艰深 · 不难懂」→「不艰深 · 不难懂 · 从读得进去的那一部开始」）；主题名与阅读背景名对齐现行水墨配色 | `src/i18n/zh.ts` |
-| 文案（英） | **重写而非直译**：`nav` 从 "Beginner's Path / Calm & Listen" 改为 "Reading Room / Listen"；修正中式英语（"One stick of heart-incense fills the ten directions"、"Do the lots come true?"） | `src/i18n/en.ts` |
-| 图版 | 全部换为中国传统佛教题材 229 张，7 个语义桶；旧 147 张（40.8MB，含日/韩/越/泰/印题材）已删 | `public/photos/cn/`、`src/data/photos-cn.json`、`src/lib/content.ts` |
-| 许愿树 SVG | 重做为中国水墨松柏（详见 `docs/DESIGN.md` §4） | `src/components/zen/WishTree.tsx`、`src/index.css` |
-| 插画 SVG | 十二式改水墨卷（宣纸底 + 墨分五色 + 朱砂印 + 自然物缓动） | `src/components/zen/ZenIllustration.tsx` |
-| 3D 微调 | 许愿树地面粉色小点 → 墨绿苔点；地面/光圈去掉荧光绿 | `src/components/zen3d/Tree3D.tsx` |
-| SEO | 按路由写入 `title` / `description` / `og:*`（原先二级页共用一份通用 description） | `src/components/ui/RouteMeta.tsx`、`src/components/layout/Layout.tsx` |
-| 图标 | favicon 改为宣纸底 + 焦墨莲 + 朱砂印；`theme-color` 改焦墨 | `public/favicon.svg`、`index.html` |
-| 清理 | 删死代码 `LotusMark.tsx` / `GuanyinFigure.tsx`、旧清单 `src/data/photos.json` | — |
-| 工具 | 视觉预览工程 + 静态服务器 + 截图脚本 | `preview/`、`scripts/static-server.mjs`、`scripts/shoot-preview.mjs` |
-| **字体三分法** | 标题楷（`--font-serif`）· 正文宋（新增 `--font-song`，**body 默认字体**）· 界面黑；48 处语义为正文的 `font-serif` 逐行改 `font-song` | `src/index.css`、`scripts/migrate-to-song.mjs`、11 个组件/页面 |
-| **字体对比工程** | 同页并排两版 + 读 computed style 验证「只有正文变了」（标题字体链与排版宽度两版一致） | `preview/FontCompare.tsx`、`scripts/probe-fonts.mjs` |
-| 可达性 | 装饰性 SVG 补 `aria-hidden`（11 处）；全角 `＋` 字符图标换内联 SVG（3 处） | `src/components/ui/Icons.tsx`、`scripts/fix-svg-aria.mjs` |
-| **风格体检** | 用计数替代「感觉」：字体分级、圆角/投影/毛玻璃/装饰渐变、emoji 与字符装饰、主题令牌名实、可达性、img alt、中英对齐 | `scripts/style-audit.mjs` |
-| 配图分配修复 | `(idx*7)%len` 在池长与步长不互质时退化（禅修院 46 张石窟只用到 3 张）→ 改按桶权重交错 + 院系内序号；并把 `photoForSlug` 从 O(n²) 降到 O(1) | `src/lib/content.ts` |
+1. **改 3D 画面先跑 `npm run audit:framing`**（纯 Node，不开浏览器）。它把「主体是否完整入画、
+   香头有没有贴边」算成 NDC 断言。第 14 轮首页香炉「放太大、看不到燃烧的香」正是
+   `tsc` / `vite build` / 所有既有 audit 全绿、只有截图能看出来的那类问题——现在一半能先算出来。
+2. **不要为了截图升级权限。** 受限沙箱里无头 Chrome 一定起不来（crashpad `OpenProcess: Access denied`），
+   `vite build` 也可能 `spawn EPERM`。顺序是：**先算 → 再让用户在本机跑一行截图 → 最后才谈权限**（§3.3）。
+3. **含中文的文件禁止用 PowerShell 回写**（`Set-Content -Encoding utf8` 会双重编码）。用 `edit` 工具
+   或 Node `writeFileSync(p, s, 'utf8')`。
+4. **命令行里不要内联复杂 JS**：PowerShell 会吃掉单双引号。一次性脚本写成 `scripts/*.mjs` 再跑。
+5. **改过文案/正文必须重跑字体子集**（`scripts/make-song-subset.mjs`），否则新字静默掉回系统字体。
 
-### 9.1b 第 7 轮改了什么（图版空桶 / WebP / 字体瘦身 / 分包）
+## 1. 当前状态（实测）
 
-| 面 | 改动 | 文件 |
-| --- | --- | --- |
-| **图版空桶（真因）** | 不是限流：`cn-pool.json` 重抓后 `PICKS` 仍用旧 id，halls/sutras/landscape 三桶整体漂到韩国与蒙古寺院、清真寺、17 世纪荷兰铜版画、蒙古人物像、藏地高原与地图上 | `scripts/curate-cn.mjs` |
-| **图版新管线** | 编号**恒等于**清单下标+1（旧管线是「前 N 个成功条目」，欠定、中断即错位）；失败条目留空 → 清单=磁盘=署名三者天然一致 | `scripts/fetch-cn-webp.mjs`（新） |
-| **图版转 WebP** | 全量 q80；`--migrate` 可就地迁移已有 jpg | 同上 |
-| **图版体检** | 同时认 `.jpg`/`.webp`（原先只认 `.jpg`，迁移后会误报「磁盘 0 张」） | `scripts/photos-status.mjs` |
-| **导览卡换图** | `halls-01`（反光金属说明牌）与 `halls-07`（黑白书影）→ 自然光石窟造像；并修掉 `named()` 校验桶没同步改导致「改了 named 却不生效」 | `scripts/pick-named-photos.mjs`、`src/lib/content.ts` |
-| **字体瘦身（计划外）** | CSS 875 KB → **77 KB**、字体 940 个/41.5 MB → **14 个/0.55 MB**：移除 `lxgw-wenkai-webfont`(27.9 MB)、`@fontsource/long-cang`(6.4 MB，零引用)，`ma-shan-zheng` 改项目子集(5.99 MB → 382 KB) | `src/main.tsx`、`src/index.css`、`public/fonts/` |
-| **汉字正文 webfont** | 新增 **Noto Serif SC 项目子集 1.39 MB / 1 个文件**（`unicode-range` 限定汉字，英文页不下载）；全站字体合计约 1.94 MB | `src/index.css`、`public/fonts/`、`scripts/make-song-subset.mjs` |
-| **色板令牌改名** | `sandalwood-*`→`celadon-*`、`tibetan-*`→`cinnabar-*`，**314 处 / 30 文件**（含 docs/preview） | `src/**`、`docs/**`、`preview/**`、`scripts/rename-tokens.mjs` |
-| **站标 404 修复** | `PhotoLogo.tsx` 硬编码 `/photos/cn/lotus-03.jpg`，转 WebP 后 404 → 站标空白；改为从 `PHOTO_NAMES` 推导 | `src/components/zen/PhotoLogo.tsx` |
-| **分包** | `codeSplitting` 增 `three` / `vendor` 分组（React 229 KB 独立长期缓存） | `vite.config.ts` |
-| **canvas 字体名** | 9 处硬编码 `"LXGW WenKai"` / `"Ma Shan Zheng"` → 子集名（否则 canvas 画回退体） | `src/components/zen3d/*` |
-
-### 9.2 图版管线的坑（全部实测）
-
-1. **不要在下载层按 JPEG 魔数过滤**。Commons 上大量中国佛画是 **PNG**（敦煌绢画、台北故宫立轴），
-   按 `buf[0]===0xFF && buf[1]===0xD8` 过滤会把它们整批丢掉。格式判定交给 Pillow。
-2. **人工精选清单下不要开自动判重**。中国佛画多为「立轴 + 大片留白」，结构指纹与颜色均值高度相似，
-   实测把《释迦三尊图轴》与《罗汉图轴》判成同一张。默认 `DEDUP=0`，`DEDUP=1` 才开。
-3. **429 要长退避，但别让单条阻塞整队**。Commons 限流时返回的正文是普通错误页
-   （不含 "too many requests"），只按关键词判断会漏；按状态码 429 退避，且**每条最多退避 1 次**
-   （退避 2 次以上会把整条队列拖住几分钟）。
-4. **抓取节流参数**：Commons 约 **6-8 张/分钟** 就会 429。成功下载之间留 6.5s 仍会偶发 429，
-   `PACE_MS=14000` 基本稳定。**不要并行跑多个抓取进程**——实测并行会立刻把两个进程一起打进限流。
-5. **`--only` 不许按候选清单全量生成文件名**。清单要只登记**磁盘上真实存在**的文件，
-   否则前端会去请求 404（实测踩过：清单 232 条、磁盘只有 125 张）。
-6. **复用已下载图片时不要依赖 `_raw/`**。一轮成功后 `_raw` 会被清掉，
-   若复用判定只能读 `_raw`，下一轮会把已有图片全部当成「产物无法读取」重新下载一遍（实测踩过，白烧 20 分钟）。
-   现 `reencode(src, dst, resize=false)` 直接读成品取指纹。
-7. **分类名要先探测**。`Category:Buddhist sculpture of China` 之类**不存在**（正确的是
-   `Buddhist sculptures from China`），猜分类名会得到空结果。用 `scripts/probe-cats.mjs` 先验。
-8. **〔最危险〕`cn-pool.json` 重抓后，`curate-cn.mjs` 的 `PICKS` 必须同源核对**。
-   池子是**未纳入 git** 的生成物（`scripts/cn-pool.json`），而 `PICKS` 是按池内 **id** 手写的。
-   本轮实测的根因就是这个：池子重抓过一次，顺序全变，而 `PICKS` 还是旧 id ——
-   - `halls-001..019` → 变成韩国/蒙古寺院、清真寺、17 世纪荷兰铜版画；
-   - `sutras-001..015` → 变成蒙古人物像《Baghatur Chigshi》、藏文/回鹘文/希伯来文写本、《论语》；
-   - `landscape-001..018` → 变成藏地高原、地图、昆虫标本照。
-   这三个桶因此**一张都没下成**，成了空桶（这就是 §9.4 里 sutras 0/15、landscape 0/18 的真因，
-   **不是**「限流没抓完」）。
-   **核对办法**（改 `PICKS` 后必跑）：`node scripts/pool-drift.mjs` —— 它把 `cn-picked.json`
-   每条与 `pool` 同 id 的 `title` 逐条比，必须**全等**才说明没有漂移。
-   ⚠ 只比「picked 与 pool 是否一致」是**不够**的：两者都漂到同一片垃圾上时也会「全等」，
-   所以还要**逐条看标题**（本轮的垃圾前缀就是这样才发现的）。
-9. **不要用「按序号缩略图拼 contact sheet」来核对图片题材**。实测踩过：缩略图未居中到固定
-   单元格，纵向图的标签与图像整体错位，于是把「炳灵寺石窟」看成了「停车场与锥桶」，
-   差点据此删掉正确的图。**判据用逐张全尺寸图**，或先把每张强制 cover 到等尺寸单元格再拼。
-10. **核对「picks 是否真的对应磁盘文件」要用字节比较**：
-    `node scripts/verify-photo-ids.mjs "grottoes:25,grottoes:31"` 会按同一参数重新下载 + 转码，
-    与磁盘成品逐字节比。实测这条给出了决定性结论（映射其实是对的）。
-11. **〔坑〕`content.ts` 的 `named(key, fallbackBucket)` 第二个参数是「校验桶」，不是注释**。
-    `named()` 要求 `named.<key>` 指的文件确实在该桶内，否则**静默**退回该桶第一张。
-    本轮踩过：把导览卡的 `named.gate` 改成 `grottoes-16.webp`，却忘了把
-    `NAMED_PHOTOS.gate()` 的第二个参数从 `'halls'` 改成 `'grottoes'` ——
-    结果 `grottoes-16` 在 halls 桶里找不到，页面照旧显示 `halls-01`，
-    **改了 `named` 却看不到任何效果**（构建、tsc 全绿，只有截图能发现）。
-    改 `named` 的文件所属桶时，务必同步改这里的校验桶。
-12. **导览卡是「窄条裁切」（`object-cover`，约 128×32 的显示比例），别用带文字的标牌特写**。
-    原 `gate: halls-01` 是一块反光金属说明牌（拍在粉色木门上）、`bell: halls-07` 是黑白书影，
-    裁成窄条后只剩「一块花板子」，与水墨基调冲突——这才是上一轮记的「颜色很冲」的真身
-    （**不是**紫外灯偏绿的云冈摩崖；实测逐张看过多张云冈，均为自然暖调砂岩）。
-    现两者都改用自然光石窟造像（`grottoes-16` / `grottoes-02`）。
-13. **〔坑〕组件里不要硬编码图版文件名**。`PhotoLogo.tsx` 写死了 `/photos/cn/lotus-03.jpg`，
-    图版整体转 WebP 后该路径 404，站标变成**空白方框**，而 `tsc` 与 `vite build` **全绿**。
-    现改为从 `PHOTO_NAMES` 推导并做后缀归一。
-    **判据**：图片要么走 `photoUrl()`/清单，要么查 `naturalWidth`；
-    只用「构建通过」判断是不够的——本轮是靠截图 + 读 `naturalWidth` 才发现的。
-14. **CDP 全页截图（`captureBeyondViewport`）不会触发视口外的 `loading="lazy"`**，
-    全页图里会出现空白图片框。**这不是缺陷**：先 `scrollIntoView` 再截图即可
-    （`scripts/shot-scrolled.mjs` 就是这么做的，并会打印每张图的 `naturalWidth` 佐证）。
-15. **改 `PICKS` 后必须核对池子**：`cn-pool.json` 是**未入库**的生成物，而 `PICKS` 按池内 id 手写。
-    池子重抓后 id 会整体漂移，且**只比「picked 与 pool 是否一致」不够**——
-    两者同时漂到同一片垃圾上时也会「全等」。必须逐条看标题（§9.2 第 8 条）。
-16. **〔第 8 轮新踩〕`pool` 里的标题本身也可能是错的**。原下标 9 的 `landscape-012`
-    池内标题「20180614 CHINA 1432.jpg」（无害），实际内容是**游客举手机拍树上的猕猴**
-    —— 与山水毫无关系。③ 也就是说 `pool-drift.mjs` **结构性抓不到这类错**：
-    它只比「picked 与 pool 的 title 是否全等」，池子自身选错时两者当然「全等」。
-    **判据必须包含「逐张看全尺寸图」**，不能只看标题（§9.2 第 9 条：也不要用缩略图拼图）。
-    本轮另见同桶 `landscape-013`（标题「Anhui Huangshan」实为湖南蓝调）——
-    署名表里的标题与画面**不保证对应关系**。
-17. **〔第 8 轮新踩，最隐蔽〕改 `PICKS` 是两步，不是一步**：
-    `fetch-cn-webp.mjs` 读的是 **`scripts/cn-picked.json`**（**已入库**），
-    而 `cn-picked.json` 由 `curate-cn.mjs` 从 `PICKS` + `cn-pool.json` 生成。
-    ```bash
-    node scripts/curate-cn.mjs          # ① PICKS → cn-picked.json（必须先跑！）
-    node scripts/fetch-cn-webp.mjs      # ② cn-picked.json → 磁盘 + 清单 + 署名
-    ```
-    本轮实测：只改 `PICKS` 就抓图，脚本**照旧按旧 id 下载**，
-    日志里还打印旧标题（`✓ landscape-09  20180614 CHINA 1432.jpg`），
-    于是「改了 PICKS 却毫无效果」——而且我连着犯了两次。
-    **换 id 必须换同一位置**：编号恒等于下标 + 1，删条目会让后面全部错位。
-18. **〔第 8 轮新踩〕`--only=<桶>` 会把它桶从清单里静默删掉**（已修）。
-    实测：清单已有 `landscape`(20) 与 `lotus`(7) 时跑 `--only=sutras`，
-    这两个键**整体从 `photos-cn.json` 消失**，磁盘上 7 张 lotus 立刻变成「孤儿文件」
-    （前端 `PHOTO_NAMES` 也少一桶）——**退出码 0、构建全绿、`photos-status` 仍返回 0**
-    （它只算「清单里在盘上还剩几张」，键没了自然不报空桶）。
-    位置：`fetch-cn-webp.mjs` 的 `persist()`（它由 `rows` 重建，而 `rows` 只含本次处理的桶）。
-    修法：`persist(manifest, rows, carry)`，`carry` = 上次清单里**本次 `--only` 未处理**的桶，原样写回。
-    **判据**：跑完 `--only` 后 `photos-status` 各桶张数不变，且
-    `disk == listed`、`orphan == 0`（本轮实测 239 = 239 / 0 / 0）。
-    ⚠ 只要清单曾经被删掉过某个键，**再跑 `--only` 也救不回来**（空数组推不出文件）；
-    必须跑一次**不带 `--only` 的全量**才能重建。
-19. **`photos-status` 退出码 0 ≠ 图版齐了**。退出码只看「有没有空桶 / 具名图是否损坏」；
-    `sutras 11/15`、`landscape 13/20` 这种**桶内缺口**它照样返回 0。
-    真正的判据是「清单条数 == 磁盘张数 == PICKS 条数」，且每桶编号连续
-    （`<bucket>-NN` 恰好等于下标 NN−1）。
-20. **令牌改名的判据要读「渲染后的 computed color」，不能只看构建**。
-    Tailwind v4 把 `@theme` 的值**内联进工具类**，产物 CSS 里**根本搜不到** `--color-brass-500`
-    （搜 `--site-*` 也搜不到）——只有 `.bg-brass-500{background-color:#ab8940}`。
-    所以「搜不到令牌名」不等于改名失败。判据：
-    - `scripts/probe-colors.mjs`：读 `getComputedStyle(:root)` 的 `--site-brass-500` 等实际值 +
-      `--site-gold-500` 应为 `(unset)`；
-    - `scripts/probe-lot-badges.mjs`：种入历史后**一次核对签位六档配色**
-      （`.bg-mist-200` 落在 `中下`，实测 `rgb(211,221,225)` == `#d3dde1`）。
-    梵钟「嗡」字**不能靠静态探针**：它只在 `ringing` 为真时渲染，而 3D 钟一渲染
-    DOM 版 fallback 就不挂载（本轮实测 `NO_BELL_BUTTON`），无 WebGL 的环境才能测到。
-21. **〔第 8 轮第二轮〕换 id 前必须先用 `TITLE_REJECT` 过一遍，否则下标整体前移**。
-    `curate-cn.mjs` 除 `PICKS` 外还有 **111 条 `TITLE_REJECT` 排雷正则**
-    （`/tibetan/i`、`/mosque/i`、`/zookeys/i` …）。被剔掉的 id**不会进 `cn-picked.json`**，
-    于是该桶少一条、**后面每条的下标全部前移 1**，编号（== 下标+1）与磁盘整体错位。
-    实测：想把 `landscape-050` 换成 `landscape-007`（真水墨雪山+佛寺），
-    结果 `landscape-007` 因标题含 "Tibetan Plateau" 被剔 → landscape 变成 19 条；
-    幸好 `curate-cn.mjs` 会在末尾打印「被排雷剔掉」并给出 `合计 238（缺 0）`，
-    否则就会带着错位去抓图。**判据**：`curate-cn.mjs` 输出的「合计」必须等于 PICKS 总数
-    （本轮 239），且桶数与 PICKS 一致。可用 `scripts/screen-cands.mjs <bucket> <id...>` 预筛。
-
-### 9.2b 备选图源调查结论（2026）
-
-| 源 | 结论 |
+| 项 | 值 |
 | --- | --- |
-| Wikimedia Commons | **主源**。中国佛教题材覆盖最广（分类 + 搜索），但限流凶，须按 §9.2 节流。 |
-| Met Open Access | `collectionapi.metmuseum.org` 的 `/objects`、`/objects/{id}` 可用，但 `/search` **已于 2026-10-01 退役**（改用 `/public/collection/v1.1/search`）；连续请求约 270 次后整段 API 返回 403（Cloudflare 拦截）。**图片 CDN `images.metmuseum.org` 没有限流**（实测直链 200、2.8MB）。若要用 Met，正确做法是**从别处取 objectID**（Met 在 GitHub 上发全量 CSV），再只用 CDN 取图。脚本骨架留在 `scripts/fetch-met-photos.mjs`（含 `--probe`）。 |
-| Art Institute of Chicago / 其它博物馆 | 未测（时间所限）。若 Commons 继续恶化，按同一思路：**列表/元数据用一个源，图片用其 CDN**。 |
+| 内容 | **294 篇**文章（`articles/*.json` 中文源 + `en/*.json` 英文全文）· `catalog-en.json` 294 · 灵棋经 125 卦 + 观音签 32 支 · 每日法语 77 条 |
+| 图版 | 7 桶 **239 张**（WebP）· 清单 == 磁盘 · 孤儿 0 · 缺口 0 |
+| `npm run typecheck` | 通过 |
+| `npm run build` | 通过（7.5s，第 14 轮实测） |
+| `npm run audit:framing` | 通过（第 14 轮新增） |
+| `npm run audit:banners` | 0 error · 0 warn |
+| 首屏体积（第 12/13 轮实测，改完用 `probe-route-cost.mjs` 重测） | `/` 624.8 · `/articles` 605.2 · `/about` 645.4 · `/dharma` 1341.9 · `/prayer` 1358.2 · `/lots` 1371.3 KB |
+| 主包 | `index` 286.96 KB / gzip 92.97 · `three` 724.16 / 184.42（只在 3D 页下载） |
+| 字体 | Noto Serif SC 项目子集 **1.39 MB** + 马善政子集 **382 KB** + latin 0.18 MB |
+| git | 已提交、**未 push**（push 由用户做，GitHub Pages 有 ~10 分钟缓存，看线上要硬刷新） |
 
-### 9.3 第 8 轮进度（原定五项）
+## 2. 目录与产物
 
-> **第 8 轮已完成 ① 补满图版余量 · ② `gold`/`moon` 改名**（见 §9.4）。
-> **③④⑤ 尚未开工**，原样留到下一轮：
-
-| # | 项 | 状态 | 说明 |
-| --- | --- | --- | --- |
-| **1** | **补满图版余量** | ✅ **完成** | 7 桶全满、**239 = 239**、0 孤儿 0 缺口（`sutras 15/15`、`landscape 20/20`、`grottoes 46/46`）。⚠ 过程中发现 4 个新坑（§9.2 第 16–18、21 条）并修掉 `--only` 删桶的缺陷。**另经用户批准再做一轮题材精修**：`landscape` 换掉 4 个「合法但偏弱」的槽位（拍猕猴的 `landscape-012`、雾霾村庄 `landscape-018`、带高压电线的 `landscape-024`、航拍河滩 `landscape-050`）→ 依次换成 `landscape-010`（水墨山水+佛塔）/ `landscape-046`（传统屋顶群+雪山）/ `landscape-038`（云海雪峰）/ `landscape-034`（1874 年 albumen 照片：宋代沧浪亭嵌于汉江峭壁）。 |
-| **2** | **`gold-*` / `moon-*` 改名** | ✅ **完成** | `gold-*`→`brass-*`（黄铜）/ `moon-*`→`mist-*`（青雾灰蓝），**107 处 / 4 文件**。做法：把正则从「裸词边界」收窄为**令牌-数字边界** `\b(gold|moon)-(\d{2,3})\b`，于是散文词与语义标识（`.btn-gold`、`illustration:'moon'`、`.reader-theme-moon`）**天然不受影响**，不必依赖文件白名单。 |
-| **3** | **主包 `index.js` 继续拆分** | ✅ **完成（第 9 轮）** | 路由级 `lazy()` + three.js 视口门控：主包 **836.68 → 286.96 KB**，首屏 JS **1824.5 → 615.6 KB**（`/articles` 605.1）。判据与实测见 §10.9。 |
-| **3b** | **`/dharma` `/prayer` `/lots` 的 3D 按需开启** | ✅ **完成（第 10 轮）** | 这三页的 3D 场景**本来就在首屏内**（573/722/860px），视口门控按设计放行 → 首屏仍下 707.2 KB。改为点了「开启 3D」才请求：**1338.2/1354.1/1369.4 → 615.0/624.4/652.9 KB**（三页共省 **2169.4 KB**），且**七个路由首屏现已全在 606–653 KB**，`three.js` 不再进任何首屏。判据与实测见 §11.4。 |
-| **4** | **把 `build/` 里可复用脚本搬进 `scripts/`** | ✅ **完成（第 9 轮）** | **26 个可复用工具全部入库 `scripts/`**（扁平结构），`build/` 只留生成物；顺带修掉两个字体脚本用 cwd 相对路径调用兄弟脚本的真缺陷。判据见 §10.6。 |
-| **5** | **`verses.ts` 每日法语中英逐段复核** | ✅ **完成（第 9 轮）** | 30 条逐条对照，改 **13 条**（术语/漏译/误译），保留 17 条。逐条理由与术语口径见 §10.10。 |
-
-**仍需注意的两个"隐性失效"**（不修会静默劣化，不是本轮遗留缺陷）：
-- 字体子集是**按当前全站用字生成**的：改动文章正文或界面文案后，新出现的字会**静默掉回系统字体**。改完文案请重跑 `node scripts/make-song-subset.mjs`（或搬进 `scripts/` 后跑新路径）。判据：脚本末尾会打印 `glyphs / missing`。
-- `cn-pool.json` 是**未入库**的生成物，而 `curate-cn.mjs` 的 `PICKS` 按池内 id 手写。**若再重抓 pool，必须重跑 `pool-drift.mjs` 并逐条看标题**（§9.2 第 8 条：两者同时漂到同一片垃圾上也会「全等」）。
-
-### 9.4 本轮实测数字
-
-> **2026 第 9 轮（仅核对，未改产品代码）实测**：见 §10.4。
-> **2026 第 8 轮（补满图版 + `brass`/`mist` 改名 + 修 `--only` 删桶缺陷）实测**。
-> 第 7 轮的数字见下方「第 7 轮存档」表。
-
-| 指标 | 第 8 轮实测 |
-| --- | --- |
-| `npx tsc --noEmit` | 通过（exit 0） |
-| `npx vite build` | 通过（exit 0，2.37s） |
-| 主包 `index.js` | **836.68 KB** / gzip 276.66 KB（未拆，见 §9.3 第 3 项） |
-| `vendor.js`（React + Router） | 229.34 KB / gzip 73.41 KB |
-| `three.js` | 724.16 KB / gzip 184.42 KB（按需） |
-| **CSS** | **77.31 KB** / gzip 14.63 KB（改名后净增 ~0.07 KB，纯属令牌名长度差异） |
-| `validate-en` | ok=294 crit=0 warn=0 parts=0 |
-| `scan-mojibake` | 0 / 294 |
-| `style-audit` | 装饰符号 0 · 圆角与投影 0 · img 缺 alt 0 · svg 缺 aria-hidden 0 |
-| **图版清单与磁盘** | **239 = 239 严格一致** · **孤儿 0** · **缺口 0**；7 桶编号全部连续；`photos-status` 退出码 **0**（`磁盘 239 张 / 61.5 MB`，`清单登记 239 条`） |
-| **图版桶（全满）** | paintings 41 · grottoes **46** · statues **89** · halls 21 · sutras **15** · landscape **20** · lotus 7 |
-| 图版题材精修（用户批准） | `landscape` 第二批次换掉 4 个槽位：`012` 拍猕猴→`010` 水墨山水+佛塔 · `018` 雾霾村庄→`046` 屋顶群+雪山 · `024` 带高压电线→`038` 云海雪峰 · `050` 航拍河滩→`034` 1874 albumen 沧浪亭嵌崖。保留 `landscape-013`（Huangshan，层叠岩峰与松）。 |
-| 图版本轮抓取 | 多轮 `fetch-cn-webp.mjs` 合计 **新下 16 · 复用 220+ · 失败 0**（429 失败经冷却重跑全部补齐） |
-| `pool-drift` | 7 桶 **title 全等 · 不一致 0**（landscape 换成 `landscape-010` 后仍全等） |
-| **色板令牌（第 8 轮）** | `brass-*`（黄铜 `#ab8940`）· `mist-*`（青雾灰蓝 `#7b96a1` 一族）—— 由 `gold-*`/`moon-*` 改名，**107 处 / 4 文件**（`src/index.css` 102 · `src/data/lots.ts` 3 · `src/components/zen/TempleBell.tsx` 1 · `docs/VISUAL-SPEC-v3.md` 1） |
-| 令牌渲染判据 | `--site-brass-500` = `#ab8940`、`--site-mist-200` = `#d3dde1`、`--site-mist-700` = `#54707c`、`--site-gold-*` = `(unset)`；产物里 `.bg-brass-500`/`.bg-mist-200`/`.text-brass-400`/`.text-mist-700` 均已生成，旧名 0 命中 |
-| 截图核对 | 首页导览卡 8 张图 `naturalWidth` 全非 0；`/lots` 签位六档徽章配色正确（`中下` = `rgb(211,221,225)`） |
-| 中英词典 | zh/en 键完全对齐（`tsc` 保证） |
-
-#### 第 7 轮存档（图版空桶 + WebP + 字体瘦身 + 分包）
-
-| 指标 | 值 |
-| --- | --- |
-| 主包 `index.js` | **835 KB** / gzip 276 KB |
-| `vendor.js`（React + Router） | 229 KB / gzip 73 KB（单独缓存） |
-| `three.js` | 724 KB / gzip 184 KB（按需） |
-| **CSS** | **77.2 KB / gzip 14.5 KB** —— 原先 875 KB，降 **91%** |
-| **字体分片** | 瘦身后 **14 个 / 0.55 MB**（原先 940 个 / 41.5 MB，降 **98.7%**）；**再加上汉字宋体子集 1.39 MB**，全部字体合计 **约 1.94 MB / 15 个文件** |
-| `@font-face` 条数 | **4**（原先 772） |
-| 图版清单与磁盘 | **227 = 227**（编号 == 清单下标 + 1） |
-| `public/` 图版体积 | 133 张 JPEG 49.1 MB → 同 133 张 WebP **40.5 MB**（−17.5%，q80） |
-| 图版桶（第 7 轮末） | sutras **11/15** · landscape **13/20**（第 8 轮已补齐，**退出码 0 掩盖了这个缺口**，见 §9.2 第 19 条） |
-| 图版抓取实测 | 一轮：**新下 94 · 复用 40 · 失败 11**（11 张全因 429 限流） |
-| **汉字正文 webfont** | 内置 Noto Serif SC **项目子集 1.39 MB / 1 个文件**（详见 §9.4c） |
-| **色板令牌（第 7 轮）** | `celadon-*`（130 处）· `cinnabar-*`（159 处）—— 由 `sandalwood-*`/`tibetan-*` 改名（§9.4d） |
-
-**CSS 为什么能降 91%**：那 875 KB 里 **91.3% 是 `@font-face` 规则**（772 条），来自三个
-webfont 依赖；真正的站点样式只有约 76 KB。移除未用字体后 CSS 自然回到 77 KB。
-
-**字体为什么能降 98.7%**：
-
-| 依赖 | 原体积 | 处置 |
-| --- | --- | --- |
-| `lxgw-wenkai-webfont` | 582 个文件 / **27.9 MB** | **移除**。它只是标题楷体栈的第 4 顺位回退（前三名是系统楷体 Kaiti SC / STKaiti / KaiTi），却在 `style.css` 里把 mono/light/bold **6 套**全引入 |
-| `@fontsource/long-cang` | 186 个文件 / **6.4 MB** | **移除**。全站**零** `font-family` 引用 |
-| `@fontsource/ma-shan-zheng` | 92 个文件 / **5.99 MB** | 改**项目子集**：merge 92 个分片后按「书法体实际用字 + ASCII」子集化 → 单个 **382 KB** 文件 |
-| `@fontsource/noto-sans` / `noto-serif`（latin） | 12 个 / 0.18 MB | 保留（西文正文） |
-
-书法体子集重建：`node scripts/make-brush-subset.mjs`（需 `python -m pip install fonttools brotli`）。
-许可 OFL-1.1 随字体放在 `public/fonts/ma-shan-zheng-OFL.txt`。
-
-### 9.4c 汉字正文 webfont（内置 Noto Serif SC 项目子集）
-
-| 方案 | 体积 | 说明 |
-| --- | --- | --- |
-| 系统栈（第 6 轮） | 0 | macOS 宋体-简 / Windows 中易宋体 / Linux 思源宋体，三端观感不一致 |
-| `@fontsource/noto-serif-sc` 全量 CSS | **2.92 MB / 86 个分片** | 实测本站用字命中 86 个 unicode-range 分片；且单取 `chinese-simplified` 那一片**缺 1253 个本站用字**（含 淨/觀/釋） |
-| **项目子集（本轮采用）** | **1.39 MB / 1 个文件** | 取完整 Noto Serif SC Regular（30928 字形 / 11.1 MB），按 `scripts/collect-cjk.mjs` 统计的 **6965 字**（其中 6888 汉字）子集化 |
-
-- 字形覆盖：**6965 字只缺 1 个**（`鶴`，CJK 兼容表意文字；掉回系统字体，可接受）。
-- **`unicode-range` 是刻意的**：只覆盖汉字与中文标点，**英文页面不会下载这 1.39 MB**。
-  实测：英文分支只请求 Noto Serif/Sans 的 latin 分片与书法体子集，**无 CJK 子集**；
-  中文分支（`hdc.lang=zh`）则实测请求到 `/fonts/noto-serif-sc-subset.woff2`（200）。
-- 重建：`node scripts/make-song-subset.mjs`（需 `python -m pip install fonttools brotli`；
-  字体源从 jsdelivr 的 `notofonts/noto-cjk` 拉取）。**改动正文/文案后要重跑**，否则新字掉回系统字体。
-- 许可 OFL-1.1：`public/fonts/noto-serif-sc-OFL.txt`。
-
-### 9.4d 色板令牌改名
-
-| 旧名 | 新名 | 实际颜色 | 处数 | 轮次 |
-| --- | --- | --- | --- | --- |
-| `sandalwood-*` | **`celadon-*`** | 青瓷灰绿（`#789085`，G>R） | 130 | 第 7 轮 |
-| `tibetan-*` | **`cinnabar-*`** | 朱砂印章红（`#b8382e`） | 159 | 第 7 轮 |
-| `gold-*` | **`brass-*`** | 黄铜（`#ab8940`，**非鎏金**） | 44+ | 第 8 轮 |
-| `moon-*` | **`mist-*`** | 青雾灰蓝（`#7b96a1` 一族） | 44+ | 第 8 轮 |
-
-第 7 轮共 **314 处 / 30 个文件**（含 `docs/` 与 `preview/`）；第 8 轮共 **107 处 / 4 个文件**。
-
-**第 7 轮的排除项（重要，踩过）**：`src/content/**`（英文正文里的 "gold"/"moon" 是散文词）与
-`scripts/curate-cn.mjs`、`scripts/fetch-met-photos.mjs` —— 后两者里的 `/tibetan/i` 是
-**图片排雷正则**，按令牌名一刀切改会破坏图版筛选。
-
-**第 8 轮把正则本身收窄，问题从根上消失**：`scripts/rename-tokens.mjs` 原来用**裸词边界**
-`\b(gold|moon)\b`（所以第 7 轮只能靠 `EXCLUDE` 文件白名单兜着），
-现改为**令牌-数字边界** `\b(gold|moon)-(\d{2,3})\b`：
-
-- 散文词 `gold`/`moon`（`src/content/**` 里成百上千处）**不匹配**，无需白名单；
-- `.btn-gold`（**类名**，实为焦墨按钮）、`illustration: 'moon'`（插画变体）、
-  `.reader-theme-moon`（阅读主题，用自己的 `--reader-*`）**都不匹配**，天然保留；
-- 仍显式排除 `src/curate-cn.mjs`、`fetch-met-photos.mjs`（题材排雷正则）与
-  `scan-mojibake.mjs`（CP1252 映射表含 ASCII 样本词）。
-
-改完自检：`--dry` 预览处数 → 关键文件无旧名 → 排除区无「旧名-数字」命中。
-**判据不能只看构建**（Tailwind v4 把令牌值内联进工具类，产物里搜不到 `--color-*`），
-要读渲染后的 computed color，见 §9.2 第 20 条。
-
-### 9.4b 图版新管线（取代旧的 fetch-cn-picked + rebuild）
-
-旧的「编号 = 前 N 个成功条目」是**欠定**的：中断一次，磁盘上的 `<bucket>-NN` 与清单第 NN 条
-就整体错位，只能靠 `rebuild-photo-manifest.mjs` 猜。新脚本改为 **编号 == 清单下标 + 1**，
-下载失败的条目直接留空（不进清单、不进署名），于是「清单 = 磁盘 = 署名」三者天然一致。
-
-**⚠ 完整链路是四步，缺一步就会「改了没效果」（§9.2 第 17 条）**：
-
-```bash
-# ① 改 PICKS（scripts/curate-cn.mjs）后，必须先生成 cn-picked.json
-node scripts/curate-cn.mjs                           # PICKS + cn-pool.json → cn-picked.json（已入库）
-# ② 再抓图：读的是 cn-picked.json，不是 PICKS
-node scripts/fetch-cn-webp.mjs                       # 抓所有桶（WebP q80，长边 1600）
-node scripts/fetch-cn-webp.mjs --only=halls,sutras   # 只抓指定桶（其余桶沿用**上次清单**）
-node scripts/fetch-cn-webp.mjs --migrate             # 把已有 .jpg 就地转 .webp（不联网）
-# ③ 体检
-node scripts/photos-status.mjs                       # 退出码 2 = 仍有空桶；0 **不代表桶内齐了**（§9.2 第 19 条）
-node scripts/pool-drift.mjs                            # 改过 PICKS 必跑（但抓不到「池子自身选错」）
+```
+src/pages/            路由页（Home · About · Dharma · PrayerWall · Lots · Articles · Article）
+src/components/zen3d/ three.js 场景（stage.ts 是共用底座：相机/交互/阴影/取景）
+src/components/zen/   SVG 回退件（TempleBell · WishTree · IncenseBurner · LotCylinder · HuiLamp）
+src/data/             verses.ts（每日法语）· lots.ts（签）· photos-cn.json（图版清单）
+src/content/          articles/*.json（中文源，权威）· en/*.json（英文）· catalog*.json · lingqi*.json
+public/photos/cn/     图版成品（WebP）；_raw/ 不入库
+scripts/*.mjs         全部工具（26 个可复用工具已从 build/ 搬来）
+scripts/*.md.archived 已执行完的历史计划，**不要当待办读**
+docs/                 DESIGN.md（设计系统）· VISUAL-SPEC-v3.md
+dist/ build/          gitignore：构建产物 / 临时区（只放生成物，自删）
 ```
 
-- 已下载的自动复用、不会重复下载（编号恒定，不再需要 `_raw`）。
-- 节流：`PACE_MS` 默认 14000；Commons 约 6–8 张/分钟就 429，任一条最多退避 1 次。
-  **429 会连片发生**：整段 CDN 被限流时，连 HEAD 探测都返回 429；
-  实测**冷却 30–60s 后重跑即可**（`landscape-14` 连续失败 3 次，冷却后一次成功）。
-- **不要并行跑多个抓取进程**（见 §9.2 第 4 条）。
-- 换某一个槽位的图：改 `PICKS` 同位置的 id → 跑 `curate-cn.mjs` → **删掉该槽位的 `.webp`**
-  （不删的话脚本会「复用」旧文件，等于没换）→ 再 `fetch-cn-webp.mjs`。
-  ⚠ 顺序不能颠倒：先在旧脚本进程启动后改 `PICKS`，那一次跑仍按旧 `cn-picked.json` 下载。
+## 3. 流程
 
-### 9.5 归档
+### 3.1 日常核对（按改动类型挑，不必全跑）
 
-第 6 轮（文案 / 视觉 / 图版 / 字体）已全部提交，工作区干净：
-`5ad1a60` → `6e952d7` → `ccbfd3f` → `2e4aae3` → `3dd6fa4` → `8b042b2` → `4960d55` → `a2ad34c`。
-
-第 7 轮（图版空桶 / WebP / 字体瘦身 / 分包）：
-`61777fc`（图版管线 + WebP）→ `fbe0968`（字体瘦身 + 分包）→ 本轮 docs 提交。
-
-第 8 轮（补满图版 / `brass`+`mist` 改名 / 修 `--only` 删桶缺陷）：
-见下方 §9.5 提交清单。
-
-**可复用脚本已全部入库到 `scripts/`（第 9 轮，见 §10.6）**。下表是第 7/8 轮在 `build/`
-里开发时的历史清单，路径已就地更新为 `scripts/`：
-
-| 脚本 | 用途 |
-| --- | --- |
-| `make-brush-subset.mjs` | 重建书法体项目子集（依赖 `python -m pip install fonttools brotli`） |
-| `make-song-subset.mjs` | 重建正文宋体子集（**改文案/正文后必须重跑**，否则新字掉回系统字体） |
-| `collect-brush.mjs` | 收集书法体实际用字 → `build/brush-chars.txt` |
-| `collect-cjk.mjs` | 收集全站汉字（供正文宋体子集用） |
-| `pool-drift.mjs` | **改 `PICKS` 后必跑**：核对 picked 与 pool 同 id 的 title 是否全等（抓不到「池子自身选错」） |
-| `verify-photo-ids.mjs` | 重新下载+转码一张，与磁盘成品逐字节比，验证「picks→文件」映射 |
-| `rename-tokens.mjs` | 色板令牌改名（`--dry` 预览 + 残留/排除区自检） |
-| `shot-scrolled.mjs` | 先 `scrollIntoView` 再截图，并打印每张图的 `naturalWidth`（懒加载验证） |
-| `shot-zh.mjs` | 中文分支截图 |
-| `dump-palette.mjs` | 打印各主题的实际色值（令牌改名的真值来源） |
-| **`probe-colors.mjs`** | **第 8 轮新增**：读 `:root` 上 `--site-*` 的实际值 + 校验旧令牌为 `(unset)` |
-| **`probe-lot-badges.mjs`** | **第 8 轮新增**：种入历史，一次核对签位六档徽章的 computed color |
-| **`screen-cands.mjs`** | **第 8 轮新增**：用 `curate-cn.mjs` 里真正的 111 条 `TITLE_REJECT` 预筛候选 id —— **换 id 前必跑**（§9.2 第 21 条） |
-| **`fetch-cand.mjs`** | **第 8 轮新增**：抓候选缩略图做**排序**（用池内自带 url；`420px` 常返回 400，会回退到 1920px）。⚠ 题材最终必须看全尺寸 |
-| `probe-lots.mjs` | 抽一支签并读徽章色（随机档位，不如上面那个全面） |
-| `lot-levels.mjs` | 列出每档一支签的 id（供 `probe-lot-badges.mjs` 种历史） |
-| `fix-canvas-fonts.mjs` | 批量改 zen3d 里硬编码的 canvas 字体名（一次性迁移脚本） |
-| `probe-bell.mjs` | 撞钟读「嗡」字色 —— ⚠ **实测无效**：3D 钟一渲染，DOM 版 fallback 不挂载 |
-
-### 9.5 提交清单
-
-| 提交 | 内容 |
-| --- | --- |
-| （第 8 轮）图版提交 | 补满 7 桶（sutras 15/15 · landscape 20/20 · grottoes 46/46）· 修 `landscape-012` 题材错误（→ `landscape-010` 水墨山水+佛塔）· 修 `--only` 删桶缺陷 · 回填清单/署名 |
-| （第 8 轮）改名提交 | `gold-*`→`brass-*`、`moon-*`→`mist-*`（107 处 / 4 文件）+ 正则收窄为令牌-数字边界 + docs |
-| （第 8 轮）docs 提交 | 本文件 §9.2 第 16–20 条 · §9.3 进度 · §9.4 实测数字 · §9.4b 四步链路 · §9.4d |
-
-## 10. 第 9 轮（核对 + 新建判据探针）
-
-> **范围**：只跑核对、补两个「隐性失效」的判据探针，**未改任何产品代码**。
-> §9.3 的第 3/4/5 项（主包拆分 / 脚本归位 / `verses.ts` 复核）**仍未开工**，见 §10.3。
-
-### 10.1 本轮新增的坑（全部实测）
-
-22. **〔最隐蔽〕两位槽位名不匹配「三位数字」正则是正常的，不是正则坏了**。
-    `grottoes-01.webp` 的点号前只有 **两位** 数字，所以任何要求「连续三位数字」的模式
-    （`[0-9]{3}`、`[0-9][0-9][0-9]`、`\d{3}`）对它**必然 false** —— 这是判据写错了，不是引擎错。
-    本轮为写 `scripts/check-buckets.mjs` 排查这件事绕了很久（一度怀疑正则字面量被改写），
-    最终判据：`grottoes-048` 命中、`grottoes-01` 不命中，而 `\d{2}` 两者都命中 → 语义正确。
-    **写判据脚本时槽位号一律用 `[0-9][0-9][0-9]?`**（或先取数字再比大小），
-    不要写死位宽；`scripts/dbg-regex.mjs` 是这条的回归见证。
-23. **`photos-status.mjs` 退出码 0 ≠ 桶内齐了（§9.2 第 19 条的判据现已落地为脚本）**。
-    真判据「清单条数 == 磁盘张数 == PICKS 条数 + 编号连续（slot == 下标+1）」已写成
-    `scripts/check-buckets.mjs`（**本轮新增，改 `PICKS` 后应与 `pool-drift.mjs` 一起跑**）。
-    本轮实测 `picks=239 manifest=239 disk=239 | bad buckets=0`。
-24. **字体子集的真判据是「逐字查 woff2 的 cmap」，不是看 mtime 或重跑一遍**。
-    已写成 `scripts/check-font-coverage.mjs`（**本轮新增**）：纯 Node 解 woff2
-    （`zlib.brotliDecompressSync` + 手写 cmap format 4/12 读取，**不需要 Python/fonttools**）。
-    ⚠ 两个易踩点：① woff2 的 `origLength` **可以大于文件体积**（15 张表共享一条 brotli 流，
-    CFF 表 origLength 2.2 MB 而文件只有 1.39 MB），**不能**按 `origLength` 在文件里切片，
-    必须整条流解压后按 origLength 顺序切；② 表目录里的 tag 是**索引**（0x3F 才是 4 字节 tag）。
-    本轮实测 `6964 / 6965`，唯一缺的是已知的 `U+FA2D 鶴`（CJK 兼容表意文字，可接受回退）→ 子集**未过期**。
-
-### 10.2 本轮核对结果（全绿）
-
-| 核对项 | 第 9 轮实测 |
-| --- | --- |
-| `npx tsc --noEmit` | 通过（exit 0） |
-| `npx vite build` | 通过（exit 0，2.43s）；主包 `index-DbXIaZdk.js` **836.68 KB / gzip 276.67 KB**（与第 8 轮一致，未拆） |
-| `node scripts/validate-en.mjs` | ok=294 crit=0 warn=0 parts=0 |
-| `node scripts/scan-mojibake.mjs` | 0 / 294 |
-| `node scripts/style-audit.mjs` | 装饰符号 0 · 圆角与投影 0 · img 缺 alt 0 · svg 缺 aria-hidden 0 · `gold-*`/`moon-*` 旧名残留 **0** |
-| `node scripts/photos-status.mjs` | 退出码 0；磁盘 239 张 / 61.6 MB、清单 239 条、9 张具名图全部 ✓ |
-| **`node scripts/check-buckets.mjs`（新）** | **picks=239 manifest=239 disk=239、bad buckets=0、7 桶编号全连续** |
-| `node scripts/pool-drift.mjs` | 7 桶 title 全等、不一致 0（paintings 41/188 · grottoes 46/189 · statues 89/211 · halls 21/64 · sutras 15/43 · landscape 20/54 · lotus 7/49） |
-| `node scripts/check-font-coverage.mjs`（新） | 6964 / 6965 覆盖；唯一缺 `U+FA2D` 为可接受回退 → **字体子集未过期，无需重跑** |
-| 截图核对 | 首页 8 张导览卡 `naturalWidth` 全非 0（1258×802 截图肉眼核对：造像/水墨/青瓷三组题材一致） |
-
-### 10.3 第 9 轮任务状态（§9.3 的第 3/4/5 项，用户指定顺序 **4 → 3 → 5**）
-
-| # | 项 | 状态 | 备注 |
-| --- | --- | --- | --- |
-| **4** | `build/` 可复用脚本搬进 `scripts/` | ✅ **完成** | 26 个工具入库 `scripts/`（扁平）；`build/` 只留生成物。做法与判据见 §10.6 · 4 个真缺陷见 §10.7 |
-| **3** | 主包 `index.js` 继续拆分 | ✅ **完成** | 路由级 `lazy()` + three.js 视口门控；**首屏 JS 从 1824 KB → 616 KB**（`/articles` 605 KB）。判据与实测见 §10.9 |
-| **5** | `verses.ts` 每日法语中英逐段复核 | ✅ **完成** | 30 条**逐条对照**，改 **13 条**（术语/漏译/误译）；判据与逐条理由见 §10.10 |
-
-### 10.4 第 9 轮实测数字
-
-> 第 3 项（拆分）与第 4 项（脚本搬迁）**都不改内容与设计**，故 `validate-en` / 图版 / 字体覆盖
-> 等指标与 §9.4（第 8 轮）逐项一致；体积指标见下表与 §10.9。
-
-| 指标 | 第 9 轮实测 | 与第 8 轮对比 |
-| --- | --- | --- |
-| 主包 `index.js` | **286.96 KB / gzip 92.96 KB**（原先 836.68 / 276.67） | **−66%** |
-| `vendor.js`（React + Router） | 229.34 KB / gzip 73.41 KB | 同 |
-| `three.js` | 724.16 KB / gzip 184.42 KB | 同（但**已不在首屏**，见 §10.9） |
-| CSS | 77.90 KB / gzip 14.81 KB | +0.6 KB（RouteFallback 的骨架类） |
-| **首屏 JS（实测，decoded）** | **`/` 615.6 KB**（原 1824.5）· `/articles` 605.1 KB · `/about` 645.2 KB | **−66% / −67% / −65%** |
-| 路由 chunk | Home 14.8 · Articles 4.8 · Dharma 10.6 · Lots 15.2 · PrayerWall 19.5 · About 10.4 · ArticleReader 18.8 · NotFound 0.8 KB | 新增 8 个 |
-| `validate-en` | ok=294 crit=0 warn=0 parts=0 | 同 |
-| `scan-mojibake` | 0 / 294 | 同 |
-| `style-audit` | 装饰符号 0 · 圆角与投影 0 · img 缺 alt 0 · svg 缺 aria-hidden 0 | 同 |
-| 图版清单与磁盘 | 239 = 239 = **239（含 PICKS）**、孤儿 0、缺口 0 | 同 |
-| 字体子集 | 6964 / 6965 覆盖（缺 `U+FA2D`，可接受）；**重建逐字节幂等** | §10.7 第 3 条 |
-| 入库脚本 | `scripts/` 新增 **32** 个（26 个搬迁 + `woff2-cmap` · `probe-route-cost` · `verify-3d-gate` · `shots-routes` · `term-counts` · `spelling-audit` · `fix-verses`） | §10.6/§10.9/§10.10 |
-| 外部污染恢复 | `src/content` 39 个文件 + 6 个未跟踪文章 + 25 张孤儿 jpg 已恢复/隔离 | §10.8 |
-| 字体子集 | 6964 / 6965 覆盖；**重建逐字节幂等**（并入现有字形后 1,421,548 B 与 HEAD 相同） | §10.7 第 3 条 |
-| 外部污染恢复 | `src/content` 39 个文件 + 6 个未跟踪文章 + 25 张孤儿 jpg 已恢复/隔离；`ok=294 crit=0` | §10.8 |
-
-### 10.5 `build/` 脚本现状（第 9 轮开工前实测枚举）
-
-开工前 `build/` 里共 **26 个可复用 `.mjs`**（另加 3 个一次性助手：`audit-build-refs.mjs`、
-`migrate-build-scripts.mjs`、`verify-migration.mjs`）。§9.5 的表格登记了 21 个，**7 个未登记**：
-
-| 脚本 | 用途 | 来源 |
-| --- | --- | --- |
-| `mksrc.mjs` | 编号源 → `build/<slug.pN>.src.txt` | §2 |
-| `recover-r9-dispatch.mjs` | 打印首/末块 `src8` 与块计数 | §2 |
-| `recover-r9-assemble.mjs` | 按源结构确定性组装 + 全量校验 | §2 |
-| `recover-r9-scan.mjs` | 占位符 / 空块 / 无字母块扫描 | §2 |
-| `audit-slices-runtime.mjs` | 缺陷类 E 判据入口（含逐块长度比） | §2 |
-| **`check-buckets.mjs`** | **第 9 轮新增**：清单 == 磁盘 == PICKS + 编号连续（§10.1 第 23 条） | 第 9 轮 |
-| **`check-font-coverage.mjs`** | **第 9 轮新增**：逐字查 woff2 cmap，判字体子集是否过期（§10.1 第 24 条） | 第 9 轮 |
-
-非脚本生成物（**留在 `build/`，不入库**）：`cjk-chars.txt`、`brush-chars.txt`、
-`noto-serif-sc-subset.woff2`、`NotoSerifSC-Regular.otf`，以及 `chrome-scroll/`、`shots/` 两个目录。
-
-⚠ **§9.5 表里原有的 `ls-unused.mjs` 与 `verify-slots.mjs` 在本仓库并不存在**（`Test-Path` 均为 false，
-`build/` 与 `scripts/` 都没有）—— 它们是第 7 轮的临时件且从未落地，故第 9 轮按**实存清单**执行，
-这两个名字已从 §9.5 表中删除。
-
-### 10.6 第 9 轮搬迁（§9.3 第 4 项）：`build/*.mjs` → `scripts/*.mjs`
-
-**结论：26 个可复用工具全部入库 `scripts/`；`build/` 只留生成物。**
-做法（可复现）：`build/migrate-build-scripts.mjs` 按**精确字面量 + 期望出现次数**做代入，
-任何一处对不上就中止（**不做模糊正则替换**），随后 `build/fix-migrated-refs.mjs` 补上
-「跨工具引用 / 注释里的兄弟工具名 / 无 `.mjs` 后缀的提示串」这三类第一遍看不见的引用。
-
-**同时修掉的一个真缺陷**：`make-song-subset.mjs` 与 `make-brush-subset.mjs` 原来用
-`execFileSync(process.execPath, ['build/collect-cjk.mjs'])` 这种**cwd 相对路径**调用兄弟脚本 ——
-一旦从非仓库根目录调用就会 ENOENT。现全部改为 `ART(...)` = `path.join(process.cwd(), ...)`，
-并在每个受影响的脚本顶部注入：
-
-```js
-const ROOT = process.cwd()
-const ART = (p) => path.join(ROOT, p)
+```powershell
+npm run typecheck                  # 永远跑
+npm run audit:framing              # 动过 zen3d/ 或页面里的 3D 段落
+npm run audit:banners              # 动过具名图 / 横幅
+npm run build                      # 要出 dist 时（需子进程权限，见 §3.3）
+node scripts/style-audit.mjs       # 动过样式/令牌/插画
+node scripts/check-buckets.mjs     # 动过 PICKS（图版选图）
+node scripts/check-font-coverage.mjs  # 动过文案/正文（新字是否在子集里）
+node scripts/validate-en.mjs       # 动过文章正文/英文
+node scripts/verse-audit.mjs       # 动过 verses.ts
 ```
 
-⚠ **没有动**模板字面量路径（`build/slices/${part}.src.json`）与 `build/shots/*.png` 之类的
-**产物路径**（它们本来就该落在 `build/`），只把「脚本互相调用」与「读 `scripts/*.json`」锚定。
+### 3.2 判据脚本（看什么 / 什么时候算失败）
 
-**搬迁判据（全部实测通过）**：
-
-| 判据 | 结果 |
+| 脚本 | 判据 |
 | --- | --- |
-| 26 个文件语法可解析（`node --check`） | **26/26 parse clean** |
-| 无嵌套/重复包裹损伤（`ART(ART(`、`ART(''`、残留占位符） | **0** |
-| 全仓库残留 `build/<tool>` 引用（跳过 `build/` 自身） | **0** |
-| 跨工具引用（`make-song → collect-cjk` 等） | 10 处已改到 `scripts/` |
-| 三类探针实跑（新路径） | `scripts/check-buckets.mjs` = 239/239/239；`scripts/check-font-coverage.mjs` = 6964/6965；`scripts/pool-drift.mjs` = 7 桶全等 |
+| `check-framing.mjs`（`audit:framing`） | 3D 主体投影 NDC ≤ 0.97、香头有余量、包围盒含青烟；页面写死 `distance` 不得小于自动取景。exit 1 = 构图回退 |
+| `audit-banners.mjs` | 具名图必须在声明的桶里、按 16:10 / 4:3 cover 的保留面积、人工禁用清单（文字标牌/色卡/电线）。exit 1 = 有 error |
+| `check-buckets.mjs` | 清单条数 == 磁盘张数 == PICKS 条数，且 `slot == 下标+1` |
+| `pool-drift.mjs` | `cn-picked.json` 每条与 pool 同 id 的 title **全等**（⚠ 池子自身选错时也「全等」，见 §5.4） |
+| `check-font-coverage.mjs` | 逐字查 woff2 的 cmap（纯 Node，不需要 fonttools）；扫 `src/**` **含注释** |
+| `style-audit.mjs` | 装饰符 / 圆角与投影 / 旧令牌 / svg 缺 aria / img 缺 alt 全为 0 |
+| `verify-3d-gate.mjs` | 三个 3D 页的 canvas 都挂载 |
+| `probe-route-cost.mjs` | 各路由首屏字节数（体积回退的唯一判据） |
+| `verse-audit.mjs` | 法语条目：重复 / 缺英文 / 英文夹汉字 / 过长 |
 
-`scripts/` 目录约定：**扁平结构，无子目录**（搬迁前已有 46 个脚本），故不加 `scripts/photos/` 之类的分组。
-入库后新增受版本管理的脚本：**27 个**（26 个搬迁 + 新增共享模块 `scripts/woff2-cmap.mjs`，见 §10.7）。
+### 3.3 权限：什么必须完整权限，怎么绕
 
-### 10.7 搬迁过程中改掉的 4 个真问题（都不是「搬文件」本身）
+受限沙箱（`workspace-write`）里**必然失败**的三件事：
 
-1. **兄弟脚本用 cwd 相对路径 spawn**（会 ENOENT）。`make-song-subset` / `make-brush-subset`
-   原来 spawn `build/collect-cjk.mjs`、`build/collect-brush.mjs`。现改为**直接 import**：
-   `collect-cjk.mjs` / `collect-brush.mjs` 变成**可 import 的模块**（导出 `collectChars()` /
-   `writeCharsFile()` / `collectBrushChars()` / `writeBrushCharsFile()`），CLI 部分用
-   **`process.argv[1] === fileURLToPath(import.meta.url)`** 守门 ——
-   ⚠ **不要用 `import.meta.main`**：Node 24.19 实测它是 `undefined`。
-   同样地，`check-font-coverage.mjs` 现在**现场扫 `src/`**（import `collectChars`），
-   不再依赖 gitignore 的 `build/cjk-chars.txt`（在干净 clone 里那个文件根本不存在）。
-2. **Windows 绝对路径不能内联进 Python 源码**。`make-brush-subset.mjs` 原来把
-   `D:\FengLi\...\build\msz-full.ttf` 拼进 pyftsubset 的 Python 字符串 → `\F`/`\b` 被当转义序列，
-   实测 `SyntaxWarning: invalid escape sequence '\F'` 且写出 `D:\\FengLi\\Web\x0cou\\...` 这种坏路径。
-   现所有路径一律**走 argv 传参**（Python 端 `sys.argv[n]`）。
-3. **〔隐蔽，最值得记〕字体子集不能只在「当前 src/ 用字」上重建**。按 src/ 重建得到 6965 字，
-   而**已发布子集里 331 个繁体/异体字（龍 龜 資 報 問 圖 團 寶 專 …）并不在当前 src/ 中** ——
-   直接重建会把这 331 字从「站内字体」退回系统字体，而它们仍可能出现在旧稿或外链页面上。
-   现 `make-song-subset.mjs` 会**先读现有成品字体的 cmap，把其字形并入新子集**（单调、幂等）：
-   实测在 HEAD 字体上重跑得到**逐字节相同**的 1,421,548 字节产物。
-   判据脚本 `check-font-coverage.mjs` 同时会报出这个「保留量」（reserve）。
-4. **重复的 woff2 cmap 读取被收敛成一个模块**：`scripts/woff2-cmap.mjs`
-   （`readWoff2` / `readCmap` / `readWoff2Cmap`），被 `check-font-coverage.mjs` 与
-   `make-song-subset.mjs` 共用。两个易踩点写在文件头：① woff2 的全部表**共享一条 brotli 流**，
-   `origLength` 可以大于文件体积，**不能**按它切文件（必须先整条流解压）；② 表目录里存的是 tag **索引**。
+- **任何 `stdio:'pipe'` 的 spawn**（`spawnSync(..., {encoding})`、`exec`、`execFile`）→ 裸 `EPERM`。
+  vite 的 `optimizeSafeRealPathSync` 内部用 `exec`，所以 `vite build` 会报
+  「failed to load config from vite.config.ts」+ `spawn EPERM` —— 看着像配置坏了，其实是沙箱。
+  `stdio:'ignore'` / `'inherit'` 的 spawn **能跑**。
+- **无头 Chrome**：crashpad `OpenProcess: Access denied` →「crash server failed to launch」→ 自终止。
+  `--no-sandbox`、`--disable-crash-reporter`、临时 profile 都救不了（第 14 轮实测）。
+- **写工作区**（视策略）：`writeFileSync` / `renameSync` 可能裸 `EPERM`，`dist/` 会静默变陈旧。
 
-### 10.8 第 9 轮过程中的一次「工作区被外部进程污染」（已恢复，教训）
+所以按这个顺序走：
 
-核对阶段发现 `src/content` 被**本会话之外的进程**整批改写，且内容是坏的：
+1. **先算。** 几何 / 布局 / 取景 / 文案一致性都能在 Node 里判定（`check-framing.mjs` 是模板）。
+2. **再让用户跑截图。** 需要像素级判断时，把一行命令交给用户（他有完整权限）：
+   ```powershell
+   node scripts/shot-gated.mjs --base=http://127.0.0.1:5193 --out=build/shots/x
+   ```
+   截图脚本本来就用 `os.tmpdir()` 的 profile + `stdio:'ignore'`，在本机能跑。
+3. **最后才谈升级权限**，并且先说清「为什么非看不可」。
 
-| 现象 | 实测 |
-| --- | --- |
-| 文章被换成另一份稿 | `111mituoyuanzhongchao`：HEAD 标题「阿弥陀经略解圆中钞」**488 块** → 工作区「弥圆い钞-学园」**973 块** |
-| 标题取错 | `060yuyinku` 标题变成 `MyTmp`（其源 `docs/markdown/060yuyinku.md` 第 1 行就是 `# MyTmp`） |
-| 文件名双重编码 | 6 个未跟踪文件，形如 `239wuliangshoujing-huiyi-zhu-╫╩┴╧.json`（「资粮」被当 **CP936/GBK** 解码后的残迹） |
-| 生成物被截断 | `src/data/photos-cn.json` 从 257 行被砍到 20 行（→ `check-buckets` 直接报 `manifest 239 ≠ disk 247`） |
-| 25 个孤儿图片 | `public/photos/**/*.jpg`（第 7 轮已全面转 WebP，这些是旧副本，全部未跟踪） |
-| **未提交** | `git diff --cached` = 0、无 stash → **HEAD 完好，可一键恢复** |
+## 4. 内容与数据
 
-处置（**都只动未跟踪/被改写的内容，不碰任何设计决策**）：
-`git checkout -- src/content public/photos/cn/CREDITS.md src/data/photos-cn.json scripts/slice-plan.json`，
-未跟踪的 6 个文章文件与 25 张 jpg **移动到 `build/quarantine-strays/`**（不删除，保留可回滚）。
-恢复后实测 `ok=294 crit=0 warn=0`、`check-buckets` 239/239/239、`pool-drift` 7 桶全等。
+- **正文不在 `blocks[].text` 里**，在 `blocks[].inline[].s`（`text` 多为空串）。取法：
+  `Array.isArray(b.inline) ? b.inline.map(s => s.s ?? '').join('') : (b.text ?? '')`。
+- **中文源是权威**，改 `articles/<slug>.json`。但英文页署名读 `en/*.json`（再汇总进
+  `catalog-en.json`）→ **改 author 必须同时决定 en 侧**，否则英文留错署名。
+- **单字段改动用行级外科编辑**：`en/*.json` 的缩进与行尾不统一（1/2 空格、LF/CRLF 并存），
+  整体重序列化会把一篇变成「全文重排」的巨型 diff。要求 diff 恰为 1 行，改完 `JSON.parse` 回验。
+- **`git status` 有 CRLF 噪声**（`core.autocrlf=true`，工作区 LF / blob CRLF）：判据用
+  `git diff --numstat` 或 `git hash-object <f> == git rev-parse HEAD:<f>`，不要只看 `git status`。
+- 每日法语（`src/data/verses.ts`，77 条）：流程见下，判据跑 `verse-audit.mjs`。
 
-**教训**：
-- **动到 `src/content` 前先看 mtime 与 `git status`**：本轮 `src/content/articles` 的批次写入时间戳是 19:03:26，
-  而 `dist/` 是 18:18 —— 时间戳不一致就是「有别的进程在写」的直接证据。
-- **判据脚本不要依赖 gitignore 的中间产物**（`build/cjk-chars.txt`）：在干净 clone 或外部清理后它会消失，
-  判据就会**假失败**（本节第 3 条那个 331 字的假警报就是这么来的）。现两个字体脚本都已自给自足。
-- 排版类判据要**方向明确**：`check-font-coverage` 之前只报「src 用字是否都被字体覆盖」，
-  抓不到「字体里的字被删掉」这个反向退化；现已同时报 reserve。
+  ```powershell
+  node scripts/verse-candidates.mjs --top=200 --json=build/verse-candidates.json  # 挖候选
+  node scripts/verse-audit.mjs                                                     # 机械体检
+  ```
+  口径：正文 3–44 字；`source` / `en.text` / `en.source` 齐全；英文是雅信达重写、不逐字直译、
+  不夹汉字；去标点后不得重复；单一出处别超过 10 条。**出处不要臆造**：查不到就写「禅门古德」或不用。
 
-### 10.9 第 9 轮分包（§9.3 第 3 项）· 判据与实测
+## 5. 坑（按主题，全部实测）
 
-**改动**（都只动加载时机，不动任何页面内容与设计）：
+### 5.1 文件与编码
 
-| 面 | 改动 | 文件 |
+- **PS `Set-Content -Encoding utf8` 会双重编码**（`行` → `è¡Œ`，无 BOM、仍是合法 UTF-8，
+  所以 `tsc` / JSON 解析都不报错）。回写用 `edit` 或 Node，自检 `(s.match(/\uFFFD/g)||[]).length === 0`。
+- **here-string 写补丁脚本会把中文变 `?`**（`Out-File -Encoding ascii`）：补丁脚本只放 ASCII。
+- **PS 5.1 的 `[IO.File]` 相对路径跟着进程 CWD 走**，`cd` 不改变它 → 用绝对路径（或 `edit` 工具）。
+- 脚本行尾 CRLF / LF 并存（`curate-cn.mjs` 是 CRLF）→ 写正则改文件一律 `\r?\n`。
+
+### 5.2 Shell 与脚本
+
+- 命令行**不要内联复杂 JS**（引号会被吃：`Expected ident` / `Unmatched )`）。写 `scripts/*.mjs`。
+- PowerShell 脚本里的字符串常量只用 ASCII，中文只放注释。
+- `fs.rmSync(p, {recursive:true, force:true})` 在「什么都没删」时也返回成功：判据要前后各 `existsSync` 一次。
+- 槽位号正则别写死位宽：`grottoes-01` 是两位数字，`[0-9]{3}` 对它必然 false（用 `[0-9][0-9][0-9]?`）。
+
+### 5.3 沙箱
+
+- 见 §3.3。补充：**策略层拒绝**会打印 `[sandbox: file access denied under <mode> mode]`，
+  **OS 层**只有裸 `EPERM`（无标记）——后者要自己定位，别误判成「脚本坏了」。
+- `dist/` 是否新鲜**不要只看 mtime**：验产物里是否含当前源码的特征串。
+
+### 5.4 图版管线
+
+- **`named(key, bucket)` 的第二个参数是「校验桶」**：`named.<key>` 指的文件不在该桶内会**静默**退回
+  该桶第一张（第 13 轮「关于本院」横幅变成石窟浮雕就是这个）。换图后**先跑 `audit:banners`**。
+- **改 `PICKS` 是两步**：`curate-cn.mjs`（PICKS → `cn-picked.json`）再 `fetch-cn-webp.mjs`。
+  只改 PICKS 就抓图会照旧按旧 id 下载，日志还打印旧标题。
+- **换 id 必须换同一位置**（编号恒等于下标+1）；换之前用 `screen-cands.mjs` 过一遍 `TITLE_REJECT`，
+  被剔的 id 不进清单会让后面下标整体前移。
+- **`--only=<桶>` 曾把其余桶从清单静默删掉**（已修，`persist()` 带 `carry`）；若清单被删过键，
+  必须跑一次不带 `--only` 的全量才能重建。
+- **`photos-status` 退出码 0 ≠ 桶内齐了**（只看空桶/具名图损坏）。真判据是 `check-buckets.mjs`。
+- **别用缩略图拼 contact sheet 核对题材**：会错位（把石窟看成停车场）。逐张看全尺寸；
+  池子标题也可能与画面不符。
+- 白瓷/白底图不能做 4:3 缩略图（跟纸底糊成一片）——同一语义可以有两个具名键（`guanyin` / `guanyinArt`）。
+
+### 5.5 3D 场景
+
+- **取景不许页面猜数字**：主体不在 y=0 的场景（香炉、灯、树）走 `bounds → targetY → fitDistance`
+  （`stage.ts` / `censer.ts`）。页面写死 `distance=10` 就是第 14 轮香头出画的直接原因。
+- **发光件必须露在最外层**：香头炭火球原来埋在香灰筒里，构图对了也看不出「在燃烧」。
+- **纸底上的青烟不能用 `AdditiveBlending`**：白上加白 = 一颗颗硬边白球。普通混合 + 冷灰
+  （`0x74827d`）+ 峰值 0.24 + `sin(πk)` 生命周期。
+- 浅色纸底 + `addInkGround` = 方形灰边；单件小物只铺 `addCatchShadow`。
+- 3D 枝干接缝别用「套袖/树瘤」：把枝的起点退到干内、出干角度 ~40°、树干半径收到梢部。
+- SVG 回退树的白缝：先铺完整 `TRUNK_BASE` 再叠明暗。
+- `PCFSoftShadowMap` 在 three r185 已弃用 → `PCFShadowMap`。
+- **Chrome 临时 profile 必须放 `os.tmpdir()`**：放仓库里会被 vite dev 的 watch 锁成 `EBUSY`，dev server 直接崩。
+- CDP 截图 `clip` 是**文档坐标**（要加 `scrollY`），不是视口坐标。
+- **`Contained3D` 视口门控后的场景在 DOM 里没有 canvas**：截图要先滚到那一段
+  （`scripts/shot-gated.mjs` 就是干这个的；`shot-3d.mjs` 对这类页面永远「未找到 canvas」）。
+
+### 5.6 文案、字体与体积
+
+- 字体覆盖扫描**包含注释**：写「蘑菇 / 铝桶」这类注释会凭空多出未覆盖字，被误判成子集过期。
+- Tailwind v4 把 `@theme` 的值**内联进工具类**，产物 CSS 里搜不到 `--color-*` →
+  令牌判据读 `probe-colors.mjs` / `probe-lot-badges.mjs` 的 computed 值，不要 grep 产物。
+- 令牌改名用**令牌-数字边界**正则（`\b(gold|moon)-(\d{2,3})\b`），散文词天然不受影响。
+- 3D 一律 `lazy()` + 视口门控：`three.js` 是独立的 724 KB chunk，首页那一段首屏不下载。
+- 文案位置：中文界面文案在 `src/i18n/zh.ts` + `en.ts`（键由 `tsc` 对齐），文章正文在 `content/`。
+
+## 6. 剩余项（全部可选，非缺陷）
+
+| 项 | 规模 | 建议 |
 | --- | --- | --- |
-| **路由级 `lazy()`** | 7 个页面从静态 import 改成 `lazy(() => import(...))`，各自成块；每个 Route 外套 `Suspense` | `src/App.tsx` |
-| **骨架 fallback** | 新增 `RouteFallback`：与 `PageBanner` 同构的题头 + 4 张卡骨架（**不用 `null`**，否则切路由会出现空白帧） | `src/components/ui/RouteFallback.tsx`（新） |
-| **three.js 视口门控** | 新增 `Contained3D`：`IntersectionObserver`（`rootMargin: 400px`）滚到附近才挂载 3D；未挂载时显示**原有 DOM fallback**（`TempleBell` / `WishTree` / `LotCylinder` / `IncenseBurner`） | `src/components/zen3d/Contained3D.tsx`（新） |
-| **3D 组件懒加载** | `Incense3D` / `Bell3D` / `Tree3D` / `LotCylinder3D` 由 `lazy()` 引入；类型用 `import type { Props as XProps }` + `as ComponentType<XProps>`（`import type` 不产生运行时代码） | `Home.tsx` · `Dharma.tsx` · `PrayerWall.tsx` · `Lots.tsx` |
-| **卦辞数据延迟** | `LingQiBoard` 静态 import 了 **361 KB** 卦辞 JSON（`lingqi.json` 122 + `lingqi-en.json` 239）→ 改为点了「灵棋经」tab 才请求 | `Lots.tsx` |
-| 3D 组件导出 props 类型 | `Incense3D` / `LotCylinder3D` / `Tree3D` 的 `interface Props` 加 `export`；`Bell3D` 的内联 props 抽成 `Props` | 4 个 zen3d 文件 |
+| (a) 音标/专名第二轮 | ASCII → 变音符 ~2,905 处 / ~169 文件 | **不做**。两套拼写都合法，是唯一有回归风险的改动。若做：只统一变音符、保留原有大小写、href 硬守卫 |
+| (b) `meta-scan` 归零 | 13 条 | **不做**：13 条全是真署名，扫描器口径问题 |
+| (c) 每日法语扩容 | 每轮 20–40 条 | 想做就做，判据见 §4 |
+| (d) 发布 | — | 本机 `npm run build` → push；线上有 ~10 分钟缓存 |
 
-**关键实测（`scripts/probe-route-cost.mjs`，每个路由用**一次性浏览器上下文**取真实首屏，单位 decoded）**：
+## 7. 历史（提交索引）
 
-| 路由 | 第 8 轮首屏 | 第 9 轮首屏 | 变化 | 首屏是否还下 three.js |
-| --- | --- | --- | --- | --- |
-| `/` | 1824.5 KB | **615.6 KB** | **−66.3%** | ❌ 不再下（门控生效） |
-| `/articles` | 1824.5 KB | **605.1 KB** | **−66.8%** | ❌ |
-| `/about` | 1824.5 KB | **645.2 KB** | **−64.6%** | ❌ |
-| `/dharma` | 1824.5 KB | 1338.2 KB | −26.7% | ✅ 仍下（场景在首屏内，门控放行） |
-| `/prayer` | 1824.5 KB | 1354.1 KB | −25.8% | ✅ 同上 |
-| `/lots` | 1824.5 KB | 1369.4 KB | −24.9% | ✅ 同上 |
+逐轮明细（改了什么、测了多少、当时的坑）在提交信息里，需要时 `git show <sha>`。
+更早的轮次（翻译工程 A/B 期、缺陷修复 1–3 轮、第 6–8 轮站点改造）：`git log --oneline`。
 
-- 主包 836.68 → **286.96 KB**；`three.js`(724 KB) 只在 `/dharma` `/prayer` `/lots` 首屏仍出现，
-  因为那三个页面的 3D 场景在 802px 视口里**本来就露在首屏内**（`/dharma` 的门在 y=571），
-  门控按设计放行。**要再降只能不用 WebGL 或把场景挪到折叠线以下**，属设计决策，本轮不做。
-- 三个 3D 路由的剩余成本几乎全是引擎本身（707 KB）：那是「有 3D」的固定价，非拆分漏网。
-
-**「不出现空白帧」怎么验的**：
-1. 每个 `Suspense` 的 fallback 都是**有尺寸的骨架**（`RouteFallback` / 3D 各自的 DOM fallback），没有 `null`；
-2. `node scripts/verify-3d-gate.mjs` —— 滚到底后**四个路由都真的挂上了 canvas**（`/lots` 2 个），
-   证明门控不是「永不显示 3D」的开关；
-3. `node scripts/shots-routes.mjs` —— 7 条路由各截一张全页图（滚过一遍再截），肉眼核对无空白块。
-
-**新增判据脚本（已入库）**：
-
-| 脚本 | 用途 |
+| commit | 一句话 |
 | --- | --- |
-| `probe-route-cost.mjs` | **首屏成本的真判据**：每路由一次性上下文 + Resource Timing，报 JS/CSS 字节与是否下了 three.js。⚠ 两个坑：① 同一会话里客户端路由跳转**共用 document**，`performance.getEntriesByType` 会累积上一次路由的记录（第一版就因此虚高）→ 必须每个路由用 `Target.createBrowserContext` 开新上下文；② CDP 的 `Network.responseReceived.encodedDataLength` 在 headless 里常为 0，用 `decodedBodySize` 更可靠（**故本表数字是 decoded，不是 gzip**）。 |
-| `verify-3d-gate.mjs` | 滚到底后核对 3D 是否真的挂载（见上） |
-| `shots-routes.mjs` | 7 条路由全页截图（滚过一遍以触发懒加载与门控） |
-
-### 10.10 第 9 轮 `verses.ts` 复核（§9.3 第 5 项）· 逐条实测
-
-**范围**：`src/data/verses.ts` 的 **30 条**每日法语（首页「每日一语」用），中英逐条对照。
-**结论**：改 **13 条**，保留 **17 条**。改法全部是**术语或语义对齐**，不是重写风格。
-
-**先定术语口径（用全库计数反查，避免自造）**：`node build/term-counts.mjs` 扫
-`src/content/en/**` 294 个文件，实测：
-
-| 词 | 全库计数 | 采用 |
-| --- | --- | --- |
-| `prajñā`（带长音符） | **1754** | ✅ 带音符（ASCII `prajna` 全库 **0**） |
-| `Prajñāpāramitā` | 108 | 带音符 |
-| `stupa` / `stūpa` | 346 / **153** | 两套并存，**经文偈颂一律用 `stūpa`** |
-| `bodhi` / `Bodhi` | 7843 / 2783 | 小写泛指、大写专名 |
-| `parinirvāṇa` | 202 | 带音符 |
-| `Ganges` / `Gaṅgā` | 746 / 2 | 用 `Ganges` |
-| `Mahasthamaprapta` / `Mahāsthāmaprāpta` | 247 / 64 | 用 `Mahasthamaprapta` |
-| `Avatamsaka` / `Avataṃsaka` | 390 / 177 | 用 `Avatamsaka` |
-| `Shurangama` / `Surangama` | 40 / 224 | **条内已有 `Shurangama`**（同名经文两条都写作 `Shurangama`），保持条内一致 |
-| `Vimalakirti` / `Vimalakīrti` | 130 / 83 | 用 `Vimalakirti` |
-| `five aggregates` / `five skandhas` | 618 / 29 | 用 `five aggregates` |
-| `Pure Land` / `Buddha-land` | 4709 / 1547 | 两个都留着（原文分别是「净土」与「佛土」） |
-| `practice` / `practise` | **10802 / 81** | **全库是美式**（`realize` 1564 / `realise` 5、`color` 454 / `colour` 14、`center` 162 / `centre` 4）→ 新写英文一律用美式（脚本：`build/spelling-audit.mjs`） |
-
-**13 处改动（逐条给出中文原文与理由；脚本：`build/fix-verses.mjs`，精确匹配、命中数必须为 1 才写）**：
-
-| # | zh 原文 | 原文 | 改为 | 理由 |
-| --- | --- | --- | --- | --- |
-| 1 | 一念**愚**即般若绝 | One **foolish** thought and prajñā ceases | One **deluded** thought … | 愚=无明（delusion），foolish 读成「愚笨」；且同条已有 `prajñā`，ASCII 不符全库口径 |
-| 2 | 一智能灭万年**愚** | ten thousand years of **folly** | … of **delusion** | 同上，两条同词须一致 |
-| 3 | 制心一处，**无事不办** | nothing it **cannot** accomplish | nothing it **does not** accomplish | 无事不办=无事不成（nothing left undone），cannot 是反向 |
-| 4 | **惭愧**得具足 | **conscience and shame** | **a sense of shame** | 惭愧=惭+愧（善心所），写成 conscience **and** shame 像在说两种过失 |
-| 5 | 胜造恒沙**七宝塔** | **stupas of seven gems** | **stūpas of seven treasures** | 七宝是「七种宝物」的固定搭配，非「七颗宝石」；stūpa 循偈颂口径 |
-| 6 | 时时勤拂拭 | Polish it constantly**,** diligently | …constantly **and** diligently | 原文是「勤+拂拭」两事，裸逗号读作同位 |
-| 7 | 心如**工画师**，能画**诸**世间 | like a painter, able to paint **all the** worlds | like a **master** painter, able to paint **every** world | 工画师=巧匠；诸世间是逐指（every），英文漏了分配义 |
-| 8 | **离世**觅菩提，恰如求兔角 | To seek bodhi **beyond** the world | To seek bodhi **apart from** the world | 离世与前句「不离世间觉」是同一短语，beyond 让两句自相矛盾 |
-| 9 | 若**众生心**，忆佛念佛 | If **beings’ minds** … | If **the minds of beings** … | 所有格挂错名词 |
-| 10 | 百花丛里过，**片叶**不**沾身** | Passing through the hundred flowers, not a single **petal** clings to **you** | …a hundred flowers, not a single **leaf** clings to **the body** | 片叶≠petal；不沾身是「不沾身」而非「不沾你」，且此句本无人称 |
-| 11 | 众善**奉行** | do all that is good | **practice** all that is good | 奉行=依教而行，英文漏了动词义；拼写取**全库口径**（AmE：`practice` 10802 vs `practise` 81，`realize` 1564 vs `realise` 5，`color` 454 vs `colour` 14 → 全库是美式） |
-| 12 | **慈悲为怀**，方便为门 | With compassion as the **bosom** | …as the **foundation** | 为怀=以…为心/本；bosom 不是英文惯用搭配 |
-| 13 | 自性佛道**无上**誓愿成 | the Buddha Way … is **supreme** | … is **unsurpassed** | 四弘誓愿的定译是 unsurpassed，supreme 是这一条里的孤例 |
-
-**保留未改（复核过但不是缺陷）**：
-
-- **出处标注不一致**：`《楞严经》` 的两条分别标为 `Shurangama Sutra`（#9 狂心若歇、#23 忆佛念佛），
-  而同源的 `《大势至菩萨念佛圆通章》`（本身即楞严经的一章）标为 `Chapter of Mahasthamaprapta’s Perfect
-  Penetration of Buddha-Recitation`。整条标题没错（它就是楞严经里的那一章），故保留，仅记录。
-- `《杂阿含经》`→`Samyukta Agama`：全库 `Agama` 仅 **19** 次，属低频专名，无更强的既有口径可依，保留。
-- `《法句经》`→`Dhammapada`（全库 `Dharmapada` 仅 1 次）、`涅槃`→`Mahāparinirvāṇa Sutra` 等按各自版本定名，保留。
-- 逐条**块级对照**（中英成对、无漏条/空串）：30 条 zh 与 30 条 en 一一对应，条数前后都是 30。
-
-**判据（实测）**：`scripts/fix-verses.mjs` 每处字面量命中数必须恰为 1（否则拒绝写入）；
-**幂等性**：改完再跑一次会报 `expected 1 occurrence, found 0` 并 exit 1（即「已全部应用」），
-故这个脚本本身就是「是否已应用」的判据。
-改完 `npx tsc --noEmit` 通过、`validate-en` 仍 `ok=294 crit=0 warn=0`、`scan-mojibake` 0/294；
-**字体子集无需重跑**——复核只改英文侧（`en.text`），全站汉字集合不变，
-`check-font-coverage` 仍是 `6964 / 6965`（唯一缺 `U+FA2D` 为可接受回退）。
-构建产物核对：12 个改动串在 `dist/assets/Home-*.js` 里全部命中（`node -e` 逐串 `includes` 验证）。
-
-**本次一并入库的三个口径脚本**（第 9 轮新增，`scripts/`）：
-
-| 脚本 | 用途 |
-| --- | --- |
-| `term-counts.mjs` | 扫 `src/content/en/**` 统计术语各变体出现次数 —— **定译名口径前先跑它**，别自造 |
-| `spelling-audit.mjs` | 扫 `src/content/en` + `src/i18n` 判 BrE/AmE 房规（实测全库是**美式**） |
-| `fix-verses.mjs` | 本次 13 处改动的可复现脚本（精确字面量 + 命中数必须为 1；幂等，重跑即报 0 命中） |
-
-## 11. 第 10 轮（仅核对 · 无回退）
-
-> **范围**：只跑核对，**未改任何产品代码**（`git status` 全程干净；提交仅本 docs 一节）。
-> 结论：**首屏成本与体积零回退**，与第 9 轮逐字节一致。
-
-### 11.1 核对结果（全绿）
-
-| 核对项 | 第 10 轮实测 |
-| --- | --- |
-| `npx tsc --noEmit` | 通过（exit 0） |
-| `npx vite build` | **通过（exit 0，2.57s）** —— 需 `danger-full-access`，受限模式会 `spawn EPERM`（§4 第 17 条） |
-| `validate-en` | ok=294 crit=0 warn=0 parts=0 |
-| `scan-mojibake` | 0 / 294 |
-| `style-audit` | 装饰符号 0 · 圆角与投影 0 · img 缺 alt 0 · svg 缺 aria-hidden 0 · 旧令牌残留 0 |
-| `photos-status` | 退出码 0；磁盘 **239 张 / 61.6 MB**、清单 239 条、9 张具名图全 ✓ |
-| `check-buckets` | **picks=239 manifest=239 disk=239 · bad buckets=0** · 7 桶编号全连续 |
-| `pool-drift` | 7 桶 **title 全等 · 不一致 0**（41/188 · 46/189 · 89/211 · 21/64 · 15/43 · 20/54 · 7/49） |
-| `check-font-coverage` | **6964 / 6965** 覆盖 · missing 1（`U+FA2D` 可接受回退）· action needed 0 → **子集未过期** |
-| `probe-route-cost` | 见 §11.2（**与第 9 轮逐位相同**） |
-| `verify-3d-gate` | `/` `/dharma` `/prayer` canvas=1、`/lots` canvas=2，**全部挂载 OK**（门控不是「永不显示 3D」） |
-
-### 11.2 首屏成本与体积：**无回退**（实测）
-
-**重建 `dist/` 后哈希与第 9 轮完全一致**（这同时证明「重建 → 首屏数字」因果成立，不是陈旧产物）：
-
-| 产物 | 第 10 轮实测 | 第 9 轮 | 判据 |
-| --- | --- | --- | --- |
-| 主包 `index-65Qih43E.js` | **286,961 B / 280.24 KB**（gzip 92.96） | 286.96 KB | 逐字节同哈希 |
-| `vendor-BTjPlzBp.js` | 229,340 B / 223.96 KB | 同 | 逐字节同哈希 |
-| `index-DvMq8mHc.css` | 77,905 B / 76.08 KB | 77.90 KB | 逐字节同哈希 |
-| `three-DwIcnsOs.js` | 724,169 B / 707.20 KB | 同 | 逐字节同哈希 |
-
-**首屏 JS（decoded，每路由一次性浏览器上下文）**：
-
-| 路由 | 第 10 轮 | 第 9 轮 | 回退？ | 3D |
-| --- | --- | --- | --- | --- |
-| `/` | **615.6 KB**（8 files） | 615.6 | **无** | 门控生效（只下了 `Contained3D` 0.6 KB，**未下 three.js**） |
-| `/articles` | **605.1 KB**（7 files） | 605.1 | 无 | 未下 |
-| `/about` | **645.2 KB**（10 files） | 645.2 | 无 | 未下 |
-| `/dharma` | 1338.2 KB（13 files，1 canvas） | 1338.2 | 无 | 仍下 three.js 707.2 KB（场景在 802px 视口内，门控按设计放行） |
-| `/prayer` | 1354.1 KB（13 files，1 canvas） | 1354.1 | 无 | 同上 |
-| `/lots` | 1369.4 KB（13 files，1 canvas） | 1369.4 | 无 | 同上 |
-
-### 11.3 `dist` 新鲜度的正确判据（本轮做法，可复用）
-
-**不能只看 mtime**。本轮用了两条独立证据（都实测通过）：
-
-1. **时序**：`dist/index.html` mtime(19:53:15) **晚于**最新源文件 `src/data/verses.ts`(19:52:48)，
-   且 `git status --porcelain -- src public scripts` 为空（源码与 HEAD 完全相同）→ 产物不可能更旧；
-2. **内容**：在 `dist/assets/*.js` 里**逐串查当前源码的特征串**（第 9 轮的 `One deluded thought`、
-   `stūpas of seven treasures`、`like a master painter`、`practice all that is good` 全部命中；
-   旧串 `One foolish thought`、`stupas of seven gems` **全部缺席**）。
-   ⚠ 反面教训：我一开始把 `nothing it cannot accomplish` 当「旧串」，其实它是
-   **`src/data/lots.ts:413` 的合法文案**（与 `verses.ts:148` 的 `does not accomplish` 是两处不同文本）
-   —— **写「旧串缺席」判据前，必须先在当前源码里 grep 该串**，否则会造出假失败。
-
-### 11.4 第 10 轮主体改动：`/dharma` `/prayer` `/lots` 的 3D 改为**按需开启**（§6 候选项 b）
-
-**为什么不是「挪到折叠线以下」**（用户先选了「能挪的挪、挪不动的点击加载」，实测后判定三页都属挪不动）：
-
-| 路由 | 3D 容器 top | 整页高 | 挪到触发带外（y>1202）需 | 判定 |
-| --- | --- | --- | --- | --- |
-| `/dharma` | **573** | 2506 | **+630px** | 首屏会留白一半 → 属版面重排，非微调 |
-| `/prayer` | **722** | 2011 | **+481px** | 同上 |
-| `/lots` | **860** | 2593 | **+343px** | 签筒在 802+400 触发带内；挪它要连带动右侧纸卡与左栏 |
-
-`/` 的香炉 top=3489（整页 4466）**本来就在触发带外**，所以第 9 轮的滚动门控在 `/` 上是正确且有效的
-—— 这就是「同一个门控在一页有效、在三页失效」的原因：**失效与门控实现无关，只取决于场景的 y 坐标**。
-判据：`scripts/probe-3d-fold.mjs`（3D 容器的 y）与 `scripts/probe-fold-layout.mjs`（版面骨架 + 还差多少 px）。
-
-**做法**：`Contained3D` 新增 `requireOptIn` + `optInLabel`。**`requireOptIn` 只「武装」视口门控，绝不绕过它**
-——点击只记录意图，仍要 `IntersectionObserver` 放行才挂载，所以**点一下不可能把 three.js 拉进首屏**。
-占位内容仍是各场景**原有的 DOM fallback**（`TempleBell` / `WishTree` / `LotCylinder` / `IncenseBurner`），
-它们本来就可交互（`TempleBell` 还含真实梵钟录音），故不点也能完整使用。
-按钮用 `btn-ghost` + 内联立方体 SVG（`aria-label` = `common.enable3d`），居中于占位区（用户选定）；
-实测**与其它可点元素零重叠**，仅 `/dharma` 叠在钟的装饰图形上（`shots-optin.mjs` 会报出重叠清单）。
-
-**实测收益（`scripts/probe-route-cost.mjs`，decoded，每路由一次性上下文）**：
-
-| 路由 | 第 9 轮首屏 | 第 10 轮首屏 | 变化 | canvas |
-| --- | --- | --- | --- | --- |
-| `/dharma` | 1338.2 KB | **615.0 KB** | **−723.2 KB（−54%）** | 1 → **0** |
-| `/prayer` | 1354.1 KB | **624.4 KB** | **−729.7 KB（−54%）** | 1 → **0** |
-| `/lots` | 1369.4 KB | **652.9 KB** | **−716.5 KB（−52%）** | 1 → **0** |
-| `/` | 615.6 KB | 617.2 KB | +1.6 KB（按钮类） | 0（不变，滚动门控） |
-| `/articles` | 605.1 KB | 606.0 KB | +0.9 KB | 0 |
-| `/about` | 645.2 KB | 646.2 KB | +1.0 KB | 0 |
-
-**七个路由现在首屏全在 606–653 KB 区间**，`three.js`（707.2 KB）**不再出现在任何路由的首屏**。
-主包 287.06 KB（+0.10，按钮代码）、CSS 78.74 KB（+0.75，`bg-rice-50/85` + `backdrop-blur`）。
-
-**「不是死开关」的判据**：`scripts/verify-3d-optin.mjs`（第 10 轮新增）对三个路由逐一验证
-**点击前 0 canvas + 未请求 three.js**、**点击后 canvas 挂载 + three.js 已请求**，
-并回归 `/` 的滚动门控（首屏不下、滚到底后下）。实测 **21/21 全 ok**。
-按钮用键盘可达（探针用 `focus()` + `click()` 激活，非仅鼠标）。
-
-**新增/复用脚本（均已入库）**：`probe-3d-fold.mjs`（3D 容器 y）· `probe-fold-layout.mjs`（版面骨架）·
-`verify-3d-optin.mjs`（本改动的判据）· `shots-optin.mjs`（截图 + 按钮重叠清单）。
-
-### 11.5 核对：其余指标与第 9 轮逐项一致
-
-`validate-en` ok=294 crit=0 warn=0 · `scan-mojibake` 0/294 · `style-audit` 全 0
-（含旧令牌 `gold-*`/`moon-*` 残留 0、svg 缺 aria-hidden 0、img 缺 alt 0）·
-`check-buckets` 239/239/239 bad=0 · `pool-drift` 7 桶全等 · `check-font-coverage` 6964/6965
-（`action needed 0`）。**字体子集无需重跑**：本改动只动组件与 i18n，全站汉字集合不变
-（新增中文串「开启 3D / 正在加载 3D…」的字均已在子集内，实测覆盖数不变）。
-
-## 12. 第 11 轮（3D 重制 + 每日法语扩容）
-
-> **范围**：按用户要求 —— ① 去掉三页「开启 3D」按钮，改为首屏直接播放；
-> ② 重做 `/dharma` 梵钟；③ 重做 `/prayer` 许愿树；④ 每日法语增补（长期可重复任务）。
-
-### 12.1 做了什么
-
-| 项 | 落点 | 要点 |
-| --- | --- | --- |
-| 去掉按需开启 | `Contained3D.tsx`、`Dharma/PrayerWall/Lots` | 删 `requireOptIn` / `optInLabel` 与 `common.enable3d`；只留视口门控；三页首屏重新下载 three.js（707 KB），用户明确选「视觉优先」 |
-| 梵钟 v3 | `zen3d/Bell3D.tsx` | 双壳钟身 + 外撇钟唇；莲座龙钮（挂在等比空间，避免 1.3 纵向拉伸变形）；两排乳钉、双面阴刻铭文、细金弦线；木架 + 匾额；删除悬空撞木（实测像「炮管」），击钟改为钟体摆荡 + 地面涟漪 |
-| 许愿树 v3 | `zen3d/Tree3D.tsx` | 树干 / 枝改用 Frenet 帧变径管；树冠改层叠针叶圆盘（`alphaTest`）；红绸缩短加金环；无心愿时 8 条常备祈福绸（不可点）；树脚碎石 + 草 + 香炉；底色改淡墨地台 |
-| 每日法语 | `data/verses.ts` | 31 → **77 条**；新增般若系经典、禅门宗匠、本站祖师文章、近现代法师四组；全部补齐英文与出处 |
-| 新工具 | `scripts/verse-candidates.mjs` / `verse-audit.mjs` / `shot-3d.mjs` | 语料挖候选 / 机械体检 / 3D 截图（SwiftShader） |
-
-### 12.2 本轮新增的坑（全部实测）
-
-1. **vite dev 会被「编辑临时目录」搞崩**：改 `src/components/zen3d/stage.ts` 时，编辑器的
-   `.stage.ts.<pid>.tmpdir` 被 fs.watch 撞上 `EBUSY`，整个 dev server 退出。已在
-   `vite.config.ts` 的 `server.watch.ignored` 里排掉 `**/build/**`、`**/*.tmpdir/**`、`**/.stage.*`。
-2. **Chrome 临时 profile 不能放仓库的 `build/`**：dev server 会 watch 到
-   `Default/Network/Cookies` → 锁文件 → 同一 `EBUSY`。`shot-3d.mjs` 改用 `os.tmpdir()`。
-3. **CDP `Page.captureScreenshot` 的 `clip` 是文档坐标**（不是视口坐标）：
-   不加 `scrollY` 会拍到页头。`shot-3d.mjs` 已加 `sx/sy`。
-4. **PowerShell here-string 写补丁脚本时，中文会变 `?`**：`Out-File -Encoding ascii`
-   把注释里的汉字替换成问号，写进 TSX 后是合法注释、构建全绿，但源码被污染。
-   补丁脚本只放 ASCII；含中文的改动一律用 `edit` 工具或 Node `writeFileSync(...,'utf8')`（§4.3 的同类问题）。
-5. **字体覆盖扫描包含注释**：`check-font-coverage.mjs` 扫 `src/**` 的**所有字符**，包括注释。
-   给 3D 组件写「蘑菇 / 铝桶」这类注释会凭空多出 3 个未覆盖字，被误判成「需要重跑子集」。
-   已在注释里换成子集内已有的字；覆盖回到 6962/6963（1 个可接受回退）。
-6. **`PCFSoftShadowMap` 在 three r185 已弃用**（控制台警告），改用 `PCFShadowMap`。
-
-### 12.3 每日法语：长期可重复任务（下一轮继续）
-
-**现状**：`src/data/verses.ts` 77 条，出处 39 个；首页按「日 + 小时」轮换（`verseOfTheMoment`）。
-
-**流程（每轮 20–40 条，做完即提交）**：
-
-```bash
-# 1) 从 294 篇正文里挖候选（按出现次数 / 短句排序）
-node scripts/verse-candidates.mjs --top=200 --json=build/verse-candidates.json
-
-# 2) 逐条读上下文，挑「独立成句、不是定义/设问/残缺句」的；补中英出处
-#    本站文章里的句子，出处写文章标题/作者（如「湛然《觉知禅》」），
-#    不要臆造佛经名；网上的流行语先核实原始出处，查不到就写「禅门古德」或不用。
-
-# 3) 机械体检（重复 / 缺英文 / 英文夹汉字 / 过长）
-node scripts/verse-audit.mjs
-```
-
-**判据**：
-- 正文 3–44 字；`source`、`en.text`、`en.source` 齐全；
-- 英文为「雅信达」重写，不逐字直译；英文里不得夹汉字；
-- 去标点后不得重复；
-- 出处集中度可接受（《金刚经》《六祖坛经》各 8 条属正常，但别让单一出处超过 10 条）。
-
-**下一批候选**（已读过、可用，未入库）：
-- 「见山是山，见水是水；见山不是山，见水不是水；见山还是山，见水还是水。」（青原惟信，42 字，需决定是否拆条）
-- 「一花一世界，一叶一如来。」（出处存疑，**不要**标《华严经》）
-- 「随缘消旧业，更不造新殃。」（出处待核）
-- 憨山《费闲歌》其余联句、彻悟大师《念佛论》语录（`402nianfolun`）
-
-### 12.4 3D 改动的最小核对流程
-
-```bash
-# 开发服务器（截图用；profile 已改到 os.tmpdir()）
-node node_modules/vite/bin/vite.js --port 5193 --strictPort --host 127.0.0.1
-
-# 梵钟：默认视角 + 拖拽换角度（--page 另拍整屏）
-node scripts/shot-3d.mjs --route=/dharma --out=build/shots/bell --drag=100,0 --page
-
-# 许愿树：有心愿 / 无心愿两态都要看（后者会挂 8 条常备祈福绸）
-node scripts/shot-3d.mjs --route=/prayer --out=build/shots/tree --wishes=8 --drag=100,0
-node scripts/shot-3d.mjs --route=/prayer --out=build/shots/tree-empty --page
-
-# 撞钟动画：点一下钟再截图（复用已有探针）
-node scripts/probe-bell.mjs build/shots/bell-ring.png
-```
-
-判据：截图里**没有**悬空零件、穿模、被裁切的主体；钟唇 / 绸带 / 香炉在默认视角内；
-控制台无 three 相关报错。`verify-3d-optin.mjs` / `shots-optin.mjs` 已随按钮一起删除；
-点击交互改用 `shot-3d.mjs --click` 看「钟声回荡中…」+ 地面涟漪。
-
-### 12.5 本轮实测
-
-| 项 | 结果 |
-| --- | --- |
-| `npx tsc --noEmit` | 通过 |
-| `npx vite build` | 通过（2.57s） |
-| `verify-3d-gate` | `/` 1 · `/dharma` 1 · `/prayer` 1 · `/lots` 2，全部挂载 |
-| `probe-route-cost` | `/` 624.8 KB · `/articles` 605.2 · `/about` 645.4 · **`/dharma` 1341.9 · `/prayer` 1358.2 · `/lots` 1371.3** |
-| `style-audit` | 装饰符 0 · 圆角/投影 0 · 旧令牌 0 · svg 缺 aria 0 · img 缺 alt 0 |
-| `check-font-coverage` | 6962 / 6963（1 accepted fallback，action needed 0） |
-| `validate-en` / `scan-mojibake` | ok=294 crit=0 warn=0 / 0 乱码 |
-| `verse-audit` | 77 条 · 39 个出处 · 全绿（1 条英文偏长，属原有长偈） |
-| 肉眼截图 | `build/shots/final-dharma2.png`（击钟）、`final-tree2.png`（有心愿）、`tree-final-empty.png`（空树 8 条常备绸） |
-
-体积：主包 `index` 286.96 KB（gzip 92.97）· `three` 724.16 KB（gzip 184.42）·
-`Bell3D` 13.58 KB · `Tree3D` 13.58 KB · `stage` 8.10 KB。三页首屏回到 ~1.34–1.37 MB，
-这是移除「开启 3D」按钮的直接代价（第 10 轮曾降到 615–653 KB），**按用户要求取舍**。
-
-## 13. 第 13 轮（关于页重排 + 图片灯箱 + 慧灯 3D + 许愿树接枝）
-
-> 用户原话四件事：① 许愿树树干和树枝的连接太生硬；② About 页排版局促、图片堆积，
-> 图片点击要能放大/跳转，慧灯常照上面的 3D 灯不见了；③ 关于本院横幅显示
-> `grottoes-01.webp`（和上一轮「换掉压抑/像考古的图」是同一要求）；④ 以后所有 banner
-> 图都要按同一标准检查。
-
-### 13.1 改了什么
-
-| 项 | 处理 | 文件 |
-| --- | --- | --- |
-| **横幅 bucket bug（真因）** | `named.garden` 选的是 `landscape-04.webp`，但 `NAMED_KEY_FALLBACK.garden` 还是 `'grottoes'` → `named()` 静默退回 `grottoes-01.webp`（阴暗浮雕特写）。改为 `'landscape'` | `src/lib/content.ts` |
-| 横幅换图（全部实测） | `/about` 水墨山水 `landscape-04` · `/dharma` 山巅塔影 `halls-13` · `/prayer` 莲池 `lotus-04` · `/lots` 德化白瓷观音 `statues-84` · 首页 Hero 仍 `halls-09` | `photos-cn.json`、`pick-named-photos.mjs` |
-| 首页四门卡 | 初学入门 `sutras-15` 金泥扉画 · 听经 `halls-13` · 点亮心愿 `lotus-04` · 观音灵签 `paintings-03` 蓝底绢本（白瓷观音在白底卡片上会「消失」） | `Home.tsx` |
-| 关于页重排 | 缘起改「左文 + 两张错落照片」（不再三张竖着挤）；一脉相承改三张可点入口卡；禅院掠影改 5 图非对称栅格（大图 8/12 + 4 张小图），移动端 2 列；纵向节奏 `space-y-24/32`、侧栏 gap 20 | `About.tsx` |
-| 图片点击 | 新增全站 `PhotoLightbox`：半屏/近全屏、Esc/←/→、点背景关闭、锁滚动、图注 + 署名；`PageBanner` 题头图可直接点开；关于页缘起/照片墙全部可点；一脉相承卡改为跳转 `/articles` `/dharma` `/prayer` | `components/ui/PhotoLightbox.tsx`、`PageBanner.tsx` |
-| 慧灯 3D | 新增 `Lamp3D`（双层莲座 + 灯柱 + 浅口铜盏 + 灯芯火苗 + 加色光晕 + 点光源）与 `HuiLamp` 水墨回退；放在「慧灯常照」标题上方、`Contained3D` 视口门控 + `lazy()`；不铺淡墨地台，只留接地阴影（否则浅色纸底上会露出方形地台边） | `zen3d/Lamp3D.tsx`、`zen/HuiLamp.tsx`、`About.tsx` |
-| 许愿树接枝 | ① 枝的控制点后退到树干轴线内、第三点以 ~40° 出干，不再 T 形横插；② 枝基加 `collar` 外扩，树干半径一路收到 0.09，顶端被主梢盖住；③ 曾试「锥筒套袖」「球形树瘤」两版，低角度都会露新接缝，已删 | `zen3d/Tree3D.tsx` |
-| SVG 回退树 | 修补 `TRUNK_LEFT/RIGHT` 之间的白缝（两片半干没并集，中段约 28px 透白）；补 4 簇枝梢松针盖住圆头笔帽；两根主枝改为先向上拱再出干 | `zen/WishTree.tsx` |
-| **横幅体检脚本** | `npm run audit:banners`：① 每个具名图 ∈ 声明桶；② 按 16:10 / 4:3 cover 算保留面积，竖图必须给 position；③ 人工禁用图清单（文字标牌/色卡/电线/垃圾桶/过暗考古特写）。退出码 1 = 有 error | `scripts/audit-banners.mjs`（新） |
-
-### 13.2 本轮新坑（务必记住）
-
-1. **`named()` 的「校验桶」和 `named` 实际图必须同源核对**。`garden` 的 bug 让「关于本院」
-   横幅显示成 `grottoes-01`，而 `tsc`、`vite build`、`photos-status` 全绿——只有截图能发现。
-   判据：`npm run audit:banners` 必须 0 error；换图后**先跑它**，再看截图。
-2. **浅色纸底 + 3D 地台 = 方形灰边**。`addInkGround` 在深色/有边框的场景里没问题，
-   但 About 灯段是纯纸底，地台的方形投影会显出一条边。灯这类「单件小物」用
-   `addCatchShadow` 就够，不要铺整块地台。
-3. **白瓷/白底图不能做缩略图**。`statues-84` 做 `/lots` 大横幅很好，但塞进 4:3 卡片
-   会跟纸底糊成一片；首页卡改用蓝底绢本 `paintings-03`。同一个「观音」语义可以有两个
-   具名键（`guanyin` / `guanyinArt`），分别服务横幅与缩略图。
-4. **3D 枝干不要用「套袖/树瘤」补接缝**。锥筒的开口在低角度会露出深色内壁，球形树瘤会
-   变成一串「橡果」。真正有效的是：把枝的起点退到干内、出干角度抬到 40° 左右、树干
-   半径收到梢部；接缝阴影是自然的，不要试图用几何体盖掉。
-5. **SVG 回退树的白缝**：左右两片「半干」各自闭合，中间其实没并集。先铺一层完整
-   `TRUNK_BASE` 再叠明暗，白缝才会消失。判据：`--disable-webgl` 截 `/prayer`。
-6. 本机跑 `vite build` / 无头 Chrome 需要**完整文件/子进程权限**（`spawn EPERM`、
-   Chrome crashpad `OpenProcess: Access denied`）；受限沙箱里只能 `tsc --noEmit`。
-   截图脚本：`build/shot-audit.mjs`、`build/shot-mobile.mjs`、`build/shot-no-webgl*.mjs`
-   （临时验收脚本，不入库）。
-
-### 13.3 本轮实测
-
-| 项 | 结果 |
-| --- | --- |
-| `npx tsc --noEmit` | 通过 |
-| `npx vite build` | 通过（2.6–3.8s）；新增 `Lamp3D` 5.32 KB（gzip 2.23）· `Contained3D` 0.61 KB |
-| `npm run audit:banners` | 9 个显示位 · **0 error · 0 warn**（`/lots` `statues-84` 保留 84%） |
-| 全页截图（1280） | `/` `/about` `/prayer` `/lots` `/dharma`，broken images **0**，console 仅 SwiftShader 精度 warning |
-| 移动/平板 | 390×7948、768×6699，`scrollWidth - innerWidth = 0`（无横向溢出） |
-| 灯箱交互 | PageBanner 1 个按钮、gallery 5 个按钮；点开 → dialog、图片 naturalWidth 正常；下一张从「观音」→「莲池」；Esc 关闭、body overflow 恢复 |
-| 3D 灯 | About 页 `canvas 1`，`#lamp` 截图可见灯焰/莲座/光晕；`--disable-webgl` 回退 `HuiLamp` 正常 |
-| 许愿树 SVG | `--disable-webgl` 截图树干白缝消失；枝梢圆头笔帽被新松针簇盖住 |
-
-## 14. 第 14 轮（首页「一炷心香」：香头被裁掉）
-
-> 用户原话：「主页临走，点一炷心香，放太大了，看不到燃烧的香，你自己缩放看看」
-
-### 14.1 真因（三个叠在一起，缺一不可）
-
-1. **相机盯着 y=0，主体中心在 y≈2**。香炉几何从 y=−2.25（三足球脚）一路长到 y≈5.2
-   （香头），`createStage` 的 `targetY` 默认 0 → 画面重心压在炉身上，越往上越出画。
-2. **`distance` 由页面写死成 10**。420×420 画布、fov 42°、phi=1.0 时，可视半高只有
-   ~3.8 单位，而香头在 y=5.2 → **香头整个在画面外**，截图里只剩两根红棍顶到画布上沿。
-3. **炭火球埋在香灰筒里**。sticks 的 ember 在 y=2.58，而香灰 cap 覆盖 2.58–2.92 →
-   就算构图上把香头框进来，也看不见「在燃烧」。
-4. 附带：青烟用 `AdditiveBlending` + 近白色。加色混在白纸底上只会把年轻的小烟团烧成
-   一颗颗**硬边白球**（截图里像浮着的小球），而不是烟。
-
-### 14.2 改了什么
-
-| 文件 | 改动 |
-| --- | --- |
-| `zen3d/stage.ts` | 新增 `FitBox` + `fitDistance()`：按 fov / phi / 画布比例解「主体完整入画」的相机半径；注释写清「上沿更苛刻」的原因 |
-| `zen3d/censer.ts` | `CenserRig` 增 `bounds`（每种香型的 top/bottom/halfWidth，`top` 含香头之上的青烟）；香头炭火挪到香灰**之上**并加一层加色光晕（`halos`）；三炷香从半径 0.3 拉到 0.5 排开；青烟改**普通混合** + 冷灰绿 `0x74827d`、峰值 0.24、`sin(πk)` 生命周期曲线 |
-| `zen3d/Incense3D.tsx` | 先建模型 → 用 `bounds` 算 `targetY`（主体中心）与 `fit`（取景距离）→ 再建 stage；`distance`/`maxDistance` 变可选（不传即自适应），`minDistance = max(4, fit×0.45)` |
-| `pages/Home.tsx` | 首页去掉写死的 `distance={10} maxDistance={10}`，交给组件自己取景 |
-| `scripts/shot-gated.mjs` | **新工具**：视口门控场景（`Contained3D`）的截图探针——先按文案滚到段落、等 canvas 出现、再居中拍摄。`shot-3d.mjs` 对这类页面永远报「未找到 canvas」 |
-
-### 14.3 判据与坑
-
-- **相机取景不许页面猜数字。** 主体不在 y=0 的场景（香炉、灯）必须走
-  `bounds → targetY → fitDistance`，否则换画布比例就重演一次「香头出画」。
-- **白纸底上的烟不能用加色混合。** 加色只能往白里推，白上加白 = 白球；烟在浅色纸上
-  是「吃掉一点底色」，要普通混合 + 冷灰 + 低不透明度，让 84 个 sprite 自己叠出层次。
-- **香头必须露在香灰外面。** 炭火球（r≈0.07）在 420px 画布上只有 6–7px，单靠球体读不出
-  「燃烧」，得配一层光晕（`makeEmberTexture`，加色、opacity 0.4±0.14、随 `lit` 明灭）。
-- **三炷香要排开。** 原来三根挤在半径 0.3 的圈里，默认机位下后两根在屏幕上几乎重叠，
-  看上去只有两炷（礼佛的三炷香，少一根是硬伤）。半径 0.5 + 中间那炷偏后即可。
-- 截图判据：420² 画布内，**三个橙色香头 + 青烟 + 三足**全在画面里；香头不能被裁、烟不能
-  是白球；移动端 350×420 同样成立。
-
-### 14.4 本轮实测
-
-| 项 | 结果 |
-| --- | --- |
-| `npx tsc --noEmit` | 通过 |
-| `npx vite build` | 通过（7.5s） |
-| 首页 3D 香炉（420²） | 整体入画（取景距离 ≈13.1，原来 10）；三根香头带光晕、青烟可见 |
-| 移动端 390×844 | 画布 350×420，构图一致，无横向溢出 |
-| `/lots` 塔香 | 仍按页面传的 `distance=16` 取景（未改其大小）；`targetY` 自动居中后主体下移约 10%，塔香/香头/烟完整 |
-| `/prayer` 树下盘香（scale 0.34） | 烟改普通混合后可见，未破树场景 |
-| WebGL 回退 | 仍回退 2D `IncenseBurner`（本次未动） |
-| 产物 | `build/shots/home-incense-final.png`（改后）· `home-incense.png`（改前）· `incense-before-after.png`（对比） |
-
-
-
-
-
-
-
-
-
-
-
-
-
+| `3c7e06b` | 第 14 轮：首页「一炷心香」取景修正（相机看主体中心 + 距离自适应 + 香头光晕 + 青烟改普通混合） |
+| `a159413` | 第 13 轮：关于页重排 + 图片灯箱 + 慧灯 3D；修横幅具名桶错配 |
+| `c33eeab` | 首页重排与图版换新；许愿树树脚改坡脚根盘 |
+| `63891a2` | 三页 3D 改为直接播放；梵钟 / 许愿树 v3；每日法语 31→77 |
+| `c83c88d` | `/dharma` `/prayer` `/lots` 的 3D 改按需开启（后被 `63891a2` 按用户要求改回直接播放） |
+| `ae7e263` | 路由级懒加载 + three.js 视口门控（首屏 1824.5 → 615.6 KB） |
+| `5118e86` | `build/` 的 26 个可复用脚本搬进 `scripts/` |
+| `d7b9c70` | 补满图版 7 桶 + 修 landscape 题材错误 + 修 `--only` 删桶缺陷 |
+
+**归档**（`scripts/*.md.archived`，不要当待办读）：B 期翻译手册、缺陷修复轮 2 计划、翻译规范。
+`scripts/DISPATCH.md` **仍有效**（补片派发的子代理提示词）。
+
+> 本文件 2026-10-18 从 108 KB / 1319 行压到 15 KB / 212 行。长版（含第 1–14 轮全部实测明细）：
+> `git show 3c7e06b:scripts/RESUME.md`。

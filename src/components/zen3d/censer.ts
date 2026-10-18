@@ -27,14 +27,24 @@ export interface CenserRig {
 }
 
 /**
- * 各香型的主体范围。`top` 不只到香头（线香 5.22 / 塔香 3.95 / 盘香 2.42），
+ * 各香型的主体范围。`top` 不只到香头（线香 5.23 / 塔香 3.98 / 盘香 2.44），
  * 还要含一段青烟——烟是「在燃烧」的视觉证据，裁掉它香头就只剩一根红棍子。
  * 炉足最低点在 y≈−2.22（三足的球脚），炉耳外沿到 x≈±1.95。
  */
-const BOUNDS: Record<CenserVariant, FitBox> = {
+export const CENSER_BOUNDS: Record<CenserVariant, FitBox> = {
   sticks: { top: 6.4, bottom: -2.25, halfWidth: 1.95 },
   coil: { top: 3.7, bottom: -2.25, halfWidth: 1.95 },
   cone: { top: 5.15, bottom: -2.25, halfWidth: 1.95 },
+}
+
+/**
+ * 香头（炭火球）在模型坐标里的高度。`scripts/check-framing.mjs` 拿它验两件事：
+ * ① 燃烧点在画面内还有余量；② 它必须高于香灰顶盖（原来炭火埋在香灰筒里，看不见在烧）。
+ */
+export const CENSER_TIP: Record<CenserVariant, number> = {
+  sticks: 2.3 + 2.93,
+  coil: 2.44,
+  cone: 3.98,
 }
 
 const INSCRIPTIONS = ['戒定真香', '心香一炷', '智慧香', '清净香', '般若香']
@@ -364,7 +374,7 @@ export function createCenser(
   emberLight.position.set(firstTip.x, firstTip.y, firstTip.z)
   group.add(emberLight)
 
-  const rig: CenserRig = { group, embers, halos, ashCaps, smoke: null, smokeSprites: sprites, tips, bounds: BOUNDS[variant], lit: true, update: () => undefined }
+  const rig: CenserRig = { group, embers, halos, ashCaps, smoke: null, smokeSprites: sprites, tips, bounds: CENSER_BOUNDS[variant], lit: true, update: () => undefined }
 
   const update = (dt: number, t: number) => {
     for (const e of rig.embers) {
