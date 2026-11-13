@@ -180,7 +180,7 @@ export const en: Dict = {
     submitting: 'Lighting…',
     privacyNote:
       'Wishes are kept only in this browser, on your own device. Nothing is uploaded, and clearing your browser data removes them for good.',
-    wallTitle: 'Wishing Tree · Red Ribbon Wishes',
+    wallTitle: 'Prayer Tree · Red Ribbon Wishes',
     treeHint:
       'Each wish becomes a strip of red silk tied to the old tree. Tap a ribbon to read a wish, or to put out a lamp of your own.',
     moreWishes: 'More wishes',
@@ -367,7 +367,7 @@ export const en: Dict = {
     authorBy: 'By {{name}}',
     jumpTo: 'Jump to “{{t}}”',
     logoAlt: 'Lotus emblem',
-    treeAlt: '3D wishing tree, a thousand-year pine and cypress',
+    treeAlt: '3D prayer tree, a thousand-year pine and cypress',
     censerAlt: '3D tripod censer',
     bellAlt: '3D bronze bell',
     cylinderAlt: '3D lot cylinder',

@@ -3,7 +3,7 @@ import { useI18n } from '../../i18n'
 
 /**
  * 互动香炉：点击点燃心香，青烟升起、香头炭火明灭。
- * bare=true 时不带卡片外框，可直接嵌在场景图（如许愿树旁）中。
+ * bare=true 时不带卡片外框，可直接嵌在场景图（如祈愿树旁）中。
  */
 
 export function IncenseBurner({ bare = false }: { bare?: boolean }) {

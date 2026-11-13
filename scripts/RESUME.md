@@ -31,6 +31,7 @@
 | `npm run typecheck` | 通过 |
 | `npm run build` | 通过（7.5s，第 14 轮实测） |
 | `npm run audit:framing` | 通过（第 14 轮新增） |
+| `npm run audit:tree` | 通过（祈愿树造型：裸干比例 / 冠形 / 簇长在枝端 / 三档画布取景 NDC / 红绸挂点） |
 | `npm run audit:banners` | 0 error · 0 warn |
 | 首屏体积（第 12/13 轮实测，改完用 `probe-route-cost.mjs` 重测） | `/` 624.8 · `/articles` 605.2 · `/about` 645.4 · `/dharma` 1341.9 · `/prayer` 1358.2 · `/lots` 1371.3 KB |
 | 主包 | `index` 286.96 KB / gzip 92.97 · `three` 724.16 / 184.42（只在 3D 页下载） |
@@ -41,7 +42,7 @@
 
 ```
 src/pages/            路由页（Home · About · Dharma · PrayerWall · Lots · Articles · Article）
-src/components/zen3d/ three.js 场景（stage.ts 是共用底座：相机/交互/阴影/取景）
+src/components/zen3d/ three.js 场景（stage.ts 是共用底座：相机/交互/阴影/取景；*tre-shape.ts 是祈愿树的纯造型数据）
 src/components/zen/   SVG 回退件（TempleBell · WishTree · IncenseBurner · LotCylinder · HuiLamp）
 src/data/             verses.ts（每日法语）· lots.ts（签）· photos-cn.json（图版清单）
 src/content/          articles/*.json（中文源，权威）· en/*.json（英文）· catalog*.json · lingqi*.json
@@ -59,6 +60,7 @@ dist/ build/          gitignore：构建产物 / 临时区（只放生成物，�
 ```powershell
 npm run typecheck                  # 永远跑
 npm run audit:framing              # 动过 zen3d/ 或页面里的 3D 段落
+npm run audit:tree                 # 动过祈愿树造型（tree-shape.ts / Tree3D.tsx）
 npm run audit:banners              # 动过具名图 / 横幅
 npm run audit:css                  # 动过 index.css（注释配平 / lightningcss 警告；build 的替身）
 npm run build                      # 要出 dist 时（需子进程权限，见 §3.3）
@@ -74,6 +76,7 @@ node scripts/verse-audit.mjs       # 动过 verses.ts
 | 脚本 | 判据 |
 | --- | --- |
 | `check-framing.mjs`（`audit:framing`） | 3D 主体投影 NDC ≤ 0.97、香头有余量、包围盒含青烟；页面写死 `distance` 不得小于自动取景。exit 1 = 构图回退 |
+| `check-tree.mjs`（`audit:tree`） | 祈愿树：裸干 18–34% 全高、冠宽高比 1.1–1.7、每簇松针都长在枝上（点到折线距离 ≤ 0.12）、主枝起点在干内（<0.8×干半径）、6 张面片交叉、三档画布 × 整圈方位 × 四档俯仰 ndc ≤ 0.97、20 个红绸挂点的下摆不埋在针叶里也不穿树干。`--ascii` 另印轮廓 |
 | `audit-banners.mjs` | 具名图必须在声明的桶里、按 16:10 / 4:3 cover 的保留面积、人工禁用清单（文字标牌/色卡/电线）。exit 1 = 有 error |
 | `check-buckets.mjs` | 清单条数 == 磁盘张数 == PICKS 条数，且 `slot == 下标+1` |
 | `pool-drift.mjs` | `cn-picked.json` 每条与 pool 同 id 的 title **全等**（⚠ 池子自身选错时也「全等」，见 §5.4） |
@@ -105,12 +108,16 @@ node scripts/verse-audit.mjs       # 动过 verses.ts
 所以按这个顺序走：
 
 1. **先算。** 几何 / 布局 / 取景 / 文案一致性都能在 Node 里判定（`check-framing.mjs` 是模板）。
-2. **再让用户跑截图。** 需要像素级判断时，把一行命令交给用户（他有完整权限）：
+2. **有完全权限时自己拍。** `danger-full-access` 下无头 Chrome 起得来：起 `node node_modules/vite/bin/vite.js --port 5193`，
+   再 `node scripts/shot-3d.mjs --base=http://localhost:5193 --route=/prayer --out=build/shots/x --wishes=8 --page`，
+   一次能出 3 个角度（`--drag=130,0 --drag=0,45`）。改树冠这类"算不出来"的东西，3–4 轮真截图
+   比算十次判据有效得多；判据负责"别出画 / 别悬空 / 别穿模"，截图负责"像不像"。
+3. **再让用户跑截图**（受限时）。见下，把一行命令交给用户（他有完整权限）：
    ```powershell
    node scripts/shot-gated.mjs --base=http://127.0.0.1:5193 --out=build/shots/x
    ```
    截图脚本本来就用 `os.tmpdir()` 的 profile + `stdio:'ignore'`，在本机能跑。
-3. **最后才谈升级权限**，并且先说清「为什么非看不可」。
+4. **最后才谈升级权限**，并且先说清「为什么非看不可」。
 
 ## 4. 内容与数据
 
@@ -190,6 +197,12 @@ node scripts/verse-audit.mjs       # 动过 verses.ts
   （`0x74827d`）+ 峰值 0.24 + `sin(πk)` 生命周期。
 - 浅色纸底 + `addInkGround` = 方形灰边；单件小物只铺 `addCatchShadow`。
 - 3D 枝干接缝别用「套袖/树瘤」：把枝的起点退到干内、出干角度 ~40°、树干半径收到梢部。
+- **树冠别用水平圆盘**：相机极角 1.29（仰角 16°）时水平面投影只剩 sin16°≈0.28，
+  宽盘会缩成一条线、叠起来像「绿盘子」。用 6 张竖立面片交叉（任意方位 |cos| ≥ 0.866）。
+- **`alphaTest` 是二值的**：远看会不会消失，取决于贴图在 mip 上的平均 alpha。
+  针要粗、中心要密（`Tree3D.tsx` 的 `makeTuftTexture` 注释里写了算过的覆盖率：中段 36% × 平均 alpha 0.7 ≈ 0.25 > 阈值 0.18）。
+- **别用「竖直圆柱」包围盒去框树**：树冠最宽处在下半部、离相机更近，俯视时那几簇先出画
+  （按圆柱算 phi=0.62 时 ndc 到 1.26）。用**包围球**（R/sin 半视角），与方位角无关。
 - SVG 回退树的白缝：先铺完整 `TRUNK_BASE` 再叠明暗。
 - `PCFSoftShadowMap` 在 three r185 已弃用 → `PCFShadowMap`。
 - **Chrome 临时 profile 必须放 `os.tmpdir()`**：放仓库里会被 vite dev 的 watch 锁成 `EBUSY`，dev server 直接崩。

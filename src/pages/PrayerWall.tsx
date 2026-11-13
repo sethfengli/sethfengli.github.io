@@ -9,8 +9,8 @@ import { Contained3D } from '../components/zen3d/Contained3D'
 import { PageBanner } from '../components/ui/PageBanner'
 
 /**
- * 3D 许愿树按需加载（第 9 轮）：three.js（707 KB）不再进首屏。
- * `Tree3D` 原本就接受 `fallback`（水墨 SVG 许愿树），这里再用 Suspense 把
+ * 3D 祈愿树按需加载（第 9 轮）：three.js（707 KB）不再进首屏。
+ * `Tree3D` 原本就接受 `fallback`（水墨 SVG 祈愿树），这里再用 Suspense 把
  * 「还在下载 three.js」这段也交给同一棵 SVG 树，因此任何阶段都不会出现空白。
  * 类型取自真实组件（`import type` 不产生运行时代码）。
  */
@@ -197,7 +197,7 @@ export function PrayerWall() {
       />
 
       <div className="container-page py-16 sm:py-20">
-        {/* 桌面：左「供灯」表单吸附 / 右许愿树；移动端：先表单后树 */}
+        {/* 桌面：左「供灯」表单吸附 / 右祈愿树；移动端：先表单后树 */}
         <div className="lg:grid lg:grid-cols-[minmax(0,22rem)_minmax(0,1fr)] lg:items-start lg:gap-14">
           <aside className="lg:sticky lg:top-24">
             <div className="card p-7 sm:p-8">
@@ -279,7 +279,7 @@ export function PrayerWall() {
             </div>
           </aside>
 
-          {/* ---------- 许愿树 ---------- */}
+          {/* ---------- 祈愿树 ---------- */}
           <section className="mt-14 lg:mt-0">
             <div className="flex flex-wrap items-end justify-between gap-4 border-b border-hairline pb-6">
               <h2 className="section-title">{t('prayer.wallTitle')}</h2>
@@ -295,7 +295,7 @@ export function PrayerWall() {
             </div>
             <p className="mt-4 font-song text-xs leading-relaxed text-ink-500">{t('prayer.treeHint')}</p>
 
-            {/* 许愿树（始终展示，无愿望时以提示语引导）。
+            {/* 祈愿树（始终展示，无愿望时以提示语引导）。
                 第 11 轮按用户要求移除「开启 3D」按钮：3D 树在页面首屏内，
                 视口门控第一帧放行，SVG 树只在 three.js 下载期间短暂充当占位。 */}
             <div className="mt-8 rounded-card border border-hairline bg-rice-100/50 p-3 sm:p-5">

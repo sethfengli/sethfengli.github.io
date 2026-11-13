@@ -102,8 +102,8 @@ node scripts/shot-3d.mjs --route=/prayer --out=build/shots/tree --wishes=8
     ├── components/
     │   ├── layout/                # Header / Footer / Layout
     │   ├── ui/                    # PageBanner / Reveal / RouteMeta
-    │   ├── zen/                   # 12 种水墨 SVG 插画、许愿树、互动香炉、撞钟
-    │   ├── zen3d/                 # Three.js 场景（梵钟 / 香炉 / 许愿树 / 签筒）
+    │   ├── zen/                   # 12 种水墨 SVG 插画、祈愿树、互动香炉、撞钟
+    │   ├── zen3d/                 # Three.js 场景（梵钟 / 香炉 / 祈愿树 / 签筒）
     │   └── reader/                # 正文渲染器、Google 翻译集成
     └── pages/                     # 首页 / 书架 / 阅读器 / 听经 / 祈福 / 灵签 / 关于
 ```
@@ -115,7 +115,7 @@ node scripts/shot-3d.mjs --route=/prayer --out=build/shots/tree --wishes=8
 - **无后端**：心愿、签文、阅读偏好全部 localStorage；数据层采用 Repository 接口，为未来 GitHub Issues 共享预留切换点。
 - **图版只用中国传统佛教题材**：Commons 分类 → 候选池 → 人工精选 + 二次排雷（剔除日韩越泰印/尼泊尔/藏传/欧美本地题材，但保留现藏海外的中国文物）→ Pillow 统一转码为长边 ≤1600 的渐进式 JPEG。12 种水墨 SVG 插画作回退与装饰。
 - **钟声**：真实梵钟录音（長命寺，CC BY 2.1 JP）本地托管，未就绪时回退 Web Audio 多泛音合成；钟声播完前禁止再次撞钟。
-- **Three.js 3D（v3）**：法音 / 祈福 / 灵签三页为可鼠标操控的 3D 场景，three 按需分包（约 707KB / 184KB gzip），无 WebGL 自动回退 SVG。**打开即播放，没有「开启 3D」按钮**（第 11 轮按用户要求移除；代价是三页首屏会下载 three，属视觉优先的取舍）。场景公共设施（`stage.ts`）统一提供轨道操控 / 点击拾取 / 软阴影接地 / 淡墨地台 / 自适应 DPR / 暖主光 + 冷轮廓光 / `prefers-reduced-motion` 降级。v3 梵钟为双壳钟身 + 莲座龙钮 + 阴刻铭文；v3 许愿树树干为沿 Frenet 帧生成的变径管、树冠为层叠针叶云片，树脚为**坡脚 + 根盘**（高度场土坡 + 板根 / 长根 / 苔点 / 半埋石，取消原先的水平切面与围石）。
+- **Three.js 3D（v3）**：法音 / 祈福 / 灵签三页为可鼠标操控的 3D 场景，three 按需分包（约 707KB / 184KB gzip），无 WebGL 自动回退 SVG。**打开即播放，没有「开启 3D」按钮**（第 11 轮按用户要求移除；代价是三页首屏会下载 three，属视觉优先的取舍）。场景公共设施（`stage.ts`）统一提供轨道操控 / 点击拾取 / 软阴影接地 / 淡墨地台 / 自适应 DPR / 暖主光 + 冷轮廓光 / `prefers-reduced-motion` 降级。v3 梵钟为双壳钟身 + 莲座龙钮 + 阴刻铭文；v4 祈愿树照真实松树照片重做——树干为沿 Frenet 帧生成的变径管（近黑的深纵裂树皮）、裸干只占全高 1/4、冠形宽大于高，树冠是**松针簇**（每簇 6 张竖立面片交叉、瓶刷状针叶贴图，取代一进画面就变成一条线的水平「松云圆盘」），树脚为**坡脚 + 根盘**（高度场土坡 + 板根 / 长根 / 苔点 / 半埋石）；取景按画布比例用包围球算（`fitTreeDistance`），桌面 18.7 / 手机 26.1，整圈拖过去都不切边。
 - **设计系统（2026 v3 · 新中式极简）**：宣纸底 + 焦墨字 + 青瓷灰绿 + 朱砂印章红的水墨双色骨架；
   发丝描边 + 大留白 + 非对称栅格取代圆角卡片与投影堆叠，清除装饰性渐变、毛玻璃与 emoji/字符装饰；
   书法体收敛为点睛用途。统一 PageBanner（图文并置题头）/PageIntro/SectionHeading/Ornament/Reveal 组件、

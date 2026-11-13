@@ -83,7 +83,7 @@ function App() {
       </header>
 
       <Section
-        title="许愿树（水墨松柏）"
+        title="祈愿树（水墨松柏）"
         note="18 条心愿 → 18 处真实枝桠系结点；飘带随系结点摆动，竖排朱砂绸面，燕尾剪两瓣。"
       >
         <div className="rounded-card border border-hairline bg-rice-100/40 p-4">
@@ -91,7 +91,7 @@ function App() {
         </div>
       </Section>
 
-      <Section title="许愿树 · 空枝" note="无心愿时：树形与苔点、松果、远山自成画面，不显得残缺。">
+      <Section title="祈愿树 · 空枝" note="无心愿时：树形与苔点、松果、远山自成画面，不显得残缺。">
         <div className="rounded-card border border-hairline bg-rice-100/40 p-4">
           <WishTree wishes={[]} onRibbonClick={() => {}} />
         </div>

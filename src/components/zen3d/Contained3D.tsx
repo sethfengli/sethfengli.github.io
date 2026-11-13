@@ -10,7 +10,7 @@ import { useEffect, useRef, useState, type ReactNode } from 'react'
  * `/prayer`, `/lots`) the observer fires on the first frame and the scene
  * simply plays — there is no opt-in button and no click-to-load step.
  *
- * The placeholder is the scene's own DOM fallback (`TempleBell` / `WishTree` /
+ * The placeholder is the scene's own DOM fallback (`TempleBell` / `PrayerTree` /
  * `LotCylinder` / `IncenseBurner`), so the area is never blank and stays
  * interactive while the chunk downloads.
  */
