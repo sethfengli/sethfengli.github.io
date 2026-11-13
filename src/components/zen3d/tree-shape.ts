@@ -70,9 +70,8 @@ export const TREE_TRUNK: Vec3[] = [
   [0.72, 3.4, 0.18],
   [0.78, 4.1, 0.14],
   [0.8, 4.8, 0.16],
-  [0.78, 5.2, 0.12],
-  [0.74, 5.6, 0.13],
-  [0.7, 5.9, 0.12],
+  [0.78, 4.7, 0.12],
+  [0.77, 4.95, 0.12],
 ]
 
 /**
@@ -205,8 +204,8 @@ export const TREE_BOUGHS: Bough[] = [
   // 左高
   {
     pts: [
-      [0.42, 1.7, 0.02],
-      [0.3, 2.0, 0.1],
+      [0.5, 1.7, 0.11],
+      [0.34, 2.0, 0.12],
       [-0.34, 2.4, 0.28],
       [-1.08, 2.84, 0.4],
       [-1.72, 3.12, 0.3],
@@ -340,6 +339,29 @@ function buildTwigs(): Twig[] {
       out.push(sub)
     }
   }
+  // 树冠顶：主梢收在 4.9 处，顶心会空出一个「M」形缺口。
+  // 补两条短主梢（depth=1，只挂梢头一簇）把顶心接上，冠顶才是圆的。
+  const TOP: Vec3[][] = [
+    [
+      [0.76, 4.62, 0.12],
+      [0.48, 4.92, 0.1],
+      [0.24, 5.18, 0.06],
+      [0.1, 5.32, 0.02],
+    ],
+    [
+      [0.76, 4.55, 0.12],
+      [0.98, 4.84, 0.1],
+      [1.14, 5.1, 0.06],
+      [1.25, 5.28, 0.03],
+    ],
+    [
+      [0.77, 4.7, 0.12],
+      [0.8, 4.98, 0.1],
+      [0.83, 5.26, 0.06],
+      [0.85, 5.5, 0.03],
+    ],
+  ]
+  for (const pts of TOP) out.push({ pts, r: 0.055, depth: 1 })
   return out
 }
 
@@ -374,7 +396,7 @@ function buildTufts(): Tuft[] {
   const out: Tuft[] = []
   // 主枝端：定出冠形轮廓
   for (const b of TREE_BOUGHS) {
-    out.push({ p: b.pts[b.pts.length - 1], s: 1.3 + rnd() * 0.18, tone: b.tier })
+    out.push({ p: b.pts[b.pts.length - 1], s: 1.4 + rnd() * 0.2, tone: b.tier })
   }
   // 侧枝：梢头一簇 + 中段一簇（中段那簇把针叶连成片）；
   // 小枝只留梢头一小簇，负责把轮廓打毛
@@ -382,17 +404,21 @@ function buildTufts(): Tuft[] {
   for (const tw of TREE_TWIGS) {
     const tone = (i++ % 3) as 0 | 1 | 2
     if (tw.depth === 0) {
-      out.push({ p: tw.pts[3], s: 1.06 + rnd() * 0.2, tone })
+      out.push({ p: tw.pts[3], s: 1.16 + rnd() * 0.22, tone })
       // 中段两簇：把内圈的空枝也接上针叶，针叶才不会只在树冠外圈「一圈云」
-      out.push({ p: tw.pts[2], s: 0.82 + rnd() * 0.14, tone })
-      out.push({ p: samplePolyline(tw.pts, 0.45), s: 0.7 + rnd() * 0.12, tone })
+      out.push({ p: tw.pts[2], s: 0.9 + rnd() * 0.16, tone })
+      out.push({ p: samplePolyline(tw.pts, 0.45), s: 0.78 + rnd() * 0.14, tone })
     } else {
-      out.push({ p: tw.pts[3], s: 0.74 + rnd() * 0.16, tone })
+      // 冠顶那几条短主梢：簇要大一点，顶心才连成一片而不是三根天线
+      out.push({ p: tw.pts[3], s: 1.18 + rnd() * 0.14, tone })
     }
   }
-  // 冠顶
-  out.push({ p: [0.7, 5.88, 0.13], s: 1.16, tone: 2 })
   for (const p of DRY_SPOTS) out.push({ p, s: 0.72, tone: 3, dry: true })
+  // 高处受光、冠内背光：把 3.2 以上的簇统一提到亮色阶，
+  // 树冠才有「上亮下暗」的体积，而不是一片同色绿
+  for (const tuft of out) {
+    if (!tuft.dry && tuft.p[1] > 3.2) tuft.tone = 2
+  }
   return out
 }
 

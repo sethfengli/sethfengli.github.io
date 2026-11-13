@@ -29,13 +29,14 @@ import { useI18n } from '../../i18n'
  *      `TUFT_PLANES`=6 张竖立面片交叉，任意方位必有一张正对相机；
  *      贴图是瓶刷状针叶（两份不同的图，避免 200 多簇读成同一个球）。
  *   ② 裸干占全高 60%：照片里只有约 1/4，之后才分叉。现在最低一层枝叶
- *      落在离地 2.9 处（25%），冠高 8.7、冠宽 10.2（宽高比 1.17）。
+ *      落在离地 2.8 处（26%），冠高 8.1、冠宽 10.4（宽高比 1.28）。
  *   ③ 树干是亮的暖棕色，而照片是**近黑的深纵裂树皮**（阴面几乎纯黑）。
  *      树皮贴图重画：暗底 + 深裂 + 横向鳞板 + 少量灰褐受光棱。
  *   ④ 粗枝太多、只有一级，针叶只挂在枝头。现在主枝 10 根（上一版 14 根，
  *      半径 0.3 → 0.2 以下），沿**整根**主枝再抽 40 条侧枝、每条侧枝分
- *      2 条小枝（共 120 条细枝），214 簇松针长在枝上任意位置而不是只在梢头；
- *      另有 3 簇枯针夹在枝杈里（照片里的旧针）。
+ *      2 条小枝，再加 3 条补顶短梢（共 123 条细枝），216 簇松针长在枝上
+ *      任意位置而不是只在梢头；另有 3 簇枯针夹在枝杈里（照片里的旧针）。
+ *      冠顶三条短梢把主梢收口处的缺口接上，顶心才是圆的，不是一根天线。
  *   ⑤ 相机距离写死 22.5：桌面把树缩到 83%，手机上树冠两侧被切掉。
  *      现在 `fitTreeDistance(aspect)` 按包围球算，整圈拖过去都不出画。
  *
@@ -174,9 +175,9 @@ function makeBarkTexture(THREE: typeof import('three')): THREE.CanvasTexture {
     ctx.stroke()
   }
   // 横向鳞板：把长裂切成一块块板，这是松皮和「竖纹木管」的分界
-  for (let i = 0; i < 26; i++) {
+  for (let i = 0; i < 16; i++) {
     const y = rnd() * 512
-    const w = 40 + rnd() * 120
+    const w = 90 + rnd() * 210
     const x = rnd() * 512
     ctx.strokeStyle = `rgba(12,9,7,${0.3 + rnd() * 0.4})`
     ctx.lineWidth = 2 + rnd() * 3
@@ -260,17 +261,20 @@ function makeBarkBump(THREE: typeof import('three')): THREE.CanvasTexture {
 }
 
 /**
- * 松针簇贴图：从一个芽点甩出七八束**针叶小枝**（瓶刷状），不是一张圆盘织纹。
+ * 松针簇贴图：从一个芽点甩出九束**针叶小枝**（瓶刷状），不是一张圆盘织纹。
  *
- * 三条硬约束（都是算出来的，不是猜的）：
+ * 四条硬约束（都是算出来的，不是猜的）：
  *   ① 轮廓不能是圆的：径向等长的星形，6 张面片交叉后就是一个绿球，
  *      正是一开始被用户否掉的「绿色风车/刺球」。所以每束的长短差 3 倍，
  *      外缘参差；再叠加实例的非等比缩放，同一个贴图也不会重复成球。
  *   ② 远看不能消失：屏幕上 1.5 单位的簇约 70px，512² 贴图被压到 mip≈2.9
  *      （16×16 平均）。alphaTest 是**二值**的，平均 alpha 低于阈值就整片没了。
- *      实测覆盖率：中段（r≈150px）约 36%，平均 alpha ≈ 0.7 → 0.25 > 0.18 的阈值，
+ *      中段（r≈150px）覆盖率约 36%，平均 alpha ≈ 0.7 → 0.25 > 0.18 的阈值，
  *      远看留下毛边的团块；外缘覆盖 ≈ 15% → 0.10 被裁掉，正好收成不规则轮廓。
- *   ③ 近看要有针：每束 25 根、针宽 2.6–4.2px，缩到贴图边缘仍有 1px 以上。
+ *   ③ 近看要有针：每束 30 根、针宽 2.2–4.4px，缩到贴图边缘仍有 1px 以上。
+ *   ④ 中段要**透**：整簇画满就是一朵绿云（第 18 轮截图里的「扇贝/西兰花」）。
+ *      画完用 destination-out 在 r≈40–190 处啃掉十几个软洞，针叶之间才露得出
+ *      背景——远看是蓬松的长针，不是一块实心色。
  */
 function makeTuftTexture(THREE: typeof import('three'), seed: number): THREE.CanvasTexture {
   const cv = document.createElement('canvas')
@@ -283,56 +287,58 @@ function makeTuftTexture(THREE: typeof import('three'), seed: number): THREE.Can
   ctx.clearRect(0, 0, 512, 512)
   ctx.lineCap = 'round'
   // 芽点：一点密核，给簇体积，避免「空心光盘」
-  const core = ctx.createRadialGradient(cx, cy, 2, cx, cy, 104)
-  core.addColorStop(0, 'rgba(255,255,255,0.66)')
+  const core = ctx.createRadialGradient(cx, cy, 2, cx, cy, 96)
+  core.addColorStop(0, 'rgba(255,255,255,0.7)')
   core.addColorStop(0.5, 'rgba(255,255,255,0.34)')
   core.addColorStop(1, 'rgba(255,255,255,0)')
   ctx.fillStyle = core
   ctx.beginPath()
-  ctx.arc(cx, cy, 104, 0, Math.PI * 2)
+  ctx.arc(cx, cy, 88, 0, Math.PI * 2)
   ctx.fill()
 
-  // 7 束针叶小枝：每束一条短枝 + 25 根从枝上斜出的针，长度差 3 倍
-  for (let s = 0; s < 7; s++) {
-    const a = (s / 7) * Math.PI * 2 + (rnd() - 0.5) * 0.5
-    const reach = 96 + rnd() * 150 // 束与束的长短差
-    const shoot = 8 + rnd() * 26
+  // 9 束针叶小枝：每束一条短枝 + 30 根从枝上斜出的针。
+  // 试过「每根针自己挑方向」的均匀分布，结果每簇变成一个刺球
+  // （正是第 11 轮被否掉的「绿色风车」）；成束画才有松针的方向感，
+  // 束与束之间留 ±0.3 rad 的空隙，远看才不会糊成一块绿。
+  for (let s = 0; s < 9; s++) {
+    const a = (s / 9) * Math.PI * 2 + (rnd() - 0.5) * 0.34
+    const reach = 92 + rnd() * 156
+    const shoot = 6 + rnd() * 24
+    const arc = reach * 0.44
     // 短枝（深一号的枝影）
-    ctx.strokeStyle = 'rgba(168,178,168,0.5)'
-    ctx.lineWidth = 3.4
+    ctx.strokeStyle = 'rgba(150,162,150,0.55)'
+    ctx.lineWidth = 3.2
     ctx.beginPath()
     ctx.moveTo(cx, cy)
-    ctx.lineTo(cx + Math.cos(a) * reach * 0.42, cy + Math.sin(a) * reach * 0.42)
+    ctx.lineTo(cx + Math.cos(a) * arc, cy + Math.sin(a) * arc)
     ctx.stroke()
-    for (let k = 0; k < 25; k++) {
-      // 沿枝的落点：靠外更密（针叶在梢头成簇）
-      const along = 0.12 + Math.pow(k / 24, 0.7) * 0.86
-      const px = cx + Math.cos(a) * reach * 0.42 * along
-      const py = cy + Math.sin(a) * reach * 0.42 * along
+    for (let k = 0; k < 30; k++) {
+      const along = 0.1 + Math.pow(k / 29, 0.7) * 0.88
+      const px = cx + Math.cos(a) * arc * along
+      const py = cy + Math.sin(a) * arc * along
       const side = k % 2 === 0 ? 1 : -1
-      const spread = side * (0.32 + rnd() * 0.62)
-      const len = reach * (0.34 + (1 - along) * 0.66) * (0.72 + rnd() * 0.5)
+      const spread = side * (0.1 + rnd() * 0.3)
+      const len = reach * (0.36 + (1 - along) * 0.64) * (0.7 + rnd() * 0.55)
       const na = a + spread
       const ex = px + Math.cos(na) * len
       const ey = py + Math.sin(na) * len
-      const mx = px + Math.cos(na - 0.1 * side) * len * 0.55
-      const my = py + Math.sin(na - 0.1 * side) * len * 0.55
-      const dark = rnd() > 0.68
+      const mx = px + Math.cos(na - 0.09 * side) * len * 0.55
+      const my = py + Math.sin(na - 0.09 * side) * len * 0.55
+      const dark = rnd() > 0.66
       ctx.strokeStyle = dark
-        ? `rgba(186,196,186,${0.3 + rnd() * 0.26})`
+        ? `rgba(176,188,176,${0.26 + rnd() * 0.26})`
         : `rgba(255,255,255,${0.55 + rnd() * 0.42})`
-      ctx.lineWidth = (dark ? 2.2 : 2.6) + rnd() * 1.6
+      ctx.lineWidth = (dark ? 2.6 : 2.8) + rnd() * 2.2
       ctx.beginPath()
       ctx.moveTo(px, py)
       ctx.quadraticCurveTo(mx, my, ex, ey)
       ctx.stroke()
     }
-    // 束末几根冲出轮廓的长针：破掉圆形边缘
     for (let k = 0; k < 3; k++) {
-      const na = a + (rnd() - 0.5) * 0.5
-      const len = reach * (0.9 + rnd() * 0.35)
+      const na = a + (rnd() - 0.5) * 0.42
+      const len = reach * (0.92 + rnd() * 0.38)
       ctx.strokeStyle = `rgba(255,255,255,${0.5 + rnd() * 0.3})`
-      ctx.lineWidth = 1.8 + rnd() * 1.2
+      ctx.lineWidth = 1.6 + rnd() * 1.2
       ctx.beginPath()
       ctx.moveTo(cx + Math.cos(a) * shoot, cy + Math.sin(a) * shoot)
       ctx.quadraticCurveTo(
@@ -344,6 +350,24 @@ function makeTuftTexture(THREE: typeof import('three'), seed: number): THREE.Can
       ctx.stroke()
     }
   }
+  // 透光洞：软边 destination-out，把实心处啃出空隙（针叶之间露出背景）
+  ctx.globalCompositeOperation = 'destination-out'
+  for (let i = 0; i < 7; i++) {
+    const a = rnd() * Math.PI * 2
+    const r = 60 + Math.pow(rnd(), 0.7) * 100
+    const px = cx + Math.cos(a) * r
+    const py = cy + Math.sin(a) * r
+    const rad = 10 + rnd() * 16
+    const g = ctx.createRadialGradient(px, py, 0, px, py, rad)
+    g.addColorStop(0, 'rgba(0,0,0,0.9)')
+    g.addColorStop(0.6, 'rgba(0,0,0,0.5)')
+    g.addColorStop(1, 'rgba(0,0,0,0)')
+    ctx.fillStyle = g
+    ctx.beginPath()
+    ctx.arc(px, py, rad, 0, Math.PI * 2)
+    ctx.fill()
+  }
+  ctx.globalCompositeOperation = 'source-over'
   const tex = new THREE.CanvasTexture(cv)
   tex.colorSpace = THREE.SRGBColorSpace
   tex.anisotropy = 4
@@ -686,7 +710,7 @@ export function Tree3D({ wishes, onRibbonClick, fallback }: Props) {
       rootBark.color.setHex(0xd9c6a8)
       rootBark.roughness = 0.92
       // 4 个色阶：深绿（冠内/低位）→ 中绿 → 受光亮绿 → 枯针（照片里的旧针）
-      const TUFT_TONES = [0x244034, 0x3a5f4e, 0x5a7f63, 0x7a6242]
+      const TUFT_TONES = [0x244034, 0x3a5f4e, 0x527663, 0x7a6242]
       // 两份针叶贴图：同一张放在 174 个簇上会看出「同一个球」的重复感
       const tuftTexA = makeTuftTexture(THREE, 0x3c9d)
       const tuftTexB = makeTuftTexture(THREE, 0x51b7)
