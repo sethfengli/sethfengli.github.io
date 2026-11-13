@@ -71,7 +71,7 @@ const CN_PHOTOS = cnPhotosJson as PhotoManifest
  * 具名映射（`scripts/pick-named-photos.mjs` 写入的 `named` 字段）
  *
  * ⚠ 这里的值是**校验桶**，必须与 `named` 图实际所在的桶一致。
- *   不一致时 `named()` 会静默退回该桶第一张 —— 第 13 轮「关于本院」横幅
+ *   不一致时 `named()` 会静默退回该桶第一张 —— 第 13 轮「关于本站」横幅
  *   之所以显示成 `grottoes-01.webp`（阴暗的云冈浮雕特写），就是因为
  *   `garden` 的校验桶还是旧的 `grottoes`，而选中的 `landscape-04.webp`
  *   在 `landscape` 桶里。构建、tsc 全绿，只有截图/肉眼能发现。
@@ -100,7 +100,7 @@ function bucketOf(name: string): string[] {
   return Array.isArray(v) ? (v as string[]) : []
 }
 
-/** 全部中国佛教图版文件名（用于「关于本院」照片墙与统计） */
+/** 全部中国佛教图版文件名（用于「关于本站」照片墙与统计） */
 export const PHOTO_NAMES: string[] = Object.values(CN_PHOTOS)
   .filter(Array.isArray)
   .flatMap((v) => v as string[])
@@ -218,7 +218,7 @@ export const NAMED_PHOTOS = {
   /** 首页 Hero：佛殿金身三尊（暖光、正面、不压抑） */
   hero: () => named('hero', 'halls'),
   /**
-   * 初学入门题头 / 首页导览：金泥经卷扉画。
+   * 经典书架题头 / 首页导览：金泥经卷扉画。
    * ⚠ 第二个参数是**校验桶**，换图时必须一起改，否则会静默退回桶内第一张。
    */
   gate: () => named('gate', 'sutras'),
@@ -260,7 +260,7 @@ function named(key: keyof typeof NAMED_KEY_FALLBACK, fallbackBucket: string): st
 }
 
 /**
- * 关于页「禅院掠影」的选片逻辑已上移到 `src/pages/About.tsx`：
+ * 关于页「这里的光景」的选片逻辑已上移到 `src/pages/About.tsx`：
  * 该处需要同时携带图注、裁切焦点与灯箱序号，放在内容层会与 UI 耦合。
  * 具名图仍统一由 `NAMED_PHOTOS` 提供，保证与各页题头同源。
  */

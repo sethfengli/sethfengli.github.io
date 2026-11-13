@@ -1,6 +1,6 @@
 /**
  * 观音灵签 · 三十二签
- * 签诗为本寺依古签体例新撰（四句七言），解签与禅语为原创开示。
+ * 签诗为本处依古签体例新撰（四句七言），解签与禅语为原创开示。
  * 签文旨在启发自省，不作吉凶预言。
  * English: the poems are rendered as rhymed quatrains, with the
  * interpretation and Zen wish translated in a plain, faithful register.

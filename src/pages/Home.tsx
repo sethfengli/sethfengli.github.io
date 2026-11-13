@@ -27,8 +27,11 @@ const Incense3D = lazy(() =>
   import('../components/zen3d/Incense3D').then((m) => ({ default: m.Incense3D })),
 )
 
-/** 主推六篇：一部大经压阵，其余按「入门 → 禅 → 净」排开，不再堆成八条长名单 */
+/** 主推六篇：一部大经压阵，其余按「经典 → 禅 → 净」排开，不再堆成八条长名单 */
 const FEATURED_SLUGS = ['301jgj', '302xinj', '303liuzutanjing', '102lfsx', '001jznf', '001zyxuefo']
+
+/** 四条路的序号用汉字，比 01–04 少一点「清单感」 */
+const DOOR_NUMERALS = ['一', '二', '三', '四']
 
 /** 32 签 + 125 卦（数据分别在 data/lots.ts 与 content/lingqi.json；此处只作展示数字） */
 const DIVINATION_COUNT = 157
@@ -56,9 +59,23 @@ export function Home() {
     const found = VERSES.indexOf(verseOfTheMoment())
     return found < 0 ? 0 : found
   })
+  /** 「第 n / 99 句」可点开：输入编号或点编号直接定位（长期可重复的任务，读者常想回看某一句） */
+  const [versePicking, setVersePicking] = useState(false)
+  const [verseJump, setVerseJump] = useState('')
+  /** 四条路：右侧单张预览图跟着指针 / 焦点切换，默认停在第一张 */
+  const [preview, setPreview] = useState(0)
   const verse = VERSES[verseIdx]
   const verseText = lang === 'en' ? verse.en.text : verse.text
   const verseSource = lang === 'en' ? verse.en.source : verse.source
+
+  /** 跳到第 n 句：越界夹到 1…total，非数字直接忽略 */
+  const jumpToVerse = (raw: string) => {
+    const n = Number.parseInt(raw, 10)
+    if (!Number.isFinite(n)) return
+    setVerseIdx(Math.min(VERSES.length, Math.max(1, n)) - 1)
+    setVersePicking(false)
+    setVerseJump('')
+  }
 
   const today = new Intl.DateTimeFormat(lang === 'zh' ? 'zh-CN' : 'en-GB', {
     month: 'long',
@@ -78,6 +95,7 @@ export function Home() {
     photo: string
     position: string
     title: string
+    verb: string
     desc: string
   }> = [
     {
@@ -86,6 +104,7 @@ export function Home() {
       photo: NAMED_PHOTOS.gate(),
       position: '50% 44%',
       title: t('nav.articles'),
+      verb: t('home.quickVerbArticles'),
       desc: t('home.quickArticlesDesc'),
     },
     {
@@ -94,6 +113,7 @@ export function Home() {
       photo: NAMED_PHOTOS.bell(),
       position: '50% 42%',
       title: t('nav.dharma'),
+      verb: t('home.quickVerbDharma'),
       desc: t('home.quickDharmaDesc'),
     },
     {
@@ -102,6 +122,7 @@ export function Home() {
       photo: NAMED_PHOTOS.lantern(),
       position: '50% 46%',
       title: t('nav.prayer'),
+      verb: t('home.quickVerbPrayer'),
       desc: t('home.quickPrayerDesc'),
     },
     {
@@ -110,6 +131,7 @@ export function Home() {
       photo: NAMED_PHOTOS.guanyinArt(),
       position: '50% 30%',
       title: t('nav.lots'),
+      verb: t('home.quickVerbLots'),
       desc: t('home.quickLotsDesc'),
     },
   ]
@@ -189,7 +211,7 @@ export function Home() {
         </div>
       </header>
 
-      {/* ---------- 四门：图片放大到 4:3，保证佛像/人物不被横条裁掉 ---------- */}
+      {/* ---------- 四条路：目录式条目 + 单张预览图（四张一样的卡片太呆板，也占版面） ---------- */}
       <Section>
         <Reveal>
           <SectionHeading
@@ -199,12 +221,76 @@ export function Home() {
             subtitle={t('home.quickSubtitle')}
           />
         </Reveal>
-        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
-          {doors.map((card, i) => (
-            <Reveal key={card.to} delay={i * 80} className="h-full">
-              <DoorCard {...card} index={i} />
-            </Reveal>
-          ))}
+
+        <div className="mt-12 grid gap-10 lg:grid-cols-12 lg:items-start lg:gap-14">
+          {/* 目录：汉字序号 + 动词 + 一句说明；指针或键盘焦点移到哪条，右边就换成哪张图 */}
+          <div className="order-2 lg:order-1 lg:col-span-5">
+            <ul className="border-t border-hairline">
+              {doors.map((door, i) => (
+                <li key={door.to} className="border-b border-hairline">
+                  <Link
+                    to={door.to}
+                    viewTransition
+                    onMouseEnter={() => setPreview(i)}
+                    onFocus={() => setPreview(i)}
+                    className="group flex items-start gap-4 py-5 sm:gap-5"
+                  >
+                    <span
+                      aria-hidden
+                      className={`mt-0.5 font-serif text-xl leading-none transition-colors duration-200 ${
+                        preview === i ? 'text-cinnabar-600' : 'text-ink-300'
+                      }`}
+                    >
+                      {DOOR_NUMERALS[i]}
+                    </span>
+                    <span className="min-w-0 flex-1">
+                      <span className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
+                        <span className="font-serif text-lg leading-snug font-normal text-ink-900 transition-colors duration-200 group-hover:text-cinnabar-600">
+                          {door.title}
+                        </span>
+                        <span className="font-sans text-[11px] tracking-[0.16em] text-celadon-700">{door.verb}</span>
+                      </span>
+                      <span className="mt-1.5 block font-song text-sm leading-[1.85] text-ink-500">{door.desc}</span>
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* 预览：整块可点，进的就是当前这一条 */}
+          <div className="order-1 lg:order-2 lg:col-span-7">
+            <Link to={doors[preview].to} viewTransition className="group block">
+              <span className="relative block aspect-4/3 overflow-hidden border border-hairline bg-rice-100 sm:aspect-16/10">
+                {doors.map((door, i) => (
+                  <span
+                    key={door.to}
+                    aria-hidden
+                    className={`absolute inset-0 transition-opacity duration-700 ${
+                      preview === i ? 'opacity-100' : 'opacity-0'
+                    }`}
+                  >
+                    <CoverImage
+                      src={door.photo}
+                      alt=""
+                      fallbackVariant={door.variant}
+                      position={door.position}
+                      className="h-full w-full transition-transform duration-700 group-hover:scale-[1.03]"
+                    />
+                  </span>
+                ))}
+              </span>
+              <span className="mt-3 flex items-center justify-between gap-4">
+                <span className="font-sans text-[11px] tracking-[0.16em] text-ink-400">
+                  {doors[preview].title} · {doors[preview].verb}
+                </span>
+                <span className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.16em] text-celadon-700 transition-colors duration-200 group-hover:text-cinnabar-600">
+                  {t('home.doorEnter')}
+                  <ArrowRight className="h-3.5 w-3.5" />
+                </span>
+              </span>
+            </Link>
+          </div>
         </div>
       </Section>
 
@@ -214,10 +300,90 @@ export function Home() {
           <Reveal className="lg:col-span-7">
             <div className="flex flex-wrap items-center justify-between gap-4">
               <p className="section-kicker">{t('home.dailyVerseTitle')}</p>
-              <span className="font-sans text-[11px] tracking-[0.16em] text-ink-300">
+              <button
+                type="button"
+                onClick={() => {
+                  setVersePicking((v) => !v)
+                  setVerseJump(String(verseIdx + 1))
+                }}
+                aria-expanded={versePicking}
+                aria-controls="verse-picker"
+                title={t('home.verseJumpTitle')}
+                className="inline-flex cursor-pointer items-center gap-1.5 border-b border-hairline pb-0.5 font-sans text-[11px] tracking-[0.16em] text-ink-400 tabular-nums transition-colors duration-200 hover:border-cinnabar-500 hover:text-cinnabar-600"
+              >
                 {t('home.verseCount', { n: verseIdx + 1, total: VERSES.length })}
-              </span>
+                <ChevronIcon
+                  className={`h-3 w-3 transition-transform duration-200 ${versePicking ? 'rotate-180' : ''}`}
+                />
+              </button>
             </div>
+
+            {/* 句子选择器：输入编号回车，或直接点编号 */}
+            {versePicking && (
+              <div
+                id="verse-picker"
+                onKeyDown={(e) => {
+                  if (e.key === 'Escape') setVersePicking(false)
+                }}
+                className="mt-5 border border-hairline bg-surface p-4 sm:p-5"
+              >
+                <form
+                  onSubmit={(e) => {
+                    e.preventDefault()
+                    jumpToVerse(verseJump)
+                  }}
+                  className="flex flex-wrap items-center gap-x-3 gap-y-2"
+                >
+                  <label htmlFor="verse-jump" className="font-sans text-[11px] tracking-[0.16em] text-ink-500">
+                    {t('home.verseJumpLabel')}
+                  </label>
+                  <input
+                    id="verse-jump"
+                    type="number"
+                    inputMode="numeric"
+                    min={1}
+                    max={VERSES.length}
+                    value={verseJump}
+                    onChange={(e) => setVerseJump(e.target.value)}
+                    className="w-16 rounded-xs border border-hairline bg-surface px-2 py-1 text-center font-sans text-sm text-ink-900 tabular-nums focus:border-cinnabar-500 focus:outline-none"
+                  />
+                  <button
+                    type="submit"
+                    className="cursor-pointer rounded-xs border border-celadon-300 px-3 py-1 font-sans text-xs text-celadon-800 transition-colors duration-200 hover:border-celadon-600 hover:bg-celadon-50"
+                  >
+                    {t('home.verseJumpGo')}
+                  </button>
+                  <span className="font-sans text-[11px] text-ink-300">
+                    {t('home.verseJumpRange', { total: VERSES.length })}
+                  </span>
+                </form>
+
+                <ul className="mt-4 grid grid-cols-9 gap-1 border-t border-hairline pt-4 sm:grid-cols-12 lg:grid-cols-11">
+                  {VERSES.map((v, i) => (
+                    <li key={i}>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setVerseIdx(i)
+                          setVersePicking(false)
+                        }}
+                        aria-current={i === verseIdx ? 'true' : undefined}
+                        title={v.text}
+                        aria-label={t('home.verseCount', { n: i + 1, total: VERSES.length })}
+                        className={`w-full cursor-pointer py-1 font-sans text-[11px] tabular-nums transition-colors duration-150 ${
+                          i === verseIdx
+                            ? 'bg-cinnabar-600 text-on-accent'
+                            : 'text-ink-500 hover:bg-rice-100 hover:text-ink-900'
+                        }`}
+                      >
+                        {i + 1}
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
             <blockquote className="mt-7 font-serif text-[1.6rem] leading-[1.9] text-ink-900 text-balance sm:text-[2rem] sm:leading-[1.85]">
               {lang === 'zh' ? `「${verseText}」` : `“${verseText}”`}
             </blockquote>
@@ -446,61 +612,6 @@ function SilentMinute() {
   )
 }
 
-/** 导览卡：4:3 大图 + 序号 + 一句说明，图片不再压成 128px 横条 */
-function DoorCard({
-  to,
-  variant,
-  photo,
-  position,
-  title,
-  desc,
-  index,
-}: {
-  to: string
-  variant: IllustrationVariant
-  photo: string
-  position: string
-  title: string
-  desc: string
-  index: number
-}) {
-  const { t } = useI18n()
-  return (
-    <Link
-      to={to}
-      viewTransition
-      className="group flex h-full flex-row overflow-hidden border border-hairline bg-surface transition-colors duration-300 hover:border-celadon-400 sm:flex-col"
-    >
-      <div className="relative w-[42%] shrink-0 overflow-hidden border-r border-hairline bg-rice-100 sm:aspect-[4/3] sm:w-full sm:border-r-0 sm:border-b">
-        <CoverImage
-          src={photo}
-          alt={title}
-          fallbackVariant={variant}
-          position={position}
-          className="absolute inset-0 h-full w-full transition-transform duration-700 group-hover:scale-[1.04]"
-        />
-        <span className="absolute top-3 left-3 inline-flex items-center justify-center bg-rice-50/90 px-1.5 py-1 font-sans text-[10px] tracking-[0.18em] text-ink-500 tabular-nums">
-          {String(index + 1).padStart(2, '0')}
-        </span>
-      </div>
-      <div className="flex flex-1 flex-col p-4 sm:p-5 lg:p-6">
-        <div className="flex items-start justify-between gap-2 sm:gap-3">
-          <h3 className="font-serif text-base leading-snug font-normal text-ink-900 transition-colors duration-200 group-hover:text-cinnabar-600 sm:text-lg">
-            {title}
-          </h3>
-          <ArrowRight className="mt-1 h-3.5 w-3.5 shrink-0 text-ink-300 transition-all duration-300 group-hover:translate-x-1 group-hover:text-cinnabar-600 sm:h-4 sm:w-4" />
-        </div>
-        <p className="mt-2 line-clamp-2 font-song text-sm leading-[1.8] text-ink-500 sm:mt-3 sm:line-clamp-none sm:leading-[1.9]">
-          {desc}
-        </p>
-        <span className="mt-auto pt-3 font-sans text-[11px] tracking-[0.16em] text-celadon-700 transition-colors duration-200 group-hover:text-cinnabar-600 sm:pt-5">
-          {t('home.doorEnter')}
-        </span>
-      </div>
-    </Link>
-  )
-}
-
 /** 主推经典：左图右文；配图固定为《金刚经》写本，语义与图终于对得上 */
 function ArticleLead({
   slug,
@@ -633,6 +744,23 @@ function RefreshIcon({ className = 'h-3.5 w-3.5' }: { className?: string }) {
     >
       <path d="M20 11a8 8 0 1 0-2.6 5.4" />
       <path d="M20 5v6h-6" />
+    </svg>
+  )
+}
+
+function ChevronIcon({ className = 'h-3 w-3' }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      className={className}
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={1.6}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden
+    >
+      <path d="m6 9 6 6 6-6" />
     </svg>
   )
 }

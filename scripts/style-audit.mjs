@@ -97,7 +97,7 @@ function countElements(tag, requireAttr) {
 }
 
 /* ---------------------------------------------------------------- */
-console.log('慧灯禅院 · 风格体检')
+console.log('如是 · 风格体检')
 console.log(`扫描 ${files.length} 个源文件`)
 
 section('1. 字体分级', '设计约定（2026 第 6 轮）：标题楷（serif）· 正文宋（song）· 界面黑（sans）；书法体（brush）只作点睛')
@@ -159,7 +159,7 @@ console.log('        且 React 会保留原生默认值；真正会误提交的�
 section('7. 中英对齐', '英文词典里不应残留汉字（专名除外）')
 const enSrc = read(path.join(SRC, 'i18n', 'en.ts'))
 const cjkLines = enSrc.split('\n').filter((l) => /[\u4e00-\u9fff]/.test(l) && !/^\s*(\/\/|\*)/.test(l))
-console.log(`  含汉字的英文词典行：${cjkLines.length}（应仅剩 慧灯禅院 / 切换到中文 这类专名与提示）`)
+console.log(`  含汉字的英文词典行：${cjkLines.length}（应仅剩 如是 / 切换到中文 这类专名与提示）`)
 for (const l of cjkLines.slice(0, 10)) console.log(`        · ${l.trim().slice(0, 96)}`)
 
 console.log(`\n${'─'.repeat(72)}`)

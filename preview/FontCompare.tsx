@@ -19,7 +19,7 @@ import './font-compare.css'
 
 const HERO = {
   kicker: '千年钟声 · 一念心灯',
-  title: '慧灯禅院',
+  title: '如是读经静心',
   subtitle:
     '学佛可以从每天十分钟读起。这里有话头浅近的开示、可以慢慢读进去的经论，也有安顿身心的法子——不讲门槛，由浅入深。愿您在此点亮心中那盏慧灯。',
 }
@@ -30,7 +30,7 @@ const VERSE = {
 }
 
 const QUICK = [
-  { n: '01', title: '初学入门', desc: '从浅近的开示入门，一步一步走进经典' },
+  { n: '01', title: '经典书架', desc: '从最浅的那一篇读起，不需要任何基础' },
   { n: '02', title: '静心听经', desc: '钟声与梵音，把忙碌里最安静的几分钟留给耳朵' },
   { n: '03', title: '点亮心愿', desc: '写下一个心愿，系上许愿树，点起一盏心灯' },
   { n: '04', title: '观音灵签', desc: '静一静，摇一支签，听听心里那句话' },
@@ -104,7 +104,7 @@ function Variant({ variant }: { variant: 'now' | 'proposed' }) {
 
       {/* 文章条目列表：最能看出正文可读性的地方 */}
       <Section rhythm="tight" tone="muted" className="!px-6">
-        <SectionHeading align="left" kicker="初学入门" title="今天，读一部经典" subtitle="不艰深 · 不难懂 · 从读得进去的那一部开始" />
+        <SectionHeading align="left" kicker="法 藏" title="今天，读一部经典" subtitle="不艰深 · 不难懂 · 从读得进去的那一部开始" />
         <ul className="mt-8 border-t border-hairline">
           {ARTICLES.map((a) => (
             <li key={a.title} className="border-b border-hairline py-6">

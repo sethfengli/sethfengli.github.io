@@ -76,7 +76,7 @@ function App() {
   return (
     <div className="min-h-screen bg-rice-50">
       <header className="border-b border-hairline bg-surface px-8 py-6">
-        <p className="font-serif text-sm tracking-[0.2em] text-ink-900">慧灯禅院 · 视觉预览</p>
+        <p className="font-serif text-sm tracking-[0.2em] text-ink-900">如是 · 视觉预览</p>
         <p className="mt-1 font-sans text-xs text-ink-500">
           SVG 组件与水墨插画单独渲染，用于无头浏览器截图核对（不参与正式构建）
         </p>

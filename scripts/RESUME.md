@@ -1,4 +1,4 @@
-# 慧灯禅院 · 工程状态 / 流程 / 坑
+# 如是（原慧灯禅院）· 工程状态 / 流程 / 坑
 
 > `D:\FengLi\Web\fou\huideng-chanlin` · Vite + React 19 + React Router 7 + Tailwind v4 + three.js r185。
 > 本文件是**唯一入口**：现状、命令、判据、坑。逐轮的实测明细**不再留在这里**（见 §7 的提交索引，
@@ -17,8 +17,8 @@
    `tsc` / `vite build` / 所有既有 audit 全绿、只有截图能看出来的那类问题——现在一半能先算出来。
 2. **不要为了截图升级权限。** 受限沙箱里无头 Chrome 一定起不来（crashpad `OpenProcess: Access denied`），
    `vite build` 也可能 `spawn EPERM`。顺序是：**先算 → 再让用户在本机跑一行截图 → 最后才谈权限**（§3.3）。
-3. **含中文的文件禁止用 PowerShell 回写**（`Set-Content -Encoding utf8` 会双重编码）。用 `edit` 工具
-   或 Node `writeFileSync(p, s, 'utf8')`。
+3. **含中文的文件禁止用 PowerShell 回写**（`Set-Content -Encoding utf8` 会双重编码）。一律用 `edit` 工具
+   （Node `writeFileSync` 在沙箱里会被 `EPERM` 拦住，见 §3.3）。
 4. **命令行里不要内联复杂 JS**：PowerShell 会吃掉单双引号。一次性脚本写成 `scripts/*.mjs` 再跑。
 5. **改过文案/正文必须重跑字体子集**（`scripts/make-song-subset.mjs`），否则新字静默掉回系统字体。
 
@@ -26,7 +26,7 @@
 
 | 项 | 值 |
 | --- | --- |
-| 内容 | **294 篇**文章（`articles/*.json` 中文源 + `en/*.json` 英文全文）· `catalog-en.json` 294 · 灵棋经 125 卦 + 观音签 32 支 · 每日法语 77 条 |
+| 内容 | **294 篇**文章（`articles/*.json` 中文源 + `en/*.json` 英文全文）· `catalog-en.json` 294 · 灵棋经 125 卦 + 观音签 32 支 · 每日法语 99 条 |
 | 图版 | 7 桶 **239 张**（WebP）· 清单 == 磁盘 · 孤儿 0 · 缺口 0 |
 | `npm run typecheck` | 通过 |
 | `npm run build` | 通过（7.5s，第 14 轮实测） |
@@ -60,6 +60,7 @@ dist/ build/          gitignore：构建产物 / 临时区（只放生成物，�
 npm run typecheck                  # 永远跑
 npm run audit:framing              # 动过 zen3d/ 或页面里的 3D 段落
 npm run audit:banners              # 动过具名图 / 横幅
+npm run audit:css                  # 动过 index.css（注释配平 / lightningcss 警告；build 的替身）
 npm run build                      # 要出 dist 时（需子进程权限，见 §3.3）
 node scripts/style-audit.mjs       # 动过样式/令牌/插画
 node scripts/check-buckets.mjs     # 动过 PICKS（图版选图）
@@ -81,6 +82,7 @@ node scripts/verse-audit.mjs       # 动过 verses.ts
 | `verify-3d-gate.mjs` | 三个 3D 页的 canvas 都挂载 |
 | `probe-route-cost.mjs` | 各路由首屏字节数（体积回退的唯一判据） |
 | `verse-audit.mjs` | 法语条目：重复 / 缺英文 / 英文夹汉字 / 过长 |
+| `check-css.mjs`（`audit:css`） | 注释配平（注释外出现收尾符 → 行号）+ lightningcss 解析警告（过滤 `@theme`/`@apply` 噪音）。exit 1 = CSS 有裸收尾符或非预期警告 |
 
 ### 3.3 权限：什么必须完整权限，怎么绕
 
@@ -95,7 +97,10 @@ node scripts/verse-audit.mjs       # 动过 verses.ts
   **没有逐一试过**，但不值得试：crashpad 是被「禁止 OpenProcess」卡住的，属进程权限，不是浏览器开关。
   真要再试，只试一条：`--headless=old`（老实现不起 crashpad handler；本机 155 上仍能 `--dump-dom`，
   但是否真是老实现、沙箱下能否起来，都**没有验证**）。
-- **写工作区**（视策略）：`writeFileSync` / `renameSync` 可能裸 `EPERM`，`dist/` 会静默变陈旧。
+- **子进程写工作区**（第 15 轮实测，比旧记录更死）：`node -e "writeFileSync(...)"` 写 `src/`、连写
+  gitignore 的 `build/` 都是裸 `EPERM`，`appendFileSync` 也一样。**只有 harness 的 `edit` / `write` 工具能落盘**。
+  后果：批量改名/批量替换不能写成 `.mjs` 跑，得用 `edit` 一处一处改（或一次 `write` 整篇重写），
+  改完用一次性只读脚本统计命中次数来收尾。`dist/` 也因此会静默变陈旧。
 
 所以按这个顺序走：
 
@@ -117,7 +122,7 @@ node scripts/verse-audit.mjs       # 动过 verses.ts
   整体重序列化会把一篇变成「全文重排」的巨型 diff。要求 diff 恰为 1 行，改完 `JSON.parse` 回验。
 - **`git status` 有 CRLF 噪声**（`core.autocrlf=true`，工作区 LF / blob CRLF）：判据用
   `git diff --numstat` 或 `git hash-object <f> == git rev-parse HEAD:<f>`，不要只看 `git status`。
-- 每日法语（`src/data/verses.ts`，77 条）：流程见下，判据跑 `verse-audit.mjs`。
+- 每日法语（`src/data/verses.ts`，99 条）：流程见下，判据跑 `verse-audit.mjs`。
 
   ```powershell
   node scripts/verse-candidates.mjs --top=200 --json=build/verse-candidates.json  # 挖候选
@@ -130,8 +135,16 @@ node scripts/verse-audit.mjs       # 动过 verses.ts
 
 ### 5.1 文件与编码
 
+- **块注释丢了开头 = 裸收尾符变成通配选择器**（第 15 轮真因）：`src/index.css` 一处
+  `/* ====` 行被吃掉，剩下三行裸文本 + 一个没有开头的注释收尾符，于是 `*` 被当成选择器，
+  `@media` 里的 `::view-transition-*` 变成「Invalid dangling combinator」。
+  `tsc` 看不见、`style-audit.mjs` 先 `stripNoise` 把注释整段剔掉、`npm run typecheck` 更不可能发现，
+  只有 `vite build` 的 lightningcss 阶段会报——而 build 在沙箱里跑不动（§3.3）。
+  **替代判据：`npm run audit:css`**（0.2 s，注释配平 + lightningcss 警告，过滤 Tailwind 噪音）。
+- **写块注释时别在注释里写字面量的注释分隔符**：在 `check-css.mjs` 的 JSDoc 里写了两次
+  「裸 `*/`」，注释当场提前闭合、文件语法错误（同一个坑，两次）。用「收尾符 / 起始符」这种说法代替。
 - **PS `Set-Content -Encoding utf8` 会双重编码**（`行` → `è¡Œ`，无 BOM、仍是合法 UTF-8，
-  所以 `tsc` / JSON 解析都不报错）。回写用 `edit` 或 Node，自检 `(s.match(/\uFFFD/g)||[]).length === 0`。
+  所以 `tsc` / JSON 解析都不报错）。回写用 `edit`，自检 `(s.match(/\uFFFD/g)||[]).length === 0`。
 - **here-string 写补丁脚本会把中文变 `?`**（`Out-File -Encoding ascii`）：补丁脚本只放 ASCII。
 - **PS 5.1 的 `[IO.File]` 相对路径跟着进程 CWD 走**，`cd` 不改变它 → 用绝对路径（或 `edit` 工具）。
 - 脚本行尾 CRLF / LF 并存（`curate-cn.mjs` 是 CRLF）→ 写正则改文件一律 `\r?\n`。
@@ -156,7 +169,7 @@ node scripts/verse-audit.mjs       # 动过 verses.ts
 ### 5.4 图版管线
 
 - **`named(key, bucket)` 的第二个参数是「校验桶」**：`named.<key>` 指的文件不在该桶内会**静默**退回
-  该桶第一张（第 13 轮「关于本院」横幅变成石窟浮雕就是这个）。换图后**先跑 `audit:banners`**。
+  该桶第一张（第 13 轮「关于本站」横幅变成石窟浮雕就是这个）。换图后**先跑 `audit:banners`**。
 - **改 `PICKS` 是两步**：`curate-cn.mjs`（PICKS → `cn-picked.json`）再 `fetch-cn-webp.mjs`。
   只改 PICKS 就抓图会照旧按旧 id 下载，日志还打印旧标题。
 - **换 id 必须换同一位置**（编号恒等于下标+1）；换之前用 `screen-cands.mjs` 过一遍 `TITLE_REJECT`，

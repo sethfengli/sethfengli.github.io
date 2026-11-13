@@ -1,9 +1,9 @@
 import type { Dict } from './types'
 
 export const en: Dict = {
-  appName: 'Huideng Zen Temple',
-  appNameEn: '慧灯禅院',
-  slogan: 'The lamp of wisdom ever shines — light the lamp within',
+  appName: 'As It Is',
+  appNameEn: '如是',
+  slogan: 'Read as it is, sit as it is',
   langLabel: 'EN / 中',
   langSwitchTitle: '切换到中文',
 
@@ -28,7 +28,7 @@ export const en: Dict = {
 
   home: {
     heroKicker: 'A thousand-year bell · a single lamp of mind',
-    heroTitle: 'Huideng Zen Temple',
+    heroTitle: 'As It Is',
     heroSubtitle:
       'The Buddhist path can begin with ten minutes of reading a day. Here you will find plain-spoken talks, sutras you can actually read your way into, and quiet ways to settle body and mind — no gatekeeping, easy first and deeper as you go. May you light the lamp of wisdom within.',
     todayLabel: 'Today',
@@ -46,7 +46,11 @@ export const en: Dict = {
     dailyVerseTitle: 'A Word for Today',
     verseNext: 'Another line',
     verseCount: 'No. {{n}} of {{total}}',
-    verseHint: 'One line a day, turning with the day and hour; if a line stays with you, the full text is on the shelf.',
+    verseJumpTitle: 'Open the line picker',
+    verseJumpLabel: 'Go to',
+    verseJumpGo: 'Jump',
+    verseJumpRange: '1 – {{total}}; or tap a number below',
+    verseHint: 'One line a day, turning with the day and hour. Tap the counter above to open any line.',
     minuteKicker: 'This Moment',
     minuteTitle: 'Give Yourself a Minute',
     minuteDesc: 'Not the past, not the future — just sixty seconds with the breath.',
@@ -59,14 +63,18 @@ export const en: Dict = {
     minuteExhale: 'Breathe out',
     minuteRemaining: '{{n}} seconds left',
     minuteUnit: 'sec',
-    quickKicker: 'Four Doors',
-    quickTitle: 'Where to Begin',
-    quickSubtitle: 'Four doors stand open; whichever you enter, you have not gone astray',
+    quickKicker: 'Four Paths',
+    quickTitle: 'Start With One Small Thing',
+    quickSubtitle: 'Read a passage, hear one bell, light a lamp, draw a lot — nothing to know, nothing to prepare',
+    quickVerbArticles: 'Read a line',
+    quickVerbDharma: 'Hear a bell',
+    quickVerbPrayer: 'Light a lamp',
+    quickVerbLots: 'Draw a lot',
     quickPrayerDesc: 'Write a wish, tie it to the tree, light a lamp of mind',
     quickLotsDesc: 'Grow still, shake out a lot, and hear what the heart has been saying',
     quickDharmaDesc: 'Bell and chant — the quietest few minutes of a busy day, given to the ear',
-    quickArticlesDesc: 'Start with the plainest talks and step into the classics a little at a time',
-    doorEnter: 'Step in',
+    quickArticlesDesc: 'Begin with the plainest piece — no background needed',
+    doorEnter: 'Take a look',
     featuredTitle: 'Read a Classic Today',
     featuredSubtitle: 'Not forbidding, not obscure — begin with one you can read your way into',
     featuredAll: 'Browse the Shelf',
@@ -76,7 +84,7 @@ export const en: Dict = {
     incenseBody: 'No grand vow is needed. Settling this breath is already an offering.',
     incenseCta: 'Light a Wish',
     incenseHint: 'Offer a stick of heart-incense to this very moment',
-    badge: 'Huideng · Dharma Treasury',
+    badge: 'As It Is · Dharma Treasury',
     readFull: 'Read in full',
     coverAlt: '{{t}} · illustration',
   },
@@ -125,7 +133,7 @@ export const en: Dict = {
     notFound: 'This text does not exist or has not been archived yet',
     backHome: 'Back to home',
     likeNote: 'May the merit of this text reach all beings',
-    docTitle: '{{title}} · Huideng Zen Temple',
+    docTitle: '{{title}} · As It Is',
     titleWithQuotes: '{{title}}',
     wordCount: 'about {{n}} characters',
     coverAlt: '{{t}} · cover',
@@ -139,7 +147,7 @@ export const en: Dict = {
     subtitle: 'Bell, chant and Dharma talks — lend your ears to this moment',
     bellTitle: 'Hearing the Bell',
     bellDesc:
-      'Touch the bronze bell and hear the bell of this temple. Hearing the bell, afflictions grow light; wisdom grows, and bodhi begins to flower.',
+      'Touch the bronze bell and hear the bell here. Hearing the bell, afflictions grow light; wisdom grows, and bodhi begins to flower.',
     ringing: 'The bell is ringing out…',
     ringBell: 'Ring the Bell',
     ringAgain: 'Ring Again',
@@ -259,13 +267,13 @@ export const en: Dict = {
   },
 
   about: {
-    title: 'About the Temple',
+    title: 'About This Site',
     subtitle: 'Speak as the Buddha spoke · practise as taught',
     storyTitle: 'How It Began',
     story1:
-      'Huideng Zen Temple is a digital temple online. It grew out of the “Practice as Taught” Buddhist academy — founded in the early 2000s by lay practitioners living in retreat, and devoted to four aims: to arouse the bodhi mind, to understand the supreme meaning, to hold the Buddha’s name in faith and vow, and to reach one mind undisturbed. Over the years it gathered more than three hundred commentaries and study talks.',
+      'As It Is is a place for reading and quiet sitting, online. It grew out of the “Practice as Taught” Buddhist academy — founded in the early 2000s by lay practitioners living in retreat, and devoted to four aims: to arouse the bodhi mind, to understand the supreme meaning, to hold the Buddha’s name in faith and vow, and to reach one mind undisturbed. Over the years it gathered more than three hundred commentaries and study talks.',
     story2:
-      'The phrase “practice as taught” comes from the Shurangama Sutra: “What I have spoken is the Buddha’s teaching; to speak otherwise is the speech of Mara.” To study the Buddha’s way is to practise it — and to practise it exactly as the Buddha taught. Under the name Huideng Zen Temple we take up that thread again, that lamp may pass to lamp and light up the long night of ignorance.',
+      'The phrase “practice as taught” comes from the Shurangama Sutra: “What I have spoken is the Buddha’s teaching; to speak otherwise is the speech of Mara.” To study the Buddha’s way is to practise it — and to practise it exactly as the Buddha taught. “As It Is” is where every sutra begins: “Thus have I heard” — the first line Ananda set down. Read that way, sit that way: see it as it is, adding nothing, taking nothing away.',
     story3:
       'We keep no temple hall and ask for no money. All the teaching materials remain free to reprint, quote, copy, publish and distribute, with the merit dedicated to all beings throughout the Dharma realm.',
     storyQuote:
@@ -283,13 +291,13 @@ export const en: Dict = {
     contactEmailDesc: 'Open an issue in the site repository and we will reply as soon as we can',
     contactBrowse: 'Browse the Shelf',
     contactBrowseDesc: 'More than three hundred commentaries and talks are waiting for you',
-    galleryTitle: 'Scenes of the Temple',
+    galleryTitle: 'Scenes Here',
     gallerySubtitle: 'Landscape, Buddha hall, Guanyin, scripture and lotus pond — a glance before the reading',
     galleryCaptions: ['Landscape', 'Buddha Hall', 'Guanyin', 'Sutra', 'Lotus Pond', 'Old Temple'],
     photoHint: 'Click any image to view it larger',
-    storyPhotoCaption: 'Landscape · the temple banner',
+    storyPhotoCaption: 'Landscape · the site banner',
     storySutraCaption: 'Sutra · the Diamond Sutra',
-    heritageCta: 'Enter this way',
+    heritageCta: 'Walk this way',
     lampKicker: 'The Lamp Passed On',
     lampTitle: 'The Lamp Ever Shines',
     lampBody:
@@ -341,10 +349,10 @@ export const en: Dict = {
     backHome: 'Back to Home',
     scrollTop: 'Back to top',
     footerIntro:
-      'The lamp of wisdom ever shines. A digital temple without walls, carrying on the lineage of the “Practice as Taught” academy.',
-    footerNav: 'Around the Temple',
+      'Read as it is, sit as it is. No walls, no donations — only the lineage of the “Practice as Taught” academy, carried on.',
+    footerNav: 'Around This Site',
     footerMore: 'More',
-    footerCopyright: '© {{year}} Huideng Zen Temple · texts free to share',
+    footerCopyright: '© {{year}} As It Is · texts free to share',
     footerDisclaimer: 'A purely static, non-commercial site. We ask for no donations.',
     footerBuilt: 'Made with React · Tailwind CSS',
     /* 3D scene hints */

@@ -49,7 +49,7 @@ export function collectBrushChars() {
 
   // 禅语 / 祝福等固定点缀文案（Lots 页与首页点睛处）
   for (const extra of [
-    '慧灯禅院',
+    '如是读经',
     '灵签',
     '签',
     '上上',

@@ -40,7 +40,7 @@ const NAMED = {
   // 不再用石窟考古现场、博物馆标牌或空白绢本（用户明确要求换掉压抑、裁头、像考古的图）。
   gate: {
     prefer: ['sutras-15.webp', 'sutras-14.webp', 'halls-11.webp'],
-    note: '经卷扉画 / 寺院（初学入门）',
+    note: '经卷扉画 / 寺院（经典书架）',
   },
   guanyin: {
     // 必须完整头部、横构图、无展签；德化白瓷观音最干净，也最贴「观音灵签」。
@@ -65,7 +65,7 @@ const NAMED = {
   garden: {
     // ⚠ 本项必须落在 landscape 桶；校验桶写在 content.ts 的 NAMED_KEY_FALLBACK。
     //   第 13 轮前的 bug：这里选了 landscape-04，但校验桶还是 grottoes，
-    //   于是「关于本院」横幅静默显示成阴暗的 grottoes-01 云冈浮雕特写。
+    //   于是「关于本站」横幅静默显示成阴暗的 grottoes-01 云冈浮雕特写。
     prefer: ['landscape-04.webp', 'landscape-09.webp', 'landscape-02.webp'],
     note: '山水（水墨长卷）',
   },

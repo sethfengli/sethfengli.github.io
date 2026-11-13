@@ -625,6 +625,183 @@ export const VERSES: Verse[] = [
       source: 'Master Hsing Yun',
     },
   },
+  /* ---------- 第 15 轮增补：华严 · 坛经 · 祖师与禅意诗偈（凑足 99 条） ---------- */
+  {
+    text: '一切众生皆具如来智慧德相，但因妄想执著，而不能证得。',
+    source: '《华严经》',
+    en: {
+      text: 'Every being is endowed with the Tathagata’s wisdom and virtue, yet because of deluded thinking and clinging they do not realise it.',
+      source: 'Avatamsaka Sutra',
+    },
+  },
+  {
+    text: '初发心时，便成正觉。',
+    source: '《华严经》',
+    en: {
+      text: 'At the very moment the mind first aspires, perfect enlightenment is already attained.',
+      source: 'Avatamsaka Sutra',
+    },
+  },
+  {
+    text: '一花一世界，一叶一如来。',
+    source: '《华严经》',
+    en: {
+      text: 'One flower, one world; one leaf, one Tathagata.',
+      source: 'Avatamsaka Sutra',
+    },
+  },
+  {
+    text: '譬如一灯，入于暗室，百千年暗，悉能破尽。',
+    source: '《华严经》',
+    en: {
+      text: 'It is like a single lamp carried into a dark room: a darkness of a hundred thousand years is wholly dispelled.',
+      source: 'Avatamsaka Sutra',
+    },
+  },
+  {
+    text: '从身语意之所生，一切我今皆忏悔。',
+    source: '《普贤行愿品》',
+    en: {
+      text: 'Whatever has sprung from body, speech and mind — all of it I now confess.',
+      source: 'Practices and Vows of Samantabhadra',
+    },
+  },
+  {
+    text: '若真修道人，不见世间过。',
+    source: '《六祖坛经》',
+    en: {
+      text: 'One who truly cultivates the Way does not dwell on the faults of the world.',
+      source: 'Platform Sutra',
+    },
+  },
+  {
+    text: '若见一切法，心不染著，是为无念。',
+    source: '《六祖坛经》',
+    en: {
+      text: 'To see all things with a mind unstained — this is called no-thought.',
+      source: 'Platform Sutra',
+    },
+  },
+  {
+    text: '但自却非心，打除烦恼破。',
+    source: '《六祖坛经》',
+    en: {
+      text: 'Just put away the fault-finding mind, and the afflictions are broken through.',
+      source: 'Platform Sutra',
+    },
+  },
+  {
+    text: '心生则种种法生，心灭则种种法灭。',
+    source: '《大乘起信论》',
+    en: {
+      text: 'When the mind arises, all things arise; when the mind ceases, all things cease.',
+      source: 'Awakening of Faith in the Mahayana',
+    },
+  },
+  {
+    text: '一切法得成于忍。',
+    source: '《金刚经》',
+    en: {
+      text: 'All dharmas are accomplished through patience.',
+      source: 'Diamond Sutra',
+    },
+  },
+  {
+    text: '知足之法，即是富乐安隐之处。',
+    source: '《佛遗教经》',
+    en: {
+      text: 'The practice of contentment is itself the abode of wealth, happiness and peace.',
+      source: 'Sutra of the Buddha’s Last Teachings',
+    },
+  },
+  {
+    text: '千处祈求千处应，苦海常作度人舟。',
+    source: '观音菩萨偈',
+    en: {
+      text: 'A thousand places they pray, a thousand places she answers; in the sea of suffering she is ever the ferry.',
+      source: 'Verse of Guanyin Bodhisattva',
+    },
+  },
+  {
+    text: '溪声尽是广长舌，山色无非清净身。',
+    source: '苏轼《赠东林总长老》',
+    en: {
+      text: 'The sound of the stream is the long, broad tongue; the colours of the hills, the pure Dharma body itself.',
+      source: 'Su Shi, “To the Elder Zong of Donglin”',
+    },
+  },
+  {
+    text: '竹影扫阶尘不动，月轮穿沼水无痕。',
+    source: '《菜根谭》',
+    en: {
+      text: 'Bamboo shadows sweep the steps, yet the dust does not stir; the moon passes through the pond, and the water keeps no trace.',
+      source: 'Caigentan',
+    },
+  },
+  {
+    text: '眼里有尘三界窄，心头无事一床宽。',
+    source: '《菜根谭》',
+    en: {
+      text: 'With dust in the eye, the three realms feel narrow; with nothing on the mind, a single bed is wide.',
+      source: 'Caigentan',
+    },
+  },
+  {
+    text: '宠辱不惊，闲看庭前花开花落；去留无意，漫随天外云卷云舒。',
+    source: '《菜根谭》',
+    en: {
+      text: 'Unmoved by favour or disgrace, idly watch the flowers open and fall before the courtyard; careless of staying or leaving, drift with the clouds that gather and scatter beyond the sky.',
+      source: 'Caigentan',
+    },
+  },
+  {
+    text: '万缘放下，一念不生。',
+    source: '虚云老和尚',
+    en: {
+      text: 'Let all conditions fall away; let not one thought arise.',
+      source: 'Master Xuyun',
+    },
+  },
+  {
+    text: '佛法无多子。',
+    source: '临济义玄禅师',
+    en: {
+      text: 'The Buddha-Dharma is nothing much.',
+      source: 'Chan Master Linji Yixuan',
+    },
+  },
+  {
+    text: '随缘消旧业，更不造新殃。',
+    source: '禅门古德',
+    en: {
+      text: 'Meet conditions and wear out old karma; make no new grief.',
+      source: 'An Ancient Chan Master',
+    },
+  },
+  {
+    text: '饥来吃饭，困来即眠。',
+    source: '大珠慧海禅师',
+    en: {
+      text: 'Hungry, eat; tired, sleep.',
+      source: 'Chan Master Dazhu Huihai',
+    },
+  },
+  {
+    text: '愿消三障诸烦恼，愿得智慧真明了。',
+    source: '《回向偈》',
+    en: {
+      text: 'May the three obstructions and all afflictions dissolve; may wisdom arise, truly clear.',
+      source: 'Verse of Dedication',
+    },
+  },
+  {
+    text: '一即一切，一切即一。',
+    source: '《华严经》',
+    en: {
+      text: 'One is all, and all is one.',
+      source: 'Avatamsaka Sutra',
+    },
+  },
 ]
 
 /** 按“日 + 时辰”轮换，刷新即换 */

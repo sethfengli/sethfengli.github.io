@@ -323,7 +323,7 @@ export function About() {
               </section>
             </Reveal>
 
-            {/* ---------- 禅院掠影：一大四小，留白优先；每张都可点开灯箱 ---------- */}
+            {/* ---------- 这里的光景：一大四小，留白优先；每张都可点开灯箱 ---------- */}
             <Reveal>
               <section id="gallery">
                 <SectionHeading align="left" title={t('about.galleryTitle')} subtitle={t('about.gallerySubtitle')} />

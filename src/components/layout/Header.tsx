@@ -20,7 +20,7 @@ const NAV = [
  * - 品牌字用宋体大字距，书法体不再出现在页头。
  */
 export function Header() {
-  const { t, lang, toggleLang } = useI18n()
+  const { t, toggleLang } = useI18n()
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const { pathname } = useLocation()
@@ -51,7 +51,7 @@ export function Header() {
               {t('appName')}
             </span>
             <span className="mt-1 hidden font-sans text-[9px] tracking-[0.28em] whitespace-nowrap text-ink-300 uppercase sm:block">
-              {lang === 'zh' ? 'Huideng Zen Temple' : '慧灯禅院'}
+              {t('appNameEn')}
             </span>
           </span>
         </Link>

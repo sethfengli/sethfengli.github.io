@@ -7,7 +7,7 @@ import type { Dict, PathsOf } from '../../i18n/types'
  * 文档级 SEO：一二级页面各自设置 title / description / og:*。
  *
  * 本站是纯静态 SPA，index.html 里只有一份通用 description，
- * 于是「关于本院」「静心听经」等页面在搜索结果里全长一个样。
+ * 于是「关于本站」「静心听经」等页面在搜索结果里全长一个样。
  * 这里按路由写入对应的标题与摘要；文章页（/articles/:slug）由
  * ArticleReader 自行设置（它知道文章标题），此处跳过。
  */

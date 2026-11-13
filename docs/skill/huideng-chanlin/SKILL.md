@@ -1,9 +1,9 @@
 ---
 name: huideng-chanlin
-description: Change and verify the 慧灯禅院 / Huideng Zen Temple site (D:\FengLi\Web\fou\huideng-chanlin — Vite + React 19 + Tailwind v4 + three.js r185) with a "compute first, screenshot later" loop, no browser, no permission escalation. USE FOR editing any page or section, any 3D scene (zen3d/stage.ts, censer, bell, tree, lamp), copy and i18n (zh.ts / en.ts), photos and banners, design tokens, bundle size, or running the repo audits (audit:framing, audit:banners, check-buckets, style-audit, check-font-coverage, verse-audit, probe-route-cost). Covers the workspace-write limits (spawn EPERM, Chrome crashpad), the hand-off screenshot command, and the framing contract that keeps 3D subjects inside the canvas.
+description: Change and verify the 如是 / As It Is (formerly 慧灯禅院 / Huideng Zen Temple) site (D:\FengLi\Web\fou\huideng-chanlin — Vite + React 19 + Tailwind v4 + three.js r185) with a "compute first, screenshot later" loop, no browser, no permission escalation. USE FOR editing any page or section, any 3D scene (zen3d/stage.ts, censer, bell, tree, lamp), copy and i18n (zh.ts / en.ts), photos and banners, design tokens, bundle size, or running the repo audits (audit:framing, audit:banners, check-buckets, style-audit, check-font-coverage, verse-audit, probe-route-cost). Covers the workspace-write limits (spawn EPERM, Chrome crashpad), the hand-off screenshot command, and the framing contract that keeps 3D subjects inside the canvas.
 ---
 
-# 慧灯禅院 — change & verify (no browser)
+# 如是（原慧灯禅院）— change & verify (no browser)
 
 ## 0. 先算再拍（本 skill 的核心）
 
@@ -16,6 +16,7 @@ description: Change and verify the 慧灯禅院 / Huideng Zen Temple site (D:\Fe
 | 文案是否漏了中文键、类型是否对 | ✅ | `npm run typecheck`（键由 tsc 对齐） |
 | 新字是否在字体子集里 | ✅ | `node scripts/check-font-coverage.mjs` |
 | 令牌改名是否生效 | ✅ | `probe-colors.mjs`（读 computed，别 grep 产物） |
+| CSS 注释是否配平、lightningcss 会不会报「dangling combinator」 | ✅ | `npm run audit:css`（`vite build` 的替身） |
 | 造型对不对、光照好不好、零件是否穿模/悬空 | ❌ 必须渲染 | 交给用户跑截图（§4.3） |
 | 材质、bloom、遮挡关系 | ❌ | 同上 |
 
@@ -28,6 +29,7 @@ description: Change and verify the 慧灯禅院 / Huideng Zen Temple site (D:\Fe
 ```powershell
 npm run typecheck              # tsc，永远先跑
 npm run audit:framing          # 3D 取景（纯 Node）
+npm run audit:css              # CSS 注释配平 + lightningcss 警告（build 的替身）
 npm run build                  # tsc + vite build（要子进程权限，见 §4）
 ```
 
@@ -63,7 +65,11 @@ npm run build                  # tsc + vite build（要子进程权限，见 §4
 
 ## 4. 权限：workspace-write 里能做什么
 
-**能**：读写仓库、起 `node:http`/静态服务、跑 `tsc`、所有 `scripts/*.mjs` 判据（除了要 spawn 的）。
+**能**：读仓库、起 `node:http`/静态服务、跑 `tsc`、所有 `scripts/*.mjs` 判据（除了要 spawn 的）。
+
+**落盘只有一条路**：harness 的 `edit` / `write` 工具。第 15 轮实测，**子进程写工作区一律裸 `EPERM`**——
+`node -e "writeFileSync('src/i18n/zh.ts', ...)"` 不行，写 gitignore 的 `build/` 也不行，`appendFileSync` 同样不行。
+所以「写个 .mjs 批量正则替换」这条路是死的：改名/批量改文案只能 `edit` 逐处改（或 `write` 整篇重写）。
 
 **不能**（不要反复试）：
 - 任何 `stdio:'pipe'` 的 spawn（`spawnSync(..., {encoding})`、`exec`、`execFile`）→ 裸 `EPERM`。
@@ -87,7 +93,7 @@ node scripts/shot-3d.mjs --route=/dharma --out=build/shots/bell --drag=100,0 --p
 
 ## 5. 文案 / 图版 / 字体 / 体积
 
-- **含中文的文件禁止 PowerShell 回写**（`Set-Content -Encoding utf8` 双重编码）。用 `edit` 工具或 Node `writeFileSync(p, s, 'utf8')`。
+- **含中文的文件禁止 PowerShell 回写**（`Set-Content -Encoding utf8` 双重编码）。用 `edit` 工具（Node `writeFileSync` 在沙箱里被 `EPERM` 拦住，见 §4）。
 - **命令行不要内联复杂 JS**；PowerShell 还会吃掉反引号（写成文件再跑）。
 - 图版：`named(key, bucket)` 的第二个参数是**校验桶**，指错会静默退回该桶第一张；换图后先 `audit:banners`。
   改 `PICKS` 是两步（`curate-cn.mjs` → `fetch-cn-webp.mjs`），且换 id 必须换同一位置。
@@ -100,6 +106,7 @@ node scripts/shot-3d.mjs --route=/dharma --out=build/shots/bell --drag=100,0 --p
 | --- | --- |
 | `npm run audit:framing` | 3D 主体出画 / 香头贴边 / 页面写死过近的 `distance` |
 | `npm run audit:banners` | 具名图不在声明桶内、裁切保留面积过低 |
+| `npm run audit:css` | 注释外出现收尾符（块注释丢了开头）/ lightningcss 有非预期警告 |
 | `node scripts/check-buckets.mjs` | 清单 ≠ 磁盘 ≠ PICKS，或编号不连续 |
 | `node scripts/style-audit.mjs` | 装饰符/圆角/投影/旧令牌/svg 缺 aria/img 缺 alt |
 | `node scripts/check-font-coverage.mjs` | 有新字掉出字体子集 |

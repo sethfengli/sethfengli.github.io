@@ -157,7 +157,7 @@ export class GitHubIssueWishRepository implements WishRepository {
       method: 'POST',
       body: JSON.stringify({
         title: `祈福：${input.name.slice(0, 40)}`,
-        body: `${input.text}\n\n—— 来自慧灯禅院祈福墙`,
+        body: `${input.text}\n\n—— 来自如是祈福墙`,
         labels: [this.cfg.label ?? 'wish'],
       }),
     })

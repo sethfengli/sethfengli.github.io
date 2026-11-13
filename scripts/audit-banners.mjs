@@ -6,7 +6,7 @@
  *
  *   1. 具名图必须真的在它声明的桶里（`named()` 找不到会静默退回桶内第一张）；
  *      —— 第 13 轮的 `garden` bug 就是 `landscape-04` 配了 `grottoes` 校验桶，
- *         于是「关于本院」横幅悄悄显示成 `grottoes-01` 的阴暗浮雕特写。
+ *         于是「关于本站」横幅悄悄显示成 `grottoes-01` 的阴暗浮雕特写。
  *   2. 文件必须存在，且是 WebP。
  *   3. 按真实显示比例（桌面 16:10 / 移动 4:3 / 导览卡 4:3）计算 cover 裁切
  *      的保留面积；竖构图必须显式给 `position` 焦点，否则裁掉主体也发现不了。
@@ -48,7 +48,7 @@ const NOT_FOR_BANNER = new Map([
 ])
 
 /* ------------------------------------------------------------------ */
-/* 页面规格：PageBanner 从源码解析；首页 hero / 四门卡手工列出            */
+/* 页面规格：PageBanner 从源码解析；首页 hero / 四条路预览图手工列出            */
 /* ------------------------------------------------------------------ */
 const PAGE_ROUTE = {
   'About.tsx': '/about',
@@ -58,13 +58,13 @@ const PAGE_ROUTE = {
   'Articles.tsx': '/articles',
 }
 
-// 首页不是 PageBanner：hero 是 16:10 CoverImage；四门卡是 4:3。
+// 首页不是 PageBanner：hero 是 16:10 CoverImage；四条路预览图手机 4:3、桌面 16:10（按更紧的 4:3 判）。
 const HOME_SPECS = [
   { page: 'Home.tsx', route: '/', role: 'hero', key: 'hero', aspect: 16 / 10, position: '50% 46%' },
-  { page: 'Home.tsx', route: '/', role: 'door card', key: 'gate', aspect: 4 / 3 },
-  { page: 'Home.tsx', route: '/', role: 'door card', key: 'bell', aspect: 4 / 3 },
-  { page: 'Home.tsx', route: '/', role: 'door card', key: 'lantern', aspect: 4 / 3 },
-  { page: 'Home.tsx', route: '/', role: 'door card', key: 'guanyinArt', aspect: 4 / 3, position: '50% 30%' },
+  { page: 'Home.tsx', route: '/', role: 'path preview', key: 'gate', aspect: 4 / 3 },
+  { page: 'Home.tsx', route: '/', role: 'path preview', key: 'bell', aspect: 4 / 3 },
+  { page: 'Home.tsx', route: '/', role: 'path preview', key: 'lantern', aspect: 4 / 3 },
+  { page: 'Home.tsx', route: '/', role: 'path preview', key: 'guanyinArt', aspect: 4 / 3, position: '50% 30%' },
 ]
 
 function parsePageBanners() {

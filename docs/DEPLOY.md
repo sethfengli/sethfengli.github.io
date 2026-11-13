@@ -15,7 +15,7 @@ npm run build          # 产出 dist/
 
 ```bash
 git add .
-git commit -m "慧灯禅院：重构自如说修行网上佛学院"
+git commit -m "如是：重构自如说修行网上佛学院"
 git branch -M main
 git push -u origin main
 ```

@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "description": "慧灯禅院 · Huideng Zen Temple — a modern digital Buddhist temple rebuilt from the legacy 如说修行网上佛学院 static archive",
+  "description": "如是 · As It Is — a bilingual reading and quiet-sitting site rebuilt from the legacy 如说修行网上佛学院 static archive",
   "scripts": {
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
@@ -11,6 +11,7 @@
     "typecheck": "tsc --noEmit",
     "audit:framing": "node scripts/check-framing.mjs",
     "audit:banners": "node scripts/audit-banners.mjs",
+    "audit:css": "node scripts/check-css.mjs",
     "migrate": "node scripts/migrate.mjs",
     "migrate:md": "node scripts/migrate.mjs --md"
   },
